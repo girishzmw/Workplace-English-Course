@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ice Breaker — Basic Greetings & Classroom Vocabulary</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL v3.0 — Ice Breaker / Orientation
+   Brand: Navy/Gold · Georgia headings · Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+/* SITE HEADER */
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+/* HERO */
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAV */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* BLOCKS */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VIDEO CARD */
+.video-card { background:var(--navy); border-radius:12px; overflow:hidden; margin-bottom:24px; display:grid; grid-template-columns:1fr 1fr; }
+@media(max-width:580px){ .video-card{ grid-template-columns:1fr; } }
+.video-left { padding:28px 24px; display:flex; flex-direction:column; gap:16px; justify-content:center; }
+.video-title { font-family:var(--font-heading); font-size:22px; color:var(--white); font-style:italic; line-height:1.3; }
+.video-sub { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.6; }
+.video-play-btn { display:inline-flex; align-items:center; gap:10px; background:var(--gold); color:var(--navy); border:none; border-radius:8px; padding:12px 20px; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; text-decoration:none; transition:background 0.15s; width:fit-content; }
+.video-play-btn:hover { background:var(--gold-light); }
+.video-url { font-size:11px; color:rgba(255,255,255,0.3); font-style:italic; }
+.video-right { background:rgba(255,255,255,0.04); border-left:1px solid rgba(255,255,255,0.08); padding:28px 24px; display:flex; flex-direction:column; gap:12px; justify-content:center; }
+.video-prompt { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:4px; }
+
+/* RESPONSE LINES */
+.response-area { display:flex; flex-direction:column; gap:6px; margin-bottom:20px; }
+.response-line { display:flex; align-items:baseline; gap:10px; padding:8px 12px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.response-num { font-size:11px; font-weight:700; color:var(--gold); flex-shrink:0; min-width:18px; }
+.response-input { flex:1; border:none; border-bottom:1.5px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); outline:none; padding:3px 0; transition:border-color 0.15s; min-width:0; }
+.response-input:focus { border-bottom-color:var(--sky); }
+
+/* EXPRESSIONS TABLE */
+.expr-grid { display:grid; grid-template-columns:1fr 1fr; gap:0; background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+@media(max-width:560px){ .expr-grid{ grid-template-columns:1fr; } }
+.expr-col-head { background:var(--navy); padding:12px 18px; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.expr-item { padding:11px 18px; border-bottom:1px solid var(--light-grey); font-size:14px; transition:background 0.12s; }
+.expr-item:last-child { border-bottom:none; }
+.expr-item:hover { background:var(--light-grey); }
+.expr-item.en { font-weight:500; color:var(--navy); }
+.expr-item.es { color:var(--grey-blue); font-style:italic; }
+
+/* SPOTLIGHT BOX — for "Good Evening vs Good Night" */
+.spotlight { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.spotlight-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:16px; }
+.spotlight-cols { display:flex; align-items:stretch; flex-wrap:wrap; gap:0; border-radius:9px; overflow:hidden; border:1px solid rgba(255,255,255,0.12); margin-bottom:16px; }
+.spotlight-col { display:flex; flex-direction:column; align-items:center; padding:16px 18px; background:rgba(201,151,44,0.18); flex:1; gap:6px; text-align:center; }
+.spotlight-col:not(:last-child) { border-right:2px solid rgba(255,255,255,0.1); }
+.spotlight-phrase { font-family:var(--font-heading); font-size:18px; color:var(--gold); font-weight:700; }
+.spotlight-when { font-size:12px; color:rgba(255,255,255,0.7); line-height:1.5; }
+.spotlight-ex { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; margin-top:4px; }
+.spotlight-pipe { display:flex; align-items:center; padding:0 8px; font-size:22px; color:rgba(255,255,255,0.2); font-weight:300; }
+
+/* CLASSROOM PHRASES TABLE */
+.cp-table { width:100%; border-collapse:collapse; border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.cp-table th { background:var(--navy); padding:12px 18px; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; text-align:left; }
+.cp-table td { padding:12px 18px; font-size:14px; border-bottom:1px solid var(--border-grey); vertical-align:top; }
+.cp-table tr:last-child td { border-bottom:none; }
+.cp-table tr:nth-child(even) td { background:var(--light-grey); }
+.cp-table td:first-child { color:var(--navy); font-weight:500; }
+.cp-table td:last-child { color:var(--grey-blue); font-style:italic; }
+
+/* CATEGORY BADGE inside table */
+.cat-row td { background:var(--gold-bg) !important; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; padding:8px 18px !important; }
+
+/* QUIZ CARDS */
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* NAV */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILS */
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:12px; }
+.divider { height:1px; background:var(--border-grey); margin:24px 0; }
+
+/* SITE FOOTER */
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Orientation · Ice Breaker</div>
+    <h1 class="hero-title">Basic Greetings &amp; Classroom Vocabulary</h1>
+    <p class="hero-sub">Welcome session · 60 minutes · Before the course begins</p>
+    <div class="hero-pills">
+      <span class="pill accent">Greetings</span>
+      <span class="pill accent">Classroom English</span>
+      <span class="pill">4 sections</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN -->
+<div class="main" id="mainContent"></div>
+
+<!-- ↓↓↓ SINGLE SCRIPT BLOCK — all JS lives here ↓↓↓ -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAV ENGINE ────────────────────────────────────────────
+function getProgress(i) { return Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0, isLast=currentStep===STEPS.length-1;
+  const prev = isFirst ? '← Previous' : '← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const next = isLast  ? 'Finish ✓'   : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prev}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${next}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS.map((s,i)=>
+    `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep)+'%';
+}
+
+// ── QUIZ DATA ─────────────────────────────────────────────
+const QUIZ = [
+  { type:'mc', q:'You arrive at work at 9am and see a colleague. What do you say?',
+    opts:['Good evening!','Good morning!','Good night!'],
+    answer:1,
+    hint:'💡 Think about the time of day — 9am is the morning.',
+    fb:'"Good morning!" — use this from sunrise until around noon. Buenos días.' },
+
+  { type:'mc', q:'Your class is finishing at 10pm. You say goodbye to your teacher. What do you say?',
+    opts:['Good evening','Good morning','Good night'],
+    answer:2,
+    hint:'💡 This expression is used when you are about to sleep or end the day — not just in the evening.',
+    fb:'"Good night!" — we say this when saying goodbye late at night or before sleeping. ¡Buenas noches! (despedida).' },
+
+  { type:'mc', q:'A colleague asks: "How are you?" You want to respond politely. Which is correct?',
+    opts:['I am fine, thank you. How about you?','I am fine. You?','Fine.'],
+    answer:0,
+    hint:'💡 The most complete and professional response includes a return question.',
+    fb:'"I am fine, thank you. How about you?" — this is the most complete and polite response. Always returning the question is good manners in English.' },
+
+  { type:'tf', q:'"Good evening" and "Good night" can be used at exactly the same times of day.',
+    answer:false,
+    hint:'💡 Think about when each one is used — are they really the same situation?',
+    fb:'FALSE — "Good evening" is a greeting used when you arrive or meet someone in the evening. "Good night" is a farewell used when leaving or going to bed.' },
+
+  { type:'mc', q:'You did not understand something the teacher said. What do you say?',
+    opts:['I have a question.','I don\'t understand.','Can you make it bigger please?'],
+    answer:1,
+    hint:'💡 You understood the words but the meaning was not clear to you.',
+    fb:'"I don\'t understand." — No entiendo. Use this when the meaning is not clear to you. Simple and direct.' },
+
+  { type:'mc', q:'Your teacher is speaking very fast. What do you say?',
+    opts:['Can you repeat please?','Can you say that slower please?','Can you zoom in please?'],
+    answer:1,
+    hint:'💡 You heard the words — but the speed is the problem.',
+    fb:'"Can you say that slower please?" — ¿Puede hablar más despacio? This is specifically for speed. "Can you repeat?" asks them to say it again, not more slowly.' },
+
+  { type:'input', q:'Complete the classroom phrase: "How do you _______ the word \'colleague\'?"',
+    hint:'💡 You want to know the correct way to say the word out loud.',
+    answers:['pronounce'],
+    display:'pronounce',
+    fb:'"How do you pronounce the word ___?" — ¿Cómo se pronuncia la palabra ___? Use this whenever you are unsure how to say a word correctly.' },
+
+  { type:'mc', q:'The teacher asks who wants to speak first. You are happy to go. What do you say?',
+    opts:['I can go last.','I can go after Carlos.','I can go first.'],
+    answer:2,
+    hint:'💡 You want to be the first person to speak.',
+    fb:'"I can go first." — Yo puedo ir primero. Confident and clear — teachers love to hear this!' },
+
+  { type:'tf', q:'"What\'s up?" is appropriate to use with your teacher in a formal business English class.',
+    answer:false,
+    hint:'💡 Think about the register — is "What\'s up?" formal or informal?',
+    fb:'FALSE — "What\'s up?" is very informal and casual. Use "How are you?" with teachers and in professional contexts. Save "What\'s up?" for friends.' },
+
+  { type:'mc', q:'You want to know how to say "reunión" in English. What do you ask?',
+    opts:['How do you pronounce the word reunión?','Can you remind me how to say reunión in English?','I don\'t understand reunión.'],
+    answer:1,
+    hint:'💡 You already know the Spanish word — you need the English equivalent.',
+    fb:'"Can you remind me how to say ___ in English?" — ¿Cómo se dice ___ en inglés? Perfect when you know the Spanish but need the English word.' },
+];
+
+const quizState = {};
+let quizScore = 0;
+
+// ── SECTION 1: VIDEO ──────────────────────────────────────
+function renderVideo() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Watch This Video</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Let's start with a short video. Watch it together as a class, then share what you noticed.</p>
+
+    <div class="video-card">
+      <div class="video-left">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700">Class Video</div>
+        <div class="video-title">Nice to meet you</div>
+        <div class="video-sub">Watch and listen carefully — how do the people greet each other? What expressions do they use?</div>
+        <a class="video-play-btn" href="https://youtu.be/zHtDMwPkhgc?si=bhXK6FYXQ7UypvbI" target="_blank">▶ &nbsp; Open Video</a>
+        <div class="video-url">youtu.be/zHtDMwPkhgc</div>
+      </div>
+      <div class="video-right">
+        <div class="video-prompt">After watching — discuss:</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7">
+          Can you identify some common expressions used in the video?
+        </div>
+        <div style="margin-top:8px;font-size:12px;color:rgba(255,255,255,0.4);font-style:italic">
+          Share what you heard — your teacher will note them on screen.
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h-serif">Expressions I heard in the video</h3>
+    <p class="sec-intro" style="margin-bottom:14px">Type the expressions you noticed — as many as you can!</p>
+    <div class="response-area" id="videoResponses">
+      ${Array.from({length:10},(_,i)=>`
+        <div class="response-line">
+          <span class="response-num">${i+1}.</span>
+          <input class="response-input" type="text" placeholder="Write an expression you heard…" />
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Don't worry about spelling yet</div>
+      Write what you think you heard — even if you're not sure of the spelling. This is about listening and noticing, not perfection.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── SECTION 2: GREETINGS ──────────────────────────────────
+const EXPRESSIONS = [
+  ["Good morning",       "Buenos días"],
+  ["Good afternoon",     "Buenas tardes"],
+  ["Good evening",       "Buenas noches (saludo)"],
+  ["Good night",         "Buenas noches (despedida)"],
+  ["Hi",                 "Hola"],
+  ["Hello",              "Hola (más formal)"],
+  ["How are you?",       "¿Cómo estás?"],
+  ["I'm fine, thank you. How about you?", "Estoy bien, gracias. ¿Y tú?"],
+  ["I'm great, thanks!", "¡Estoy muy bien, gracias!"],
+  ["What's up?",         "¿Qué tal? (muy informal)"],
+  ["My name is…",        "Me llamo…"],
+  ["Nice to meet you.",  "Mucho gusto."],
+];
+
+function renderGreetings() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Common Greetings &amp; Expressions</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Here are the most common greetings you will use every day. Study both columns — the English and the Spanish.</p>
+    <div class="es-note">🇪🇸 El español es solo un apoyo. El objetivo es pensar directamente en inglés.</div>
+
+    <div class="expr-grid">
+      <div class="expr-col-head">English</div>
+      <div class="expr-col-head">Spanish</div>
+      ${EXPRESSIONS.map(([en,es])=>`
+        <div class="expr-item en">${en}</div>
+        <div class="expr-item es">${es}</div>`).join('')}
+    </div>
+
+    <div class="divider"></div>
+
+    <h3 class="h-serif">"Good Evening" vs. "Good Night" — What's the difference?</h3>
+    <p class="sec-intro">This is one of the most common points of confusion for Spanish speakers — both translate to <em>"Buenas noches"</em> in Spanish, but they are used in very different situations in English.</p>
+
+    <div class="spotlight">
+      <div class="spotlight-label">Spotlight — Two phrases, two situations</div>
+      <div class="spotlight-cols">
+        <div class="spotlight-col">
+          <div class="spotlight-phrase">Good evening</div>
+          <div class="spotlight-when">A <strong>greeting</strong> — used when you <em>arrive</em> or <em>meet someone</em> in the evening (after ~6pm)</div>
+          <div class="spotlight-ex">"Good evening! How are you?"<br>"Good evening, welcome to the meeting."</div>
+        </div>
+        <div class="spotlight-pipe">|</div>
+        <div class="spotlight-col">
+          <div class="spotlight-phrase">Good night</div>
+          <div class="spotlight-when">A <strong>farewell</strong> — used when <em>leaving</em> or <em>going to bed</em> at night</div>
+          <div class="spotlight-ex">"Good night! See you tomorrow."<br>"Good night, sleep well."</div>
+        </div>
+      </div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);font-style:italic;text-align:center">
+        🇪🇸 Ambas se traducen como "Buenas noches" en español — pero en inglés son completamente diferentes.
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Quick rule</div>
+      <strong>Good evening</strong> = you just arrived / you are starting a conversation.<br>
+      <strong>Good night</strong> = you are leaving / the day is ending.<br><br>
+      <span style="color:var(--grey-blue);font-size:13px">Test: "Good night, class — let's begin!" ❌ &nbsp; "Good evening, class — let's begin!" ✅</span>
+    </div>
+
+    <div class="divider"></div>
+    <h3 class="h-serif">Any other expressions you know?</h3>
+    <p class="sec-intro" style="margin-bottom:14px">Add any other greetings or expressions you have heard or used in English.</p>
+    <div class="response-area">
+      ${Array.from({length:10},(_,i)=>`
+        <div class="response-line">
+          <span class="response-num">${i+1}.</span>
+          <input class="response-input" type="text" placeholder="Write an expression…" />
+        </div>`).join('')}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── SECTION 3: CLASSROOM ENGLISH ─────────────────────────
+const CP = [
+  { cat:"Asking for help", phrases:[
+    ["I have a question.",              "Tengo una pregunta."],
+    ["I don't understand.",             "No entiendo."],
+    ["Can you repeat please?",          "¿Puede repetir por favor?"],
+    ["Can you say that slower please?", "¿Puede hablar más despacio?"],
+  ]},
+  { cat:"Asking about language", phrases:[
+    ["How do you pronounce the word ___?",          "¿Cómo se pronuncia la palabra ___?"],
+    ["Can you remind me how to say ___ in English?","¿Cómo se dice ___ en inglés?"],
+  ]},
+  { cat:"Taking your turn", phrases:[
+    ["I can go first.",         "Yo puedo ir primero."],
+    ["I can go next.",          "Yo puedo seguir."],
+    ["I can go last.",          "Yo puedo ir al final."],
+    ["I can go after Carlos.",  "Yo puedo ir después de Carlos."],
+    ["I can start.",            "Yo puedo empezar."],
+  ]},
+  { cat:"Online class requests", phrases:[
+    ["Can you make it bigger please?","¿Puede hacerlo más grande?"],
+    ["Can you zoom in please?",       "¿Puede hacer zoom?"],
+  ]},
+];
+
+function renderClassroom() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Essential Classroom English</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="info-box">
+      <strong>"These expressions help you survive in English class."</strong><br>
+      Learn these phrases now — you will use every single one of them from today onwards.
+    </div>
+    <div class="es-note">🇪🇸 Estas frases son tu kit de supervivencia en clase. ¡Úsalas! Tu profesor las espera.</div>
+
+    <table class="cp-table">
+      <thead>
+        <tr>
+          <th>English</th>
+          <th>Spanish</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${CP.map(cat=>`
+          <tr class="cat-row"><td colspan="2">${cat.cat}</td></tr>
+          ${cat.phrases.map(([en,es])=>`
+            <tr><td>${en}</td><td>${es}</td></tr>`).join('')}
+        `).join('')}
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Use these from Day 1</div>
+      Your teacher expects you to use English in class — even when it is hard. These phrases give you the tools to ask for help <em>in English</em>. The goal is not to be perfect. The goal is to try.
+    </div>
+
+    <div class="divider"></div>
+    <h3 class="h-serif">Say it out loud — Pair Practice</h3>
+    <p class="sec-intro">Take turns with a partner. One person reads the English phrase — the other responds naturally. Then swap. Try to use each phrase at least once in today's session.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      ${[
+        {p:"Student A says something complex.",   r:"Student B: &ldquo;Can you say that slower please?&rdquo;"},
+        {p:"Teacher explains a new word.",        r:"Student: &ldquo;How do you pronounce the word ___?&rdquo;"},
+        {p:"Teacher asks who wants to go first.", r:"Student: &ldquo;I can go first.&rdquo;"},
+        {p:"The text on screen is too small.",    r:"Student: &ldquo;Can you make it bigger please?&rdquo;"},
+      ].map(sc=>`
+        <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;padding:14px 16px;">
+          <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-blue);font-weight:700;margin-bottom:8px">Situation</div>
+          <div style="font-size:13px;color:var(--slate);margin-bottom:10px;line-height:1.5">${sc.p}</div>
+          <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--sky);font-weight:700;margin-bottom:6px">You say</div>
+          <div style="font-size:13px;color:var(--navy);font-weight:500;font-style:italic">${sc.r}</div>
+        </div>`).join('')}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── SECTION 4: QUIZ ───────────────────────────────────────
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s=>s.revealed).length;
+  const pct = QUIZ.length ? (answered/QUIZ.length)*100 : 0;
+  const allDone = answered===QUIZ.length && QUIZ.length>0;
+  const allCorrect = allDone && quizScore===QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length-quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Quick Check — How Much Did You Learn?</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time · Read the feedback carefully</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+
+    ${QUIZ.map((q,i)=>renderQ(q,i)).join('')}
+
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Session</button>
+      </div>
+    </div>` : ''}
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i]||{};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type==='mc' || q.type==='tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j)=>{
+        let cls='q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if(rev){ if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if(s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev?`<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>`:''}
+    ${rev?`<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>`:''}`;
+  }
+
+  if (q.type==='input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev?`<button class="check-btn" onclick="revealInp(${i})">Check</button>`:''}
+    </div>
+    ${rev?`<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>`:''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint?`<div class="q-hint">${q.hint}</div>`:''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j){ if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi){ if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v){ if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi){
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz(){
+  QUIZ.forEach((_,i)=>{
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc') ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf') ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc(){
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender(){
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+function scoreLabel(){
+  if(quizScore===QUIZ.length) return '🎉 ¡Perfecto! — Welcome to the course!';
+  if(quizScore>=QUIZ.length*0.85) return '¡Excelente! Almost perfect.';
+  if(quizScore>=QUIZ.length*0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg(){
+  if(quizScore===QUIZ.length) return 'Outstanding — you are off to a great start!';
+  if(quizScore>=QUIZ.length*0.85) return 'Retry the wrong answers to finish strong.';
+  if(quizScore>=QUIZ.length*0.7)  return 'Go back and review the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the session again.';
+}
+
+// ── STEPS — defined last, after all renderers ─────────────
+STEPS = [
+  { label:"1. Watch the Video",      fn: renderVideo },
+  { label:"2. Greetings",            fn: renderGreetings },
+  { label:"3. Classroom English",    fn: renderClassroom },
+  { label:"4. Quick Quiz",           fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+<!-- ↑↑↑ LESSON CONTENT END ↑↑↑ -->
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

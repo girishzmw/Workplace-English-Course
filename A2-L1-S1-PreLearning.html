@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A2 · Lesson 1 · Pre-Learning | Reintroducing Yourself Professionally</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr 2fr; background:var(--navy); padding:12px 20px; gap:8px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row-3 { display:grid; grid-template-columns:1fr 1fr 2fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; gap:8px; align-items:center; }
+.vocab-row-3:last-child { border-bottom:none; }
+.vocab-row-3:hover { background:var(--light-grey); }
+.vocab-row-2 { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; gap:8px; }
+.vocab-row-2:last-child { border-bottom:none; }
+.vocab-row-2:hover { background:var(--light-grey); }
+.vocab-table-head-2 { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; gap:8px; }
+.vocab-table-head-2 span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+.vocab-ex { font-size:13px; color:var(--slate); font-style:italic; }
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:15px; color:var(--navy); line-height:1.8; font-style:italic; margin-bottom:0; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); border-radius:0 6px 6px 0; }
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:flex-start; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:flex-start; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+.mistake-why { font-size:12px; color:var(--grey-blue); margin-top:10px; font-style:normal; padding:0 4px; }
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.sub-head { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin-bottom:12px; margin-top:24px; }
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Pre-Learning</div>
+    <h1 class="hero-title">Reintroducing Yourself Professionally</h1>
+    <p class="hero-sub">Present Simple · Extended Introductions · ~45 minutes of self-study</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Use responsibilities language</div><div class="outcome-note">Hablar de tus responsabilidades</div></div>
+      <div><div class="outcome-item">Describe your experience</div><div class="outcome-note">Describir tu experiencia laboral</div></div>
+      <div><div class="outcome-item">Name your industry & role</div><div class="outcome-note">Nombrar tu industria y función</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-fill" id="progressBar" style="width:0%"></div></div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0, isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── QUIZ DATA ─────────────────────────────────────────────
+const QUIZ_MINI1 = [
+  { type:'mc', q:'Complete the sentence: "I\'m responsible for ____ the sales team."',
+    opts:['manage','to manage','managing'],
+    answer:2,
+    hint:'💡 What verb form always follows a preposition like "for"?',
+    fb:'"For" is a preposition, and prepositions are always followed by the -ing form (gerund). Never use the base verb or infinitive after "for".' },
+  { type:'mc', q:'Which sentence does NOT need the -ing form?',
+    opts:['I\'m responsible for ____ reports. (prepare)','I manage a team of analysts.','I\'m good at ____ clients. (handle)'],
+    answer:1,
+    hint:'💡 Look for the sentence that has no preposition before the verb.',
+    fb:'"I manage a team" uses the base verb directly — no preposition, no -ing needed. The other two use "for" and "at", which always require -ing.' }
+];
+const QUIZ_MINI2 = [
+  { type:'mc', q:'"I have three ____ in finance." What is the correct word?',
+    opts:['experiences','years of experience','experience of years'],
+    answer:1,
+    hint:'💡 In English, "experience" is uncountable in this context.',
+    fb:'"Experience" cannot be counted directly. We say "years of experience", not "experiences". This is different from Spanish, where "experiencias" can be plural.' },
+  { type:'tf', q:'"I have worked in the logistics sector for five years" is correct English.',
+    answer:true,
+    hint:'💡 Think about time expressions and their verb forms.',
+    fb:'Correct! "I have worked in... for [time]" is perfect English. You can also say "I\'ve worked in logistics for five years." Both are natural.' }
+];
+const QUIZ_FINAL = [
+  { type:'mc', q:'Choose the correct sentence.',
+    opts:['I work at the HR department.','I work in the HR department.','I work on the HR department.'],
+    answer:1,
+    hint:'💡 Departments are areas/spaces — which preposition fits?',
+    fb:'We use "in" with departments because they are areas or divisions you work inside. We use "at" for companies and organizations.' },
+  { type:'mc', q:'"Soy responsable de preparar informes mensuales." What is the correct English?',
+    opts:['I\'m responsible for prepare monthly reports.','I\'m responsible to preparing monthly reports.','I\'m responsible for preparing monthly reports.'],
+    answer:2,
+    hint:'💡 "Responsible for" always needs -ing after it.',
+    fb:'"I\'m responsible for preparing reports." The preposition "for" demands the -ing form. Options A and B are both wrong — A uses the base verb, B uses "to" instead of "for".' },
+  { type:'tf', q:'"I have three experiences in project management" is correct.',
+    answer:false,
+    hint:'💡 Is "experience" countable in professional English?',
+    fb:'Incorrect. "Experience" is uncountable here. The correct form is "I have three years of experience in project management." You cannot say "three experiences".' },
+  { type:'mc', q:'Which word completes this correctly: "My role ____ client communication and reporting."',
+    opts:['involve','involving','involves'],
+    answer:2,
+    hint:'💡 "My role" is third person singular. What happens to the verb?',
+    fb:'"My role" is a singular subject, so the verb takes -s: "involves". This is basic Present Simple agreement — he/she/it/my role = verb + s.' },
+  { type:'input', q:'Fill in: "I have five years of ____ in finance."',
+    hint:'💡 One word. Uncountable noun.',
+    answers:['experience'],
+    display:'experience',
+    fb:'Correct! "Experience" is uncountable in English. Never add -s or say "experiences" when talking about professional background.' },
+  { type:'mc', q:'Which introduction is the most complete at A2 level?',
+    opts:['"Hi, I\'m Pedro. I\'m an engineer."','"Hi, I\'m Pedro. I\'m a civil engineer at a construction firm. I manage infrastructure projects and I have five years of experience in the sector."','"I am Pedro and I work and I am an engineer and I study hard."'],
+    answer:1,
+    hint:'💡 A2 introductions include: title + company + responsibilities + experience.',
+    fb:'Option B is correct — it includes job title, company type, responsibilities, and years of experience. Option A is A1 level. Option C is disorganized and not professional.' },
+  { type:'mc', q:'Choose the correct word: "I work in the banking ____."',
+    opts:['place','industry','job'],
+    answer:1,
+    hint:'💡 Which word names a business sector?',
+    fb:'"Industry" (or "sector") is the correct word for a business area. "I work in the banking industry" or "the banking sector" are both standard professional expressions.' },
+  { type:'tf', q:'"I work at Bancolombia. I work in the Finance department." — Both sentences use the correct preposition.',
+    answer:true,
+    hint:'💡 Remember: AT for companies, IN for departments.',
+    fb:'Both are correct. "At Bancolombia" — we use AT with company names. "In the Finance department" — we use IN with departments. This is one of the most common A2 rules to master.' },
+  { type:'mc', q:'Which verb means "to be in charge of people or a team"?',
+    opts:['handle','oversee','manage'],
+    answer:2,
+    hint:'💡 All three can be about responsibilities, but one is most specifically about leading a team.',
+    fb:'All three verbs can describe responsibilities, but "manage" most specifically means being in charge of a team: "I manage a team of analysts." "Oversee" is more about supervision. "Handle" is more about tasks.' },
+  { type:'input', q:'Complete: "I work ____ Claro. I work ____ the Commercial department." (write both prepositions, separated by a comma)',
+    hint:'💡 at / in — one for the company, one for the department.',
+    answers:['at, in','at,in'],
+    display:'at, in',
+    fb:'At Claro (the company name) · In the Commercial department (the department). This distinction is one of the most important small rules in professional English.' }
+];
+
+const quizState1={}, quizState2={}, quizStateFinal={};
+let score1=0, score2=0, scoreFinal=0;
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">👋</div>
+      <div class="sec-badge-title">Welcome to A2</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box">
+      <strong>¡Bienvenido/a a A2!</strong><br>
+      You completed A1 — you can introduce yourself, say your job title, and share contact information. <strong>Well done.</strong><br><br>
+      At A2, we go further. People in the professional world don't just want to know <em>who</em> you are — they want to know <em>what you do</em>, <em>what your role involves</em>, and <em>what experience you bring</em>.<br><br>
+      This lesson teaches you to give a <strong>fuller, more confident professional introduction</strong> — the kind used in meetings, on calls, or when meeting a new colleague or client.
+    </div>
+    <div class="builder-wrap">
+      <div class="builder-label">A1 vs A2 — See the difference</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:16px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;padding:16px 20px;background:rgba(201,151,44,0.15);border-right:2px solid rgba(255,255,255,0.1);flex:1;gap:6px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">A1 Level</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.7);font-style:italic;">"Hi, I'm Carlos. I'm an analyst at TechCorp."</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">→</div>
+        <div style="display:flex;flex-direction:column;padding:16px 20px;background:rgba(201,151,44,0.22);flex:1;gap:6px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">A2 Level</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.85);font-style:italic;">"Hi, I'm Carlos. I'm a <strong style="color:var(--gold)">data analyst</strong> at TechCorp. I work in the <strong style="color:var(--gold)">Finance department</strong>. I'm <strong style="color:var(--gold)">responsible for</strong> preparing monthly reports and I have <strong style="color:var(--gold)">two years of experience</strong> in data analysis."</div>
+        </div>
+      </div>
+      <div class="builder-ex">🎯 That's the goal. Let's build it step by step.</div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReview() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">A1 Review — The Basic Pattern</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Before adding new language, let's confirm what you already know. This is your A1 foundation — the starting point for everything at A2.</p>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1.2fr 1.5fr">
+        <span>Part</span><span>What you say</span><span>Example</span>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1.2fr 1.5fr">
+        <div class="vocab-en">Name</div>
+        <div style="font-size:14px;color:var(--slate);">My name is / I'm</div>
+        <div style="font-size:14px;font-style:italic;color:var(--grey-blue);">I'm Laura.</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1.2fr 1.5fr">
+        <div class="vocab-en">Job title</div>
+        <div style="font-size:14px;color:var(--slate);">I'm a/an + [title]</div>
+        <div style="font-size:14px;font-style:italic;color:var(--grey-blue);">I'm an accountant.</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1.2fr 1.5fr">
+        <div class="vocab-en">Company</div>
+        <div style="font-size:14px;color:var(--slate);">I work at / for + [co.]</div>
+        <div style="font-size:14px;font-style:italic;color:var(--grey-blue);">I work at Bancolombia.</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1.2fr 1.5fr">
+        <div class="vocab-en">Department</div>
+        <div style="font-size:14px;color:var(--slate);">I work in + [dept.]</div>
+        <div style="font-size:14px;font-style:italic;color:var(--grey-blue);">I work in the HR department.</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1.2fr 1.5fr">
+        <div class="vocab-en">Location</div>
+        <div style="font-size:14px;color:var(--slate);">I'm from / based in</div>
+        <div style="font-size:14px;font-style:italic;color:var(--grey-blue);">I'm based in Bogotá.</div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">✅ Spanish reminder — AT vs IN</div>
+      Both "I work at" and "I work in" translate as <em>trabajo en</em> in Spanish — but English makes a distinction:<br><br>
+      <strong style="color:var(--navy);">AT</strong> → companies and organizations: <em>I work at Bancolombia. / I work at a tech company.</em><br>
+      <strong style="color:var(--navy);">IN</strong> → departments and areas: <em>I work in the Finance department. / I work in Sales.</em>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderResponsibilities() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Piece 1 — Talking About Responsibilities</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">At A2, you don't just say your title — you explain <strong>what you do</strong> in your role. This makes your introduction much more professional and memorable.</p>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Structure — Responsibilities Pattern</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:20px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Formula</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">I'm responsible for</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic;">+ verb-ing / noun</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Formula</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">I manage / handle</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic;">+ noun</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Formula</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">My main responsibility is</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic;">+ to + verb</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"I'm responsible for preparing monthly financial reports."</strong></div>
+      <div class="builder-ex"><strong>"I manage the company's social media accounts."</strong></div>
+      <div class="builder-ex"><strong>"I handle customer complaints and support tickets."</strong></div>
+      <div class="builder-ex"><strong>"My main responsibility is to coordinate the sales team."</strong></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">⚠️ Translation Trap — Spanish speakers often get this wrong!</div>
+      In Spanish: <em>"Soy responsable de <strong>preparar</strong> informes."</em><br>
+      In English: <em>"I'm responsible for <strong>preparing</strong> reports."</em><br><br>
+      ✅ After <strong>"for"</strong>, always use <strong>-ing</strong> — never the base verb or the infinitive.<br><br>
+      <span style="color:var(--red);">❌</span> <em style="color:var(--red);">"I'm responsible for prepare reports."</em><br>
+      <span style="color:var(--green);">✅</span> <em style="color:var(--green);">"I'm responsible for <strong>preparing</strong> reports."</em>
+    </div>
+
+    <div class="sub-head">Responsibilities Verbs — learn these 10</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>Verb</span><span>Spanish</span><span>Example</span></div>
+      ${[
+        ['manage','gestionar / dirigir','I manage a team of analysts.'],
+        ['oversee','supervisar','I oversee the production process.'],
+        ['handle','manejar / gestionar','I handle client requests.'],
+        ['coordinate','coordinar','I coordinate between departments.'],
+        ['prepare','preparar','I prepare weekly reports.'],
+        ['monitor','monitorear / supervisar','I monitor budget performance.'],
+        ['develop','desarrollar','I develop training materials.'],
+        ['support','apoyar / dar soporte','I support the sales team.'],
+        ['review','revisar','I review contracts and proposals.'],
+        ['analyze','analizar','I analyze customer data.'],
+      ].map(([v,s,e])=>`<div class="vocab-row-3"><div class="vocab-en">${v}</div><div class="vocab-es">${s}</div><div class="vocab-ex">${e}</div></div>`).join('')}
+    </div>
+
+    <div class="sub-head">Quick Check — Responsibilities</div>
+    <div class="es-note">🇪🇸 Antes de continuar, responde estas 2 preguntas rápidas para confirmar que entiendes cuándo usar -ing.</div>
+    ${renderMiniQuiz('quiz1', QUIZ_MINI1, quizState1, ()=>score1, v=>score1=v)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExperience() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Piece 2 — Talking About Experience</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Telling people <em>how long</em> you've been in your field adds credibility and context to your introduction. This is essential in professional English.</p>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Structure — Experience Pattern</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:20px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);flex:1;gap:4px;min-width:120px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Pattern 1</div>
+          <div style="font-size:14px;font-weight:700;color:var(--gold);text-align:center;">I have [X] years of experience in [area]</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);flex:1;gap:4px;min-width:120px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Pattern 2</div>
+          <div style="font-size:14px;font-weight:700;color:var(--gold);text-align:center;">I've worked in [industry] for [time]</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);flex:1;gap:4px;min-width:120px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Pattern 3</div>
+          <div style="font-size:14px;font-weight:700;color:var(--gold);text-align:center;">I have over [X] years of experience in [area]</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"I have three years of experience in marketing."</strong></div>
+      <div class="builder-ex"><strong>"I've worked in the technology sector for two years."</strong></div>
+      <div class="builder-ex"><strong>"I have over ten years of experience in logistics."</strong></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">⚠️ Common Mistake — "Experience" is uncountable here!</div>
+      In Spanish you can say <em>"tengo tres <strong>experiencias</strong>"</em> — but in English, "experience" used for professional background is <strong>uncountable</strong>.<br><br>
+      <span style="color:var(--red);">❌</span> <em style="color:var(--red);">"I have three experiences in marketing."</em><br>
+      <span style="color:var(--green);">✅</span> <em style="color:var(--green);">"I have three <strong>years of experience</strong> in marketing."</em><br><br>
+      <div class="es-note" style="margin-top:8px;margin-bottom:0;">🇪🇸 "Tengo tres años de experiencia en marketing." = "I have three years of experience in marketing."</div>
+    </div>
+
+    <div class="sub-head">Quick Check — Experience</div>
+    ${renderMiniQuiz('quiz2', QUIZ_MINI2, quizState2, ()=>score2, v=>score2=v)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderIndustry() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Piece 3 — Industry, Role & Sector</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Naming your industry and role helps people understand the context of your work immediately. These are high-frequency words in professional English.</p>
+
+    <div class="sub-head">Key Vocabulary — Industry Words</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span><span>Example</span></div>
+      ${[
+        ['industry','industria / sector','I work in the banking industry.'],
+        ['sector','sector','I\'m in the technology sector.'],
+        ['role','cargo / función','My role involves client communication.'],
+        ['field','campo / área','I work in the field of human resources.'],
+        ['area','área','I specialize in the area of logistics.'],
+      ].map(([e,s,ex])=>`<div class="vocab-row-3"><div class="vocab-en">${e}</div><div class="vocab-es">${s}</div><div class="vocab-ex">${ex}</div></div>`).join('')}
+    </div>
+
+    <div class="sub-head">Industries in English</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head-2"><span>Industry (English)</span><span>Spanish</span></div>
+      ${[
+        ['banking / finance','banca / finanzas'],
+        ['technology / tech','tecnología'],
+        ['healthcare','salud'],
+        ['retail','comercio minorista'],
+        ['logistics','logística'],
+        ['manufacturing','manufactura'],
+        ['education','educación'],
+        ['energy','energía'],
+        ['telecommunications','telecomunicaciones'],
+        ['consulting','consultoría'],
+      ].map(([e,s])=>`<div class="vocab-row-2"><div class="vocab-en">${e}</div><div class="vocab-es">${s}</div></div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 "Industry" vs "Sector" — are they different?</div>
+      In professional English, <strong>industry</strong> and <strong>sector</strong> are almost interchangeable. Both refer to a business area. You can say "the banking industry" or "the banking sector" — both are correct. Use whichever feels more natural to you.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBuilder() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">The Full A2 Introduction Pattern</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Now let's put all three pieces together. Here is the complete A2 introduction structure — six steps, used in sequence.</p>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Sentence Builder — The A2 Professional Introduction</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:20px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        ${[
+          ['Step 1','Name','My name is [Name]. / Hi, I\'m [Name].'],
+          ['Step 2','Job Title + Company','I\'m a/an [title] at [company].'],
+          ['Step 3','Department / Location','I work in the [dept.] department.'],
+          ['Step 4','Responsibilities','I\'m responsible for [verb-ing / noun].'],
+          ['Step 5','Experience','I have [X] years of experience in [area].'],
+          ['Step 6','Optional extra','I\'m currently working on [project].'],
+        ].map(([step,label,text],i,arr)=>`
+          <div style="display:flex;flex-direction:column;align-items:center;padding:14px 16px;background:rgba(201,151,44,0.22);${i<arr.length-1?'border-right:2px solid rgba(255,255,255,0.1);':''}min-width:110px;flex:1;gap:4px;">
+            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">${step}</div>
+            <div style="font-size:13px;font-weight:700;color:var(--gold);text-align:center;">${label}</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;text-align:center;">${text}</div>
+          </div>
+          ${i<arr.length-1?'<div style="display:flex;align-items:center;padding:0 8px;font-size:20px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>':''}
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="sub-head">Three Full Example Introductions</div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👩</div>
+        <div><div class="model-name">Valentina Torres</div><div class="model-role">Marketing Coordinator · Medellín, Colombia</div></div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Hi, I'm Valentina. I'm a marketing coordinator at a retail company in Medellín. I work in the Communications department. I'm responsible for managing our social media channels and creating content for campaigns. I have four years of experience in digital marketing."</div>
+      </div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👨</div>
+        <div><div class="model-name">Diego Ramírez</div><div class="model-role">IT Support Analyst · Mexico City, Mexico</div></div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Good morning. My name is Diego. I'm an IT support analyst at a telecommunications company based in Mexico City. My role involves solving technical problems for internal users. I'm responsible for the company's helpdesk system. I have two years of experience in IT support."</div>
+      </div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👩</div>
+        <div><div class="model-name">Andrea Flores</div><div class="model-role">Finance Manager · Buenos Aires, Argentina</div></div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Hello, I'm Andrea. I'm a finance manager at a multinational company. I work in the Finance and Accounting department. I manage a team of five analysts. I'm responsible for preparing quarterly reports and monitoring budgets. I have eight years of experience in finance."</div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Grammar Focus — Present Simple for Professional Facts</div>
+      <div class="sec-badge-time">7 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Your professional introduction uses the <strong>Present Simple</strong> tense throughout. Here's why — and how the question forms work when someone asks about you.</p>
+
+    <div class="info-box">
+      We use Present Simple for professional introductions because we are describing:<br><br>
+      • Your current job — <em>a permanent fact</em><br>
+      • Your regular responsibilities — <em>things you do repeatedly</em><br>
+      • Your experience — <em>a general truth about your background</em>
+    </div>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 2fr">
+        <span>Form</span><span>Examples</span>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);">Affirmative</div>
+        <div style="font-size:14px;font-style:italic;color:var(--slate);">I work / I manage / I handle / I'm responsible for</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);">Negative</div>
+        <div style="font-size:14px;font-style:italic;color:var(--slate);">I don't manage clients directly. My role doesn't involve travel.</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);">Question → Answer</div>
+        <div style="font-size:14px;font-style:italic;color:var(--slate);">What do you do? → I work in logistics.</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);">Question → Answer</div>
+        <div style="font-size:14px;font-style:italic;color:var(--slate);">What are you responsible for? → I'm responsible for the supply chain.</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);">Question → Answer</div>
+        <div style="font-size:14px;font-style:italic;color:var(--slate);">How long have you been in this field? → I've been in this field for five years.</div>
+      </div>
+    </div>
+
+    <div class="sub-head">Common Mistakes to Avoid</div>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Watch Out for These</div>
+      ${[
+        ["I'm responsible for prepare reports.","I'm responsible for preparing reports.","Use -ing after the preposition 'for'."],
+        ["I have three experiences in sales.","I have three years of experience in sales.","'Experience' is uncountable here."],
+        ["I work at the Finance department.","I work in the Finance department.","'In' for departments, 'at' for companies."],
+        ["I work in Bancolombia.","I work at Bancolombia.","'At' for company names."],
+        ["My role involve client communication.","My role involves client communication.","He/She/It/My role → verb + s."],
+        ["I'm a Marketing.","I'm in Marketing. / I work in Marketing.","Don't use 'a/an' with a department name."],
+        ["I have experience of five years.","I have five years of experience.","Standard word order in English."],
+      ].map(([w,r,why])=>`
+        <div style="margin-bottom:16px;">
+          <div class="mistake-wrong"><span>❌</span><em>${w}</em></div>
+          <div class="mistake-right"><span>✅</span><em>${r}</em></div>
+          <div class="mistake-why">→ ${why}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🔊 Pronunciation — Don't skip syllables!</div>
+      <strong>responsibilities</strong> → res-pon-si-<em>BIL</em>-i-ties (5 syllables)<br>
+      <strong>experience</strong> → ex-<em>PEE</em>-ri-ence (4 syllables, stress on 2nd)<br>
+      <strong>coordinate</strong> → co-<em>OR</em>-di-nate (stress on 2nd syllable)<br>
+      <strong>manage</strong> → <em>MAN</em>-ij (the "-age" sounds like "-ij", not "-ahj")
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuizFinal() {
+  const answered = Object.values(quizStateFinal).filter(s=>s.revealed).length;
+  const pct = QUIZ_FINAL.length ? (answered/QUIZ_FINAL.length)*100 : 0;
+  const allDone = answered===QUIZ_FINAL.length && QUIZ_FINAL.length>0;
+  const allCorrect = allDone && scoreFinal===QUIZ_FINAL.length;
+  const wrongCount = allDone ? QUIZ_FINAL.length-scoreFinal : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Pre-Learning Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ_FINAL.length} questions · Complete before your class session · ¡Tú puedes!</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ_FINAL.length}</span>
+    </div>
+    ${QUIZ_FINAL.map((q,i)=>renderQFinal(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${scoreFinal} / ${QUIZ_FINAL.length}</div>
+      <div class="result-label">${scoreLabel(scoreFinal,QUIZ_FINAL.length)}</div>
+      <div class="result-msg">${scoreMsg(scoreFinal,QUIZ_FINAL.length)}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeFinal()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel(s,t) {
+  if(s===t) return '🎉 ¡Perfecto! — You are ready for class!';
+  if(s>=t*0.85) return '¡Excelente! Almost perfect.';
+  if(s>=t*0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg(s,t) {
+  if(s===t) return 'Outstanding — a perfect score! See you in class.';
+  if(s>=t*0.85) return 'Retry the wrong answers to finish strong.';
+  if(s>=t*0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+// ── MINI QUIZ RENDERER ────────────────────────────────────
+function renderMiniQuiz(id, questions, state, getScore, setScore) {
+  const answered = Object.values(state).filter(s=>s.revealed).length;
+  const allDone = answered === questions.length;
+  return `<div style="margin-bottom:20px;">
+    ${questions.map((q,i)=>renderQGeneric(q,i,state,getScore,setScore,id)).join('')}
+    ${allDone ? `<div class="tip-box"><div class="tip-label">✅ ${getScore()===questions.length?'All correct! Move on.':'Check your wrong answers above.'}</div></div>` : ''}
+  </div>`;
+}
+
+function renderQGeneric(q, i, state, getScore, setScore, prefix) {
+  const s = state[i]||{};
+  const rev = s.revealed;
+  let body = '';
+  const letters=['A','B','C','D'];
+  if (q.type==='mc'||q.type==='tf') {
+    const opts = q.type==='mc'?q.opts:['True','False'];
+    const lets = q.type==='mc'?letters:['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j)=>{
+        let cls='q-opt';
+        const isAns=q.type==='mc'?j===q.answer:q.answer===(j===0);
+        if(rev){if(isAns)cls+=' correct';else if(s.selected===j)cls+=' wrong';}
+        else if(s.selected===j)cls+=' selected';
+        return `<button class="${cls}" onclick="selectMini('${prefix}',${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev?`<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealMini('${prefix}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>`:''}
+    ${rev?`<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>`:''}`;
+  }
+  if (q.type==='input') {
+    const cls = rev?(s.correct?'q-input correct':'q-input wrong'):'q-input';
+    body=`<div class="q-input-row">
+      <input class="${cls}" id="${prefix}-inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setMiniInp('${prefix}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev?`<button class="check-btn" onclick="revealMiniInp('${prefix}',${i})">Check</button>`:''}
+    </div>
+    ${rev?`<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>`:''}`;
+  }
+  return `<div class="q-card" id="${prefix}-qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint?`<div class="q-hint">${q.hint}</div>`:''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectMini(prefix,qi,j) {
+  const state=prefix==='quiz1'?quizState1:quizState2;
+  if(!state[qi])state[qi]={};
+  if(state[qi].revealed)return;
+  state[qi].selected=j;
+  rerenderSection();
+}
+function revealMini(prefix,qi) {
+  const state=prefix==='quiz1'?quizState1:quizState2;
+  const questions=prefix==='quiz1'?QUIZ_MINI1:QUIZ_MINI2;
+  if(!state[qi])state[qi]={};
+  state[qi].revealed=true;
+  recalcMini(prefix);
+  rerenderSection();
+}
+function setMiniInp(prefix,qi,v) {
+  const state=prefix==='quiz1'?quizState1:quizState2;
+  if(!state[qi])state[qi]={};
+  state[qi].inputVal=v;
+}
+function revealMiniInp(prefix,qi) {
+  const state=prefix==='quiz1'?quizState1:quizState2;
+  const questions=prefix==='quiz1'?QUIZ_MINI1:QUIZ_MINI2;
+  const q=questions[qi];
+  if(!state[qi])state[qi]={};
+  const val=(state[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  state[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  state[qi].revealed=true;
+  recalcMini(prefix);
+  rerenderSection();
+}
+function recalcMini(prefix) {
+  const state=prefix==='quiz1'?quizState1:quizState2;
+  const questions=prefix==='quiz1'?QUIZ_MINI1:QUIZ_MINI2;
+  let s=0;
+  questions.forEach((q,i)=>{
+    const st=state[i];if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  if(prefix==='quiz1')score1=s; else score2=s;
+}
+function rerenderSection() {
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+}
+
+// ── FINAL QUIZ ENGINE ─────────────────────────────────────
+function renderQFinal(q,i) {
+  const s=quizStateFinal[i]||{};
+  const rev=s.revealed;
+  let body='';
+  const letters=['A','B','C','D'];
+  if(q.type==='mc'||q.type==='tf'){
+    const opts=q.type==='mc'?q.opts:['True','False'];
+    const lets=q.type==='mc'?letters:['T','F'];
+    body=`<div class="q-options">
+      ${opts.map((opt,j)=>{
+        let cls='q-opt';
+        const isAns=q.type==='mc'?j===q.answer:q.answer===(j===0);
+        if(rev){if(isAns)cls+=' correct';else if(s.selected===j)cls+=' wrong';}
+        else if(s.selected===j)cls+=' selected';
+        return `<button class="${cls}" onclick="selectFinal(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev?`<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealFinal(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>`:''}
+    ${rev?`<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>`:''}`;
+  }
+  if(q.type==='input'){
+    const cls=rev?(s.correct?'q-input correct':'q-input wrong'):'q-input';
+    body=`<div class="q-input-row">
+      <input class="${cls}" id="finp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setFinalInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev?`<button class="check-btn" onclick="revealFinalInp(${i})">Check</button>`:''}
+    </div>
+    ${rev?`<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>`:''}`;
+  }
+  return `<div class="q-card" id="fqc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint?`<div class="q-hint">${q.hint}</div>`:''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+function selectFinal(qi,j){if(!quizStateFinal[qi])quizStateFinal[qi]={};if(quizStateFinal[qi].revealed)return;quizStateFinal[qi].selected=j;rerender();}
+function revealFinal(qi){if(!quizStateFinal[qi])quizStateFinal[qi]={};quizStateFinal[qi].revealed=true;recalcFinal();rerender();}
+function setFinalInp(qi,v){if(!quizStateFinal[qi])quizStateFinal[qi]={};quizStateFinal[qi].inputVal=v;}
+function revealFinalInp(qi){
+  const q=QUIZ_FINAL[qi];if(!quizStateFinal[qi])quizStateFinal[qi]={};
+  const val=(quizStateFinal[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizStateFinal[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizStateFinal[qi].revealed=true;recalcFinal();rerender();
+}
+function retakeFinal(){
+  QUIZ_FINAL.forEach((_,i)=>{
+    const s=quizStateFinal[i];if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ_FINAL[i].type==='mc')ok=s.selected===QUIZ_FINAL[i].answer;
+    else if(QUIZ_FINAL[i].type==='tf')ok=QUIZ_FINAL[i].answer===(s.selected===0);
+    else if(QUIZ_FINAL[i].type==='input')ok=s.correct;
+    if(!ok){delete quizStateFinal[i];}
+  });
+  recalcFinal();rerender();
+  setTimeout(()=>{
+    const first=QUIZ_FINAL.findIndex((_,i)=>!quizStateFinal[i]||!quizStateFinal[i].revealed);
+    const el=document.getElementById('fqc-'+first);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalcFinal(){
+  let s=0;
+  QUIZ_FINAL.forEach((q,i)=>{
+    const st=quizStateFinal[i];if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  scoreFinal=s;
+}
+function rerender(){
+  const qi=STEPS.findIndex(s=>s.fn===renderQuizFinal);
+  if(currentStep===qi)document.getElementById('mainContent').innerHTML=renderQuizFinal();
+}
+
+// ── STEPS ─────────────────────────────────────────────────
+STEPS = [
+  { label: '👋 Welcome',          fn: renderWelcome },
+  { label: '1. A1 Review',        fn: renderReview },
+  { label: '2. Responsibilities', fn: renderResponsibilities },
+  { label: '3. Experience',       fn: renderExperience },
+  { label: '4. Industry & Role',  fn: renderIndustry },
+  { label: '5. Full Pattern',     fn: renderBuilder },
+  { label: '6. Grammar',         fn: renderGrammar },
+  { label: '7. Quiz',            fn: renderQuizFinal },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a></div>
+    <div class="site-footer-legal">© 2026 Girish Vijayan. All Rights Reserved. &nbsp;·&nbsp; All materials in this curriculum are protected by copyright. &nbsp;·&nbsp; Unauthorized reproduction, distribution, or adaptation is prohibited.</div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 2 — Classwork | A1 · Unit 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+
+.reading-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:22px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.reading-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:14px 22px; }
+.reading-card-head-title { font-family:var(--font-heading); font-size:15px; color:var(--white); }
+.reading-card-body { padding:22px; font-size:15px; color:var(--slate); line-height:1.9; }
+.reading-card-body p { margin-bottom:10px; }
+.reading-card-body p:last-child { margin-bottom:0; }
+.reading-highlight { color:var(--navy); font-weight:700; }
+
+.q-list { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:22px; }
+.q-list-item { display:grid; grid-template-columns:28px 1fr; gap:8px; align-items:baseline; background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:12px 16px; font-size:14px; }
+.q-list-num { font-weight:700; color:var(--gold); font-size:13px; }
+.q-list-text { color:var(--navy); }
+
+.speaking-card { background:var(--navy); border-radius:12px; padding:20px 24px; margin-bottom:14px; }
+.speaking-card-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:12px; }
+.speaking-prompt { font-size:15px; color:var(--white); line-height:1.7; margin-bottom:8px; font-style:italic; }
+.speaking-prompt:last-child { margin-bottom:0; }
+.speaking-note { font-size:12px; color:rgba(255,255,255,0.45); font-style:normal; margin-top:8px; }
+
+.timeline-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.timeline-item { display:grid; grid-template-columns:28px 1fr; gap:10px; align-items:baseline; padding:9px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; }
+.timeline-item:last-child { border-bottom:none; }
+.timeline-num { font-weight:700; color:var(--gold); font-size:13px; }
+.timeline-q { color:var(--navy); }
+
+.blank-list { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+.blank-item { display:grid; grid-template-columns:28px 1fr; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); }
+.blank-sentence { font-size:14px; line-height:1.6; color:var(--navy); }
+.blank-line { display:inline-block; border-bottom:2px solid var(--navy); min-width:120px; margin:0 4px; }
+
+.teacher-note { background:rgba(46,134,171,0.08); border-left:4px solid var(--sky); border-radius:0 8px 8px 0; padding:10px 16px; font-size:13px; color:var(--sky); margin-bottom:18px; line-height:1.6; }
+.teacher-note strong { color:var(--navy); }
+
+.target-lang-box { background:var(--navy); border-radius:8px; padding:14px 18px; margin-bottom:18px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.target-lang-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.45); flex-shrink:0; }
+.target-lang-items { display:flex; gap:10px; flex-wrap:wrap; }
+.target-lang-pill { background:rgba(201,151,44,0.2); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:4px 13px; font-size:13px; color:var(--gold); font-weight:700; font-style:italic; }
+
+.video-wrap { position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; margin-bottom:22px; border:1px solid var(--border-grey); }
+.video-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-family:var(--font-body); font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Classwork</div>
+    <h1 class="hero-title">Lesson 2 — Meet Your Coworkers</h1>
+    <p class="hero-sub">Speaking · Reading · Production · 60 min</p>
+    <div class="hero-pills">
+      <span class="pill accent">Speaking — primary focus</span>
+      <span class="pill accent">Reading</span>
+      <span class="pill">5 activities</span>
+      <span class="pill">60 min</span>
+      <span class="pill">6–8 students</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0, isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── FILL-IN STATE ─────────────────────────────────────────
+const wuState = {};
+
+// ── RENDERER 1: WARM-UP VIDEO ─────────────────────────────
+function renderWarmUp() {
+  const blanks = [
+    { num:1,  before:'Jessica, I\'d like', after:'Daniel King from Technicolor Industries.', answer:'to introduce you to', placeholder:'to introduce you to' },
+    { num:2,  before:'', after:'to meet you Mr. King.', answer:'Pleased', placeholder:'Pleased' },
+    { num:3,  before:'Pleased to meet you. So', after:'here?', answer:'are you based', placeholder:'are you based' },
+    { num:4,  before:'I\'m', after:'of regional sales, and you?', answer:'in charge', placeholder:'in charge' },
+    { num:5,  before:'I head up the', after:'here.', answer:'R&D department', placeholder:'R&D / department' },
+    { num:6,  before:'', after:'first visit to Dubai?', answer:'Is this your', placeholder:'Is this your' },
+    { num:7,  before:'No, I\'ve been here', after:'.', answer:'before', placeholder:'before' },
+    { num:8,  before:'Oh really?', after:'?', answer:'How often', placeholder:'How often' },
+    { num:9,  before:'Business mostly.', after:'', answer:'', placeholder:'' },
+    { num:10, before:'How long have you been', after:'your company?', answer:'with', placeholder:'with' },
+    { num:11, before:'Oh, I\'ve been with Technicolor', after:'.', answer:'for twelve years', placeholder:'for twelve years' },
+    { num:12, before:'How about you? When', after:'company?', answer:'did you join your', placeholder:'did you join your' },
+    { num:13, before:'I\'ve been with Visitec', after:'three years.', answer:'for', placeholder:'for' },
+  ];
+
+  const rows = blanks.map((b,i) => {
+    if(b.answer === '') {
+      return `<div id="wu-${i}" style="display:flex;align-items:center;gap:10px;padding:11px 15px;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;margin-bottom:8px;">
+        <div style="font-size:12px;font-weight:700;color:var(--gold);min-width:22px;flex-shrink:0;">${b.num}.</div>
+        <div style="font-size:14px;color:var(--navy);">${b.before}</div>
+      </div>`;
+    }
+    const val = wuState['v'+i] || '';
+    const rev = wuState['r'+i];
+    const correct = val.trim().toLowerCase().replace(/[.,!?]/g,'') === b.answer.toLowerCase().replace(/[.,!?]/g,'');
+    const lineColor = rev ? (correct ? 'var(--green)' : 'var(--red)') : 'var(--steel)';
+    let inputStyle = `border:none;border-bottom:2px solid ${lineColor};background:transparent;font-family:var(--font-body);font-size:14px;color:var(--navy);min-width:140px;text-align:left;outline:none;padding:2px 4px;`;
+    return `<div id="wu-${i}" style="display:flex;align-items:center;gap:10px;padding:11px 15px;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;margin-bottom:8px;flex-wrap:wrap;">
+      <div style="font-size:12px;font-weight:700;color:var(--gold);min-width:22px;flex-shrink:0;">${b.num}.</div>
+      <div style="font-size:14px;line-height:1.8;flex:1;display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+        ${b.before ? `<span style="color:var(--navy);">${b.before}</span>`:''}
+        <input style="${inputStyle}" type="text" value="${val}" oninput="setWU(${i},this.value)" ${rev?'disabled':''}/>
+        ${b.after ? `<span style="color:var(--navy);"> ${b.after}</span>`:''}
+        ${rev && !correct ? `<span style="font-size:12px;color:var(--red);margin-left:4px;">→ <strong style="color:var(--green);">${b.answer}</strong></span>`:''}
+        ${rev && correct ? `<span style="font-size:13px;color:var(--green);margin-left:4px;">✅</span>`:''}
+      </div>
+      ${!rev ? `<button onclick="revWU(${i})" style="padding:6px 14px;background:var(--navy);color:var(--white);border:none;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font-body);white-space:nowrap;flex-shrink:0;">Check</button>`:''}
+    </div>`;
+  }).join('');
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up — Watch &amp; Fill in the Blanks</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="teacher-note">
+      <strong>🎬 Teacher note:</strong> Play from <strong>0:22</strong> — pause at <strong>1:45</strong>. Play once through, then replay so students can fill in the blanks. Type your answers in the boxes below.
+    </div>
+
+    <a href="https://youtu.be/fkic3DxLFO0?si=iPLbMfirACP8jE7q&t=22" target="_blank"
+      style="display:flex;align-items:center;justify-content:center;gap:16px;background:var(--navy);border:2px solid var(--gold);border-radius:10px;padding:28px 20px;margin-bottom:22px;text-decoration:none;transition:opacity 0.15s;"
+      onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+      <div style="width:56px;height:56px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#1B2D4F"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+      <div>
+        <div style="font-family:Georgia,serif;font-size:17px;color:#FFFFFF;margin-bottom:4px;">Click to Watch</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);">Business Introduction Dialogue &nbsp;·&nbsp; Start at 0:22, pause at 1:45</div>
+      </div>
+    </a>
+
+    <div class="ex-label" style="margin-bottom:12px;">Fill in the blanks — type what you hear</div>
+    <div class="blank-list">${rows}</div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function setWU(i, v) { wuState['v'+i]=v; }
+function revWU(i) {
+  wuState['r'+i]=true;
+  rerenderWarmUp();
+  setTimeout(()=>{ const el=document.getElementById('wu-'+i); if(el) el.scrollIntoView({behavior:'smooth',block:'center'}); },60);
+}
+function rerenderWarmUp() {
+  const wi=STEPS.findIndex(s=>s.fn===renderWarmUp);
+  if(currentStep===wi) document.getElementById('mainContent').innerHTML=renderWarmUp();
+}
+
+// ── RENDERER 2: READING ───────────────────────────────────
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Activity 1 — Reading: Meet the Team</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Read the team introduction below. Then answer the questions — speak your answers aloud before writing.</p>
+
+    <div class="reading-card">
+      <div class="reading-card-head">
+        <div class="reading-card-head-title">📄 Team Introduction — Nexus Solutions, Bogotá</div>
+      </div>
+      <div class="reading-card-body">
+        <p>My name is <span class="reading-highlight">Andrea</span>. I'm the <span class="reading-highlight">team coordinator</span> at <span class="reading-highlight">Nexus Solutions</span> in Bogotá. I work with four people.</p>
+        <p>This is <span class="reading-highlight">Roberto</span>. He's a <span class="reading-highlight">sales manager</span>. He joined the company in <span class="reading-highlight">March</span>.</p>
+        <p>This is <span class="reading-highlight">Laura</span>. She's an <span class="reading-highlight">assistant</span> in the <span class="reading-highlight">marketing department</span>. She started in <span class="reading-highlight">August</span>.</p>
+        <p>This is <span class="reading-highlight">Daniel</span>. He's an <span class="reading-highlight">intern</span>. He's from <span class="reading-highlight">Cali</span>. He started in <span class="reading-highlight">January</span>.</p>
+        <p>This is <span class="reading-highlight">Sofia</span>. She's a <span class="reading-highlight">director</span>. She's not from Bogotá — she's from <span class="reading-highlight">Lima</span>.</p>
+      </div>
+    </div>
+
+    <h2 class="h-serif">Comprehension Questions</h2>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;font-style:italic;">Answer each question aloud. Your teacher will listen and give feedback.</p>
+
+    <ul class="q-list">
+      <li class="q-list-item"><div class="q-list-num">1.</div><div class="q-list-text">What is Andrea's job?</div></li>
+      <li class="q-list-item"><div class="q-list-num">2.</div><div class="q-list-text">Who is the sales manager?</div></li>
+      <li class="q-list-item"><div class="q-list-num">3.</div><div class="q-list-text">When did Roberto join the company?</div></li>
+      <li class="q-list-item"><div class="q-list-num">4.</div><div class="q-list-text">Where is Sofia from?</div></li>
+      <li class="q-list-item"><div class="q-list-num">5.</div><div class="q-list-text">Who started in January?</div></li>
+      <li class="q-list-item"><div class="q-list-num">6.</div><div class="q-list-text">Is Daniel a manager or an intern?</div></li>
+      <li class="q-list-item"><div class="q-list-num">7.</div><div class="q-list-text">What department is Laura in?</div></li>
+    </ul>
+
+    <div id="readingAnswers" style="display:none;">
+      <div class="info-box" style="margin-top:4px;">
+        <strong>Answer Key</strong><br><br>
+        1. She's the team coordinator.<br>
+        2. Roberto is the sales manager.<br>
+        3. He joined in March.<br>
+        4. She's from Lima.<br>
+        5. Daniel started in January.<br>
+        6. He's an intern.<br>
+        7. She's in the marketing department.
+      </div>
+    </div>
+    <button onclick="document.getElementById('readingAnswers').style.display='block';this.style.display='none';"
+      style="padding:9px 20px;background:var(--navy);color:var(--white);border:none;border-radius:6px;font-family:var(--font-body);font-size:12px;font-weight:700;cursor:pointer;margin-bottom:22px;">
+      Show Answer Key
+    </button>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── RENDERER 3: SENTENCE BUILDER ──────────────────────────
+function renderBuilder() {
+  const pairs = [
+    { words:'Sofia / director / Lima',         sample:'Sofia is a director. She\'s from Lima.' },
+    { words:'Daniel / intern / Cali',          sample:'Daniel is an intern. He\'s from Cali.' },
+    { words:'Roberto and Laura / coworkers',   sample:'Roberto and Laura are coworkers.' },
+    { words:'I / coordinator / Nexus Solutions', sample:'I\'m a coordinator at Nexus Solutions.' },
+    { words:'The team / Bogotá',               sample:'The team is from Bogotá.' },
+  ];
+
+  const rows = pairs.map((p,i) => `
+    <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:8px;padding:14px 18px;margin-bottom:10px;">
+      <div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--grey-blue);margin-bottom:6px;">Pair ${i+1}</div>
+      <div style="font-size:14px;color:var(--navy);font-weight:700;margin-bottom:8px;">${p.words}</div>
+      <textarea oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
+        style="width:100%;min-height:60px;padding:10px;border:1.5px solid var(--border-grey);border-radius:6px;font-family:var(--font-body);font-size:14px;color:var(--navy);resize:none;outline:none;background:var(--off-white);transition:border-color 0.12s;"
+        onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border-grey)'"
+        placeholder="Write your sentence here…"></textarea>
+      <div id="samp-${i}" style="display:none;margin-top:8px;padding:8px 12px;background:var(--green-bg);border-radius:6px;font-size:13px;color:var(--green);font-style:italic;">
+        ✅ Sample: <strong>${p.sample}</strong>
+      </div>
+      <button onclick="document.getElementById('samp-${i}').style.display='block';this.style.display='none';"
+        style="margin-top:8px;padding:5px 14px;background:var(--navy);color:var(--white);border:none;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font-body);">
+        Show Sample
+      </button>
+    </div>`).join('');
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Activity 2 — Sentence Builder Practice</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Work in pairs. Use the words given to build sentences about the Nexus Solutions team. Write your sentences in the box, then click <strong>Show Sample</strong> to compare.</p>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Reminder</div>
+      Use <strong>He's / She's / They're</strong> to add more information after the first sentence. Don't forget <strong>a</strong> or <strong>an</strong> before a job title.
+    </div>
+
+    ${rows}
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── RENDERER 4: INTRODUCE A CLASSMATE ─────────────────────
+function renderIntroduce() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Activity 3 — Introduce a Classmate</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">This is your main speaking activity. You will interview a classmate and then introduce them to the group — just like in a real business meeting.</p>
+
+    <div class="teacher-note">
+      <strong>🎤 Teacher note:</strong> Gently correct pronoun errors and missing articles. Don't interrupt fluency — note errors and address them at the end of the activity.
+    </div>
+
+    <!-- STEP 1: INTERVIEW -->
+    <h2 class="h-serif" style="margin-bottom:12px;">Step 1 — Interview Your Partner</h2>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:14px;line-height:1.6;">Ask your partner these four questions and take notes in the boxes below.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+      ${[
+        {q:"What's your name?", ph:"Partner's name"},
+        {q:"What's your job?", ph:"Job title"},
+        {q:"What company do you work at?", ph:"Company name"},
+        {q:"What month did you join?", ph:"Month (e.g. March)"}
+      ].map((item,i)=>`
+        <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:8px;padding:14px;">
+          <div style="font-size:12px;font-weight:700;color:var(--sky);margin-bottom:6px;">Question ${i+1}</div>
+          <div style="font-size:14px;color:var(--navy);font-style:italic;margin-bottom:8px;">"${item.q}"</div>
+          <input type="text" placeholder="${item.ph}"
+            style="width:100%;padding:8px 10px;border:1.5px solid var(--border-grey);border-radius:6px;font-family:var(--font-body);font-size:14px;color:var(--navy);outline:none;background:var(--off-white);"
+            onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border-grey)'"/>
+        </div>`).join('')}
+    </div>
+
+    <!-- STEP 2: INTRODUCE -->
+    <h2 class="h-serif" style="margin-bottom:12px;">Step 2 — Introduce Your Partner to the Group</h2>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:14px;line-height:1.6;">Use this sentence pattern when it's your turn to speak:</p>
+
+    <div style="background:var(--navy);border-radius:10px;padding:22px;margin-bottom:22px;">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;">Sentence Builder · Introduction Pattern</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);margin-bottom:18px;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Start</div>
+          <div style="font-size:14px;font-weight:700;color:var(--gold);">This is</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.55);font-style:italic;">[name].</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:20px;color:rgba(255,255,255,0.2);">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Pronoun</div>
+          <div style="font-size:14px;font-weight:700;color:var(--gold);">He's / She's</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.55);font-style:italic;">a/an [job]</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:20px;color:rgba(255,255,255,0.2);">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Company</div>
+          <div style="font-size:14px;font-weight:700;color:var(--gold);">at [company].</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.55);font-style:italic;"></div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:20px;color:rgba(255,255,255,0.2);">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Month</div>
+          <div style="font-size:14px;font-weight:700;color:var(--gold);">joined in [month].</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.55);font-style:italic;"></div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border-radius:7px;padding:9px 14px;font-size:13px;color:rgba(255,255,255,0.7);font-style:italic;">
+        <strong style="color:var(--gold);font-style:normal;">"This is Ana. She's a coordinator at Global Tech. She joined in March."</strong>
+      </div>
+    </div>
+
+    <div class="target-lang-box">
+      <span class="target-lang-label">Target language</span>
+      <div class="target-lang-items">
+        <span class="target-lang-pill">This is [name].</span>
+        <span class="target-lang-pill">He's / She's a/an [job]</span>
+        <span class="target-lang-pill">at [company].</span>
+        <span class="target-lang-pill">joined in [month].</span>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── RENDERER 5: NEGATIVE GAME ─────────────────────────────
+function renderNegative() {
+  const examples = [
+    { wrong:'"This is Carlos. He\'s a director."', fix:'"No — he isn\'t a director. He\'s a manager."' },
+    { wrong:'"This is Sofia. She\'s an intern."', fix:'"No — she isn\'t an intern. She\'s a director."' },
+    { wrong:'"This is Daniel. He\'s a manager."', fix:'"No — he isn\'t a manager. He\'s an intern."' },
+    { wrong:'"This is Laura. She\'s from Bogotá."', fix:'"No — she isn\'t from Bogotá. She\'s from..."' },
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Activity 4 — Negative Introduction Game</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">The teacher gives a <strong>wrong</strong> introduction. Students correct it using the negative form. Then students create wrong introductions for each other to correct.</p>
+
+    <div class="target-lang-box" style="margin-bottom:22px;">
+      <span class="target-lang-label">Target language</span>
+      <div class="target-lang-items">
+        <span class="target-lang-pill">She isn't…</span>
+        <span class="target-lang-pill">He's not…</span>
+        <span class="target-lang-pill">They aren't…</span>
+        <span class="target-lang-pill">I'm not…</span>
+      </div>
+    </div>
+
+    <h2 class="h-serif" style="margin-bottom:12px;">How to play</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+      <div style="background:var(--red-bg);border:1px solid var(--red);border-radius:8px;padding:14px 18px;">
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:8px;">Teacher says (wrong)</div>
+        <div style="font-size:14px;color:var(--red);font-style:italic;">"This is Maria. She's a director."</div>
+      </div>
+      <div style="background:var(--green-bg);border:1px solid var(--green);border-radius:8px;padding:14px 18px;">
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:8px;">Student corrects</div>
+        <div style="font-size:14px;color:var(--green);font-style:italic;">"No — she isn't a director. She's a coordinator."</div>
+      </div>
+    </div>
+
+    <div class="ex-label" style="margin-bottom:12px;">Practice rounds — click to reveal the correction</div>
+    ${examples.map((ex,i)=>`
+      <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:8px;padding:14px 18px;margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:700;color:var(--grey-blue);margin-bottom:6px;">Round ${i+1}</div>
+        <div style="font-size:14px;color:var(--red);font-style:italic;margin-bottom:10px;">❌ ${ex.wrong}</div>
+        <div id="neg-${i}" style="display:none;font-size:14px;color:var(--green);font-style:italic;padding:8px 12px;background:var(--green-bg);border-radius:6px;">✅ ${ex.fix}</div>
+        <button onclick="document.getElementById('neg-${i}').style.display='block';this.style.display='none';"
+          style="padding:5px 14px;background:var(--navy);color:var(--white);border:none;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font-body);">
+          Show Correction
+        </button>
+      </div>`).join('')}
+
+    <div class="tip-box" style="margin-top:8px;">
+      <div class="tip-label">💡 Now you go</div>
+      Students create their own wrong introductions for classmates to correct. Use real names and job titles from your class.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── RENDERER 6: MONTHS SPEAKING ───────────────────────────
+function renderMonths() {
+  const questions = [
+    'When is your company\'s annual meeting?',
+    'When do you start a new project at work?',
+    'When is the busiest month in your company?',
+    'When do you have a performance review?',
+    'When does your company organize a team-building event?',
+    'When do you attend training courses at work?',
+    'When does your company prepare its annual budget?',
+    'When do you meet important clients?',
+    'When does your company launch new products or services?',
+    'When do employees usually take vacations in your company?',
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Activity 5 — Months in the Workplace</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <!-- 5.1: Birthday -->
+    <h2 class="h-serif" style="margin-bottom:6px;">Activity 5.1 — When is your birthday?</h2>
+    <p class="sec-intro">Each student answers individually. Use the pattern:</p>
+    <div style="background:var(--navy);border-radius:8px;padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <span style="font-size:15px;color:var(--white);font-style:italic;">"My birthday is in <strong style="color:var(--gold);">[month]</strong>."</span>
+      <span style="font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;">e.g. "My birthday is in July."</span>
+    </div>
+
+    <!-- 5.2: Work questions -->
+    <h2 class="h-serif" style="margin-bottom:6px;">Activity 5.2 — Months at Work</h2>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:14px;line-height:1.6;">Answer each question with a full sentence using a month. Take turns — every student answers at least two questions.</p>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 How to answer</div>
+      Use: <em>"It's in [month]."</em> &nbsp;/&nbsp; <em>"We have it in [month]."</em> &nbsp;/&nbsp; <em>"It usually happens in [month]."</em>
+    </div>
+
+    <div class="timeline-wrap">
+      ${questions.map((q,i)=>`
+        <div class="timeline-item">
+          <div class="timeline-num">${i+1}.</div>
+          <div class="timeline-q">${q}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="teacher-note">
+      <strong>🎤 Teacher note:</strong> Encourage students to give real answers from their own companies. This is free production — support, don't restrict. If students use Spanish months by accident, gently redirect to English.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS ─────────────────────────────────────────────────
+STEPS = [
+  { label:'1. Warm-Up',      fn: renderWarmUp },
+  { label:'2. Reading',      fn: renderReading },
+  { label:'3. Sentences',    fn: renderBuilder },
+  { label:'4. Introduce',    fn: renderIntroduce },
+  { label:'5. Negatives',    fn: renderNegative },
+  { label:'6. Months',       fn: renderMonths },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

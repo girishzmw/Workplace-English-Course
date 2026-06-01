@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Describing Your Company | A2 · Lesson 2 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* Reading card */
+.reading-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.reading-card-head { background:var(--navy); padding:12px 18px; display:flex; align-items:center; gap:10px; }
+.reading-card-head .rc-label { font-family:var(--font-heading); font-size:14px; color:var(--gold); font-weight:700; }
+.reading-card-head .rc-name  { font-size:13px; color:rgba(255,255,255,0.6); margin-left:auto; font-style:italic; }
+.reading-card-body { padding:16px 18px; font-size:14px; line-height:1.8; color:var(--slate); }
+
+/* Pronunciation panel */
+.pron-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:20px; }
+@media(max-width:560px){ .pron-grid{ grid-template-columns:1fr 1fr; } }
+.pron-card { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:14px; text-align:center; }
+.pron-word { font-family:var(--font-heading); font-size:16px; color:var(--navy); margin-bottom:4px; }
+.pron-stress { font-size:13px; color:var(--grey-blue); font-style:italic; margin-bottom:2px; }
+.pron-syllable { font-size:12px; color:var(--gold); font-weight:700; letter-spacing:1px; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Lesson 2 · Pre-Learning</div>
+    <h1 class="hero-title">Describing Your Company</h1>
+    <p class="hero-sub">There is / There are · Company vocabulary · Sentence patterns · ~45 minutes</p>
+    <div class="hero-outcomes">
+      <div>
+        <div class="outcome-item">Use <em>there is / there are</em> to describe your company</div>
+        <div class="outcome-note">Hablar de tu empresa con estructura correcta</div>
+      </div>
+      <div>
+        <div class="outcome-item">Name key company vocabulary in English</div>
+        <div class="outcome-note">headquarters, branch, supplier, client, staff…</div>
+      </div>
+      <div>
+        <div class="outcome-item">Use 4 sentence patterns to present your company</div>
+        <div class="outcome-note">Patrones para describir estructura, tamaño y servicios</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length === 1 ? 100 : Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const VOCAB = [
+  ["Company","la empresa / la compañía","Any business or organization."],
+  ["Headquarters / HQ","la sede principal / la casa matriz","The main office — where top leadership is based."],
+  ["Branch","la sucursal","A smaller office in a different city or country."],
+  ["Department","el departamento / el área","A section of the company (Sales, HR, Finance…)."],
+  ["Division","la división","A large section of a company — bigger than a department."],
+  ["Staff / Employees","el personal / los empleados","The people who work at the company."],
+  ["Client","el cliente (profesional / empresa)","A company or person who buys your services."],
+  ["Supplier","el proveedor","A company that provides materials or services to you."],
+  ["Product","el producto","Something a company makes or sells."],
+  ["Service","el servicio","Something a company does for clients — not a physical object."],
+  ["Industry","el sector / la industria","The business area the company operates in."],
+  ["Based in","con sede en / ubicado en","Where a company is located."],
+];
+
+const QUIZ = [
+  { type:'mc', q:'Complete: "Our company __________ IT services to banks."',
+    opts:['does','makes','provides','is'],
+    answer:2,
+    hint:'Think: which verb do we use with "services"?',
+    fb:'"Provides" is the correct verb. We say "provide services" or "offer services" — never "do services of".' },
+
+  { type:'mc', q:'Choose the correct sentence.',
+    opts:[
+      'There is offices in five cities.',
+      'There are offices in five cities.',
+      'There have offices in five cities.',
+      'There is five offices in cities.'
+    ],
+    answer:1,
+    hint:'"Offices" is plural — which form do we need?',
+    fb:'"There are" is used with plural nouns. "Offices" is plural, so we need "There are offices."' },
+
+  { type:'mc', q:'"My company __________ 300 employees." — Choose the correct verb.',
+    opts:['have','are','has','is'],
+    answer:2,
+    hint:'"My company" is third person singular.',
+    fb:'"My company" is singular — like "he/she/it" — so we use "has", not "have".' },
+
+  { type:'mc', q:'Which word means "la sede principal" — the main office of a company?',
+    opts:['Branch','Division','Headquarters','Department'],
+    answer:2,
+    hint:'It is often abbreviated as HQ.',
+    fb:'"Headquarters" = la sede principal. It is the main office where the company\'s leadership is based. We often say "HQ" for short.' },
+
+  { type:'tf', q:'"Staff" can be used as a countable noun — for example: "200 staffs."',
+    answer:false,
+    hint:'Think: do we say "200 staffs" or "200 staff members"?',
+    fb:'FALSE. "Staff" is uncountable. We say "200 staff" or "200 staff members" — never "200 staffs". ✅ Correct: "There are 200 staff in our company."' },
+
+  { type:'mc', q:'We are __________ in Bogotá. (Choose the correct preposition.)',
+    opts:['based on','based at','based in','based to'],
+    answer:2,
+    hint:'With cities and countries, which preposition do we use?',
+    fb:'"Based in" is always followed by a city or country. Never use "on" or "at" with this expression. ✅ "We are based in Bogotá."' },
+
+  { type:'mc', q:'Which is the correct word order?',
+    opts:[
+      'We work in the industry of technology.',
+      'We work in the technology industry.',
+      'We work in industry technology.',
+      'We work in technology of industry.'
+    ],
+    answer:1,
+    hint:'In English, adjectives and nouns go in what order?',
+    fb:'In English, the describing word comes BEFORE the noun: "technology industry", "financial services", "software company". Never "industry of technology".' },
+
+  { type:'mc', q:'"A __________ is a smaller office of a company in a different city or country." — Fill in the blank.',
+    opts:['headquarters','division','branch','supplier'],
+    answer:2,
+    hint:'Think: la sucursal.',
+    fb:'"Branch" = la sucursal. It is a smaller office located away from the main headquarters.' },
+
+  { type:'mc', q:'Which sentence is correct?',
+    opts:[
+      'My company does services of consulting.',
+      'My company offers consulting services.',
+      'My company makes consulting services.',
+      'My company does consulting of services.'
+    ],
+    answer:1,
+    hint:'Which verb + noun combination is natural in English?',
+    fb:'"Offers consulting services" is correct. We also say "provides consulting services". Never "does services of" — that is a direct translation from Spanish that does not work in English.' },
+
+  { type:'input', q:'Translate this sentence into English: "Nuestra empresa tiene clientes en diez países."',
+    hint:'Use: Our company / clients / countries',
+    answers:['our company has clients in ten countries','our company has clients in 10 countries'],
+    display:'Our company has clients in ten countries.',
+    fb:'Use "has" (not "have") because "our company" is singular. The word order is: subject + verb + object + location.' },
+
+  { type:'mc', q:'"Is there a branch in your city?" — What is the correct short answer if NO?',
+    opts:['No, there isn\'t.','No, there aren\'t.','No, there isn\'t any.','No, there don\'t.'],
+    answer:0,
+    hint:'"Branch" is singular — which form do we need?',
+    fb:'"No, there isn\'t." is correct for singular nouns. For plural: "No, there aren\'t." Remember — "branch" is singular here.' },
+
+  { type:'mc', q:'Which word means "el proveedor"?',
+    opts:['client','staff','supplier','division'],
+    answer:2,
+    hint:'This company delivers materials or services TO your company.',
+    fb:'"Supplier" = el proveedor. A supplier provides your company with materials, products, or services. A client BUYS from you — a supplier SELLS to you.' },
+];
+
+const quizState = {};
+let quizScore = 0;
+
+// ── RENDERER 1: INTRO ─────────────────────────────────────
+
+function renderIntro() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">What This Lesson Is About</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">In A1 you learned to introduce <em>yourself</em> at work. Now it's time to talk about <em>where</em> you work — your company. In real business English, people ask these questions all the time:</p>
+
+    <div class="info-box">
+      <div style="display:grid;gap:10px;">
+        <div style="font-size:15px;color:var(--navy);font-style:italic;">"What does your company <strong>do</strong>?"</div>
+        <div style="font-size:15px;color:var(--navy);font-style:italic;">"Where is your company <strong>based</strong>?"</div>
+        <div style="font-size:15px;color:var(--navy);font-style:italic;">"How <strong>big</strong> is your company?"</div>
+        <div style="font-size:13px;color:var(--grey-blue);margin-top:4px;">This lesson gives you the language to answer all three — confidently.</div>
+      </div>
+    </div>
+
+    <div class="es-note">📌 En esta lección aprenderás vocabulario esencial de empresa, cómo usar <em>there is / there are</em> para describir tu compañía, y cuatro patrones de oraciones que podrás usar de inmediato en el trabajo.</div>
+
+    <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;padding:18px;margin-bottom:20px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px;">This lesson has 6 parts</div>
+      <div style="display:grid;gap:10px;">
+        ${[
+          ['📖','Part 1 — Key Vocabulary','12 essential company words with Spanish support'],
+          ['📐','Part 2 — Grammar Review','There is / There are — rules, patterns, examples'],
+          ['💬','Part 3 — Sentence Patterns','4 ready-to-use patterns for describing your company'],
+          ['⚠️','Part 4 — Common Mistakes','5 errors Spanish speakers make — and how to fix them'],
+          ['📄','Part 5 — Mini Reading','Three real-style company profiles to read and analyze'],
+          ['✅','Part 6 — Check & Practice','Interactive exercises + pronunciation tips'],
+        ].map(([icon,title,desc]) => `
+          <div style="display:flex;gap:12px;align-items:flex-start;padding:10px;background:var(--light-grey);border-radius:7px;">
+            <div style="font-size:20px;flex-shrink:0;">${icon}</div>
+            <div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy);">${title}</div>
+              <div style="font-size:13px;color:var(--grey-blue);margin-top:2px;">${desc}</div>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── RENDERER 2: VOCABULARY ────────────────────────────────
+
+function renderVocabulary() {
+  const vocabCards = VOCAB.map(([en, es, def]) => `
+    <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden;margin-bottom:12px;box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+      <div style="display:grid;grid-template-columns:auto 1fr;align-items:stretch;">
+        <div style="background:var(--navy);padding:14px 18px;display:flex;align-items:center;justify-content:center;min-width:52px;">
+          <div style="font-family:var(--font-heading);font-size:13px;color:var(--gold);font-weight:700;writing-mode:initial;letter-spacing:0.5px;">EN</div>
+        </div>
+        <div style="padding:14px 18px;">
+          <div style="font-family:var(--font-heading);font-size:17px;color:var(--navy);font-weight:700;margin-bottom:2px;">${en}</div>
+          <div style="font-size:13px;color:var(--gold);font-weight:700;margin-bottom:6px;">${es}</div>
+          <div style="font-size:13px;color:var(--slate);line-height:1.6;">${def}</div>
+        </div>
+      </div>
+    </div>`).join('');
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Key Vocabulary — Part 1</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Here are 12 essential words for describing a company. Read each word, its Spanish meaning, and an explanation.</p>
+
+    <div class="es-note">📌 Lee cada palabra en inglés, mira la traducción en español, y lee la explicación. Luego estudia los ejemplos — son muy importantes.</div>
+
+    ${vocabCards}
+
+    <div class="divider"></div>
+
+    <div class="h-serif">Watch Out — Important Differences</div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Headquarters — it sounds plural but isn't always</div>
+      In Spanish you say <em>"la sede"</em> (singular). In English, <strong>headquarters</strong> looks plural but refers to one place. Both <em>"The headquarters <strong>is</strong> in Bogotá"</em> and <em>"The headquarters <strong>are</strong> in Bogotá"</em> are acceptable. Don't worry about this — just use it naturally.
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Staff — uncountable, like "water"</div>
+      <strong>Staff</strong> does not have a plural form. We say <em>"200 staff"</em> or <em>"200 staff members"</em> — never <em>"200 staffs"</em>. Think of it like water — you wouldn't say "200 waters".
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Client vs Customer — a useful distinction</div>
+      In Spanish, <em>"cliente"</em> covers both. In English: <strong>customer</strong> = someone who shops in a store. <strong>Client</strong> = a professional or company that buys your services. In a corporate context, always use <em>client</em>.
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Industry — wider than "industria"</div>
+      In Spanish, <em>"industria"</em> often implies manufacturing or factories. In English, <strong>industry</strong> refers to any business sector — technology industry, financial industry, healthcare industry, education industry.
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Department — not an apartment</div>
+      In Spanish, <em>"departamento"</em> can mean a flat/apartment OR a work department. In English, <strong>department</strong> at work always means a section of a company. An apartment is called a <em>flat</em> (UK) or <em>apartment</em> (US) — never a department.
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="h-serif">Examples in Context</div>
+    <div class="examples-wrap">
+      <div class="examples-label">Company Vocabulary in Sentences</div>
+      ${[
+        ['"Our <strong>headquarters</strong> is in Mexico City."','Nuestra sede principal está en Ciudad de México.'],
+        ['"We have a <strong>branch</strong> in Cali that opened last year."','Tenemos una sucursal en Cali que abrió el año pasado.'],
+        ['"I work in the <strong>HR department</strong>."','Trabajo en el departamento de Recursos Humanos.'],
+        ['"The company has a Sales <strong>division</strong> and a Technology <strong>division</strong>."','La empresa tiene una división de Ventas y una de Tecnología.'],
+        ['"There are 200 <strong>staff</strong> in our Bogotá office."','Hay 200 empleados en nuestra oficina de Bogotá.'],
+        ['"We have <strong>clients</strong> in Colombia, México, and Peru."','Tenemos clientes en Colombia, México y Perú.'],
+        ['"Our main <strong>supplier</strong> is based in Brazil."','Nuestro proveedor principal tiene sede en Brasil.'],
+        ['"We work in the technology <strong>industry</strong>."','Trabajamos en el sector tecnológico.'],
+        ['"The company is <strong>based in</strong> Santiago."','La empresa tiene sede en Santiago.'],
+      ].map(([en,es]) => `
+        <div class="example-item">
+          <div>
+            <div class="example-en">${en}</div>
+            <div class="example-es">${es}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── RENDERER 3: GRAMMAR ───────────────────────────────────
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar — There is / There are</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">You first saw <em>there is</em> and <em>there are</em> in A1 Lesson 6 to describe office spaces. Now we use the same structure to describe companies. The rule is exactly the same — just applied to bigger ideas.</p>
+
+    <div class="es-note">📌 En español siempre decimos <strong>"Hay"</strong> — para singular y plural. En inglés hay DOS formas: <strong>"There is"</strong> (singular) y <strong>"There are"</strong> (plural). Este es uno de los errores más comunes para hispanohablantes.</div>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1fr 2fr;">
+        <span>English</span><span>Spanish</span><span>When to use it</span>
+      </div>
+      ${[
+        ['There is','Hay','ONE thing — singular noun'],
+        ['There are','Hay','MORE THAN ONE thing — plural noun'],
+        ['There is no','No hay','Negative — one thing (singular)'],
+        ['There are no','No hay','Negative — more than one (plural)'],
+        ['Is there…?','¿Hay…?','Question — singular'],
+        ['Are there…?','¿Hay…?','Question — plural'],
+      ].map(([en,es,use]) => `
+        <div class="data-table-row" style="grid-template-columns:1fr 1fr 2fr;">
+          <span style="font-weight:700;color:var(--navy);">${en}</span>
+          <span style="color:var(--gold);font-style:italic;">${es}</span>
+          <span style="font-size:13px;color:var(--slate);">${use}</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="h-serif" style="margin-top:26px;">The 4 Sentence Patterns You Need</div>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:18px;line-height:1.7;">These four patterns will allow you to describe any company in English. Study each one — they are the skeleton of your speaking in class.</p>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Pattern 1 — What the company does</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:16px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Company</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">[Name]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">Bancolombia</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">is a</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">is a</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">is a</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Adjective</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">[large/small]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">large</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Industry + company</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">[sector] company</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">financial services company</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"Bancolombia is a large financial services company."</strong></div>
+      <div class="builder-ex"><strong>"Our company provides cloud software solutions."</strong></div>
+      <div class="builder-ex"><strong>"We sell industrial equipment to clients in Latin America."</strong></div>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Pattern 2 — Where the company is based</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:16px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Subject</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">[Company]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">Our company</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Verb</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">is based</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">is based</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Location</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">in [city]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">in Lima</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"The company is based in Lima."</strong></div>
+      <div class="builder-ex"><strong>"Our headquarters is in Mexico City."</strong></div>
+      <div class="builder-ex"><strong>"There are branches in Colombia, Chile, and Argentina."</strong></div>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Pattern 3 — Size and structure</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:16px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">There is/are</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">There are</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">Hay</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Number</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">[number]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">around 500</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Noun (plural)</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">employees / departments</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">employees</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"There are around 500 employees."</strong></div>
+      <div class="builder-ex"><strong>"The company has four departments: Sales, Finance, HR, and Operations."</strong></div>
+      <div class="builder-ex"><strong>"There are clients in over 20 countries."</strong></div>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Pattern 4 — Your role in the company</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:16px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Subject</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">I</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">Yo</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Verb</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">work in / work for</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">trabajo en / trabajo para</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Department / Company</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">[dept] / [company name]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);font-style:italic;">Operations / Grupo Nutresa</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"I work in the Operations department."</strong></div>
+      <div class="builder-ex"><strong>"I work for a consulting firm in Bogotá."</strong></div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── RENDERER 4: MISTAKES ──────────────────────────────────
+
+function renderMistakes() {
+  const mistakes = [
+    {
+      wrong: 'My company <u>have</u> 300 employees.',
+      right: 'My company <u>has</u> 300 employees.',
+      es: '"My company" es tercera persona singular (como he/she/it). → Usamos <strong>has</strong>, no "have".',
+      rule: 'Third person singular → always use HAS'
+    },
+    {
+      wrong: 'There <u>is</u> offices in five cities.',
+      right: 'There <u>are</u> offices in five cities.',
+      es: '"Offices" es plural. → Usamos <strong>there are</strong> con sustantivos plurales.',
+      rule: 'Plural noun → always use THERE ARE'
+    },
+    {
+      wrong: 'We are based <u>on</u> Bogotá.',
+      right: 'We are based <u>in</u> Bogotá.',
+      es: 'Con ciudades y países, siempre usamos <strong>in</strong>. Nunca "on" con lugares.',
+      rule: 'Cities and countries → always use IN'
+    },
+    {
+      wrong: 'My company <u>does services of</u> IT.',
+      right: 'My company <u>provides</u> IT services.',
+      es: 'En inglés usamos "provide", "offer" o "sell" + services. Nunca "does services of" — es una traducción literal del español que no funciona.',
+      rule: 'Use PROVIDES / OFFERS / SELLS — never "does services of"'
+    },
+    {
+      wrong: 'We work in the <u>industry of technology</u>.',
+      right: 'We work in the <u>technology industry</u>.',
+      es: 'En inglés el adjetivo/descriptor va ANTES del sustantivo. No "industry of technology" sino "technology industry".',
+      rule: 'Adjective BEFORE noun — technology industry, not industry of technology'
+    },
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Common Mistakes — Part 4</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">These are the five most common mistakes Spanish speakers make when describing their company in English. Study each one carefully — recognizing the error is the first step to fixing it.</p>
+
+    <div class="es-note">📌 Estos son errores muy comunes para hispanohablantes. Lee el error ❌, luego la versión correcta ✅, y la explicación en español.</div>
+
+    ${mistakes.map((m, i) => `
+      <div class="mistake-wrap">
+        <div class="mistake-label">Mistake ${i+1} of ${mistakes.length} · ${m.rule}</div>
+        <div class="mistake-wrong">❌ &nbsp;${m.wrong}</div>
+        <div class="mistake-right">✅ &nbsp;${m.right}</div>
+        <div class="es-note" style="margin-top:10px;margin-bottom:0;">💡 ${m.es}</div>
+      </div>`).join('')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── RENDERER 5: READING ───────────────────────────────────
+
+function renderReading() {
+  const companies = [
+    {
+      label: 'Company A',
+      name: 'TechNova',
+      emoji: '💻',
+      text: 'TechNova is a software company based in Bogotá, Colombia. There are around 300 employees and three main offices — in Bogotá, Medellín, and Cali. The company provides cloud solutions and data services to clients in 12 countries. There are four departments: Product, Sales, Finance, and Operations.',
+      qs: [
+        ['Where is TechNova based?','Bogotá, Colombia.'],
+        ['How many offices does it have?','Three — Bogotá, Medellín, and Cali.'],
+        ['What does it provide?','Cloud solutions and data services.'],
+        ['How many departments are there?','Four.'],
+      ]
+    },
+    {
+      label: 'Company B',
+      name: 'FreshCo',
+      emoji: '🥦',
+      text: 'FreshCo is a food distribution company. The headquarters are in Lima, Peru, and there are branches in Ecuador and Bolivia. There are approximately 80 staff members. The company sells fresh produce to supermarkets and restaurants. Their main suppliers are local farms in the Andes region.',
+      qs: [
+        ['Where is the headquarters?','Lima, Peru.'],
+        ['How many staff are there?','Approximately 80.'],
+        ['Who are the clients?','Supermarkets and restaurants.'],
+        ['Where are the suppliers from?','Local farms in the Andes region.'],
+      ]
+    },
+    {
+      label: 'Company C',
+      name: 'GlobalConnect',
+      emoji: '🌐',
+      text: 'GlobalConnect is a consulting firm. It is based in Mexico City and has clients across Latin America, the United States, and Spain. There is no physical branch in other countries — the team works remotely. There are 45 employees in total, and the company offers HR consulting and leadership development services.',
+      qs: [
+        ['Where is GlobalConnect based?','Mexico City.'],
+        ['Does it have physical branches?','No — the team works remotely.'],
+        ['How many employees are there?','45.'],
+        ['What services does it offer?','HR consulting and leadership development.'],
+      ]
+    },
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Mini Reading — Three Company Profiles</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Read these three short company descriptions. Notice how the four patterns from Part 3 appear naturally. After reading, check the comprehension questions — answer them in your notebook first, then reveal the answers.</p>
+
+    <div class="es-note">📌 Lee cada perfil de empresa, luego responde las preguntas en tu cuaderno antes de ver las respuestas. ¡No hagas trampa! 😄</div>
+
+    ${companies.map(c => `
+      <div class="reading-card">
+        <div class="reading-card-head">
+          <span style="font-size:22px;">${c.emoji}</span>
+          <span class="rc-label">${c.label}</span>
+          <span class="rc-name">${c.name}</span>
+        </div>
+        <div class="reading-card-body">${c.text}</div>
+        <div style="padding:0 18px 16px;">
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px;">Comprehension Check</div>
+          ${c.qs.map((q, qi) => `
+            <div style="margin-bottom:8px;">
+              <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px;">${qi+1}. ${q[0]}</div>
+              <details style="font-size:13px;">
+                <summary style="cursor:pointer;color:var(--sky);font-size:12px;letter-spacing:0.5px;">Show answer</summary>
+                <div style="margin-top:6px;padding:8px 12px;background:var(--green-bg);border-radius:6px;color:var(--green);font-weight:500;">✅ ${q[1]}</div>
+              </details>
+            </div>`).join('')}
+        </div>
+      </div>`).join('')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── RENDERER 6: PRACTICE ──────────────────────────────────
+
+function renderPractice() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Practice — Interactive Exercises</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Three interactive exercises to confirm your understanding. Complete them all before class. Try without looking at the previous sections first!</p>
+
+    <div class="es-note">📌 Intenta hacer los ejercicios sin mirar las secciones anteriores. Si cometes errores, regresa y revisa — ¡los errores son parte del aprendizaje!</div>
+
+    <!-- Exercise 1: There is / There are -->
+    <div class="ex-box">
+      <div class="ex-label">Exercise 1 — Choose: There is or There are?</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:14px;line-height:1.6;">Choose the correct option for each sentence. Click your answer, then press <strong>Check</strong>.</p>
+      ${[
+        { sentence: '__________ a headquarters in Santiago.', opts: ['There is', 'There are'], answer: 0, fb: '"Headquarters" is singular here — one place. ✅ There is a headquarters in Santiago.' },
+        { sentence: '__________ five branches in Mexico.', opts: ['There is', 'There are'], answer: 1, fb: '"Branches" is plural (five!). ✅ There are five branches in Mexico.' },
+        { sentence: '__________ no HR department in our office.', opts: ['There is', 'There are'], answer: 0, fb: '"Department" is singular. ✅ There is no HR department in our office.' },
+        { sentence: '__________ around 400 employees in the company.', opts: ['There is', 'There are'], answer: 1, fb: '"Employees" is plural. ✅ There are around 400 employees in the company.' },
+        { sentence: '__________ one main supplier.', opts: ['There is', 'There are'], answer: 0, fb: '"One" = singular. ✅ There is one main supplier.' },
+        { sentence: '__________ clients in ten countries.', opts: ['There is', 'There are'], answer: 1, fb: '"Clients" is plural. ✅ There are clients in ten countries.' },
+      ].map((item, idx) => renderSimpleMC('ex1', idx, item)).join('')}
+    </div>
+
+    <!-- Exercise 2: Word Box Fill -->
+    <div class="ex-box" style="margin-top:20px;">
+      <div class="ex-label">Exercise 2 — Fill in the Blank</div>
+      <div class="word-bank">
+        <div class="word-bank-label">Word Bank</div>
+        <div class="word-bank-words">headquarters &nbsp;·&nbsp; branch &nbsp;·&nbsp; clients &nbsp;·&nbsp; supplier &nbsp;·&nbsp; staff &nbsp;·&nbsp; based &nbsp;·&nbsp; industry &nbsp;·&nbsp; department</div>
+      </div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:14px;line-height:1.6;">Type the correct word in each blank. Each word is used only once.</p>
+      ${[
+        { before: 'Our company is', after: 'in Buenos Aires.', answer: 'based', fb: '"Based in" = con sede en. We are based IN a city — never "based on".' },
+        { before: 'We have a', after: 'in Cali that opened last year.', answer: 'branch', fb: 'A "branch" is a smaller office in a different city — la sucursal.' },
+        { before: 'The', after: 'is in New York, but we have offices everywhere.', answer: 'headquarters', fb: '"Headquarters" = la sede principal. Often abbreviated as HQ.' },
+        { before: 'There are 60', after: 'members in our team.', answer: 'staff', fb: 'We say "staff members" — never "staffs". Staff is uncountable.' },
+        { before: 'Our main', after: 'delivers raw materials from Brazil.', answer: 'supplier', fb: 'A supplier provides materials TO your company. They sell to you.' },
+        { before: 'I work in the HR', after: '.', answer: 'department', fb: 'We "work in the [name] department" — Sales, HR, Finance, Operations.' },
+        { before: 'We have', after: 'in fifteen countries.', answer: 'clients', fb: 'Clients buy your services. Remember: client = professional context, customer = shop.' },
+        { before: 'The company works in the healthcare', after: '.', answer: 'industry', fb: '"Industry" in English = any business sector — not just manufacturing.' },
+      ].map((item, idx) => renderFillBlank('ex2', idx, item)).join('')}
+    </div>
+
+    <!-- Pronunciation -->
+    <div style="margin-top:26px;">
+      <div class="h-serif">Pronunciation Guide</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:16px;line-height:1.7;">Say these words aloud. The <span style="color:var(--gold);font-weight:700;">CAPITAL</span> letters show the stressed syllable.</p>
+      <div class="pron-grid">
+        ${[
+          ['Headquarters','HEAD-qwar-ters','HEAD · qwar · ters'],
+          ['Department','de-PART-ment','de · PART · ment'],
+          ['Employees','em-ploy-EES','em · ploy · EES'],
+          ['Division','di-VI-zhon','di · VI · zhon'],
+          ['Supplier','su-PLY-er','su · PLY · er'],
+          ['Industry','IN-dus-tree','IN · dus · tree'],
+        ].map(([word, stress, syllables]) => `
+          <div class="pron-card">
+            <div class="pron-word">${word}</div>
+            <div class="pron-syllable">${stress}</div>
+            <div class="pron-stress">${syllables}</div>
+          </div>`).join('')}
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Pronunciation tip</div>
+        Say these sentences out loud, stressing the bold syllable: <em>"Our company is <strong>BASED</strong> in BOgotá."</em> — <em>"There are THREE main dePARTments."</em> — <em>"We have CLIents in TEN countries."</em>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── RENDERER 7: QUIZ ──────────────────────────────────────
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Quiz — Test Yourself</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · No time limit · Try your best before checking!</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;">
+        ${!allCorrect ? `<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>` : ''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── INLINE EXERCISE HELPERS ───────────────────────────────
+// Simple MC used inside Practice page (not the main quiz engine)
+const inlineState = {};
+
+function renderSimpleMC(group, idx, item) {
+  const key = group + '_' + idx;
+  const st = inlineState[key] || {};
+  return `<div style="margin-bottom:12px;padding:12px 14px;background:var(--white);border:1px solid var(--border-grey);border-radius:8px;">
+    <div style="font-size:14px;font-weight:500;color:var(--navy);margin-bottom:10px;">${idx+1}. ${item.sentence}</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      ${item.opts.map((opt, oi) => {
+        let bg = 'var(--off-white)'; let clr = 'var(--navy)'; let brd = 'var(--border-grey)';
+        if (st.revealed) {
+          if (oi === item.answer) { bg='var(--green-bg)'; clr='var(--green)'; brd='var(--green)'; }
+          else if (st.sel === oi) { bg='var(--red-bg)'; clr='var(--red)'; brd='var(--red)'; }
+        } else if (st.sel === oi) { bg='#EEF6FB'; brd='var(--sky)'; }
+        return `<button onclick="inlineSelect('${key}',${oi},${item.answer},'${escFb(item.fb)}')"
+          style="padding:8px 16px;border:1.5px solid ${brd};border-radius:6px;background:${bg};color:${clr};font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;"
+          ${st.revealed?'disabled':''}>${opt}</button>`;
+      }).join('')}
+      ${!st.revealed ? `<button class="check-btn" onclick="inlineCheck('${key}',${item.answer},'${escFb(item.fb)}')" ${st.sel===undefined?'disabled':''} style="margin-left:auto;">Check</button>` : ''}
+    </div>
+    ${st.revealed ? `<div style="margin-top:8px;padding:8px 12px;border-radius:6px;font-size:13px;${st.sel===item.answer?'background:var(--green-bg);color:var(--green);':'background:var(--red-bg);color:var(--red);'}">💡 ${st.fb||item.fb}</div>` : ''}
+  </div>`;
+}
+
+function renderFillBlank(group, idx, item) {
+  const key = group + '_' + idx;
+  const st = inlineState[key] || {};
+  let inputStyle = 'border-bottom:2px solid var(--border-grey);color:var(--navy);';
+  if (st.revealed) inputStyle = st.correct ? 'border-bottom:2px solid var(--green);color:var(--green);background:var(--green-bg);' : 'border-bottom:2px solid var(--red);color:var(--red);background:var(--red-bg);';
+  return `<div style="margin-bottom:10px;padding:11px 14px;background:var(--white);border:1px solid var(--border-grey);border-radius:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+    <span style="font-size:12px;font-weight:700;color:var(--gold);min-width:20px;">${idx+1}.</span>
+    <span style="font-size:14px;color:var(--navy);">${item.before}</span>
+    <input type="text" placeholder="___" value="${st.inputVal||''}"
+      oninput="inlineSetVal('${key}',this.value)"
+      style="border:none;${inputStyle}background:transparent;font-family:var(--font-body);font-size:14px;width:120px;text-align:center;outline:none;padding:2px 4px;transition:all 0.12s;"
+      ${st.revealed?'disabled':''}/>
+    <span style="font-size:14px;color:var(--navy);">${item.after}</span>
+    ${!st.revealed ? `<button class="check-btn" onclick="inlineCheckBlank('${key}','${item.answer}','${escFb(item.fb)}')" style="margin-left:auto;padding:7px 14px;font-size:11px;">Check</button>` : ''}
+    ${st.revealed ? `<span style="font-size:12px;font-style:italic;color:var(--green);margin-left:4px;">✅ ${item.answer}</span>` : ''}
+  </div>
+  ${st.revealed ? `<div style="margin:-4px 0 10px 34px;padding:8px 12px;border-radius:6px;font-size:13px;${st.correct?'background:var(--green-bg);color:var(--green);':'background:var(--red-bg);color:var(--red);'}">💡 ${st.fb}</div>` : ''}`;
+}
+
+function escFb(s){ return s.replace(/'/g,"&#39;").replace(/"/g,"&quot;"); }
+
+function inlineSelect(key, oi, answer, fb) {
+  if (!inlineState[key]) inlineState[key] = {};
+  if (inlineState[key].revealed) return;
+  inlineState[key].sel = oi;
+  rerenderPractice();
+}
+function inlineCheck(key, answer, fb) {
+  if (!inlineState[key]) inlineState[key] = {};
+  inlineState[key].revealed = true;
+  inlineState[key].fb = decodeEntities(fb);
+  rerenderPractice();
+}
+function inlineSetVal(key, v) {
+  if (!inlineState[key]) inlineState[key] = {};
+  inlineState[key].inputVal = v;
+}
+function inlineCheckBlank(key, answer, fb) {
+  if (!inlineState[key]) inlineState[key] = {};
+  const val = (inlineState[key].inputVal||'').trim().toLowerCase();
+  inlineState[key].correct = val === answer.toLowerCase();
+  inlineState[key].revealed = true;
+  inlineState[key].fb = decodeEntities(fb);
+  rerenderPractice();
+}
+function decodeEntities(s){ const txt = document.createElement('textarea'); txt.innerHTML = s; return txt.value; }
+function rerenderPractice() {
+  const pi = STEPS.findIndex(s => s.fn === renderPractice);
+  if (currentStep === pi) document.getElementById('mainContent').innerHTML = renderPractice();
+}
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">💡 ${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+function scoreLabel() {
+  if(quizScore===QUIZ.length) return '🎉 ¡Perfecto! — You are ready for class!';
+  if(quizScore>=QUIZ.length*0.85) return '¡Excelente! Almost perfect.';
+  if(quizScore>=QUIZ.length*0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg() {
+  if(quizScore===QUIZ.length) return 'Outstanding — a perfect score! See you in class.';
+  if(quizScore>=QUIZ.length*0.85) return 'Retry the wrong answers to finish strong.';
+  if(quizScore>=QUIZ.length*0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+// ── STEPS — defined last ──────────────────────────────────
+STEPS = [
+  { label: '1. Overview',    fn: renderIntro },
+  { label: '2. Vocabulary',  fn: renderVocabulary },
+  { label: '3. Grammar',     fn: renderGrammar },
+  { label: '4. Mistakes',    fn: renderMistakes },
+  { label: '5. Reading',     fn: renderReading },
+  { label: '6. Practice',    fn: renderPractice },
+  { label: '7. Quiz',        fn: renderQuiz },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

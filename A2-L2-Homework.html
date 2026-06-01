@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Describing Your Company | A2 · Lesson 2 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red); background:var(--red-bg); color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red); color:white; }
+.q-opt.selected .opt-letter { background:var(--sky); color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg); color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red); background:var(--red-bg); }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+
+.writing-area { width:100%; min-height:160px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Lesson 2 · Homework</div>
+    <h1 class="hero-title">Describing Your Company</h1>
+    <p class="hero-sub">4 tasks · ~15 minutes · Complete before next class</p>
+    <div class="hero-pills">
+      <span class="pill accent">Task 1 — Multiple Choice</span>
+      <span class="pill accent">Task 2 — Fill in the Blank</span>
+      <span class="pill accent">Task 3 — Error Correction</span>
+      <span class="pill accent">Task 4 — Writing</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0, isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── QUIZ DATA ─────────────────────────────────────────────
+
+const QUIZ_T1 = [
+  { q:'Where is the company\'s main office? It is the company\'s __________.', opts:['branch','headquarters','supplier','division'], answer:1, fb:'"Headquarters" (HQ) = la sede principal — the main office of any company.' },
+  { q:'We have a __________ in Cali — it opened last year.', opts:['headquarters','client','branch','staff'], answer:2, fb:'"Branch" = la sucursal. A smaller office in a different city or country.' },
+  { q:'There __________ 200 employees in our company.', opts:['is','have','are','has'], answer:2, fb:'"Employees" is plural, so we need "There ARE 200 employees." Remember: plural noun → there ARE.' },
+  { q:'My company __________ IT services to banks.', opts:['does','makes','provides','is'], answer:2, fb:'"Provides" is the correct verb with "services". Never "does services of" — that is a Spanish structure.' },
+  { q:'Our company is __________ in Monterrey, Mexico.', opts:['located on','based in','placed at','set on'], answer:1, fb:'"Based in" is the correct phrase. Always use IN with cities and countries — never "on" or "at".' },
+  { q:'There __________ no HR department in this office.', opts:['are','have','is','were'], answer:2, fb:'"Department" is singular, so we need "There IS no HR department." Singular noun → there IS.' },
+  { q:'We work in the technology __________.', opts:['service','branch','industry','staff'], answer:2, fb:'"Industry" = el sector. In English, "industry" covers any business sector — not just factories.' },
+  { q:'Our main __________ sends materials from Brazil every month.', opts:['client','supplier','employee','department'], answer:1, fb:'"Supplier" = el proveedor. A supplier sends materials TO your company. A client BUYS from you.' },
+  { q:'The company has __________ in Colombia, Peru, and Chile.', opts:['headquarters','offices','industry','staff'], answer:1, fb:'"Offices" is correct here — the company has multiple offices in different countries.' },
+  { q:'I work in the Sales __________.', opts:['industry','client','department','supplier'], answer:2, fb:'"Department" is the word we use for a section of a company: Sales department, HR department, Finance department.' },
+];
+
+const quizStateT1 = {};
+let quizScoreT1 = 0;
+
+// ── FILL-IN STATE ─────────────────────────────────────────
+
+const fillState = {};
+const FILL_ANSWERS = ['provides','headquarters','there are','industry','based','staff','branch','clients'];
+const FILL_FB = [
+  '"Provides" = the correct verb with "services". Never "does services of".',
+  '"Headquarters" = la sede principal. Often abbreviated HQ.',
+  '"There are" because "employees" is plural.',
+  '"Industry" = el sector. Healthcare industry, technology industry, etc.',
+  '"Based in" = con sede en. Always use IN with cities.',
+  '"Staff" members — "staff" is uncountable. Never "staffs".',
+  '"Branch" = la sucursal — a smaller office in a different city.',
+  '"Clients" = the professional word for companies or people who buy your services.',
+];
+
+// ── ERROR CORRECTION STATE ────────────────────────────────
+
+const errorState = {};
+const ERROR_DATA = [
+  { wrong:'My company have three offices in Chile.', right:'My company has three offices in Chile.', fb:'"My company" is third person singular (like he/she/it) → use HAS, not have.' },
+  { wrong:'There is clients in five countries.', right:'There are clients in five countries.', fb:'"Clients" is plural → use THERE ARE. Singular → there is. Plural → there are.' },
+  { wrong:'We are based on Lima.', right:'We are based in Lima.', fb:'With cities and countries, always use IN. Never "on" or "at" with place names.' },
+  { wrong:'The company does services of logistics.', right:'The company provides logistics services.', fb:'Use PROVIDES (or offers/sells). Also: adjective before noun — "logistics services", not "services of logistics".' },
+  { wrong:'Our headquarters is located on Mexico City.', right:'Our headquarters is located in Mexico City.', fb:'With cities, always use IN — never ON. ✅ "Located in Mexico City."' },
+];
+
+// ── TASK 1: MULTIPLE CHOICE ───────────────────────────────
+
+function renderTask1() {
+  const answered = Object.values(quizStateT1).filter(s => s.revealed).length;
+  const pct = QUIZ_T1.length ? (answered / QUIZ_T1.length) * 100 : 0;
+  const allDone = answered === QUIZ_T1.length && QUIZ_T1.length > 0;
+  const allCorrect = allDone && quizScoreT1 === QUIZ_T1.length;
+  const wrongCount = allDone ? QUIZ_T1.length - quizScoreT1 : 0;
+  const letters = ['A','B','C','D'];
+
+  const cards = QUIZ_T1.map((q, i) => {
+    const s = quizStateT1[i] || {};
+    const rev = s.revealed;
+    const opts = q.opts.map((opt, j) => {
+      let cls = 'q-opt';
+      const isAns = j === q.answer;
+      if (rev) { if(isAns) cls+=' correct'; else if(s.sel===j) cls+=' wrong'; }
+      else if(s.sel===j) cls+=' selected';
+      return `<button class="${cls}" onclick="t1Select(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${letters[j]}</span>${opt}</button>`;
+    }).join('');
+    return `<div class="q-card" id="t1qc-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div class="q-text">${q.q}</div>
+      </div>
+      <div class="q-options">${opts}</div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="t1Reveal(${i})" ${s.sel===undefined?'disabled':''}>Check</button></div>` : ''}
+      ${rev  ? `<div class="q-feedback ${s.sel===q.answer?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Task 1 — Multiple Choice</div>
+      <div class="sec-badge-time">4 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>10 Multiple Choice Questions</h3>
+        <p>Choose the correct answer for each sentence. Click your choice, then press Check.</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ_T1.length}</span>
+    </div>
+
+    ${cards}
+
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScoreT1} / ${QUIZ_T1.length}</div>
+      <div class="result-label">${quizScoreT1===QUIZ_T1.length?'🎉 ¡Perfecto!':quizScoreT1>=8?'¡Excelente! Almost there.':'Keep going — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScoreT1===QUIZ_T1.length?'Perfect score — ready for the next task!':'Review the feedback on your wrong answers, then try Task 2.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;">
+        ${!allCorrect?`<button onclick="retakeT1()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(1)" style="padding:12px 28px;background:rgba(255,255,255,0.12);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">Task 2 →</button>
+      </div>
+    </div>` : ''}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function t1Select(i, j) {
+  if (!quizStateT1[i]) quizStateT1[i]={};
+  if (quizStateT1[i].revealed) return;
+  quizStateT1[i].sel = j;
+  rerenderT1();
+}
+function t1Reveal(i) {
+  if (!quizStateT1[i]) quizStateT1[i]={};
+  quizStateT1[i].revealed = true;
+  if (quizStateT1[i].sel === QUIZ_T1[i].answer) quizScoreT1++;
+  rerenderT1();
+}
+function retakeT1() {
+  QUIZ_T1.forEach((_,i) => {
+    const s = quizStateT1[i]; if(!s||!s.revealed)return;
+    if(s.sel!==QUIZ_T1[i].answer){ delete quizStateT1[i]; }
+  });
+  recalcT1(); rerenderT1();
+}
+function recalcT1() {
+  quizScoreT1=0;
+  QUIZ_T1.forEach((q,i)=>{ const s=quizStateT1[i]; if(s&&s.revealed&&s.sel===q.answer) quizScoreT1++; });
+}
+function rerenderT1() {
+  const ti=STEPS.findIndex(s=>s.fn===renderTask1);
+  if(currentStep===ti) document.getElementById('mainContent').innerHTML=renderTask1();
+}
+
+// ── TASK 2: FILL IN THE BLANK ─────────────────────────────
+
+const FILL_SENTENCES = [
+  { before:'Our company', after:'accounting services to small businesses.', ans:'provides' },
+  { before:'The company', after:'is in São Paulo, but we have offices in three countries.', ans:'headquarters' },
+  { before:'', after:'approximately 80 employees in the Bogotá office.', ans:'there are' },
+  { before:'We work in the healthcare', after:'.', ans:'industry' },
+  { before:'Our company is', after:'in Quito, Ecuador.', ans:'based' },
+  { before:'There are 45', after:'members in our team.', ans:'staff' },
+  { before:'We opened a new', after:'in Cali last year.', ans:'branch' },
+  { before:'Our', after:'are mainly large retail companies.', ans:'clients' },
+];
+
+function renderTask2() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Task 2 — Fill in the Blank</div>
+      <div class="sec-badge-time">4 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Complete each sentence with the correct word from the word bank. Each word is used <strong>once only</strong>.</p>
+
+    <div class="word-bank">
+      <div class="word-bank-label">Word Bank</div>
+      <div class="word-bank-words">based &nbsp;·&nbsp; there are &nbsp;·&nbsp; headquarters &nbsp;·&nbsp; branch &nbsp;·&nbsp; clients &nbsp;·&nbsp; staff &nbsp;·&nbsp; provides &nbsp;·&nbsp; industry</div>
+    </div>
+
+    ${FILL_SENTENCES.map((item, i) => {
+      const st = fillState[i] || {};
+      const rev = st.revealed;
+      let inputBorder = 'border-bottom:2px solid var(--border-grey);';
+      let inputColor = 'color:var(--navy);background:transparent;';
+      if (rev) {
+        inputBorder = st.correct ? 'border-bottom:2px solid var(--green);' : 'border-bottom:2px solid var(--red);';
+        inputColor = st.correct ? 'color:var(--green);' : 'color:var(--red);';
+      }
+      return `<div style="margin-bottom:10px;padding:13px 16px;background:var(--white);border:1px solid var(--border-grey);border-radius:8px;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px;color:var(--navy);">
+          <span style="font-size:12px;font-weight:700;color:var(--gold);min-width:20px;">${i+1}.</span>
+          ${item.before ? `<span>${item.before}</span>` : ''}
+          <input type="text" id="fill-${i}" placeholder="________" value="${st.val||''}"
+            oninput="fillSetVal(${i},this.value)"
+            style="border:none;${inputBorder}${inputColor}font-family:var(--font-body);font-size:14px;width:${item.ans.length>6?130:110}px;text-align:center;outline:none;padding:2px 4px;transition:all 0.12s;"
+            ${rev?'disabled':''}/>
+          ${item.after !== '.' ? `<span>${item.after}</span>` : '<span>.</span>'}
+          ${!rev ? `<button class="check-btn" onclick="fillCheck(${i})" style="margin-left:auto;padding:7px 14px;font-size:11px;">Check</button>` : ''}
+          ${rev ? `<span style="font-size:13px;color:${st.correct?'var(--green)':'var(--red)'};margin-left:4px;font-weight:700;">${st.correct?'✅':'❌ → '+item.ans}</span>` : ''}
+        </div>
+        ${rev ? `<div style="margin-top:8px;padding:8px 12px;border-radius:6px;font-size:13px;${st.correct?'background:var(--green-bg);color:var(--green);':'background:var(--red-bg);color:var(--red);'}">💡 ${FILL_FB[i]}</div>` : ''}
+      </div>`;
+    }).join('')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function fillSetVal(i, v) { if(!fillState[i])fillState[i]={}; fillState[i].val=v; }
+function fillCheck(i) {
+  if(!fillState[i])fillState[i]={};
+  const val=(fillState[i].val||'').trim().toLowerCase();
+  fillState[i].correct = val===FILL_SENTENCES[i].ans.toLowerCase();
+  fillState[i].revealed=true;
+  rerenderT2();
+}
+function rerenderT2() {
+  const ti=STEPS.findIndex(s=>s.fn===renderTask2);
+  if(currentStep===ti) document.getElementById('mainContent').innerHTML=renderTask2();
+}
+
+// ── TASK 3: ERROR CORRECTION ──────────────────────────────
+
+const errorRevealState = {};
+
+function renderTask3() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Task 3 — Error Correction</div>
+      <div class="sec-badge-time">4 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Each sentence below has <strong>one mistake</strong>. Type the corrected sentence in the box, then click <strong>Check</strong> to see the answer and explanation.</p>
+
+    <div class="es-note">📌 Cada oración tiene UN error. Escribe la versión correcta antes de ver la respuesta. ¡Inténtalo sin mirar tus notas primero!</div>
+
+    ${ERROR_DATA.map((item, i) => {
+      const st = errorRevealState[i] || {};
+      return `<div class="mistake-wrap">
+        <div class="mistake-label">Sentence ${i+1} of ${ERROR_DATA.length}</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:9px 13px;background:var(--red-bg);border-radius:7px;font-size:14px;color:var(--red);margin-bottom:10px;font-style:italic;">
+          ❌ &nbsp;${item.wrong}
+        </div>
+        <div style="margin-bottom:8px;">
+          <input type="text" id="err-${i}" placeholder="Type the corrected sentence here…" value="${st.val||''}"
+            oninput="errSetVal(${i},this.value)"
+            style="width:100%;padding:10px 14px;border:1.5px solid var(--border-grey);border-radius:7px;font-family:var(--font-body);font-size:14px;background:var(--off-white);outline:none;color:var(--navy);transition:border-color 0.12s;"
+            ${st.revealed?'disabled':''}/>
+        </div>
+        ${!st.revealed ? `<div style="text-align:right"><button class="check-btn" onclick="errReveal(${i})">Check Answer</button></div>` : ''}
+        ${st.revealed ? `
+          <div style="display:flex;align-items:center;gap:8px;padding:9px 13px;background:var(--green-bg);border-radius:7px;font-size:14px;color:var(--green);margin-top:8px;font-style:italic;">
+            ✅ &nbsp;${item.right}
+          </div>
+          <div style="margin-top:8px;padding:9px 13px;background:var(--off-white);border-left:4px solid var(--gold);border-radius:4px;font-size:13px;color:var(--slate);line-height:1.6;">
+            💡 ${item.fb}
+          </div>` : ''}
+      </div>`;
+    }).join('')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function errSetVal(i, v) { if(!errorRevealState[i])errorRevealState[i]={}; errorRevealState[i].val=v; }
+function errReveal(i) {
+  if(!errorRevealState[i])errorRevealState[i]={};
+  errorRevealState[i].revealed=true;
+  rerenderT3();
+}
+function rerenderT3() {
+  const ti=STEPS.findIndex(s=>s.fn===renderTask3);
+  if(currentStep===ti) document.getElementById('mainContent').innerHTML=renderTask3();
+}
+
+// ── TASK 4: WRITING ───────────────────────────────────────
+
+function renderTask4() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Task 4 — Short Writing</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Write a short paragraph of <strong>5–7 sentences</strong> describing a real or imaginary company. Use the prompts below to guide you.</p>
+
+    <div class="es-note">📌 Puedes escribir sobre tu empresa real o inventar una. Lo importante es usar el vocabulario y las estructuras gramaticales de esta lección.</div>
+
+    <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;padding:18px;margin-bottom:18px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px;">Writing Prompts — try to include all of these</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        ${[
+          ['📛','What is the company\'s name?'],
+          ['🏭','What does it do?'],
+          ['📍','Where is it based?'],
+          ['🏢','Are there branches or offices?'],
+          ['👥','How many employees are there?'],
+          ['🤝','Who are its clients or suppliers?'],
+        ].map(([icon, text]) => `
+          <div style="display:flex;gap:8px;align-items:flex-start;padding:9px 12px;background:var(--light-grey);border-radius:7px;font-size:13px;color:var(--navy);">
+            <span style="font-size:15px;">${icon}</span>
+            <span style="font-style:italic;">${text}</span>
+          </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Example opening — use this as a model, then write your own</div>
+      <em>"Soluciones del Norte is a technology company based in Monterrey, Mexico. There are around 150 employees and two branches — one in Guadalajara and one in Mexico City. The company provides software services to clients in the retail industry…"</em>
+    </div>
+
+    <div class="h-serif" style="margin-top:4px;">Your paragraph</div>
+    <textarea class="writing-area" id="hwWriting"
+      placeholder="Start writing here… e.g. [Company name] is a [type] company based in [city]…"
+      oninput="updateWC()"></textarea>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
+      <div id="wcTarget" style="font-size:12px;color:var(--grey-blue);">Aim for 5–7 sentences</div>
+      <div id="wcCount" style="font-size:12px;color:var(--grey-blue);">0 words</div>
+    </div>
+
+    <div style="margin-top:24px;padding:16px 18px;background:var(--navy);border-radius:10px;text-align:center;">
+      <div style="font-family:var(--font-heading);font-size:18px;color:var(--gold);margin-bottom:6px;">🎉 Homework complete!</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.6);">Well done. Bring this paragraph to class — your teacher may ask you to read it aloud or share it with a partner.</div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function updateWC() {
+  const ta = document.getElementById('hwWriting');
+  const wc = document.getElementById('wcCount');
+  if (ta && wc) {
+    const words = ta.value.trim().split(/\s+/).filter(w=>w.length>0).length;
+    wc.textContent = words + ' word' + (words===1?'':'s');
+    const tgt = document.getElementById('wcTarget');
+    if (tgt) {
+      if (words >= 40) tgt.textContent = '✅ Great length!';
+      else tgt.textContent = 'Aim for 5–7 sentences (~40+ words)';
+    }
+  }
+}
+
+// ── STEPS — defined last ──────────────────────────────────
+STEPS = [
+  { label: 'Task 1 — Multiple Choice', fn: renderTask1 },
+  { label: 'Task 2 — Fill in Blank',   fn: renderTask2 },
+  { label: 'Task 3 — Error Correction',fn: renderTask3 },
+  { label: 'Task 4 — Writing',         fn: renderTask4 },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

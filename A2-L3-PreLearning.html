@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workplace Relationships | A2 · Unit 1 · Lesson 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAV */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+.vocab-ex { font-size:13px; color:var(--slate); }
+
+/* DATA TABLE */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+
+/* SENTENCE BUILDER */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* CHECK BUTTON */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* APOSTROPHE RULE PANEL */
+.apos-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+@media(max-width:560px){ .apos-grid{ grid-template-columns:1fr; } }
+.apos-card { border-radius:10px; overflow:hidden; border:1px solid var(--border-grey); }
+.apos-card-head { padding:12px 16px; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+.apos-card-head.singular { background:var(--sky); color:var(--white); }
+.apos-card-head.plural   { background:var(--navy); color:var(--gold); }
+.apos-card-body { padding:14px 16px; background:var(--white); }
+.apos-rule { font-size:20px; font-family:var(--font-heading); color:var(--navy); margin-bottom:8px; }
+.apos-rule span { color:var(--gold); }
+.apos-desc { font-size:13px; color:var(--grey-blue); margin-bottom:10px; line-height:1.5; }
+.apos-example { font-size:13px; font-style:italic; color:var(--slate); padding:6px 10px; background:var(--light-grey); border-radius:5px; margin-bottom:5px; }
+.apos-example strong { color:var(--navy); font-style:normal; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Lesson 3 · Pre-Learning</div>
+    <h1 class="hero-title">Workplace Relationships</h1>
+    <p class="hero-sub">Describing Coworkers and Reporting Lines · 45 min · Self-Study</p>
+    <div class="hero-outcomes">
+      <div>
+        <div class="outcome-item">Use possessives correctly</div>
+        <div class="outcome-note">Usar posesivos correctamente</div>
+      </div>
+      <div>
+        <div class="outcome-item">Name workplace relationships</div>
+        <div class="outcome-note">Nombrar relaciones de trabajo</div>
+      </div>
+      <div>
+        <div class="outcome-item">Explain reporting lines</div>
+        <div class="outcome-note">Explicar líneas de reporte</div>
+      </div>
+      <div>
+        <div class="outcome-item">Use relationship verbs</div>
+        <div class="outcome-note">Usar verbos de relación laboral</div>
+      </div>
+      <div>
+        <div class="outcome-item">Avoid translation traps</div>
+        <div class="outcome-note">Evitar errores de traducción</div>
+      </div>
+      <div>
+        <div class="outcome-item">Read a workplace bio</div>
+        <div class="outcome-note">Leer una biografía profesional</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) { return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100); }
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const VOCAB = [
+  ["colleague",        "colega / compañero/a de trabajo",  "My colleague Ana works in Finance."],
+  ["supervisor",       "supervisor/a",                     "My supervisor checks my work every Friday."],
+  ["direct report",    "subordinado/a directo/a",          "I have two direct reports on my team."],
+  ["stakeholder",      "parte interesada",                 "The stakeholders want a progress update."],
+  ["manager",          "gerente / jefe",                   "My manager is very organized."],
+  ["team member",      "miembro del equipo",               "Each team member has a different role."],
+  ["department head",  "jefe de departamento",             "The department head approves the budget."],
+  ["intern",           "practicante / pasante",            "The intern starts on Monday."],
+  ["assistant",        "asistente",                        "The assistant schedules all the meetings."],
+  ["CEO",              "Director Ejecutivo",               "The CEO of the company is based in New York."],
+  ["coordinator",      "coordinador/a",                    "The coordinator manages the project timeline."],
+];
+
+const QUIZ = [
+  {
+    type:'mc',
+    q:'Maria works in my team. She is my _____.',
+    opts:['partner','colleague','subordinate'],
+    answer:1,
+    hint:'Think about the professional, neutral word for someone at the same level.',
+    fb:'"Partner" means co-owner or romantic partner. "Subordinate" is too formal and cold. "Colleague" is the natural, professional choice.'
+  },
+  {
+    type:'mc',
+    q:'I _____ to the Head of Operations.',
+    opts:['manage','report','coordinate'],
+    answer:1,
+    hint:'Remember: this phrase always needs a second word after it.',
+    fb:'The correct phrase is "I report TO." Without "to," it means something completely different — like filing a complaint!'
+  },
+  {
+    type:'mc',
+    q:'Carlos _____ a team of eight people.',
+    opts:['reports to','coordinates','manages'],
+    answer:2,
+    hint:'Which verb means he is the team leader?',
+    fb:'"Manages" shows Carlos is the leader. "Coordinates" means he connects groups but is not necessarily the leader. "Reports to" is the opposite direction.'
+  },
+  {
+    type:'mc',
+    q:'Which sentence uses the possessive correctly?',
+    opts:["The name of my manager is Isabel.","My manager's name is Isabel.","My managers name is Isabel."],
+    answer:1,
+    hint:"Look for the apostrophe + s after the noun.",
+    fb:'"My manager\'s name" is correct — the apostrophe + s shows the name belongs to the manager. Without the apostrophe, the sentence is a grammar error.'
+  },
+  {
+    type:'tf',
+    q:'"The managers\' offices are on the third floor" refers to the offices belonging to MORE THAN ONE manager.',
+    answer:true,
+    hint:'When the apostrophe comes AFTER the s, it means the noun is plural.',
+    fb:'Correct! "managers\'" = more than one manager. The apostrophe after the s signals a plural possessive. If it were one manager, we would write "the manager\'s office."'
+  },
+  {
+    type:'mc',
+    q:'You are writing a professional email. How should you refer to your boss?',
+    opts:['My boss approved the budget.','My jefe approved the budget.','My manager approved the budget.'],
+    answer:2,
+    hint:'Think about register — what is appropriate in formal written communication?',
+    fb:'"Manager" or "supervisor" is always preferred in professional writing. "Boss" is informal — fine in conversation, but avoid it in emails and documents.'
+  },
+  {
+    type:'mc',
+    q:'She is _____ client communication.',
+    opts:['responsible of','responsible to','responsible for'],
+    answer:2,
+    hint:'Only one preposition works with "responsible" in English.',
+    fb:'"Responsible FOR" is the correct collocation. "Responsible of" and "responsible to" are not used in this context.'
+  },
+  {
+    type:'tf',
+    q:'"My partner Roberto helps me with presentations" is a natural and correct professional sentence.',
+    answer:false,
+    hint:'Think about what "partner" means in English.',
+    fb:'False! In English, "partner" means a business co-owner or a romantic partner. Using it for a regular coworker sounds very strange. Use "colleague" or "coworker" instead.'
+  },
+  {
+    type:'mc',
+    q:'Which sentence is correct?',
+    opts:['I work for the Finance team on reports.','I work with the Finance team on reports.','I work at the Finance team on reports.'],
+    answer:1,
+    hint:'"Work with" = collaboration. "Work for" = you are employed by them or they are your boss.',
+    fb:'"Work WITH" is correct for collaboration. "Work FOR" means they are your employer or direct boss — which changes the meaning completely.'
+  },
+  {
+    type:'input',
+    q:'Rewrite this sentence using possessive \'s: "The office of the department head is on the 5th floor."',
+    hint:'Start with: The department head\'s...',
+    answers:["the department head's office is on the 5th floor","the department head's office is on the 5th floor."],
+    display:"The department head's office is on the 5th floor.",
+    fb:'Great! "The department head\'s office" uses possessive \'s correctly. The office belongs to the department head, so the apostrophe + s goes right after the noun.'
+  },
+];
+
+// ── QUIZ STATE ────────────────────────────────────────────
+const quizState = {};
+let quizScore = 0;
+
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderIntro() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">About This Lesson</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">In this lesson you will learn how to <strong>describe the people you work with</strong> and explain how they are connected — who reports to whom, who works with whom, and what those relationships are called in professional English.</p>
+
+    <div class="info-box">
+      <strong>Why does this matter?</strong><br>
+      When you work with international colleagues, you need to explain your team structure clearly. You may be asked: <em>"Who do you report to?"</em> or <em>"How big is your team?"</em> — and you need to answer confidently and correctly.
+    </div>
+
+    <div class="es-note">
+      📌 <strong>Lo que vas a aprender hoy:</strong> cómo usar posesivos correctamente, los verbos clave para describir relaciones laborales, y cómo evitar errores comunes de traducción del español al inglés.
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;padding:20px;margin-bottom:20px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px;">By the end of this section, you will be able to</div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--slate);">
+          <span style="color:var(--gold);font-weight:700;">✓</span> Use possessive <strong>'s</strong> and <strong>s'</strong> correctly
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--slate);">
+          <span style="color:var(--gold);font-weight:700;">✓</span> Name 11 key workplace relationship words
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--slate);">
+          <span style="color:var(--gold);font-weight:700;">✓</span> Use verbs like <em>reports to, manages, is responsible for</em>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--slate);">
+          <span style="color:var(--gold);font-weight:700;">✓</span> Avoid 4 common Spanish-to-English translation mistakes
+        </div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary — People at Work</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">
+      📚 <strong>Instrucciones:</strong> Estudia estas palabras con cuidado. Léelas en voz alta. El ejemplo te muestra cómo usarlas en una oración de trabajo real.
+    </div>
+
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head" style="grid-template-columns:1fr 1fr 1.4fr;">
+        <span>English</span><span>Español</span><span>Example</span>
+      </div>
+      ${VOCAB.map(([en,es,ex]) => `
+        <div class="vocab-row" style="grid-template-columns:1fr 1fr 1.4fr;">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+          <div class="vocab-ex">${ex}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Quick Memory Trick</div>
+      Group the words by direction: <strong>Up</strong> (supervisor, manager, department head, CEO) — people above you. <strong>Same level</strong> (colleague, team member, coordinator) — people beside you. <strong>Down</strong> (direct report, intern, assistant) — people who report to you. This helps you choose the right word fast.
+    </div>
+
+    <div class="es-note">
+      🇪🇸 <strong>Nota:</strong> Recuerda — <em>compañero de trabajo</em> = <strong>colleague</strong> (NO "partner"). <em>Practicante</em> = <strong>intern</strong>. <em>Gerente / jefe</em> = <strong>manager</strong> o <strong>supervisor</strong>. Estos errores son muy comunes — ¡los veremos en detalle en la siguiente sección!
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar — Possessives &amp; Relationship Verbs</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">At A1, you learned possessive adjectives: <em>my, your, his, her, its, our, their.</em> At A2, we add two important tools: the <strong>possessive 's</strong> and key <strong>relationship verbs</strong>.</p>
+
+    <!-- POSSESSIVE 'S INTRO -->
+    <div class="h-serif" style="margin-bottom:6px;">Tool 1 — Possessive 's</div>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:16px;line-height:1.7;">Use <strong>'s</strong> to show that something belongs to, or is connected to, a person or thing.</p>
+
+    <!-- SENTENCE BUILDER -->
+    <div class="builder-wrap">
+      <div class="builder-label">Possessive 's · Structure</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:18px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Person / Thing</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">Ana</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic;">the manager</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.35);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:0 0 80px;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Possessive</div>
+          <div style="font-size:22px;font-weight:700;color:var(--gold);">'s</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:120px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Role / Thing</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold);">office</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic;">name / team / feedback</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"Ana's office is on the 5th floor."</strong></div>
+      <div class="builder-ex"><strong>"The manager's feedback was very useful."</strong></div>
+      <div class="builder-ex"><strong>"My team member's name is Diego."</strong></div>
+      <div class="builder-ex"><strong>"The intern's contract is for three months."</strong></div>
+    </div>
+
+    <!-- SINGULAR VS PLURAL APOSTROPHE — NEW SECTION -->
+    <div class="h-serif" style="margin-top:10px;margin-bottom:10px;">Apostrophe Rule: One Person vs Many People</div>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:16px;line-height:1.7;">This is one of the most common written mistakes in English. The position of the apostrophe tells you if you are talking about <strong>one person</strong> or <strong>more than one person</strong>.</p>
+
+    <div class="apos-grid">
+      <div class="apos-card">
+        <div class="apos-card-head singular">Singular — One person</div>
+        <div class="apos-card-body">
+          <div class="apos-rule">noun<span>'s</span> + thing</div>
+          <div class="apos-desc">Apostrophe comes BEFORE the s. Use when you are talking about ONE person or thing.</div>
+          <div class="apos-example">The <strong>manager's</strong> cabin is on this floor.<br><span style="color:var(--grey-blue);font-size:12px;">→ One manager. One cabin.</span></div>
+          <div class="apos-example">My <strong>colleague's</strong> desk is next to mine.<br><span style="color:var(--grey-blue);font-size:12px;">→ One colleague. One desk.</span></div>
+          <div class="apos-example">The <strong>intern's</strong> contract starts Monday.<br><span style="color:var(--grey-blue);font-size:12px;">→ One intern. One contract.</span></div>
+        </div>
+      </div>
+      <div class="apos-card">
+        <div class="apos-card-head plural">Plural — More than one person</div>
+        <div class="apos-card-body">
+          <div class="apos-rule">noun<span>s'</span> + thing</div>
+          <div class="apos-desc">Apostrophe comes AFTER the s. Use when you are talking about MULTIPLE people or things.</div>
+          <div class="apos-example">The <strong>managers'</strong> cabins are on this floor.<br><span style="color:var(--grey-blue);font-size:12px;">→ Several managers. Several cabins.</span></div>
+          <div class="apos-example">My <strong>colleagues'</strong> desks are next to mine.<br><span style="color:var(--grey-blue);font-size:12px;">→ Several colleagues. Several desks.</span></div>
+          <div class="apos-example">The <strong>interns'</strong> contracts start Monday.<br><span style="color:var(--grey-blue);font-size:12px;">→ Several interns. Several contracts.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="es-note">
+      🇪🇸 <strong>Resumen en español:</strong><br>
+      • <em>El gerente's</em> → <strong>the manager's</strong> (un solo gerente — apóstrofo ANTES de la s)<br>
+      • <em>Los gerentes's</em> → <strong>the managers'</strong> (varios gerentes — apóstrofo DESPUÉS de la s)<br><br>
+      En español no existe esta distinción visual en la escritura. En inglés es obligatoria. ¡Ponla en práctica desde ahora!
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Practical Test</div>
+      Before you write, ask yourself: <em>"Am I talking about one person or more than one?"</em>
+      If <strong>one</strong> → write <strong>'s</strong> (apostrophe, then s). If <strong>more than one</strong> → write <strong>s'</strong> (s, then apostrophe).
+      You can also test by replacing the noun with a pronoun: <em>"the manager's office"</em> → <em>"her office"</em> (one). <em>"the managers' offices"</em> → <em>"their offices"</em> (many).
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RELATIONSHIP VERBS -->
+    <div class="h-serif" style="margin-bottom:10px;">Tool 2 — Relationship Verbs</div>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:16px;line-height:1.7;">These six verbs are the core of describing how people connect at work. Learn the verb AND the preposition — they always go together.</p>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1fr 1.4fr;">
+        <span>Verb</span><span>Use</span><span>Example</span>
+      </div>
+      ${[
+        ["reports to","who is your boss","I report to the Sales Manager."],
+        ["manages","who are your team","She manages a team of five people."],
+        ["works with","collaboration","He works with the Finance team every week."],
+        ["is responsible for","job duties","She is responsible for client communication."],
+        ["supports","helping role","The assistant supports the whole department."],
+        ["coordinates","organizing role","He coordinates between Sales and Operations."],
+      ].map(([v,u,e]) => `
+        <div class="data-table-row" style="grid-template-columns:1fr 1fr 1.4fr;">
+          <div style="font-weight:700;color:var(--navy);font-size:14px;">${v}</div>
+          <div style="font-size:13px;color:var(--grey-blue);">${u}</div>
+          <div style="font-size:13px;font-style:italic;color:var(--slate);">${e}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 "Work with" vs "Work for"</div>
+      <strong>I work FOR TechCorp</strong> → TechCorp is your employer.<br>
+      <strong>I work WITH the Finance team</strong> → You collaborate with Finance.<br>
+      <strong>I work FOR my manager</strong> → She directs your work.<br>
+      <span style="font-size:13px;color:var(--grey-blue);">These are small words with big differences — use them carefully.</span>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderTraps() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Translation Traps</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">
+      🚨 <strong>¡Cuidado!</strong> Estas son las trampas de traducción más comunes del español al inglés en el tema de relaciones laborales. Léelas despacio — ¡muchos estudiantes cometen estos errores exactamente!
+    </div>
+
+    <!-- TRAP 1 -->
+    <div class="mistake-wrap">
+      <div class="mistake-label">🚨 Trap 1 — "Jefe" ≠ always "boss"</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:12px;line-height:1.6;">In Spanish, <em>jefe</em> is used naturally and frequently. In English, <strong>boss</strong> is informal — and can even sound slightly negative in professional writing.</p>
+      <div style="margin-bottom:12px;">
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-blue);font-weight:700;margin-bottom:8px;">When to use what</div>
+        <div style="background:var(--green-bg);border-radius:7px;padding:10px 14px;margin-bottom:6px;font-size:14px;color:var(--green);">✅ <strong>Formal / professional:</strong> my manager · my supervisor</div>
+        <div style="background:var(--gold-bg);border-radius:7px;padding:10px 14px;margin-bottom:6px;font-size:14px;color:#7A5500;">⚠️ <strong>Neutral spoken:</strong> my boss (okay in conversation)</div>
+        <div style="background:var(--red-bg);border-radius:7px;padding:10px 14px;font-size:14px;color:var(--red);">❌ <strong>In writing (email/report):</strong> avoid "boss" — always use manager or supervisor</div>
+      </div>
+      <div class="mistake-right">✅ My manager approved the request.</div>
+      <div class="mistake-wrong">⚠️ My boss approved the request. <span style="font-size:12px;">(okay in speech — not ideal in writing)</span></div>
+    </div>
+
+    <!-- TRAP 2 -->
+    <div class="mistake-wrap">
+      <div class="mistake-label">🚨 Trap 2 — "Compañero" ≠ "partner"</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:12px;line-height:1.6;"><em>Compañero de trabajo</em> = <strong>colleague</strong> or <strong>coworker</strong> — NOT "partner." In English, <strong>partner</strong> means a business co-owner OR a romantic partner. Using it for a regular coworker sounds very strange.</p>
+      <div class="es-note" style="margin-bottom:12px;">🇪🇸 En inglés, <em>"partner"</em> tiene una connotación muy diferente. Si dices <em>"my partner Roberto"</em>, la gente puede pensar que Roberto es tu pareja romántica o socio de negocios. Para un compañero de trabajo, usa siempre <em>"colleague"</em>.</div>
+      <div class="mistake-right">✅ My colleague helped me with the report.</div>
+      <div class="mistake-wrong">❌ My partner helped me with the report. (Are you married to them?!)</div>
+    </div>
+
+    <!-- TRAP 3 -->
+    <div class="mistake-wrap">
+      <div class="mistake-label">🚨 Trap 3 — "Subordinado" sounds harsh in English</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:12px;line-height:1.6;">In Spanish, <em>subordinado</em> is a perfectly normal word. In English, <strong>subordinate</strong> exists but feels cold and old-fashioned in everyday professional conversation.</p>
+      <div class="es-note" style="margin-bottom:12px;">🇪🇸 Aunque <em>"subordinate"</em> existe en inglés, suena anticuado y distante. En el entorno corporativo moderno, se prefiere decir <em>"direct report"</em> o simplemente <em>"someone on my team"</em>.</div>
+      <div class="mistake-right">✅ Use: my direct report · my team member · someone on my team</div>
+      <div class="mistake-wrong">⚠️ Avoid: my subordinate (sounds very formal and unfriendly)</div>
+    </div>
+
+    <!-- TRAP 4 -->
+    <div class="mistake-wrap">
+      <div class="mistake-label">🚨 Trap 4 — "Reportar a" vs "report to"</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:12px;line-height:1.6;">The Spanish structure is the same as English — but one tiny word changes everything. The word <strong>"to"</strong> is essential.</p>
+      <div class="es-note" style="margin-bottom:12px;">🇪🇸 <em>"Yo le reporto a mi gerente"</em> → <strong>"I report TO my manager"</strong> ✅<br>Si olvidas el <em>"to"</em>, la frase significa que estás presentando una queja contra tu gerente. ¡El "to" lo cambia todo!</div>
+      <div class="mistake-right">✅ I report to my manager. (I work under this person.)</div>
+      <div class="mistake-wrong">❌ I report my manager. (I'm filing a complaint about this person!)</div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPatterns() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Sentence Patterns</div>
+      <div class="sec-badge-time">7 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Study these patterns. You will use them in class tomorrow — in speaking exercises, pair work, and the org chart activity. Practise reading them aloud.</p>
+
+    <div class="h-serif" style="margin-bottom:10px;">Describing who you report to</div>
+    <div class="pattern-box" style="margin-bottom:20px;">
+      <div class="pattern-box-head">Pattern → Example</div>
+      ${[
+        ["I report to [name/title].", "I report to the Head of Sales."],
+        ["My supervisor is [name].", "My supervisor is Ana Torres."],
+        ["[Name] is my direct manager.", "Carlos Ruiz is my direct manager."],
+      ].map(([p,e])=>`<div class="pattern-row"><div class="pattern-en">${p}</div><div class="pattern-es">${e}</div></div>`).join('')}
+    </div>
+
+    <div class="h-serif" style="margin-bottom:10px;">Describing your team</div>
+    <div class="pattern-box" style="margin-bottom:20px;">
+      <div class="pattern-box-head">Pattern → Example</div>
+      ${[
+        ["I work with a team of [number] people.", "I work with a team of six people."],
+        ["My team includes [name] and [name].", "My team includes Diego and Valentina."],
+        ["I have [number] direct reports.", "I have two direct reports."],
+      ].map(([p,e])=>`<div class="pattern-row"><div class="pattern-en">${p}</div><div class="pattern-es">${e}</div></div>`).join('')}
+    </div>
+
+    <div class="h-serif" style="margin-bottom:10px;">Describing someone else's role</div>
+    <div class="pattern-box" style="margin-bottom:20px;">
+      <div class="pattern-box-head">Pattern → Example</div>
+      ${[
+        ["[Name] is responsible for [task/dept].", "Lucia is responsible for client communication."],
+        ["[Name] manages the [team/dept].", "Pedro manages the Finance department."],
+        ["[Name] reports to [title].", "The intern reports to the Sales Coordinator."],
+        ["[Name] coordinates between [dept] and [dept].", "He coordinates between Sales and Operations."],
+      ].map(([p,e])=>`<div class="pattern-row"><div class="pattern-en">${p}</div><div class="pattern-es">${e}</div></div>`).join('')}
+    </div>
+
+    <div class="h-serif" style="margin-bottom:10px;">Describing a colleague</div>
+    <div class="pattern-box" style="margin-bottom:20px;">
+      <div class="pattern-box-head">Pattern → Example</div>
+      ${[
+        ["[Name] is a colleague of mine.", "Felipe is a colleague of mine."],
+        ["My colleague [name] is a [job title].", "My colleague Sofia is a Project Coordinator."],
+        ["[Name] is a team member. He/She is responsible for [task].", "Marco is a team member. He is responsible for data analysis."],
+      ].map(([p,e])=>`<div class="pattern-row"><div class="pattern-en">${p}</div><div class="pattern-es">${e}</div></div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Before Class Tomorrow</div>
+      Think about your own workplace (or a company you know well). Who is your manager? Who are your colleagues? Do you have any direct reports? You will describe your team in class using exactly these patterns.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Reading — A Workplace Bio</div>
+      <div class="sec-badge-time">7 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Read the short professional bio below. As you read, look for the vocabulary and grammar from this lesson — possessives, relationship verbs, and workplace titles.</p>
+
+    <div class="info-box" style="font-size:15px;line-height:1.9;font-style:italic;">
+      "My name is Fernanda López. I work at TechCorp as a Project Coordinator. I report to the Head of Operations, Mr. James Bennett. I manage a small team — I have two direct reports: Diego and Valentina. My colleagues in the Operations department are very supportive. I also work closely with the Finance and HR teams. My main responsibility is to coordinate timelines and deliverables across departments. The key stakeholders I communicate with are the department heads and the CEO's assistant."
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;padding:20px;margin-bottom:20px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px;">Comprehension Questions — Check Your Understanding</div>
+      ${[
+        ["What is Fernanda's job title?","Project Coordinator"],
+        ["Who does she report to?","The Head of Operations, Mr. James Bennett"],
+        ["How many direct reports does she have?","Two — Diego and Valentina"],
+        ["Which departments does she work with?","Operations, Finance, and HR"],
+        ["Find one example of possessive 's in the text.","The CEO's assistant / The company's HR team"],
+      ].map(([q,a],i)=>`
+        <div style="padding:10px 0;border-bottom:1px dashed var(--border-grey);">
+          <div style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px;">${i+1}. ${q}</div>
+          <div style="font-size:13px;color:var(--grey-blue);font-style:italic;">→ ${a}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Notice the possessive in the text</div>
+      <strong>"the CEO's assistant"</strong> — one CEO, one assistant. Apostrophe before the s.<br>
+      If there were several CEOs (in a large group company), it would be: <strong>"the CEOs' assistants"</strong> — apostrophe after the s.
+    </div>
+
+    <div class="es-note">
+      🇪🇸 <strong>Antes de ir al quiz:</strong> Repasa mentalmente el vocabulario, los posesivos y los verbos de relación. El quiz tiene 10 preguntas. Puedes repetir las que salgan incorrectas. ¡Ánimo!
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Quiz — Test Yourself</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time · You can retry wrong answers</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;">
+        ${!allCorrect ? `<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>` : ''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! — You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding — a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">💡 ${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+
+// ── STEPS — defined last ──────────────────────────────────
+STEPS = [
+  { label: "1. About This Lesson", fn: renderIntro },
+  { label: "2. Vocabulary",        fn: renderVocabulary },
+  { label: "3. Grammar",           fn: renderGrammar },
+  { label: "4. Translation Traps", fn: renderTraps },
+  { label: "5. Sentence Patterns", fn: renderPatterns },
+  { label: "6. Reading",           fn: renderReading },
+  { label: "7. Quiz",              fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

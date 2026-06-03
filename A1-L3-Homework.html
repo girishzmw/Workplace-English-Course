@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3 — Countries &amp; Companies | A1 · Unit 1 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:12px; }
+
+/* QUIZ */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* WRITING */
+.writing-area { width:100%; min-height:130px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.subhead { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin:22px 0 10px; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-family:var(--font-body); font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Homework</div>
+    <h1 class="hero-title">Lesson 3 — Countries &amp; Companies</h1>
+    <p class="hero-sub">Quiz + Writing Task &nbsp;·&nbsp; 15 minutes &nbsp;·&nbsp; Complete before next class</p>
+    <div class="hero-pills">
+      <span class="pill accent">5 Parts</span>
+      <span class="pill accent">15 min</span>
+      <span class="pill">Gap Fill · Numbers · Nationalities · Error Correction · Writing</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+<script>
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0, isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── QUIZ DATA ─────────────────────────────────────────────
+
+// PART 1 — Gap Fill
+const QUIZ1 = [
+  { type:'mc', q:'Apple ___ from the United States.',
+    opts:['am','are','is','be'], answer:2,
+    hint:'Apple = it → He/She/It form.',
+    fb:'"Apple is from the United States." — Apple is a company, treated as "it". Use "is".' },
+  { type:'mc', q:'I ___ from Buenos Aires, Argentina.',
+    opts:['are','is','am','be'], answer:2,
+    hint:'"I" always uses one special form.',
+    fb:'"I am from Buenos Aires." — I → am. Always.' },
+  { type:'mc', q:'Where ___ your manager from?',
+    opts:['am','are','is','be'], answer:2,
+    hint:'"Your manager" = he or she → which form?',
+    fb:'"Where is your manager from?" — "Your manager" is a singular subject, so we use "is".' },
+  { type:'mc', q:'Our company is ___ Colombia.',
+    opts:['in','at','from','of'], answer:2,
+    hint:'We are talking about origin — where the company comes from.',
+    fb:'"Our company is from Colombia." — Use "from" for origin. "Is in" = location. "Is from" = origin.' },
+  { type:'mc', q:'They ___ from Brazil. They\'re from São Paulo.',
+    opts:['is','am','are','be'], answer:2,
+    hint:'"They" → which form of be?',
+    fb:'"They are from Brazil." — They → are. They\'re is the contraction of they are.' },
+  { type:'mc', q:'The office ___ in Bogotá, but the company is from Mexico.',
+    opts:['are','am','is','be'], answer:2,
+    hint:'"The office" = it → singular.',
+    fb:'"The office is in Bogotá." — Note: "is in" for location, "is from" for origin. Both correct — different meanings.' },
+];
+
+// PART 2 — Numbers
+const QUIZ2 = [
+  { type:'input', q:'Write in words: <strong style="font-size:20px;color:var(--gold)">17</strong>',
+    hint:'Ten + seven → -teen ending.',
+    answers:['seventeen'], display:'seventeen',
+    fb:'"Seventeen" — the -teen suffix (13–19) means the number is in the teens. Seventeen = 10 + 7.' },
+  { type:'input', q:'Write in words: <strong style="font-size:20px;color:var(--gold)">40</strong>',
+    hint:'No "u" — even though "four" has one.',
+    answers:['forty'], display:'forty',
+    fb:'"Forty" — no U. Four has a U, forty does not. This is the most common number spelling mistake.' },
+  { type:'input', q:'Write in words: <strong style="font-size:20px;color:var(--gold)">55</strong>',
+    hint:'fifty + hyphen + five',
+    answers:['fifty-five','fifty five','fiftyfive'], display:'fifty-five',
+    fb:'"Fifty-five" — fifty (50) + five (5). Numbers between tens use a hyphen.' },
+  { type:'input', q:'Write in words: <strong style="font-size:20px;color:var(--gold)">83</strong>',
+    hint:'eighty + hyphen + three',
+    answers:['eighty-three','eighty three','eightythree'], display:'eighty-three',
+    fb:'"Eighty-three" — note the spelling of "eighty": e-i-g-h-t-y. Eight + y.' },
+  { type:'input', q:'Write in words: <strong style="font-size:20px;color:var(--gold)">100</strong>',
+    hint:'one + hundred',
+    answers:['one hundred','a hundred'], display:'one hundred',
+    fb:'"One hundred" (or "a hundred"). In business contexts, "one hundred" is more precise.' },
+];
+
+// PART 3 — Nationalities
+const QUIZ3 = [
+  { type:'mc', q:'She is from Germany. She is ___.',
+    opts:['Germanic','German','Germany','Germanish'], answer:1,
+    hint:'Germany → the nationality is one clean word.',
+    fb:'"German" is the nationality. Germany = the country. German = the person/adjective.' },
+  { type:'mc', q:'He is from Brazil. He is ___.',
+    opts:['Brazilish','Brazilean','Brazilian','Brazilier'], answer:2,
+    hint:'Many nationalities end in -ian.',
+    fb:'"Brazilian" — Brazil + ian. Many nationalities use -ian: Colombian, Brazilian, Italian, Australian...' },
+  { type:'mc', q:'The company is from the United Kingdom. It is ___.',
+    opts:['Ukian','English','British','UKish'], answer:2,
+    hint:'The United Kingdom has a special nationality word.',
+    fb:'"British" — the nationality for the United Kingdom as a whole. England → English; Scotland → Scottish; but UK → British.' },
+  { type:'mc', q:'They are from Japan. They are ___.',
+    opts:['Japanish','Japonese','Japanist','Japanese'], answer:3,
+    hint:'Japan → the nationality ends in -ese.',
+    fb:'"Japanese" — Japan + ese. Other -ese nationalities: Chinese, Portuguese...' },
+  { type:'mc', q:'I am from Colombia. I am ___.',
+    opts:['Colombish','Colombian','Colombianer','Colombiano'], answer:1,
+    hint:'"Colombiano" is Spanish — what is the English form?',
+    fb:'"Colombian" — in English, not "Colombiano". The -o ending is Spanish. In English: Colombian.' },
+];
+
+// PART 4 — Error Correction
+const QUIZ4 = [
+  { type:'mc', q:'Find the mistake: "She from Mexico."',
+    opts:['Replace "from" with "is from"','Add "is" after "She"','Change "She" to "Her"','No mistake'], answer:1,
+    hint:'The verb "be" is missing.',
+    fb:'Correct fix: "She IS from Mexico." — You can never drop the verb be in English. "She from Mexico" has no verb.' },
+  { type:'mc', q:'Find the mistake: "The company are from Germany."',
+    opts:['"are" should be "is"','"from" should be "in"','"company" should be "companies"','No mistake'], answer:0,
+    hint:'"The company" is singular — like "it".',
+    fb:'Correct fix: "The company IS from Germany." — "The company" is singular. Singular → is. (They ARE, but it IS.)' },
+  { type:'mc', q:'Find the mistake: "I am fourty years old."',
+    opts:['"am" should be "is"','"years" should be "year"','"fourty" should be "forty"','No mistake'], answer:2,
+    hint:'"four" has a u, but does "forty"?',
+    fb:'Correct fix: "I am FORTY years old." — "Forty" has no U. This is a very common spelling mistake. Memorise it: f-o-r-t-y.' },
+  { type:'mc', q:'Find the mistake: "Where you are from?"',
+    opts:['"Where" should be "What"','The word order is wrong — "are" should come before "you"','"from" should be "of"','No mistake'], answer:1,
+    hint:'In English questions, the verb comes before the subject.',
+    fb:'Correct fix: "Where ARE YOU from?" — In questions, the verb (are) comes before the subject (you). Not "where you are" — that is a statement word order.' },
+];
+
+// ── QUIZ STATE ────────────────────────────────────────────
+const quizState1={}, quizState2={}, quizState3={}, quizState4={};
+let quizScore1=0, quizScore2=0, quizScore3=0, quizScore4=0;
+
+// ── GENERIC QUIZ ENGINE (parameterised) ───────────────────
+function renderQGeneric(q, i, stateObj, revealFn, selectFn) {
+  const s = stateObj[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="${selectFn}(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="${revealFn}(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp2-${i}" type="text" placeholder="Type your answer…"
+        value="${s.inputVal||''}" oninput="setInp2(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="${revealFn}(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc2-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">💡 ${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+// Part 1 interactions
+function sel1(qi,j){ if(!quizState1[qi])quizState1[qi]={}; if(quizState1[qi].revealed)return; quizState1[qi].selected=j; rerenderPart(1); }
+function rev1(qi)  { if(!quizState1[qi])quizState1[qi]={}; quizState1[qi].revealed=true; recalc1(); rerenderPart(1); }
+function recalc1() { let s=0; QUIZ1.forEach((q,i)=>{ const st=quizState1[i]; if(!st||!st.revealed)return; if(q.type==='mc'&&st.selected===q.answer)s++; }); quizScore1=s; }
+
+// Part 2 interactions
+function sel2(qi,j){ if(!quizState2[qi])quizState2[qi]={}; if(quizState2[qi].revealed)return; quizState2[qi].selected=j; rerenderPart(2); }
+function rev2(qi)  {
+  const q=QUIZ2[qi]; if(!quizState2[qi])quizState2[qi]={};
+  const val=(quizState2[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState2[qi].correct=q.answers.some(a=>val===a.toLowerCase()); quizState2[qi].revealed=true; recalc2(); rerenderPart(2);
+}
+function setInp2(qi,v){ if(!quizState2[qi])quizState2[qi]={}; quizState2[qi].inputVal=v; }
+function recalc2() { let s=0; QUIZ2.forEach((q,i)=>{ const st=quizState2[i]; if(!st||!st.revealed)return; if(q.type==='input'&&st.correct)s++; }); quizScore2=s; }
+
+// Part 3 interactions
+function sel3(qi,j){ if(!quizState3[qi])quizState3[qi]={}; if(quizState3[qi].revealed)return; quizState3[qi].selected=j; rerenderPart(3); }
+function rev3(qi)  { if(!quizState3[qi])quizState3[qi]={}; quizState3[qi].revealed=true; recalc3(); rerenderPart(3); }
+function recalc3() { let s=0; QUIZ3.forEach((q,i)=>{ const st=quizState3[i]; if(!st||!st.revealed)return; if(q.type==='mc'&&st.selected===q.answer)s++; }); quizScore3=s; }
+
+// Part 4 interactions
+function sel4(qi,j){ if(!quizState4[qi])quizState4[qi]={}; if(quizState4[qi].revealed)return; quizState4[qi].selected=j; rerenderPart(4); }
+function rev4(qi)  { if(!quizState4[qi])quizState4[qi]={}; quizState4[qi].revealed=true; recalc4(); rerenderPart(4); }
+function recalc4() { let s=0; QUIZ4.forEach((q,i)=>{ const st=quizState4[i]; if(!st||!st.revealed)return; if(q.type==='mc'&&st.selected===q.answer)s++; }); quizScore4=s; }
+
+function rerenderPart(n) {
+  const map = {1:renderPart1, 2:renderPart2, 3:renderPart3, 4:renderPart4};
+  const stepIdx = STEPS.findIndex(s=>s.fn===map[n]);
+  if(currentStep===stepIdx) document.getElementById('mainContent').innerHTML=map[n]();
+}
+
+function scoreBarHTML(answered, total) {
+  const pct = total ? (answered/total)*100 : 0;
+  return `<div class="score-bar">
+    <span class="score-label">Progress</span>
+    <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+    <span class="score-count">${answered} / ${total}</span>
+  </div>`;
+}
+function resultHTML(score, total, retakeFn, stepFn) {
+  if (score !== total) return '';
+  return `<div class="quiz-result">
+    <div class="result-score">${score} / ${total}</div>
+    <div class="result-label">🎉 ¡Perfecto! All correct.</div>
+    <div class="result-msg">Outstanding work on this part.</div>
+  </div>`;
+}
+
+// ── PART RENDERERS ────────────────────────────────────────
+
+function renderPart1() {
+  const answered=Object.values(quizState1).filter(s=>s.revealed).length;
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Part 1 — Gap Fill: Be + From</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Choose the correct word to complete each sentence.</p>
+    ${scoreBarHTML(answered, QUIZ1.length)}
+    ${QUIZ1.map((q,i)=>renderQGeneric(q,i,quizState1,'rev1','sel1')).join('')}
+    ${answered===QUIZ1.length ? resultHTML(quizScore1,QUIZ1.length) : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPart2() {
+  const answered=Object.values(quizState2).filter(s=>s.revealed).length;
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Part 2 — Write the Number</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Type each number as a word. Click <strong>Check</strong> when you're ready.</p>
+    ${scoreBarHTML(answered, QUIZ2.length)}
+    ${QUIZ2.map((q,i)=>renderQGeneric(q,i,quizState2,'rev2','sel2')).join('')}
+    ${answered===QUIZ2.length ? resultHTML(quizScore2,QUIZ2.length) : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPart3() {
+  const answered=Object.values(quizState3).filter(s=>s.revealed).length;
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Part 3 — Nationalities</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Choose the correct nationality for each sentence.</p>
+    ${scoreBarHTML(answered, QUIZ3.length)}
+    ${QUIZ3.map((q,i)=>renderQGeneric(q,i,quizState3,'rev3','sel3')).join('')}
+    ${answered===QUIZ3.length ? resultHTML(quizScore3,QUIZ3.length) : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPart4() {
+  const answered=Object.values(quizState4).filter(s=>s.revealed).length;
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Part 4 — Correct the Mistake</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Each sentence has one mistake. Find it and choose the correct fix.</p>
+    ${scoreBarHTML(answered, QUIZ4.length)}
+    ${QUIZ4.map((q,i)=>renderQGeneric(q,i,quizState4,'rev4','sel4')).join('')}
+    ${answered===QUIZ4.length ? resultHTML(quizScore4,QUIZ4.length) : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPart5() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Part 5 — Short Writing Task</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Write 2–3 sentences about yourself and your company. Use <strong>be + from</strong> and include a number (floor, extension, or number of employees).</p>
+
+    <div class="info-box">
+      <strong>Example:</strong><br>
+      <em style="color:var(--sky);">"I'm from Bogotá, Colombia. My company is from the United States. Our office is in Bogotá, on floor seven."</em>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Your Turn — Write Here</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:10px;">Try to include: your city + country · your company's origin · one number</p>
+      <textarea class="writing-area" id="writingInput" placeholder="I'm from... My company is from... Our office is in... on floor..." oninput="updateCount()"></textarea>
+      <div class="word-count" id="wordCount">0 words</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Check Your Work</div>
+      Before submitting, check:<br>
+      ✅ Did you use <em>am / is / are</em> correctly? (not "I from…")<br>
+      ✅ Did you write city + country? (not just city)<br>
+      ✅ Did you include a number written as a word? (not just a digit)
+    </div>
+
+    <div class="tip-box" style="margin-top:4px;">
+      <div class="tip-label">📚 Next Lesson — Lesson 4: Business Cards</div>
+      In Lesson 4 you will learn <strong>possessive adjectives</strong>: <em>my, your, his, her, our, their</em>.
+      Tonight: practise saying your phone number and email address out loud in English — you will need them in the next class!
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function updateCount() {
+  const v = (document.getElementById('writingInput').value || '').trim();
+  const count = v ? v.split(/\s+/).length : 0;
+  document.getElementById('wordCount').textContent = count + (count===1?' word':' words');
+}
+
+// ── STEPS ─────────────────────────────────────────────────
+STEPS = [
+  { label:'1. Gap Fill',     fn: renderPart1 },
+  { label:'2. Numbers',      fn: renderPart2 },
+  { label:'3. Nationalities',fn: renderPart3 },
+  { label:'4. Fix Mistakes', fn: renderPart4 },
+  { label:'5. Writing',      fn: renderPart5 },
+];
+
+render();
+</script>
+</body>
+</html>

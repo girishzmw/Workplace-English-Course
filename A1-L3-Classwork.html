@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 3 — Countries &amp; Companies | A1 · Unit 1 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:14px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:28px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:16px 20px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+.profile-field { font-size:13px; }
+.profile-field-label { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:2px; }
+.profile-field-val { color:var(--navy); font-weight:600; font-size:14px; }
+
+/* ROLE CARDS */
+.role-card { background:var(--white); border:2px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:12px; }
+.role-card-head { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.role-card-body { font-size:14px; color:var(--slate); line-height:1.8; }
+.role-card-body strong { color:var(--navy); }
+
+/* CONVO GUIDE */
+.convo-step { display:flex; gap:12px; align-items:flex-start; padding:10px 0; border-bottom:1px dashed var(--border-grey); }
+.convo-step:last-child { border-bottom:none; }
+.convo-num { background:var(--navy); color:var(--gold); border-radius:50%; width:26px; height:26px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; flex-shrink:0; margin-top:1px; }
+.convo-text { font-size:14px; color:var(--slate); font-style:italic; line-height:1.6; }
+
+/* GAME NUMBERS */
+.number-chip { display:inline-flex; align-items:center; justify-content:center; background:var(--navy); color:var(--gold); border-radius:8px; padding:10px 16px; font-family:var(--font-heading); font-size:22px; font-weight:700; margin:4px; min-width:60px; }
+
+/* VIDEO BUTTON */
+.video-btn { display:inline-flex; align-items:center; gap:10px; background:#CC0000; color:var(--white); padding:12px 22px; border-radius:8px; text-decoration:none; font-family:var(--font-body); font-size:14px; font-weight:700; transition:opacity 0.15s; margin-bottom:6px; }
+.video-btn:hover { opacity:0.88; }
+
+/* READING PASSAGE */
+.reading-passage { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:22px; margin-bottom:18px; font-size:15px; line-height:1.9; color:var(--slate); border-left:4px solid var(--sky); }
+.reading-passage strong { color:var(--navy); }
+
+/* ACTIVITY BADGE */
+.activity-badge { display:inline-flex; align-items:center; gap:8px; background:var(--navy); border-radius:6px; padding:5px 12px; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:14px; }
+.activity-time { font-size:11px; color:var(--grey-blue); font-style:italic; margin-left:6px; }
+
+.divider { height:1px; background:var(--border-grey); margin:28px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.subhead { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin:22px 0 10px; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-family:var(--font-body); font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Classwork</div>
+    <h1 class="hero-title">Lesson 3 — Countries &amp; Companies</h1>
+    <p class="hero-sub">Be + from &nbsp;·&nbsp; 60-minute live session &nbsp;·&nbsp; 5 activities</p>
+    <div class="hero-pills">
+      <span class="pill accent">Speaking 75%</span>
+      <span class="pill accent">Reading 25%</span>
+      <span class="pill">5 Activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+<script>
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0, isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderWarmUp() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">🌍</div>
+      <div class="sec-badge-title">Warm-Up — The Global Company Map</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Before the activities begin, watch this short video about countries and nationalities — then your teacher will build a class map together with you.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Video — Countries &amp; Nationalities</div>
+      <a href="https://www.youtube.com/watch?v=gE9XU5YE9Dk" target="_blank" class="video-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        Watch This Video
+      </a>
+      <div style="font-size:12px;color:var(--grey-blue);margin-top:6px;">Opens in a new tab · Watch once, then answer the questions below</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="subhead">Class Map — Where Is Everyone From?</div>
+    <p class="sec-intro">Your teacher will ask each student these questions. Answer in <strong>full sentences</strong>.</p>
+
+    <div class="info-box">
+      <strong>Teacher asks — Student answers:</strong><br><br>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+        ${[
+          ['"Where are you from?"','"I\'m from [city], [country]."'],
+          ['"Where is your company from?"','"My company is from [country]."'],
+          ['"Is your company local or international?"','"It\'s local." / "It\'s international — it\'s from [country]."'],
+        ].map(([q,a])=>`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 12px;background:var(--light-grey);border-radius:7px;font-size:14px;">
+          <div style="color:var(--sky);font-style:italic;">${q}</div>
+          <div style="color:var(--navy);font-weight:600;">${a}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Teacher Note</div>
+      As students answer, note each person's city, country, and company origin on screen.
+      Build a visual "class map" — this personalises the grammar and makes it memorable.
+      Correct gently if a student says <em>"I from…"</em> — remind them: the verb <em>be</em> is always required.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity1() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Activity 1 — Pronunciation</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Teacher reads — students repeat. First as a group (choral), then individually. Focus on clear stress and the country/nationality distinction.</p>
+
+    <div class="subhead">Countries &amp; Nationalities Round</div>
+    <div class="ex-box">
+      <div class="ex-label">Repeat After Teacher</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        ${[
+          ['Japan','Japanese'],['Brazil','Brazilian'],['Argentina','Argentine'],
+          ['Germany','German'],['Australia','Australian'],['China','Chinese'],
+          ['Asia','Asian'],['United States','American'],['United Kingdom','British'],['South Korea','Korean'],
+        ].map(([c,n])=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;font-size:14px;">
+          <span style="font-weight:700;color:var(--navy);">${c}</span>
+          <span style="color:var(--sky);">→ ${n}</span>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="subhead">Numbers Round — -teen vs -ty</div>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:14px;">Teacher calls a pair — students say both. Listen carefully to the stress difference.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Stress Contrast Pairs</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+        ${[
+          ['thirTEEN','THIRty','13 vs 30'],
+          ['fourTEEN','FORty','14 vs 40'],
+          ['fifTEEN','FIFty','15 vs 50'],
+        ].map(([teen,ty,nums])=>`<div style="background:var(--white);border:1px solid var(--border-grey);border-radius:8px;padding:12px 16px;grid-column:span 1;">
+          <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-blue);margin-bottom:6px;">${nums}</div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span style="font-size:16px;font-weight:700;color:var(--sky);">${teen}</span>
+            <span style="color:var(--steel);">vs</span>
+            <span style="font-size:16px;font-weight:700;color:var(--navy);">${ty}</span>
+          </div>
+        </div>`).join('')}
+      </div>
+      <div style="padding:12px 16px;background:var(--navy);border-radius:8px;font-size:13px;color:rgba(255,255,255,0.75);line-height:1.7;">
+        <strong style="color:var(--gold);">Try these sentences:</strong><br>
+        "The meeting is on floor <strong style="color:var(--gold);">thirteen</strong>." &nbsp;·&nbsp;
+        "We have <strong style="color:var(--gold);">thirty</strong> employees."<br>
+        "Please go to room <strong style="color:var(--gold);">fifteen</strong>." &nbsp;·&nbsp;
+        "My extension is <strong style="color:var(--gold);">fifty</strong>."
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Teacher Note</div>
+      Write both numbers on screen (e.g. 13 / 30) and point to one — students say the word.
+      Then say the word — students write the number in the chat. Switch direction to build both production and reception.
+      Drill until the group can distinguish confidently by ear.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity2() {
+  const profiles = [
+    { emoji:'👩‍💼', name:'María López',   company:'Bancolombia', city:'Medellín', country:'Colombia',      she:true  },
+    { emoji:'👨‍💻', name:'Thomas Weber',  company:'SAP',         city:'Frankfurt', country:'Germany',      she:false },
+    { emoji:'👩‍🔬', name:'Yuki Tanaka',   company:'Toyota',      city:'Tokyo',    country:'Japan',         she:true  },
+    { emoji:'👨‍💼', name:'Carlos Mendoza',company:'Google',      city:'New York', country:'United States', she:false },
+    { emoji:'👩‍🎨', name:'Amara Okafor',  company:'Unilever',    city:'Lagos',    country:'Nigeria',       she:true  },
+    { emoji:'👨‍🔧', name:'Liam O\'Brien', company:'HSBC',        city:'London',   country:'United Kingdom',she:false },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Activity 2 — Who Is This Person?</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Students take turns describing a profile card in full sentences. Then ask follow-up questions between classmates.</p>
+
+    <div class="info-box">
+      <strong>Model sentences — use these as your guide:</strong><br><br>
+      <div style="font-size:14px;line-height:1.9;color:var(--slate);">
+        "Her name is María. She's from Medellín, Colombia. Her company is Bancolombia. Bancolombia is from Colombia."<br>
+        "His name is Thomas. He's from Frankfurt, Germany. His company is SAP. SAP is from Germany."
+      </div>
+    </div>
+
+    <div class="subhead">Profile Cards</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      ${profiles.map(p=>`<div class="profile-card">
+        <div class="profile-card-head">
+          <div class="profile-emoji">${p.emoji}</div>
+          <div>
+            <div class="profile-name">${p.name}</div>
+            <div class="profile-role">${p.company}</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <div class="profile-field">
+            <div class="profile-field-label">City</div>
+            <div class="profile-field-val">${p.city}</div>
+          </div>
+          <div class="profile-field">
+            <div class="profile-field-label">Country</div>
+            <div class="profile-field-val">${p.country}</div>
+          </div>
+          <div class="profile-field" style="grid-column:span 2;">
+            <div class="profile-field-label">Company</div>
+            <div class="profile-field-val">${p.company} — from ${p.country}</div>
+          </div>
+        </div>
+      </div>`).join('')}
+    </div>
+
+    <div class="subhead">Follow-Up Questions — Students Ask Each Other</div>
+    <div class="ex-box">
+      <div class="ex-label">Question Practice</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        ${[
+          ['"Is Thomas from the United States?"','"No, he isn\'t. He\'s from Germany."'],
+          ['"Is SAP from France?"','"No, it isn\'t. It\'s from Germany."'],
+          ['"Is María from Brazil?"','"No, she isn\'t. She\'s from Colombia."'],
+          ['"Is Bancolombia from Mexico?"','"No, it isn\'t. It\'s from Colombia."'],
+          ['"Is Yuki from China?"','"No, she isn\'t. She\'s from Japan."'],
+        ].map(([q,a])=>`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:9px 12px;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;font-size:14px;">
+          <div style="color:var(--sky);font-style:italic;">${q}</div>
+          <div style="color:var(--navy);">${a}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Teacher Note</div>
+      Display one profile at a time. Call on a student to describe it in full sentences.
+      Then invite another student to ask a yes/no question — the class answers together.
+      Listen for dropped verbs ("She from Mexico" → correct immediately).
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity3() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Activity 3 — Reading: Company Profiles</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Read the short passage below. Then answer the four questions in full sentences.</p>
+
+    <div class="reading-passage">
+      Sofía works at <strong>Avianca</strong>. Avianca is a Colombian airline.
+      It is from Bogotá, Colombia. Sofía is from Cali, Colombia.
+      Her manager, <strong>James</strong>, is from the United States. He is from Atlanta.
+      The IT team is from India — they work in Bangalore.
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Reading Comprehension — Answer in Full Sentences</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        ${[
+          ['1.','Where is Avianca from?','It\'s from Bogotá, Colombia.'],
+          ['2.','Where is Sofía from?','She\'s from Cali, Colombia.'],
+          ['3.','Is James from Canada?','No, he isn\'t. He\'s from the United States.'],
+          ['4.','Where is the IT team from?','They\'re from India. They work in Bangalore.'],
+        ].map(([n,q,a])=>`<div style="background:var(--white);border:1px solid var(--border-grey);border-radius:8px;overflow:hidden;">
+          <div style="padding:10px 16px;font-size:14px;font-weight:600;color:var(--navy);border-bottom:1px solid var(--light-grey);">${n} ${q}</div>
+          <div style="padding:10px 16px;font-size:14px;color:var(--sky);font-style:italic;">→ ${a}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Teacher Note</div>
+      Students read silently first (2 min), then one student reads aloud.
+      Go through the questions as a class — students answer verbally, not just reading the answer.
+      Emphasise full sentence answers, not single words: <em>"Bogotá"</em> alone is not acceptable — <em>"It's from Bogotá, Colombia."</em> is the target.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity4() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Activity 4 — Roleplay: International Office Introduction</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">It's your first day at a new international company. You are meeting a coworker from a different country. Work in pairs — use the role cards and conversation guide below.</p>
+
+    <div class="info-box">
+      <strong>Situation:</strong> You are both new employees at the same international company. You meet in the elevator on your first day. You don't know each other yet.
+    </div>
+
+    <div class="subhead">Role Cards</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px;">
+      <div class="role-card" style="border-color:var(--sky);">
+        <div class="role-card-head" style="color:var(--sky);">Role Card A — You</div>
+        <div class="role-card-body">
+          <strong>Name:</strong> Your real name<br>
+          <strong>From:</strong> Your real city and country<br>
+          <strong>Company:</strong> Your real company — or choose: <em>Nestlé / Unilever / Google</em><br>
+          <strong>Floor:</strong> Pick a number between 1–20
+        </div>
+      </div>
+      <div class="role-card" style="border-color:var(--gold);">
+        <div class="role-card-head" style="color:var(--gold);">Role Card B — Your Partner</div>
+        <div class="role-card-body">
+          <strong>Name:</strong> Choose: Alex / Sam / Jordan<br>
+          <strong>From:</strong> London, United Kingdom<br>
+          <strong>Company:</strong> HSBC — from the United Kingdom<br>
+          <strong>Floor:</strong> Pick a number between 1–20
+        </div>
+      </div>
+    </div>
+
+    <div class="subhead">Conversation Guide</div>
+    <div class="ex-box">
+      <div class="ex-label">Use These Prompts — Not a Script</div>
+      <div style="margin-top:4px;">
+        ${[
+          ['"Hi, I\'m [name]. Nice to meet you."','Greeting'],
+          ['"Where are you from?"','Ask origin'],
+          ['"I\'m from [city], [country]. And you?"','Answer + ask back'],
+          ['"Is your company from [country]?"','Ask about company'],
+          ['"Yes, it is." / "No, it isn\'t. It\'s from ___."','Answer about company'],
+          ['"What floor are you on?" → "I\'m on floor [number]."','Use a number'],
+        ].map(([line,tag])=>`<div class="convo-step">
+          <div class="convo-num">${['1','2','3','4','5','6'][['"Hi, I\'m [name]. Nice to meet you."','"Where are you from?"','"I\'m from [city], [country]. And you?"','"Is your company from [country]?"','"Yes, it is." / "No, it isn\'t. It\'s from ___."','"What floor are you on?" → "I\'m on floor [number]."'].indexOf(line)+1]}</div>
+          <div>
+            <div class="convo-text">${line}</div>
+            <div style="font-size:11px;color:var(--grey-blue);text-transform:uppercase;letter-spacing:1px;margin-top:2px;">${tag}</div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Teacher Note</div>
+      Give pairs 3–4 minutes to prepare, then perform for the group.
+      While one pair performs, other students listen and write down:
+      one <strong>country</strong> they heard and one <strong>number</strong> they heard.
+      After each performance, ask the class: <em>"What country did you hear? What number?"</em>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity5() {
+  const numbers = [13,26,12,49,11,67,15,18,84,14,40];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Activity 5 — The Extension Challenge</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">A quick numbers game to close the class. The teacher writes a number in the chat — the first student to say it correctly wins a point. Watch out for the -teen vs -ty traps!</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Numbers for the Game</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;">Teacher: write these one at a time in the chat. Students: say the number out loud as a word.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:10px 0;">
+        ${numbers.map(n=>`<div class="number-chip">${n}</div>`).join('')}
+      </div>
+    </div>
+
+    <div class="ex-box" style="margin-top:16px;">
+      <div class="ex-label">Answers — Teacher Reference</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;">
+        ${numbers.map(n=>{
+          const words = {11:'eleven',12:'twelve',13:'thirteen',14:'fourteen',15:'fifteen',
+            18:'eighteen',26:'twenty-six',40:'forty',49:'forty-nine',67:'sixty-seven',84:'eighty-four'};
+          return `<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--white);border:1px solid var(--border-grey);border-radius:6px;font-size:14px;">
+            <span style="font-weight:700;color:var(--gold);font-family:var(--font-heading);">${n}</span>
+            <span style="color:var(--navy);">${words[n]}</span>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 -teen vs -ty Traps in This Set</div>
+      <strong>13</strong> (thirteen) and <strong>14</strong> (fourteen) and <strong>15</strong> (fifteen) and <strong>40</strong> (forty) are all included.
+      If students confuse <em>thirteen</em> with <em>thirty</em> — stop the game briefly and drill that pair again.
+      End with a round where students write the number and you say the word — reverse direction to test listening too.
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="info-box">
+      <strong>🎓 Class complete!</strong> In the next lesson (Lesson 4 — Business Cards), you will use <strong>possessive adjectives</strong>: <em>my, your, his, her, our, their</em>.
+      Tonight: practise saying your phone number out loud in English. You will need it next class.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS ─────────────────────────────────────────────────
+STEPS = [
+  { label:'Warm-Up',      fn: renderWarmUp   },
+  { label:'1. Pronunc.',  fn: renderActivity1 },
+  { label:'2. Profiles',  fn: renderActivity2 },
+  { label:'3. Reading',   fn: renderActivity3 },
+  { label:'4. Roleplay',  fn: renderActivity4 },
+  { label:'5. Numbers',   fn: renderActivity5 },
+];
+
+render();
+</script>
+</body>
+</html>

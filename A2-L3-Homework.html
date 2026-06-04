@@ -363,39 +363,6 @@ function render() {
 
 // ── RENDERERS ─────────────────────────────────────────────
 
-function renderPartA() {
-  return `<div class="sc">
-    <div class="sec-badge">
-      <div class="sec-badge-num">A</div>
-      <div class="sec-badge-title">Possessives — Choose the Correct Form</div>
-      <div class="sec-badge-time">4 min</div>
-    </div>
-    <hr class="gold-rule">
-
-    <div class="es-note">
-      📌 <strong>Recuerda:</strong> Apóstrofo ANTES de la s (<em>'s</em>) = una persona. Apóstrofo DESPUÉS de la s (<em>s'</em>) = más de una persona.
-    </div>
-
-    <div class="quiz-intro">
-      <div class="quiz-intro-icon">✏️</div>
-      <div>
-        <h3>Part A — Grammar</h3>
-        <p>5 questions · Possessive forms · Select and check each answer</p>
-      </div>
-    </div>
-
-    <div class="score-bar">
-      <span class="score-label">Progress</span>
-      <div class="score-track"><div class="score-fill" id="pA-fill" style="width:${getPartPct('A')}%"></div></div>
-      <span class="score-count" id="pA-count">${getPartAnswered('A')} / 5</span>
-    </div>
-
-    ${QUIZ.slice(0,5).map((q,i) => renderQ(q,i)).join('')}
-
-    ${navFooter()}
-  </div>`;
-}
-
 function renderPartB() {
   const sentences = [
     { before:'Sandra', blank:0, after:' the entire Operations team. She has seven people.' },
@@ -605,18 +572,6 @@ function renderQuizPart() {
   </div>`;
 }
 
-// ── PART A progress helpers ───────────────────────────────
-function getPartPct(part) {
-  let count = 0;
-  for (let i = 0; i < 5; i++) { if (quizState[i] && quizState[i].revealed) count++; }
-  return (count / 5) * 100;
-}
-function getPartAnswered(part) {
-  let count = 0;
-  for (let i = 0; i < 5; i++) { if (quizState[i] && quizState[i].revealed) count++; }
-  return count;
-}
-
 // ── SCORE LABELS ─────────────────────────────────────────
 function scoreLabel() {
   if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! — You are ready for class!';
@@ -713,23 +668,14 @@ function recalc() {
 function rerender() {
   const qi=STEPS.findIndex(s=>s.fn===renderQuizPart);
   if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuizPart();
-  // also refresh part A progress if on that step
-  const pA=STEPS.findIndex(s=>s.fn===renderPartA);
-  if(currentStep===pA) {
-    const bar=document.getElementById('pA-fill');
-    const cnt=document.getElementById('pA-count');
-    if(bar) bar.style.width=getPartPct('A')+'%';
-    if(cnt) cnt.textContent=getPartAnswered('A')+' / 5';
-  }
 }
 
 // ── STEPS ─────────────────────────────────────────────────
 STEPS = [
-  { label: "A · Possessives",  fn: renderPartA },
-  { label: "B · Fill in Blanks", fn: renderPartB },
-  { label: "C · Fix Mistakes", fn: renderPartC },
-  { label: "D · Writing",      fn: renderPartD },
-  { label: "★ Full Quiz",      fn: renderQuizPart },
+  { label: "A · Fill in Blanks", fn: renderPartB },
+  { label: "B · Fix Mistakes",   fn: renderPartC },
+  { label: "C · Writing",        fn: renderPartD },
+  { label: "★ Full Quiz",        fn: renderQuizPart },
 ];
 
 render();

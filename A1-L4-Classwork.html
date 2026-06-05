@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Cards &amp; Contact Information — Classwork | A1 · Unit 1 · Lesson 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2D4F;--gold:#C9972C;--gold-light:#D4AC45;--gold-bg:#FDF6E3;
+  --slate:#4A5568;--grey-blue:#6B7A8D;--off-white:#F7F9FC;--light-grey:#F0F4F8;
+  --border-grey:#D9E2EC;--steel:#B8C6D6;--white:#FFFFFF;
+  --green:#1A6B4A;--green-bg:#E8F5EE;--red:#B91C1C;--red-bg:#FEE2E2;--sky:#2E86AB;
+  --font-heading:Georgia,'Times New Roman',serif;--font-body:'Lato',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--off-white);color:var(--slate);min-height:100vh;overflow-x:hidden}
+.site-header{background:var(--navy);border-bottom:2px solid var(--gold)}
+.site-header-inner{max-width:900px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;justify-content:center}
+.site-header-brand{font-family:var(--font-heading);font-size:22px;font-style:italic;color:var(--white);letter-spacing:0.02em;opacity:0.95}
+.hero{background:var(--navy);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:rgba(44,130,173,0.14)}
+.hero::after{content:'';position:absolute;bottom:-40px;left:40px;width:200px;height:200px;border-radius:50%;background:rgba(201,151,44,0.10)}
+.hero-inner{max-width:900px;margin:0 auto;padding:48px 32px 40px;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,151,44,0.15);border:1px solid rgba(201,151,44,0.4);border-radius:20px;padding:5px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px}
+.hero-title{font-family:var(--font-heading);font-size:clamp(26px,5vw,40px);color:var(--white);line-height:1.15;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:28px;font-weight:300}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap}
+.pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:5px 14px;font-size:12px;color:rgba(255,255,255,0.7)}
+.pill.accent{background:rgba(201,151,44,0.2);border-color:rgba(201,151,44,0.4);color:var(--gold)}
+.progress-wrap{background:rgba(255,255,255,0.08);height:3px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--sky),var(--gold));transition:width 0.4s ease}
+.step-nav{background:var(--white);border-bottom:1px solid var(--border-grey);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.step-nav-inner{max-width:900px;margin:0 auto;padding:0 32px;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.step-btn{padding:13px 16px;border:none;background:none;border-bottom:3px solid transparent;font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--grey-blue);cursor:pointer;white-space:nowrap;transition:all 0.15s}
+.step-btn:hover{color:var(--sky)}
+.step-btn.active{border-bottom-color:var(--gold);color:var(--navy);font-weight:700}
+.main{max-width:900px;margin:0 auto;padding:36px 32px 80px}
+@media(max-width:600px){.main{padding:20px 16px 60px}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.sc{animation:fadeUp 0.28s ease}
+.sec-badge{display:grid;grid-template-columns:52px 1fr auto;background:var(--navy);border-radius:8px;overflow:hidden;margin-bottom:24px}
+.sec-badge-num{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.07);font-family:var(--font-heading);font-size:22px;color:var(--gold);padding:16px}
+.sec-badge-title{display:flex;align-items:center;padding:16px 20px;font-family:var(--font-heading);font-size:17px;color:var(--white)}
+.sec-badge-time{display:flex;align-items:center;padding:16px 20px;font-size:12px;color:rgba(255,255,255,0.45);font-style:italic;white-space:nowrap}
+.gold-rule{height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent);border:none;margin:0 0 24px}
+.info-box{background:var(--off-white);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);border-left:4px solid var(--navy);border-right:1px solid var(--light-grey);padding:14px 18px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--slate)}
+.tip-box{background:var(--off-white);border-left:4px solid var(--gold);padding:12px 16px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--slate)}
+.tip-label{font-weight:700;color:var(--navy);margin-bottom:4px;font-size:13px}
+.ex-box{background:var(--light-grey);border:1px solid var(--border-grey);border-radius:10px;padding:18px;margin-bottom:14px}
+.ex-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-variant:small-caps;color:var(--gold);font-weight:700;margin-bottom:8px}
+.mistake-wrap{background:var(--white);border:1px solid var(--border-grey);border-radius:10px;padding:18px;margin-bottom:22px}
+.mistake-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#92400E;font-weight:700;margin-bottom:12px}
+.mistake-wrong{display:flex;align-items:center;gap:10px;padding:9px 13px;background:var(--red-bg);border-radius:7px;font-size:14px;color:var(--red);margin-bottom:7px;font-style:italic}
+.mistake-right{display:flex;align-items:center;gap:10px;padding:9px 13px;background:var(--green-bg);border-radius:7px;font-size:14px;color:var(--green);font-style:italic}
+.divider{height:1px;background:var(--border-grey);margin:26px 0}
+.sec-intro{font-size:15px;color:var(--slate);margin-bottom:18px;line-height:1.7}
+.h-serif{font-family:var(--font-heading);font-size:20px;color:var(--navy);margin-bottom:10px}
+.nav-footer{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:22px;border-top:1px solid var(--border-grey);gap:12px}
+.nav-btn{padding:11px 24px;border-radius:7px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all 0.18s}
+.nav-prev{background:var(--white);color:var(--navy);border:1.5px solid var(--border-grey)}
+.nav-prev:hover:not(:disabled){border-color:var(--gold);color:var(--navy)}
+.nav-prev:disabled{opacity:0.35;cursor:default}
+.nav-next{background:var(--navy);color:var(--white)}
+.nav-next:hover:not(:disabled){background:var(--gold);color:var(--navy)}
+.nav-next:disabled{background:var(--border-grey);cursor:default}
+.nav-center{font-size:12px;color:var(--grey-blue)}
+
+/* Video button */
+.video-btn{display:inline-flex;align-items:center;gap:10px;background:#CC0000;color:var(--white);padding:12px 22px;border-radius:8px;text-decoration:none;font-family:var(--font-body);font-size:14px;font-weight:700;transition:opacity 0.15s;margin-bottom:6px}
+.video-btn:hover{opacity:0.88}
+
+/* Discussion question cards */
+.dq-list{display:flex;flex-direction:column;gap:10px;margin-bottom:22px}
+.dq-item{display:flex;gap:14px;align-items:flex-start;background:var(--white);border:1px solid var(--border-grey);border-radius:9px;padding:14px 16px}
+.dq-num{width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.dq-text{font-size:14px;color:var(--navy);line-height:1.6}
+
+/* Business card fill-in */
+.card-fill{background:var(--white);border:1px solid var(--border-grey);border-radius:12px;overflow:hidden;margin-bottom:22px;box-shadow:0 4px 16px rgba(0,0,0,0.07)}
+.card-fill-top{background:var(--navy);border-bottom:3px solid var(--gold);padding:16px 22px}
+.card-fill-top-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+.card-fill-body{padding:18px 22px;display:flex;flex-direction:column;gap:12px}
+.card-fill-row{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;border-bottom:1px dashed var(--border-grey);padding-bottom:10px}
+.card-fill-row:last-child{border-bottom:none;padding-bottom:0}
+.card-fill-label{font-size:12px;font-weight:700;color:var(--grey-blue);text-transform:uppercase;letter-spacing:0.5px}
+.card-fill-line{border:none;border-bottom:2px solid var(--border-grey);background:transparent;font-family:var(--font-body);font-size:14px;color:var(--navy);width:100%;padding:4px 2px;outline:none;transition:border-color 0.12s}
+.card-fill-line:focus{border-bottom-color:var(--gold)}
+
+/* Language frame box */
+.frame-box{background:var(--navy);border-radius:10px;padding:20px 22px;margin-bottom:20px}
+.frame-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px}
+.frame-line{background:rgba(255,255,255,0.06);border-radius:6px;padding:9px 14px;font-size:14px;color:rgba(255,255,255,0.8);font-style:italic;margin-bottom:6px;line-height:1.5}
+.frame-line:last-child{margin-bottom:0}
+.frame-line strong{color:var(--gold);font-style:normal}
+
+/* Networking goal chips */
+.goal-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.goal-item{display:flex;gap:12px;align-items:center;background:var(--white);border:1px solid var(--border-grey);border-radius:8px;padding:11px 14px}
+.goal-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:var(--gold)}
+.goal-text{font-size:14px;color:var(--navy);font-style:italic}
+
+/* Number practice — 100–1000 */
+.num-practice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:20px}
+.num-practice-card{background:var(--white);border:1px solid var(--border-grey);border-radius:9px;padding:13px 15px;cursor:pointer;transition:all 0.15s;user-select:none}
+.num-practice-card:hover{border-color:var(--gold);background:var(--off-white)}
+.num-practice-card.revealed .num-answer{display:block}
+.num-practice-card.revealed{border-color:var(--green);background:var(--green-bg)}
+.num-digit{font-family:var(--font-heading);font-size:24px;color:var(--navy);margin-bottom:2px}
+.num-tap{font-size:11px;color:var(--grey-blue);font-style:italic}
+.num-answer{display:none;font-size:14px;font-weight:700;color:var(--green);margin-top:6px;line-height:1.4}
+
+/* AND emphasis box */
+.and-box{background:var(--navy);border-radius:10px;padding:20px 22px;margin-bottom:22px}
+.and-title{font-family:var(--font-heading);font-size:18px;color:var(--white);margin-bottom:4px}
+.and-sub{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:16px;font-style:italic}
+.and-row{display:flex;align-items:center;gap:0;margin-bottom:10px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08)}
+.and-part{padding:10px 14px;font-size:14px;font-weight:700;flex:1;text-align:center}
+.and-part.hundreds{background:rgba(201,151,44,0.15);color:var(--gold)}
+.and-part.connector{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.9);font-style:italic;flex:0 0 60px;font-size:16px;font-weight:900}
+.and-part.rest{background:rgba(44,134,171,0.18);color:#7BC8E8}
+.and-row-label{font-size:11px;color:rgba(255,255,255,0.35);text-align:center;margin-bottom:6px;letter-spacing:1px;text-transform:uppercase}
+
+/* Reset button */
+.btn-reset{padding:9px 18px;background:transparent;color:var(--gold);border:1.5px solid var(--gold);border-radius:6px;font-family:var(--font-body);font-size:12px;font-weight:700;cursor:pointer;transition:all 0.15s;letter-spacing:0.5px}
+.btn-reset:hover{background:var(--gold);color:var(--navy)}
+
+.site-footer{background:var(--navy);border-top:1px solid rgba(201,151,44,0.3);margin-top:60px}
+.site-footer-inner{max-width:900px;margin:0 auto;padding:20px 32px;display:flex;flex-direction:column;gap:6px}
+.site-footer-credit{font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,0.75)}
+.site-footer-credit strong{color:var(--gold);font-weight:700}
+.site-footer-credit a{color:var(--gold-light);text-decoration:none}
+.site-footer-credit a:hover{text-decoration:underline}
+.site-footer-legal{font-family:var(--font-body);font-size:10px;color:rgba(255,255,255,0.35);line-height:1.7;border-top:1px solid rgba(255,255,255,0.08);padding-top:10px;margin-top:4px}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Lesson 4 · Classwork</div>
+    <h1 class="hero-title">Business Cards &amp; Contact Information</h1>
+    <p class="hero-sub">Teacher-led · 60 minutes · Speaking &amp; production focus</p>
+    <div class="hero-pills">
+      <span class="pill accent">Speaking — primary focus</span>
+      <span class="pill accent">Numbers 100–1,000</span>
+      <span class="pill">5 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i){return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100)}
+function goTo(i){currentStep=i;render();window.scrollTo(0,0)}
+function navFooter(){
+  const isFirst=currentStep===0,isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render(){
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── Number cards state ───────────────────────────────────────
+const numRevealed = {};
+function toggleNum(id){
+  numRevealed[id] = !numRevealed[id];
+  const card = document.getElementById('nc-'+id);
+  if(!card) return;
+  if(numRevealed[id]){ card.classList.add('revealed'); card.querySelector('.num-tap').textContent='✓ Got it!'; }
+  else { card.classList.remove('revealed'); card.querySelector('.num-tap').textContent='Tap to reveal'; }
+}
+function resetNums(){
+  Object.keys(numRevealed).forEach(k=>{ numRevealed[k]=false; });
+  document.querySelectorAll('.num-practice-card').forEach(c=>{ c.classList.remove('revealed'); const t=c.querySelector('.num-tap'); if(t) t.textContent='Tap to reveal'; });
+}
+
+// ── Mistake cards state ──────────────────────────────────────
+const mistakeRevealed = {};
+function toggleMistake(id){
+  mistakeRevealed[id] = !mistakeRevealed[id];
+  const card = document.getElementById('mc-'+id);
+  if(!card) return;
+  const answer = card.querySelector('.mc-answer');
+  const tap    = card.querySelector('.mc-tap');
+  if(mistakeRevealed[id]){
+    answer.style.display = 'block';
+    tap.textContent = '▲ Hide answer';
+    card.style.borderColor = 'var(--green)';
+  } else {
+    answer.style.display = 'none';
+    tap.textContent = '▼ Tap to reveal the correction';
+    card.style.borderColor = 'var(--border-grey)';
+  }
+}
+
+// ── RENDERERS ────────────────────────────────────────────────
+
+function renderVideo(){
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up — Watch &amp; Discuss</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Watch this short video about exchanging contact information in professional settings. Then your teacher will lead a class discussion using the questions below.</p>
+
+    <div style="margin-bottom:8px">
+      <a href="https://www.youtube.com/watch?v=9VbNCLtoW7Q" target="_blank" class="video-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        Watch This Video
+      </a>
+    </div>
+    <div style="font-size:12px;color:var(--grey-blue);margin-bottom:24px">Opens in a new tab · Watch once, then answer the questions below</div>
+
+    <div class="h-serif">Discussion Questions</div>
+    <p class="sec-intro" style="margin-bottom:16px">Your teacher will ask each question. Answer in full sentences — use the vocabulary from your Pre-Learning.</p>
+
+    <div class="dq-list">
+      <div class="dq-item">
+        <div class="dq-num">1</div>
+        <div class="dq-text">What can you say if you are <strong>not on LinkedIn</strong> but want to stay in contact?</div>
+      </div>
+      <div class="dq-item">
+        <div class="dq-num">2</div>
+        <div class="dq-text">Is <em>"What is your phone number?"</em> a direct question? Is that okay in a professional context?</div>
+      </div>
+      <div class="dq-item">
+        <div class="dq-num">3</div>
+        <div class="dq-text">Which is more friendly: <em>"Can I get your number?"</em> or <em>"What is your phone number?"</em> — and why?</div>
+      </div>
+      <div class="dq-item">
+        <div class="dq-num">4</div>
+        <div class="dq-text">Should you say your email address <strong>slowly or quickly</strong>? What can go wrong if you go too fast?</div>
+      </div>
+      <div class="dq-item">
+        <div class="dq-num">5</div>
+        <div class="dq-text">Should you ask for contact information <strong>immediately</strong> when you meet someone, or wait?</div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBizCard(){
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Activity — My Business Card</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Fill in your own business card below — use your real professional information, or invent a professional profile. Then you will read your card aloud to the class in full sentences.</p>
+
+    <div class="card-fill">
+      <div class="card-fill-top">
+        <div class="card-fill-top-label">Your Business Card</div>
+      </div>
+      <div class="card-fill-body">
+        <div class="card-fill-row"><span class="card-fill-label">Name</span><input class="card-fill-line" type="text" placeholder="e.g. Ana Torres"></div>
+        <div class="card-fill-row"><span class="card-fill-label">Position</span><input class="card-fill-line" type="text" placeholder="e.g. Marketing Coordinator"></div>
+        <div class="card-fill-row"><span class="card-fill-label">Company</span><input class="card-fill-line" type="text" placeholder="e.g. GlobalTech Solutions"></div>
+        <div class="card-fill-row"><span class="card-fill-label">Email</span><input class="card-fill-line" type="text" placeholder="e.g. ana.torres@globaltech.com"></div>
+        <div class="card-fill-row"><span class="card-fill-label">Phone</span><input class="card-fill-line" type="text" placeholder="e.g. +57 300 456 7890"></div>
+        <div class="card-fill-row"><span class="card-fill-label">Extension</span><input class="card-fill-line" type="text" placeholder="e.g. 204"></div>
+        <div class="card-fill-row"><span class="card-fill-label">LinkedIn</span><input class="card-fill-line" type="text" placeholder="e.g. linkedin.com/in/anatorres"></div>
+        <div class="card-fill-row"><span class="card-fill-label">Website</span><input class="card-fill-line" type="text" placeholder="e.g. www.globaltech.com"></div>
+        <div class="card-fill-row"><span class="card-fill-label">City / Country</span><input class="card-fill-line" type="text" placeholder="e.g. Bogotá, Colombia"></div>
+      </div>
+    </div>
+
+    <div class="frame-box">
+      <div class="frame-label">Language Frame — Read your card aloud like this</div>
+      <div class="frame-line">"<strong>My</strong> name is _______. <strong>My</strong> position is _______."</div>
+      <div class="frame-line">"<strong>My</strong> email is _______ <strong>dot</strong> _______ <strong>at</strong> _______ <strong>dot</strong> com."</div>
+      <div class="frame-line">"<strong>My</strong> phone number is _______ ."</div>
+      <div class="frame-line">"<strong>My</strong> extension is _______ ."</div>
+      <div class="frame-line">"<strong>Our</strong> website is www <strong>dot</strong> _______ <strong>dot</strong> com."</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Teacher focus points</div>
+      Listen for: correct possessive adjectives (my / our) · email symbols said in English (dot, at, underscore) · phone numbers read digit by digit
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpelling(){
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Activity — Spell Your Name &amp; Email</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">You have <strong>2 minutes</strong> to prepare. Then each student presents themselves to the class — spelling their name letter by letter and reading their email address and phone number aloud.</p>
+
+    <div class="ex-box" style="margin-bottom:20px">
+      <div class="ex-label">Example presentation</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+        <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:7px;padding:12px 15px;font-size:14px;color:var(--navy);line-height:1.7">
+          "My name is <strong>Germán Llanos</strong>.<br>
+          It is spelled: <strong>G – E – R – M – Á – N</strong> &nbsp;·&nbsp; <strong>L – L – A – N – O – S</strong>.<br>
+          My email is <strong>german dot llanos at logicotech dot co</strong>.<br>
+          My phone number is <strong>three-eight-two, five-one-seven, four-six-nine-oh</strong>."
+        </div>
+      </div>
+    </div>
+
+    <div class="frame-box">
+      <div class="frame-label">Language Frame — Use these sentences</div>
+      <div class="frame-line">"My name is _______. It is spelled: <strong>[letters]</strong>."</div>
+      <div class="frame-line">"My email is <strong>[read aloud: dot / at / underscore]</strong>."</div>
+      <div class="frame-line">"My phone number is <strong>[digit by digit]</strong>."</div>
+      <div class="frame-line">"Can you repeat that, please?" &nbsp;·&nbsp; "How do you spell that?"</div>
+    </div>
+
+    <div class="info-box">
+      <strong style="color:var(--navy)">Preparation checklist — do this before you present:</strong><br><br>
+      ✓ &nbsp;Write your name in capital letters and practise saying each letter<br>
+      ✓ &nbsp;Write your email and practise saying each symbol in English (dot, at, underscore…)<br>
+      ✓ &nbsp;Write your phone number and practise saying it digit by digit<br>
+      ✓ &nbsp;Practise your full presentation out loud — aim for clear and slow
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Say it slowly — always</div>
+      When you give your email or phone number in English, slow down. Native speakers always slow down for contact details. It is professional — not a sign that your English is weak.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderNumbers(){
+  const andNums = [
+    { n:'652', parts:['Six hundred','and','fifty-two'] },
+    { n:'318', parts:['Three hundred','and','eighteen'] },
+    { n:'407', parts:['Four hundred','and','seven'] },
+    { n:'999', parts:['Nine hundred','and','ninety-nine'] },
+    { n:'100', parts:['One hundred','—','(no "and" needed)'] },
+    { n:'200', parts:['Two hundred','—','(no "and" needed)'] },
+  ];
+
+  const practiceNums = [
+    { id:0, n:'175', answer:'One hundred and seventy-five' },
+    { id:1, n:'340', answer:'Three hundred and forty' },
+    { id:2, n:'508', answer:'Five hundred and eight' },
+    { id:3, n:'621', answer:'Six hundred and twenty-one' },
+    { id:4, n:'750', answer:'Seven hundred and fifty' },
+    { id:5, n:'819', answer:'Eight hundred and nineteen' },
+    { id:6, n:'463', answer:'Four hundred and sixty-three' },
+    { id:7, n:'237', answer:'Two hundred and thirty-seven' },
+    { id:8, n:'900', answer:'Nine hundred' },
+    { id:9, n:'1,000', answer:'One thousand' },
+    { id:10, n:'Ext. 204', answer:'two-oh-four (digit by digit)' },
+    { id:11, n:'Ext. 115', answer:'one-one-five (digit by digit)' },
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Numbers 100–1,000 — The "and" Rule</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">In English, when a number has hundreds <strong>plus</strong> tens or units, you connect them with <strong>"and"</strong>. This small word is very easy to forget — but native speakers always use it.</p>
+
+    <div class="and-box">
+      <div class="and-title">The Pattern: Hundreds + "and" + the rest</div>
+      <div class="and-sub">Six hundred → if there is more to say, add "and" before the rest</div>
+
+      ${andNums.map(({n,parts})=>`
+      <div style="margin-bottom:14px">
+        <div class="and-row-label">${n}</div>
+        <div class="and-row">
+          <div class="and-part hundreds">${parts[0]}</div>
+          <div class="and-part connector">${parts[1]}</div>
+          <div class="and-part rest">${parts[2]}</div>
+        </div>
+      </div>`).join('')}
+
+      <div style="background:rgba(255,255,255,0.06);border-radius:7px;padding:12px 14px;margin-top:6px">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px">Rule</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.6">If the number is an <strong style="color:var(--gold)">exact hundred</strong> (100, 200, 300…), say just "one hundred" — no "and" needed. If there are <strong style="color:var(--gold)">any digits after the hundreds</strong>, always add "and".</div>
+      </div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ The most common mistake</div>
+      <div class="mistake-wrong">❌ &nbsp;"six hundred fifty-two" &nbsp;— missing "and"</div>
+      <div class="mistake-right">✓ &nbsp;"six hundred <strong>and</strong> fifty-two"</div>
+      <div style="height:8px"></div>
+      <div class="mistake-wrong">❌ &nbsp;"five hundred and" &nbsp;— "and" with nothing after it</div>
+      <div class="mistake-right">✓ &nbsp;"five hundred" &nbsp;— exact hundreds need no "and"</div>
+    </div>
+
+    <div class="h-serif" style="margin-bottom:6px">Tap &amp; Say Practice</div>
+    <p class="sec-intro" style="margin-bottom:14px">Your teacher shows a number. Students say it aloud. Tap the card to check — then reset and go again.</p>
+
+    <div class="num-practice-grid">
+      ${practiceNums.map(({id,n,answer})=>`
+      <div class="num-practice-card" id="nc-${id}" onclick="toggleNum(${id})">
+        <div class="num-digit">${n}</div>
+        <div class="num-tap">Tap to reveal</div>
+        <div class="num-answer">${answer}</div>
+      </div>`).join('')}
+    </div>
+
+    <div style="text-align:right;margin-bottom:20px">
+      <button class="btn-reset" onclick="resetNums()">↺ Reset all cards</button>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Extensions — digit by digit, not hundreds</div>
+      When saying a phone extension, read digit by digit — not as a full number.<br>
+      Ext. 204 → <strong>"two-oh-four"</strong> &nbsp;(not "two hundred and four")<br>
+      Ext. 115 → <strong>"one-one-five"</strong> &nbsp;(not "one hundred and fifteen")
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderMistakes(){
+  const items = [
+    { wrong:'"The email of she is sophia@empresa.com."', right:'"Her email is sophia@empresa.com."', note:'Possessive adjective before the noun — never "of + pronoun".' },
+    { wrong:'"My phone is plus fifty-seven, contact to me."', right:'"My phone is plus fifty-seven… Please contact me."', note:'"Contact" needs no preposition in English. Never say "contact to".' },
+    { wrong:'"His LinkedIn of him is very complete."', right:'"His LinkedIn is very complete."', note:'"His" already shows possession — do not repeat with "of him".' },
+    { wrong:'"Our website is www point techbridge point com."', right:'"Our website is www dot techbridge dot com."', note:'Always say "dot" — never "point" — for the symbol in emails and URLs.' },
+    { wrong:'"What is the number of your phone?"', right:'"What is your phone number?"', note:'In English the possessive adjective comes before the noun: "your phone number", not "the number of your phone".' },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Activity — Correct the Mistake</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Each sentence below has one mistake. Find it — then tap the card to reveal the correction and the explanation.</p>
+
+    ${items.map((item,i)=>`
+    <div id="mc-${i}" onclick="toggleMistake(${i})"
+      style="background:var(--white);border:1.5px solid var(--border-grey);border-radius:10px;padding:18px;margin-bottom:14px;cursor:pointer;transition:border-color 0.2s,background 0.2s;user-select:none">
+      <div style="font-size:11px;font-weight:700;color:var(--grey-blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Sentence ${i+1}</div>
+      <div class="mistake-wrong" style="margin-bottom:12px">❌ &nbsp;${item.wrong}</div>
+      <div class="mc-tap" style="font-size:12px;color:var(--sky);font-weight:700;letter-spacing:0.5px">▼ Tap to reveal the correction</div>
+      <div class="mc-answer" style="display:none;margin-top:12px">
+        <div class="mistake-right">✓ &nbsp;${item.right}</div>
+        <div style="margin-top:10px;padding:8px 12px;background:var(--off-white);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;font-size:13px;color:var(--slate);line-height:1.5">💡 ${item.note}</div>
+      </div>
+    </div>`).join('')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderNetworking(){
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Activity — Networking Simulation</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">The class simulates a brief professional networking event. Each student has two or three short conversations — exchanging contact information with different classmates in breakout rooms or on screen.</p>
+
+    <div class="info-box">
+      <strong style="color:var(--navy)">How it works:</strong><br><br>
+      1. You have <strong>90 seconds</strong> per conversation.<br>
+      2. Introduce yourself, offer your card, ask for the other person's contact details.<br>
+      3. When time is called, move to the next person.<br>
+      4. Complete at least <strong>2–3 conversations</strong>.
+    </div>
+
+    <div class="h-serif" style="margin-bottom:10px">Each student must use these phrases at least once</div>
+    <div class="goal-list">
+      <div class="goal-item"><div class="goal-check">1</div><div class="goal-text">"Here is my business card."</div></div>
+      <div class="goal-item"><div class="goal-check">2</div><div class="goal-text">"My email is…" &nbsp;<em style="color:var(--grey-blue);font-size:13px">(read it with dot / at)</em></div></div>
+      <div class="goal-item"><div class="goal-check">3</div><div class="goal-text">"What is your phone number?"</div></div>
+      <div class="goal-item"><div class="goal-check">4</div><div class="goal-text">"Can you repeat that, please?"</div></div>
+    </div>
+
+    <div class="frame-box">
+      <div class="frame-label">Conversation Frame</div>
+      <div class="frame-line">"Hi! <strong>My name is</strong> _______. Nice to meet you."</div>
+      <div class="frame-line">"I work at _______. <strong>My position is</strong> _______."</div>
+      <div class="frame-line">"<strong>Here is my business card.</strong> <strong>My email is</strong> _______ dot _______ at _______ dot com."</div>
+      <div class="frame-line">"<strong>What is your phone number?</strong>"</div>
+      <div class="frame-line">"<strong>Can you repeat that, please?</strong>" / "How do you spell that?"</div>
+      <div class="frame-line">"Great — I will contact you on LinkedIn. <strong>Are you on LinkedIn?</strong>"</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Teacher monitors for…</div>
+      Possessive adjective use (my vs our) · Email symbols in English (dot, at, underscore) · Phone numbers said digit by digit · Natural conversation flow
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS ────────────────────────────────────────────────────
+STEPS = [
+  { label:'1. Warm-Up Video',   fn: renderVideo },
+  { label:'2. My Business Card',fn: renderBizCard },
+  { label:'3. Spell It Out',    fn: renderSpelling },
+  { label:'4. Numbers 100–1K',  fn: renderNumbers },
+  { label:'5. Fix the Mistake', fn: renderMistakes },
+  { label:'6. Networking Sim',  fn: renderNetworking },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

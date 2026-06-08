@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Office Objects | A1 · Unit 1 · Lesson 5</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { background:var(--navy); padding:12px 20px; }
+.vocab-table-head-3 { display:grid; grid-template-columns:1fr 1fr 1.4fr; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row-3 { display:grid; grid-template-columns:1fr 1fr 1.4fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; gap:8px; align-items:center; }
+.vocab-row-3:last-child { border-bottom:none; }
+.vocab-row-3:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+.vocab-ex { font-size:13px; color:var(--slate); font-style:italic; }
+
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red); background:var(--red-bg); color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red); color:white; }
+.q-opt.selected .opt-letter { background:var(--sky); color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg); color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red); background:var(--red-bg); }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.h-sub { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin:22px 0 10px; }
+
+/* WARNING BOX — for Spanish speaker attention traps */
+.warn-box { background:#FFF7ED; border-left:4px solid #F59E0B; border-radius:0 8px 8px 0; padding:14px 18px; margin-bottom:20px; }
+.warn-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.warn-body { font-size:14px; color:#78350F; line-height:1.7; }
+
+/* PRONUNCIATION GRID */
+.pron-grid { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pron-head { display:grid; grid-template-columns:1fr 1fr 1fr; background:var(--navy); padding:11px 20px; gap:8px; }
+.pron-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.pron-row { display:grid; grid-template-columns:1fr 1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.pron-row:last-child { border-bottom:none; }
+.pron-row:hover { background:var(--light-grey); }
+.pron-word { font-size:14px; font-weight:700; color:var(--navy); }
+.pron-wrong { font-size:13px; color:var(--red); }
+.pron-right { font-size:13px; color:var(--green); font-weight:600; }
+
+/* NUMBERS TABLE */
+.num-grid { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.num-head { display:grid; grid-template-columns:1fr 1.4fr 1.2fr; background:var(--navy); padding:11px 20px; gap:8px; }
+.num-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.num-row { display:grid; grid-template-columns:1fr 1.4fr 1.2fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.num-row:last-child { border-bottom:none; }
+.num-row:hover { background:var(--light-grey); }
+.num-figure { font-size:15px; font-weight:700; color:var(--navy); font-family:var(--font-heading); }
+.num-written { font-size:13px; color:var(--slate); }
+.num-pron { font-size:12px; color:var(--sky); font-style:italic; }
+
+/* COMPARISON BOX — decimal/comma swap */
+.compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+@media(max-width:560px){ .compare-grid{ grid-template-columns:1fr; } }
+.compare-card { border-radius:9px; overflow:hidden; }
+.compare-head { padding:10px 16px; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:700; }
+.compare-head.en { background:var(--navy); color:var(--gold); }
+.compare-head.es { background:#6B7A8D; color:var(--white); }
+.compare-body { padding:14px 16px; background:var(--white); border:1px solid var(--border-grey); border-top:none; }
+.compare-row { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed var(--border-grey); font-size:13px; }
+.compare-row:last-child { border-bottom:none; }
+.compare-label { color:var(--grey-blue); }
+.compare-val { font-weight:700; color:var(--navy); font-family:var(--font-heading); }
+
+/* DECIMAL RULE HIGHLIGHT */
+.decimal-highlight { background:var(--navy); border-radius:10px; padding:18px 22px; margin-bottom:20px; }
+.decimal-highlight-title { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:14px; }
+.decimal-example { font-family:var(--font-heading); font-size:22px; color:var(--gold); margin-bottom:6px; }
+.decimal-wrong { font-size:13px; color:#FCA5A5; text-decoration:line-through; margin-bottom:4px; }
+.decimal-right { font-size:13px; color:#6EE7B7; font-weight:700; }
+
+/* GRAMMAR RULE CARD */
+.rule-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.rule-card-head { background:var(--sky); padding:12px 20px; font-size:13px; font-weight:700; color:var(--white); letter-spacing:0.5px; }
+.rule-card-body { padding:16px 20px; }
+.rule-item { display:flex; align-items:baseline; gap:10px; padding:7px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; }
+.rule-item:last-child { border-bottom:none; }
+.rule-sing { font-weight:700; color:var(--navy); min-width:110px; }
+.rule-plur { color:var(--green); font-weight:700; min-width:130px; }
+.rule-note { font-size:12px; color:var(--grey-blue); font-style:italic; }
+
+/* DIALOGUE BOX */
+.dialogue-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.dialogue-head { background:var(--navy); padding:11px 20px; font-size:13px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.dialogue-line { padding:11px 20px; border-bottom:1px solid var(--light-grey); font-size:14px; line-height:1.6; }
+.dialogue-line:last-child { border-bottom:none; }
+.dialogue-line:nth-child(even) { background:var(--off-white); }
+.dialogue-speaker { font-weight:700; color:var(--navy); margin-right:6px; }
+.dialogue-text { color:var(--slate); font-style:italic; }
+.dialogue-key { font-weight:700; color:var(--gold); font-style:normal; }
+
+/* UNCOUNTABLE TABLE */
+.uncountable-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.uncountable-head { display:grid; grid-template-columns:1fr 2fr 1fr; background:var(--navy); padding:11px 20px; gap:8px; }
+.uncountable-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.uncountable-row { display:grid; grid-template-columns:1fr 2fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.uncountable-row:last-child { border-bottom:none; }
+.uncountable-row:hover { background:var(--light-grey); }
+.uncountable-word { font-size:14px; font-weight:700; color:var(--navy); }
+.uncountable-ex { font-size:13px; color:var(--slate); font-style:italic; }
+.uncountable-never { font-size:12px; color:var(--red); }
+
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-family:var(--font-body); font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Lesson 5 · Pre-Learning</div>
+    <h1 class="hero-title">Office Objects</h1>
+    <p class="hero-sub">Singular &amp; plural nouns · Numbers 1,000–100,000 · ~45 minutes self-study</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Name 15+ office objects in English</div><div class="outcome-note">Nombrar objetos de oficina en inglés</div></div>
+      <div><div class="outcome-item">Use singular and plural forms correctly</div><div class="outcome-note">Usar formas singulares y plurales</div></div>
+      <div><div class="outcome-item">Use large numbers in workplace contexts</div><div class="outcome-note">Usar números grandes en el trabajo</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0, isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── QUIZ DATA ─────────────────────────────────────────────
+const QUIZ = [
+  // NUMBERS
+  { type:'mc', q:'How do you write "forty-five point six three two" as a number in English?',
+    opts:['45,632','45.632','45,6','45.6.32'], answer:1,
+    hint:'In English, the period (.) is the decimal separator — not the comma.',
+    fb:'Correct: 45.632. In English, the period separates the whole number from the decimal. The comma is used for thousands: 45,632 means forty-five thousand, six hundred and thirty-two.' },
+  { type:'mc', q:'A colleague says the project budget is "$12,500." How do you say this number in English?',
+    opts:['Twelve mil five hundred','Twelve thousand five hundred','Twelve hundreds five','Twelve five hundred'], answer:1,
+    hint:'"Mil" in Spanish = "thousand" in English. Never say "mil" in English.',
+    fb:'"Twelve thousand five hundred." The word "mil" does not exist in English. Always say "thousand."' },
+  { type:'tf', q:'In English, the number 3.500 means "three thousand five hundred."',
+    answer:false,
+    hint:'Think about which language uses a period as the thousands separator.',
+    fb:'False. In English, 3.500 means "three point five" (a decimal number). To write three thousand five hundred, you write 3,500 — using a comma, not a period. Spanish does the opposite.' },
+  { type:'mc', q:'Your company has 75,000 customers. How do you say this number in English?',
+    opts:['Seventy-five hundreds','Seven hundred and fifty','Seventy-five thousand','Seventy-five mil'], answer:2,
+    hint:'75,000 = 75 × 1,000.',
+    fb:'"Seventy-five thousand." Remember: in English, the comma is a thousands separator, not a decimal point.' },
+  // VOCABULARY
+  { type:'mc', q:'You use this every day to move the cursor on your screen. What is it?',
+    opts:['Keyboard','Charger','Mouse','Headset'], answer:2,
+    hint:'In Spanish: ratón / mouse.',
+    fb:'"Mouse." In English, the computer mouse has the same name as the small animal — context always makes the meaning clear.' },
+  { type:'mc', q:'You need this to enter the building. Without it, you cannot go through security. What is it?',
+    opts:['Notebook','ID badge','Charger','Stapler'], answer:1,
+    hint:'In Spanish: carné / tarjeta de identificación.',
+    fb:'"ID badge." You wear or carry this at all times in most corporate buildings.' },
+  { type:'input', q:'What do you call the device that keeps your laptop battery full?',
+    hint:'In Spanish: cargador',
+    answers:['charger','a charger'], display:'Charger', fb:'A "charger" connects your laptop to the power supply and keeps the battery full. "I forgot my charger at home!" is a very common sentence in any office.' },
+  { type:'mc', q:'Complete this sentence: "I use a _______ for all my video calls — I can hear clearly and my hands are free."',
+    opts:['webcam','whiteboard','headset','projector'], answer:2,
+    hint:'In Spanish: audífonos / diadema.',
+    fb:'"Headset." A headset covers your ears and has a built-in microphone — very common in call centres and virtual meeting environments.' },
+  { type:'tf', q:'"Whiteboard" and "tablero" mean the same thing in a Colombian office context.',
+    answer:true,
+    hint:'Think about what teachers and managers write on in meetings.',
+    fb:'True. "Whiteboard" (or "tablero" / "pizarrón" in Spanish) is the large white surface in meeting rooms used for notes, diagrams, and brainstorming.' },
+  // GRAMMAR — PLURAL
+  { type:'mc', q:'Which sentence is correct?',
+    opts:['I need new furnitures for my office.','I need new furniture for my office.','I need a furniture for my office.','I need the furnitures for my office.'], answer:1,
+    hint:'"Furniture" is an uncountable noun in English — it never takes a plural -s.',
+    fb:'"I need new furniture for my office." "Furniture" is uncountable in English. You cannot say "furnitures" or "a furniture." This is one of the most common mistakes Spanish speakers make.' },
+  { type:'mc', q:'The office has five new _______.',
+    opts:['printer','a printer','printers','the printer'], answer:2,
+    hint:'Five = more than one → plural form needed.',
+    fb:'"Printers." When you have more than one, you use the plural: add -s. No article ("a") is used before a plural noun when speaking generally.' },
+  { type:'mc', q:'Which sentence is correct?',
+    opts:['The equipments are ready.','The equipment are ready.','The equipment is ready.','An equipment is ready.'], answer:2,
+    hint:'"Equipment" is uncountable — it uses a singular verb.',
+    fb:'"The equipment is ready." "Equipment" has no plural in English. It is always singular, and you never say "an equipment" or "equipments." This is the same for "furniture," "information," and "news."' },
+  { type:'tf', q:'"Mouses" is an acceptable plural of the word "mouse" when talking about a computer device.',
+    answer:true,
+    hint:'Think about everyday office language vs. technical grammar.',
+    fb:'True — and also False, depending on context! In everyday office English, "mouses" is widely understood and used. Technically, "mice" is the correct plural. Both are acceptable. You will not be misunderstood either way.' },
+  { type:'mc', q:'How do you say the plural of "mouse" (the animal or the computer device) using the technically correct form?',
+    opts:['mouses','mices','mice','mouse'], answer:2,
+    hint:'This is an irregular plural — there is no rule, just memory.',
+    fb:'"Mice." This is an irregular plural — the vowel changes, just like "man → men" and "woman → women." For computer mice, both "mice" and "mouses" are used in everyday speech.' },
+  // PRONUNCIATION
+  { type:'mc', q:'A Spanish speaker says "PREEN-ter" for the office machine that prints documents. Is this correct?',
+    opts:['Yes, that is correct.','No — the correct pronunciation is "PRIN-ter."','No — the correct pronunciation is "PREEN-TER."','No — the correct pronunciation is "PREN-ter."'], answer:1,
+    hint:'The vowel in "print" is short — like the "i" in "bit" or "sit."',
+    fb:'"PRIN-ter." The vowel is short — "i" as in "bit," not a long "ee" sound. This is a very common mistake for Spanish speakers because the letter "i" in Spanish is usually pronounced "ee."' },
+  { type:'mc', q:'Which of these words does NOT begin with an extra "e" sound when spoken correctly in English?',
+    opts:['estapler (× wrong)','escreen (× wrong)','Stapler (✓ correct)','espot (× wrong)'], answer:2,
+    hint:'English words starting with "st-", "sp-", "sc-" have no "e" sound before them.',
+    fb:'"Stapler." In English, words beginning with "st-", "sp-", "sc-", and "sk-" start directly with those consonants — there is no "e" sound before them. Spanish speakers often add one by habit. Practise saying: "stapler," "screen," "schedule," "skill."' },
+];
+
+const quizState = {};
+let quizScore = 0;
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome to Lesson 5</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">In this lesson, you will learn the English names for common office objects — the things you see and use every day at work. You will also practise <strong>singular and plural nouns</strong>, an important grammar rule with a few traps for Spanish speakers.</p>
+
+    <div class="info-box">
+      <strong>📋 What you will study today:</strong><br><br>
+      <strong>Essential Skills</strong> — Numbers 1,000 to 100,000 (budgets, quantities, figures)<br>
+      <strong>Vocabulary</strong> — 15 core office objects + 8 extended words<br>
+      <strong>Pronunciation</strong> — Common mistakes Spanish speakers make with office words<br>
+      <strong>Grammar</strong> — Singular and plural nouns: rules, exceptions, and uncountable nouns<br>
+      <strong>Exercises</strong> — Practise everything before the quiz
+    </div>
+
+    <div class="es-note">
+      🇨🇴 En esta lección aprenderás los nombres en inglés de los objetos que usas todos los días en tu oficina. También estudiarás las reglas de singular y plural — que en inglés tienen algunas diferencias importantes con respecto al español. ¡Estudia con cuidado las secciones de "⚠️ Atención"!
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 How to use this section</div>
+      Work through each section in order. Read every explanation carefully. Say the example sentences aloud — pronunciation practice works best when you use your voice, not just your eyes. Complete the self-check exercises before moving to the quiz.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderNumbers() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Essential Skills — Numbers 1,000 to 100,000</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">In Lesson 4, you studied numbers from 100 to 1,000. Now we move to larger numbers — the ones you see in budgets, order quantities, company figures, and salary discussions. These numbers appear every day in professional English.</p>
+
+    <div class="num-grid">
+      <div class="num-head">
+        <span>Number</span>
+        <span>Written Form</span>
+        <span>How to Say It</span>
+      </div>
+      <div class="num-row"><span class="num-figure">1,000</span><span class="num-written">one thousand</span><span class="num-pron">"one THOU-zand"</span></div>
+      <div class="num-row"><span class="num-figure">2,500</span><span class="num-written">two thousand five hundred</span><span class="num-pron">"two THOU-zand five HUN-dred"</span></div>
+      <div class="num-row"><span class="num-figure">5,000</span><span class="num-written">five thousand</span><span class="num-pron">"five THOU-zand"</span></div>
+      <div class="num-row"><span class="num-figure">10,000</span><span class="num-written">ten thousand</span><span class="num-pron">"ten THOU-zand"</span></div>
+      <div class="num-row"><span class="num-figure">25,000</span><span class="num-written">twenty-five thousand</span><span class="num-pron">"TWEN-ty five THOU-zand"</span></div>
+      <div class="num-row"><span class="num-figure">50,000</span><span class="num-written">fifty thousand</span><span class="num-pron">"FIF-ty THOU-zand"</span></div>
+      <div class="num-row"><span class="num-figure">100,000</span><span class="num-written">one hundred thousand</span><span class="num-pron">"one HUN-dred THOU-zand"</span></div>
+    </div>
+
+    <div class="examples-wrap">
+      <div class="examples-label">Workplace Context — Where You See These Numbers</div>
+      <div class="example-item"><span class="example-en">"We ordered <strong>3,500</strong> units last quarter."</span></div>
+      <div class="example-item"><span class="example-en">"The department budget is <strong>$50,000</strong>."</span></div>
+      <div class="example-item"><span class="example-en">"We have <strong>12,000</strong> customers in Colombia."</span></div>
+      <div class="example-item"><span class="example-en">"The new equipment costs <strong>$8,750</strong>."</span></div>
+    </div>
+
+    <div class="divider"></div>
+    <p class="h-sub">⚠️ Spanish Speaker Attention — Number Traps</p>
+
+    <div class="warn-box">
+      <div class="warn-label">⚠️ Trap 1 — The Comma and the Period Are Switched</div>
+      <div class="warn-body">
+        In English and Spanish, the comma and the period swap roles completely. This causes real errors in professional emails, invoices, and financial documents. Study the table below carefully.
+      </div>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-head en">English</div>
+        <div class="compare-body">
+          <div class="compare-row"><span class="compare-label">1,000 means…</span><span class="compare-val">One thousand</span></div>
+          <div class="compare-row"><span class="compare-label">1.5 means…</span><span class="compare-val">One point five</span></div>
+          <div class="compare-row"><span class="compare-label">$45,250.75 means…</span><span class="compare-val">Forty-five thousand, two hundred fifty and seventy-five cents</span></div>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-head es">Spanish (Colombia / Peru)</div>
+        <div class="compare-body">
+          <div class="compare-row"><span class="compare-label">1.000 significa…</span><span class="compare-val">Mil</span></div>
+          <div class="compare-row"><span class="compare-label">1,5 significa…</span><span class="compare-val">Uno coma cinco</span></div>
+          <div class="compare-row"><span class="compare-label">$45.250,75 significa…</span><span class="compare-val">Cuarenta y cinco mil, doscientos cincuenta con setenta y cinco</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Quick Rule to Remember</div>
+      English: <strong>comma = thousands · period = decimals</strong><br>
+      Spanish: <strong>period = thousands · comma = decimals</strong><br>
+      They are the exact opposite. Always double-check when writing numbers in professional English documents.
+    </div>
+
+    <div class="warn-box" style="margin-top:4px;">
+      <div class="warn-label">⚠️ Trap 2 — How to Read Decimal Numbers in English</div>
+      <div class="warn-body">
+        In English, the numbers after the decimal point are always read <strong>individually — one digit at a time.</strong> You do not group them as a whole number.
+      </div>
+    </div>
+
+    <div class="decimal-highlight">
+      <div class="decimal-highlight-title">Example: 45.632</div>
+      <div class="decimal-example">45.632</div>
+      <div class="decimal-wrong">✗ "Forty-five point six hundred and thirty-two" — WRONG</div>
+      <div class="decimal-right">✓ "Forty-five point six — three — two" — CORRECT</div>
+    </div>
+
+    <div class="examples-wrap">
+      <div class="examples-label">More Decimal Examples</div>
+      <div class="example-item"><span class="example-en">3.14</span><span class="example-arrow">→</span><span class="example-es">Three point one four <em>(not "three point fourteen")</em></span></div>
+      <div class="example-item"><span class="example-en">9.75</span><span class="example-arrow">→</span><span class="example-es">Nine point seven five <em>(not "nine point seventy-five")</em></span></div>
+      <div class="example-item"><span class="example-en">0.5</span><span class="example-arrow">→</span><span class="example-es">Zero point five <em>(also: "nought point five" in British English)</em></span></div>
+      <div class="example-item"><span class="example-en">2.489</span><span class="example-arrow">→</span><span class="example-es">Two point four eight nine</span></div>
+    </div>
+
+    <div class="es-note">
+      🇨🇴 Recuerda: en inglés, los decimales se leen dígito por dígito. 45.632 se dice "forty-five point six — three — two", no "forty-five point six hundred and thirty-two". Es un error muy común. ¡Practica en voz alta!
+    </div>
+
+    <div class="warn-box">
+      <div class="warn-label">⚠️ Trap 3 — "Mil" Does Not Translate Word for Word</div>
+      <div class="warn-body">
+        The Spanish word "mil" becomes "thousand" in English — not "mil." This seems obvious, but under pressure in a meeting or on a call, Spanish speakers sometimes say "mil" without realising it.
+      </div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">Common Mistakes</div>
+      <div class="mistake-wrong">✗ "The budget is two mil dollars."</div>
+      <div class="mistake-right">✓ "The budget is two thousand dollars."</div>
+      <div style="margin-top:10px"></div>
+      <div class="mistake-wrong">✗ "We have diez mil customers."</div>
+      <div class="mistake-right">✓ "We have ten thousand customers."</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">🔊 Quick Practice — Say It Aloud</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:14px;">Try saying these numbers in English before reading the answer. Tap each row to reveal.</p>
+      ${[['4,000','four thousand'],['15,500','fifteen thousand five hundred'],['75,000','seventy-five thousand'],['3,200','three thousand two hundred'],['100,000','one hundred thousand'],['8.5','eight point five'],['24.37','twenty-four point three seven']].map((r,i)=>`
+        <div onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='block'?'none':'block'" style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;cursor:pointer;margin-bottom:7px;font-size:14px;">
+          <span style="font-weight:700;color:var(--navy);">${r[0]}</span>
+          <span class="rev" style="display:none;color:var(--green);font-weight:700;">→ ${r[1]}</span>
+          <span style="font-size:11px;color:var(--grey-blue);">Tap to reveal</span>
+        </div>`).join('')}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Vocabulary — Office Objects</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">You spend many hours in an office. Let's learn the English names for the objects around you. Study the core list first — these are the essential words. Then review the extended list for extra vocabulary.</p>
+
+    <div class="es-note">
+      🇨🇴 Estudia primero las 15 palabras esenciales. Léelas en voz alta. Luego revisa la lista extendida. Al final encontrarás una sección de pronunciación — ¡es importante!
+    </div>
+
+    <p class="h-sub">Core Vocabulary — The Essential 15</p>
+
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head vocab-table-head-3">
+        <span>English</span><span>Spanish</span><span>Example Sentence</span>
+      </div>
+      ${[
+        ['Laptop','computador portátil / laptop','"My laptop is on my desk."'],
+        ['Desktop computer','computador de escritorio','"The office has ten desktop computers."'],
+        ['Monitor','monitor','"I need a larger monitor for my work."'],
+        ['Keyboard','teclado','"My keyboard has a Spanish layout."'],
+        ['Mouse','ratón / mouse','"The mouse is next to the keyboard."'],
+        ['Headset','audífonos / diadema','"I use a headset for video calls."'],
+        ['Desk','escritorio / mesa de trabajo','"My desk is near the window."'],
+        ['Chair','silla','"The chair in the conference room is comfortable."'],
+        ['Charger','cargador','"I forgot my laptop charger at home."'],
+        ['ID badge / ID card','carné / tarjeta de identificación','"You need your ID badge to enter the building."'],
+        ['Printer','impresora','"The printer is out of paper."'],
+        ['Notebook','cuaderno','"I keep a notebook for meeting notes."'],
+        ['Pen','bolígrafo / esfero','"Can I borrow a pen?"'],
+        ['Stapler','cosedora / grapadora','"Where is the stapler?"'],
+        ['Whiteboard','tablero / pizarrón','"The manager wrote on the whiteboard."'],
+      ].map(([en,es,ex])=>`
+        <div class="vocab-row-3">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+          <div class="vocab-ex">${ex}</div>
+        </div>`).join('')}
+    </div>
+
+    <p class="h-sub">Extended Vocabulary — Good to Know</p>
+
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head vocab-table-head-3">
+        <span>English</span><span>Spanish</span><span>Example Sentence</span>
+      </div>
+      ${[
+        ['Projector','proyector','"The projector is in the meeting room."'],
+        ['Extension cord','extensión / cable de corriente','"I need an extension cord for my laptop."'],
+        ['Filing cabinet','archivador','"The contracts are in the filing cabinet."'],
+        ['Shredder','destructora de documentos','"Put sensitive documents in the shredder."'],
+        ['Sticky notes','notas adhesivas / post-its','"I use sticky notes to remember tasks."'],
+        ['Cable / wire','cable','"There are too many cables under my desk."'],
+        ['Webcam','cámara web','"My webcam is built into the laptop."'],
+        ['USB drive','memoria USB / USB','"Save the file on the USB drive."'],
+      ].map(([en,es,ex])=>`
+        <div class="vocab-row-3">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+          <div class="vocab-ex">${ex}</div>
+        </div>`).join('')}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Grammar — Singular and Plural Nouns</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">In English, most nouns change form when there is more than one. This is called the <strong>plural</strong>. Most plurals are regular — you just add <strong>-s</strong> or <strong>-es</strong>. But some nouns are irregular, and some nouns <em>never</em> change at all.</p>
+
+    <p class="h-sub">The Basic Rule — Add -s or -es</p>
+
+    <div class="rule-card">
+      <div class="rule-card-head">Regular Plurals — Adding -s or -es</div>
+      <div class="rule-card-body">
+        <div class="rule-item"><span class="rule-sing">a desk</span><span class="rule-arrow" style="color:var(--steel)">→</span><span class="rule-plur">two desks</span><span class="rule-note">add -s</span></div>
+        <div class="rule-item"><span class="rule-sing">a printer</span><span class="rule-arrow" style="color:var(--steel)">→</span><span class="rule-plur">three printers</span><span class="rule-note">add -s</span></div>
+        <div class="rule-item"><span class="rule-sing">a monitor</span><span class="rule-arrow" style="color:var(--steel)">→</span><span class="rule-plur">four monitors</span><span class="rule-note">add -s</span></div>
+        <div class="rule-item"><span class="rule-sing">a box</span><span class="rule-arrow" style="color:var(--steel)">→</span><span class="rule-plur">five boxes</span><span class="rule-note">add -es (after -x)</span></div>
+        <div class="rule-item"><span class="rule-sing">a lunch</span><span class="rule-arrow" style="color:var(--steel)">→</span><span class="rule-plur">two lunches</span><span class="rule-note">add -es (after -ch)</span></div>
+      </div>
+    </div>
+
+    <p class="h-sub">Irregular Plurals — No Rule, Just Memorise</p>
+
+    <div class="rule-card">
+      <div class="rule-card-head">Irregular Plurals — The Form Changes</div>
+      <div class="rule-card-body">
+        <div class="rule-item"><span class="rule-sing">mouse</span><span class="rule-arrow" style="color:var(--steel)">→</span><span class="rule-plur">mice</span><span class="rule-note">computer mice / office mice</span></div>
+        <div class="rule-item"><span class="rule-sing">person</span><span class="rule-arrow" style="color:var(--steel)">→</span><span class="rule-plur">people</span><span class="rule-note">"There are 15 people in this office."</span></div>
+        <div class="rule-item"><span class="rule-sing">man</span><span class="rule-arrow" style="color:var(--steel)">→</span><span class="rule-plur">men</span><span class="rule-note">"Two men from IT came to fix the server."</span></div>
+        <div class="rule-item"><span class="rule-sing">woman</span><span class="rule-arrow" style="color:var(--steel)">→</span><span class="rule-plur">women</span><span class="rule-note">"Three women joined the marketing team."</span></div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Mouses or Mice?</div>
+      In everyday office English, people often say "mouses" for computer devices. Both "mouses" and "mice" are understood. However, "mice" is technically correct. If you say "mouses," no one will correct you in a normal conversation.
+    </div>
+
+    <p class="h-sub">Nouns That Never Change — Uncountable Nouns</p>
+
+    <p class="sec-intro" style="margin-bottom:14px;">Some nouns have no plural form in English. These are called <strong>uncountable nouns</strong>. They look the same in singular and plural — and they always use a singular verb.</p>
+
+    <div class="uncountable-wrap">
+      <div class="uncountable-head">
+        <span>Word</span><span>Example</span><span>Never Say</span>
+      </div>
+      ${[
+        ['staff','"The staff is very professional."','"staffs"'],
+        ['equipment','"The equipment is ready."','"equipments"'],
+        ['furniture','"The office furniture looks modern."','"furnitures"'],
+        ['information','"I need more information."','"informations"'],
+        ['news','"The news is good."','"a news"'],
+      ].map(([w,ex,nv])=>`
+        <div class="uncountable-row">
+          <span class="uncountable-word">${w}</span>
+          <span class="uncountable-ex">${ex}</span>
+          <span class="uncountable-never">${nv}</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="divider"></div>
+    <p class="h-sub">⚠️ Spanish Speaker Attention — Plural Traps</p>
+
+    <div class="warn-box">
+      <div class="warn-label">⚠️ Trap 1 — "Equipment" and "Furniture" Have No Plural</div>
+      <div class="warn-body">In Spanish, <em>equipos</em> and <em>muebles</em> are countable plural nouns. In English, "equipment" and "furniture" are uncountable — they never take a plural -s, and they never use the article "a."</div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">Common Mistakes — Equipment &amp; Furniture</div>
+      <div class="mistake-wrong">✗ "We need new furnitures for the office."</div>
+      <div class="mistake-right">✓ "We need new furniture for the office."</div>
+      <div style="margin-top:8px"></div>
+      <div class="mistake-wrong">✗ "The equipments are ready."</div>
+      <div class="mistake-right">✓ "The equipment is ready."</div>
+      <div style="margin-top:8px"></div>
+      <div class="mistake-wrong">✗ "I bought a new furniture."</div>
+      <div class="mistake-right">✓ "I bought new furniture." <span style="font-size:12px;color:var(--grey-blue);font-style:italic">— no article "a" before uncountable nouns</span></div>
+    </div>
+
+    <div class="warn-box">
+      <div class="warn-label">⚠️ Trap 2 — The Article Changes with Singular / Plural</div>
+      <div class="warn-body">When you speak generally about more than one thing, do not use "a." Use the plural noun alone, or use "the" if referring to a specific group.</div>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Article + Noun Pattern</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:18px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Singular</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">a laptop</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic">one item</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Plural (general)</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">laptops</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic">no "a" before plural</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Plural (specific)</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">the laptops</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic">use "the" for specific items</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"I need <span style="color:#FCD34D">a charger</span>"</strong> — one, any charger</div>
+      <div class="builder-ex"><strong>"I need <span style="color:#FCD34D">chargers</span>"</strong> — more than one, general</div>
+      <div class="builder-ex"><strong>"I need <span style="color:#FCD34D">the chargers</span> from the storage room"</strong> — specific chargers</div>
+    </div>
+
+    <p class="h-sub">Using Singular and Plural in Office Conversations</p>
+
+    <div class="dialogue-wrap">
+      <div class="dialogue-head">💬 Conversation 1 — Asking to Borrow Something</div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Ana:</span><span class="dialogue-text">Excuse me, do you have <span class="dialogue-key">a pen</span>?</span></div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Carlos:</span><span class="dialogue-text">Yes, here you go.</span></div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Ana:</span><span class="dialogue-text">Thank you. Also, do you know where <span class="dialogue-key">the stapler</span> is?</span></div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Carlos:</span><span class="dialogue-text">It's on <span class="dialogue-key">the desk</span> near <span class="dialogue-key">the printer</span>.</span></div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Ana:</span><span class="dialogue-text">Great, thanks!</span></div>
+    </div>
+
+    <div class="dialogue-wrap">
+      <div class="dialogue-head">💬 Conversation 2 — Reporting a Problem</div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Lucia:</span><span class="dialogue-text"><span class="dialogue-key">The printer</span> is not working.</span></div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Manager:</span><span class="dialogue-text">Is it out of paper or out of ink?</span></div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Lucia:</span><span class="dialogue-text">I think it's out of ink. There are no <span class="dialogue-key">cartridges</span> in the cabinet.</span></div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Manager:</span><span class="dialogue-text">OK. I'll order new ones today. Use <span class="dialogue-key">the printer</span> on the second floor for now.</span></div>
+    </div>
+
+    <div class="dialogue-wrap">
+      <div class="dialogue-head">💬 Conversation 3 — New Employee Asking About Equipment</div>
+      <div class="dialogue-line"><span class="dialogue-speaker">New Employee:</span><span class="dialogue-text">Excuse me — I'm new here. Where can I get <span class="dialogue-key">a laptop charger</span>?</span></div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Colleague:</span><span class="dialogue-text">IT has extra <span class="dialogue-key">chargers</span>. Their office is on the third floor.</span></div>
+      <div class="dialogue-line"><span class="dialogue-speaker">New Employee:</span><span class="dialogue-text">And do I need my <span class="dialogue-key">ID badge</span> to go there?</span></div>
+      <div class="dialogue-line"><span class="dialogue-speaker">Colleague:</span><span class="dialogue-text">Yes, you need it for every floor above the first.</span></div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Self-Check Exercises</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Complete these exercises before moving to the quiz. They cover vocabulary, grammar, and translation. Check your answers using the reveal buttons.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise A — Name the Object</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:14px;">Read the description. Click the row to reveal the answer.</p>
+      ${[
+        ['You use this to type letters and numbers.','keyboard'],
+        ['You use this to print documents.','printer'],
+        ['You wear this to enter the building.','ID badge'],
+        ['You use this to charge your laptop.','charger'],
+        ['This is the surface where you work.','desk'],
+        ['You use this to write on a big white surface in meetings.','whiteboard'],
+        ['You use these to listen clearly on calls. Covers both ears.','headset'],
+        ['You save files on this small device. You can put it in your pocket.','USB drive'],
+      ].map(([desc,ans],i)=>`
+        <div onclick="this.querySelector('.rev-ans').style.display=this.querySelector('.rev-ans').style.display==='flex'?'none':'flex'" style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;cursor:pointer;margin-bottom:7px;font-size:14px;flex-wrap:wrap;gap:8px;">
+          <span style="color:var(--navy);">${i+1}. ${desc}</span>
+          <div class="rev-ans" style="display:none;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓ ${ans}</span></div>
+          <span style="font-size:11px;color:var(--grey-blue);white-space:nowrap;">Tap to reveal</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise B — Singular or Plural?</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:14px;">Choose the correct form. Click to reveal the answer and explanation.</p>
+      ${[
+        ['I need a new _____ for my desk.','chair / chairs','chair','Only one chair is needed — singular with "a".'],
+        ['The office has five _____.','printer / printers','printers','Five = more than one → printers. Add -s.'],
+        ['Can you pass me _____?','a pen / a pens','a pen','"A pen" — singular. "A pens" is never correct.'],
+        ['The _____ is ready.','equipment / equipments','equipment','"Equipment" is uncountable. Never "equipments."'],
+        ['There are three _____ in the server room.','monitor / monitors','monitors','Three = more than one → monitors.'],
+        ['The _____ in this office is very modern.','furniture / furnitures','furniture','"Furniture" is uncountable. Never "furnitures."'],
+      ].map(([q,opts,ans,expl],i)=>`
+        <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:7px;padding:12px 14px;margin-bottom:8px;">
+          <div style="font-size:14px;color:var(--navy);margin-bottom:8px;"><strong>${i+1}.</strong> ${q.replace('_____','<span style="border-bottom:2px solid var(--border-grey);padding:0 20px;">&nbsp;&nbsp;&nbsp;&nbsp;</span>')}</div>
+          <div style="font-size:13px;color:var(--grey-blue);margin-bottom:10px;font-style:italic;">Options: ${opts}</div>
+          <div onclick="this.style.display='none';this.nextElementSibling.style.display='block'" style="display:inline-block;padding:6px 14px;background:var(--navy);color:var(--white);border-radius:5px;font-size:12px;font-weight:700;cursor:pointer;">Show Answer</div>
+          <div style="display:none;background:var(--green-bg);border-radius:7px;padding:10px 14px;font-size:13px;color:var(--green);">✓ <strong>${ans}</strong> — ${expl}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise C — Translate to English</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:14px;">Translate these sentences into English. Click to reveal the answer.</p>
+      ${[
+        ['Necesito un cargador para mi computador.','I need a charger for my laptop / computer.'],
+        ['Hay diez escritorios en la oficina.','There are ten desks in the office.'],
+        ['¿Dónde está la grapadora?','Where is the stapler?'],
+        ['El equipo de oficina es nuevo.','The office equipment is new.'],
+        ['Tengo dos monitores en mi escritorio.','I have two monitors on my desk.'],
+      ].map(([es,en],i)=>`
+        <div onclick="this.querySelector('.rev-tr').style.display=this.querySelector('.rev-tr').style.display==='block'?'none':'block'" style="padding:10px 14px;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;cursor:pointer;margin-bottom:7px;">
+          <div style="font-size:14px;color:var(--slate);font-style:italic;margin-bottom:6px;">${i+1}. "${es}"</div>
+          <div class="rev-tr" style="display:none;font-size:14px;color:var(--green);font-weight:600;">✓ "${en}"</div>
+          <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+        </div>`).join('')}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered=Object.values(quizState).filter(s=>s.revealed).length;
+  const pct=QUIZ.length?(answered/QUIZ.length)*100:0;
+  const allDone=answered===QUIZ.length&&QUIZ.length>0;
+  const allCorrect=allDone&&quizScore===QUIZ.length;
+  const wrongCount=allDone?QUIZ.length-quizScore:0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Self-Check Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Numbers · Vocabulary · Grammar · Pronunciation</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+
+    ${QUIZ.map((q,i)=>renderQ(q,i)).join('')}
+
+    ${allDone?`<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>`:''}
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ────────────────────────────────────────────
+function renderQ(q,i) {
+  const s=quizState[i]||{};
+  const rev=s.revealed;
+  let body='';
+  const letters=['A','B','C','D'];
+
+  if(q.type==='mc'||q.type==='tf'){
+    const opts=q.type==='mc'?q.opts:['True','False'];
+    const lets=q.type==='mc'?letters:['T','F'];
+    body=`<div class="q-options">
+      ${opts.map((opt,j)=>{
+        let cls='q-opt';
+        const isAns=q.type==='mc'?j===q.answer:q.answer===(j===0);
+        if(rev){if(isAns)cls+=' correct';else if(s.selected===j)cls+=' wrong';}
+        else if(s.selected===j)cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev?`<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>`:''}
+    ${rev?`<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>`:''}`;
+  }
+
+  if(q.type==='input'){
+    const cls=rev?(s.correct?'q-input correct':'q-input wrong'):'q-input';
+    body=`<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev?`<button class="check-btn" onclick="revealInp(${i})">Check</button>`:''}
+    </div>
+    ${rev?`<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>`:''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint?`<div class="q-hint">💡 ${q.hint}</div>`:''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j){if(!quizState[qi])quizState[qi]={};if(quizState[qi].revealed)return;quizState[qi].selected=j;rerender();}
+function revealQ(qi){if(!quizState[qi])quizState[qi]={};quizState[qi].revealed=true;recalc();rerender();}
+function setInp(qi,v){if(!quizState[qi])quizState[qi]={};quizState[qi].inputVal=v;}
+function revealInp(qi){
+  const q=QUIZ[qi];if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true;recalc();rerender();
+}
+function retakeQuiz(){
+  QUIZ.forEach((_,i)=>{
+    const s=quizState[i];if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input')ok=s.correct;
+    if(!ok){delete quizState[i];}
+  });
+  recalc();rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc(){
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i];if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender(){
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi)document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+function scoreLabel(){
+  if(quizScore===QUIZ.length)return'🎉 ¡Perfecto! — You are ready for class!';
+  if(quizScore>=QUIZ.length*0.85)return'¡Excelente! Almost perfect.';
+  if(quizScore>=QUIZ.length*0.7)return'Good work! Retry the wrong answers.';
+  return'Keep practising — ¡tú puedes!';
+}
+function scoreMsg(){
+  if(quizScore===QUIZ.length)return'Outstanding — a perfect score! See you in class.';
+  if(quizScore>=QUIZ.length*0.85)return'Retry the wrong answers to finish strong.';
+  if(quizScore>=QUIZ.length*0.7)return'Go back and check the sections where you made mistakes.';
+  return'Retry the wrong answers and review the lesson again.';
+}
+
+// ── STEPS — defined last ──────────────────────────────────
+STEPS = [
+  { label:'1. Welcome',     fn: renderWelcome    },
+  { label:'2. Numbers',     fn: renderNumbers    },
+  { label:'3. Vocabulary',  fn: renderVocabulary },
+  { label:'4. Grammar',     fn: renderGrammar    },
+  { label:'5. Exercises',   fn: renderExercises  },
+  { label:'6. Quiz',        fn: renderQuiz       },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

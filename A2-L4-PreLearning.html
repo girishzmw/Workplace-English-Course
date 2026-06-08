@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Responsibilities in Detail | A2 · Unit 1 · Lesson 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2D4F;--gold:#C9972C;--gold-light:#D4AC45;--gold-bg:#FDF6E3;
+  --slate:#4A5568;--grey-blue:#6B7A8D;--off-white:#F7F9FC;--light-grey:#F0F4F8;
+  --border-grey:#D9E2EC;--steel:#B8C6D6;--white:#FFFFFF;
+  --green:#1A6B4A;--green-bg:#E8F5EE;--red:#B91C1C;--red-bg:#FEE2E2;--sky:#2E86AB;
+  --font-heading:Georgia,'Times New Roman',serif;--font-body:'Lato',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--off-white);color:var(--slate);min-height:100vh;overflow-x:hidden}
+.site-header{background:var(--navy);border-bottom:2px solid var(--gold)}
+.site-header-inner{max-width:900px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;justify-content:center}
+.site-header-brand{font-family:var(--font-heading);font-size:22px;font-style:italic;color:var(--white);letter-spacing:.02em;opacity:.95}
+.hero{background:var(--navy);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:rgba(44,130,173,.14)}
+.hero::after{content:'';position:absolute;bottom:-40px;left:40px;width:200px;height:200px;border-radius:50%;background:rgba(201,151,44,.10)}
+.hero-inner{max-width:900px;margin:0 auto;padding:48px 32px 40px;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,151,44,.15);border:1px solid rgba(201,151,44,.4);border-radius:20px;padding:5px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px}
+.hero-title{font-family:var(--font-heading);font-size:clamp(26px,5vw,40px);color:var(--white);line-height:1.15;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:28px;font-weight:300}
+.hero-outcomes{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:10px;padding:18px 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:600px){.hero-outcomes{grid-template-columns:1fr}}
+.outcome-item{font-size:13px;color:var(--white);font-weight:400}
+.outcome-item::before{content:'✓ ';color:var(--gold);font-weight:700}
+.outcome-note{font-size:11px;color:rgba(255,255,255,.4);font-style:italic;padding-left:14px;margin-top:2px}
+.progress-wrap{background:rgba(255,255,255,.08);height:3px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--sky),var(--gold));transition:width .4s ease}
+.step-nav{background:var(--white);border-bottom:1px solid var(--border-grey);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.step-nav-inner{max-width:900px;margin:0 auto;padding:0 32px;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.step-btn{padding:13px 16px;border:none;background:none;border-bottom:3px solid transparent;font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--grey-blue);cursor:pointer;white-space:nowrap;transition:all .15s}
+.step-btn:hover{color:var(--sky)}
+.step-btn.active{border-bottom-color:var(--gold);color:var(--navy);font-weight:700}
+.main{max-width:900px;margin:0 auto;padding:36px 32px 80px}
+@media(max-width:600px){.main{padding:20px 16px 60px}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.sc{animation:fadeUp .28s ease}
+.sec-badge{display:grid;grid-template-columns:52px 1fr auto;background:var(--navy);border-radius:8px;overflow:hidden;margin-bottom:24px}
+.sec-badge-num{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);font-family:var(--font-heading);font-size:22px;color:var(--gold);padding:16px}
+.sec-badge-title{display:flex;align-items:center;padding:16px 20px;font-family:var(--font-heading);font-size:17px;color:var(--white)}
+.sec-badge-time{display:flex;align-items:center;padding:16px 20px;font-size:12px;color:rgba(255,255,255,.45);font-style:italic;white-space:nowrap}
+.gold-rule{height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent);border:none;margin:0 0 24px}
+.info-box{background:var(--off-white);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);border-left:4px solid var(--navy);border-right:1px solid var(--light-grey);padding:14px 18px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--slate)}
+.tip-box{background:var(--off-white);border-left:4px solid var(--gold);padding:12px 16px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--slate)}
+.tip-label{font-weight:700;color:var(--navy);margin-bottom:4px;font-size:13px}
+.es-note{background:var(--gold-bg);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:10px 16px;font-size:13px;color:#7A5500;font-style:italic;margin-bottom:18px;line-height:1.6}
+.data-table-wrap{background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.data-table-head{display:grid;background:var(--navy);padding:12px 20px;gap:8px}
+.data-table-head span{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700}
+.data-table-row{display:grid;padding:11px 20px;border-bottom:1px solid var(--light-grey);gap:8px;align-items:start;transition:background .12s}
+.data-table-row:last-child{border-bottom:none}
+.data-table-row:hover{background:var(--light-grey)}
+.builder-wrap{background:var(--navy);border-radius:10px;padding:22px;margin-bottom:22px}
+.builder-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
+.builder-ex{background:rgba(255,255,255,.05);border-radius:7px;padding:9px 14px;font-size:13px;color:rgba(255,255,255,.7);font-style:italic;margin-bottom:5px}
+.builder-ex strong{color:var(--gold);font-style:normal}
+.mistake-wrong{display:flex;align-items:center;gap:10px;padding:9px 13px;background:var(--red-bg);border-radius:7px;font-size:14px;color:var(--red);margin-bottom:7px;font-style:italic}
+.ex-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-variant:small-caps;color:var(--gold);font-weight:700;margin-bottom:8px}
+.q-card{background:var(--white);border:1px solid var(--border-grey);border-radius:12px;padding:22px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.q-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.q-num{background:var(--navy);color:var(--gold);border-radius:5px;padding:3px 10px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.q-text{font-size:15px;font-weight:500;color:var(--navy);line-height:1.5}
+.q-hint{font-size:12px;color:var(--sky);margin-top:4px;font-style:italic}
+.q-options{display:flex;flex-direction:column;gap:8px}
+.q-opt{padding:10px 15px;border:1.5px solid var(--border-grey);border-radius:7px;background:var(--off-white);font-size:14px;color:var(--navy);cursor:pointer;transition:all .12s;text-align:left;font-family:var(--font-body);display:flex;align-items:center;gap:10px}
+.q-opt:hover:not(:disabled){border-color:var(--sky);background:#EEF6FB}
+.q-opt.selected{border-color:var(--sky);background:#EEF6FB}
+.q-opt.correct{border-color:var(--green);background:var(--green-bg);color:var(--green);font-weight:500}
+.q-opt.wrong{border-color:var(--red);background:var(--red-bg);color:var(--red)}
+.q-opt:disabled{cursor:default}
+.opt-letter{width:22px;height:22px;border-radius:50%;background:var(--border-grey);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .12s}
+.q-opt.correct .opt-letter{background:var(--green);color:white}
+.q-opt.wrong .opt-letter{background:var(--red);color:white}
+.q-opt.selected .opt-letter{background:var(--sky);color:white}
+.q-feedback{margin-top:10px;padding:9px 13px;border-radius:7px;font-size:13px;line-height:1.5}
+.q-feedback.correct{background:var(--green-bg);color:var(--green)}
+.q-feedback.wrong{background:var(--red-bg);color:var(--red)}
+.q-input-row{display:flex;gap:10px}
+.q-input{flex:1;padding:10px 14px;border:1.5px solid var(--border-grey);border-radius:7px;font-family:var(--font-body);font-size:14px;background:var(--off-white);outline:none;color:var(--navy);transition:border-color .12s}
+.q-input:focus{border-color:var(--sky)}
+.q-input.correct{border-color:var(--green);background:var(--green-bg);color:var(--green)}
+.q-input.wrong{border-color:var(--red);background:var(--red-bg)}
+.score-bar{background:var(--white);border:1px solid var(--border-grey);border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.score-label{font-size:12px;color:var(--grey-blue);font-weight:700;white-space:nowrap}
+.score-track{flex:1;height:7px;background:var(--light-grey);border-radius:4px;overflow:hidden}
+.score-fill{height:100%;background:linear-gradient(90deg,var(--sky),var(--green));border-radius:4px;transition:width .5s ease}
+.score-count{font-size:14px;font-weight:700;color:var(--navy);white-space:nowrap;min-width:48px;text-align:right}
+.quiz-result{background:var(--navy);border-radius:12px;padding:30px;text-align:center;margin-top:22px}
+.result-score{font-family:var(--font-heading);font-size:52px;color:var(--gold);margin-bottom:8px}
+.result-label{font-size:18px;color:var(--white);margin-bottom:6px}
+.result-msg{font-size:14px;color:rgba(255,255,255,.5);font-style:italic}
+.quiz-intro{background:var(--navy);border-radius:12px;padding:22px;margin-bottom:22px;display:flex;align-items:center;gap:18px}
+.quiz-intro-icon{font-size:34px;flex-shrink:0}
+.quiz-intro h3{font-family:var(--font-heading);font-size:21px;color:var(--white);margin-bottom:4px}
+.quiz-intro p{font-size:13px;color:rgba(255,255,255,.5);font-style:italic}
+.check-btn{padding:10px 18px;background:var(--navy);color:var(--white);border:none;border-radius:6px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background .15s;white-space:nowrap}
+.check-btn:hover{background:var(--sky)}
+.check-btn:disabled{opacity:.4;cursor:default}
+.nav-footer{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:22px;border-top:1px solid var(--border-grey);gap:12px}
+.nav-btn{padding:11px 24px;border-radius:7px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .18s}
+.nav-prev{background:var(--white);color:var(--navy);border:1.5px solid var(--border-grey)}
+.nav-prev:hover:not(:disabled){border-color:var(--gold);color:var(--navy)}
+.nav-prev:disabled{opacity:.35;cursor:default}
+.nav-next{background:var(--navy);color:var(--white)}
+.nav-next:hover:not(:disabled){background:var(--gold);color:var(--navy)}
+.nav-next:disabled{background:var(--border-grey);cursor:default}
+.nav-center{font-size:12px;color:var(--grey-blue)}
+.divider{height:1px;background:var(--border-grey);margin:26px 0}
+.sec-intro{font-size:15px;color:var(--slate);margin-bottom:18px;line-height:1.7}
+.h-serif{font-family:var(--font-heading);font-size:20px;color:var(--navy);margin-bottom:10px}
+/* Frequency scale */
+.freq-scale{background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden;margin-bottom:20px}
+.freq-scale-bar{height:6px;background:linear-gradient(90deg,var(--green),var(--gold),var(--red))}
+.freq-row{display:grid;grid-template-columns:110px 1fr;padding:9px 18px;border-bottom:1px solid var(--light-grey);gap:12px;align-items:center;font-size:14px}
+.freq-row:last-child{border-bottom:none}
+.freq-row:hover{background:var(--light-grey)}
+.freq-pct{font-weight:700;color:var(--navy);font-size:13px}
+.freq-words{color:var(--slate)}
+.freq-words em{color:var(--sky);font-style:normal;font-weight:700}
+/* Dept cards */
+.dept-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+@media(max-width:560px){.dept-grid{grid-template-columns:1fr}}
+.dept-card{background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden}
+.dept-card-head{background:var(--navy);padding:10px 14px;display:flex;align-items:center;gap:10px}
+.dept-card-icon{font-size:18px}
+.dept-card-name{font-family:var(--font-heading);font-size:14px;color:var(--white)}
+.dept-card-body{padding:12px 14px}
+.dept-card-body ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.dept-card-body li{font-size:13px;color:var(--slate);padding-left:14px;position:relative;line-height:1.5}
+.dept-card-body li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:11px;top:2px}
+/* Site footer */
+.site-footer{background:var(--navy);border-top:1px solid rgba(201,151,44,.3);margin-top:60px}
+.site-footer-inner{max-width:900px;margin:0 auto;padding:20px 32px;display:flex;flex-direction:column;gap:6px}
+.site-footer-credit{font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.75)}
+.site-footer-credit strong{color:var(--gold);font-weight:700}
+.site-footer-credit a{color:var(--gold-light);text-decoration:none}
+.site-footer-credit a:hover{text-decoration:underline}
+.site-footer-legal{font-family:var(--font-body);font-size:10px;color:rgba(255,255,255,.35);line-height:1.7;border-top:1px solid rgba(255,255,255,.08);padding-top:10px;margin-top:4px}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Lesson 4 · Pre-Learning</div>
+    <h1 class="hero-title">Daily Responsibilities in Detail</h1>
+    <p class="hero-sub">Present Simple · Frequency Adverbs · Professional Action Verbs · ~45 min self-study</p>
+    <div class="hero-outcomes">
+      <div>
+        <div class="outcome-item">Use professional action verbs naturally</div>
+        <div class="outcome-note">Usa verbos profesionales con naturalidad</div>
+      </div>
+      <div>
+        <div class="outcome-item">Place frequency adverbs correctly</div>
+        <div class="outcome-note">Ubica los adverbios de frecuencia correctamente</div>
+      </div>
+      <div>
+        <div class="outcome-item">Describe responsibilities in detail</div>
+        <div class="outcome-note">Describe tus responsabilidades con más detalle</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+let currentStep=0;
+let STEPS=[];
+
+function getProgress(i){return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100)}
+function goTo(i){currentStep=i;render();window.scrollTo(0,0)}
+function navFooter(){
+  const isFirst=currentStep===0,isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render(){
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── QUIZ DATA ─────────────────────────────────────────────
+const QUIZ=[
+  // Exercise 1 — Choose the Correct Professional Verb (Q1–5)
+  {type:'mc',q:'I _____ _____ within two hours.',
+   opts:['answer customer emails','respond to customer emails','reply customer emails'],
+   answer:1,
+   hint:'"Respond to" is the standard professional phrase with emails.',
+   fb:'"Respond to" is correct. "Reply" needs "to" as well, and "answer" sounds less professional in this context.'},
+  {type:'mc',q:'She _____ the project timeline every Monday.',
+   opts:['makes the project timeline','does the project timeline','updates the project timeline'],
+   answer:2,
+   hint:'Think: giving new current information to something that already exists.',
+   fb:'"Update" is correct — it means to give new or current information. "Do" and "make" are too vague for professional English.'},
+  {type:'mc',q:'He _____ with the logistics team to plan deliveries.',
+   opts:['liaises','speaks','contacts'],
+   answer:0,
+   hint:'"Liaise" specifically means to communicate and cooperate with another person or team.',
+   fb:'"Liaises" is the best professional choice. "Speaks" and "contacts" are not wrong, but "liaises" signals formal interdepartmental cooperation.'},
+  {type:'mc',q:'We _____ monthly reports for senior management.',
+   opts:['do monthly reports','prepare monthly reports','make monthly reports'],
+   answer:1,
+   hint:'Which verb means "to get something ready"?',
+   fb:'"Prepare" is correct. "Do reports" and "make reports" are too informal and vague for professional contexts.'},
+  {type:'mc',q:'I _____ a team meeting every Thursday morning.',
+   opts:['make a team meeting','do a team meeting','attend a team meeting'],
+   answer:2,
+   hint:'"Attend" means to go to an event — a meeting, class, or training session.',
+   fb:'"Attend" is correct. "Make a meeting" means to arrange one. "Do a meeting" is not used in professional English.'},
+  // Exercise 2 — Frequency Adverb Position (Q6–10)
+  {type:'mc',q:'Which sentence is correct? (Verb: to be)',
+   opts:['She always is late for the Monday meeting.','She is always late for the Monday meeting.','Always she is late for the Monday meeting.'],
+   answer:1,
+   hint:'With "to be," the frequency adverb comes AFTER the verb.',
+   fb:'Correct! With "to be" the adverb follows: She IS always late. Never place it before "be" in a standard sentence.'},
+  {type:'mc',q:'Which sentence is correct? (Verb: prepare)',
+   opts:['I prepare usually the weekly budget report.','Usually I prepare the weekly budget report.','I usually prepare the weekly budget report.'],
+   answer:2,
+   hint:'With all verbs other than "to be," the frequency adverb comes BEFORE the main verb.',
+   fb:'"I usually prepare" is correct — the adverb goes directly before the main verb. Option B is not wrong, but C is the preferred pattern in professional writing.'},
+  {type:'mc',q:'Which sentence is correct? (Verb: monitor)',
+   opts:['He monitors rarely the sales data.','He rarely monitors the sales data.','Rarely he monitors the sales data.'],
+   answer:1,
+   hint:'The adverb sits directly before the main verb.',
+   fb:'"He rarely monitors" is correct. The adverb always goes immediately before the main verb in standard professional English.'},
+  {type:'tf',q:'"Sometimes" and "occasionally" can go at the beginning of a sentence for emphasis.',
+   answer:true,
+   hint:'These two adverbs are more flexible than "always" or "never."',
+   fb:'True! "Sometimes I work from home" and "Occasionally we have video calls" are both natural. Most other frequency adverbs stay in the mid-sentence position.'},
+  {type:'mc',q:'Which sentence is correct? (Verb: update)',
+   opts:['We update always our project tracker before the meeting.','We always update our project tracker before the meeting.','Always we update our project tracker before the meeting.'],
+   answer:1,
+   hint:'"Always" follows the same rule as all frequency adverbs with non-be verbs.',
+   fb:'"We always update" is correct. The adverb goes before "update." Starting with "Always we..." is not natural in professional English.'},
+  // Exercise 3 — Spot the Error (Q11–15)
+  {type:'mc',q:'Find the ONE mistake: "He handles the customer complains every day."',
+   opts:['The verb "handles" should be "handle."','"Complains" should be "complaints."','"Every day" is in the wrong position.'],
+   answer:1,
+   hint:'"Complain" (no -t) is a verb. What is the noun form?',
+   fb:'"Complaints" is the noun — the thing you handle. "Complain" is the verb — what a customer does. He handles customer complaints. ¡Cuidado con esta diferencia!'},
+  {type:'mc',q:'Find the ONE mistake: "We liaise with our provider for coordinate deliveries."',
+   opts:['"Liaise" should be "liaises."','"For coordinate" should be "to coordinate."','"Provider" should be "supplier."'],
+   answer:1,
+   hint:'After "for" expressing purpose, English uses the infinitive.',
+   fb:'"To coordinate" is correct. We use "to + infinitive" to express purpose: "...to coordinate deliveries." "For + verb-ing" is used differently.'},
+  {type:'mc',q:'Find the ONE mistake: "I report to my supervisor and she handle the escalations."',
+   opts:['"Report to" should be "report."','"She handle" should be "she handles."','"Escalations" is the wrong word.'],
+   answer:1,
+   hint:'What happens to most verbs in Present Simple when the subject is he/she/it?',
+   fb:'"She handles" is correct. Third person singular always needs -s in Present Simple. ¡Recuerda la -s!'},
+  {type:'tf',q:'"Atender una reunión" in Spanish correctly translates to "assist a meeting" in English.',
+   answer:false,
+   hint:'What does "assist" actually mean in English?',
+   fb:'False! "Assist" means to help someone. The correct translation is "attend a meeting." This is one of the most common Spanish translation errors in business English.'},
+  {type:'tf',q:'"Controlar el proceso" is best translated as "control the process" in professional English.',
+   answer:false,
+   hint:'Does "control" applied to people or processes sound positive in professional English?',
+   fb:'False! "Control" sounds aggressive here. Use "monitor the process" or "oversee the process." ¡Controlar ≠ control en inglés profesional!'},
+];
+
+const quizState={};
+let quizScore=0;
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderOverview(){
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Lesson Overview</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">
+      <strong>Para el estudiante:</strong> En A1 aprendiste a describir tus responsabilidades básicas en inglés. En esta lección vas más allá — usarás verbos más precisos, agregarás detalles y aprenderás a colocar los adverbios de frecuencia correctamente. ¡Tómate el tiempo de leer todos los ejemplos antes de hacer los ejercicios!
+    </div>
+    <p class="sec-intro">In A1, you learned to describe basic job duties using simple Present Simple sentences — <em>"I prepare reports"</em> or <em>"She attends meetings."</em> In this lesson you go further: more precise verbs, more detail, and correct frequency adverb placement.</p>
+    <div class="info-box">
+      <strong>By the end of this lesson you will be able to:</strong>
+      <ul style="margin-top:10px;margin-left:16px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.7;">
+        <li>Describe your daily work responsibilities with more detail</li>
+        <li>Use frequency adverbs correctly in professional sentences</li>
+        <li>Use action verbs that sound natural in a workplace context</li>
+        <li>Avoid common Spanish-to-English translation mistakes</li>
+      </ul>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 How to use this Pre-Learning</div>
+      Read each section carefully before doing the exercises. The quiz at the end covers all parts of the lesson. Use the navigation bar above to move between sections at any time.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocab(){
+  const verbs=[
+    {v:'coordinate',es:'coordinar',meaning:'organise people or tasks to work together',ex:'I coordinate meetings between departments.'},
+    {v:'monitor',es:'monitorear / supervisar',meaning:'watch or check something regularly',ex:'She monitors the sales figures every week.'},
+    {v:'organise',es:'organizar',meaning:'arrange things in a clear, structured way',ex:'He organises the team\'s schedule.'},
+    {v:'update',es:'actualizar',meaning:'give new or current information',ex:'I update the client database every Monday.'},
+    {v:'prepare',es:'preparar',meaning:'get something ready',ex:'We prepare reports for the management team.'},
+    {v:'review',es:'revisar / analizar',meaning:'look at something carefully to check or evaluate',ex:'She reviews contracts before they are signed.'},
+    {v:'respond',es:'responder',meaning:'reply or react to something',ex:'I respond to customer emails within 24 hours.'},
+    {v:'submit',es:'enviar / entregar (oficialmente)',meaning:'send something officially — a report, a form',ex:'He submits his weekly report on Fridays.'},
+    {v:'liaise',es:'coordinar / estar en contacto con',meaning:'communicate and work with other people or teams',ex:'She liaises with the HR department regularly.'},
+    {v:'track',es:'hacer seguimiento de',meaning:'follow the progress of something',ex:'We track project deadlines in a shared calendar.'},
+    {v:'handle',es:'manejar / gestionar',meaning:'manage or deal with something',ex:'He handles customer complaints.'},
+    {v:'attend',es:'asistir a',meaning:'go to — a meeting, training, event',ex:'I attend a team briefing every Monday morning.'},
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Professional Action Verbs</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">
+      <strong>Nota importante:</strong> En inglés profesional evitamos los verbos genéricos <em>do</em> y <em>make</em>. Los verbos de esta sección suenan más naturales y precisos. Estudia el significado y el ejemplo de cada uno.
+    </div>
+    <p class="sec-intro">At A2, we move beyond <em>do</em> and <em>make</em>. These twelve verbs are the building blocks of professional English — you will use them in every lesson from now on.</p>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:140px 1fr 1fr;">
+        <span>Verb</span><span>Meaning</span><span>Example</span>
+      </div>
+      ${verbs.map(r=>`<div class="data-table-row" style="grid-template-columns:140px 1fr 1fr;">
+        <div style="font-weight:700;color:var(--navy);font-size:14px;">${r.v}<br><span style="font-size:11px;color:var(--grey-blue);font-style:italic;font-weight:400;">${r.es}</span></div>
+        <div style="font-size:13px;color:var(--slate);">${r.meaning}</div>
+        <div style="font-size:13px;color:var(--grey-blue);font-style:italic;">${r.ex}</div>
+      </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 "Do" vs Professional Verbs</div>
+      In everyday English people sometimes say <em>"I do reports"</em> or <em>"I do meetings."</em> In professional English, be specific:
+      <div style="margin-top:10px;display:flex;flex-direction:column;gap:7px;">
+        <div class="mistake-wrong" style="margin-bottom:0;">❌ I do reports &nbsp;→&nbsp; ✅ I <strong>prepare</strong> reports / I <strong>write</strong> reports</div>
+        <div class="mistake-wrong" style="margin-bottom:0;">❌ I do meetings &nbsp;→&nbsp; ✅ I <strong>attend</strong> meetings / I <strong>organise</strong> meetings</div>
+        <div class="mistake-wrong" style="margin-bottom:0;">❌ I do emails &nbsp;→&nbsp; ✅ I <strong>respond to</strong> emails / I <strong>send</strong> emails</div>
+      </div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderTranslation(){
+  const traps=[
+    {es:'Atender una reunión',wrong:'assist a meeting',right:'attend a meeting',why:'"Assist" means to help someone — it does not mean to go somewhere. ¡Asistir a = attend, not assist!'},
+    {es:'Manejar (manage)',wrong:'manipulate',right:'handle / manage',why:'"Manipulate" has a negative meaning in English — it implies dishonest control. Use "handle" or "manage."'},
+    {es:'Actualizar',wrong:'actualize',right:'update',why:'"Actualize" is not used in business English. The correct word is "update." ¡Actualizar = update!'},
+    {es:'Reportar a alguien',wrong:'report someone',right:'report to someone',why:'"Report someone" means to make a complaint about them. "Report to someone" means they are your supervisor. ¡No olvides el "to"!'},
+    {es:'Controlar (oversee)',wrong:'control people',right:'monitor / oversee',why:'"Control people" sounds aggressive. Use "monitor" for tasks and data, "oversee" for people and projects.'},
+    {es:'Preparar un informe',wrong:'prepare an inform',right:'prepare a report',why:'<em>Informe</em> = <strong>report</strong>. "Inform" is a verb in English, never a noun.'},
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Translation Traps</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">
+      <strong>¡Cuidado con las traducciones literales!</strong> Estos son los errores más comunes que cometen los hispanohablantes al traducir directamente del español. ¡Probablemente ya cometiste alguno de estos!
+    </div>
+    <p class="sec-intro">Direct translations from Spanish often produce sentences that are wrong, awkward, or even offensive in English. These six traps are the most important for LATAM professionals.</p>
+    ${traps.map(t=>`
+      <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;padding:16px 18px;margin-bottom:12px;">
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-blue);font-weight:700;margin-bottom:10px;">🇨🇴 Spanish: <em style="color:var(--navy);font-style:normal;">"${t.es}"</em></div>
+        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:10px;">
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 13px;background:var(--red-bg);border-radius:7px;font-size:14px;color:var(--red);font-style:italic;"><span style="font-size:16px;flex-shrink:0;">❌</span>${t.wrong}</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:9px 13px;background:var(--green-bg);border-radius:7px;font-size:14px;color:var(--green);font-style:italic;"><span style="font-size:16px;flex-shrink:0;">✅</span>${t.right}</div>
+        </div>
+        <div style="font-size:13px;color:var(--slate);line-height:1.6;border-top:1px dashed var(--border-grey);padding-top:9px;">💡 ${t.why}</div>
+      </div>`).join('')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar(){
+  const freqRows=[
+    ['100%','<em>always</em>'],
+    ['~95%','<em>almost always</em>'],
+    ['~80%','<em>usually</em> / <em>normally</em> / <em>generally</em>'],
+    ['~60%','<em>often</em> / <em>frequently</em>'],
+    ['~40%','<em>sometimes</em> / <em>occasionally</em>'],
+    ['~15%','<em>rarely</em> / <em>seldom</em>'],
+    ['~5%', '<em>almost never</em> / <em>hardly ever</em>'],
+    ['0%',  '<em>never</em>'],
+  ];
+  const col=(step,label,text,sub,extra='')=>`
+    <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;${extra}min-width:80px;flex:1;gap:4px;">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:2px;">${step}</div>
+      <div style="font-size:14px;font-weight:700;color:${label};">${text}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.5);font-style:italic;">${sub}</div>
+    </div>`;
+  const pipe=`<div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,.2);font-weight:300">|</div>`;
+  const rowWrap=`display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:16px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.12);`;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Frequency Adverbs</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">
+      <strong>Ya conoces:</strong> always, usually, sometimes, never. En esta sección ampliamos la escala y aprendemos exactamente <em>dónde colocar</em> el adverbio — la posición es fija en inglés.
+    </div>
+    <p class="sec-intro">You already know <em>always, usually, sometimes, never.</em> At A2 we expand the full scale and learn exactly where these words go in a sentence. Position is fixed in English — this is the rule most students get wrong.</p>
+
+    <h3 class="h-serif" style="margin-bottom:14px;">The Frequency Scale</h3>
+    <div class="freq-scale">
+      <div class="freq-scale-bar"></div>
+      ${freqRows.map(([p,w])=>`<div class="freq-row"><div class="freq-pct">${p}</div><div class="freq-words">${w}</div></div>`).join('')}
+    </div>
+
+    <h3 class="h-serif" style="margin-bottom:14px;">Placement Rules</h3>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Rule 1 · Verb "to be" — adverb goes AFTER</div>
+      <div style="${rowWrap}">
+        ${col('Subject','var(--gold)','She','',`background:rgba(201,151,44,.22);border-right:2px solid rgba(255,255,255,.1);`)}
+        ${pipe}
+        ${col('Verb BE','var(--gold)','is','',`background:rgba(201,151,44,.22);border-right:2px solid rgba(255,255,255,.1);`)}
+        ${pipe}
+        ${col('Adverb HERE ↓','#7dd3fc','always','',`background:rgba(46,134,171,.3);border-right:2px solid rgba(255,255,255,.1);`)}
+        ${pipe}
+        ${col('Complement','var(--gold)','punctual.','',`background:rgba(201,151,44,.22);`)}
+      </div>
+      <div class="builder-ex"><strong>"She is always punctual."</strong></div>
+      <div class="builder-ex"><strong>"Our meetings are usually on Monday mornings."</strong></div>
+      <div class="builder-ex"><strong>"He is rarely late."</strong></div>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Rule 2 · All other verbs — adverb goes BEFORE the main verb</div>
+      <div style="${rowWrap}">
+        ${col('Subject','var(--gold)','I','',`background:rgba(201,151,44,.22);border-right:2px solid rgba(255,255,255,.1);`)}
+        ${pipe}
+        ${col('Adverb HERE ↓','#7dd3fc','usually','',`background:rgba(46,134,171,.3);border-right:2px solid rgba(255,255,255,.1);`)}
+        ${pipe}
+        ${col('Main Verb','var(--gold)','start','',`background:rgba(201,151,44,.22);border-right:2px solid rgba(255,255,255,.1);`)}
+        ${pipe}
+        ${col('Rest of sentence','var(--gold)','work at 8 a.m.','',`background:rgba(201,151,44,.22);`)}
+      </div>
+      <div class="builder-ex"><strong>"I usually start work at 8 a.m."</strong></div>
+      <div class="builder-ex"><strong>"She frequently travels to client offices."</strong></div>
+      <div class="builder-ex"><strong>"He never misses a deadline."</strong></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 "Normally" vs "Usually"</div>
+      Both mean the same in most contexts. <strong>Normally</strong> sounds slightly more formal and is common in professional writing.
+      <div style="margin-top:8px;display:flex;flex-direction:column;gap:5px;font-size:13px;">
+        <div style="padding:6px 10px;background:var(--light-grey);border-radius:5px;font-style:italic;color:var(--navy);">"I <strong>normally</strong> submit my report by end of day Thursday." — slightly more formal</div>
+        <div style="padding:6px 10px;background:var(--light-grey);border-radius:5px;font-style:italic;color:var(--navy);">"I <strong>usually</strong> submit my report by end of day Thursday." — natural in speaking and writing</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 "Sometimes" and "Occasionally" — Extra Flexibility</div>
+      These two can also go at the start or end of a sentence for emphasis:
+      <div style="margin-top:8px;display:flex;flex-direction:column;gap:5px;font-size:13px;">
+        <div style="padding:6px 10px;background:var(--light-grey);border-radius:5px;font-style:italic;color:var(--navy);"><strong>Sometimes</strong> I work from home on Fridays.</div>
+        <div style="padding:6px 10px;background:var(--light-grey);border-radius:5px;font-style:italic;color:var(--navy);">I work from home on Fridays <strong>sometimes</strong>.</div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderFormula(){
+  const comparisons=[
+    {a1:'I prepare reports.',a2:'I usually prepare weekly reports for the sales team.'},
+    {a1:'She attends meetings.',a2:'She frequently attends client meetings in the Bogotá office.'},
+    {a1:'He monitors data.',a2:'He regularly monitors sales data to track monthly targets.'},
+    {a1:'We coordinate with HR.',a2:'We occasionally coordinate with HR to organise onboarding sessions.'},
+  ];
+  const depts=[
+    {icon:'💼',name:'Sales',tasks:['respond to leads','prepare quotations','track targets','liaise with clients']},
+    {icon:'📢',name:'Marketing',tasks:['coordinate campaigns','monitor social media','prepare content','update websites']},
+    {icon:'💰',name:'Finance',tasks:['review budgets','prepare invoices','monitor expenses','submit financial reports']},
+    {icon:'👥',name:'HR',tasks:['organise interviews','handle onboarding','update employee records','coordinate training']},
+    {icon:'💻',name:'IT',tasks:['monitor systems','handle technical issues','update software','respond to support tickets']},
+    {icon:'🚚',name:'Operations',tasks:['coordinate logistics','track inventory','organise schedules','liaise with suppliers']},
+  ];
+  const col=(step,col,text,sub,extra='')=>`
+    <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;${extra}min-width:80px;flex:1;gap:4px;">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:2px;">${step}</div>
+      <div style="font-size:14px;font-weight:700;color:${col};">${text}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.5);font-style:italic;">${sub}</div>
+    </div>`;
+  const pipe=`<div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,.2);font-weight:300">|</div>`;
+  const rowWrap=`display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:16px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,.12);`;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Describing Responsibilities in Detail</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">At A1, you gave short simple sentences. At A2, you add information — <strong>who for, how often, and what kind.</strong> This formula is what makes professional English sound natural and confident.</p>
+
+    <div class="builder-wrap">
+      <div class="builder-label">The A2 Responsibility Formula</div>
+      <div style="${rowWrap}">
+        ${col('Step 1','#7dd3fc','Frequency adverb','usually / often',`background:rgba(46,134,171,.3);border-right:2px solid rgba(255,255,255,.1);`)}
+        ${pipe}
+        ${col('Step 2','var(--gold)','Professional verb','prepare / monitor',`background:rgba(201,151,44,.22);border-right:2px solid rgba(255,255,255,.1);`)}
+        ${pipe}
+        ${col('Step 3','var(--gold)','Object','reports / data',`background:rgba(201,151,44,.22);border-right:2px solid rgba(255,255,255,.1);`)}
+        ${pipe}
+        ${col('Step 4','#7dd3fc','Extra detail','for / to / in…',`background:rgba(46,134,171,.3);`)}
+      </div>
+      ${comparisons.map(c=>`
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+          <div style="padding:9px 13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:7px;font-size:13px;color:rgba(255,255,255,.45);font-style:italic;">A1: "${c.a1}"</div>
+          <div class="builder-ex" style="margin-bottom:0;"><strong>A2: "${c.a2}"</strong></div>
+        </div>`).join('')}
+    </div>
+
+    <h3 class="h-serif" style="margin-bottom:14px;">Responsibilities by Department</h3>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:16px;line-height:1.7;">Find your department and study the professional phrases typically used in each area.</p>
+    <div class="dept-grid">
+      ${depts.map(d=>`
+        <div class="dept-card">
+          <div class="dept-card-head"><div class="dept-card-icon">${d.icon}</div><div class="dept-card-name">${d.name}</div></div>
+          <div class="dept-card-body"><ul>${d.tasks.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Corporate Culture Note</div>
+      In English-speaking international companies, professionals describe their <strong>responsibilities</strong> fluently, not just their title. Instead of only saying <em>"I am a Sales Coordinator,"</em> say:<br><br>
+      <span style="font-style:italic;color:var(--navy);">"I'm a Sales Coordinator. I mainly coordinate with our regional clients, monitor monthly targets, and prepare performance reports for the sales director."</span><br><br>
+      This kind of detailed self-description shows confidence and communicates your value clearly.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz(){
+  const answered=Object.values(quizState).filter(s=>s.revealed).length;
+  const pct=QUIZ.length?(answered/QUIZ.length)*100:0;
+  const allDone=answered===QUIZ.length&&QUIZ.length>0;
+  const allCorrect=allDone&&quizScore===QUIZ.length;
+  const wrongCount=allDone?QUIZ.length-quizScore:0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Practice Quiz</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Professional verbs, frequency adverbs &amp; translation traps · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+
+    <div class="ex-label" style="margin-bottom:12px;">Exercise 1 · Choose the Correct Professional Verb</div>
+    ${QUIZ.slice(0,5).map((q,i)=>renderQ(q,i)).join('')}
+    <div class="divider"></div>
+    <div class="ex-label" style="margin-bottom:12px;">Exercise 2 · Frequency Adverb Position</div>
+    ${QUIZ.slice(5,10).map((q,i)=>renderQ(q,i+5)).join('')}
+    <div class="divider"></div>
+    <div class="ex-label" style="margin-bottom:12px;">Exercise 3 · Spot the Error</div>
+    ${QUIZ.slice(10,15).map((q,i)=>renderQ(q,i+10)).join('')}
+
+    ${allDone?`<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,.1);color:var(--white);border:1px solid rgba(255,255,255,.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>`:''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q,i){
+  const s=quizState[i]||{};const rev=s.revealed;let body='';const letters=['A','B','C','D'];
+  if(q.type==='mc'||q.type==='tf'){
+    const opts=q.type==='mc'?q.opts:['True','False'];
+    const lets=q.type==='mc'?letters:['T','F'];
+    body=`<div class="q-options">${opts.map((opt,j)=>{
+      let cls='q-opt';
+      const isAns=q.type==='mc'?j===q.answer:q.answer===(j===0);
+      if(rev){if(isAns)cls+=' correct';else if(s.selected===j)cls+=' wrong';}
+      else if(s.selected===j)cls+=' selected';
+      return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+    }).join('')}</div>
+    ${!rev?`<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>`:''}
+    ${rev?`<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>`:''}`;
+  }
+  if(q.type==='input'){
+    const cls=rev?(s.correct?'q-input correct':'q-input wrong'):'q-input';
+    body=`<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev?`<button class="check-btn" onclick="revealInp(${i})">Check</button>`:''}
+    </div>
+    ${rev?`<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>`:''}`;
+  }
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top"><span class="q-num">Q${i+1}</span>
+    <div><div class="q-text">${q.q}</div>${q.hint?`<div class="q-hint">💡 ${q.hint}</div>`:''}</div></div>
+    ${body}
+  </div>`;
+}
+function selectOpt(qi,j){if(!quizState[qi])quizState[qi]={};if(quizState[qi].revealed)return;quizState[qi].selected=j;rerender();}
+function revealQ(qi){if(!quizState[qi])quizState[qi]={};quizState[qi].revealed=true;recalc();rerender();}
+function setInp(qi,v){if(!quizState[qi])quizState[qi]={};quizState[qi].inputVal=v;}
+function revealInp(qi){
+  const q=QUIZ[qi];if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true;recalc();rerender();
+}
+function retakeQuiz(){
+  QUIZ.forEach((_,i)=>{
+    const s=quizState[i];if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input')ok=s.correct;
+    if(!ok)delete quizState[i];
+  });
+  recalc();rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc(){
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i];if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender(){
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi)document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+function scoreLabel(){
+  if(quizScore===QUIZ.length)return '🎉 ¡Perfecto! — You are ready for class!';
+  if(quizScore>=QUIZ.length*.85)return '¡Excelente! Almost perfect.';
+  if(quizScore>=QUIZ.length*.7)return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg(){
+  if(quizScore===QUIZ.length)return 'Outstanding — a perfect score! See you in class.';
+  if(quizScore>=QUIZ.length*.85)return 'Retry the wrong answers to finish strong.';
+  if(quizScore>=QUIZ.length*.7)return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+// ── STEPS — defined last ──────────────────────────────────
+STEPS=[
+  {label:'1. Overview',   fn:renderOverview},
+  {label:'2. Verbs',      fn:renderVocab},
+  {label:'3. Traps',      fn:renderTranslation},
+  {label:'4. Adverbs',    fn:renderGrammar},
+  {label:'5. Formula',    fn:renderFormula},
+  {label:'6. Quiz',       fn:renderQuiz},
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

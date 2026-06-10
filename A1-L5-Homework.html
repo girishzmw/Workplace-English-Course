@@ -352,10 +352,28 @@ function renderListening() {
       <div class="audio-box-label">🎧 Listening — A1 · Lesson 5</div>
       <div class="audio-box-title">Michael's Workstation</div>
       <div class="audio-box-sub">Listen carefully. Then scroll down and answer the questions.</div>
-      <audio controls src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A1-L5-Audio-001.mp3">
+      <audio id="hw-audio" controls controlsList="nodownload" src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A1-L5-Audio-001.mp3">
         Your browser does not support the audio element.
       </audio>
-      <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:10px;">Listen at least twice before answering · You can pause and replay at any time</div>
+
+      <div style="margin-top:14px;">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;">Playback Speed</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;" id="speed-btns">
+          ${[0.7,0.8,0.9,1.0,1.1].map(s=>`
+            <button
+              onclick="setSpeed(${s})"
+              id="spd-${String(s).replace('.','_')}"
+              style="padding:6px 14px;border-radius:6px;border:1.5px solid ${s===1.0?'var(--gold)':'rgba(255,255,255,0.2)'};
+                     background:${s===1.0?'var(--gold)':'rgba(255,255,255,0.07)'};
+                     color:${s===1.0?'var(--navy)':'rgba(255,255,255,0.7)'};
+                     font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;transition:all 0.15s;">
+              ${s.toFixed(1)}×
+            </button>`).join('')}
+        </div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:8px;">Tip: start at 0.8× — slow and clear · move to 1.0× when comfortable</div>
+      </div>
+
+      <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">Listen at least twice before answering · You can pause and replay at any time</div>
     </div>
 
     <div class="quiz-intro">
@@ -576,7 +594,15 @@ function recalc(part) {
 function rerender(part) {
   const stepFn = part==='A' ? renderListening : renderNumbers;
   const si=STEPS.findIndex(s=>s.fn===stepFn);
-  if(currentStep===si) document.getElementById('mainContent').innerHTML=stepFn();
+  if(currentStep===si) {
+    document.getElementById('mainContent').innerHTML=stepFn();
+    // Restore speed state after DOM rebuild
+    if (part==='A') {
+      const audio = document.getElementById('hw-audio');
+      if (audio) audio.playbackRate = currentSpeed;
+      setSpeed(currentSpeed);
+    }
+  }
 }
 function scoreLabel(score, total) {
   if(score===total) return '🎉 ¡Perfecto! — You are ready for class!';
@@ -589,6 +615,23 @@ function scoreMsg(score, total) {
   if(score>=total*0.85) return 'Retry the wrong answers to finish strong.';
   if(score>=total*0.7)  return 'Go back and check the sections where you made mistakes.';
   return 'Retry the wrong answers and review the lesson again.';
+}
+
+// ── SPEED CONTROL ─────────────────────────────────────────
+let currentSpeed = 1.0;
+function setSpeed(s) {
+  currentSpeed = s;
+  const audio = document.getElementById('hw-audio');
+  if (audio) audio.playbackRate = s;
+  // Update button styles
+  [0.7,0.8,0.9,1.0,1.1].forEach(r => {
+    const btn = document.getElementById('spd-'+String(r).replace('.','_'));
+    if (!btn) return;
+    const active = r === s;
+    btn.style.background = active ? 'var(--gold)' : 'rgba(255,255,255,0.07)';
+    btn.style.color      = active ? 'var(--navy)' : 'rgba(255,255,255,0.7)';
+    btn.style.border     = active ? '1.5px solid var(--gold)' : '1.5px solid rgba(255,255,255,0.2)';
+  });
 }
 
 // ── STEPS — defined last ──────────────────────────────────

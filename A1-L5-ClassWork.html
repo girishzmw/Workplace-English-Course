@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Office Objects — Classwork | A1 · Unit 1 · Lesson 5</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-sub { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin:22px 0 10px; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* TEACHER NOTES BOX */
+.teacher-box { background:#EFF6FF; border-left:4px solid var(--sky); border-radius:0 8px 8px 0; padding:14px 18px; margin-bottom:22px; }
+.teacher-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#1E40AF; font-weight:700; margin-bottom:8px; }
+.teacher-body { font-size:14px; color:#1E3A5F; line-height:1.7; }
+.teacher-body ul { padding-left:20px; margin-top:6px; }
+.teacher-body li { margin-bottom:4px; }
+
+/* ACTIVITY CARD */
+.activity-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.activity-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:16px 22px; display:flex; align-items:center; gap:14px; }
+.activity-icon { font-size:26px; flex-shrink:0; }
+.activity-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.activity-meta { font-size:12px; color:rgba(255,255,255,0.5); }
+.activity-body { padding:22px; }
+
+/* PROMPT LIST */
+.prompt-list { list-style:none; padding:0; margin-bottom:16px; }
+.prompt-list li { display:flex; align-items:flex-start; gap:10px; padding:9px 12px; background:var(--off-white); border:1px solid var(--border-grey); border-radius:7px; margin-bottom:6px; font-size:14px; color:var(--navy); font-style:italic; }
+.prompt-list li::before { content:'💬'; flex-shrink:0; }
+
+/* MODEL ANSWER BOX */
+.model-answer { background:var(--navy); border-radius:9px; padding:16px 20px; margin-bottom:16px; }
+.model-answer-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:8px; }
+.model-answer-text { font-size:14px; color:var(--white); line-height:1.7; font-style:italic; }
+.model-answer-text strong { color:var(--gold); font-style:normal; }
+
+/* WORDWALL / EXTERNAL LINK BUTTON — mirrors video-btn pattern */
+.game-btn {
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--navy); color:var(--white);
+  padding:12px 22px; border-radius:8px; text-decoration:none;
+  font-family:var(--font-body); font-size:14px; font-weight:700;
+  transition:opacity 0.15s; margin-bottom:6px; border:2px solid var(--gold);
+}
+.game-btn:hover { opacity:0.88; }
+.game-btn-sub { font-size:12px; color:var(--grey-blue); margin-top:6px; }
+
+/* NUMBERS PATTERN SECTION */
+.num-pattern-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.num-pattern-head { display:grid; grid-template-columns:1fr 1.6fr; background:var(--navy); padding:11px 20px; gap:8px; }
+.num-pattern-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.num-pattern-row { display:grid; grid-template-columns:1fr 1.6fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.num-pattern-row:last-child { border-bottom:none; }
+.num-pattern-row:hover { background:var(--light-grey); }
+.num-figure { font-family:var(--font-heading); font-size:16px; font-weight:700; color:var(--navy); }
+.num-spoken { font-size:14px; color:var(--slate); }
+.num-spoken strong { color:var(--sky); }
+
+/* BUILDER — column-and-pipe */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* SPEAKING TASK */
+.speak-card { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.speak-card-head { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.speak-icon { font-size:22px; }
+.speak-title { font-size:15px; font-weight:700; color:var(--navy); }
+.speak-body { font-size:14px; color:var(--slate); line-height:1.7; }
+
+/* WRITING AREA */
+.writing-area { width:100%; min-height:130px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* WRAP-UP CARD */
+.wrapup-item { display:flex; align-items:flex-start; gap:14px; padding:12px 16px; background:var(--white); border:1px solid var(--border-grey); border-radius:8px; margin-bottom:8px; }
+.wrapup-num { background:var(--navy); color:var(--gold); border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
+.wrapup-q { font-size:14px; color:var(--navy); font-weight:600; margin-bottom:4px; }
+.wrapup-a { font-size:13px; color:var(--green); font-style:italic; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* NUMBER PRACTICE — tap reveal */
+.num-reveal-row { display:flex; justify-content:space-between; align-items:center; padding:11px 16px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; cursor:pointer; margin-bottom:7px; font-size:14px; transition:background 0.12s; }
+.num-reveal-row:hover { background:var(--light-grey); }
+.num-reveal-fig { font-weight:700; color:var(--navy); font-family:var(--font-heading); font-size:16px; }
+.num-reveal-ans { color:var(--green); font-weight:700; display:none; }
+.num-reveal-hint { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+
+/* BUDGET TRACKER */
+.budget-bar-wrap { background:var(--light-grey); border-radius:8px; height:14px; overflow:hidden; margin:10px 0 4px; }
+.budget-bar-fill { height:100%; background:linear-gradient(90deg,var(--green),var(--sky)); border-radius:8px; transition:width 0.4s ease; }
+.budget-label { font-size:12px; color:var(--grey-blue); display:flex; justify-content:space-between; margin-bottom:14px; }
+
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-family:var(--font-body); font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Lesson 5 · Classwork</div>
+    <h1 class="hero-title">Office Objects</h1>
+    <p class="hero-sub">Speaking · Numbers · Writing · ~60 minutes</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">✍️ Light writing</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0, isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── BUDGET TRACKER STATE ──────────────────────────────────
+const PRICES = { laptop:900, monitor:250, keyboard:60, mouse:30, headset:80, desk:400, chair:200, charger:40, badge:15, printer:180, notebook:8, pen:3, stapler:12, whiteboard:120, projector:500, webcam:90, usbdrive:20 };
+let budgetItems = {};
+const BUDGET_TOTAL = 5000;
+
+function budgetAdd(item, price) {
+  if (!budgetItems[item]) budgetItems[item] = 0;
+  const current = Object.values(budgetItems).reduce((a,b)=>a+b,0);
+  if (current + price > BUDGET_TOTAL) { return; }
+  budgetItems[item] += price;
+  rerenderBudget();
+}
+function budgetRemove(item, price) {
+  if (!budgetItems[item] || budgetItems[item] < price) return;
+  budgetItems[item] -= price;
+  if (budgetItems[item] === 0) delete budgetItems[item];
+  rerenderBudget();
+}
+function budgetTotal() { return Object.values(budgetItems).reduce((a,b)=>a+b,0); }
+function rerenderBudget() {
+  const si = STEPS.findIndex(s=>s.fn===renderIdealOffice);
+  if (currentStep===si) document.getElementById('mainContent').innerHTML=renderIdealOffice();
+}
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderWarmUp() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up — What's on Your Desk?</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="teacher-box">
+      <div class="teacher-label">📋 Teacher Notes</div>
+      <div class="teacher-body">
+        Open the session with the Wordwall vocabulary game below, then move into the speaking warm-up. Students are attending online from their office or home office — ask them to look at their real workspace and describe it. Demonstrate first with your own answer before asking the group.
+      </div>
+    </div>
+
+    <div class="activity-card">
+      <div class="activity-head">
+        <div class="activity-icon">🎮</div>
+        <div>
+          <div class="activity-title">Wordwall — Office Items Warm-Up Game</div>
+          <div class="activity-meta">Vocabulary review · whole group · ~5 min</div>
+        </div>
+      </div>
+      <div class="activity-body">
+        <p style="font-size:14px;color:var(--slate);margin-bottom:16px;">Start the session here. Play this vocabulary game together as a group to activate the office objects from the Pre-Learning.</p>
+        <a href="https://wordwall.net/resource/53002135/office-items-supplies" target="_blank" class="game-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          Click to Play
+        </a>
+        <div class="game-btn-sub">Opens in a new tab · Play once as a group before moving on</div>
+      </div>
+    </div>
+
+    <div class="activity-card">
+      <div class="activity-head">
+        <div class="activity-icon">🗣️</div>
+        <div>
+          <div class="activity-title">Activity 1 — What Can You See?</div>
+          <div class="activity-meta">Speaking · whole group · ~5 min</div>
+        </div>
+      </div>
+      <div class="activity-body">
+        <p style="font-size:14px;color:var(--slate);margin-bottom:14px;">Ask each student to look at their real workspace right now and describe it in English. Use the prompts below to guide the conversation.</p>
+
+        <div class="h-sub" style="margin-top:0;">Teacher Prompts</div>
+        <ul class="prompt-list">
+          <li>"What can you see on your desk right now?"</li>
+          <li>"What's on your left? What's on your right?"</li>
+          <li>"Do you have a headset? A notebook? A USB drive?"</li>
+          <li>"What objects do you use the most every day?"</li>
+          <li>"Is there something on your desk that we don't have a word for yet?"</li>
+        </ul>
+
+        <div class="model-answer">
+          <div class="model-answer-label">Model Answer — Teacher Demonstrates First</div>
+          <div class="model-answer-text">"On my desk, I have <strong>a laptop</strong>, <strong>a notebook</strong>, and <strong>a pen</strong>. I also have <strong>a charger</strong> on the floor next to my chair."</div>
+        </div>
+
+        <div class="tip-box" style="margin-bottom:0;">
+          <div class="tip-label">💡 Teaching Note</div>
+          If a student names an object you don't have a word for yet, write it down and add it to a shared vocabulary list. This is a great way to build student-specific vocabulary organically.
+        </div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderNumbers() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Activity 2 — Numbers 1,000 to 1,000,000</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="teacher-box">
+      <div class="teacher-label">📋 Teacher Notes</div>
+      <div class="teacher-body">
+        Students studied 1,000–100,000 in the Pre-Learning. This activity has two goals: (1) extend the range to 1,000,000, and (2) teach the <strong>"and" rule</strong> — where it goes, and crucially, what happens when the hundreds place is <em>empty</em>. The figures in the practice rounds are chosen specifically to test this. Work through the explanation first as a group, then do the rounds together. Every number should be said aloud.
+      </div>
+    </div>
+
+    <p class="h-sub">Part 1 — The Pattern: Millions, Thousands, Hundreds</p>
+    <p class="sec-intro">English numbers above 1,000 are built in chunks. Once you learn the three blocks, you can say any number up to a million.</p>
+
+    <div class="builder-wrap">
+      <div class="builder-label">The Three Building Blocks</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:18px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:16px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:6px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Block 1</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">MILLIONS</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.55);font-style:italic;">1,000,000+</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:16px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:6px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Block 2</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">THOUSANDS</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.55);font-style:italic;">1,000 → 999,000</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:16px 18px;background:rgba(201,151,44,0.22);min-width:80px;flex:1;gap:6px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Block 3</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">HUNDREDS</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.55);font-style:italic;">100 → 999</div>
+        </div>
+      </div>
+      <div class="builder-ex">Full pattern: <strong>[millions] million · [thousands] thousand · [hundreds] and [units]</strong></div>
+      <div class="builder-ex">Example: <strong>2,450,325</strong> = <strong>"two million, four hundred and fifty thousand, three hundred and twenty-five"</strong></div>
+    </div>
+
+    <div class="divider"></div>
+    <p class="h-sub">Part 2 — The "And" Rule</p>
+    <p class="sec-intro">The word <strong>"and"</strong> appears in one specific place: immediately before the last two digits of any group, when those digits are not zero. The tricky case is when the <em>hundreds place is empty</em> — "and" still appears, jumping directly from the thousands to the small remainder.</p>
+
+    <div class="info-box">
+      <strong>Rule: "and" connects the hundreds to whatever comes after.</strong><br>
+      If there are no hundreds, "and" still connects the thousands directly to the final digits.<br><br>
+      <strong>With hundreds →</strong> "three hundred <em>and</em> forty-two" &nbsp;✓<br>
+      <strong>No hundreds →</strong> "one thousand <em>and</em> one" &nbsp;✓ &nbsp;&nbsp; <span style="color:var(--red);">"one thousand one" ✗ (sounds incomplete)</span>
+    </div>
+
+    <p class="h-sub" style="margin-bottom:14px;">Worked Examples — Study These Carefully</p>
+
+    <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden;margin-bottom:20px;">
+      <div style="display:grid;grid-template-columns:130px 1fr 22px;background:var(--navy);padding:11px 20px;gap:8px;align-items:center;">
+        <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;">Number</span>
+        <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;">How to Say It</span>
+        <span></span>
+      </div>
+      ${[
+        ['1,001',      'one thousand <em>and</em> one',                                        'No hundreds → "and" bridges directly to the 1'],
+        ['8,026',      'eight thousand <em>and</em> twenty-six',                               'No hundreds → "and" bridges directly to 26'],
+        ['14,053',     'fourteen thousand <em>and</em> fifty-three',                           'No hundreds → "and" bridges directly to 53'],
+        ['128,005',    'one hundred and twenty-eight thousand <em>and</em> five',              '"and" appears twice: once in the thousands group, once to bridge to the 5'],
+        ['108,625',    'one hundred and eight thousand, six hundred <em>and</em> twenty-five', '"and" in thousands group (108) AND after hundreds (625)'],
+        ['245,978',    'two hundred and forty-five thousand, nine hundred <em>and</em> seventy-eight', 'Standard pattern — "and" after each hundreds group'],
+        ['68,257,312', 'sixty-eight million, two hundred and fifty-seven thousand, three hundred <em>and</em> twelve', 'Full pattern: millions · thousands · hundreds and units'],
+      ].map(([fig, spoken, note], i) => `
+        <div style="display:grid;grid-template-columns:130px 1fr;padding:13px 20px;border-bottom:1px solid var(--light-grey);gap:10px;align-items:start;${i%2===1?'background:var(--off-white);':''}">
+          <span style="font-family:var(--font-heading);font-size:16px;font-weight:700;color:var(--navy);padding-top:2px;">${fig}</span>
+          <div>
+            <div style="font-size:14px;color:var(--slate);margin-bottom:5px;">${spoken}</div>
+            <div style="font-size:12px;color:var(--sky);font-style:italic;">↳ ${note}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 The Two-"And" Numbers</div>
+      Numbers like <strong>128,005</strong> have <em>two</em> "and"s — one inside the thousands group ("one hundred <strong>and</strong> twenty-eight thousand") and one to bridge the gap to the final digits ("… <strong>and</strong> five"). Students often forget the second one. Draw attention to 128,005 and 108,625 in particular.
+    </div>
+
+    <div class="divider"></div>
+    <p class="h-sub">🗣️ Group Practice — Say It Together</p>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:14px;">The teacher shows each number. Students say it aloud — paying special attention to where "and" goes. Tap to reveal the answer.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Round 1 — The "And" Focus Numbers</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:12px;font-style:italic;">These are the key figures from the lesson. Every student says each one aloud.</p>
+      ${[
+        ['1,001',      'one thousand and one'],
+        ['8,026',      'eight thousand and twenty-six'],
+        ['14,053',     'fourteen thousand and fifty-three'],
+        ['128,005',    'one hundred and twenty-eight thousand and five'],
+        ['108,625',    'one hundred and eight thousand, six hundred and twenty-five'],
+        ['245,978',    'two hundred and forty-five thousand, nine hundred and seventy-eight'],
+        ['68,257,312', 'sixty-eight million, two hundred and fifty-seven thousand, three hundred and twelve'],
+      ].map(r=>`
+        <div class="num-reveal-row" onclick="this.querySelector('.num-reveal-ans').style.display=this.querySelector('.num-reveal-ans').style.display==='block'?'none':'block'">
+          <span class="num-reveal-fig">${r[0]}</span>
+          <span class="num-reveal-ans">${r[1]}</span>
+          <span class="num-reveal-hint">Tap to reveal</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Round 2 — Mixed Practice (Standard + "And" numbers)</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:12px;font-style:italic;">Mix of regular and tricky numbers. Students decide where "and" goes before revealing.</p>
+      ${[
+        ['25,000',    'twenty-five thousand'],
+        ['7,004',     'seven thousand and four'],
+        ['350,500',   'three hundred and fifty thousand, five hundred'],
+        ['200,012',   'two hundred thousand and twelve'],
+        ['1,000,000', 'one million'],
+        ['5,100,060', 'five million, one hundred thousand and sixty'],
+      ].map(r=>`
+        <div class="num-reveal-row" onclick="this.querySelector('.num-reveal-ans').style.display=this.querySelector('.num-reveal-ans').style.display==='block'?'none':'block'">
+          <span class="num-reveal-fig">${r[0]}</span>
+          <span class="num-reveal-ans">${r[1]}</span>
+          <span class="num-reveal-hint">Tap to reveal</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 British vs American English</div>
+      British English: "three hundred <strong>and</strong> forty-two" — the "and" is standard and always used.<br>
+      American English: "three hundred forty-two" — the "and" is often dropped after hundreds.<br>
+      However, when bridging thousands to a small remainder (e.g. 1,001), <strong>even American speakers use "and"</strong>. For your students, always using "and" is the safer and clearer choice.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderIdealOffice() {
+  const total = budgetTotal();
+  const remaining = BUDGET_TOTAL - total;
+  const pct = Math.min((total / BUDGET_TOTAL) * 100, 100);
+  const itemCount = Object.keys(budgetItems).length;
+  const overBudget = total > BUDGET_TOTAL;
+
+  const ITEMS = [
+    { id:'laptop',     label:'Laptop',           price:900  },
+    { id:'monitor',    label:'Monitor',           price:250  },
+    { id:'keyboard',   label:'Keyboard',          price:60   },
+    { id:'mouse',      label:'Mouse',             price:30   },
+    { id:'headset',    label:'Headset',           price:80   },
+    { id:'desk',       label:'Desk',              price:400  },
+    { id:'chair',      label:'Chair',             price:200  },
+    { id:'charger',    label:'Charger',           price:40   },
+    { id:'printer',    label:'Printer',           price:180  },
+    { id:'notebook',   label:'Notebook',          price:8    },
+    { id:'whiteboard', label:'Whiteboard',        price:120  },
+    { id:'projector',  label:'Projector',         price:500  },
+    { id:'webcam',     label:'Webcam',            price:90   },
+    { id:'usbdrive',   label:'USB Drive',         price:20   },
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Activity 3 — My Ideal Office</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="teacher-box">
+      <div class="teacher-label">📋 Teacher Notes</div>
+      <div class="teacher-body">
+        Students build their ideal office within a $5,000 budget — connecting to the numbers from Activity 2 and the vocabulary from the Pre-Learning. The interactive budget tracker below is for the teacher to demonstrate on screen. Students write their own choices first (2 min), then each student presents to the group (2 min each). Encourage complete sentences.
+      </div>
+    </div>
+
+    <div class="activity-card">
+      <div class="activity-head">
+        <div class="activity-icon">🏢</div>
+        <div>
+          <div class="activity-title">Build Your Ideal Office</div>
+          <div class="activity-meta">Budget: $5,000 · Speaking + Writing</div>
+        </div>
+      </div>
+      <div class="activity-body">
+        <p style="font-size:14px;color:var(--slate);margin-bottom:16px;">You are setting up a new office for yourself or your team. You have a budget of <strong>$5,000</strong>. Choose the objects you need most and explain your choices.</p>
+
+        <div class="h-sub" style="margin-top:0;">Guiding Questions</div>
+        <ul class="prompt-list">
+          <li>"What 5 objects do you need most? Why?"</li>
+          <li>"How much do you think each one costs?"</li>
+          <li>"What is the most important object for your job?"</li>
+        </ul>
+
+        <div class="model-answer">
+          <div class="model-answer-label">Model Answer</div>
+          <div class="model-answer-text">"I want to buy <strong>two monitors</strong> because I work with many documents. I also need a good <strong>headset</strong> for video calls. And I want a large <strong>whiteboard</strong> for my team meetings. I think the total is about <strong>$1,500</strong>."</div>
+        </div>
+
+        <div class="divider"></div>
+        <p class="h-sub">🖥️ Interactive Budget Tracker — Teacher Demo</p>
+        <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;">Use this on screen to demonstrate. Students write their own choices in their notebooks. Click + to add an item, − to remove it.</p>
+
+        <div style="background:var(--navy);border-radius:10px;padding:18px 20px;margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Budget Used</span>
+            <span style="font-family:var(--font-heading);font-size:22px;color:${overBudget?'#FCA5A5':'var(--gold)'};">$${total.toLocaleString()} <span style="font-size:13px;color:rgba(255,255,255,0.4);">of $5,000</span></span>
+          </div>
+          <div class="budget-bar-wrap"><div class="budget-bar-fill" style="width:${pct}%;background:${pct>90?'linear-gradient(90deg,#F59E0B,#EF4444)':'linear-gradient(90deg,var(--green),var(--sky))'};"></div></div>
+          <div class="budget-label">
+            <span>${itemCount} item${itemCount===1?'':'s'} selected</span>
+            <span style="color:${remaining<0?'#FCA5A5':'rgba(255,255,255,0.5)'};">$${remaining.toLocaleString()} remaining</span>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px;">
+          ${ITEMS.map(item => {
+            const qty = budgetItems[item.id] ? Math.round(budgetItems[item.id]/item.price) : 0;
+            const selected = qty > 0;
+            return `<div style="background:${selected?'var(--green-bg)':'var(--white)'};border:1.5px solid ${selected?'var(--green)':'var(--border-grey)'};border-radius:9px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:14px;font-weight:700;color:${selected?'var(--green)':'var(--navy)'};">${item.label}</div>
+              <div style="font-size:13px;color:var(--grey-blue);">$${item.price.toLocaleString()} each</div>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:2px;">
+                <button onclick="budgetRemove('${item.id}',${item.price})" style="width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border-grey);background:var(--white);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--navy);">−</button>
+                <span style="font-size:15px;font-weight:700;color:var(--navy);min-width:20px;text-align:center;">${qty}</span>
+                <button onclick="budgetAdd('${item.id}',${item.price})" style="width:28px;height:28px;border-radius:50%;border:1.5px solid ${remaining<item.price?'var(--border-grey)':'var(--navy)'};background:${remaining<item.price?'var(--light-grey)':'var(--navy)'};font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:${remaining<item.price?'var(--grey-blue)':'var(--white)'};" ${remaining<item.price?'disabled':''}>+</button>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+
+        ${selected => ''}
+        ${Object.keys(budgetItems).length > 0 ? `
+        <div style="background:var(--off-white);border:1px solid var(--border-grey);border-radius:9px;padding:14px 18px;margin-bottom:16px;">
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px;">Your Selection</div>
+          ${Object.entries(budgetItems).map(([id,cost])=>{
+            const item = ITEMS.find(i=>i.id===id);
+            const qty = Math.round(cost/item.price);
+            return `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--border-grey);font-size:14px;">
+              <span style="color:var(--navy);">${qty > 1 ? qty+' × ' : ''}${item.label}${qty>1?'s':''}</span>
+              <span style="color:var(--green);font-weight:700;">$${cost.toLocaleString()}</span>
+            </div>`;
+          }).join('')}
+          <div style="display:flex;justify-content:space-between;padding:10px 0 0;font-size:15px;font-weight:700;">
+            <span style="color:var(--navy);">Total</span>
+            <span style="color:var(--navy);">$${total.toLocaleString()}</span>
+          </div>
+        </div>` : ''}
+
+        <div class="divider"></div>
+        <p class="h-sub">✍️ Write First, Then Speak</p>
+        <p style="font-size:14px;color:var(--slate);margin-bottom:12px;">Write 3–5 sentences about your ideal office choices. Then present to the group.</p>
+        <textarea class="writing-area" placeholder="Example: I want to buy two monitors because I work with many documents. I also need a good headset for video calls..." oninput="document.getElementById('wc').textContent=this.value.trim().split(/\s+/).filter(Boolean).length+' words'"></textarea>
+        <div class="word-count"><span id="wc">0 words</span> · Target: 3–5 sentences</div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapUp() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Wrap-Up — Quick Review</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="teacher-box">
+      <div class="teacher-label">📋 Teacher Notes</div>
+      <div class="teacher-body">
+        Close the session with these five questions. Ask the group — any student can answer. These recap the key learning points from today: vocabulary, grammar, and numbers. The last question is open — let students reflect freely.
+      </div>
+    </div>
+
+    <p class="sec-intro">The teacher asks — the group answers. Can you get all five?</p>
+
+    ${[
+      ['"Name three objects on your desk — in English."',     'Any three from the lesson vocabulary, e.g. laptop, charger, notebook.'],
+      ['"What is the plural of \'mouse\'?"',                  '→ mice'],
+      ['"Can you say \'equipments\'?"',                       '→ No — "equipment" has no plural in English.'],
+      ['"How do you say 2,500 in English?"',                  '→ two thousand five hundred'],
+      ['"What is one new word you will remember from today?"', '→ Open answer — ask every student.'],
+    ].map(([q,a],i)=>`
+      <div class="wrapup-item">
+        <div class="wrapup-num">${i+1}</div>
+        <div>
+          <div class="wrapup-q">${q}</div>
+          <div class="wrapup-a">${a}</div>
+        </div>
+      </div>`).join('')}
+
+    <div class="tip-box" style="margin-top:22px;">
+      <div class="tip-label">📝 Homework Reminder</div>
+      Complete the Homework section before the next class. It includes a <strong>listening exercise</strong> — a real office conversation. Listen carefully and answer the questions. There is also a short writing task about your own workspace.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS — defined last ──────────────────────────────────
+STEPS = [
+  { label:'1. Warm-Up',   fn: renderWarmUp     },
+  { label:'2. Numbers',   fn: renderNumbers    },
+  { label:'3. My Office', fn: renderIdealOffice },
+  { label:'4. Wrap-Up',   fn: renderWrapUp     },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

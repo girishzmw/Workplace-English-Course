@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Office Objects — Homework | A1 · Unit 1 · Lesson 5</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-sub { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin:22px 0 10px; }
+
+/* AUDIO BOX — mirrors video-btn pattern */
+.audio-box { background:var(--navy); border-radius:10px; padding:20px 22px; margin-bottom:20px; }
+.audio-box-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:12px; }
+.audio-box-title { font-family:var(--font-heading); font-size:18px; color:var(--white); margin-bottom:4px; }
+.audio-box-sub { font-size:13px; color:rgba(255,255,255,0.45); margin-bottom:18px; }
+.audio-box audio { width:100%; border-radius:7px; }
+
+/* TRANSCRIPT BOX */
+.transcript-wrap { margin-top:16px; }
+.transcript-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 18px; background:var(--navy); border:1px solid var(--border-grey); border-radius:7px; color:var(--white); font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; transition:all 0.15s; }
+.transcript-btn:hover { background:var(--sky); }
+.transcript-body { margin-top:14px; background:var(--light-grey); border:1px solid var(--steel); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:16px 18px; font-size:14px; color:var(--slate); line-height:1.8; }
+.transcript-body p { margin-bottom:10px; }
+.transcript-body p:last-child { margin-bottom:0; }
+.transcript-key { color:var(--navy); font-weight:700; background:var(--gold-bg); padding:0 3px; border-radius:3px; }
+
+/* QUIZ ENGINE */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red); background:var(--red-bg); color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:var(--white); }
+.q-opt.wrong   .opt-letter { background:var(--red); color:var(--white); }
+.q-opt.selected .opt-letter { background:var(--sky); color:var(--white); }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg); color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red); background:var(--red-bg); }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Lesson 5 · Homework</div>
+    <h1 class="hero-title">Office Objects</h1>
+    <p class="hero-sub">Listening · Numbers · ~15 minutes</p>
+    <div class="hero-pills">
+      <span class="pill accent">🎧 Listening</span>
+      <span class="pill accent">🔢 Numbers</span>
+      <span class="pill">2 activities</span>
+      <span class="pill">~15 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0, isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── QUIZ A — LISTENING ────────────────────────────────────
+const QUIZ_A = [
+  { type:'mc', q:'Where does Michael work?',
+    opts:['In a bank','At a technology company','At a school','In a hospital'], answer:1,
+    fb:'Michael says: "I work at a technology company in San Francisco."' },
+  { type:'mc', q:'How many monitors does Michael have?',
+    opts:['One','Three','Two','Four'], answer:2,
+    fb:'Michael says: "Next to my laptop, I have two monitors."' },
+  { type:'mc', q:'Why does Michael use two monitors?',
+    opts:['Because he plays games','Because he reads a lot of documents','Because he watches videos','Because his laptop is broken'], answer:1,
+    fb:'Michael says: "I use them for my work because I read a lot of documents every day."' },
+  { type:'mc', q:'What kind of notebook does Michael have on his desk?',
+    opts:['A laptop','A paper notebook','A whiteboard','A tablet'], answer:1,
+    fb:'Michael says "a notebook and two pens" — this is a paper notebook for taking notes, not a laptop.' },
+  { type:'mc', q:'Where is the charger?',
+    opts:['On the desk','On the wall','In the cabinet','Under the desk'], answer:3,
+    fb:'Michael says: "Under my desk, there is a charger for my laptop."' },
+  { type:'mc', q:'What does Michael use his headset for?',
+    opts:['Listening to music','Video calls','Taking notes','Watching training videos'], answer:1,
+    fb:'Michael says: "I use it for all my video calls."' },
+  { type:'mc', q:'Where is the whiteboard?',
+    opts:["On Michael's desk",'In the meeting room','On the wall near his desk','Next to the printer'], answer:2,
+    fb:'Michael says: "On the wall near my desk, there is a whiteboard."' },
+  { type:'mc', q:'What does Michael write on the whiteboard?',
+    opts:['Emails and reports','His name and phone number','Tasks and ideas','Numbers and budgets'], answer:2,
+    fb:'Michael says: "I write tasks and ideas on it."' },
+];
+
+// ── QUIZ B — NUMBERS ─────────────────────────────────────
+const QUIZ_B = [
+  { type:'input', q:'Write this number in words: 3,007',
+    hint:'Hint: the hundreds place is empty — where does "and" go?',
+    answers:['three thousand and seven'],
+    display:'three thousand and seven',
+    fb:'No hundreds → "and" bridges directly from "thousand" to the final digits: three thousand AND seven.' },
+  { type:'input', q:'Write this number in words: 15,040',
+    hint:'Hint: the hundreds place is empty.',
+    answers:['fifteen thousand and forty'],
+    display:'fifteen thousand and forty',
+    fb:'No hundreds → fifteen thousand AND forty. The "and" jumps directly to the tens.' },
+  { type:'input', q:'Write this number in words: 102,006',
+    hint:'Hint: this number needs "and" in two places.',
+    answers:['one hundred and two thousand and six','one hundred and two thousand and six.'],
+    display:'one hundred and two thousand and six',
+    fb:'"And" appears twice: inside the thousands group (one hundred AND two thousand) and again to bridge to the final digit (… AND six).' },
+  { type:'input', q:'Write this number in words: 420,015',
+    hint:'Hint: the hundreds place at the end is empty.',
+    answers:['four hundred and twenty thousand and fifteen'],
+    display:'four hundred and twenty thousand and fifteen',
+    fb:'The thousands group has "and" (four hundred AND twenty thousand), then the empty hundreds trigger another "and" before fifteen.' },
+  { type:'input', q:'Write this number in words: 8,300',
+    hint:'Hint: no units or tens — does this number need "and"?',
+    answers:['eight thousand three hundred','eight thousand, three hundred'],
+    display:'eight thousand, three hundred',
+    fb:'Eight thousand, three hundred. There are no units after the hundreds, so no "and" is needed here.' },
+  { type:'input', q:'Write this number in words: 56,208',
+    hint:'Hint: there are hundreds AND units here — where does "and" go?',
+    answers:['fifty-six thousand two hundred and eight','fifty-six thousand, two hundred and eight'],
+    display:'fifty-six thousand, two hundred and eight',
+    fb:'"And" connects the hundreds to the remainder: fifty-six thousand, two hundred AND eight.' },
+  { type:'input', q:'Write this number in words: 300,100',
+    hint:'Hint: no units or tens at the end — does this need "and"?',
+    answers:['three hundred thousand one hundred','three hundred thousand, one hundred'],
+    display:'three hundred thousand, one hundred',
+    fb:'Three hundred thousand, one hundred. No units after the hundreds, so no "and" needed.' },
+  { type:'input', q:'Write this number in words: 1,000,050',
+    hint:'Hint: no thousands or hundreds — only millions and a small remainder.',
+    answers:['one million and fifty'],
+    display:'one million and fifty',
+    fb:'One million AND fifty. No thousands or hundreds at all, so "and" bridges directly from "million" to the fifty.' },
+  { type:'input', q:'Write this number in words: 7,654,321',
+    hint:'Hint: full pattern — millions, thousands, hundreds, and units.',
+    answers:['seven million six hundred and fifty-four thousand three hundred and twenty-one',
+             'seven million, six hundred and fifty-four thousand, three hundred and twenty-one'],
+    display:'seven million, six hundred and fifty-four thousand, three hundred and twenty-one',
+    fb:'Full pattern: seven million · six hundred AND fifty-four thousand · three hundred AND twenty-one. Two "and"s — one in each group that has a remainder after hundreds.' },
+  { type:'input', q:'Write this number in words: 999,009',
+    hint:'Hint: the hundreds place is empty — where does "and" go?',
+    answers:['nine hundred and ninety-nine thousand and nine'],
+    display:'nine hundred and ninety-nine thousand and nine',
+    fb:'"And" appears twice: nine hundred AND ninety-nine thousand (inside the group) AND nine (bridging the empty hundreds to the final digit).' },
+];
+
+// ── QUIZ STATE ────────────────────────────────────────────
+const qStateA = {};
+let qScoreA = 0;
+const qStateB = {};
+let qScoreB = 0;
+let transcriptOpen = false;
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderIntro() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">📋</div>
+      <div class="sec-badge-title">Homework — Lesson 5</div>
+      <div class="sec-badge-time">~15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Complete both activities before your next class. Work through them in order — the listening exercise first, then the numbers exercise.</p>
+
+    <div class="info-box">
+      <strong>Part A — Listening</strong> &nbsp;🎧<br>
+      Listen to Michael talk about his workstation. Then answer 8 questions. You can read the transcript after you finish the quiz.<br><br>
+      <strong>Part B — Numbers</strong> &nbsp;🔢<br>
+      10 numbers written in digits. Write each one in words. Focus on where "and" goes.
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 How to use this file</div>
+      Listen to the audio at least <strong>twice</strong> before answering the questions. You do not need to understand every word — focus on the key information. For the numbers exercise, type your answer carefully before clicking Check.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  const answered = Object.values(qStateA).filter(s=>s.revealed).length;
+  const pct = QUIZ_A.length ? (answered/QUIZ_A.length)*100 : 0;
+  const allDone = answered === QUIZ_A.length && QUIZ_A.length > 0;
+  const allCorrect = allDone && qScoreA === QUIZ_A.length;
+  const wrongCount = allDone ? QUIZ_A.length - qScoreA : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">A</div>
+      <div class="sec-badge-title">Part A — Listening Exercise</div>
+      <div class="sec-badge-time">~8 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="audio-box">
+      <div class="audio-box-label">🎧 Listening — A1 · Lesson 5</div>
+      <div class="audio-box-title">Michael's Workstation</div>
+      <div class="audio-box-sub">Listen carefully. Then scroll down and answer the questions.</div>
+      <audio controls src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A1-L5-Audio-001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:10px;">Listen at least twice before answering · You can pause and replay at any time</div>
+    </div>
+
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>Listening Quiz</h3>
+        <p>${QUIZ_A.length} questions · Answer from what you heard</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ_A.length}</span>
+    </div>
+
+    ${QUIZ_A.map((q,i)=>renderQ(q,i,'A')).join('')}
+
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScoreA} / ${QUIZ_A.length}</div>
+      <div class="result-label">${scoreLabel(qScoreA,QUIZ_A.length)}</div>
+      <div class="result-msg">${scoreMsg(qScoreA,QUIZ_A.length)}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;">
+        ${!allCorrect?`<button onclick="retakeQuiz('A')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(2)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">Part B — Numbers →</button>
+      </div>
+    </div>
+    <div style="margin-top:20px;">
+      <button class="transcript-btn" onclick="transcriptOpen=!transcriptOpen;rerender('A');">
+        📄 ${transcriptOpen ? 'Hide transcript' : 'Read the transcript'}
+      </button>
+      <div class="transcript-body" style="display:${transcriptOpen?'block':'none'};">
+        <p>Hi. My name is <span class="transcript-key">Michael</span>. I work at a <span class="transcript-key">technology company</span> in San Francisco. Let me tell you about my workstation.</p>
+        <p>I have a <span class="transcript-key">laptop</span> on my <span class="transcript-key">desk</span>. It is a company laptop, it is not mine. Next to my laptop, I have <span class="transcript-key">two monitors</span>. I use them for my work because I read a lot of documents every day.</p>
+        <p>I also have a <span class="transcript-key">keyboard</span> and a <span class="transcript-key">mouse</span>.</p>
+        <p>On my desk, I have a <span class="transcript-key">notebook</span> and two <span class="transcript-key">pens</span>. I take notes in meetings. I also have my <span class="transcript-key">ID badge</span> — I need it to enter the building and to go to the upper floors.</p>
+        <p>Under my desk, there is a <span class="transcript-key">charger</span> for my laptop. There are also a lot of <span class="transcript-key">cables</span> — I need to organize them!</p>
+        <p>My <span class="transcript-key">headset</span> is on the desk too. I use it for all my video calls. I work with people in Mexico, Canada, and the United States, so I am on calls every day.</p>
+        <p>On the wall near my desk, there is a <span class="transcript-key">whiteboard</span>. I write tasks and ideas on it. It helps me remember what I need to do.</p>
+        <p>That is my workstation. It is not perfect, but it works for me!</p>
+      </div>
+    </div>` : `
+    <div style="margin-top:16px;background:var(--navy);border-radius:8px;padding:13px 18px;display:flex;align-items:center;gap:10px;">
+      <span style="font-size:18px;">🔒</span>
+      <span style="font-size:13px;color:rgba(255,255,255,0.65);font-style:italic;">Transcript unlocks after you complete all 8 questions</span>
+    </div>`}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderNumbers() {
+  const answered = Object.values(qStateB).filter(s=>s.revealed).length;
+  const pct = QUIZ_B.length ? (answered/QUIZ_B.length)*100 : 0;
+  const allDone = answered === QUIZ_B.length && QUIZ_B.length > 0;
+  const allCorrect = allDone && qScoreB === QUIZ_B.length;
+  const wrongCount = allDone ? QUIZ_B.length - qScoreB : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">B</div>
+      <div class="sec-badge-title">Part B — Numbers: Write It in Words</div>
+      <div class="sec-badge-time">~7 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Write each number in words. Pay careful attention to where <strong>"and"</strong> goes — or whether it is needed at all. Type your answer in lowercase, then click Check.</p>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Remember the "and" rule</div>
+      "And" appears before the last part of a number when there are digits remaining after the hundreds.<br>
+      If there are <strong>no hundreds</strong>, "and" bridges directly from the thousands to the final digits.<br>
+      Example: 5,003 → <em>five thousand <strong>and</strong> three</em> &nbsp;·&nbsp; 5,300 → <em>five thousand, three hundred</em> (no "and" needed)
+    </div>
+
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🔢</div>
+      <div>
+        <h3>Numbers Exercise</h3>
+        <p>${QUIZ_B.length} questions · Type the number in words · Lowercase</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ_B.length}</span>
+    </div>
+
+    ${QUIZ_B.map((q,i)=>renderQ(q,i,'B')).join('')}
+
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScoreB} / ${QUIZ_B.length}</div>
+      <div class="result-label">${scoreLabel(qScoreB,QUIZ_B.length)}</div>
+      <div class="result-msg">${scoreMsg(qScoreB,QUIZ_B.length)}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;">
+        ${!allCorrect?`<button onclick="retakeQuiz('B')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q, i, part) {
+  const state = part==='A' ? qStateA : qStateB;
+  const s = state[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc') {
+    body = `<div class="q-options">
+      ${q.opts.map((opt,j)=>{
+        let cls='q-opt';
+        if(rev){ if(j===q.answer) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if(s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt('${part}',${i},${j})" ${rev?'disabled':''}>
+          <span class="opt-letter">${letters[j]}</span>${opt}
+        </button>`;
+      }).join('')}
+    </div>
+    ${!rev?`<div style="margin-top:12px;text-align:right;">
+      <button class="check-btn" onclick="revealQ('${part}',${i})" ${s.selected===undefined?'disabled':''}>Check</button>
+    </div>`:''}
+    ${rev?`<div class="q-feedback ${s.selected===q.answer?'correct':'wrong'}">💡 ${q.fb}</div>`:''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${part}-${i}" type="text" placeholder="Type in words…"
+        value="${s.inputVal||''}" oninput="setInp('${part}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev?`<button class="check-btn" onclick="revealInp('${part}',${i})">Check</button>`:''}
+    </div>
+    ${rev?`<div class="q-feedback ${s.correct?'correct':'wrong'}">
+      ${s.correct?'✅':'❌'} <strong>${q.display}</strong><br>💡 ${q.fb}
+    </div>`:''}`;
+  }
+
+  return `<div class="q-card" id="qc-${part}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint?`<div class="q-hint">💡 ${q.hint}</div>`:''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(part, qi, j) {
+  const state = part==='A'?qStateA:qStateB;
+  if(!state[qi]) state[qi]={};
+  if(state[qi].revealed) return;
+  state[qi].selected=j;
+  rerender(part);
+}
+function revealQ(part, qi) {
+  const state = part==='A'?qStateA:qStateB;
+  if(!state[qi]) state[qi]={};
+  state[qi].revealed=true;
+  recalc(part);
+  rerender(part);
+}
+function setInp(part, qi, v) {
+  const state = part==='A'?qStateA:qStateB;
+  if(!state[qi]) state[qi]={};
+  state[qi].inputVal=v;
+}
+function revealInp(part, qi) {
+  const quiz = part==='A'?QUIZ_A:QUIZ_B;
+  const state = part==='A'?qStateA:qStateB;
+  const q = quiz[qi];
+  if(!state[qi]) state[qi]={};
+  const raw = (state[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  // normalise: collapse multiple spaces, strip trailing period
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  state[qi].correct = q.answers.some(a => normalise(raw)===normalise(a));
+  state[qi].revealed=true;
+  recalc(part);
+  rerender(part);
+}
+function retakeQuiz(part) {
+  const quiz = part==='A'?QUIZ_A:QUIZ_B;
+  const state = part==='A'?qStateA:qStateB;
+  quiz.forEach((_,i)=>{
+    const s=state[i]; if(!s||!s.revealed) return;
+    let ok=false;
+    if(quiz[i].type==='mc') ok=s.selected===quiz[i].answer;
+    else if(quiz[i].type==='input') ok=s.correct;
+    if(!ok) delete state[i];
+  });
+  recalc(part);
+  rerender(part);
+  setTimeout(()=>{
+    const quiz2=part==='A'?QUIZ_A:QUIZ_B;
+    const state2=part==='A'?qStateA:qStateB;
+    const first=quiz2.findIndex((_,i)=>!state2[i]||!state2[i].revealed);
+    const el=document.getElementById('qc-'+part+'-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc(part) {
+  const quiz=part==='A'?QUIZ_A:QUIZ_B;
+  const state=part==='A'?qStateA:qStateB;
+  let s=0;
+  quiz.forEach((q,i)=>{
+    const st=state[i]; if(!st||!st.revealed) return;
+    if(q.type==='mc'&&st.selected===q.answer) s++;
+    else if(q.type==='input'&&st.correct) s++;
+  });
+  if(part==='A') qScoreA=s; else qScoreB=s;
+}
+function rerender(part) {
+  const stepFn = part==='A' ? renderListening : renderNumbers;
+  const si=STEPS.findIndex(s=>s.fn===stepFn);
+  if(currentStep===si) document.getElementById('mainContent').innerHTML=stepFn();
+}
+function scoreLabel(score, total) {
+  if(score===total) return '🎉 ¡Perfecto! — You are ready for class!';
+  if(score>=total*0.85) return '¡Excelente! Almost perfect.';
+  if(score>=total*0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg(score, total) {
+  if(score===total) return 'Outstanding — a perfect score! See you in class.';
+  if(score>=total*0.85) return 'Retry the wrong answers to finish strong.';
+  if(score>=total*0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+// ── STEPS — defined last ──────────────────────────────────
+STEPS = [
+  { label:'Intro',       fn: renderIntro     },
+  { label:'A · Listening', fn: renderListening },
+  { label:'B · Numbers',   fn: renderNumbers   },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

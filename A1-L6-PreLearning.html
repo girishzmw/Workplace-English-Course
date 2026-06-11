@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Workspace | A1 · Unit 1 · Lesson 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { background:var(--navy); padding:12px 20px; }
+.vocab-table-head-3 { display:grid; grid-template-columns:1fr 1fr 1.6fr; gap:8px; }
+.vocab-table-head-2 { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row-3 { display:grid; grid-template-columns:1fr 1fr 1.6fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; transition:background 0.12s; }
+.vocab-row-2 { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; transition:background 0.12s; }
+.vocab-row-3:last-child, .vocab-row-2:last-child { border-bottom:none; }
+.vocab-row-3:hover, .vocab-row-2:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+.vocab-ex { font-size:13px; color:var(--slate); font-style:italic; }
+
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:90px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* AUDIO PLAYER */
+.audio-player-wrap { background:var(--navy); border-radius:10px; padding:18px 22px; margin-bottom:22px; display:flex; align-items:center; gap:16px; }
+.audio-icon { font-size:28px; flex-shrink:0; }
+.audio-label-wrap { flex:1; }
+.audio-label-title { font-size:13px; font-weight:700; color:var(--white); margin-bottom:3px; }
+.audio-label-sub { font-size:11px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player-wrap audio { width:100%; margin-top:10px; display:block; filter:invert(1) brightness(0.85); }
+.speed-controls { display:flex; align-items:center; gap:6px; margin-top:10px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.45); letter-spacing:1px; text-transform:uppercase; margin-right:2px; }
+.speed-btn { padding:4px 10px; border:1.5px solid rgba(255,255,255,0.2); border-radius:20px; background:transparent; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:11px; font-weight:700; cursor:pointer; transition:all 0.15s; }
+.speed-btn:hover { border-color:var(--gold); color:var(--gold); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); }
+
+/* ORDINAL TABLE */
+.ordinal-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.ordinal-table-head { display:grid; grid-template-columns:80px 80px 1fr; background:var(--navy); padding:12px 20px; gap:8px; }
+.ordinal-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.ordinal-row { display:grid; grid-template-columns:80px 80px 1fr; padding:10px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; font-size:14px; }
+.ordinal-row:last-child { border-bottom:none; }
+.ordinal-row:hover { background:var(--light-grey); }
+.ord-num { font-weight:700; color:var(--navy); }
+.ord-sup { font-weight:700; color:var(--sky); }
+.ord-word { color:var(--slate); }
+.ord-note { font-size:12px; color:var(--red); font-style:italic; }
+
+/* GRAMMAR TABLE */
+.grammar-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:22px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.grammar-table-header { display:grid; grid-template-columns:90px 1fr 1fr; background:var(--navy); padding:12px 20px; gap:8px; }
+.grammar-table-header span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.grammar-row { display:grid; grid-template-columns:90px 1fr 1fr; padding:12px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; font-size:14px; }
+.grammar-row:last-child { border-bottom:none; }
+.grammar-row:hover { background:var(--light-grey); }
+.grammar-row-label { font-size:11px; font-weight:700; color:var(--grey-blue); text-transform:uppercase; letter-spacing:1px; }
+.grammar-cell-en { color:var(--navy); font-weight:500; }
+.grammar-cell-pl { color:var(--slate); }
+.grammar-cell-key { color:var(--sky); font-weight:700; }
+
+/* SITE FOOTER */
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-family:var(--font-body); font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Pre-Learning</div>
+    <h1 class="hero-title">My Workspace</h1>
+    <p class="hero-sub">There is / There are · Workplace areas · Ordinal numbers · ~45 min</p>
+    <div class="hero-outcomes">
+      <div>
+        <div class="outcome-item">Use There is / There are</div>
+        <div class="outcome-note">Describir qué hay en un espacio</div>
+      </div>
+      <div>
+        <div class="outcome-item">Name workplace areas</div>
+        <div class="outcome-note">Áreas clave de una oficina</div>
+      </div>
+      <div>
+        <div class="outcome-item">Use ordinal numbers for floors</div>
+        <div class="outcome-note">Números ordinales: 1st, 2nd, 3rd…</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0;
+  const isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const QUIZ = [
+  // Block 1 — There is / There are (Q1–5)
+  { type:'mc', q:'_____ a whiteboard in the meeting room.', opts:['There is','There are','Is there','Are there'], answer:0, hint:'💡 One whiteboard = singular.', fb:'<strong>There is</strong> — one whiteboard, so we use the singular form.' },
+  { type:'mc', q:'_____ four elevators in the building.', opts:['There is','There are','Is there','Are there'], answer:1, hint:'💡 Four elevators = plural.', fb:'<strong>There are</strong> — more than one elevator, so we use the plural form.' },
+  { type:'mc', q:'_____ a fire exit at the end of the hall.', opts:['There is','There are','Is there','Are there'], answer:0, hint:'💡 One fire exit = singular.', fb:'<strong>There is</strong> — one fire exit, singular.' },
+  { type:'mc', q:'_____ any printers on the third floor.', opts:['There is','There are','There isn\'t','There aren\'t'], answer:3, hint:'💡 This is a negative sentence about printers (plural).', fb:'<strong>There aren\'t</strong> — negative plural. We also add <em>any</em> in negative plural sentences.' },
+  { type:'mc', q:'_____ a cafeteria in this building?', opts:['Is there','Are there','There is','There are'], answer:0, hint:'💡 This is a question about one cafeteria.', fb:'<strong>Is there</strong> — singular question form. Flip the order: <em>Is there a…?</em>' },
+  // Block 2 — Ordinal numbers (Q6–10)
+  { type:'input', q:'The HR department is on the _____ floor. (5)', hint:'Write the ordinal word.', answers:['fifth'], display:'fifth', fb:'Floor 5 = <strong>fifth</strong>. This is an irregular ordinal — not "fiveth".' },
+  { type:'input', q:'The CEO\'s office is on the _____ floor. (22)', hint:'Two words.', answers:['twenty-second','twenty second'], display:'twenty-second', fb:'Floor 22 = <strong>twenty-second</strong>. Any number ending in 2 uses -nd.' },
+  { type:'input', q:'The meeting is on the _____ of May. (3)', hint:'Write the ordinal word.', answers:['third'], display:'third', fb:'3 = <strong>third</strong>. Irregular ordinal — not "threeth".' },
+  { type:'input', q:'Reception is on the _____ floor. (1)', hint:'Write the ordinal word.', answers:['first'], display:'first', fb:'1 = <strong>first</strong>. Irregular ordinal.' },
+  { type:'input', q:'The server room is on the _____ floor. (12)', hint:'Write the ordinal word.', answers:['twelfth'], display:'twelfth', fb:'12 = <strong>twelfth</strong>. Note the spelling — the <em>ve</em> in twelve becomes <em>f</em>.' },
+  // Block 3 — Vocabulary in context (Q11–15)
+  { type:'mc', q:'Visitors arrive and check in at the _____.', opts:['cafeteria','reception','storage room','private office'], answer:1, hint:'💡 This is the entrance area of an office.', fb:'<strong>Reception</strong> — the front desk where visitors register and receive passes.' },
+  { type:'mc', q:'Employees eat lunch in the _____.', opts:['meeting room','reception','cafeteria','fire exit'], answer:2, hint:'💡 It\'s where food is served in the office building.', fb:'<strong>Cafeteria</strong> — the staff dining area. Remember: in English, this is not a coffee shop!' },
+  { type:'mc', q:'You use a _____ to print documents.', opts:['projector','whiteboard','printer','monitor'], answer:2, hint:'💡 You already know this word from Lesson 5.', fb:'<strong>Printer</strong> — the machine that produces paper copies of documents.' },
+  { type:'mc', q:'In an emergency, use the _____.', opts:['reception','cafeteria','storage room','fire exit'], answer:3, hint:'💡 Think about safety in the office.', fb:'<strong>Fire exit</strong> — the emergency door used to leave the building quickly and safely.' },
+  { type:'mc', q:'A large room with many desks and no walls between them is an _____ office.', opts:['private','open-plan','executive','storage'], answer:1, hint:'💡 The opposite of a private, enclosed office.', fb:'<strong>Open-plan</strong> — a large shared workspace where everyone can see each other. Very common in LATAM corporate offices.' },
+];
+
+const quizState = {};
+let quizScore = 0;
+
+// ── EXERCISE STATE ────────────────────────────────────────
+const exAState = {};
+const exBState = {};
+
+const exAData = [
+  { id:'a1', before:'There', blank:'is', after:'a reception desk on the ground floor.', answers:['is'], display:'is' },
+  { id:'a2', before:'There', blank:'are', after:'three meeting rooms on the second floor.', answers:['are'], display:'are' },
+  { id:'a3', before:'There', blank:'is', after:'a projector in the conference room.', answers:['is'], display:'is' },
+  { id:'a4', before:'There', blank:'are', after:'forty desks in the open-plan office.', answers:['are'], display:'are' },
+  { id:'a5', before:'There', blank:'is', after:'a storage room next to the cafeteria.', answers:['is'], display:'is' },
+];
+
+const exBData = [
+  { id:'b1', num:'3', answers:['third'], display:'third' },
+  { id:'b2', num:'1', answers:['first'], display:'first' },
+  { id:'b3', num:'12', answers:['twelfth'], display:'twelfth' },
+  { id:'b4', num:'21', answers:['twenty-first','twenty first'], display:'twenty-first' },
+  { id:'b5', num:'5', answers:['fifth'], display:'fifth' },
+];
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome &amp; Overview</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">In Lesson 5 you learned the names of office objects — laptop, monitor, printer, ID badge. Now you'll put those objects into a room. This lesson gives you the language to describe any workspace in English.</p>
+
+    <div class="info-box">
+      <strong style="color:var(--navy);display:block;margin-bottom:8px;">🎯 What you'll learn in this lesson</strong>
+      <ul style="padding-left:18px;line-height:2;font-size:14px;">
+        <li>Use <strong>There is</strong> and <strong>There are</strong> to describe spaces</li>
+        <li>Talk about your office, meeting rooms, and common areas</li>
+        <li>Use ordinal numbers (1st, 2nd, 3rd…) for floors and dates</li>
+        <li>Name key workplace areas in English</li>
+      </ul>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💼 Why this matters at work</div>
+      When a visitor arrives, when you join a new office, when you describe your workspace in English — you need this language. <em>"The meeting room is on the third floor. There is a whiteboard and a projector."</em> Simple, clear, professional.
+    </div>
+
+    <div class="es-note">
+      <strong>📍 Conexión con la Lección 5:</strong> Ya sabes los nombres de los objetos de oficina. Ahora aprenderás a describir dónde están y qué hay en un espacio. La transición es natural: <em>"I have a laptop"</em> (L5) → <em>"There is a laptop on my desk"</em> (L6).
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderOrdinals() {
+  const rows = [
+    ['1','1st','first',''],
+    ['2','2nd','second',''],
+    ['3','3rd','third',''],
+    ['4','4th','fourth',''],
+    ['5','5th','fifth','⚠ NOT "fiveth"'],
+    ['8','8th','eighth','⚠ Only one t'],
+    ['9','9th','ninth','⚠ The e disappears'],
+    ['11','11th','eleventh',''],
+    ['12','12th','twelfth','⚠ ve → f'],
+    ['20','20th','twentieth',''],
+    ['21','21st','twenty-first',''],
+    ['22','22nd','twenty-second',''],
+    ['23','23rd','twenty-third',''],
+    ['28','28th','twenty-eighth',''],
+    ['31','31st','thirty-first',''],
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Essential Skill: Ordinal Numbers</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Ordinal numbers tell you the <strong>position</strong> of something — the first floor, the third meeting, the twenty-first of June. You'll use them every day at work.</p>
+
+    <div class="audio-player-wrap">
+      <div class="audio-icon">🎧</div>
+      <div class="audio-label-wrap">
+        <div class="audio-label-title">Listen: Ordinal Numbers at Work</div>
+        <div class="audio-label-sub">Listen while you read the table below. Press play to begin.</div>
+        <audio id="audio001" controls src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A1-L6-Audio001.mp3">Your browser does not support audio playback.</audio>
+        <div class="speed-controls">
+          <span class="speed-label">Speed:</span>
+          <button class="speed-btn" onclick="setSpeed('audio001',0.7,this)">0.7×</button>
+          <button class="speed-btn" onclick="setSpeed('audio001',0.8,this)">0.8×</button>
+          <button class="speed-btn" onclick="setSpeed('audio001',0.9,this)">0.9×</button>
+          <button class="speed-btn active" onclick="setSpeed('audio001',1.0,this)">1.0×</button>
+          <button class="speed-btn" onclick="setSpeed('audio001',1.1,this)">1.1×</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ordinal-table-wrap">
+      <div class="ordinal-table-head">
+        <span>Number</span>
+        <span>Short form</span>
+        <span>Word</span>
+      </div>
+      ${rows.map(([num,sup,word,note]) => `
+        <div class="ordinal-row">
+          <div class="ord-num">${num}</div>
+          <div class="ord-sup">${sup}</div>
+          <div class="ord-word">${word}${note ? `&nbsp;&nbsp;<span class="ord-note">${note}</span>` : ''}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📐 The Pattern</div>
+      Most ordinals simply add <strong>-th</strong>: four → fourth, six → sixth, ten → tenth.<br><br>
+      The exceptions to memorise are: <strong>1st (first), 2nd (second), 3rd (third), 5th (fifth), 8th (eighth), 9th (ninth), 12th (twelfth)</strong>.<br><br>
+      Any number ending in 1, 2, or 3 follows the same rule: 21<strong>st</strong>, 22<strong>nd</strong>, 23<strong>rd</strong>.
+    </div>
+
+    <div class="info-box">
+      <strong style="color:var(--navy);display:block;margin-bottom:10px;">At work, you'll use ordinals for:</strong>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+        <div style="background:var(--light-grey);border-radius:8px;padding:12px;font-size:13px;text-align:center;">
+          <div style="font-size:22px;margin-bottom:6px;">🏢</div>
+          <div style="font-weight:700;color:var(--navy);margin-bottom:4px;">Floors</div>
+          <div style="color:var(--grey-blue);font-style:italic;">"The HR department is on the <strong>fifth</strong> floor."</div>
+        </div>
+        <div style="background:var(--light-grey);border-radius:8px;padding:12px;font-size:13px;text-align:center;">
+          <div style="font-size:22px;margin-bottom:6px;">📅</div>
+          <div style="font-weight:700;color:var(--navy);margin-bottom:4px;">Dates</div>
+          <div style="color:var(--grey-blue);font-style:italic;">"The meeting is on the <strong>third</strong> of June."</div>
+        </div>
+        <div style="background:var(--light-grey);border-radius:8px;padding:12px;font-size:13px;text-align:center;">
+          <div style="font-size:22px;margin-bottom:6px;">🚪</div>
+          <div style="font-weight:700;color:var(--navy);margin-bottom:4px;">Rooms</div>
+          <div style="color:var(--grey-blue);font-style:italic;">"Room 201 is on the <strong>second</strong> floor."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="es-note">
+      <strong>🇨🇴🇵🇪 Nota para hispanohablantes:</strong> En español, los ordinales cambian con el género: <em>el primer piso / la primera planta</em>. En inglés, los ordinales <strong>nunca cambian</strong> — <em>first floor</em> siempre es <em>first</em>, sin importar el contexto. ¡Más fácil!
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  const vocabData = [
+    ['meeting room','sala de reuniones','There is a meeting room on the second floor.'],
+    ['reception','recepción','There is a reception desk at the entrance.'],
+    ['cafeteria','cafetería','There are tables and chairs in the cafeteria.'],
+    ['printer','impresora','There is a printer next to my desk.'],
+    ['whiteboard','pizarrón / tablero','There is a whiteboard in every meeting room.'],
+    ['projector','proyector','There is a projector in the conference room.'],
+    ['storage room','cuarto de almacenamiento','There are boxes in the storage room.'],
+    ['open-plan office','oficina de planta abierta','There are 40 desks in the open-plan office.'],
+    ['private office','oficina privada','There is a private office for the director.'],
+    ['fire exit','salida de emergencia','There is a fire exit at the end of the hall.'],
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Vocabulary: Workplace Areas</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">These are the key areas and items you'll describe using <em>There is / There are</em> in this lesson — and in real workplace conversations.</p>
+
+    <div class="audio-player-wrap">
+      <div class="audio-icon">🎧</div>
+      <div class="audio-label-wrap">
+        <div class="audio-label-title">Listen: Workplace Areas</div>
+        <div class="audio-label-sub">Listen to the vocabulary words and example sentences before studying the table.</div>
+        <audio id="audio002" controls src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A1-L6-Audio002.mp3">Your browser does not support audio playback.</audio>
+        <div class="speed-controls">
+          <span class="speed-label">Speed:</span>
+          <button class="speed-btn" onclick="setSpeed('audio002',0.7,this)">0.7×</button>
+          <button class="speed-btn" onclick="setSpeed('audio002',0.8,this)">0.8×</button>
+          <button class="speed-btn" onclick="setSpeed('audio002',0.9,this)">0.9×</button>
+          <button class="speed-btn active" onclick="setSpeed('audio002',1.0,this)">1.0×</button>
+          <button class="speed-btn" onclick="setSpeed('audio002',1.1,this)">1.1×</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head">
+        <div class="vocab-table-head-3">
+          <span>English</span><span>Spanish</span><span>Example sentence</span>
+        </div>
+      </div>
+      ${vocabData.map(([en,es,ex]) => `
+        <div class="vocab-row-3">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+          <div class="vocab-ex">${ex}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ False Friend Alert — Cafeteria</div>
+      <div class="mistake-wrong">❌ "Let's meet at the cafeteria for a coffee." <span style="font-size:12px;">(implies a public coffee shop)</span></div>
+      <div class="mistake-right">✅ "Let's meet at the cafeteria for lunch." <span style="font-size:12px;">(the office dining area)</span></div>
+      <div style="margin-top:12px;font-size:13px;color:var(--slate);line-height:1.7;">
+        <strong style="color:var(--navy);">En español:</strong> <em>Cafetería</em> puede referirse a un café o a una tienda de café. En inglés, <strong>cafeteria</strong> es el comedor del personal en un edificio de oficinas, no una cafetería al público. Para decir "café" en inglés, usa <strong>café</strong> o <strong>coffee shop</strong>.
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Grammar: There is / There are</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro"><em>There is</em> and <em>There are</em> describe what <strong>exists in a place</strong>. Use them to describe any office, room, or building.</p>
+
+    <div class="grammar-table-wrap">
+      <div class="grammar-table-header">
+        <span>Form</span>
+        <span>Singular (one)</span>
+        <span>Plural (more than one)</span>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-row-label">✅ Positive</div>
+        <div class="grammar-cell-en">There <strong style="color:var(--sky);">is</strong> a printer.</div>
+        <div class="grammar-cell-pl">There <strong style="color:var(--sky);">are</strong> two printers.</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-row-label">❌ Negative</div>
+        <div class="grammar-cell-en">There <strong style="color:var(--red);">isn't</strong> a printer.</div>
+        <div class="grammar-cell-pl">There <strong style="color:var(--red);">aren't</strong> any printers.</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-row-label">❓ Question</div>
+        <div class="grammar-cell-en"><strong style="color:var(--green);">Is there</strong> a printer?</div>
+        <div class="grammar-cell-pl"><strong style="color:var(--green);">Are there</strong> any printers?</div>
+      </div>
+      <div class="grammar-row">
+        <div class="grammar-row-label">💬 Short answer</div>
+        <div class="grammar-cell-en">Yes, there <strong>is</strong>. / No, there <strong>isn't</strong>.</div>
+        <div class="grammar-cell-pl">Yes, there <strong>are</strong>. / No, there <strong>aren't</strong>.</div>
+      </div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Word Order — Subject comes AFTER the verb</div>
+      <div class="mistake-wrong">❌ A printer is there.</div>
+      <div class="mistake-right">✅ There is a printer.</div>
+      <p style="margin-top:10px;font-size:13px;color:var(--slate);line-height:1.7;">In English, <em>There is / There are</em> always comes first. The noun (what exists) comes after. This is different from the Spanish structure <em>Hay una impresora</em>, but the idea is the same.</p>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📌 Using "any" in questions and negatives</div>
+      <ul style="padding-left:18px;line-height:2;font-size:14px;margin-top:4px;">
+        <li><strong>Singular questions:</strong> Is there <strong>a</strong> meeting room?</li>
+        <li><strong>Plural questions:</strong> Are there <strong>any</strong> meeting rooms?</li>
+        <li><strong>Singular negative:</strong> There isn't <strong>a</strong> printer.</li>
+        <li><strong>Plural negative:</strong> There aren't <strong>any</strong> printers.</li>
+      </ul>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Talking about floors</div>
+      <div class="pattern-row">
+        <div class="pattern-en">The cafeteria is on the <strong>third</strong> floor.</div>
+        <div class="pattern-es">ordinal number + floor</div>
+      </div>
+      <div class="pattern-row">
+        <div class="pattern-en">The meeting room is on the <strong>second</strong> floor.</div>
+        <div class="pattern-es">ordinal number + floor</div>
+      </div>
+      <div class="pattern-row">
+        <div class="pattern-en">Reception is on the <strong>ground</strong> floor.</div>
+        <div class="pattern-es">ground floor = 1st floor (British / Colombian usage)</div>
+      </div>
+    </div>
+
+    <div class="es-note">
+      <strong>🇨🇴🇵🇪 Nota para hispanohablantes:</strong><br><br>
+      En español, <em>Hay una impresora</em> sirve tanto para singular como para plural — <em>hay</em> lo hace todo. En inglés <strong>debes elegir</strong>: <em>There IS a printer</em> (uno) vs <em>There ARE printers</em> (más de uno). Este es uno de los errores más comunes en A1.<br><br>
+      Además: usa <em>There is / There are</em> para describir <strong>lo que existe en un lugar</strong>. Para la identidad personal, usa <em>I am</em>: di <em>"I am an engineer"</em>, no <em>"There is an engineer — me"</em>.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  // Exercise A render
+  function renderExA() {
+    return exAData.map((item, i) => {
+      const s = exAState[i] || {};
+      const rev = s.revealed;
+      const inputCls = rev ? (s.correct ? 'blank-input correct' : 'blank-input wrong') : 'blank-input';
+      return `<div class="blank-item" id="exa-${i}">
+        <span class="blank-num">${i+1}</span>
+        <span class="blank-sentence">
+          There
+          <input class="${inputCls}" id="exa-inp-${i}" type="text"
+            value="${s.val||''}"
+            oninput="setExA(${i},this.value)"
+            ${rev?'disabled':''}
+            style="width:70px;"/>
+          ${item.after}
+          ${rev ? (s.correct
+            ? `<span style="color:var(--green);font-size:13px;margin-left:8px;">✅ <strong>${item.display}</strong></span>`
+            : `<span style="color:var(--red);font-size:13px;margin-left:8px;">❌ Answer: <strong>${item.display}</strong></span>`) : ''}
+        </span>
+        ${!rev ? `<button class="check-btn" style="font-size:11px;padding:7px 12px;" onclick="checkExA(${i})">Check</button>` : ''}
+      </div>`;
+    }).join('');
+  }
+
+  // Exercise B render
+  function renderExB() {
+    return exBData.map((item, i) => {
+      const s = exBState[i] || {};
+      const rev = s.revealed;
+      const inputCls = rev ? (s.correct ? 'blank-input correct' : 'blank-input wrong') : 'blank-input';
+      return `<div class="blank-item" id="exb-${i}">
+        <span class="blank-num">${i+1}</span>
+        <span class="blank-sentence">
+          Floor ${item.num} → the
+          <input class="${inputCls}" id="exb-inp-${i}" type="text"
+            value="${s.val||''}"
+            oninput="setExB(${i},this.value)"
+            ${rev?'disabled':''}
+            style="width:140px;"/>
+          floor
+          ${rev ? (s.correct
+            ? `<span style="color:var(--green);font-size:13px;margin-left:8px;">✅ <strong>${item.display}</strong></span>`
+            : `<span style="color:var(--red);font-size:13px;margin-left:8px;">❌ Answer: <strong>${item.display}</strong></span>`) : ''}
+        </span>
+        ${!rev ? `<button class="check-btn" style="font-size:11px;padding:7px 12px;" onclick="checkExB(${i})">Check</button>` : ''}
+      </div>`;
+    }).join('');
+  }
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Self-Check Exercises</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Practice before the quiz. Check each answer individually — your responses are saved as you go.</p>
+
+    <div class="ex-box" id="exA-anchor">
+      <div class="ex-label">Exercise A — Is it <em>is</em> or <em>are</em>?</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:14px;line-height:1.6;">Type <strong>is</strong> or <strong>are</strong> in each blank. Press <em>Check</em> after each sentence.</p>
+      <div class="blank-list" id="exA-list">
+        ${renderExA()}
+      </div>
+    </div>
+
+    <div class="ex-box" id="exB-anchor">
+      <div class="ex-label">Exercise B — What floor?</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:14px;line-height:1.6;">Write the ordinal number word. Press <em>Check</em> after each one.</p>
+      <div class="blank-list" id="exB-list">
+        ${renderExB()}
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function setExA(i, v) { if(!exAState[i])exAState[i]={}; exAState[i].val=v; }
+function checkExA(i) {
+  if(!exAState[i])exAState[i]={};
+  const val=(exAState[i].val||'').trim().toLowerCase();
+  exAState[i].correct = exAData[i].answers.some(a=>val===a.toLowerCase());
+  exAState[i].revealed=true;
+  rerenderExercises('exA-list', 'exA-anchor');
+}
+
+function setExB(i, v) { if(!exBState[i])exBState[i]={}; exBState[i].val=v; }
+function checkExB(i) {
+  if(!exBState[i])exBState[i]={};
+  const val=(exBState[i].val||'').trim().toLowerCase().replace(/-/g,' ');
+  exBState[i].correct = exBData[i].answers.some(a=>val===a.toLowerCase().replace(/-/g,' '));
+  exBState[i].revealed=true;
+  rerenderExercises('exB-list', 'exB-anchor');
+}
+
+function rerenderExercises(listId, anchorId) {
+  const exAHtml = exAData.map((item,i) => {
+    const s=exAState[i]||{};
+    const rev=s.revealed;
+    const inputCls=rev?(s.correct?'blank-input correct':'blank-input wrong'):'blank-input';
+    return `<div class="blank-item" id="exa-${i}">
+      <span class="blank-num">${i+1}</span>
+      <span class="blank-sentence">
+        There
+        <input class="${inputCls}" id="exa-inp-${i}" type="text"
+          value="${s.val||''}"
+          oninput="setExA(${i},this.value)"
+          ${rev?'disabled':''}
+          style="width:70px;"/>
+        ${item.after}
+        ${rev?(s.correct
+          ?`<span style="color:var(--green);font-size:13px;margin-left:8px;">✅ <strong>${item.display}</strong></span>`
+          :`<span style="color:var(--red);font-size:13px;margin-left:8px;">❌ Answer: <strong>${item.display}</strong></span>`):''}
+      </span>
+      ${!rev?`<button class="check-btn" style="font-size:11px;padding:7px 12px;" onclick="checkExA(${i})">Check</button>`:''}
+    </div>`;
+  }).join('');
+
+  const exBHtml = exBData.map((item,i) => {
+    const s=exBState[i]||{};
+    const rev=s.revealed;
+    const inputCls=rev?(s.correct?'blank-input correct':'blank-input wrong'):'blank-input';
+    return `<div class="blank-item" id="exb-${i}">
+      <span class="blank-num">${i+1}</span>
+      <span class="blank-sentence">
+        Floor ${item.num} → the
+        <input class="${inputCls}" id="exb-inp-${i}" type="text"
+          value="${s.val||''}"
+          oninput="setExB(${i},this.value)"
+          ${rev?'disabled':''}
+          style="width:140px;"/>
+        floor
+        ${rev?(s.correct
+          ?`<span style="color:var(--green);font-size:13px;margin-left:8px;">✅ <strong>${item.display}</strong></span>`
+          :`<span style="color:var(--red);font-size:13px;margin-left:8px;">❌ Answer: <strong>${item.display}</strong></span>`):''}
+      </span>
+      ${!rev?`<button class="check-btn" style="font-size:11px;padding:7px 12px;" onclick="checkExB(${i})">Check</button>`:''}
+    </div>`;
+  }).join('');
+
+  if(listId==='exA-list') {
+    const el=document.getElementById('exA-list');
+    if(el) { el.innerHTML=exAHtml; }
+    const anchor=document.getElementById('exa-'+(Object.keys(exAState).length-1));
+    if(anchor) anchor.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  if(listId==='exB-list') {
+    const el=document.getElementById('exB-list');
+    if(el) { el.innerHTML=exBHtml; }
+    const anchor=document.getElementById('exb-'+(Object.keys(exBState).length-1));
+    if(anchor) anchor.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+}
+
+function renderQuiz() {
+  const answered=Object.values(quizState).filter(s=>s.revealed).length;
+  const pct=QUIZ.length?(answered/QUIZ.length)*100:0;
+  const allDone=answered===QUIZ.length&&QUIZ.length>0;
+  const allCorrect=allDone&&quizScore===QUIZ.length;
+  const wrongCount=allDone?QUIZ.length-quizScore:0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · 3 blocks · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+
+    <p style="font-size:12px;color:var(--grey-blue);margin-bottom:18px;font-style:italic;">Block 1 — There is / There are (Q1–5)</p>
+    ${QUIZ.slice(0,5).map((_,i)=>renderQ(QUIZ[i],i)).join('')}
+
+    <hr class="divider">
+    <p style="font-size:12px;color:var(--grey-blue);margin-bottom:18px;font-style:italic;">Block 2 — Ordinal numbers (Q6–10)</p>
+    ${QUIZ.slice(5,10).map((_,i)=>renderQ(QUIZ[i+5],i+5)).join('')}
+
+    <hr class="divider">
+    <p style="font-size:12px;color:var(--grey-blue);margin-bottom:18px;font-style:italic;">Block 3 — Vocabulary in context (Q11–15)</p>
+    ${QUIZ.slice(10,15).map((_,i)=>renderQ(QUIZ[i+10],i+10)).join('')}
+
+    ${allDone?`<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=12?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>`:''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE (do not edit) ─────────────────────────────
+function renderQ(q,i) {
+  const s=quizState[i]||{};
+  const rev=s.revealed;
+  let body='';
+  const letters=['A','B','C','D'];
+  if(q.type==='mc'||q.type==='tf') {
+    const opts=q.type==='mc'?q.opts:['True','False'];
+    const lets=q.type==='mc'?letters:['T','F'];
+    body=`<div class="q-options">
+      ${opts.map((opt,j)=>{
+        let cls='q-opt';
+        const isAns=q.type==='mc'?j===q.answer:q.answer===(j===0);
+        if(rev){if(isAns)cls+=' correct';else if(s.selected===j)cls+=' wrong';}
+        else if(s.selected===j)cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev?`<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>`:''}
+    ${rev?`<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>`:''}`;
+  }
+  if(q.type==='input') {
+    const cls=rev?(s.correct?'q-input correct':'q-input wrong'):'q-input';
+    body=`<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev?`<button class="check-btn" onclick="revealInp(${i})">Check</button>`:''}
+    </div>
+    ${rev?`<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>`:''}`;
+  }
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint?`<div class="q-hint">${q.hint}</div>`:''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j){if(!quizState[qi])quizState[qi]={};if(quizState[qi].revealed)return;quizState[qi].selected=j;rerender();}
+function revealQ(qi){if(!quizState[qi])quizState[qi]={};quizState[qi].revealed=true;recalc();rerender();}
+function setInp(qi,v){if(!quizState[qi])quizState[qi]={};quizState[qi].inputVal=v;}
+function revealInp(qi){
+  const q=QUIZ[qi];if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'').replace(/-/g,' ');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,'').replace(/-/g,' '));
+  quizState[qi].revealed=true;recalc();rerender();
+}
+function retakeQuiz(){
+  QUIZ.forEach((_,i)=>{
+    const s=quizState[i];if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input')ok=s.correct;
+    if(!ok){delete quizState[i];}
+  });
+  recalc();rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc(){
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i];if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender(){
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi)document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── AUDIO SPEED CONTROL ───────────────────────────────────
+function setSpeed(audioId, rate, btn) {
+  const el = document.getElementById(audioId);
+  if (el) el.playbackRate = rate;
+  // Update active state on sibling buttons
+  const siblings = btn.parentElement.querySelectorAll('.speed-btn');
+  siblings.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── STEPS — defined last, after all renderers ─────────────
+STEPS = [
+  { label: '1. Welcome',    fn: renderWelcome },
+  { label: '2. Ordinals',   fn: renderOrdinals },
+  { label: '3. Vocabulary', fn: renderVocabulary },
+  { label: '4. Grammar',    fn: renderGrammar },
+  { label: '5. Exercises',  fn: renderExercises },
+  { label: '6. Quiz',       fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Workspace | A1 · Unit 1 · Lesson 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { background:var(--navy); padding:12px 20px; }
+.data-table-head-2 { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.data-table-head-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-row-2 { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; font-size:14px; }
+.data-row-3 { display:grid; grid-template-columns:1fr 1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; font-size:14px; }
+.data-row-2:last-child, .data-row-3:last-child { border-bottom:none; }
+.data-row-2:hover, .data-row-3:hover { background:var(--light-grey); }
+.cell-strong { font-weight:700; color:var(--navy); }
+.cell-muted { color:var(--grey-blue); }
+
+.role-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:16px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.role-card-head { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.role-card ul { padding-left:18px; line-height:2; font-size:14px; color:var(--slate); }
+
+.floorplan-box { background:var(--navy); border-radius:10px; padding:20px 24px; margin-bottom:20px; font-family:'Lato',monospace; }
+.floorplan-title { font-family:var(--font-heading); font-size:16px; color:var(--gold); margin-bottom:12px; font-style:italic; }
+.floorplan-row { display:flex; gap:12px; padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:13px; color:rgba(255,255,255,0.85); }
+.floorplan-row:last-child { border-bottom:none; }
+.floorplan-floor { font-weight:700; color:var(--gold); min-width:78px; flex-shrink:0; }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* Wordwall / external game link */
+.game-btn { display:inline-flex; align-items:center; gap:10px; background:var(--navy); color:var(--white); padding:12px 22px; border-radius:8px; text-decoration:none; font-family:var(--font-body); font-size:14px; font-weight:700; transition:opacity 0.15s; margin-bottom:6px; border:2px solid var(--gold); }
+.game-btn:hover { opacity:0.88; }
+.game-btn-sub { font-size:12px; color:var(--grey-blue); margin-top:6px; }
+
+/* Practice-aloud drill rows */
+.drill-row { display:grid; grid-template-columns:1.2fr 1fr; padding:10px 18px; border-bottom:1px solid var(--light-grey); gap:10px; align-items:center; font-size:14px; }
+.drill-row:last-child { border-bottom:none; }
+.drill-row.highlight { background:var(--gold-bg); }
+.drill-num { font-weight:700; color:var(--navy); }
+.drill-say { color:var(--sky); font-weight:700; }
+
+/* Flip card grid */
+.flip-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
+@media(max-width:600px){ .flip-grid{ grid-template-columns:repeat(2,1fr); } }
+.flip-card { aspect-ratio:1; border-radius:10px; cursor:pointer; perspective:600px; }
+.flip-card-inner { position:relative; width:100%; height:100%; transition:transform 0.5s; transform-style:preserve-3d; }
+.flip-card.flipped .flip-card-inner { transform:rotateY(180deg); }
+.flip-card-face { position:absolute; width:100%; height:100%; border-radius:10px; display:flex; align-items:center; justify-content:center; backface-visibility:hidden; text-align:center; padding:8px; }
+.flip-card-front { background:var(--navy); border:2px solid var(--gold); font-family:var(--font-heading); font-size:clamp(20px,5vw,28px); font-weight:700; color:var(--gold); }
+.flip-card-back { background:var(--green-bg); border:2px solid var(--green); color:var(--green); font-weight:700; font-size:clamp(12px,3vw,15px); transform:rotateY(180deg); line-height:1.3; }
+.flip-grid-reset { display:flex; justify-content:center; margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-family:var(--font-body); font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Classwork</div>
+    <h1 class="hero-title">My Workspace</h1>
+    <p class="hero-sub">There is / There are · Workplace areas · Ordinal numbers · ~60 min</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">✍️ Light writing</span>
+      <span class="pill">5 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0;
+  const isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderActivity1() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Office Floor Plan Reading</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Your teacher will display this building directory. Read it carefully — you'll use it to write sentences with <em>There is / There are</em>.</p>
+
+    <div class="floorplan-box">
+      <div class="floorplan-title">Zenith Solutions — Building Directory</div>
+      <div class="floorplan-row"><span class="floorplan-floor">Ground floor</span><span>Reception, security desk, two elevators</span></div>
+      <div class="floorplan-row"><span class="floorplan-floor">2nd floor</span><span>Open-plan office — Sales and Marketing (45 desks)</span></div>
+      <div class="floorplan-row"><span class="floorplan-floor">3rd floor</span><span>Open-plan office — Finance and Operations (30 desks)</span></div>
+      <div class="floorplan-row"><span class="floorplan-floor">4th floor</span><span>Meeting rooms A, B, C, D — projectors and whiteboards in all rooms</span></div>
+      <div class="floorplan-row"><span class="floorplan-floor">5th floor</span><span>Executive offices — CEO, CFO, Directors</span></div>
+      <div class="floorplan-row"><span class="floorplan-floor">6th floor</span><span>Cafeteria, rooftop terrace, storage room</span></div>
+    </div>
+
+    <div class="info-box">
+      <strong style="color:var(--navy);display:block;margin-bottom:8px;">✏️ Task</strong>
+      Write <strong>5 sentences</strong> using <em>There is / There are</em> based on the directory above.<br><br>
+      <strong>Model:</strong> <em>"There are two elevators on the ground floor."</em>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">👥 Next steps</div>
+      Share your sentences with a partner. Then your teacher will check a few sentences with the whole class.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity2() {
+  const rows = [
+    ['Is there a cafeteria in your office?', 'What floor is it on?'],
+    ['Are there any meeting rooms?', 'How many?'],
+    ['Is there a reception desk?', 'What floor?'],
+    ['Are there any private offices?', 'Who uses them?'],
+    ['Is there a storage room?', 'Where is it?'],
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Is there...? Are there...? Interview</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro"><strong>Student A asks, Student B answers</strong> — then swap. All questions are about your real office (or a previous workplace).</p>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head">
+        <div class="data-table-head-2">
+          <span>Question</span><span>Follow-up</span>
+        </div>
+      </div>
+      ${rows.map(([q,f]) => `
+        <div class="data-row-2">
+          <div class="cell-strong">${q}</div>
+          <div class="cell-muted">${f}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💬 Aim for full sentences</div>
+      Don't just answer "yes" or "no". <br><br>
+      <strong>Model:</strong> <em>"Yes, there is a cafeteria. It's on the third floor."</em>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity3() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Describe Your Desk</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Write <strong>4–5 sentences</strong> describing your own workspace using <em>There is / There are</em>.</p>
+
+    <div class="info-box">
+      <strong style="color:var(--navy);display:block;margin-bottom:8px;">✏️ Sentence starters</strong>
+      <ul style="padding-left:18px;line-height:2;font-size:14px;">
+        <li>On my desk, there is…</li>
+        <li>Next to my desk, there are…</li>
+        <li>In my office, there is / there are…</li>
+        <li>There isn't a… in my workspace.</li>
+      </ul>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">👥 Next steps</div>
+      Read your sentences to a partner. Your partner will ask you <strong>one question</strong> about your workspace.
+    </div>
+
+    <div class="es-note">
+      <strong>📍 Conexión con la Lección 5:</strong> Usa el vocabulario que aprendiste — laptop, monitor, ID badge, charger — junto con <em>There is / There are</em> de esta lección. ¡Es el momento de unir las dos lecciones!
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity4() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Big Numbers in Real Life</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Ordinal numbers aren't just for floors. You'll hear them in <strong>anniversaries</strong>, <strong>dates</strong>, and <strong>addresses</strong> too — let's practise.</p>
+
+    <!-- PART A — ANNIVERSARIES -->
+    <div class="h-serif" style="font-size:17px;margin-top:4px;">Part A — Company Anniversaries</div>
+    <div class="info-box">
+      Your teacher writes on the board: <strong>"This is our company's 112th anniversary."</strong><br><br>
+      How do we say "112th"? → <strong style="color:var(--sky);">one hundred and twelfth</strong>
+    </div>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head">
+        <div class="data-table-head-2">
+          <span>Number</span><span>Say it as</span>
+        </div>
+      </div>
+      <div class="drill-row"><span class="drill-num">25th anniversary</span><span class="drill-say">twenty-fifth anniversary</span></div>
+      <div class="drill-row"><span class="drill-num">50th anniversary</span><span class="drill-say">fiftieth anniversary</span></div>
+      <div class="drill-row"><span class="drill-num">100th anniversary</span><span class="drill-say">one hundredth anniversary</span></div>
+      <div class="drill-row highlight"><span class="drill-num">112th anniversary</span><span class="drill-say">one hundred and twelfth anniversary</span></div>
+      <div class="drill-row"><span class="drill-num">175th anniversary</span><span class="drill-say">one hundred and seventy-fifth anniversary</span></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🔑 The pattern</div>
+      Only the <strong>last part</strong> of the number changes to an ordinal: "one hundred and twelve" → "one hundred and <strong>twelfth</strong>."
+    </div>
+
+    <hr class="divider">
+
+    <!-- PART B — DATES -->
+    <div class="h-serif" style="font-size:17px;">Part B — Dates</div>
+    <div class="info-box">
+      Your teacher writes on the board:<br>
+      <strong>"The meeting is on the 23rd of June."</strong><br>
+      <strong>"The company was founded on March 3rd, 1987."</strong>
+    </div>
+
+    <p style="font-size:14px;color:var(--slate);margin-bottom:10px;font-weight:700;">Two ways to say a date:</p>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head">
+        <div class="data-table-head-3">
+          <span>Written</span><span>Spoken (British)</span><span>Spoken (American)</span>
+        </div>
+      </div>
+      <div class="data-row-3">
+        <div class="cell-strong">3 March</div>
+        <div class="cell-muted">the third of March</div>
+        <div class="cell-muted">March third</div>
+      </div>
+      <div class="data-row-3">
+        <div class="cell-strong">21 July</div>
+        <div class="cell-muted">the twenty-first of July</div>
+        <div class="cell-muted">July twenty-first</div>
+      </div>
+      <div class="data-row-3">
+        <div class="cell-strong">31 December</div>
+        <div class="cell-muted">the thirty-first of December</div>
+        <div class="cell-muted">December thirty-first</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">👥 Pair practice</div>
+      Take turns saying your birthday date aloud — choose either style. Your partner writes it down in numbers (e.g. you say "the fifteenth of September" → your partner writes "15 September" or "09/15").
+    </div>
+
+    <hr class="divider">
+
+    <!-- PART C — ADDRESSES -->
+    <div class="h-serif" style="font-size:17px;">Part C — Addresses</div>
+    <div class="info-box">
+      Your teacher writes on the board:<br>
+      <strong>"Our office is at 245 East 42nd Street, on the 12th floor."</strong>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🔑 The pattern</div>
+      Building/house numbers are usually said as <strong>cardinal numbers</strong> (digit-by-digit or in pairs), but street names with numbers (like "42nd Street") use <strong>ordinals</strong>.
+    </div>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head">
+        <div class="data-table-head-2">
+          <span>Address part</span><span>How it's said</span>
+        </div>
+      </div>
+      <div class="data-row-2"><div class="cell-strong">245 East 42nd Street</div><div class="cell-muted">two-four-five East Forty-second Street</div></div>
+      <div class="data-row-2"><div class="cell-strong">Suite 1804</div><div class="cell-muted">Suite eighteen-oh-four</div></div>
+      <div class="data-row-2"><div class="cell-strong">12th Floor</div><div class="cell-muted">twelfth floor</div></div>
+      <div class="data-row-2"><div class="cell-strong">Apartment 3B</div><div class="cell-muted">apartment three B</div></div>
+    </div>
+
+    <div class="info-box">
+      <strong style="color:var(--navy);display:block;margin-bottom:8px;">✏️ Pair task</strong>
+      Take turns reading these three addresses aloud:
+      <ul style="padding-left:18px;line-height:2;font-size:14px;margin-top:6px;">
+        <li>1600 Pennsylvania Avenue, 2nd Floor</li>
+        <li>350 Fifth Avenue, Suite 2100</li>
+        <li>88 King Street, 21st Floor</li>
+      </ul>
+      Then invent your own "office address" (real or imaginary) and read it to your partner, who writes it down.
+    </div>
+
+    <div class="es-note">
+      <strong>📍 Nota:</strong> No te preocupes por la pronunciación perfecta aquí — el objetivo es ganar confianza con los números en contexto. Si dices "two hundred forty-five" en lugar de "two-four-five", también está bien. Lo importante es el contraste: ordinal (42nd Street, 12th Floor) vs cardinal (245, Suite 1804).
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── FLIP CARD GAME — Ordinal Numbers 100+ ─────────────────
+
+const flipCardData = [
+  { num: 101, ord: '101st', word: 'one hundred and first' },
+  { num: 102, ord: '102nd', word: 'one hundred and second' },
+  { num: 103, ord: '103rd', word: 'one hundred and third' },
+  { num: 105, ord: '105th', word: 'one hundred and fifth' },
+  { num: 108, ord: '108th', word: 'one hundred and eighth' },
+  { num: 112, ord: '112th', word: 'one hundred and twelfth' },
+  { num: 121, ord: '121st', word: 'one hundred and twenty-first' },
+  { num: 130, ord: '130th', word: 'one hundred and thirtieth' },
+  { num: 144, ord: '144th', word: 'one hundred and forty-fourth' },
+  { num: 150, ord: '150th', word: 'one hundred and fiftieth' },
+  { num: 175, ord: '175th', word: 'one hundred and seventy-fifth' },
+  { num: 199, ord: '199th', word: 'one hundred and ninety-ninth' },
+  { num: 200, ord: '200th', word: 'two hundredth' },
+  { num: 222, ord: '222nd', word: 'two hundred and twenty-second' },
+  { num: 250, ord: '250th', word: 'two hundred and fiftieth' },
+  { num: 365, ord: '365th', word: 'three hundred and sixty-fifth' },
+];
+
+let flipCardState = {};
+
+function toggleFlip(i) {
+  flipCardState[i] = !flipCardState[i];
+  const card = document.getElementById('flip-' + i);
+  if (card) card.classList.toggle('flipped');
+}
+
+function resetFlipCards() {
+  flipCardState = {};
+  const ai = STEPS.findIndex(s => s.fn === renderActivityFlip);
+  if (currentStep === ai) document.getElementById('mainContent').innerHTML = renderActivityFlip();
+}
+
+function renderActivityFlip() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Ordinal Flip Cards — Numbers 100+</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Work in pairs or small groups. Look at a tile and <strong>say the ordinal number out loud</strong> before clicking it. Click the tile to flip it and check your answer.</p>
+
+    <div class="info-box">
+      <strong style="color:var(--navy);display:block;margin-bottom:8px;">✏️ How to play</strong>
+      <ul style="padding-left:18px;line-height:2;font-size:14px;">
+        <li>One student points to a tile and says the ordinal number aloud — e.g. "101 → <em>one hundred and first</em>"</li>
+        <li>The group agrees on the answer, then clicks the tile to reveal it</li>
+        <li>If correct — celebrate! If not — say the correct ordinal aloud together before moving on</li>
+        <li>Take turns choosing the next tile</li>
+      </ul>
+    </div>
+
+    <div class="flip-grid">
+      ${flipCardData.map((c,i) => `
+        <div class="flip-card ${flipCardState[i]?'flipped':''}" id="flip-${i}" onclick="toggleFlip(${i})">
+          <div class="flip-card-inner">
+            <div class="flip-card-face flip-card-front">${c.num}</div>
+            <div class="flip-card-face flip-card-back">${c.ord}<br><span style="font-size:0.8em;font-weight:400;">${c.word}</span></div>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <div class="flip-grid-reset">
+      <button class="check-btn" onclick="resetFlipCards()">↺ Reset All Tiles</button>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🔑 Remember the pattern</div>
+      Only the <strong>last part</strong> of the number changes to an ordinal — "two hundred and twenty" → "two hundred and twenty<strong>-second</strong>" (222nd).
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity6() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Floor Puzzle Roleplay</div>
+      <div class="sec-badge-time">13 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro"><strong>Student A has the question card. Student B has the answer card.</strong> Don't show each other your card!</p>
+
+    <div class="role-card">
+      <div class="role-card-head">Student A Card — New Employee</div>
+      <p style="font-size:14px;margin-bottom:8px;">You are a new employee. Ask about the building.</p>
+      <ul>
+        <li>Where is the IT department?</li>
+        <li>Is there a printer on your floor?</li>
+        <li>What floor is the cafeteria on?</li>
+        <li>Are there any meeting rooms near your desk?</li>
+      </ul>
+    </div>
+
+    <div class="role-card">
+      <div class="role-card-head">Student B Card — Showing the New Employee Around</div>
+      <p style="font-size:14px;margin-bottom:8px;">Use this information to answer Student A's questions.</p>
+      <ul>
+        <li>IT department → 3rd floor</li>
+        <li>Printer → yes, one printer per floor</li>
+        <li>Cafeteria → 6th floor</li>
+        <li>Meeting rooms → yes, two on every floor</li>
+      </ul>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🔄 After the roleplay</div>
+      Swap cards and repeat with a different partner.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapUp() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Wrap-Up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Each student says <strong>one sentence</strong> about their real office:</p>
+
+    <div class="info-box" style="text-align:center;font-size:17px;font-family:var(--font-heading);color:var(--navy);">
+      "In my office, there is / there are…"
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🚫 No repetition!</div>
+      Each student must use a <strong>different word</strong> from Lesson 5 or Lesson 6 vocabulary. Listen carefully to your classmates before your turn.
+    </div>
+
+    <div class="info-box" style="margin-top:24px;">
+      <strong style="color:var(--navy);display:block;margin-bottom:8px;">🎉 Great work today!</strong>
+      You practised describing workspaces with <em>There is / There are</em>, used ordinal numbers for floors, anniversaries, dates, and addresses, and asked real questions about offices. Next lesson: <strong>Daily Office Routines</strong> — Present Simple.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS — defined last, after all renderers ─────────────
+STEPS = [
+  { label: '1. Floor Plan',  fn: renderActivity1 },
+  { label: '2. Interview',   fn: renderActivity2 },
+  { label: '3. My Desk',     fn: renderActivity3 },
+  { label: '4. Big Numbers', fn: renderActivity4 },
+  { label: '5. Flip Cards',  fn: renderActivityFlip },
+  { label: '6. Roleplay',    fn: renderActivity6 },
+  { label: '7. Wrap-Up',     fn: renderWrapUp },
+];
+
+render(); // always last
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

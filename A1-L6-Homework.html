@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Workspace | A1 · Unit 1 · Lesson 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+/* SITE HEADER */
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+/* HERO */
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* PILLS — Classwork/Homework hero variant */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAV */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* BOXES */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box  { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top  { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num  { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct  { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong    { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* AUDIO — Pattern A: single player */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px 24px; margin-bottom:22px; }
+.audio-box-header { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+.audio-icon { font-size:34px; flex-shrink:0; }
+.audio-title { font-family:var(--font-heading); font-size:18px; color:var(--white); margin-bottom:4px; }
+.audio-sub   { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-box audio { width:100%; display:block; filter:invert(1) brightness(0.85); margin-bottom:14px; }
+.speed-row { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+.speed-label { font-size:10px; color:rgba(255,255,255,0.4); letter-spacing:2px; text-transform:uppercase; margin-right:2px; }
+.speed-btn { padding:5px 13px; border-radius:20px; border:1.5px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.7); font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; transition:all 0.15s; }
+.speed-btn:hover { border-color:var(--gold); color:var(--gold); }
+.speed-tip { font-size:11px; color:rgba(255,255,255,0.3); margin-top:10px; }
+
+/* TRANSCRIPT */
+.transcript-toggle { display:flex; align-items:center; gap:8px; background:none; border:1px solid rgba(255,255,255,0.2); border-radius:6px; padding:7px 14px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; margin-top:14px; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.75); line-height:2; }
+.transcript-box p { margin-bottom:6px; }
+
+/* WRITING */
+.writing-area { width:100%; min-height:160px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+.writing-submit { margin-top:12px; padding:10px 24px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; transition:background 0.15s; }
+.writing-submit:hover { background:var(--gold); color:var(--navy); }
+.writing-done { margin-top:14px; padding:14px 18px; background:var(--green-bg); border:1px solid var(--green); border-radius:8px; font-size:14px; color:var(--green); display:none; }
+
+/* NAV */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+
+/* SITE FOOTER */
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-family:var(--font-body); font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Homework</div>
+    <h1 class="hero-title">My Workspace</h1>
+    <p class="hero-sub">There is / There are · Listening · Writing · ~15 min</p>
+    <div class="hero-pills">
+      <span class="pill accent">🎧 Listening</span>
+      <span class="pill accent">✍️ Writing</span>
+      <span class="pill">3 parts</span>
+      <span class="pill">~15 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// Part 1 — quick quiz
+const Q1 = [
+  { type:'mc', q:'_____ a fire exit near the elevator.', opts:['There is','There are','Is there','There isn\'t'], answer:0, hint:'💡 One fire exit — singular.', fb:'<strong>There is</strong> — one fire exit, singular affirmative.' },
+  { type:'mc', q:'_____ any chairs in the storage room.', opts:['There is','There are','There aren\'t','Is there'], answer:2, hint:'💡 Negative plural — chairs are plural.', fb:'<strong>There aren\'t</strong> — negative plural. We add <em>any</em> in negative plural sentences.' },
+  { type:'input', q:'The cafeteria is on the _____ floor. (6)', hint:'Write the ordinal word.', answers:['sixth'], display:'sixth', fb:'6 = <strong>sixth</strong>.' },
+  { type:'mc', q:'_____ a projector in meeting room B?', opts:['There is','Are there','Is there','There are'], answer:2, hint:'💡 A question about one projector.', fb:'<strong>Is there</strong> — singular question. Flip the order: <em>Is there a…?</em>' },
+  { type:'input', q:'The CEO\'s office is on the _____ floor. (10)', hint:'Write the ordinal word.', answers:['tenth'], display:'tenth', fb:'10 = <strong>tenth</strong>.' },
+];
+const q1State = {};
+let q1Score = 0;
+
+// Part 2 — listening quiz
+const Q2 = [
+  { type:'mc', q:'What floor is the main office on?', opts:['Ground floor','Second floor','Third floor','Fifth floor'], answer:1, hint:'💡 Listen for where the open-plan office is.', fb:'The main office is on the <strong>second floor</strong>. "Our main office is on the second floor."' },
+  { type:'input', q:'How many meeting rooms does the office have?', hint:'Write a number word.', answers:['three','3'], display:'three', fb:'The office has <strong>three</strong> meeting rooms — A, B, and C.' },
+  { type:'mc', q:'What is on the ground floor?', opts:['The cafeteria','The IT department','Reception','The open-plan office'], answer:2, hint:'💡 Listen for what Kaitlin says about the ground floor.', fb:'<strong>Reception</strong> is on the ground floor, along with a security desk and two elevators.' },
+  { type:'mc', q:'Is there a cafeteria in the building?', opts:['Yes, there is.','No, there isn\'t.','She doesn\'t say.','There are two cafeterias.'], answer:0, hint:'💡 Listen for the fifth floor.', fb:'<strong>Yes, there is</strong> — "On the fifth floor, there is a cafeteria."' },
+  { type:'input', q:'What floor is the cafeteria on?', hint:'Write the ordinal word.', answers:['fifth','5th'], display:'fifth', fb:'The cafeteria is on the <strong>fifth</strong> floor.' },
+];
+const q2State = {};
+let q2Score = 0;
+
+// Audio / transcript
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// Writing
+let writingSubmitted = false;
+
+// ── HELPERS ───────────────────────────────────────────────
+function getProgress(i) { return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep=i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst=currentStep===0, isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── AUDIO SPEED CONTROL (Pattern A — single player) ───────
+function setSpeed(s) {
+  currentSpeed=s;
+  const audio=document.getElementById('hw-audio');
+  if(audio) audio.playbackRate=s;
+  [0.7,0.8,0.9,1.0,1.1].forEach(r=>{
+    const btn=document.getElementById('spd-'+String(r).replace('.','_'));
+    if(!btn) return;
+    const active=r===s;
+    btn.style.background=active?'var(--gold)':'rgba(255,255,255,0.07)';
+    btn.style.color=active?'var(--navy)':'rgba(255,255,255,0.7)';
+    btn.style.border=active?'1.5px solid var(--gold)':'1.5px solid rgba(255,255,255,0.2)';
+  });
+}
+
+function toggleTranscript() {
+  transcriptOpen=!transcriptOpen;
+  rerenderListening();
+}
+
+function rerenderListening() {
+  const li=STEPS.findIndex(s=>s.fn===renderPart2);
+  if(currentStep===li){
+    document.getElementById('mainContent').innerHTML=renderPart2();
+    const audio=document.getElementById('hw-audio');
+    if(audio) audio.playbackRate=currentSpeed;
+    setSpeed(currentSpeed);
+  }
+}
+
+// ── QUIZ ENGINE — shared render ───────────────────────────
+function renderQ(q, i, QUIZ, state, revealFn, setOptFn, setInpFn) {
+  const s=state[i]||{};
+  const rev=s.revealed;
+  let body='';
+  const letters=['A','B','C','D'];
+  if(q.type==='mc') {
+    body=`<div class="q-options">
+      ${q.opts.map((opt,j)=>{
+        let cls='q-opt';
+        if(rev){if(j===q.answer)cls+=' correct';else if(s.selected===j)cls+=' wrong';}
+        else if(s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="${setOptFn}(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${letters[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev?`<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="${revealFn}(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>`:''}
+    ${rev?`<div class="q-feedback ${s.selected===q.answer?'correct':'wrong'}">💡 ${q.fb}</div>`:''}`;
+  }
+  if(q.type==='input'){
+    const cls=rev?(s.correct?'q-input correct':'q-input wrong'):'q-input';
+    body=`<div class="q-input-row">
+      <input class="${cls}" id="inp-${revealFn}-${i}" type="text" placeholder="Type your answer…"
+        value="${s.inputVal||''}" oninput="${setInpFn}(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev?`<button class="check-btn" onclick="${revealFn}(${i})">Check</button>`:''}
+    </div>
+    ${rev?`<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>`:''}`;
+  }
+  return `<div class="q-card" id="qc-${revealFn}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div><div class="q-text">${q.q}</div>${q.hint?`<div class="q-hint">${q.hint}</div>`:''}</div>
+    </div>${body}
+  </div>`;
+}
+
+// Part 1 quiz functions
+function p1SelectOpt(i,j){if(!q1State[i])q1State[i]={};if(q1State[i].revealed)return;q1State[i].selected=j;rerenderP1();}
+function p1Reveal(i){
+  const q=Q1[i]; if(!q1State[i])q1State[i]={};
+  if(q.type==='mc'){ q1State[i].revealed=true; }
+  if(q.type==='input'){
+    const val=(q1State[i].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+    q1State[i].correct=q.answers.some(a=>val===a.toLowerCase());
+    q1State[i].revealed=true;
+  }
+  recalcQ1(); rerenderP1();
+}
+function p1SetInp(i,v){if(!q1State[i])q1State[i]={};q1State[i].inputVal=v;}
+function retakeQ1(){
+  Q1.forEach((_,i)=>{
+    const s=q1State[i]; if(!s||!s.revealed) return;
+    let ok=false;
+    if(Q1[i].type==='mc') ok=s.selected===Q1[i].answer;
+    else if(Q1[i].type==='input') ok=s.correct;
+    if(!ok) delete q1State[i];
+  });
+  recalcQ1(); rerenderP1();
+  setTimeout(()=>{const f=Q1.findIndex((_,i)=>!q1State[i]||!q1State[i].revealed);const el=document.getElementById('qc-p1Reveal-'+f);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},100);
+}
+function recalcQ1(){let s=0;Q1.forEach((q,i)=>{const st=q1State[i];if(!st||!st.revealed)return;if(q.type==='mc'&&st.selected===q.answer)s++;else if(q.type==='input'&&st.correct)s++;});q1Score=s;}
+function rerenderP1(){const pi=STEPS.findIndex(s=>s.fn===renderPart1);if(currentStep===pi)document.getElementById('mainContent').innerHTML=renderPart1();}
+
+// Part 2 quiz functions
+function p2SelectOpt(i,j){if(!q2State[i])q2State[i]={};if(q2State[i].revealed)return;q2State[i].selected=j;rerenderP2();}
+function p2Reveal(i){
+  const q=Q2[i]; if(!q2State[i])q2State[i]={};
+  if(q.type==='mc'){ q2State[i].revealed=true; }
+  if(q.type==='input'){
+    const val=(q2State[i].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+    q2State[i].correct=q.answers.some(a=>val===a.toLowerCase());
+    q2State[i].revealed=true;
+  }
+  recalcQ2(); rerenderP2();
+}
+function p2SetInp(i,v){if(!q2State[i])q2State[i]={};q2State[i].inputVal=v;}
+function retakeQ2(){
+  Q2.forEach((_,i)=>{
+    const s=q2State[i]; if(!s||!s.revealed) return;
+    let ok=false;
+    if(Q2[i].type==='mc') ok=s.selected===Q2[i].answer;
+    else if(Q2[i].type==='input') ok=s.correct;
+    if(!ok) delete q2State[i];
+  });
+  recalcQ2(); rerenderP2();
+  setTimeout(()=>{const f=Q2.findIndex((_,i)=>!q2State[i]||!q2State[i].revealed);const el=document.getElementById('qc-p2Reveal-'+f);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});},100);
+}
+function recalcQ2(){let s=0;Q2.forEach((q,i)=>{const st=q2State[i];if(!st||!st.revealed)return;if(q.type==='mc'&&st.selected===q.answer)s++;else if(q.type==='input'&&st.correct)s++;});q2Score=s;}
+function rerenderP2(){const pi=STEPS.findIndex(s=>s.fn===renderPart2);if(currentStep===pi){document.getElementById('mainContent').innerHTML=renderPart2();const audio=document.getElementById('hw-audio');if(audio)audio.playbackRate=currentSpeed;setSpeed(currentSpeed);}}
+
+// Writing functions
+function updateWordCount(){
+  const ta=document.getElementById('writing-ta');
+  if(!ta) return;
+  const words=ta.value.trim()===''?0:ta.value.trim().split(/\s+/).length;
+  const wc=document.getElementById('wc');
+  if(wc) wc.textContent=words+' word'+(words===1?'':'s');
+  const sentences=ta.value.split(/[.!?]+/).filter(s=>s.trim().length>0).length;
+  const btn=document.getElementById('writing-submit-btn');
+  if(btn) btn.disabled=sentences<4;
+}
+function submitWriting(){
+  writingSubmitted=true;
+  const done=document.getElementById('writing-done');
+  if(done){done.style.display='block';}
+  const btn=document.getElementById('writing-submit-btn');
+  if(btn){btn.disabled=true;btn.textContent='Submitted ✓';}
+}
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderPart1() {
+  const answered=Object.values(q1State).filter(s=>s.revealed).length;
+  const pct=Q1.length?(answered/Q1.length)*100:0;
+  const allDone=answered===Q1.length;
+  const wrongCount=allDone?Q1.length-q1Score:0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Quick Quiz</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">✏️</div>
+      <div>
+        <h3>Quick Review</h3>
+        <p>5 questions · <em>There is / There are</em> and ordinal numbers</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${Q1.length}</span>
+    </div>
+
+    ${Q1.map((_,i)=>renderQ(Q1[i],i,Q1,q1State,'p1Reveal','p1SelectOpt','p1SetInp')).join('')}
+
+    ${allDone?`<div class="quiz-result">
+      <div class="result-score">${q1Score} / ${Q1.length}</div>
+      <div class="result-label">${q1Score===Q1.length?'🎉 Perfect!':q1Score>=4?'Very good!':'Keep going!'}</div>
+      <div class="result-msg">${q1Score===Q1.length?'All correct — move on to the listening task.':'Review any mistakes, then continue.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;">
+        ${wrongCount>0?`<button onclick="retakeQ1()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(1)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">Next: Listening →</button>
+      </div>
+    </div>`:''}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPart2() {
+  const answered=Object.values(q2State).filter(s=>s.revealed).length;
+  const pct=Q2.length?(answered/Q2.length)*100:0;
+  const allDone=answered===Q2.length;
+  const wrongCount=allDone?Q2.length-q2Score:0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Listening: A Workplace Tour</div>
+      <div class="sec-badge-time">7 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Listen to Kaitlin describe her office building. Then answer the five questions below.</p>
+
+    <div class="audio-box">
+      <div class="audio-box-header">
+        <div class="audio-icon">🎧</div>
+        <div>
+          <div class="audio-title">A Workplace Tour</div>
+          <div class="audio-sub">Kaitlin · Logistics company · Chicago · ~75 seconds</div>
+        </div>
+      </div>
+      <audio id="hw-audio" controls controlsList="nodownload"
+        src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A1-L6-Audio003.mp3">
+        Your browser does not support audio playback.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" id="spd-0_7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" id="spd-0_8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" id="spd-0_9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn" id="spd-1_0" onclick="setSpeed(1.0)" style="background:var(--gold);color:var(--navy);border:1.5px solid var(--gold);">1.0×</button>
+        <button class="speed-btn" id="spd-1_1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <div class="speed-tip">💡 Start at 0.8× — slow and clear. Move to 1.0× when comfortable.</div>
+      <button class="transcript-toggle" onclick="toggleTranscript()">
+        ${transcriptOpen?'▲ Hide transcript':'▼ Show transcript'}
+      </button>
+      ${transcriptOpen?`<div class="transcript-box">
+        <p>My name is Kaitlin, and I work at a logistics company in Chicago.</p>
+        <p>I want to tell you about our office building.</p>
+        <p>The building has six floors.</p>
+        <p>The reception is on the ground floor. There is a security desk and there are two elevators at the entrance.</p>
+        <p>Our main office is on the second floor. It is an open-plan office. There are thirty desks, and there are large windows on one side. There is one printer and one scanner near the door.</p>
+        <p>There are three meeting rooms on the second floor. Meeting rooms A and B are small — there are six chairs in each room. Meeting room C is bigger. There is a projector and a whiteboard in every meeting room.</p>
+        <p>The IT department is on the third floor. There is also a storage room on the third floor.</p>
+        <p>On the fifth floor, there is a cafeteria. There are tables, chairs, and a coffee machine. It is my favourite place in the building.</p>
+        <p>That is our office. It is a good place to work.</p>
+      </div>`:''}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📋 How to use this activity</div>
+      Listen once without looking at the questions. Then listen again and answer. Use the speed control if needed — starting at 0.8× is recommended for A1 learners.
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${Q2.length}</span>
+    </div>
+
+    ${Q2.map((_,i)=>renderQ(Q2[i],i,Q2,q2State,'p2Reveal','p2SelectOpt','p2SetInp')).join('')}
+
+    ${allDone?`<div class="quiz-result">
+      <div class="result-score">${q2Score} / ${Q2.length}</div>
+      <div class="result-label">${q2Score===Q2.length?'🎉 Perfect listening!':q2Score>=4?'Great work!':'Listen again and try!'}</div>
+      <div class="result-msg">${q2Score===Q2.length?'Excellent — you understood every detail.':'Use the transcript to check what you missed, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;">
+        ${wrongCount>0?`<button onclick="retakeQ2()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(2)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">Next: Writing →</button>
+      </div>
+    </div>`:''}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPart3() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Writing Task</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Describe your own workspace in <strong>4–6 sentences</strong>. Use <em>There is</em> and <em>There are</em>.</p>
+
+    <div class="info-box">
+      <strong style="color:var(--navy);display:block;margin-bottom:8px;">✏️ What to include</strong>
+      <ul style="padding-left:18px;line-height:2;font-size:14px;">
+        <li>What floor is your office on?</li>
+        <li>What is in your office? (desks, printers, meeting rooms…)</li>
+        <li>Is there a cafeteria or reception in your building?</li>
+        <li>Use at least one negative: <em>There isn't a…</em> or <em>There aren't any…</em></li>
+      </ul>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Sentence starters</div>
+      <em>My office is on the ___ floor. &nbsp;·&nbsp; There is a ___ in my office. &nbsp;·&nbsp; There are ___ desks. &nbsp;·&nbsp; There isn't a ___ in my building.</em>
+    </div>
+
+    <textarea class="writing-area" id="writing-ta"
+      placeholder="Start writing here… for example: My office is on the third floor. There are twenty desks in the open-plan office…"
+      oninput="updateWordCount()">${''}</textarea>
+    <div class="word-count" id="wc">0 words</div>
+
+    <div style="font-size:12px;color:var(--grey-blue);margin-top:6px;margin-bottom:12px;">
+      Minimum: 4 sentences. The submit button activates when you reach 4 sentences.
+    </div>
+
+    <button class="writing-submit" id="writing-submit-btn" onclick="submitWriting()" disabled>
+      Submit Writing ✓
+    </button>
+
+    <div class="writing-done" id="writing-done">
+      🎉 <strong>Well done!</strong> You've completed today's homework. See you in the next class!
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS ─────────────────────────────────────────────────
+STEPS = [
+  { label: '1. Quick Quiz',  fn: renderPart1 },
+  { label: '2. Listening',   fn: renderPart2 },
+  { label: '3. Writing',     fn: renderPart3 },
+];
+
+render(); // always last
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

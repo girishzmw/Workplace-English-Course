@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Responsibilities in Detail | A2 · Unit 1 · Lesson 4 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2D4F;--gold:#C9972C;--gold-light:#D4AC45;--gold-bg:#FDF6E3;
+  --slate:#4A5568;--grey-blue:#6B7A8D;--off-white:#F7F9FC;--light-grey:#F0F4F8;
+  --border-grey:#D9E2EC;--steel:#B8C6D6;--white:#FFFFFF;
+  --green:#1A6B4A;--green-bg:#E8F5EE;--red:#B91C1C;--red-bg:#FEE2E2;--sky:#2E86AB;
+  --font-heading:Georgia,'Times New Roman',serif;--font-body:'Lato',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--off-white);color:var(--slate);min-height:100vh;overflow-x:hidden}
+.site-header{background:var(--navy);border-bottom:2px solid var(--gold)}
+.site-header-inner{max-width:900px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;justify-content:center}
+.site-header-brand{font-family:var(--font-heading);font-size:22px;font-style:italic;color:var(--white);letter-spacing:.02em;opacity:.95}
+.hero{background:var(--navy);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:rgba(44,130,173,.14)}
+.hero::after{content:'';position:absolute;bottom:-40px;left:40px;width:200px;height:200px;border-radius:50%;background:rgba(201,151,44,.10)}
+.hero-inner{max-width:900px;margin:0 auto;padding:48px 32px 40px;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,151,44,.15);border:1px solid rgba(201,151,44,.4);border-radius:20px;padding:5px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px}
+.hero-title{font-family:var(--font-heading);font-size:clamp(26px,5vw,40px);color:var(--white);line-height:1.15;margin-bottom:6px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:28px;font-weight:300}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap}
+.pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:5px 14px;font-size:12px;color:rgba(255,255,255,.7)}
+.pill.accent{background:rgba(201,151,44,.2);border-color:rgba(201,151,44,.4);color:var(--gold)}
+.progress-wrap{background:rgba(255,255,255,.08);height:3px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--sky),var(--gold));transition:width .4s ease}
+.step-nav{background:var(--white);border-bottom:1px solid var(--border-grey);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.step-nav-inner{max-width:900px;margin:0 auto;padding:0 32px;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.step-btn{padding:13px 16px;border:none;background:none;border-bottom:3px solid transparent;font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--grey-blue);cursor:pointer;white-space:nowrap;transition:all .15s}
+.step-btn:hover{color:var(--sky)}
+.step-btn.active{border-bottom-color:var(--gold);color:var(--navy);font-weight:700}
+.main{max-width:900px;margin:0 auto;padding:36px 32px 80px}
+@media(max-width:600px){.main{padding:20px 16px 60px}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.sc{animation:fadeUp .28s ease}
+.sec-badge{display:grid;grid-template-columns:52px 1fr auto;background:var(--navy);border-radius:8px;overflow:hidden;margin-bottom:24px}
+.sec-badge-num{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.07);font-family:var(--font-heading);font-size:22px;color:var(--gold);padding:16px}
+.sec-badge-title{display:flex;align-items:center;padding:16px 20px;font-family:var(--font-heading);font-size:17px;color:var(--white)}
+.sec-badge-time{display:flex;align-items:center;padding:16px 20px;font-size:12px;color:rgba(255,255,255,.45);font-style:italic;white-space:nowrap}
+.gold-rule{height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent);border:none;margin:0 0 24px}
+.info-box{background:var(--off-white);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);border-left:4px solid var(--navy);border-right:1px solid var(--light-grey);padding:14px 18px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--slate)}
+.tip-box{background:var(--off-white);border-left:4px solid var(--gold);padding:12px 16px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--slate)}
+.tip-label{font-weight:700;color:var(--navy);margin-bottom:4px;font-size:13px}
+.ex-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-variant:small-caps;color:var(--gold);font-weight:700;margin-bottom:12px}
+/* Quiz engine */
+.q-card{background:var(--white);border:1px solid var(--border-grey);border-radius:12px;padding:22px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.q-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
+.q-num{background:var(--navy);color:var(--gold);border-radius:5px;padding:3px 10px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.q-text{font-size:15px;font-weight:500;color:var(--navy);line-height:1.5}
+.q-hint{font-size:12px;color:var(--sky);margin-top:4px;font-style:italic}
+.q-options{display:flex;flex-direction:column;gap:8px}
+.q-opt{padding:10px 15px;border:1.5px solid var(--border-grey);border-radius:7px;background:var(--off-white);font-size:14px;color:var(--navy);cursor:pointer;transition:all .12s;text-align:left;font-family:var(--font-body);display:flex;align-items:center;gap:10px}
+.q-opt:hover:not(:disabled){border-color:var(--sky);background:#EEF6FB}
+.q-opt.selected{border-color:var(--sky);background:#EEF6FB}
+.q-opt.correct{border-color:var(--green);background:var(--green-bg);color:var(--green);font-weight:500}
+.q-opt.wrong{border-color:var(--red);background:var(--red-bg);color:var(--red)}
+.q-opt:disabled{cursor:default}
+.opt-letter{width:22px;height:22px;border-radius:50%;background:var(--border-grey);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .12s}
+.q-opt.correct .opt-letter{background:var(--green);color:white}
+.q-opt.wrong .opt-letter{background:var(--red);color:white}
+.q-opt.selected .opt-letter{background:var(--sky);color:white}
+.q-feedback{margin-top:10px;padding:9px 13px;border-radius:7px;font-size:13px;line-height:1.5}
+.q-feedback.correct{background:var(--green-bg);color:var(--green)}
+.q-feedback.wrong{background:var(--red-bg);color:var(--red)}
+.q-input-row{display:flex;gap:10px}
+.q-input{flex:1;padding:10px 14px;border:1.5px solid var(--border-grey);border-radius:7px;font-family:var(--font-body);font-size:14px;background:var(--off-white);outline:none;color:var(--navy);transition:border-color .12s}
+.q-input:focus{border-color:var(--sky)}
+.q-input.correct{border-color:var(--green);background:var(--green-bg);color:var(--green)}
+.q-input.wrong{border-color:var(--red);background:var(--red-bg)}
+.score-bar{background:var(--white);border:1px solid var(--border-grey);border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.score-label{font-size:12px;color:var(--grey-blue);font-weight:700;white-space:nowrap}
+.score-track{flex:1;height:7px;background:var(--light-grey);border-radius:4px;overflow:hidden}
+.score-fill{height:100%;background:linear-gradient(90deg,var(--sky),var(--green));border-radius:4px;transition:width .5s ease}
+.score-count{font-size:14px;font-weight:700;color:var(--navy);white-space:nowrap;min-width:48px;text-align:right}
+.quiz-result{background:var(--navy);border-radius:12px;padding:30px;text-align:center;margin-top:22px}
+.result-score{font-family:var(--font-heading);font-size:52px;color:var(--gold);margin-bottom:8px}
+.result-label{font-size:18px;color:var(--white);margin-bottom:6px}
+.result-msg{font-size:14px;color:rgba(255,255,255,.5);font-style:italic}
+.quiz-intro{background:var(--navy);border-radius:12px;padding:22px;margin-bottom:22px;display:flex;align-items:center;gap:18px}
+.quiz-intro-icon{font-size:34px;flex-shrink:0}
+.quiz-intro h3{font-family:var(--font-heading);font-size:21px;color:var(--white);margin-bottom:4px}
+.quiz-intro p{font-size:13px;color:rgba(255,255,255,.5);font-style:italic}
+.check-btn{padding:10px 18px;background:var(--navy);color:var(--white);border:none;border-radius:6px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background .15s;white-space:nowrap}
+.check-btn:hover{background:var(--sky)}
+.check-btn:disabled{opacity:.4;cursor:default}
+/* Audio player */
+.audio-box{background:var(--navy);border-radius:12px;padding:22px;margin-bottom:20px}
+.audio-box-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.audio-box-icon{font-size:28px;flex-shrink:0}
+.audio-box-title{font-family:var(--font-heading);font-size:17px;color:var(--white);margin-bottom:2px}
+.audio-box-sub{font-size:12px;color:rgba(255,255,255,.45);font-style:italic}
+.audio-player{width:100%;height:40px;border-radius:6px;outline:none;accent-color:var(--gold)}
+.speed-row{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.speed-label{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase}
+.speed-btn{padding:4px 10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:4px;color:rgba(255,255,255,.6);font-family:var(--font-body);font-size:12px;cursor:pointer;transition:all .12s}
+.speed-btn:hover{background:rgba(255,255,255,.15)}
+.speed-btn.active{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700}
+/* Transcript */
+.transcript-toggle{margin-top:14px;display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid rgba(255,255,255,.2);border-radius:5px;padding:6px 12px;color:rgba(255,255,255,.55);font-family:var(--font-body);font-size:12px;cursor:pointer;transition:all .15s}
+.transcript-toggle:hover{border-color:var(--gold);color:var(--gold)}
+.transcript-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:18px;margin-top:12px;font-size:13px;color:rgba(255,255,255,.7);line-height:1.9;font-style:italic}
+.transcript-box p{margin-bottom:10px}
+.transcript-box p:last-child{margin-bottom:0}
+/* Writing task */
+.writing-box{background:var(--white);border:1px solid var(--border-grey);border-radius:10px;padding:18px;margin-bottom:20px}
+.writing-prompt{font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:14px}
+.writing-reqs{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.writing-req{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--slate);line-height:1.5}
+.writing-req-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px}
+.writing-area{width:100%;min-height:120px;padding:12px 14px;border:1.5px solid var(--border-grey);border-radius:7px;font-family:var(--font-body);font-size:14px;color:var(--navy);background:var(--off-white);resize:vertical;outline:none;line-height:1.7;transition:border-color .12s}
+.writing-area:focus{border-color:var(--sky)}
+.example-reveal{margin-top:12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--grey-blue);border:1px solid var(--border-grey);border-radius:5px;padding:6px 12px;background:var(--off-white);transition:all .15s}
+.example-reveal:hover{border-color:var(--gold);color:var(--gold)}
+.example-content{display:none;margin-top:10px;padding:12px 14px;background:var(--green-bg);border-radius:7px;font-size:13px;color:var(--green);font-style:italic;line-height:1.7}
+/* Nav */
+.nav-footer{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:22px;border-top:1px solid var(--border-grey);gap:12px}
+.nav-btn{padding:11px 24px;border-radius:7px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .18s}
+.nav-prev{background:var(--white);color:var(--navy);border:1.5px solid var(--border-grey)}
+.nav-prev:hover:not(:disabled){border-color:var(--gold)}
+.nav-prev:disabled{opacity:.35;cursor:default}
+.nav-next{background:var(--navy);color:var(--white)}
+.nav-next:hover:not(:disabled){background:var(--gold);color:var(--navy)}
+.nav-next:disabled{background:var(--border-grey);cursor:default}
+.nav-center{font-size:12px;color:var(--grey-blue)}
+.divider{height:1px;background:var(--border-grey);margin:26px 0}
+.sec-intro{font-size:15px;color:var(--slate);margin-bottom:18px;line-height:1.7}
+.h-serif{font-family:var(--font-heading);font-size:18px;color:var(--navy);margin-bottom:12px}
+/* Site footer */
+.site-footer{background:var(--navy);border-top:1px solid rgba(201,151,44,.3);margin-top:60px}
+.site-footer-inner{max-width:900px;margin:0 auto;padding:20px 32px;display:flex;flex-direction:column;gap:6px}
+.site-footer-credit{font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.75)}
+.site-footer-credit strong{color:var(--gold);font-weight:700}
+.site-footer-credit a{color:var(--gold-light);text-decoration:none}
+.site-footer-credit a:hover{text-decoration:underline}
+.site-footer-legal{font-family:var(--font-body);font-size:10px;color:rgba(255,255,255,.35);line-height:1.7;border-top:1px solid rgba(255,255,255,.08);padding-top:10px;margin-top:4px}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Lesson 4 · Homework</div>
+    <h1 class="hero-title">Daily Responsibilities in Detail</h1>
+    <p class="hero-sub">Quiz · Listening · Writing · ~15 min</p>
+    <div class="hero-pills">
+      <span class="pill accent">🎧 Listening</span>
+      <span class="pill accent">✍️ Writing</span>
+      <span class="pill">4 parts</span>
+      <span class="pill">15 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+let currentStep=0;
+let STEPS=[];
+let transcriptOpen=false;
+let currentSpeed=1.0;
+
+function getProgress(i){return STEPS.length===1?100:Math.round(((i+1)/STEPS.length)*100)}
+function goTo(i){currentStep=i;render();window.scrollTo(0,0)}
+function navFooter(){
+  const isFirst=currentStep===0,isLast=currentStep===STEPS.length-1;
+  const prevLabel=isFirst?'← Previous':'← '+STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel=isLast?'Complete ✓':STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'')+' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render(){
+  document.getElementById('stepNav').innerHTML=STEPS.map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`).join('');
+  document.getElementById('mainContent').innerHTML=STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width=getProgress(currentStep)+'%';
+}
+
+// ── AUDIO SPEED CONTROL (Pattern A — single player) ───────
+function setSpeed(rate){
+  currentSpeed=rate;
+  const audio=document.getElementById('mainAudio');
+  if(audio)audio.playbackRate=rate;
+  document.querySelectorAll('.speed-btn').forEach(b=>{
+    b.classList.toggle('active', parseFloat(b.dataset.rate)===rate);
+  });
+}
+function toggleTranscript(){
+  transcriptOpen=!transcriptOpen;
+  const box=document.getElementById('transcriptBox');
+  const btn=document.getElementById('transcriptBtn');
+  if(box){box.style.display=transcriptOpen?'block':'none';}
+  if(btn){btn.textContent=transcriptOpen?'▲ Hide transcript':'▼ Show transcript';}
+}
+
+// ── QUIZ DATA ─────────────────────────────────────────────
+
+// Part 1 — Frequency Adverb Position (Q0–4)
+// Part 2 — Fill in the Blank (Q5–9)
+// Part 3 — Correct the Mistake (Q10–13)  [Q10 is control — no mistake]
+// Part 4 — Listening (Q14–19)
+
+const QUIZ=[
+  // ── Part 1: Frequency Adverb Position ──
+  {type:'mc',
+   q:'Choose the correct sentence.',
+   opts:['She usually prepares the report on Mondays.','She prepares usually the report on Mondays.','Usually she prepares the report on Mondays.'],
+   answer:0,
+   hint:'Frequency adverbs go before the main verb. Option A is the most natural in professional writing.',
+   fb:'"She usually prepares" is correct and most natural. Option C is not wrong, but A is the preferred pattern in professional written English.'},
+  {type:'mc',
+   q:'Choose the correct sentence.',
+   opts:['He is late never.','Never he is late.','He is never late.'],
+   answer:2,
+   hint:'With the verb "to be," the adverb comes directly after it.',
+   fb:'"He is never late" is correct. With "to be" the adverb always follows: He IS never late.'},
+  {type:'mc',
+   q:'Choose the correct sentence.',
+   opts:['I respond always to emails within one hour.','I always respond to emails within one hour.','Always I respond to emails within one hour.'],
+   answer:1,
+   hint:'The adverb goes before the main verb "respond," not after it.',
+   fb:'"I always respond" is correct. The adverb sits directly before the main verb in standard word order.'},
+  {type:'mc',
+   q:'Choose the correct sentence.',
+   opts:['We occasionally have team meetings on Fridays.','We have occasionally team meetings on Fridays.','Occasionally we have team meetings on Fridays.'],
+   answer:0,
+   hint:'"Occasionally" follows the same rule as other frequency adverbs — before the main verb.',
+   fb:'"We occasionally have" is the most natural. Option C is grammatically acceptable but option A is preferred in professional English.'},
+  {type:'mc',
+   q:'Choose the correct sentence.',
+   opts:['The manager rarely is available on Mondays.','The manager is rarely available on Mondays.','Rarely the manager is available on Mondays.'],
+   answer:1,
+   hint:'With the verb "to be," where does the adverb go?',
+   fb:'"The manager is rarely available" is correct. The adverb follows "to be" — never comes before it in a standard sentence.'},
+
+  // ── Part 2: Fill in the Blank ──
+  {type:'input',
+   q:'She _____ (coordinate) meetings between the marketing and sales teams every week.',
+   hint:'Third person singular — she/he/it. Does the verb need -s?',
+   answers:['coordinates'],
+   display:'coordinates',
+   fb:'Third person singular Present Simple always takes -s: she coordinateS. ¡Recuerda la -s!'},
+  {type:'input',
+   q:'I _____ (submit) my timesheet every Friday afternoon.',
+   hint:'First person singular — I. Does the verb change?',
+   answers:['submit'],
+   display:'submit',
+   fb:'With "I," the verb stays in its base form — no -s needed. I submit.'},
+  {type:'input',
+   q:'He never _____ (miss) a deadline — he is very organised.',
+   hint:'Third person singular again. Don\'t forget the -s.',
+   answers:['misses'],
+   display:'misses',
+   fb:'"Miss" + third person singular = misses. Verbs ending in -s, -sh, -ch, -x, -o add -es.'},
+  {type:'input',
+   q:'We usually _____ (review) the budget at the beginning of each quarter.',
+   hint:'Subject is "we" — does the verb change?',
+   answers:['review'],
+   display:'review',
+   fb:'"We" takes the base form — no change. We review.'},
+  {type:'input',
+   q:'The IT team _____ (monitor) the system performance every morning.',
+   hint:'"The IT team" is a singular collective noun — treat it like he/she/it.',
+   answers:['monitors'],
+   display:'monitors',
+   fb:'"The IT team" is treated as a single unit, so it takes -s: the team monitorS.'},
+
+  // ── Part 3: Correct the Mistake ──
+  {type:'tf',
+   q:'"I liaise with our supplier to coordinate the deliveries once a week." — This sentence is correct with no mistakes.',
+   answer:true,
+   hint:'Read carefully — check verb form, adverb position, and prepositions.',
+   fb:'Correct — this sentence has no mistake. It uses "liaise with," "to + infinitive" for purpose, and correct word order throughout.'},
+  {type:'mc',
+   q:'Find the ONE mistake: "She prepare the financial reports for the CFO every quarter."',
+   opts:['The verb "prepare" should be "prepares."','The word "quarterly" should be used instead of "every quarter."','"Financial reports" should be "finance reports."'],
+   answer:0,
+   hint:'Who is the subject? Check the Present Simple -s rule.',
+   fb:'"She prepares" is correct. Third person singular (she/he/it) always needs -s in Present Simple. She prepareS.'},
+  {type:'mc',
+   q:'Find the ONE mistake: "He is usually arriving at 8 a.m. and starts his workday with emails."',
+   opts:['It should be "He usually arrives" — Present Simple, not Present Continuous.','The word "usually" is in the wrong position.','It should be "he is usually arrived."'],
+   answer:0,
+   hint:'Daily routines and habits use Present Simple, not Present Continuous (-ing).',
+   fb:'"He usually arrives" is correct. Habits and routines use Present Simple — not Present Continuous, which describes something happening right now.'},
+  {type:'mc',
+   q:'Find the ONE mistake: "I report my supervisor about the client complaints daily."',
+   opts:['"Report" should be "reports" because it is a daily action.','"Report my supervisor" should be "report to my supervisor."','"Client complaints" should be "clients complaints."'],
+   answer:1,
+   hint:'In English, what preposition follows "report" when talking about your manager?',
+   fb:'"Report to my supervisor" is correct. We always use "report to" to describe a management relationship. Without "to," the sentence implies making a complaint against your supervisor!'},
+];
+
+const quizState={};
+let quizScore=0;
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderPart1(){
+  const answered=Object.values(quizState).filter(s=>s.revealed).length;
+  const pct=QUIZ.length?(answered/QUIZ.length)*100:0;
+  const allDone=answered===QUIZ.length&&QUIZ.length>0;
+  const allCorrect=allDone&&quizScore===QUIZ.length;
+  const wrongCount=allDone?QUIZ.length-quizScore:0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Quiz — All Parts</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>Homework Quiz</h3>
+        <p>${QUIZ.length} questions across 3 parts · Frequency adverbs, verb forms, and error correction</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+
+    <div class="ex-label">Part 1 · Frequency Adverb Position</div>
+    ${QUIZ.slice(0,5).map((q,i)=>renderQ(q,i)).join('')}
+
+    <div class="divider"></div>
+    <div class="ex-label">Part 2 · Fill in the Blank — Correct Verb Form</div>
+    ${QUIZ.slice(5,10).map((q,i)=>renderQ(q,i+5)).join('')}
+
+    <div class="divider"></div>
+    <div class="ex-label">Part 3 · Find the Mistake</div>
+    ${QUIZ.slice(10,14).map((q,i)=>renderQ(q,i+10)).join('')}
+
+    ${allDone?`<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,.1);color:var(--white);border:1px solid rgba(255,255,255,.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>`:''}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening(){
+  const listeningQ=[
+    {q:'What is the first thing David does every morning?',a:'He reviews his emails and checks for any urgent messages from the team.'},
+    {q:'Which two departments does he frequently coordinate with?',a:'IT and Operations.'},
+    {q:'How often does he prepare a progress report for his manager?',a:'Once a week.'},
+    {q:'What day does David usually write his progress report?',a:'Thursday afternoons.'},
+    {q:'How does David usually communicate with external vendors?',a:'Usually by email, but sometimes on short video calls.'},
+    {q:'True or False: David rarely has problems with suppliers.',a:'True — he says "I rarely have problems with suppliers."'},
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">🎧 Listening — A Day in the Life</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Listen to David Chen, a Project Coordinator, describe his typical workday. Listen at least once, then answer the comprehension questions below.</p>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">A Day in the Life of a Project Coordinator</div>
+          <div class="audio-box-sub">David Chen · ~75–85 seconds · North American English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A2-L4-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>My name is David Chen, and I work as a Project Coordinator at a technology company.</p>
+        <p>My workday usually starts at eight-thirty. The first thing I do every morning is review my emails and check for any urgent messages from the team.</p>
+        <p>I frequently coordinate with different departments — mainly IT and Operations — to make sure our projects stay on schedule. I also update our project tracker daily so that everyone knows the status of each task.</p>
+        <p>Once a week, I prepare a progress report for my manager. I normally do this on Thursday afternoons so that it is ready before the Friday team meeting.</p>
+        <p>I occasionally liaise with external vendors — usually by email, but sometimes on short video calls. I rarely have problems with suppliers, but when I do, I always handle them as quickly as possible.</p>
+        <p>I usually finish my workday at around five-thirty. I find my job very satisfying because I can see the results of my work every day.</p>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Listening tip</div>
+      Listen the first time without reading the transcript. Try to catch the frequency adverbs — how many can you hear? Then listen a second time and answer the questions. Use the speed control if you need more time.
+    </div>
+
+    <h3 class="h-serif">Comprehension Questions</h3>
+    <p style="font-size:14px;color:var(--grey-blue);margin-bottom:16px;">Tap each question to reveal the answer.</p>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+      ${listeningQ.map((item,i)=>`
+        <div onclick="this.querySelector('.lq-answer').style.display=this.querySelector('.lq-answer').style.display==='block'?'none':'block'; this.querySelector('.lq-tap').textContent=this.querySelector('.lq-answer').style.display==='block'?'▲ Hide answer':'▼ Tap to reveal';"
+          style="background:var(--white);border:1px solid var(--border-grey);border-radius:9px;padding:14px 16px;cursor:pointer;transition:border-color .12s;"
+          onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border-grey)'">
+          <div style="display:flex;align-items:flex-start;gap:10px;">
+            <span style="background:var(--navy);color:var(--gold);font-size:11px;font-weight:700;border-radius:4px;padding:2px 8px;flex-shrink:0;margin-top:1px;">${i+1}</span>
+            <div style="flex:1;">
+              <div style="font-size:14px;font-weight:500;color:var(--navy);line-height:1.5;">${item.q}</div>
+              <div class="lq-answer" style="display:none;margin-top:8px;padding:9px 12px;background:var(--green-bg);border-radius:6px;font-size:13px;color:var(--green);font-weight:500;line-height:1.5;">✅ ${item.a}</div>
+              <div class="lq-tap" style="font-size:11px;color:var(--grey-blue);margin-top:6px;">▼ Tap to reveal</div>
+            </div>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWriting(){
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Writing Task</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Write 3–5 sentences describing your real daily responsibilities at work. This is your chance to use everything from this lesson in one paragraph.</p>
+
+    <div class="writing-box">
+      <div class="writing-prompt"><strong>Your task:</strong> Describe your daily responsibilities at work in 3–5 sentences.</div>
+      <div class="writing-reqs">
+        <div class="writing-req"><div class="writing-req-dot"></div>At least 2 professional action verbs from the lesson (coordinate, monitor, prepare, etc.)</div>
+        <div class="writing-req"><div class="writing-req-dot"></div>At least 2 different frequency adverbs (usually, frequently, occasionally, etc.)</div>
+        <div class="writing-req"><div class="writing-req-dot"></div>At least one sentence with extra detail — who for / why / when</div>
+      </div>
+      <textarea class="writing-area" placeholder="Write your sentences here…" id="writingArea"></textarea>
+      <button class="example-reveal" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block';this.textContent=this.nextElementSibling.style.display==='block'?'▲ Hide example':'💡 Show example answer';">
+        💡 Show example answer
+      </button>
+      <div class="example-content">
+        I usually prepare a daily update for my team at 9 a.m. I frequently liaise with our suppliers to track order deliveries. Once a week, I submit a summary report to my manager. I occasionally attend cross-department meetings to coordinate project timelines.
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Self-check before you finish</div>
+      Before you close this lesson, read your sentences out loud. Check: Did you use the A2 formula — <strong>frequency adverb + professional verb + object + extra detail?</strong> If yes, you are ready for class!
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q,i){
+  const s=quizState[i]||{};const rev=s.revealed;let body='';const letters=['A','B','C','D'];
+  if(q.type==='mc'||q.type==='tf'){
+    const opts=q.type==='mc'?q.opts:['True','False'];
+    const lets=q.type==='mc'?letters:['T','F'];
+    body=`<div class="q-options">${opts.map((opt,j)=>{
+      let cls='q-opt';
+      const isAns=q.type==='mc'?j===q.answer:q.answer===(j===0);
+      if(rev){if(isAns)cls+=' correct';else if(s.selected===j)cls+=' wrong';}
+      else if(s.selected===j)cls+=' selected';
+      return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+    }).join('')}</div>
+    ${!rev?`<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>`:''}
+    ${rev?`<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>`:''}`;
+  }
+  if(q.type==='input'){
+    const cls=rev?(s.correct?'q-input correct':'q-input wrong'):'q-input';
+    body=`<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type the correct verb form…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev?`<button class="check-btn" onclick="revealInp(${i})">Check</button>`:''}
+    </div>
+    ${rev?`<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>`:''}`;
+  }
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top"><span class="q-num">Q${i+1}</span>
+    <div><div class="q-text">${q.q}</div>${q.hint?`<div class="q-hint">💡 ${q.hint}</div>`:''}</div></div>
+    ${body}
+  </div>`;
+}
+function selectOpt(qi,j){if(!quizState[qi])quizState[qi]={};if(quizState[qi].revealed)return;quizState[qi].selected=j;rerender();}
+function revealQ(qi){if(!quizState[qi])quizState[qi]={};quizState[qi].revealed=true;recalc();rerender();}
+function setInp(qi,v){if(!quizState[qi])quizState[qi]={};quizState[qi].inputVal=v;}
+function revealInp(qi){
+  const q=QUIZ[qi];if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true;recalc();rerender();
+}
+function retakeQuiz(){
+  QUIZ.forEach((_,i)=>{
+    const s=quizState[i];if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input')ok=s.correct;
+    if(!ok)delete quizState[i];
+  });
+  recalc();rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc(){
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i];if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender(){
+  const qi=STEPS.findIndex(s=>s.fn===renderPart1);
+  if(currentStep===qi)document.getElementById('mainContent').innerHTML=renderPart1();
+}
+function scoreLabel(){
+  if(quizScore===QUIZ.length)return '🎉 ¡Perfecto! — You are ready for class!';
+  if(quizScore>=QUIZ.length*.85)return '¡Excelente! Almost perfect.';
+  if(quizScore>=QUIZ.length*.7)return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg(){
+  if(quizScore===QUIZ.length)return 'Outstanding — a perfect score! See you in class.';
+  if(quizScore>=QUIZ.length*.85)return 'Retry the wrong answers to finish strong.';
+  if(quizScore>=QUIZ.length*.7)return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+// ── STEPS — defined last ──────────────────────────────────
+STEPS=[
+  {label:'1. Quiz',      fn:renderPart1},
+  {label:'2. Listening', fn:renderListening},
+  {label:'3. Writing',   fn:renderWriting},
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

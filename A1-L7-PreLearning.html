@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Office Routines | A1 · Unit 1 · Lesson 7</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head-3 { display:grid; grid-template-columns:1fr 1fr 2fr; background:var(--navy); padding:12px 20px; gap:8px; }
+.vocab-table-head-3 span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row-3 { display:grid; grid-template-columns:1fr 1fr 2fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.vocab-row-3:last-child { border-bottom:none; }
+.vocab-row-3:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+.vocab-ex { font-size:13px; color:var(--slate); font-style:italic; }
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:15px; color:var(--navy); line-height:1.8; font-style:italic; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Lesson 7 · Pre-Learning</div>
+    <h1 class="hero-title">Daily Office Routines</h1>
+    <p class="hero-sub">Present Simple (affirmative) · Telling the time · 45 min self-study</p>
+    <div class="hero-outcomes">
+      <div>
+        <div class="outcome-item">Use Present Simple to describe your daily work routine</div>
+        <div class="outcome-note">Usar el Presente Simple para describir tu rutina diaria</div>
+      </div>
+      <div>
+        <div class="outcome-item">Say what you do at work and when</div>
+        <div class="outcome-note">Decir qué haces en el trabajo y cuándo</div>
+      </div>
+      <div>
+        <div class="outcome-item">Tell the time using hours and half hours</div>
+        <div class="outcome-note">Decir la hora en punto y media hora</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const quizState = {};
+let quizScore = 0;
+const ex1State = {};
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── AUDIO (Pattern A) ─────────────────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const VOCAB = [
+  ["check emails",           "revisar correos",           "I check emails every morning."],
+  ["attend a meeting",       "asistir a una reunión",     "I attend a meeting at 9 a.m."],
+  ["answer calls",           "contestar llamadas",        "I answer calls in the afternoon."],
+  ["send a report",          "enviar un informe",         "I send a report on Fridays."],
+  ["talk to clients",        "hablar con clientes",       "I talk to clients every day."],
+  ["have lunch",             "almorzar",                  "I have lunch at 1 p.m."],
+  ["finish work",            "terminar el trabajo",       "I finish work at 6 p.m."],
+  ["start work",             "empezar a trabajar",        "I start work at 8 a.m."],
+  ["prepare a presentation", "preparar una presentación", "I prepare a presentation on Mondays."],
+  ["update the system",      "actualizar el sistema",     "I update the system every day."],
+];
+
+const NUMBERS = [
+  ["1",  "one",    "/wʌn/ — rhymes with \"sun\""],
+  ["2",  "two",    "/tuː/ — like \"too\""],
+  ["3",  "three",  "/θriː/ — tongue between teeth for \"th\""],
+  ["4",  "four",   "/fɔːr/ — rhymes with \"more\""],
+  ["5",  "five",   "/faɪv/"],
+  ["6",  "six",    "/sɪks/"],
+  ["7",  "seven",  "/ˈsevən/ — two syllables"],
+  ["8",  "eight",  "/eɪt/ — silent \"gh\""],
+  ["9",  "nine",   "/naɪn/"],
+  ["10", "ten",    "/ten/"],
+  ["11", "eleven", "/ɪˈlevən/ — three syllables"],
+  ["12", "twelve", "/twɛlv/"],
+];
+
+const QUIZ = [
+  { type:'mc', q:'Which sentence is correct?',
+    opts:['She check emails every day.','She checks emails every day.','She checking emails every day.'],
+    answer:1, hint:'💡 The subject is "she" — remember the rule for he/she/it.',
+    fb:'We add -s to the verb when the subject is he, she, or it. ✅ She checks emails every day.' },
+
+  { type:'mc', q:'Complete the sentence: "I _____ a meeting at 9:00 a.m. every Monday."',
+    opts:['attends','attend','attending'],
+    answer:1, hint:'💡 The subject is "I" — does the verb need -s?',
+    fb:'With "I", the verb stays in the base form — no -s needed. ✅ I attend a meeting.' },
+
+  { type:'mc', q:'How do you say 8:30 in English in a business context?',
+    opts:['Eight and a half','Eight thirty','Half eight thirty'],
+    answer:1, hint:'💡 Think: hours first, then minutes.',
+    fb:'8:30 = "eight thirty" (most common in corporate settings) or "half past eight" (British English). ✅ Eight thirty.' },
+
+  { type:'mc', q:'Which sentence uses the correct time expression?',
+    opts:['I start work at the 8 a.m.','I start work at 8 a.m.','I start work in 8 a.m.'],
+    answer:1, hint:'💡 Which preposition do we use before a specific time?',
+    fb:'We use "at" before a specific time. ✅ I start work at 8 a.m.' },
+
+  { type:'mc', q:'"He _____ work at 6 p.m."',
+    opts:['finish','finishing','finishes'],
+    answer:2, hint:'💡 The subject is "he" — what do you add to "finish"?',
+    fb:'"Finish" ends in -sh, so we add -es. ✅ He finishes work at 6 p.m.' },
+
+  { type:'tf', q:'"Forty" (40) and "fourteen" (14) sound exactly the same in English.',
+    answer:false, hint:'💡 Think about where the stress falls in each word.',
+    fb:'They sound different! fourTEEN = 14 (stress on second syllable). FORty = 40 (stress on first syllable). The stress position changes the meaning.' },
+
+  { type:'mc', q:'"Priya and David _____ reports every Friday."',
+    opts:['sends','send','sended'],
+    answer:1, hint:'💡 "Priya and David" = they. Does the verb need -s with "they"?',
+    fb:'With a plural subject (they / Priya and David), the verb stays in the base form. ✅ They send reports.' },
+
+  { type:'mc', q:'What does "a.m." mean?',
+    opts:['From noon to midnight','From midnight to noon','After the meeting'],
+    answer:1, hint:'💡 a.m. comes from Latin: ante meridiem.',
+    fb:'a.m. = ante meridiem = before noon. Use a.m. for times from midnight (12:00 a.m.) to 11:59 in the morning.' },
+
+  { type:'input', q:'Write the correct verb form: "Kenji _____ calls every afternoon."',
+    hint:'💡 Subject = Kenji (he). Verb = answer. What do you add for he/she/it?',
+    answers:['answers'], display:'answers',
+    fb:'"Kenji" = he/she/it → add -s to the verb. ✅ Kenji answers calls every afternoon.' },
+
+  { type:'input', q:'Write 9:30 in words as you would say it in a business meeting.',
+    hint:'💡 Hours first, then minutes. No "and" between them.',
+    answers:['nine thirty','half past nine'],
+    display:'nine thirty (or: half past nine)',
+    fb:'Both are correct! "Nine thirty" is most common in corporate contexts. "Half past nine" is used in British English.' },
+];
+
+// ── EXERCISE 1 DATA ───────────────────────────────────────
+const ex1Questions = [
+  { q:'I _____ work at 8 a.m.',           opts:['start','starts'],    answer:0, fb:'Subject is "I" — base verb, no -s needed.' },
+  { q:'She _____ emails every morning.',   opts:['check','checks'],    answer:1, fb:'Subject is "she" — add -s: checks.' },
+  { q:'We _____ a meeting at 9:00 a.m.',  opts:['attend','attends'],  answer:0, fb:'Subject is "we" — base verb, no -s needed.' },
+  { q:'He _____ work at 6 p.m.',          opts:['finish','finishes'], answer:1, fb:'"Finish" ends in -sh → add -es: finishes.' },
+  { q:'They _____ reports on Fridays.',   opts:['send','sends'],      answer:0, fb:'Subject is "they" — base verb, no -s needed.' },
+  { q:'Carlos _____ lunch at 1 p.m.',     opts:['have','has'],        answer:1, fb:'"Carlos" = he → irregular verb: have → has.' },
+];
+
+// ── RENDERERS ─────────────────────────────────────────────
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">👋</div>
+      <div class="sec-badge-title">Welcome to Lesson 7</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">In this lesson, you learn how to talk about your daily routine at work in English. You will learn new action verbs, how to use the <strong>Present Simple</strong> tense to describe things you do every day, and how to tell the time using hours and half hours.</p>
+    <div class="es-note">
+      <strong>🇪🇸 En esta lección</strong> aprenderás a describir tu rutina diaria en el trabajo en inglés. Estudiarás verbos de acción, el Presente Simple y cómo decir la hora.
+    </div>
+    <div class="info-box">
+      <strong>📌 This section covers:</strong><br>
+      Part 1 — Work action verbs &nbsp;·&nbsp; Part 2 — Present Simple grammar &nbsp;·&nbsp; Part 3 — Numbers &amp; telling the time &nbsp;·&nbsp; Part 4 — Model audio text &nbsp;·&nbsp; Part 5 — Check yourself exercises
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">⏱ How to study this section</div>
+      Work through each part in order. Read the explanations carefully, then do the exercises. Use the navigation tabs at the top or the buttons below to move between parts. The quiz at the end tests everything — aim for a perfect score before class!
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Part 1 — Work Action Verbs</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">These are the verbs you need to describe what you do at work every day. Study the full phrase — not just the translation.</p>
+    <div class="es-note">
+      🇪🇸 Estos verbos se llaman <em>"verbos de acción"</em>. Son la base para describir tu día laboral en inglés. No memorices la traducción sola — memoriza el verbo + su contexto: <em>I check emails</em>, <em>I attend a meeting</em>. El contexto te ayuda a recordar.
+    </div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head-3">
+        <span>English</span><span>Spanish</span><span>Example sentence</span>
+      </div>
+      ${VOCAB.map(([en,es,ex]) => `
+      <div class="vocab-row-3">
+        <div class="vocab-en">${en}</div>
+        <div class="vocab-es">${es}</div>
+        <div class="vocab-ex">${ex}</div>
+      </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Language note — no reflexive needed in English</div>
+      In English, work action verbs almost never use a reflexive form. Say <em>"I check emails"</em> — not <em>"I check myself emails."</em> Compare with Spanish: <em>Yo reviso mis correos</em> — in English, we drop the possessive in fixed work expressions like <em>check emails, answer calls, attend meetings.</em>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Part 2 — Present Simple (Affirmative)</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">We use the <strong>Present Simple</strong> to talk about things we do every day (routines) and things that are always true.</p>
+
+    <h2 class="h-serif">The Formula</h2>
+    <div class="builder-wrap">
+      <div class="builder-label">Sentence Structure</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:18px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Subject</div>
+          <div style="font-size:14px;font-weight:700;color:var(--gold);">I / You / We / They</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">base verb</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(46,134,171,0.25);border-right:2px solid rgba(255,255,255,0.1);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Subject</div>
+          <div style="font-size:14px;font-weight:700;color:#7EC8E3;">He / She / It</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">verb + <strong style="color:var(--gold);">-s / -es</strong></div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Rest of sentence</div>
+          <div style="font-size:14px;font-weight:700;color:var(--gold);">Object + Time</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">emails / every morning</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>I check</strong> emails every morning.</div>
+      <div class="builder-ex"><strong>She checks</strong> emails every morning.</div>
+    </div>
+
+    <div class="es-note">
+      🇪🇸 En español los verbos cambian para cada persona: <em>yo reviso, tú revisas, él revisa, nosotros revisamos...</em> En inglés, el cambio es mucho más simple. Solo agregas <strong>-s</strong> para he/she/it. Para todas las demás personas, el verbo no cambia: <em>I check, you check, we check, they check.</em> ¡Mucho más fácil!
+    </div>
+
+    <h2 class="h-serif">Examples</h2>
+    <div class="pattern-box">
+      <div class="pattern-box-head">I / You / We / They → base verb &nbsp;&nbsp;|&nbsp;&nbsp; He / She / It → verb + -s / -es</div>
+      <div class="pattern-row"><div class="pattern-en">I start work at 8.</div><div class="pattern-es">She starts work at 8.</div></div>
+      <div class="pattern-row"><div class="pattern-en">We attend a meeting.</div><div class="pattern-es">He attends a meeting.</div></div>
+      <div class="pattern-row"><div class="pattern-en">They check emails.</div><div class="pattern-es">Priya checks emails.</div></div>
+      <div class="pattern-row"><div class="pattern-en">I finish at 6.</div><div class="pattern-es">David finishes at 6.</div></div>
+      <div class="pattern-row"><div class="pattern-en">You answer calls.</div><div class="pattern-es">Kenji answers calls.</div></div>
+    </div>
+
+    <h2 class="h-serif">Spelling Rules for he / she / it</h2>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1.5fr 1fr 1fr;">
+        <span>Rule</span><span>Verbs</span><span>Result</span>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1.5fr 1fr 1fr;">
+        <div style="font-size:14px;color:var(--navy);font-weight:600;">Most verbs → add <strong>-s</strong></div>
+        <div style="font-size:13px;color:var(--grey-blue);">check, start, attend</div>
+        <div style="font-size:13px;color:var(--slate);font-style:italic;">checks, starts, attends</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1.5fr 1fr 1fr;">
+        <div style="font-size:14px;color:var(--navy);font-weight:600;">Ends in -sh, -ch, -x, -o, -ss → add <strong>-es</strong></div>
+        <div style="font-size:13px;color:var(--grey-blue);">finish, go</div>
+        <div style="font-size:13px;color:var(--slate);font-style:italic;">finishes, goes</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1.5fr 1fr 1fr;">
+        <div style="font-size:14px;color:var(--navy);font-weight:600;">Consonant + y → change to <strong>-ies</strong></div>
+        <div style="font-size:13px;color:var(--grey-blue);">study</div>
+        <div style="font-size:13px;color:var(--slate);font-style:italic;">studies</div>
+      </div>
+    </div>
+
+    <h2 class="h-serif">Common Mistakes</h2>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠ Don't forget the -s for he / she / it!</div>
+      <div class="mistake-wrong">❌ &nbsp;She check emails every day.</div>
+      <div class="mistake-right">✅ &nbsp;She checks emails every day.</div>
+      <div style="margin-top:12px;"></div>
+      <div class="mistake-wrong">❌ &nbsp;He attend a meeting at 9.</div>
+      <div class="mistake-right">✅ &nbsp;He attends a meeting at 9.</div>
+    </div>
+
+    <h2 class="h-serif">Time Expressions</h2>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1fr;">
+        <span>Expression</span><span>When to use it</span>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);">every day / every morning</div>
+        <div style="font-size:14px;color:var(--slate);">for daily habits</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);">on Mondays / on Fridays</div>
+        <div style="font-size:14px;color:var(--slate);">for weekly habits</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);">at 8 a.m. / at noon</div>
+        <div style="font-size:14px;color:var(--slate);">for specific times</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);">in the morning / in the afternoon</div>
+        <div style="font-size:14px;color:var(--slate);">for general parts of the day</div>
+      </div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderNumbers() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Part 3 — Numbers &amp; Telling the Time</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box">
+      <strong>📌 Note:</strong> Many students in this class are working hard with numbers in English. This section gives you extra practice with numbers before we learn to tell the time. Take your time here — this is a foundation skill you use every day at work.
+    </div>
+
+    <h2 class="h-serif">Numbers 1–12</h2>
+    <p class="sec-intro">These are the numbers you need to tell the time. Study the pronunciation tips carefully.</p>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:50px 100px 1fr;">
+        <span>#</span><span>Word</span><span>Pronunciation tip</span>
+      </div>
+      ${NUMBERS.map(([n,w,p]) => `
+      <div class="data-table-row" style="grid-template-columns:50px 100px 1fr;">
+        <div style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--gold);">${n}</div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);">${w}</div>
+        <div style="font-size:13px;color:var(--grey-blue);">${p}</div>
+      </div>`).join('')}
+    </div>
+
+    <h2 class="h-serif">The -teen / -ty Confusion</h2>
+    <p class="sec-intro">This is one of the most common number mistakes at work. The <strong>stress position</strong> changes the meaning completely.</p>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠ Stress matters at work!</div>
+      <div class="mistake-wrong">❌ &nbsp;"FOURteen" (stress on first syllable) → your colleague hears: forty (40)</div>
+      <div class="mistake-right">✅ &nbsp;"fourTEEN" (stress on second syllable) → correct: fourteen (14)</div>
+    </div>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1fr;">
+        <span>Teens (stress on -TEEN)</span><span>Tens (stress on first syllable)</span>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;">
+        <div style="font-size:14px;font-weight:700;color:var(--green);">thir<strong>TEEN</strong> = 13</div>
+        <div style="font-size:14px;color:var(--red);">THIR·ty = 30</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;">
+        <div style="font-size:14px;font-weight:700;color:var(--green);">four<strong>TEEN</strong> = 14</div>
+        <div style="font-size:14px;color:var(--red);">FOR·ty = 40</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;">
+        <div style="font-size:14px;font-weight:700;color:var(--green);">fif<strong>TEEN</strong> = 15</div>
+        <div style="font-size:14px;color:var(--red);">FIF·ty = 50</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;">
+        <div style="font-size:14px;font-weight:700;color:var(--green);">six<strong>TEEN</strong> = 16</div>
+        <div style="font-size:14px;color:var(--red);">SIX·ty = 60</div>
+      </div>
+    </div>
+    <div class="es-note">
+      🇪🇸 En español, los números del 11 al 15 son irregulares: <em>once, doce, trece, catorce, quince.</em> En inglés, ¡son más regulares! Del 13 al 19 todos terminan en <strong>-teen</strong>: thirteen, fourteen, fifteen... Y del 20 en adelante: twenty, thirty, forty... Nota importante: <strong>forty</strong> se escribe sin "u" — no es <em>fourty</em>.
+    </div>
+
+    <h2 class="h-serif">Telling the Time: Hours</h2>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:80px 1fr;">
+        <span>Time</span><span>How to say it</span>
+      </div>
+      ${[['8:00','eight o\'clock / 8 a.m.'],['9:00','nine o\'clock / 9 a.m.'],['12:00','twelve o\'clock / noon'],['1:00','one o\'clock / 1 p.m.'],['6:00','six o\'clock / 6 p.m.']].map(([t,s])=>`
+      <div class="data-table-row" style="grid-template-columns:80px 1fr;">
+        <div style="font-family:var(--font-heading);font-size:16px;color:var(--gold);">${t}</div>
+        <div style="font-size:14px;color:var(--navy);">${s}</div>
+      </div>`).join('')}
+    </div>
+
+    <h2 class="h-serif">Telling the Time: Half Hours</h2>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:80px 1fr;">
+        <span>Time</span><span>How to say it</span>
+      </div>
+      ${[['8:30','<strong>eight thirty</strong> &nbsp;/&nbsp; <em>half past eight</em>'],['9:30','<strong>nine thirty</strong> &nbsp;/&nbsp; <em>half past nine</em>'],['12:30','<strong>twelve thirty</strong> &nbsp;/&nbsp; <em>half past twelve</em>'],['1:30','<strong>one thirty</strong> &nbsp;/&nbsp; <em>half past one</em>']].map(([t,s])=>`
+      <div class="data-table-row" style="grid-template-columns:80px 1fr;">
+        <div style="font-family:var(--font-heading);font-size:16px;color:var(--gold);">${t}</div>
+        <div style="font-size:14px;color:var(--navy);">${s}</div>
+      </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Which form to use at work?</div>
+      In corporate settings, <em>eight thirty</em> or <em>8:30</em> is more common than <em>half past eight</em>. You will hear both — British English speakers prefer <em>half past.</em> Both are correct.
+    </div>
+
+    <h2 class="h-serif">a.m. and p.m.</h2>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:70px 160px 1fr;">
+        <span>Label</span><span>Latin origin</span><span>Meaning</span>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:70px 160px 1fr;">
+        <div style="font-size:16px;font-weight:700;color:var(--gold);">a.m.</div>
+        <div style="font-size:13px;color:var(--grey-blue);font-style:italic;">ante meridiem</div>
+        <div style="font-size:14px;color:var(--slate);">From midnight to noon (12:00 a.m. – 11:59 a.m.)</div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:70px 160px 1fr;">
+        <div style="font-size:16px;font-weight:700;color:var(--gold);">p.m.</div>
+        <div style="font-size:13px;color:var(--grey-blue);font-style:italic;">post meridiem</div>
+        <div style="font-size:14px;color:var(--slate);">From noon to midnight (12:00 p.m. – 11:59 p.m.)</div>
+      </div>
+    </div>
+    <div class="es-note">
+      🇪🇸 En español usamos <em>son las ocho y media</em> para las 8:30. En inglés puedes decir <em>eight thirty</em> (más común en el trabajo) o <em>half past eight</em> (más usado en inglés británico). En contextos de trabajo, el formato numérico es el más común: <em>The meeting is at 8:30 a.m.</em>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Professional writing tip</div>
+      In emails and calendar invites, always write the time with a.m. or p.m.: <em>Meeting at 10:00 a.m.</em> or <em>Call at 3:30 p.m.</em> Never write just "10:00" in a professional message — your colleagues in different time zones may be confused.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Part 4 — A Typical Workday</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Listen to Priya describe her typical workday at Unilever. Pay attention to the <strong>action verbs</strong> and <strong>time expressions</strong>. Adjust the speed if you need more time.</p>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Priya's Workday at Unilever</div>
+          <div class="audio-box-sub">Priya Sharma · Supply Chain Manager · North American English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A1-L7-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>My name is Priya Sharma. I work at Unilever in the supply chain department.</p>
+        <p>I start work at 8:00 a.m. every day. First, I check my emails for about 30 minutes. At 9:00 a.m., I attend the morning team meeting. The meeting finishes at 9:30 a.m.</p>
+        <p>After the meeting, I work on reports and update the system. At 1:00 p.m., I have lunch with my colleagues. In the afternoon, I answer calls and talk to clients. I also prepare presentations on Tuesdays and Thursdays.</p>
+        <p>I finish work at 6:00 p.m. It's a busy day, but I like my job!</p>
+      </div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👩‍💼</div>
+        <div>
+          <div class="model-name">Priya Sharma</div>
+          <div class="model-role">Supply Chain Manager · Unilever</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">
+          "My name is Priya Sharma. I work at Unilever in the supply chain department. I start work at 8:00 a.m. every day. First, I check my emails for about 30 minutes. At 9:00 a.m., I attend the morning team meeting. The meeting finishes at 9:30 a.m. After the meeting, I work on reports and update the system. At 1:00 p.m., I have lunch with my colleagues. In the afternoon, I answer calls and talk to clients. I also prepare presentations on Tuesdays and Thursdays. I finish work at 6:00 p.m. It's a busy day, but I like my job!"
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📌 Grammar note</div>
+      Priya uses the base verb form — <em>I start, I check, I attend</em> — because the subject is <strong>I</strong>. If someone else described her routine, they would say: <em>She starts, she checks, she attends.</em> Same routine — but the verb form changes!
+    </div>
+
+    <h2 class="h-serif" style="margin-bottom:14px;">Vocabulary in context — find these in the text</h2>
+    <div class="ex-box">
+      <div class="ex-label">Exercise · Read and Find</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;">Find the answers in Priya's text above. Tap each item to reveal the answer.</p>
+      ${[
+        ["What time does Priya <strong>start work</strong>?","At 8:00 a.m."],
+        ["How long does she <strong>check emails</strong>?","For about 30 minutes."],
+        ["What time does she <strong>attend the morning meeting</strong>?","At 9:00 a.m."],
+        ["When does she <strong>have lunch</strong>?","At 1:00 p.m."],
+        ["What time does she <strong>finish work</strong>?","At 6:00 p.m."],
+      ].map(([q,a],i)=>`
+      <div onclick="this.querySelector('.rev-ans').style.display=this.querySelector('.rev-ans').style.display==='block'?'none':'block'"
+           style="padding:11px 14px;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;cursor:pointer;margin-bottom:8px;">
+        <div style="font-size:14px;color:var(--navy);">${i+1}. ${q}</div>
+        <div class="rev-ans" style="display:none;margin-top:6px;font-size:14px;color:var(--green);font-weight:600;">✅ ${a}</div>
+        <div style="font-size:11px;color:var(--grey-blue);margin-top:4px;">Tap to reveal</div>
+      </div>`).join('')}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Part 5 — Check Yourself</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Complete these exercises before the final quiz. Check your answers after each one.</p>
+
+    <h2 class="h-serif" style="margin-bottom:14px;">Exercise 1 — Choose the correct verb form</h2>
+    <div class="ex-box" id="ex1-anchor">
+      <div class="ex-label">Exercise · Multiple Choice</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;">Choose the correct verb. Then click Check to see if you are right.</p>
+      ${renderEx1()}
+    </div>
+
+    <h2 class="h-serif" style="margin-bottom:14px;">Exercise 2 — Write the time in words</h2>
+    <div class="ex-box">
+      <div class="ex-label">Exercise · Tell the Time</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;">Tap each time to reveal how to say it in English.</p>
+      ${[['8:00 a.m.',"eight o'clock / 8 a.m."],['9:30 a.m.',"nine thirty / half past nine"],['12:00',"twelve o'clock / noon"],['1:30 p.m.',"one thirty / half past one"],['6:00 p.m.',"six o'clock / 6 p.m."]].map(([t,a])=>`
+      <div onclick="this.querySelector('.rev-time').style.display=this.querySelector('.rev-time').style.display==='block'?'none':'block'"
+           style="padding:11px 14px;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;cursor:pointer;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <div style="font-family:var(--font-heading);font-size:18px;font-weight:700;color:var(--navy);">${t}</div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <div class="rev-time" style="display:none;font-size:14px;color:var(--green);font-weight:600;">✅ ${a}</div>
+          <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+        </div>
+      </div>`).join('')}
+    </div>
+
+    <h2 class="h-serif" style="margin-bottom:14px;">Exercise 3 — Translate into English</h2>
+    <div class="ex-box">
+      <div class="ex-label">Exercise · Spanish → English</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;">Tap each sentence to reveal the English translation.</p>
+      ${[
+        ["Yo empiezo a trabajar a las 8 de la mañana.","I start work at 8 a.m."],
+        ["Ella revisa sus correos todos los días.","She checks her emails every day."],
+        ["Nosotros asistimos a una reunión a las 9:30 a.m.","We attend a meeting at 9:30 a.m."],
+        ["Él termina a las 6 de la tarde.","He finishes at 6 p.m."],
+      ].map(([es,en])=>`
+      <div onclick="this.querySelector('.rev-tr').style.display=this.querySelector('.rev-tr').style.display==='block'?'none':'block'"
+           style="padding:11px 14px;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;cursor:pointer;margin-bottom:8px;">
+        <div style="font-size:14px;color:var(--slate);font-style:italic;">🇪🇸 ${es}</div>
+        <div class="rev-tr" style="display:none;margin-top:6px;font-size:14px;color:var(--green);font-weight:600;">🇬🇧 ${en}</div>
+        <div style="font-size:11px;color:var(--grey-blue);margin-top:4px;">Tap to reveal</div>
+      </div>`).join('')}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+// ── EXERCISE 1 ENGINE ─────────────────────────────────────
+function renderEx1() {
+  return ex1Questions.map((q,i) => {
+    const s = ex1State[i] || {};
+    return `<div style="padding:12px 0;border-bottom:1px solid var(--border-grey);" id="ex1-q${i}">
+      <div style="font-size:14px;color:var(--navy);font-weight:500;margin-bottom:8px;">${i+1}. ${q.q}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        ${q.opts.map((opt,j)=>{
+          let bg='var(--white)',bc='var(--border-grey)',tc='var(--navy)';
+          if(s.revealed){if(j===q.answer){bg='var(--green-bg)';bc='var(--green)';tc='var(--green)';}else if(s.sel===j){bg='var(--red-bg)';bc='var(--red)';tc='var(--red)';}}
+          else if(s.sel===j){bg='#EEF6FB';bc='var(--sky)';}
+          return `<button onclick="ex1Select(${i},${j})" ${s.revealed?'disabled':''} style="padding:8px 16px;border:1.5px solid ${bc};border-radius:6px;background:${bg};color:${tc};font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">${opt}</button>`;
+        }).join('')}
+        ${!s.revealed?`<button class="check-btn" onclick="ex1Check(${i})" ${s.sel===undefined?'disabled':''} style="margin-left:auto;">Check</button>`:''}
+      </div>
+      ${s.revealed?`<div style="margin-top:8px;padding:8px 12px;border-radius:6px;font-size:13px;background:${s.sel===q.answer?'var(--green-bg)':'var(--red-bg)'};color:${s.sel===q.answer?'var(--green)':'var(--red)'};">💡 ${q.fb}</div>`:''}
+    </div>`;
+  }).join('');
+}
+
+function ex1Select(qi,j){ if(!ex1State[qi])ex1State[qi]={}; if(ex1State[qi].revealed)return; ex1State[qi].sel=j; rerenderEx1(); }
+function ex1Check(qi)   { if(!ex1State[qi])ex1State[qi]={}; ex1State[qi].revealed=true; rerenderEx1(); }
+function rerenderEx1(){
+  const si=STEPS.findIndex(s=>s.fn===renderExercises);
+  if(currentStep===si){
+    const box=document.getElementById('ex1-anchor');
+    if(box){
+      box.innerHTML=`<div class="ex-label">Exercise · Multiple Choice</div><p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;">Choose the correct verb. Then click Check to see if you are right.</p>`+renderEx1();
+      box.scrollIntoView({behavior:'smooth',block:'nearest'});
+    }
+  }
+}
+
+// ── QUIZ RENDERER ─────────────────────────────────────────
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">✓</div>
+      <div class="sec-badge-title">Quiz — Test Yourself</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Complete all before class · Aim for a perfect score</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=Math.ceil(QUIZ.length*0.85)?'¡Excelente! Almost perfect.':quizScore>=Math.ceil(QUIZ.length*0.7)?'Good work! Retry the wrong answers.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':quizScore>=Math.ceil(QUIZ.length*0.85)?'Retry the wrong answers to finish strong.':quizScore>=Math.ceil(QUIZ.length*0.7)?'Go back and check the sections where you made mistakes.':'Retry the wrong answers and review the lesson again.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q,i){
+  const s=quizState[i]||{};
+  const rev=s.revealed;
+  let body='';
+  const letters=['A','B','C','D'];
+  if(q.type==='mc'||q.type==='tf'){
+    const opts=q.type==='mc'?q.opts:['True','False'];
+    const lets=q.type==='mc'?letters:['T','F'];
+    body=`<div class="q-options">
+      ${opts.map((opt,j)=>{
+        let cls='q-opt';
+        const isAns=q.type==='mc'?j===q.answer:q.answer===(j===0);
+        if(rev){if(isAns)cls+=' correct';else if(s.selected===j)cls+=' wrong';}
+        else if(s.selected===j)cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev?`<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>`:''}
+    ${rev?`<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>`:''}`;
+  }
+  if(q.type==='input'){
+    const cls=rev?(s.correct?'q-input correct':'q-input wrong'):'q-input';
+    body=`<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev?`<button class="check-btn" onclick="revealInp(${i})">Check</button>`:''}
+    </div>
+    ${rev?`<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>`:''}`;
+  }
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint?`<div class="q-hint">${q.hint}</div>`:''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+function selectOpt(qi,j){if(!quizState[qi])quizState[qi]={};if(quizState[qi].revealed)return;quizState[qi].selected=j;rerender();}
+function revealQ(qi){if(!quizState[qi])quizState[qi]={};quizState[qi].revealed=true;recalc();rerender();}
+function setInp(qi,v){if(!quizState[qi])quizState[qi]={};quizState[qi].inputVal=v;}
+function revealInp(qi){
+  const q=QUIZ[qi];if(!quizState[qi])quizState[qi]={};
+  const normalise=s=>s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw=quizState[qi].inputVal||'';
+  quizState[qi].correct=q.answers.some(a=>normalise(raw)===normalise(a));
+  quizState[qi].revealed=true;recalc();rerender();
+}
+function retakeQuiz(){
+  QUIZ.forEach((_,i)=>{
+    const s=quizState[i];if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input')ok=s.correct;
+    if(!ok){delete quizState[i];}
+  });
+  recalc();rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el)el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc(){
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i];if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender(){
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi)document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── STEPS — populated last ────────────────────────────────
+STEPS = [
+  { label: "Welcome",           fn: renderWelcome },
+  { label: "1. Vocabulary",     fn: renderVocabulary },
+  { label: "2. Grammar",        fn: renderGrammar },
+  { label: "3. Numbers & Time", fn: renderNumbers },
+  { label: "4. Model Text",     fn: renderModel },
+  { label: "5. Exercises",      fn: renderExercises },
+  { label: "✓ Quiz",            fn: renderQuiz },
+];
+
+render();
+</script>
+</body>
+</html>

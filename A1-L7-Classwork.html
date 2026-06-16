@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Office Routines — Classwork | A1 · Unit 1 · Lesson 7</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAV */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* BLOCKS */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:18px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:12px; }
+.divider { height:1px; background:var(--border-grey); margin:28px 0; }
+
+/* ACTIVITY HEADER */
+.activity-head { display:flex; align-items:center; gap:14px; background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:18px; }
+.activity-num { width:38px; height:38px; border-radius:50%; background:var(--navy); color:var(--gold); font-family:var(--font-heading); font-size:16px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.activity-title { font-family:var(--font-heading); font-size:17px; color:var(--navy); }
+.activity-time { font-size:12px; color:var(--grey-blue); margin-top:2px; }
+
+/* WORD WALL */
+.word-wall { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
+.word-chip { background:var(--navy); color:var(--white); border-radius:20px; padding:7px 16px; font-size:13px; font-weight:600; font-family:var(--font-body); }
+
+/* SENTENCE FRAME */
+.sentence-frame { background:var(--navy); border-radius:10px; padding:20px 24px; margin-bottom:18px; }
+.sentence-frame-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:12px; }
+.sentence-frame-line { font-family:var(--font-heading); font-size:16px; color:var(--white); line-height:2; }
+.sentence-frame-line span { color:var(--gold); font-style:italic; }
+
+/* QUESTION LIST */
+.q-list { display:flex; flex-direction:column; gap:10px; margin-bottom:18px; }
+.q-list-item { display:flex; gap:12px; align-items:flex-start; background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:12px 16px; }
+.q-list-num { width:24px; height:24px; border-radius:50%; background:var(--gold); color:var(--navy); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+.q-list-text { font-size:14px; color:var(--navy); line-height:1.5; }
+
+/* TEACHER NOTE */
+.teacher-note { background:#EFF6FF; border:1px solid #BFDBFE; border-left:4px solid var(--sky); border-radius:0 8px 8px 0; padding:12px 16px; margin-bottom:18px; font-size:13px; color:#1E40AF; line-height:1.7; }
+.teacher-note-label { font-weight:700; font-size:12px; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:6px; }
+
+/* FLIP CARDS */
+.flip-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:14px; margin-bottom:18px; }
+.flip-card { height:110px; cursor:pointer; perspective:800px; }
+.flip-card-inner { position:relative; width:100%; height:100%; transition:transform 0.5s; transform-style:preserve-3d; }
+.flip-card.flipped .flip-card-inner { transform:rotateY(180deg); }
+.flip-front, .flip-back { position:absolute; width:100%; height:100%; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:12px; }
+.flip-front { background:var(--navy); border:2px solid rgba(201,151,44,0.35); }
+.flip-front-time { font-family:var(--font-heading); font-size:22px; font-weight:700; color:var(--gold); line-height:1; margin-bottom:4px; }
+.flip-front-hint { font-size:10px; color:rgba(255,255,255,0.35); letter-spacing:1px; text-transform:uppercase; }
+.flip-back { background:var(--gold); transform:rotateY(180deg); border:2px solid var(--gold-light); }
+.flip-back-answer { font-family:var(--font-heading); font-size:15px; font-weight:700; color:var(--navy); text-align:center; line-height:1.4; }
+.flip-back-sub { font-size:11px; color:rgba(27,45,79,0.6); margin-top:4px; font-style:italic; text-align:center; }
+.flip-controls { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* WRITING AREA */
+.writing-area { width:100%; min-height:120px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Lesson 7 · Classwork</div>
+    <h1 class="hero-title">Daily Office Routines</h1>
+    <p class="hero-sub">Speaking-heavy · Present Simple · 60 min teacher-led session</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">✍️ Light writing</span>
+      <span class="pill">5 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── FLIP CARD STATE ───────────────────────────────────────
+const flippedCards = {};
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── FLIP CARD DATA ────────────────────────────────────────
+// Format: [display time, spoken answer, optional sub-note]
+// Standard: hours and half hours — mix of a.m./p.m. and o'clock
+const FLIP_STANDARD = [
+  ["7:00 AM",  "seven a.m.",              "or: seven o'clock in the morning"],
+  ["8:00 AM",  "eight a.m.",              "or: eight o'clock"],
+  ["8:30 AM",  "eight thirty a.m.",       "or: half past eight"],
+  ["9:00 AM",  "nine a.m.",               "or: nine o'clock"],
+  ["9:30 AM",  "nine thirty a.m.",        "or: half past nine"],
+  ["11:00 AM", "eleven a.m.",             "or: eleven o'clock"],
+  ["12:00 PM", "noon",                    "or: twelve p.m."],
+  ["12:30 PM", "twelve thirty p.m.",      "or: half past twelve"],
+  ["1:00 PM",  "one p.m.",               "or: one o'clock in the afternoon"],
+  ["2:30 PM",  "two thirty p.m.",         "or: half past two"],
+  ["5:00 PM",  "five p.m.",              "or: five o'clock"],
+  ["5:30 PM",  "five thirty p.m.",        "or: half past five"],
+  ["6:00 PM",  "six p.m.",              "or: six o'clock in the evening"],
+  ["9:00 PM",  "nine p.m.",              "or: nine o'clock at night"],
+  ["10:30 PM", "ten thirty p.m.",         "or: half past ten"],
+];
+// Stretch: non-standard times — good spread across the clock
+const FLIP_STRETCH = [
+  ["6:14 AM",  "six fourteen a.m.",         "hours + minutes"],
+  ["7:22 AM",  "seven twenty-two a.m.",     "hours + minutes"],
+  ["8:47 AM",  "eight forty-seven a.m.",    "hours + minutes"],
+  ["9:05 AM",  "nine oh five a.m.",         "say 'oh' for a zero minute"],
+  ["10:18 AM", "ten eighteen a.m.",         "hours + minutes"],
+  ["10:43 AM", "ten forty-three a.m.",      "hours + minutes"],
+  ["1:09 PM",  "one oh nine p.m.",          "say 'oh' for a zero minute"],
+  ["1:38 PM",  "one thirty-eight p.m.",     "hours + minutes"],
+  ["3:51 PM",  "three fifty-one p.m.",      "hours + minutes"],
+  ["4:27 PM",  "four twenty-seven p.m.",    "hours + minutes"],
+  ["7:03 PM",  "seven oh three p.m.",       "say 'oh' for a zero minute"],
+  ["9:12 PM",  "nine twelve p.m.",          "hours + minutes"],
+  ["11:55 PM", "eleven fifty-five p.m.",    "hours + minutes"],
+];
+
+// ── FLIP CARD FUNCTIONS ───────────────────────────────────
+function flipCard(prefix, id) {
+  const key = prefix + id;
+  flippedCards[key] = !flippedCards[key];
+  const el = document.getElementById('fc-' + prefix + id);
+  if (el) el.classList.toggle('flipped', !!flippedCards[key]);
+}
+function flipAll(prefix, set, reveal) {
+  set.forEach((_, i) => {
+    const key = prefix + i;
+    flippedCards[key] = reveal;
+    const el = document.getElementById('fc-' + prefix + i);
+    if (el) el.classList.toggle('flipped', reveal);
+  });
+}
+
+// ── WORD COUNT HELPER ─────────────────────────────────────
+function countWords(id, countId) {
+  const val = document.getElementById(id).value;
+  const wc = val.trim() ? val.trim().split(/\s+/).length : 0;
+  document.getElementById(countId).textContent = wc + ' words';
+}
+
+// ── RENDERERS ─────────────────────────────────────────────
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">👋</div>
+      <div class="sec-badge-title">Welcome to Class</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Today you use your Pre-Learning to talk about real work routines. The focus is <strong>speaking</strong> — produce sentences, don't just recognise them.</p>
+    <div class="info-box">
+      <strong>🎯 Session goals</strong><br>
+      Practice Present Simple with real personal content &nbsp;·&nbsp;
+      Say times correctly (hours and half hours) &nbsp;·&nbsp;
+      Build a mini-routine description you can use at work
+    </div>
+    <div class="teacher-note">
+      <div class="teacher-note-label">📋 Teacher</div>
+      Five activities today. Activities 1–2 are warm-up and vocabulary production. Activity 3 is the main speaking task. Activity 5 is pair work with peer introduction. Activity 6 is a short writing closer. Keep the energy up — this is a speaking lesson.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity1() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Activity 1 — What Time Is It?</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Flip each card to reveal how to say the time in English. Try to say it aloud <em>before</em> you flip!</p>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">📋 Teacher</div>
+      Start with the Standard set as a whole-class drill — students call out the answer before you flip. Then run the extension: say a time in Spanish, students say it in English. Move to the Stretch set only if time allows and the group is ready.
+    </div>
+
+    <!-- ── STANDARD SET ── -->
+    <h2 class="h-serif">Standard Times — Hours &amp; Half Hours</h2>
+    <p class="sec-intro" style="margin-bottom:14px;">These are the times you practised in your Pre-Learning. Say the time before you flip.</p>
+    <div class="flip-controls">
+      <button onclick="flipAll('s',FLIP_STANDARD,true)" style="padding:8px 18px;background:var(--navy);color:var(--white);border:none;border-radius:6px;font-family:var(--font-body);font-size:12px;font-weight:700;cursor:pointer;">Reveal All</button>
+      <button onclick="flipAll('s',FLIP_STANDARD,false)" style="padding:8px 18px;background:var(--white);color:var(--navy);border:1.5px solid var(--border-grey);border-radius:6px;font-family:var(--font-body);font-size:12px;font-weight:700;cursor:pointer;">Reset All</button>
+    </div>
+    <div class="flip-grid">
+      ${FLIP_STANDARD.map((card, i) => `
+      <div class="flip-card ${flippedCards['s'+i]?'flipped':''}" id="fc-s${i}" onclick="flipCard('s',${i})">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-front-time">${card[0]}</div>
+            <div class="flip-front-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-back">
+            <div class="flip-back-answer">${card[1]}</div>
+            ${card[2] ? `<div class="flip-back-sub">${card[2]}</div>` : ''}
+          </div>
+        </div>
+      </div>`).join('')}
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── STRETCH SET ── -->
+    <h2 class="h-serif">⭐ Stretch — Non-Standard Times</h2>
+    <p class="sec-intro" style="margin-bottom:14px;">These times use minutes, not just hours and half hours. A bigger challenge — try them if you're ready!</p>
+    <div class="tip-box" style="margin-bottom:14px;">
+      <div class="tip-label">💡 How to say minutes in English</div>
+      Say the hour first, then the minutes as a two-digit number.<br>
+      <em>9:12</em> → <strong>nine twelve</strong> &nbsp;·&nbsp; <em>10:43</em> → <strong>ten forty-three</strong> &nbsp;·&nbsp; <em>1:38</em> → <strong>one thirty-eight</strong>
+    </div>
+    <div class="flip-controls">
+      <button onclick="flipAll('x',FLIP_STRETCH,true)" style="padding:8px 18px;background:var(--navy);color:var(--white);border:none;border-radius:6px;font-family:var(--font-body);font-size:12px;font-weight:700;cursor:pointer;">Reveal All</button>
+      <button onclick="flipAll('x',FLIP_STRETCH,false)" style="padding:8px 18px;background:var(--white);color:var(--navy);border:1.5px solid var(--border-grey);border-radius:6px;font-family:var(--font-body);font-size:12px;font-weight:700;cursor:pointer;">Reset All</button>
+    </div>
+    <div class="flip-grid">
+      ${FLIP_STRETCH.map((card, i) => `
+      <div class="flip-card ${flippedCards['x'+i]?'flipped':''}" id="fc-x${i}" onclick="flipCard('x',${i})">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-front-time">${card[0]}</div>
+            <div class="flip-front-hint">Tap to reveal</div>
+          </div>
+          <div class="flip-back">
+            <div class="flip-back-answer">${card[1]}</div>
+            ${card[2] ? `<div class="flip-back-sub">${card[2]}</div>` : ''}
+          </div>
+        </div>
+      </div>`).join('')}
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── NUMBERS CHECK ── -->
+    <h2 class="h-serif">Numbers Check</h2>
+    <p class="sec-intro">These pairs sound similar but are <strong>different numbers</strong>. The stress position changes the meaning. Practise saying them aloud.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:18px;">
+      ${[['13','30','thir·TEEN','THIR·ty'],['14','40','four·TEEN','FOR·ty'],['15','50','fif·TEEN','FIF·ty']].map(([a,b,sa,sb])=>`
+      <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;">
+          <div style="padding:14px;background:var(--green-bg);border-right:1px solid var(--border-grey);text-align:center;">
+            <div style="font-family:var(--font-heading);font-size:24px;font-weight:700;color:var(--green);">${a}</div>
+            <div style="font-size:12px;color:var(--green);margin-top:4px;">${sa}</div>
+          </div>
+          <div style="padding:14px;background:var(--red-bg);text-align:center;">
+            <div style="font-family:var(--font-heading);font-size:24px;font-weight:700;color:var(--red);">${b}</div>
+            <div style="font-size:12px;color:var(--red);margin-top:4px;">${sb}</div>
+          </div>
+        </div>
+      </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 The rule</div>
+      <strong>-teen numbers (13–19):</strong> stress the <em>second</em> syllable — thirTEEN, fourTEEN, fifTEEN.<br>
+      <strong>-ty numbers (30–90):</strong> stress the <em>first</em> syllable — THIRty, FORty, FIFty.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity2() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Activity 2 — My Workday: Vocabulary in Action</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <h2 class="h-serif">Step 1 — The Word Wall</h2>
+    <p class="sec-intro">These are the 10 action verbs from your Pre-Learning. They are your tools for today's speaking tasks.</p>
+    <div class="word-wall">
+      ${['check emails','attend a meeting','answer calls','send a report','talk to clients','have lunch','finish work','start work','prepare a presentation','update the system'].map(v=>`<div class="word-chip">${v}</div>`).join('')}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Your Task</div>
+      <p style="font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:12px;">
+        Choose <strong>5 verbs</strong> that are relevant to your own job. Write one sentence for each — include a time expression.
+      </p>
+      <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:8px;padding:14px 16px;margin-bottom:10px;">
+        <div style="font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px;">Example sentences</div>
+        <div style="font-size:14px;color:var(--navy);font-style:italic;line-height:2;">
+          I check emails at 8:00 a.m.<br>
+          I attend a meeting at 10:00 a.m.<br>
+          I talk to clients in the afternoon.
+        </div>
+      </div>
+      <textarea class="writing-area" id="act2-text" placeholder="Write your 5 sentences here…" oninput="countWords('act2-text','act2-wc')"></textarea>
+      <div class="word-count" id="act2-wc">0 words</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="h-serif">Step 2 — Share with the Group</h2>
+    <div class="teacher-note">
+      <div class="teacher-note-label">📋 Teacher</div>
+      Each student shares one sentence. Note errors on screen without interrupting. After everyone shares, correct errors together as a group. Focus on: verb form (-s for he/she/it), correct time preposition (at/in/on).
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Remember</div>
+      When you talk about yourself → <em>I check</em>, <em>I attend</em> (no -s).<br>
+      When you talk about a colleague → <em>She checks</em>, <em>He attends</em> (add -s).
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity3() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Activity 3 — My Daily Routine</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Describe your own work routine in English. Use the sentence frame below to build your description. Speak for approximately <strong>45–60 seconds</strong>. The goal is <strong>fluency</strong>, not perfection.</p>
+
+    <h2 class="h-serif">Your Sentence Frame</h2>
+    <div class="sentence-frame">
+      <div class="sentence-frame-label">Use this structure to build your description</div>
+      <div class="sentence-frame-line">I start work at <span>_____</span>.</div>
+      <div class="sentence-frame-line">First, I <span>_____</span>.</div>
+      <div class="sentence-frame-line">At <span>_____</span>, I <span>_____</span>.</div>
+      <div class="sentence-frame-line">At <span>_____</span>, I have lunch.</div>
+      <div class="sentence-frame-line">In the afternoon, I <span>_____</span> and <span>_____</span>.</div>
+      <div class="sentence-frame-line">I finish work at <span>_____</span>.</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Prepare your routine here</div>
+      <textarea class="writing-area" id="act3-text" placeholder="Write your routine using the frame above. You will speak it aloud." oninput="countWords('act3-text','act3-wc')"></textarea>
+      <div class="word-count" id="act3-wc">0 words</div>
+    </div>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">📋 Teacher — What to listen for</div>
+      <ul style="padding-left:18px;line-height:2;font-size:13px;">
+        <li>Missing <strong>-s</strong> on he/she/it (when students describe a colleague)</li>
+        <li>Incorrect time prepositions — <em>at</em> for specific times, <em>in</em> for parts of the day, <em>on</em> for days</li>
+        <li>Number pronunciation — <em>thir<strong>TEEN</strong></em> vs <em><strong>THIR</strong>ty</em></li>
+      </ul>
+    </div>
+
+    <h2 class="h-serif" style="margin-top:8px;">Peer Feedback</h2>
+    <div class="tip-box">
+      <div class="tip-label">After each student speaks</div>
+      One classmate says <strong>one thing they liked</strong>. Then the teacher corrects <strong>one language point</strong>. Keep it positive and focused — one correction per speaker.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity5() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Activity 5 — Interview Your Partner</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Student A asks Student B these questions. Take notes. Then swap roles. After the interview, introduce your partner to the group.</p>
+
+    <h2 class="h-serif">Interview Questions</h2>
+    <div class="q-list">
+      ${[
+        'What time do you start work?',
+        'What do you do first in the morning?',
+        'Do you attend meetings? When?',
+        'What time do you have lunch?',
+        'What do you do in the afternoon?',
+        'What time do you finish work?',
+      ].map((q,i)=>`
+      <div class="q-list-item">
+        <div class="q-list-num">${i+1}</div>
+        <div class="q-list-text">${q}</div>
+      </div>`).join('')}
+    </div>
+
+    <h2 class="h-serif">Your Notes</h2>
+    <div class="ex-box">
+      <div class="ex-label">Take notes about your partner here</div>
+      <textarea class="writing-area" id="act5-text" placeholder="Partner's name: ___&#10;Starts work at: ___&#10;First thing in the morning: ___&#10;Meetings: ___&#10;Lunch at: ___&#10;Afternoon: ___&#10;Finishes at: ___" oninput="countWords('act5-text','act5-wc')"></textarea>
+      <div class="word-count" id="act5-wc">0 words</div>
+    </div>
+
+    <h2 class="h-serif">Introduce Your Partner</h2>
+    <div class="sentence-frame">
+      <div class="sentence-frame-label">Use he/she + verb -s when you introduce your partner</div>
+      <div class="sentence-frame-line">This is <span>[name]</span>.</div>
+      <div class="sentence-frame-line"><span>She / He</span> starts work at <span>_____</span>.</div>
+      <div class="sentence-frame-line">First, <span>she / he</span> <span>_____</span>.</div>
+      <div class="sentence-frame-line"><span>She / He</span> has lunch at <span>_____</span>.</div>
+      <div class="sentence-frame-line"><span>She / He</span> finishes work at <span>_____</span>.</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Grammar in action</div>
+      When you speak about yourself → <em>I start, I check, I attend</em> (no -s).<br>
+      When you introduce your partner → <em>She starts, He checks, She attends</em> (add -s).<br>
+      This is the he/she/it rule in a real, natural context!
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity6() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Activity 6 — My Routine in Three Sentences</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Write <strong>exactly three sentences</strong> about your work routine. Every sentence must include a <strong>verb</strong>, an <strong>object</strong>, and a <strong>time expression</strong>.</p>
+
+    <div class="info-box">
+      <strong>Example:</strong><br>
+      I start work at 8:30 a.m.<br>
+      I check emails and attend meetings in the morning.<br>
+      I finish work at 6:00 p.m.
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Write your three sentences here</div>
+      <textarea class="writing-area" id="act6-text" style="min-height:100px;" placeholder="Sentence 1: I start work at ___…&#10;Sentence 2: I ___ and ___ in the ___…&#10;Sentence 3: I finish work at ___…" oninput="countWords('act6-text','act6-wc')"></textarea>
+      <div class="word-count" id="act6-wc">0 words</div>
+    </div>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">📋 Teacher</div>
+      Ask students to share their sentences. Display them on screen if possible. Quick correction round: check verb form, time preposition, and spelling. This also doubles as a preview of their homework.
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">✅ Checklist before you finish</div>
+      Does each sentence have a verb? &nbsp;·&nbsp; Does he/she/it have -s on the verb? &nbsp;·&nbsp; Did you use <em>at</em> for times and <em>in</em> for parts of the day? &nbsp;·&nbsp; Did you spell the time correctly — a.m. or p.m.?
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS — populated last ────────────────────────────────
+STEPS = [
+  { label: "Welcome",       fn: renderWelcome },
+  { label: "1. Time Cards", fn: renderActivity1 },
+  { label: "2. Vocabulary", fn: renderActivity2 },
+  { label: "3. My Routine", fn: renderActivity3 },
+  { label: "5. Pair Work",  fn: renderActivity5 },
+  { label: "6. Writing",    fn: renderActivity6 },
+];
+
+render();
+</script>
+</body>
+</html>

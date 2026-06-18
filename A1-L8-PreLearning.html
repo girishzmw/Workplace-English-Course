@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work Schedules — Pre-Learning | A1 · Unit 1 · Lesson 8</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+/* SITE HEADER */
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+/* HERO */
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAV */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* SENTENCE BUILDER */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; margin-bottom:7px; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* TAP TO REVEAL */
+.reveal-item { display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding:11px 14px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; cursor:pointer; margin-bottom:8px; transition:background 0.12s; flex-wrap:wrap; }
+.reveal-item:hover { background:var(--light-grey); }
+.reveal-q { font-size:14px; color:var(--navy); font-weight:500; flex:1; }
+.reveal-a { font-size:14px; color:var(--green); font-weight:700; display:none; }
+.reveal-hint { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* QUIZ */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-family:var(--font-body); font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Pre-Learning</div>
+    <h1 class="hero-title">Work Schedules</h1>
+    <p class="hero-sub">Time expressions · at / from / to / until · ~45 min</p>
+    <div class="hero-outcomes">
+      <div>
+        <div class="outcome-item">Use time expressions at, from, to, and until</div>
+        <div class="outcome-note">Comprender y usar expresiones de tiempo</div>
+      </div>
+      <div>
+        <div class="outcome-item">Tell the time — quarter past, quarter to, minutes</div>
+        <div class="outcome-note">Decir la hora con cuarto y minutos</div>
+      </div>
+      <div>
+        <div class="outcome-item">Describe a work schedule in English</div>
+        <div class="outcome-note">Describir un horario de trabajo en inglés</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// Audio state (Pattern A — single player)
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// Quiz state
+const quizState = {};
+let quizScore = 0;
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  // Restore audio speed if audio player is present
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+// ── AUDIO FUNCTIONS (Pattern A) ───────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── TAP-TO-REVEAL ─────────────────────────────────────────
+function toggleReveal(el) {
+  const a = el.querySelector('.reveal-a');
+  const h = el.querySelector('.reveal-hint');
+  if (a.style.display === 'inline') {
+    a.style.display = 'none';
+    if (h) h.style.display = 'inline';
+  } else {
+    a.style.display = 'inline';
+    if (h) h.style.display = 'none';
+  }
+}
+
+// ── VOCAB DATA ────────────────────────────────────────────
+const VOCAB = [
+  ["schedule", "horario"],
+  ["shift (not journey)", "turno / jornada"],
+  ["break", "descanso / pausa"],
+  ["lunch hour / lunch break", "hora del almuerzo"],
+  ["calendar", "calendario"],
+  ["meeting", "reunión"],
+  ["deadline", "fecha límite"],
+  ["overtime", "horas extras"],
+  ["reminder", "recordatorio"],
+  ["flexible hours", "horario flexible"],
+  ["start time", "hora de inicio"],
+  ["end time", "hora de fin"],
+  ["available", "disponible"],
+  ["busy", "ocupado / ocupada"],
+];
+
+// ── QUIZ DATA ─────────────────────────────────────────────
+const QUIZ = [
+  {
+    type:'mc', q:'What time is "quarter past ten"?',
+    opts:['10:05','10:15','10:45','10:30'],
+    answer:1,
+    hint:'💡 "Quarter" = 15 minutes. "Past" = after the hour.',
+    fb:'"Quarter past ten" = 10:15. One quarter of an hour (15 minutes) after ten o\'clock.'
+  },
+  {
+    type:'mc', q:'What time is "quarter to three"?',
+    opts:['3:15','3:45','2:45','2:15'],
+    answer:2,
+    hint:'💡 "Quarter to" uses the NEXT hour. Count 15 minutes BEFORE three.',
+    fb:'"Quarter to three" = 2:45. It is 15 minutes before 3:00.'
+  },
+  {
+    type:'tf', q:'In English, we say: "My shift is from 9 to 5."',
+    answer:true,
+    hint:'💡 Use "from...to" to describe a time range.',
+    fb:'Correct! "From...to" is the standard way to describe a time range in English. Example: "I work from 9 to 5."'
+  },
+  {
+    type:'mc', q:'Choose the correct sentence.',
+    opts:['"My meeting is in 10 o\'clock."','"My meeting is at 10 o\'clock."','"My meeting is on 10 o\'clock."','"My meeting is from 10 o\'clock."'],
+    answer:1,
+    hint:'💡 Which preposition do we use before a clock time?',
+    fb:'We use "at" before clock times. "My meeting is AT 10 o\'clock." Never use "in" or "on" with a clock time.'
+  },
+  {
+    type:'mc', q:'James Carter works at Siemens in Toronto. What is his lunch break time?',
+    opts:['From 12:00 to 1:00','From 12:30 to 1:00','From 12:30 to 1:30','From 1:00 to 2:00'],
+    answer:2,
+    hint:'💡 Think: "half past twelve to half past one." Listen to the audio again if needed.',
+    fb:'James\'s lunch break is from half past twelve (12:30) to half past one (1:30). One full hour for lunch.'
+  },
+  {
+    type:'mc', q:'How do you say 7:40 in English?',
+    opts:['"It\'s forty past seven."','"It\'s twenty to eight."','"It\'s seven forty past."','"It\'s quarter to eight."'],
+    answer:1,
+    hint:'💡 7:40 is 20 minutes BEFORE 8. Use "minutes to [next hour]."',
+    fb:'7:40 = "It\'s twenty to eight." We are 20 minutes before 8:00, so we say "twenty TO eight."'
+  },
+  {
+    type:'tf', q:'"Until" and "to" mean the same thing and can always be used interchangeably.',
+    answer:false,
+    hint:'💡 Think about when you use "from...to" vs "until" alone.',
+    fb:'They are similar but not always interchangeable. We say "from 9 TO 5" (in a range). We say "I work UNTIL 5" (emphasizing the endpoint).'
+  },
+  {
+    type:'mc', q:'Which sentence is correct?',
+    opts:['"I am available until Monday to Friday."','"I am available from Monday to Friday."','"I am available at Monday to Friday."','"I am available from Monday until Friday."'],
+    answer:1,
+    hint:'💡 "From...to" is used for ranges of time, days, and periods.',
+    fb:'"I am available FROM Monday TO Friday" is the most natural and standard expression in workplace English.'
+  },
+  {
+    type:'input', q:'Write the time in words: 9:15',
+    hint:'💡 Think: 15 minutes past 9. Use "quarter past..."',
+    answers:['quarter past nine','it\'s quarter past nine'],
+    display:'quarter past nine',
+    fb:'9:15 = "quarter past nine." Quarter = 15 minutes. We are 15 minutes PAST nine o\'clock.'
+  },
+  {
+    type:'input', q:'Complete the sentence: "The office is open ______ nine ______ six." (Type the two missing words, e.g. "from nine to six")',
+    hint:'💡 Use a time range pattern. What word starts a range? What word ends it?',
+    answers:['from nine to six','from 9 to 6'],
+    display:'from nine to six',
+    fb:'"The office is open FROM nine TO six." Use "from...to" for a time range.'
+  },
+];
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Welcome to Lesson 8! In Lesson 7, you learned how to describe your daily office routines using the Present Simple. You also learned to tell the time — hours and half hours. ¡Buen trabajo!</p>
+    <div class="info-box">
+      In this lesson, you are going to learn about <strong>work schedules</strong>. This is very important vocabulary in any workplace. You will also learn to tell the time more precisely — <strong>quarter past</strong>, <strong>quarter to</strong>, and minutes.
+    </div>
+    <div class="es-note">
+      <strong>En español:</strong> En esta lección aprenderás sobre horarios de trabajo y a decir la hora con más precisión — cuarto y minutos. Este vocabulario es esencial en cualquier empresa internacional.
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">📋 What you will study</div>
+      <strong>Step 2</strong> — Key vocabulary for work schedules<br>
+      <strong>Step 3</strong> — Essential Skills: telling the time (quarter past / quarter to / minutes)<br>
+      <strong>Step 4</strong> — Grammar: time expressions — <em>at, from, to, until</em><br>
+      <strong>Step 5</strong> — Audio: listen to James describe his work schedule<br>
+      <strong>Step 6</strong> — Practice exercises<br>
+      <strong>Step 7</strong> — Quiz
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estudia estas palabras antes de continuar. Son palabras clave para hablar de horarios en el trabajo. (Study these words before continuing. They are key words for talking about schedules at work.)</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `<div class="vocab-row"><div class="vocab-en">${en}</div><div class="vocab-es">${es}</div></div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 False friend — "Schedule" vs "Agenda"</div>
+      "Schedule" in English = a plan for when things happen (= <em>horario</em>). In LATAM Spanish, people sometimes say <em>"agenda"</em> for this. In English, <strong>"agenda"</strong> means the list of topics for a meeting — not a daily planner.<br><br>
+      <span style="color:var(--red);font-weight:700;">¡Cuidado!</span> <em>"Agenda"</em> en inglés = lista de temas de una reunión, no tu planificador personal.
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 False friend — "Break"</div>
+      "Break" in English = a short rest period (<em>descanso</em>). It does <strong>NOT</strong> mean "romper" (to break something).<br>
+      ✅ <em>"I have a break at 10:30"</em> = Tengo un descanso a las 10:30.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderTime() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Essential Skills: Telling the Time</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">En la Lección 7 aprendiste horas y medias horas. Ahora vas a aprender a decir la hora con cuartos y minutos. (In Lesson 7 you learned hours and half hours. Now you will learn to tell the time with quarters and minutes.)</div>
+
+    <!-- PART A: REVIEW -->
+    <p class="h-serif" style="margin-bottom:12px;">Part A — Quick Review: Hours and Half Hours</p>
+    <div class="data-table-wrap" style="margin-bottom:24px;">
+      <div class="data-table-head" style="grid-template-columns:1fr 1fr;"><span>Clock</span><span>We say</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span style="font-weight:700;color:var(--navy);">9:00</span><span style="color:var(--slate);">It's nine o'clock</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span style="font-weight:700;color:var(--navy);">9:30</span><span style="color:var(--slate);">It's half past nine</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span style="font-weight:700;color:var(--navy);">3:00</span><span style="color:var(--slate);">It's three o'clock</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span style="font-weight:700;color:var(--navy);">3:30</span><span style="color:var(--slate);">It's half past three</span></div>
+    </div>
+
+    <!-- PART B: QUARTER PAST -->
+    <p class="h-serif" style="margin-bottom:12px;">Part B — Quarter Past and Quarter To</p>
+    <p class="sec-intro">In English, we divide the clock into <strong>quarters</strong> (cuartos). One quarter = 15 minutes.</p>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Pattern: Quarter Past</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:22px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Start</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">It's</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">Son las...</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:120px;flex:2;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Key phrase</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">quarter past</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">y cuarto</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Hour</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">[hour]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">hora</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"It's quarter past nine."</strong> → Son las nueve y cuarto. (9:15)</div>
+      <div class="builder-ex"><strong>"It's quarter past two."</strong> → Son las dos y cuarto. (2:15)</div>
+      <div class="builder-ex"><strong>"It's quarter past eleven."</strong> → Son las once y cuarto. (11:15)</div>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Pattern: Quarter To</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:22px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Start</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">It's</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">Son las...</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:120px;flex:2;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Key phrase</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">quarter to</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">menos cuarto</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Next hour</div>
+          <div style="font-size:18px;font-weight:700;color:var(--gold);">[hour+1]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">próxima hora</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"It's quarter to ten."</strong> → Son las diez menos cuarto. (9:45)</div>
+      <div class="builder-ex"><strong>"It's quarter to three."</strong> → Son las tres menos cuarto. (2:45)</div>
+      <div class="builder-ex"><strong>"It's quarter to one."</strong> → Es la una menos cuarto. (12:45)</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Important — Quarter To uses the NEXT hour</div>
+      9:45 = "quarter to <strong>TEN</strong>" — not "quarter to nine." Think forward, not back!<br><br>
+      <span style="color:var(--grey-blue);font-style:italic;">En español decimos "las diez menos cuarto" — usamos la hora siguiente, igual que en inglés.</span>
+    </div>
+
+    <!-- PART C: MINUTES -->
+    <p class="h-serif" style="margin-bottom:12px;margin-top:8px;">Part C — Minutes</p>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Pattern: Minutes Past (first 30 minutes of the hour)</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:22px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:60px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Start</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">It's</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Minutes</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">[number]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">minutos</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:60px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Direction</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">past</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">y</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:70px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Hour</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">[hour]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">hora</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"It's ten past nine."</strong> → Son las nueve y diez. (9:10)</div>
+      <div class="builder-ex"><strong>"It's twenty past two."</strong> → Son las dos y veinte. (2:20)</div>
+      <div class="builder-ex"><strong>"It's five past four."</strong> → Son las cuatro y cinco. (4:05)</div>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Pattern: Minutes To (last 30 minutes of the hour)</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:22px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:60px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Start</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">It's</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Minutes</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">[number]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">minutos</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:60px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Direction</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">to</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">menos</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:90px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Next hour</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">[hour+1]</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">próxima hora</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"It's ten to five."</strong> → Son las cinco menos diez. (4:50)</div>
+      <div class="builder-ex"><strong>"It's twenty to eight."</strong> → Son las ocho menos veinte. (7:40)</div>
+      <div class="builder-ex"><strong>"It's five to twelve."</strong> → Son las doce menos cinco. (11:55)</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 The golden rule</div>
+      Use <strong>"past"</strong> for the first 30 minutes of the hour (1–30 min). Use <strong>"to"</strong> for the last 30 minutes (31–59 min).<br>
+      <span style="color:var(--grey-blue);font-style:italic;">Usa "past" para los primeros 30 minutos de la hora. Usa "to" para los últimos 30 minutos.</span>
+    </div>
+
+    <!-- PART D: DIGITAL VS SPOKEN -->
+    <p class="h-serif" style="margin-bottom:12px;margin-top:8px;">Part D — Digital vs Spoken Time</p>
+    <p class="sec-intro">In professional settings, people use both styles. Both are correct.</p>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1fr;"><span>Digital (written)</span><span>Spoken (conversation)</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span style="font-weight:700;color:var(--navy);">9:15</span><span style="color:var(--slate);">quarter past nine</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span style="font-weight:700;color:var(--navy);">9:45</span><span style="color:var(--slate);">quarter to ten</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span style="font-weight:700;color:var(--navy);">10:10</span><span style="color:var(--slate);">ten past ten</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span style="font-weight:700;color:var(--navy);">10:50</span><span style="color:var(--slate);">ten to eleven</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span style="font-weight:700;color:var(--navy);">14:30</span><span style="color:var(--slate);">two thirty (PM) / half past two</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span style="font-weight:700;color:var(--navy);">08:05</span><span style="color:var(--slate);">five past eight</span></div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Workplace tip</div>
+      In emails and calendar invitations, people usually write digital time: "Meeting at 9:15" or "Call at 14:30." In conversation, both styles are used.<br>
+      <span style="color:var(--grey-blue);font-style:italic;">En correos y calendarios, normalmente se escribe la hora digital. En conversación, se usan los dos estilos.</span>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Grammar: Time Expressions</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Las expresiones de tiempo son muy importantes en el trabajo. Estudia los cuatro ejemplos con cuidado. (Time expressions are very important at work. Study the four patterns carefully.)</div>
+
+    <!-- AT -->
+    <p class="h-serif" style="margin-bottom:8px;">1. AT — for a specific time</p>
+    <div class="es-note" style="margin-bottom:14px;">Usa <strong>at</strong> antes de horas exactas. (Use <strong>at</strong> before clock times.) = <strong>a las</strong></div>
+    <div class="data-table-wrap" style="margin-bottom:8px;">
+      <div class="data-table-head" style="grid-template-columns:1fr 2fr;"><span>Pattern</span><span>Example</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">at + time</span><span style="color:var(--navy);">My shift starts <strong>at</strong> 8 o'clock.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">at + time</span><span style="color:var(--navy);">The meeting is <strong>at</strong> quarter past ten.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">at + time</span><span style="color:var(--navy);">I have lunch <strong>at</strong> half past twelve.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">at + time</span><span style="color:var(--navy);">The deadline is <strong>at</strong> 5 o'clock.</span></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FROM -->
+    <p class="h-serif" style="margin-bottom:8px;">2. FROM — for a start time</p>
+    <div class="es-note" style="margin-bottom:14px;">Usa <strong>from</strong> para indicar cuándo empieza algo. (Use <strong>from</strong> to say when something begins.) = <strong>desde / de</strong></div>
+    <div class="data-table-wrap" style="margin-bottom:8px;">
+      <div class="data-table-head" style="grid-template-columns:1fr 2fr;"><span>Pattern</span><span>Example</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">from + time</span><span style="color:var(--navy);">I work <strong>from</strong> 8 o'clock.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">from + time</span><span style="color:var(--navy);">The shift is <strong>from</strong> nine.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">from + time</span><span style="color:var(--navy);">The training is <strong>from</strong> quarter past two.</span></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- FROM...TO -->
+    <p class="h-serif" style="margin-bottom:8px;">3. FROM...TO — start time to end time</p>
+    <div class="es-note" style="margin-bottom:14px;"><strong>From...to</strong> = de...a (hora de inicio hasta hora de fin). La combinación más común en el trabajo.</div>
+    <div class="builder-wrap">
+      <div class="builder-label">Pattern: From...To (time range)</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:22px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:70px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Subject</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">I work</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">Start</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">from 8</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">desde las 8</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 8px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300;">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:80px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px;">End</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gold);">to 5</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic;">hasta las 5</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"I work from 8 to 5."</strong> → Trabajo de 8 a 5.</div>
+      <div class="builder-ex"><strong>"The meeting is from 10 to 11."</strong> → La reunión es de 10 a 11.</div>
+      <div class="builder-ex"><strong>"My break is from half past twelve to one o'clock."</strong></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- UNTIL -->
+    <p class="h-serif" style="margin-bottom:8px;">4. UNTIL — emphasizing the end point</p>
+    <div class="es-note" style="margin-bottom:14px;">Usa <strong>until</strong> para enfatizar hasta cuándo dura algo. (Use <strong>until</strong> to emphasize how long something continues.) = <strong>hasta</strong></div>
+    <div class="data-table-wrap" style="margin-bottom:8px;">
+      <div class="data-table-head" style="grid-template-columns:1fr 2fr;"><span>Pattern</span><span>Example</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">until + time</span><span style="color:var(--navy);">I work <strong>until</strong> 6 o'clock today.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">until + time</span><span style="color:var(--navy);">She is in a meeting <strong>until</strong> quarter to three.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">until + time</span><span style="color:var(--navy);">The office is open <strong>until</strong> half past five.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 2fr;"><span style="color:var(--gold);font-weight:700;">until + day</span><span style="color:var(--navy);">He is busy <strong>until</strong> Friday.</span></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 To vs Until — what's the difference?</div>
+      Both mean <em>"hasta."</em><br><br>
+      Use <strong>to</strong> in a range: <em>"I work <strong>from</strong> 8 <strong>to</strong> 5."</em><br>
+      Use <strong>until</strong> alone to emphasize the endpoint: <em>"I'm busy <strong>until</strong> 5."</em><br><br>
+      <span style="color:var(--grey-blue);font-style:italic;">At A1 level, both are correct in most situations. Focus on using them naturally.</span>
+    </div>
+
+    <!-- EXAMPLES IN CONTEXT -->
+    <p class="h-serif" style="margin-bottom:12px;margin-top:4px;">More examples in context</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Workplace sentences</div>
+      <div class="example-item"><span class="example-en">"The office opens <strong>at</strong> eight o'clock."</span></div>
+      <div class="example-item"><span class="example-en">"My lunch break is <strong>from</strong> one <strong>to</strong> two."</span></div>
+      <div class="example-item"><span class="example-en">"Maria works <strong>from</strong> nine <strong>to</strong> six, Monday <strong>to</strong> Friday."</span></div>
+      <div class="example-item"><span class="example-en">"The project meeting is <strong>at</strong> quarter past three."</span></div>
+      <div class="example-item"><span class="example-en">"I am available <strong>from</strong> ten o'clock."</span></div>
+      <div class="example-item"><span class="example-en">"He is in a call <strong>until</strong> half past four."</span></div>
+      <div class="example-item"><span class="example-en">"We have training <strong>from</strong> two <strong>to</strong> five on Thursday."</span></div>
+      <div class="example-item"><span class="example-en">"The client presentation is <strong>at</strong> ten to nine." <span class="example-es">→ at 8:50</span></span></div>
+    </div>
+
+    <!-- MISTAKE BOX -->
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Common Mistakes — Errores frecuentes</div>
+      <div class="mistake-wrong">❌ "My meeting is <strong>in</strong> 10 o'clock."</div>
+      <div class="mistake-right">✅ "My meeting is <strong>at</strong> 10 o'clock."</div>
+      <div style="height:10px;"></div>
+      <div class="mistake-wrong">❌ "I work <strong>to</strong> 8 <strong>to</strong> 5."</div>
+      <div class="mistake-right">✅ "I work <strong>from</strong> 8 <strong>to</strong> 5."</div>
+      <div style="height:10px;"></div>
+      <div class="mistake-wrong">❌ "She works <strong>until</strong> 9 o'clock <strong>to</strong> 5."</div>
+      <div class="mistake-right">✅ "She works <strong>from</strong> 9 o'clock <strong>to</strong> 5." / "She works <strong>until</strong> 5."</div>
+      <div style="height:10px;"></div>
+      <div class="mistake-wrong">❌ "The office is open <strong>at</strong> nine <strong>to</strong> six."</div>
+      <div class="mistake-right">✅ "The office is open <strong>from</strong> nine <strong>to</strong> six."</div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderAudio() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Listen: A Day in the Schedule</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Escucha el audio. Es una persona hablando de su horario de trabajo. Puedes escucharlo varias veces. Luego responde las preguntas. (Listen to the audio. It is one person talking about their work schedule. You can listen several times. Then answer the questions below.)</div>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">James Carter — Work Schedule</div>
+          <div class="audio-box-sub">Operations Coordinator · Siemens, Toronto · ~65 seconds · North American accent</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A1-L8-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>"Hi, my name is James Carter, and I work as an Operations Coordinator at Siemens here in Toronto. I usually start work at eight o'clock in the morning. My shift is from eight to five, Monday to Friday. I have a short break at ten thirty — that's about fifteen minutes — and then I continue until lunchtime.</p>
+        <p>My lunch break is from half past twelve to half past one. In the afternoon, I usually have a team meeting at quarter past two. The meeting is normally from quarter past two to three o'clock. On Thursdays, we sometimes have a training session from four o'clock to five.</p>
+        <p>I finish work at five o'clock, but sometimes I work until six when we have a deadline. I always check my calendar in the morning so I know what my schedule is for the day. It helps me stay organized!"</p>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🎧 Listening tips</div>
+      Listen for the time expressions: <strong>at</strong>, <strong>from</strong>, <strong>to</strong>, and <strong>until</strong>. Try to write down the times you hear. Then check your answers below.
+    </div>
+
+    <!-- COMPREHENSION QUESTIONS -->
+    <p class="h-serif" style="margin-bottom:14px;">Comprehension Questions</p>
+    <div class="es-note">Responde estas preguntas. Haz clic en cada pregunta para ver la respuesta. (Answer these questions. Click each question to reveal the answer.)</div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise — Listening Comprehension</div>
+
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">1. What time does James start work?</span>
+        <span class="reveal-a">✓ At eight o'clock (8:00)</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">2. What is James's shift?</span>
+        <span class="reveal-a">✓ From eight to five (8:00–5:00), Monday to Friday</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">3. What time is his short break?</span>
+        <span class="reveal-a">✓ At ten thirty (10:30)</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">4. What time is his lunch break?</span>
+        <span class="reveal-a">✓ From half past twelve to half past one (12:30–1:30)</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">5. What time is the team meeting?</span>
+        <span class="reveal-a">✓ At quarter past two (2:15) — normally from quarter past two to three o'clock</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">6. True or False: James works until seven o'clock when there is a deadline.</span>
+        <span class="reveal-a">✓ False — he works until six o'clock (not seven) when there is a deadline</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPractice() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Practice Exercises</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Two quick exercises to check your understanding. Tap each item to reveal the answer.</p>
+
+    <!-- EXERCISE A -->
+    <div class="ex-box" style="margin-bottom:22px;">
+      <div class="ex-label">Exercise A — Match the time to the clock</div>
+      <div class="es-note" style="margin-bottom:14px;">Lee la hora en inglés y haz clic para ver el número. (Read the time in English and click to see the number.)</div>
+
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">It's quarter past three.</span>
+        <span class="reveal-a">✓ 3:15</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">It's ten to eight.</span>
+        <span class="reveal-a">✓ 7:50</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">It's twenty past eleven.</span>
+        <span class="reveal-a">✓ 11:20</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">It's quarter to one.</span>
+        <span class="reveal-a">✓ 12:45</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">It's five past nine.</span>
+        <span class="reveal-a">✓ 9:05</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+    </div>
+
+    <!-- EXERCISE B -->
+    <div class="ex-box">
+      <div class="ex-label">Exercise B — Fill in the blank: at / from / to / until</div>
+      <div class="es-note" style="margin-bottom:14px;">Elige la palabra correcta. Haz clic para ver la respuesta. (Choose the correct word. Click to reveal the answer.)</div>
+
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">My meeting is ______ 9 o'clock.</span>
+        <span class="reveal-a">✓ <strong>at</strong> — My meeting is <em>at</em> 9 o'clock. (specific time)</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">I work ______ eight ______ five.</span>
+        <span class="reveal-a">✓ <strong>from</strong> / <strong>to</strong> — I work <em>from</em> eight <em>to</em> five. (time range)</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">She is in a meeting ______ half past three.</span>
+        <span class="reveal-a">✓ <strong>until</strong> — She is in a meeting <em>until</em> half past three. (end point)</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">The training is ______ two ______ four o'clock.</span>
+        <span class="reveal-a">✓ <strong>from</strong> / <strong>to</strong> — The training is <em>from</em> two <em>to</em> four o'clock.</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">The office opens ______ quarter past nine.</span>
+        <span class="reveal-a">✓ <strong>at</strong> — The office opens <em>at</em> quarter past nine. (specific moment)</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">He is busy ______ Friday.</span>
+        <span class="reveal-a">✓ <strong>until</strong> — He is busy <em>until</em> Friday. (continuing until a point)</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time · Complete before class</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = quizState[qi].inputVal||'';
+  quizState[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── STEPS — populated last ────────────────────────────────
+STEPS = [
+  { label: "1. Welcome",     fn: renderWelcome },
+  { label: "2. Vocabulary",  fn: renderVocabulary },
+  { label: "3. Time Skills", fn: renderTime },
+  { label: "4. Grammar",     fn: renderGrammar },
+  { label: "5. Audio",       fn: renderAudio },
+  { label: "6. Practice",    fn: renderPractice },
+  { label: "7. Quiz",        fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

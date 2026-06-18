@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talking About Skills — Classwork | A2 · Unit 1 · Lesson 5</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* TEACHER NOTE */
+.teacher-note { background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:12px 16px; margin-bottom:20px; font-size:13px; color:#7A5500; line-height:1.7; }
+.teacher-note-label { font-weight:700; font-size:12px; letter-spacing:1px; text-transform:uppercase; color:#92400E; margin-bottom:4px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* DISCUSSION QUESTION */
+.dq-list { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+.dq-item { display:flex; gap:12px; align-items:flex-start; padding:13px 16px; background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--sky); border-radius:0 8px 8px 0; font-size:15px; color:var(--navy); line-height:1.6; }
+.dq-bullet { color:var(--sky); font-weight:700; flex-shrink:0; margin-top:1px; }
+
+/* SKILL TILES (warm-up) */
+.skill-tiles { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
+@media(max-width:580px){ .skill-tiles{ grid-template-columns:repeat(2,1fr); } }
+.skill-tile { background:var(--navy); border-radius:10px; padding:18px 14px; text-align:center; border:1px solid rgba(201,151,44,0.25); }
+.skill-tile-icon { font-size:26px; margin-bottom:8px; }
+.skill-tile-en { font-family:var(--font-heading); font-size:14px; color:var(--gold); font-weight:700; margin-bottom:3px; }
+.skill-tile-ing { font-size:12px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* MISTAKE CARD */
+.mistake-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:10px; }
+.mistake-card-q { padding:14px 18px; display:flex; gap:12px; align-items:center; cursor:pointer; transition:background 0.12s; }
+.mistake-card-q:hover { background:var(--light-grey); }
+.mistake-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 9px; font-size:12px; font-weight:700; flex-shrink:0; }
+.mistake-sentence { font-size:15px; color:var(--navy); flex:1; font-style:italic; }
+.mistake-tap { font-size:11px; color:var(--grey-blue); flex-shrink:0; }
+.mistake-answer { display:none; padding:12px 18px; border-top:1px solid var(--border-grey); }
+.mistake-wrong-line { display:flex; align-items:center; gap:10px; padding:8px 12px; background:var(--red-bg); border-radius:6px; font-size:13px; color:var(--red); font-style:italic; margin-bottom:7px; }
+.mistake-right-line { display:flex; align-items:center; gap:10px; padding:8px 12px; background:var(--green-bg); border-radius:6px; font-size:13px; color:var(--green); font-style:italic; }
+.mistake-explain { font-size:12px; color:var(--grey-blue); margin-top:8px; font-style:italic; padding-left:2px; }
+.mistake-card.open .mistake-answer { display:block; }
+.mistake-card.open .mistake-tap { color:var(--gold); }
+
+/* SKILLS CARD */
+.skills-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:20px; box-shadow:0 4px 16px rgba(0,0,0,0.06); }
+.skills-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:16px 22px; }
+.skills-card-head-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.skills-card-head-sub { font-size:12px; color:rgba(255,255,255,0.5); }
+.skills-card-body { padding:20px 22px; }
+.card-field { margin-bottom:16px; }
+.card-field-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.card-input-row { display:flex; align-items:center; gap:10px; padding:9px 12px; background:var(--light-grey); border-radius:7px; font-size:14px; color:var(--slate); margin-bottom:6px; }
+.card-input-row:last-child { margin-bottom:0; }
+.card-bullet { color:var(--navy); font-weight:700; flex-shrink:0; }
+.card-prefix { color:var(--grey-blue); font-style:italic; flex-shrink:0; }
+.card-blank { flex:1; border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); outline:none; padding:2px 4px; }
+.card-blank:focus { border-bottom-color:var(--gold); }
+
+/* INTERVIEW CARDS */
+.interview-wrap { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+@media(max-width:580px){ .interview-wrap{ grid-template-columns:1fr; } }
+.interview-role-card { border-radius:10px; overflow:hidden; border:1px solid var(--border-grey); }
+.interview-role-head { padding:13px 18px; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--white); }
+.role-a { background:var(--sky); }
+.role-b { background:var(--navy); }
+.interview-role-body { background:var(--white); padding:16px 18px; font-size:14px; color:var(--slate); line-height:1.7; }
+
+.q-list { display:flex; flex-direction:column; gap:8px; }
+.q-item { display:flex; gap:10px; align-items:flex-start; padding:11px 14px; background:var(--off-white); border:1px solid var(--border-grey); border-radius:7px; font-size:14px; color:var(--navy); line-height:1.5; }
+.q-icon { flex-shrink:0; font-size:16px; margin-top:1px; }
+
+/* USEFUL LANGUAGE PANEL */
+.language-panel { background:var(--navy); border-radius:10px; padding:20px; margin-bottom:20px; }
+.language-panel-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:14px; }
+.language-items { display:flex; flex-direction:column; gap:8px; }
+.language-item { background:rgba(255,255,255,0.06); border-radius:6px; padding:9px 14px; font-size:14px; color:rgba(255,255,255,0.85); line-height:1.5; }
+.language-item em { color:var(--gold); font-style:normal; font-weight:700; }
+
+/* SKILLS MAP */
+.skills-map-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px; }
+@media(max-width:580px){ .skills-map-grid{ grid-template-columns:repeat(2,1fr); } }
+.map-tile { background:var(--white); border:2px solid var(--border-grey); border-radius:10px; padding:14px 12px; text-align:center; cursor:pointer; transition:all 0.15s; user-select:none; }
+.map-tile:hover { border-color:var(--sky); background:var(--light-grey); }
+.map-tile.raised { border-color:var(--gold); background:var(--gold-bg); }
+.map-tile-icon { font-size:22px; margin-bottom:6px; }
+.map-tile-skill { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:3px; }
+.map-tile-count { font-size:12px; color:var(--grey-blue); }
+.map-tile.raised .map-tile-skill { color:var(--gold); }
+.map-tile.raised .map-tile-count { color:#7A5500; }
+
+/* DISCUSSION PHRASES */
+.phrase-bank { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:20px; }
+.phrase-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:12px; }
+.phrase-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+@media(max-width:560px){ .phrase-grid{ grid-template-columns:1fr; } }
+.phrase-item { background:var(--white); border-radius:7px; padding:10px 13px; font-size:13px; color:var(--navy); border:1px solid var(--border-grey); line-height:1.5; }
+.phrase-item em { color:var(--sky); font-style:normal; font-weight:700; }
+
+/* DIVIDER */
+.divider { height:1px; background:var(--border-grey); margin:28px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:19px; color:var(--navy); margin-bottom:12px; margin-top:22px; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Classwork</div>
+    <h1 class="hero-title">Talking About Skills</h1>
+    <p class="hero-sub">Lesson 5 · Speaking-heavy session · 60 minutes · Groups of 6–8</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking — primary</span>
+      <span class="pill accent">👂 Listening — secondary</span>
+      <span class="pill accent">✍️ Light writing</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Session Complete ✓' : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── SKILLS MAP STATE ──────────────────────────────────────
+const mapState = {};
+
+// ── MISTAKE TOGGLE ────────────────────────────────────────
+function toggleMistake(i) {
+  const card = document.getElementById('mc-' + i);
+  card.classList.toggle('open');
+  const tap = document.getElementById('tap-' + i);
+  if (tap) tap.textContent = card.classList.contains('open') ? '▲ Hide' : '▼ Reveal';
+}
+
+// ── SKILLS MAP TOGGLE ─────────────────────────────────────
+function toggleMapTile(i) {
+  const tile = document.getElementById('maptile-' + i);
+  mapState[i] = !mapState[i];
+  tile.classList.toggle('raised', mapState[i]);
+  const count = document.getElementById('mapcount-' + i);
+  const skills = [
+    {label:'Communicating',icon:'💬'},
+    {label:'Negotiating',icon:'🤝'},
+    {label:'Organising',icon:'📋'},
+    {label:'Analysing',icon:'📊'},
+    {label:'Leading',icon:'🎯'},
+    {label:'Presenting',icon:'🎤'},
+    {label:'Collaborating',icon:'👥'},
+    {label:'Adapting',icon:'🔄'},
+  ];
+  if (count) {
+    const raised = Object.values(mapState).filter(Boolean).length;
+    // Update just this tile's label
+    count.textContent = mapState[i] ? '✓ I\'m good at this' : 'Tap to raise your hand';
+  }
+}
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderOverview() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Session Overview</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Welcome to class. In your pre-learning, you studied two structures for talking about skills: <strong>can + base verb</strong> and <strong>be good at + -ing</strong>. This session is about using that language out loud — with your classmates, in real professional situations.</p>
+
+    <div class="info-box">
+      <strong>Today's goal:</strong> By the end of this session, you will be able to describe your professional skills clearly and confidently — just like you would in a job interview, a performance review, or a conversation with a new colleague.
+    </div>
+
+    <h2 class="h-serif">Session Plan</h2>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+      ${[
+        ['Warm-Up','Skill tiles — activate vocabulary','5 min','🧠'],
+        ['Activity 1','Spot the Mistake — fast error correction as a class','10 min','🔍'],
+        ['Activity 2','My Skills Card — write then share with a partner','15 min','📋'],
+        ['Activity 3','Skills Interview — pairs roleplay','15 min','🎤'],
+        ['Activity 4','Class Skills Map — group discussion and close','15 min','🗺️'],
+      ].map(([act,desc,time,icon]) => `
+        <div style="display:grid;grid-template-columns:24px 140px 1fr auto;gap:12px;align-items:center;padding:12px 16px;background:var(--white);border:1px solid var(--border-grey);border-radius:8px;">
+          <div style="font-size:20px;">${icon}</div>
+          <div style="font-size:13px;font-weight:700;color:var(--navy);">${act}</div>
+          <div style="font-size:13px;color:var(--slate);">${desc}</div>
+          <div style="font-size:12px;color:var(--grey-blue);white-space:nowrap;">${time}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 How this session works</div>
+      Every student speaks. When your partner is talking, listen actively — you will need to respond with a follow-up question or a reaction. The goal is not perfection; the goal is <em>communication</em>.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWarmUp() {
+  const skills = [
+    {label:'Communication',ing:'communicating',icon:'💬'},
+    {label:'Negotiation',ing:'negotiating',icon:'🤝'},
+    {label:'Organisation',ing:'organising',icon:'📋'},
+    {label:'Analysis',ing:'analysing',icon:'📊'},
+    {label:'Leadership',ing:'leading',icon:'🎯'},
+    {label:'Presentation',ing:'presenting',icon:'🎤'},
+    {label:'Collaboration',ing:'collaborating',icon:'👥'},
+    {label:'Adaptation',ing:'adapting',icon:'🔄'},
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Warm-Up — What Can You See?</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Look at the eight skill tiles below. These are the key skills from your pre-learning. Take 30 seconds to read them, then your teacher will ask you three questions.</p>
+
+    <div class="skill-tiles">
+      ${skills.map(s => `
+        <div class="skill-tile">
+          <div class="skill-tile-icon">${s.icon}</div>
+          <div class="skill-tile-en">${s.label}</div>
+          <div class="skill-tile-ing">good at <em>${s.ing}</em></div>
+        </div>`).join('')}
+    </div>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">🧑‍🏫 Teacher</div>
+      Display these tiles and ask each question in turn. Take free answers — do not correct at this stage. The goal is to activate vocabulary and get students thinking about their own skills before the speaking activities. Allow 60–90 seconds per question.
+    </div>
+
+    <div class="dq-list">
+      <div class="dq-item">
+        <div class="dq-bullet">Q1</div>
+        Which of these skills do you use at work every week?
+      </div>
+      <div class="dq-item">
+        <div class="dq-bullet">Q2</div>
+        Which one is your biggest strength right now?
+      </div>
+      <div class="dq-item">
+        <div class="dq-bullet">Q3</div>
+        Which one would you most like to develop this year?
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Language Reminder</div>
+      When you answer, try to use a full sentence:<br>
+      <em>"I use <strong>communication</strong> every week because I speak with clients daily."</em><br>
+      <em>"My biggest strength right now is <strong>organising</strong>."</em>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity1() {
+  const mistakes = [
+    {
+      sentence: 'I am good at negotiate with suppliers.',
+      wrong: 'I am good at negotiate with suppliers.',
+      right: 'I am good at negotiating with suppliers.',
+      explain: '"Good at" always takes -ing. → good at negotiat<strong>ing</strong>'
+    },
+    {
+      sentence: 'She can to lead the project.',
+      wrong: 'She can to lead the project.',
+      right: 'She can lead the project.',
+      explain: 'After "can", use the base verb only — no "to". → can <strong>lead</strong>'
+    },
+    {
+      sentence: 'He is good in communication.',
+      wrong: 'He is good in communication.',
+      right: 'He is good at communicating.',
+      explain: 'The preposition is always "at" — not "in". → good <strong>at</strong> communicat<strong>ing</strong>'
+    },
+    {
+      sentence: 'I have skills in the organisation.',
+      wrong: 'I have skills in the organisation.',
+      right: 'I am good at organising. / I can organise.',
+      explain: '"Have skills in..." is a direct Spanish translation. Use "good at + -ing" instead.'
+    },
+    {
+      sentence: 'They can presenting to clients.',
+      wrong: 'They can presenting to clients.',
+      right: 'They can present to clients.',
+      explain: 'After "can", use the base verb — not -ing. → can <strong>present</strong>'
+    },
+    {
+      sentence: 'I am good at manage my time.',
+      wrong: 'I am good at manage my time.',
+      right: 'I am good at managing my time.',
+      explain: '"Good at" always takes -ing. → good at manag<strong>ing</strong>'
+    },
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Activity 1 — Spot the Mistake</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Each sentence below contains one mistake — a common error with <strong>can</strong> or <strong>good at</strong>. Read each sentence, identify the error, and call out the correction. Then tap <em>Reveal</em> to check.</p>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">🧑‍🏫 Teacher</div>
+      Do this as a fast whole-class activity — no writing needed. Show one sentence at a time. Ask: <em>"What is wrong here?"</em> Let students call out the correction. Once the class agrees, tap Reveal to confirm. Keep the pace brisk — about 90 seconds per sentence.
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+      ${mistakes.map((m,i) => `
+        <div class="mistake-card" id="mc-${i}">
+          <div class="mistake-card-q" onclick="toggleMistake(${i})">
+            <span class="mistake-num">${i+1}</span>
+            <span class="mistake-sentence">"${m.sentence}"</span>
+            <span class="mistake-tap" id="tap-${i}">▼ Reveal</span>
+          </div>
+          <div class="mistake-answer">
+            <div class="mistake-wrong-line">❌ ${m.wrong}</div>
+            <div class="mistake-right-line">✅ ${m.right}</div>
+            <div class="mistake-explain">💡 ${m.explain}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 The Two Rules — Repeat After Every Correction</div>
+      Every correction in this exercise comes back to one of these two rules:<br><br>
+      <strong>can</strong> + BASE VERB &nbsp;·&nbsp; <strong>good at</strong> + -ING VERB
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity2() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Activity 2 — My Skills Card</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Complete your personal skills card below. Use the sentence starters provided. You have <strong>3–4 minutes to write</strong>, then you will share your card with a partner.</p>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">🧑‍🏫 Teacher</div>
+      Give students 3–4 minutes to complete the card individually. Then put them in pairs. Each student reads their card to their partner. The partner must ask at least one follow-up question: <em>"Can you give me an example?"</em> or <em>"How do you use that skill at work?"</em> Swap so both students present and both listen. Allow about 5 minutes per pair.
+    </div>
+
+    <div class="skills-card">
+      <div class="skills-card-head">
+        <div class="skills-card-head-title">My Professional Skills Card</div>
+        <div class="skills-card-head-sub">Complete every line · Be honest · Use full sentences</div>
+      </div>
+      <div class="skills-card-body">
+
+        <!-- WHO I AM -->
+        <div class="card-field">
+          <div class="card-field-label">Who I am</div>
+          <div class="card-input-row">
+            <span class="card-prefix">My name is</span>
+            <input class="card-blank" style="width:130px;" type="text" placeholder="your name">
+            <span class="card-prefix">and I work as</span>
+            <input class="card-blank" style="width:150px;" type="text" placeholder="your job title">
+            <span class="card-prefix">at</span>
+            <input class="card-blank" style="width:150px;" type="text" placeholder="your company">
+          </div>
+        </div>
+
+        <!-- THINGS I CAN DO -->
+        <div class="card-field">
+          <div class="card-field-label">Three things I can do well</div>
+          ${[1,2,3].map(n => `
+            <div class="card-input-row">
+              <span class="card-bullet">${n}.</span>
+              <span class="card-prefix">I can</span>
+              <input class="card-blank" type="text" placeholder="base verb + detail (e.g. manage a team of 8 people)">
+            </div>`).join('')}
+        </div>
+
+        <!-- GOOD AT -->
+        <div class="card-field">
+          <div class="card-field-label">Two things I am particularly good at</div>
+          ${[1,2].map(n => `
+            <div class="card-input-row">
+              <span class="card-bullet">${n}.</span>
+              <span class="card-prefix">I am good at</span>
+              <input class="card-blank" type="text" placeholder="-ing verb + detail (e.g. communicating with clients)">
+            </div>`).join('')}
+        </div>
+
+        <!-- DEVELOPING -->
+        <div class="card-field" style="margin-bottom:0;">
+          <div class="card-field-label">One thing I am still developing</div>
+          <div class="card-input-row">
+            <span class="card-prefix">I am still developing my skills in</span>
+            <input class="card-blank" type="text" placeholder="skill area (e.g. data analysis)">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <h2 class="h-serif">Useful Follow-Up Questions</h2>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:12px;line-height:1.6;">When your partner shares their card, ask at least one of these questions:</p>
+    <div class="q-list">
+      ${[
+        ['💬','Can you give me an example of when you used that skill?'],
+        ['💬','How do you use that skill at work?'],
+        ['💬','Why is that skill important in your job?'],
+        ['💬','What are you doing to develop that skill?'],
+      ].map(([icon,q]) => `
+        <div class="q-item">
+          <span class="q-icon">${icon}</span>
+          <span style="font-style:italic;">"${q}"</span>
+        </div>`).join('')}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity3() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Activity 3 — Skills Interview</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">In pairs: one student is the <strong>interviewer</strong>, one is the <strong>candidate</strong>. The interviewer asks questions from the card below; the candidate answers using the target language. After 5–6 minutes, swap roles.</p>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">🧑‍🏫 Teacher</div>
+      Pairs work simultaneously. Circulate and listen. After each round, bring the class together and ask two or three students to share one interesting thing they heard. Remind candidates to give <strong>2–3 sentence answers</strong> — not just one word. Push back gently with follow-ups if answers are too short: <em>"Can you say more about that?"</em>
+    </div>
+
+    <div class="interview-wrap">
+      <div class="interview-role-card">
+        <div class="interview-role-head role-a">🎤 &nbsp;Interviewer</div>
+        <div class="interview-role-body">
+          Ask these questions one by one. After each answer, react naturally:<br>
+          <em>"That's interesting."</em> / <em>"Can you tell me more?"</em> / <em>"Good — and what about...?"</em>
+        </div>
+      </div>
+      <div class="interview-role-card">
+        <div class="interview-role-head role-b">💼 &nbsp;Candidate</div>
+        <div class="interview-role-body">
+          Answer in full sentences. Use <strong>can</strong> and <strong>good at</strong>. Give real examples from your job when you can.
+        </div>
+      </div>
+    </div>
+
+    <h2 class="h-serif">Interviewer Question Cards</h2>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px;">
+      ${[
+        ['Q1','What are your key professional strengths?'],
+        ['Q2','Can you work independently without a lot of supervision?'],
+        ['Q3','Are you good at working in teams?'],
+        ['Q4','What is one skill you are still developing?'],
+        ['Q5','Can you work in English with international colleagues?'],
+        ['Q6','What is one thing you can do that makes you valuable to your team?'],
+      ].map(([num,q]) => `
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:13px 16px;background:var(--white);border:1px solid var(--border-grey);border-radius:8px;">
+          <span style="background:var(--sky);color:var(--white);border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;margin-top:2px;">${num}</span>
+          <span style="font-size:15px;color:var(--navy);font-style:italic;line-height:1.5;">"${q}"</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="language-panel">
+      <div class="language-panel-label">🗣 Useful Language for Candidates</div>
+      <div class="language-items">
+        ${[
+          '<em>I can</em> [base verb] — for example, I can manage a team of eight people.',
+          '<em>I am good at</em> [verb-ing] — I am particularly good at communicating with international clients.',
+          '<em>One of my key strengths is</em> [noun or -ing].',
+          '<em>I am still developing my skills in</em> [area] — but I am working on it.',
+          '<em>I am not very confident</em> with [area] yet, but I am improving.',
+        ].map(p => `<div class="language-item">${p}</div>`).join('')}
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Give real examples</div>
+      The best answers use real examples from your actual job. Instead of just <em>"I can communicate well"</em>, say: <em>"I can communicate well — for example, I speak with our suppliers in English every week."</em>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity4() {
+  const mapSkills = [
+    {label:'Communicating',icon:'💬'},
+    {label:'Negotiating',icon:'🤝'},
+    {label:'Organising',icon:'📋'},
+    {label:'Analysing',icon:'📊'},
+    {label:'Leading',icon:'🎯'},
+    {label:'Presenting',icon:'🎤'},
+    {label:'Collaborating',icon:'👥'},
+    {label:'Adapting',icon:'🔄'},
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Activity 4 — Class Skills Map</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Now we find out what skills this class has — together. Your teacher will ask about each skill below. If you are good at it, tap your tile to raise your hand. Then discuss as a group.</p>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">🧑‍🏫 Teacher</div>
+      Go through each skill tile one by one. Ask the class: <em>"Who is good at <strong>[skill]</strong>?"</em> Students tap to indicate. Note who responds to each. After going through all tiles, move to the group discussion below. Use the phrases section to prompt students to use the target language in their responses.
+    </div>
+
+    <h2 class="h-serif">Tap the skills you are good at</h2>
+
+    <div class="skills-map-grid">
+      ${mapSkills.map((s,i) => `
+        <div class="map-tile" id="maptile-${i}" onclick="toggleMapTile(${i})">
+          <div class="map-tile-icon">${s.icon}</div>
+          <div class="map-tile-skill">${s.label}</div>
+          <div class="map-tile-count" id="mapcount-${i}">Tap to raise your hand</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="h-serif">Group Discussion</h2>
+    <p style="font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:16px;">Your teacher will lead a short class discussion using these questions. Use the language phrases below when you speak.</p>
+
+    <div class="dq-list">
+      <div class="dq-item">
+        <div class="dq-bullet">Q1</div>
+        What are the strongest skills in this class? Which skills do we share?
+      </div>
+      <div class="dq-item">
+        <div class="dq-bullet">Q2</div>
+        What skills does our class need to develop? Are there any gaps?
+      </div>
+      <div class="dq-item">
+        <div class="dq-bullet">Q3</div>
+        If we worked as a team on a project, who would do what?
+      </div>
+    </div>
+
+    <div class="phrase-bank">
+      <div class="phrase-bank-label">💬 Language to Use</div>
+      <div class="phrase-grid">
+        ${[
+          '<em>I think we are good at</em> organising — many people raised their hands.',
+          '<em>I think we need to develop</em> our presentation skills.',
+          '<em>As a team, we can</em> communicate well with clients.',
+          '<em>I am particularly good at</em> analysing — I can help with that.',
+          '<em>I am still developing</em> my leadership skills.',
+          'In my opinion, our strongest skill is collaboration.',
+        ].map(p => `<div class="phrase-item">${p}</div>`).join('')}
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:4px;">
+      <strong>Session Close:</strong> Before you finish, take 60 seconds. Each student says <em>one thing</em> they will practise before the next class — using target language: <em>"I am going to practise <strong>presenting</strong> — I will describe my job to someone in English this week."</em>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS — defined last ──────────────────────────────────
+STEPS = [
+  { label: '1. Overview',   fn: renderOverview  },
+  { label: '2. Warm-Up',    fn: renderWarmUp    },
+  { label: '3. Activity 1', fn: renderActivity1 },
+  { label: '4. Activity 2', fn: renderActivity2 },
+  { label: '5. Activity 3', fn: renderActivity3 },
+  { label: '6. Activity 4', fn: renderActivity4 },
+];
+
+render();
+</script>
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

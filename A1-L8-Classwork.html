@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work Schedules — Classwork | A1 · Unit 1 · Lesson 8</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family:var(--font-body); background:var(--off-white); color:var(--slate); min-height:100vh; overflow-x:hidden; }
+
+/* SITE HEADER */
+.site-header { background:var(--navy); border-bottom:2px solid var(--gold); }
+.site-header-inner { max-width:900px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:center; }
+.site-header-brand { font-family:var(--font-heading); font-size:22px; font-style:italic; color:var(--white); letter-spacing:0.02em; opacity:0.95; }
+
+/* HERO */
+.hero { background:var(--navy); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAV */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* TEACHER NOTE BOX */
+.teacher-note { background:var(--light-grey); border:1px dashed var(--steel); border-radius:8px; padding:12px 16px; margin-bottom:20px; font-size:13px; line-height:1.6; color:var(--slate); }
+.teacher-note-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:12px; letter-spacing:1px; text-transform:uppercase; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* TIME RACE CARD */
+.time-race-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:20px; }
+@media(max-width:600px){ .time-race-grid{ grid-template-columns:repeat(2,1fr);} }
+.time-race-card { background:var(--navy); border-radius:10px; padding:18px 10px; text-align:center; }
+.time-race-num { font-family:var(--font-heading); font-size:26px; color:var(--gold); margin-bottom:6px; }
+.time-race-ans { font-size:12px; color:rgba(255,255,255,0.55); font-style:italic; display:none; }
+
+/* DISCUSSION CARD */
+.discussion-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.discussion-q { font-size:14px; color:var(--navy); font-weight:500; margin-bottom:6px; }
+.discussion-a { font-size:13px; color:var(--green); font-style:italic; }
+.discussion-open { display:inline-block; background:rgba(201,151,44,0.15); color:var(--gold); font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:2px 8px; border-radius:10px; margin-bottom:6px; }
+
+/* SCHEDULE CARD */
+.schedule-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.schedule-card-head { background:var(--navy); padding:16px 20px; display:flex; align-items:center; gap:14px; }
+.schedule-avatar { width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.schedule-name { font-size:15px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.schedule-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.schedule-body { padding:6px 0; }
+.schedule-row { display:flex; gap:12px; padding:11px 20px; border-bottom:1px solid var(--light-grey); font-size:13px; align-items:baseline; flex-wrap:wrap; }
+.schedule-row:last-child { border-bottom:none; }
+.schedule-label { color:var(--grey-blue); min-width:130px; font-weight:700; font-size:11px; letter-spacing:0.5px; text-transform:uppercase; }
+.schedule-value { color:var(--navy); flex:1; }
+.schedule-value strong { color:var(--gold); }
+
+/* SPEAKING STARTERS */
+.starter-list { display:flex; flex-direction:column; gap:10px; margin-bottom:18px; }
+.starter-item { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:12px 16px; font-size:14px; color:var(--navy); font-style:italic; }
+
+/* QUESTION CARD GRID */
+.qcard-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:20px; }
+@media(max-width:600px){ .qcard-grid{ grid-template-columns:1fr; } }
+.qcard { background:var(--off-white); border:1px solid var(--border-grey); border-left:4px solid var(--gold); border-radius:8px; padding:14px 16px; font-size:13px; color:var(--navy); font-weight:500; }
+
+/* MODEL CARD (writing) */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:0; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+
+/* WRITING AREA */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* TAP TO REVEAL */
+.reveal-item { display:flex; align-items:baseline; justify-content:space-between; gap:12px; padding:11px 14px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; cursor:pointer; margin-bottom:8px; transition:background 0.12s; flex-wrap:wrap; }
+.reveal-item:hover { background:var(--light-grey); }
+.reveal-q { font-size:14px; color:var(--navy); font-weight:500; flex:1; }
+.reveal-a { font-size:14px; color:var(--green); font-weight:700; display:none; }
+.reveal-hint { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+
+/* EX BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* BUTTONS */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background:var(--navy); border-top:1px solid rgba(201,151,44,0.3); margin-top:60px; }
+.site-footer-inner { max-width:900px; margin:0 auto; padding:20px 32px; display:flex; flex-direction:column; gap:6px; }
+.site-footer-credit { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.75); }
+.site-footer-credit strong { color:var(--gold); font-weight:700; }
+.site-footer-credit a { color:var(--gold-light); text-decoration:none; }
+.site-footer-credit a:hover { text-decoration:underline; }
+.site-footer-legal { font-family:var(--font-body); font-size:10px; color:rgba(255,255,255,0.35); line-height:1.7; border-top:1px solid rgba(255,255,255,0.08); padding-top:10px; margin-top:4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Classwork</div>
+    <h1 class="hero-title">Work Schedules</h1>
+    <p class="hero-sub">Speaking and reading · Time expressions in action</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">✍️ Light writing</span>
+      <span class="pill">5 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// Audio state (Pattern A — single player)
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+// ── AUDIO FUNCTIONS (Pattern A) ───────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── TAP-TO-REVEAL ─────────────────────────────────────────
+function toggleReveal(el) {
+  const a = el.querySelector('.reveal-a');
+  const h = el.querySelector('.reveal-hint');
+  if (a.style.display === 'inline') {
+    a.style.display = 'none';
+    if (h) h.style.display = 'inline';
+  } else {
+    a.style.display = 'inline';
+    if (h) h.style.display = 'none';
+  }
+}
+function toggleTimeCard(el) {
+  const a = el.querySelector('.time-race-ans');
+  a.style.display = a.style.display === 'block' ? 'none' : 'block';
+}
+
+// ── WORD COUNTER ──────────────────────────────────────────
+function updateWordCount(el, countId) {
+  const words = el.value.trim().split(/\s+/).filter(Boolean);
+  document.getElementById(countId).textContent = (el.value.trim()===''?0:words.length) + ' words';
+}
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up: What's the Time?</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">👩‍🏫 How to run this warm-up</div>
+      Show each time on screen. Students say the time in English. Go fast — 30 seconds per time. Award a point to the first student who answers correctly.
+    </div>
+
+    <p class="h-serif">Time Race</p>
+    <p class="sec-intro">Tap each card to reveal the answer after students respond.</p>
+
+    <div class="time-race-grid">
+      <div class="time-race-card" onclick="toggleTimeCard(this)" style="cursor:pointer;">
+        <div class="time-race-num">9:15</div>
+        <div class="time-race-ans">quarter past nine</div>
+      </div>
+      <div class="time-race-card" onclick="toggleTimeCard(this)" style="cursor:pointer;">
+        <div class="time-race-num">7:45</div>
+        <div class="time-race-ans">quarter to eight</div>
+      </div>
+      <div class="time-race-card" onclick="toggleTimeCard(this)" style="cursor:pointer;">
+        <div class="time-race-num">11:10</div>
+        <div class="time-race-ans">ten past eleven</div>
+      </div>
+      <div class="time-race-card" onclick="toggleTimeCard(this)" style="cursor:pointer;">
+        <div class="time-race-num">2:50</div>
+        <div class="time-race-ans">ten to three</div>
+      </div>
+      <div class="time-race-card" onclick="toggleTimeCard(this)" style="cursor:pointer;">
+        <div class="time-race-num">8:05</div>
+        <div class="time-race-ans">five past eight</div>
+      </div>
+      <div class="time-race-card" onclick="toggleTimeCard(this)" style="cursor:pointer;">
+        <div class="time-race-num">12:30</div>
+        <div class="time-race-ans">half past twelve</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="h-serif">Discussion Warm-Up</p>
+    <div class="info-box">
+      "What time does your workday start? What time does it finish?"
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💬 Pair discussion</div>
+      Students answer in pairs (30 seconds each). Encourage use of <strong>"at"</strong> and <strong>"from...to."</strong>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListenDiscuss() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Listen and Discuss</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">👩‍🏫 Teacher note</div>
+      Students listened to James Carter's audio in Pre-Learning. Play it again as a class. Then use the discussion questions below.
+    </div>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">James Carter — Work Schedule</div>
+          <div class="audio-box-sub">Operations Coordinator · Siemens, Toronto · ~65 seconds</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A1-L8-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>"Hi, my name is James Carter, and I work as an Operations Coordinator at Siemens here in Toronto. I usually start work at eight o'clock in the morning. My shift is from eight to five, Monday to Friday. I have a short break at ten thirty — that's about fifteen minutes — and then I continue until lunchtime.</p>
+        <p>My lunch break is from half past twelve to half past one. In the afternoon, I usually have a team meeting at quarter past two. The meeting is normally from quarter past two to three o'clock. On Thursdays, we sometimes have a training session from four o'clock to five.</p>
+        <p>I finish work at five o'clock, but sometimes I work until six when we have a deadline. I always check my calendar in the morning so I know what my schedule is for the day. It helps me stay organized!"</p>
+      </div>
+    </div>
+
+    <p class="h-serif">Discussion Questions</p>
+    <div class="discussion-card">
+      <div class="discussion-q">1. "What time does James start work?"</div>
+      <div class="discussion-a">→ at eight o'clock</div>
+    </div>
+    <div class="discussion-card">
+      <div class="discussion-q">2. "What time is his team meeting?"</div>
+      <div class="discussion-a">→ at quarter past two</div>
+    </div>
+    <div class="discussion-card">
+      <div class="discussion-open">Open question</div>
+      <div class="discussion-q">3. "James works until six when there is a deadline. Do you ever work overtime? What time do you finish?"</div>
+    </div>
+    <div class="discussion-card">
+      <div class="discussion-open">Open question</div>
+      <div class="discussion-q">4. "James checks his calendar every morning. Do you use a calendar or app for your schedule? Which one?"</div>
+    </div>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">👩‍🏫 Teacher note</div>
+      Questions 3 and 4 are open production questions. Encourage students to answer with full sentences using "at," "from...to," and "until." Accept approximate structures at A1 level.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Reading: Work Schedules</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">Lee los tres horarios. Luego responde las preguntas con tu compañero. (Read the three schedules. Then answer the questions with your partner.)</div>
+
+    <!-- SCHEDULE A -->
+    <div class="schedule-card">
+      <div class="schedule-card-head">
+        <div class="schedule-avatar">👩🏽</div>
+        <div>
+          <div class="schedule-name">Priya Kapoor</div>
+          <div class="schedule-role">Customer Support Agent · Amazon, Mumbai office</div>
+        </div>
+      </div>
+      <div class="schedule-body">
+        <div class="schedule-row"><span class="schedule-label">Shift</span><span class="schedule-value"><strong>from 9:00 to 6:00</strong>, Monday to Saturday</span></div>
+        <div class="schedule-row"><span class="schedule-label">Morning break</span><span class="schedule-value"><strong>at 11:00</strong> (15 minutes)</span></div>
+        <div class="schedule-row"><span class="schedule-label">Lunch</span><span class="schedule-value"><strong>from 1:00 to 2:00</strong></span></div>
+        <div class="schedule-row"><span class="schedule-label">Afternoon break</span><span class="schedule-value"><strong>at 4:30</strong> (10 minutes)</span></div>
+        <div class="schedule-row"><span class="schedule-label">Team meeting</span><span class="schedule-value"><strong>at 5:15</strong> every Monday</span></div>
+        <div class="schedule-row"><span class="schedule-label">Remote work</span><span class="schedule-value"><strong>from 9:00 to 1:00</strong> on Fridays (home), then office <strong>from 2:00 to 6:00</strong></span></div>
+      </div>
+    </div>
+
+    <!-- SCHEDULE B -->
+    <div class="schedule-card">
+      <div class="schedule-card-head">
+        <div class="schedule-avatar">👨🏻</div>
+        <div>
+          <div class="schedule-name">Marcus Thompson</div>
+          <div class="schedule-role">Financial Analyst · JPMorgan Chase, London office</div>
+        </div>
+      </div>
+      <div class="schedule-body">
+        <div class="schedule-row"><span class="schedule-label">Shift</span><span class="schedule-value"><strong>from 7:30 to 4:30</strong>, Monday to Friday</span></div>
+        <div class="schedule-row"><span class="schedule-label">Morning break</span><span class="schedule-value"><strong>at 10:00</strong> (10 minutes)</span></div>
+        <div class="schedule-row"><span class="schedule-label">Lunch</span><span class="schedule-value"><strong>from 12:00 to 12:45</strong></span></div>
+        <div class="schedule-row"><span class="schedule-label">Client call</span><span class="schedule-value"><strong>at quarter past nine</strong> every Tuesday and Thursday</span></div>
+        <div class="schedule-row"><span class="schedule-label">Monthly review</span><span class="schedule-value"><strong>from 3:00 to 4:30</strong> on the last Friday of the month</span></div>
+        <div class="schedule-row"><span class="schedule-label">Overtime</span><span class="schedule-value">sometimes <strong>until 6:00</strong> when there is a quarterly deadline</span></div>
+      </div>
+    </div>
+
+    <!-- SCHEDULE C -->
+    <div class="schedule-card">
+      <div class="schedule-card-head">
+        <div class="schedule-avatar">👩🏼</div>
+        <div>
+          <div class="schedule-name">Sofia Andersen</div>
+          <div class="schedule-role">Project Coordinator · IKEA, Stockholm office</div>
+        </div>
+      </div>
+      <div class="schedule-body">
+        <div class="schedule-row"><span class="schedule-label">Shift</span><span class="schedule-value"><strong>from 8:00 to 4:00</strong>, Monday to Friday</span></div>
+        <div class="schedule-row"><span class="schedule-label">Flexible start</span><span class="schedule-value">available <strong>from 7:30</strong> on request</span></div>
+        <div class="schedule-row"><span class="schedule-label">Morning break</span><span class="schedule-value"><strong>at 10:15</strong> (15 minutes)</span></div>
+        <div class="schedule-row"><span class="schedule-label">Lunch</span><span class="schedule-value"><strong>from 12:00 to 1:00</strong></span></div>
+        <div class="schedule-row"><span class="schedule-label">Project check-in</span><span class="schedule-value"><strong>at quarter to nine</strong> every morning</span></div>
+        <div class="schedule-row"><span class="schedule-label">Training session</span><span class="schedule-value"><strong>from 2:00 to 4:00</strong> on alternate Wednesdays</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="h-serif">Reading Comprehension — Pair Discussion</p>
+    <div class="tip-box">
+      <div class="tip-label">🗣 Speak, don't write</div>
+      Discuss these questions with your partner. Answer in full sentences using the time expressions from this lesson.
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise — Pair Discussion (tap to reveal)</div>
+
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">1. What time does Priya finish work? What time does Marcus finish?</span>
+        <span class="reveal-a">✓ Priya: 6:00. Marcus: 4:30.</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">2. Marcus sometimes works overtime. Until what time?</span>
+        <span class="reveal-a">✓ Until 6:00</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">3. When does Sofia have her morning project check-in? What time is that?</span>
+        <span class="reveal-a">✓ At quarter to nine — 8:45</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">4. Who has the earliest start time?</span>
+        <span class="reveal-a">✓ Marcus — 7:30</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">5. Priya works from home on Fridays. When? Until what time?</span>
+        <span class="reveal-a">✓ From 9:00 to 1:00</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Speaking: My Work Schedule</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <!-- PART A -->
+    <p class="h-serif">Part A — Model First</p>
+    <div class="teacher-note">
+      <div class="teacher-note-label">👩‍🏫 Teacher models a response</div>
+      Use your own real schedule or make one up. Model both "quarter past / quarter to" and digital time naturally. Keep it to 60–90 seconds.
+    </div>
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👩‍🏫</div>
+        <div>
+          <div class="model-name">Teacher Model</div>
+          <div class="model-role">Sentence starters — fill in the blanks live</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"I work at [Company name]. My shift is from ______ to ______. I have a break at ______. My lunch is from ______ to ______. On [day], I have a meeting at ______. Sometimes I work until ______ when there is a deadline."</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PART B -->
+    <p class="h-serif">Part B — Student Speaking Round (Individual)</p>
+    <div class="info-box">
+      Each student talks for <strong>60 seconds</strong> about their work schedule. Use the sentence starters below. If a student does not work, they can describe an ideal or imaginary schedule.
+    </div>
+
+    <div class="starter-list">
+      <div class="starter-item">"My shift is from ______ to ______."</div>
+      <div class="starter-item">"I have a break at ______."</div>
+      <div class="starter-item">"My lunch is from ______ to ______."</div>
+      <div class="starter-item">"I have a meeting at ______."</div>
+      <div class="starter-item">"I usually finish at ______, but sometimes I work until ______."</div>
+      <div class="starter-item">"I am available from ______ to ______."</div>
+    </div>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">👩‍🏫 Teacher note</div>
+      After each student speaks, ask ONE follow-up question. Examples: "What time do you start? Do you work overtime? Do you use a calendar?" This keeps the conversation alive.
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PART C -->
+    <p class="h-serif">Part C — Partner Q&A (Pair Work)</p>
+    <p class="sec-intro">Students interview a partner using these questions. Each student takes turns asking and answering.</p>
+
+    <div class="qcard-grid">
+      <div class="qcard">1. "What time do you start work?"</div>
+      <div class="qcard">2. "What time do you finish?"</div>
+      <div class="qcard">3. "When is your lunch break?"</div>
+      <div class="qcard">4. "Do you have any meetings this week? What time?"</div>
+      <div class="qcard">5. "Do you ever work overtime? Until what time?"</div>
+      <div class="qcard">6. "What time are you usually free in the afternoon?"</div>
+    </div>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">👩‍🏫 Teacher note</div>
+      After pair work, ask 2–3 students to share something interesting they learned about their partner. E.g. "Maria works from 8 to 6!" "Carlos has a meeting every Monday at 7 am!"
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWriting() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Writing: Send a Schedule</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">Ahora vas a escribir un mensaje corto con tu horario. Usa las expresiones de tiempo del pre-aprendizaje. (Now you will write a short message with your schedule. Use the time expressions from the pre-learning.)</div>
+
+    <p class="h-serif">Context</p>
+    <div class="info-box">
+      Your international colleague, <strong>David Park</strong> (calling from Google's Seoul office), wants to schedule a video call with you this week. He asks:<br><br>
+      <em>"Hi! When are you available this week for a short call? What does your schedule look like?"</em>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">✍️ Write a short reply (4–6 sentences). Tell David:</div>
+      • When you are available (days + times)<br>
+      • When you are NOT available (mention a meeting or a busy period)<br>
+      • A specific time you suggest for the call
+    </div>
+
+    <textarea class="writing-area" id="scheduleWriting" placeholder="Hi David! I am available on..." oninput="updateWordCount(this,'wordCountDisplay')"></textarea>
+    <div class="word-count" id="wordCountDisplay">0 words</div>
+
+    <div class="divider"></div>
+
+    <p class="h-serif">Model Response</p>
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👨🏻‍💼</div>
+        <div>
+          <div class="model-name">Reference Example</div>
+          <div class="model-role">Not to copy — use as a style guide</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Hi David! I am available on Tuesday and Thursday this week. On Tuesday, I am free from 10 o'clock to 12:30. On Thursday, I have a meeting from 2 to 3, but I am free from 3 o'clock until 5. I suggest Thursday at quarter past three. Let me know if that works for you!"</div>
+      </div>
+    </div>
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">👩‍🏫 Teacher note</div>
+      Give students 5 minutes to write. Then ask 2–3 volunteers to read their messages. Class gives quick feedback — is the time expression correct? Is it clear?
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReview() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Quick Review</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="teacher-note">
+      <div class="teacher-note-label">👩‍🏫 Teacher runs a fast oral round</div>
+      Show each prompt. Students answer immediately. Tap each card to reveal the answer.
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise — Fast Oral Round (tap to reveal)</div>
+
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">1. "8:15 → ?"</span>
+        <span class="reveal-a">✓ quarter past eight</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">2. "11:45 → ?"</span>
+        <span class="reveal-a">✓ quarter to twelve</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">3. "I work ______ 9 ______ 6."</span>
+        <span class="reveal-a">✓ from / to</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">4. "She is in a meeting ______ 4 o'clock."</span>
+        <span class="reveal-a">✓ until</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">5. "The training is ______ 3 o'clock."</span>
+        <span class="reveal-a">✓ at</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+      <div class="reveal-item" onclick="toggleReveal(this)">
+        <span class="reveal-q">6. "7:50 → ?"</span>
+        <span class="reveal-a">✓ ten to eight</span>
+        <span class="reveal-hint">Tap to reveal</span>
+      </div>
+    </div>
+
+    <div class="tip-box" style="margin-top:20px;">
+      <div class="tip-label">🎉 Great work today!</div>
+      You practised speaking, reading, and writing about work schedules. See you in the next class — Lesson 9: Asking Simple Questions at Work!
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS — populated last ────────────────────────────────
+STEPS = [
+  { label: "1. Warm-Up",      fn: renderWarmup },
+  { label: "2. Listen",       fn: renderListenDiscuss },
+  { label: "3. Reading",      fn: renderReading },
+  { label: "4. Speaking",     fn: renderSpeaking },
+  { label: "5. Writing",      fn: renderWriting },
+  { label: "6. Review",       fn: renderReview },
+];
+
+render(); // always last
+</script>
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

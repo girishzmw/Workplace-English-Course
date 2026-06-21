@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asking Simple Questions at Work | A1 Unit 1, Lesson 9</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* AUDIO BOX (Pattern A — single player) */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · UNIT 1 · HOMEWORK</div>
+    <h1 class="hero-title">Asking Simple Questions at Work</h1>
+    <p class="hero-sub">Present Simple — Do / Does / Don't / Doesn't · 15 min independent practice</p>
+
+    <!-- OPTION B: Pills — use for Classwork / Homework files -->
+    <div class="hero-pills">
+      <span class="pill accent">✍️ Quiz</span>
+      <span class="pill accent">🎧 Listening</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">15 min</span>
+    </div>
+
+    <!-- OPTION B: Pills — use for Classwork / Homework files (swap with A above)
+    <div class="hero-pills">
+      <span class="pill accent">[Speaking X%]</span>
+      <span class="pill accent">[Writing X%]</span>
+      <span class="pill">[N sections]</span>
+      <span class="pill">[X min]</span>
+    </div>
+    -->
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block — never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly — not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START — replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── AUDIO STATE (Pattern A — single player) ───────────────
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+// Part A — Fill in the Blanks (Do/Does/Don't/Doesn't)
+const QUIZ_A = [
+  { type:'input', q:"_____ you have the schedule?",
+    hint: 'you = I/you/we/they, this is a question.',
+    answers: ['do'], display: 'Do',
+    fb: '"You" takes Do in questions — "Do you have the schedule?"' },
+  { type:'input', q:"She _____ work on Saturdays.",
+    hint: 'she = he/she/it, this is a negative.',
+    answers: ["doesn't","doesn't.","does not"], display: "doesn't",
+    fb: '"She" + negative = doesn\u2019t — "She doesn\u2019t work on Saturdays."' },
+  { type:'input', q:"_____ we have a meeting today?",
+    hint: 'we = I/you/we/they, this is a question.',
+    answers: ['do'], display: 'Do',
+    fb: '"We" takes Do in questions — "Do we have a meeting today?"' },
+  { type:'input', q:"He _____ check his email after 6 PM.",
+    hint: 'he = he/she/it, this is a negative.',
+    answers: ["doesn't","doesn't.","does not"], display: "doesn't",
+    fb: '"He" + negative = doesn\u2019t — "He doesn\u2019t check his email after 6 PM."' },
+  { type:'input', q:"_____ the client call before lunch?",
+    hint: 'the client = he/she/it, this is a question.',
+    answers: ['does'], display: 'Does',
+    fb: '"The client" takes Does in questions — "Does the client call before lunch?"' },
+  { type:'input', q:"I _____ have the report yet.",
+    hint: 'I = I/you/we/they, this is a negative.',
+    answers: ["don't","don't.","do not"], display: "don't",
+    fb: '"I" + negative = don\u2019t — "I don\u2019t have the report yet."' },
+];
+
+// Part B — Listening Comprehension
+const QUIZ_B = [
+  { type:'mc', q:"Where does Helena work?",
+    opts:['Microsoft, Lagos','Nestlé, Prague','Toyota, Osaka'],
+    answer: 1,
+    hint: 'Listen for the company name and city near the start.',
+    fb: 'Helena works at Nestlé in Prague.' },
+  { type:'tf', q:"Helena answers emails before 8 AM.",
+    answer: false,
+    hint: 'Listen for Helena\u2019s "rule" about email.',
+    fb: 'False — Helena checks her email every morning, but she doesn\u2019t answer messages before 8 AM. That\u2019s her rule.' },
+  { type:'input', q:"Who prepares the client documents?",
+    hint: 'Listen for Helena\u2019s coworker\u2019s name.',
+    answers: ['tomas'], display: 'Tomas',
+    fb: 'Tomas prepares the client documents, but he doesn\u2019t send them without checking with Helena first.' },
+  { type:'mc', q:"How often does Helena have a meeting?",
+    opts:['Every day','Mondays and Fridays','Tuesdays and Thursdays'],
+    answer: 2,
+    hint: 'Listen for the two specific days mentioned.',
+    fb: 'Helena doesn\u2019t have a meeting every day — only on Tuesdays and Thursdays.' },
+  { type:'tf', q:"The client doesn't call often.",
+    answer: false,
+    hint: 'Listen carefully — this is the opposite of what Helena says.',
+    fb: 'False — the client calls often, especially near the deadline.' },
+  { type:'input', q:"What does Helena always ask before a meeting?",
+    hint: 'It\u2019s a short question about a document.',
+    answers: ['do you have the report', 'do you have the report?'], display: 'Do you have the report?',
+    fb: 'Helena always asks, "Do you have the report?" before any meeting.' },
+];
+
+// Part D — Match the Question to the Answer
+const MATCH_PAIRS = [
+  { q: "Do you have the schedule?", a: "Yes, I do." },
+  { q: "Does she work on Saturdays?", a: "No, she doesn't." },
+  { q: "Do they check the report?", a: "Yes, they do." },
+  { q: "Does he answer emails late?", a: "No, he doesn't." },
+  { q: "Do we have a meeting today?", a: "No, we don't." },
+  { q: "Does the client call often?", a: "Yes, she does." },
+];
+
+// ── Per-part quiz state (Part A and Part B are independent quizzes) ──
+const qStateA = {}; let qScoreA = 0;
+const qStateB = {}; let qScoreB = 0;
+
+// ── Part D match state ─────────────────────────────────────
+let matchLeftOrder = [0,1,2,3,4,5];
+let matchRightOrder = [0,1,2,3,4,5];
+let matchSelectedLeft = null;
+const matchPairs = {}; // rightIndex chosen for each leftIndex once matched
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+// One function per step. Each returns HTML and ends with navFooter().
+// Rename, add, or remove to match your STEPS array at the bottom.
+
+function renderPartA() {
+  const answered = Object.values(qStateA).filter(s => s.revealed).length;
+  const pct = QUIZ_A.length ? (answered / QUIZ_A.length) * 100 : 0;
+  const allDone = answered === QUIZ_A.length;
+  const allCorrect = allDone && qScoreA === QUIZ_A.length;
+  const wrongCount = allDone ? QUIZ_A.length - qScoreA : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">A</div>
+      <div class="sec-badge-title">Fill in the Blanks</div>
+      <div class="sec-badge-time">4 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Complete each sentence with <strong>Do, Does, Don't,</strong> or <strong>Doesn't</strong>.</p>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ_A.length}</span>
+    </div>
+    ${QUIZ_A.map((q,i) => renderQ(q,i,'A')).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScoreA} / ${QUIZ_A.length}</div>
+      <div class="result-label">${qScoreA===QUIZ_A.length?'🎉 ¡Perfecto!':qScoreA>=QUIZ_A.length*0.7?'Good work!':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${qScoreA===QUIZ_A.length?'Outstanding — a perfect score!':'Retry the wrong answers to finish strong.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz('A')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartB() {
+  const answered = Object.values(qStateB).filter(s => s.revealed).length;
+  const pct = QUIZ_B.length ? (answered / QUIZ_B.length) * 100 : 0;
+  const allDone = answered === QUIZ_B.length;
+  const allCorrect = allDone && qScoreB === QUIZ_B.length;
+  const wrongCount = allDone ? QUIZ_B.length - qScoreB : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">B</div>
+      <div class="sec-badge-title">Listening Comprehension</div>
+      <div class="sec-badge-time">6 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">What I Do and Don't Do at Work</div>
+          <div class="audio-box-sub">Helena Novak, Account Manager at Nestlé, Prague · ~75 seconds</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://raw.githubusercontent.com/girishzmw/WP-Eng-Audio/main/A1-L9-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen?'block':'none'};">
+        <p>Good morning. My name is Helena, and I'm an Account Manager at Nestlé in Prague. Let me tell you about my day.</p>
+        <p>I do check my email every morning, but I don't answer messages before 8 AM — that's my rule. Does my manager call early? No, he doesn't. He usually calls after lunch.</p>
+        <p>My coworker Tomas prepares the client documents, but he doesn't send them without checking with me first. Do we have a meeting every day? No, we don't — only on Tuesdays and Thursdays.</p>
+        <p>Does the client call often? Yes, she calls often, especially near the deadline. I always ask, 'Do you have the report?' before any meeting. This helps us stay organized and avoid mistakes.</p>
+      </div>
+    </div>
+
+    <p class="sec-intro">Listen to the audio, then answer the questions below.</p>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ_B.length}</span>
+    </div>
+    ${QUIZ_B.map((q,i) => renderQ(q,i,'B')).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScoreB} / ${QUIZ_B.length}</div>
+      <div class="result-label">${qScoreB===QUIZ_B.length?'🎉 ¡Perfecto!':qScoreB>=QUIZ_B.length*0.7?'Good work!':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${qScoreB===QUIZ_B.length?'Outstanding — a perfect score!':'Listen again and retry the wrong answers.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz('B')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartC() {
+  const prompts = [
+    "Does your manager work on Sundays?",
+    "Do you check email on weekends?",
+    "Does your company send reports on Fridays?",
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">C</div>
+      <div class="sec-badge-title">Short Answer Writing</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Answer each question with a true short answer about your own job — use Do/Don't or Does/Doesn't.</p>
+    ${prompts.map((p,i) => `
+    <div class="ex-box">
+      <div class="ex-label">[Question ${i+1}]</div>
+      <p style="font-size:15px;font-weight:500;color:var(--navy);margin-bottom:10px;">${p}</p>
+      <textarea class="writing-area" style="min-height:60px;" placeholder="Write your short answer here…"></textarea>
+    </div>`).join('')}
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      A short answer is enough — "Yes, she does." or "No, I don't." You can add one more sentence if you want to explain.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartD() {
+  const rightOrder = [3,0,4,1,5,2]; // shuffled display order referencing MATCH_PAIRS index
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">D</div>
+      <div class="sec-badge-title">Match the Question to the Answer</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Tap a question on the left, then tap its matching answer on the right.</p>
+
+    <div class="match-grid">
+      <div class="match-header">Question</div>
+      <div></div>
+      <div class="match-header">Answer</div>
+
+      <div class="match-col">
+        ${MATCH_PAIRS.map((p,i) => {
+          const isMatched = matchPairs[i] !== undefined;
+          const isSelected = matchSelectedLeft === i;
+          let cls = 'match-item left';
+          if (isMatched) cls += ' matched'; else if (isSelected) cls += ' selected';
+          return `<div class="${cls}" onclick="${isMatched?'':`selectMatchLeft(${i})`}">${p.q}</div>`;
+        }).join('')}
+      </div>
+
+      <div class="match-arrow-col">
+        ${MATCH_PAIRS.map((_,i) => {
+          const isMatched = matchPairs[i] !== undefined;
+          return `<div class="match-arrow ${isMatched?'matched':''}">${isMatched?'✓':'→'}</div>`;
+        }).join('')}
+      </div>
+
+      <div class="match-col">
+        ${rightOrder.map((origIdx) => {
+          const isMatched = Object.values(matchPairs).includes(origIdx);
+          let cls = 'match-item right';
+          if (isMatched) cls += ' matched';
+          return `<div class="${cls}" onclick="${isMatched?'':`selectMatchRight(${origIdx})`}">${MATCH_PAIRS[origIdx].a}</div>`;
+        }).join('')}
+      </div>
+    </div>
+
+    ${Object.keys(matchPairs).length === MATCH_PAIRS.length ? `
+    <div class="quiz-result">
+      <div class="result-score">✓</div>
+      <div class="result-label">🎉 All matched!</div>
+      <div class="result-msg">Great work — you've completed the homework.</div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+
+
+// ── QUIZ ENGINE (part-aware — Part A and Part B are independent) ──
+function getQ(part) { return part==='A' ? QUIZ_A : QUIZ_B; }
+function getState(part) { return part==='A' ? qStateA : qStateB; }
+function setScore(part, val) { if(part==='A') qScoreA=val; else qScoreB=val; }
+
+function renderQ(q, i, part) {
+  const state = getState(part);
+  const s = state[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt('${part}',${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ('${part}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${part}-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp('${part}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp('${part}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${part}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(part,qi,j) { const st=getState(part); if(!st[qi])st[qi]={}; if(st[qi].revealed)return; st[qi].selected=j; rerender(part); }
+function revealQ(part,qi)      { const st=getState(part); if(!st[qi])st[qi]={}; st[qi].revealed=true; recalc(part); rerender(part); }
+function setInp(part,qi,v)     { const st=getState(part); if(!st[qi])st[qi]={}; st[qi].inputVal=v; }
+function revealInp(part,qi) {
+  const q=getQ(part)[qi]; const st=getState(part); if(!st[qi])st[qi]={};
+  const val=(st[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  st[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  st[qi].revealed=true; recalc(part); rerender(part);
+}
+function retakeQuiz(part) {
+  const quiz=getQ(part); const st=getState(part);
+  quiz.forEach((_,i) => {
+    const s=st[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(quiz[i].type==='mc')    ok=s.selected===quiz[i].answer;
+    else if(quiz[i].type==='tf')    ok=quiz[i].answer===(s.selected===0);
+    else if(quiz[i].type==='input') ok=s.correct;
+    if(!ok){ delete st[i]; }
+  });
+  recalc(part); rerender(part);
+  setTimeout(()=>{
+    const first=quiz.findIndex((_,i)=>!st[i]||!st[i].revealed);
+    const el=document.getElementById('qc-'+part+'-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc(part) {
+  const quiz=getQ(part); const st=getState(part);
+  let s=0;
+  quiz.forEach((q,i)=>{
+    const qs=st[i]; if(!qs||!qs.revealed)return;
+    if(q.type==='mc'&&qs.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(qs.selected===0))s++;
+    else if(q.type==='input'&&qs.correct)s++;
+  });
+  setScore(part, s);
+}
+function rerender(part) {
+  const stepFn = part==='A' ? renderPartA : renderPartB;
+  const si = STEPS.findIndex(s => s.fn === stepFn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = stepFn();
+}
+
+// ── AUDIO FUNCTIONS (Pattern A — single player) ───────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── MATCH EXERCISE ENGINE (Part D) ─────────────────────────
+function selectMatchLeft(i) {
+  matchSelectedLeft = i;
+  rerenderD();
+}
+function selectMatchRight(rightIdx) {
+  if (matchSelectedLeft === null) return;
+  if (matchSelectedLeft === rightIdx) {
+    matchPairs[matchSelectedLeft] = rightIdx;
+  }
+  matchSelectedLeft = null;
+  rerenderD();
+}
+function rerenderD() {
+  const di = STEPS.findIndex(s => s.fn === renderPartD);
+  if (currentStep === di) document.getElementById('mainContent').innerHTML = renderPartD();
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+// Edit labels and function names to match your lesson sections.
+// Add or remove entries freely — the nav builds itself automatically.
+STEPS = [
+  { label: "A. Fill in the Blanks", fn: renderPartA },
+  { label: "B. Listening",          fn: renderPartB },
+  { label: "C. Short Answers",      fn: renderPartC },
+  { label: "D. Match",              fn: renderPartD },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

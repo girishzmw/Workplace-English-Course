@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 10 — Review + Workplace Roleplay | A1 · Unit 1 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#1B2D4F;--gold:#C9972C;--gold-light:#D4AC45;--gold-bg:#FDF6E3;
+  --slate:#4A5568;--grey-blue:#6B7A8D;--off-white:#F7F9FC;--light-grey:#F0F4F8;
+  --border-grey:#D9E2EC;--steel:#B8C6D6;--white:#FFFFFF;
+  --green:#1A6B4A;--green-bg:#E8F5EE;--red:#B91C1C;--red-bg:#FEE2E2;--sky:#2E86AB;
+  --font-heading:Georgia,'Times New Roman',serif;
+  --font-body:'Lato',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--off-white);color:var(--slate);min-height:100vh;overflow-x:hidden;}
+
+/* SITE HEADER */
+.site-header{background:var(--navy);border-bottom:2px solid var(--gold);}
+.site-header-inner{max-width:900px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;justify-content:center;}
+.site-header-brand{font-family:var(--font-heading);font-size:22px;font-style:italic;color:var(--white);letter-spacing:0.02em;opacity:0.95;}
+
+/* HERO */
+.hero{background:var(--navy);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:rgba(44,130,173,0.14);}
+.hero::after{content:'';position:absolute;bottom:-40px;left:40px;width:200px;height:200px;border-radius:50%;background:rgba(201,151,44,0.10);}
+.hero-inner{max-width:900px;margin:0 auto;padding:48px 32px 40px;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,151,44,0.15);border:1px solid rgba(201,151,44,0.4);border-radius:20px;padding:5px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px;}
+.hero-title{font-family:var(--font-heading);font-size:clamp(26px,5vw,40px);color:var(--white);line-height:1.15;margin-bottom:6px;}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:28px;font-weight:300;}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap;}
+.pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:5px 14px;font-size:12px;color:rgba(255,255,255,0.7);}
+.pill.accent{background:rgba(201,151,44,0.2);border-color:rgba(201,151,44,0.4);color:var(--gold);}
+.progress-wrap{background:rgba(255,255,255,0.08);height:3px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--sky),var(--gold));transition:width 0.4s ease;}
+
+/* STEP NAV */
+.step-nav{background:var(--white);border-bottom:1px solid var(--border-grey);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+.step-nav-inner{max-width:900px;margin:0 auto;padding:0 32px;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.step-btn{padding:13px 16px;border:none;background:none;border-bottom:3px solid transparent;font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--grey-blue);cursor:pointer;white-space:nowrap;transition:all 0.15s;}
+.step-btn:hover{color:var(--sky);}
+.step-btn.active{border-bottom-color:var(--gold);color:var(--navy);font-weight:700;}
+
+/* MAIN */
+.main{max-width:900px;margin:0 auto;padding:36px 32px 80px;}
+@media(max-width:600px){.main{padding:20px 16px 60px;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.sc{animation:fadeUp 0.28s ease;}
+
+/* SECTION BADGE */
+.sec-badge{display:grid;grid-template-columns:52px 1fr auto;background:var(--navy);border-radius:8px;overflow:hidden;margin-bottom:24px;}
+.sec-badge-num{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.07);font-family:var(--font-heading);font-size:22px;color:var(--gold);padding:16px;}
+.sec-badge-title{display:flex;align-items:center;padding:16px 20px;font-family:var(--font-heading);font-size:17px;color:var(--white);}
+.sec-badge-time{display:flex;align-items:center;padding:16px 20px;font-size:12px;color:rgba(255,255,255,0.45);font-style:italic;white-space:nowrap;}
+.gold-rule{height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent);border:none;margin:0 0 24px;}
+
+/* INFO / TIP / ES-NOTE BOXES */
+.info-box{background:var(--off-white);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);border-left:4px solid var(--navy);border-right:1px solid var(--light-grey);padding:14px 18px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--slate);}
+.tip-box{background:var(--off-white);border-left:4px solid var(--gold);padding:12px 16px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--slate);}
+.tip-label{font-weight:700;color:var(--navy);margin-bottom:4px;font-size:13px;}
+.es-note{background:var(--gold-bg);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:10px 16px;font-size:13px;color:#7A5500;font-style:italic;margin-bottom:18px;line-height:1.6;}
+
+/* ACTIVITY CARD */
+.activity-card{background:var(--white);border:1px solid var(--border-grey);border-radius:12px;overflow:hidden;margin-bottom:22px;box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+.activity-card-head{background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.activity-card-title{font-family:var(--font-heading);font-size:17px;color:var(--white);}
+.activity-card-time{font-size:11px;color:rgba(255,255,255,0.55);background:rgba(255,255,255,0.1);border-radius:12px;padding:4px 12px;white-space:nowrap;letter-spacing:0.5px;}
+.activity-card-body{padding:20px 22px;}
+
+/* PROMPT CARD */
+.prompt-card{background:var(--navy);border-radius:10px;padding:20px;margin-bottom:18px;}
+.prompt-card-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:14px;}
+.prompt-item{display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+.prompt-item:last-child{border-bottom:none;}
+.prompt-num{background:var(--gold);color:var(--navy);border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.prompt-text{font-size:14px;color:var(--white);line-height:1.5;}
+.prompt-hint{font-size:12px;color:rgba(255,255,255,0.45);font-style:italic;margin-top:3px;}
+
+/* PROFILE CARDS */
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+@media(max-width:580px){.profile-grid{grid-template-columns:1fr;}}
+.profile-card{background:var(--white);border:1px solid var(--border-grey);border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+.profile-card-head{background:var(--navy);padding:14px 16px;display:flex;gap:12px;align-items:center;}
+.profile-card-num{background:var(--gold);color:var(--navy);border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;flex-shrink:0;align-self:flex-start;margin-top:2px;}
+.profile-emoji{font-size:26px;flex-shrink:0;}
+.profile-name{font-size:15px;font-weight:700;color:var(--white);font-family:var(--font-heading);line-height:1.2;}
+.profile-role{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px;}
+.profile-body{padding:14px 16px;}
+.profile-detail{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--light-grey);font-size:13px;align-items:flex-start;}
+.profile-detail:last-child{border-bottom:none;}
+.profile-detail-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:700;flex-shrink:0;min-width:58px;margin-top:1px;}
+.profile-detail-val{color:var(--slate);line-height:1.4;}
+
+/* SCENARIO CARD */
+.scenario-card{background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden;margin-bottom:14px;}
+.scenario-head{background:var(--sky);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;}
+.scenario-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--white);font-weight:700;}
+.scenario-tag{font-size:11px;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.15);border-radius:10px;padding:2px 10px;}
+.scenario-body{padding:16px 18px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+@media(max-width:560px){.scenario-body{grid-template-columns:1fr;}}
+.scenario-field-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-blue);margin-bottom:4px;}
+.scenario-field-val{font-size:15px;font-weight:700;color:var(--navy);}
+.scenario-field-sub{font-size:12px;color:var(--grey-blue);margin-top:2px;font-style:italic;}
+
+/* LANGUAGE BANK */
+.lang-bank{background:var(--light-grey);border:1px solid var(--border-grey);border-radius:10px;padding:18px;margin-bottom:18px;}
+.lang-bank-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);font-weight:700;margin-bottom:12px;}
+.lang-phrase{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border-grey);font-size:14px;}
+.lang-phrase:last-child{border-bottom:none;}
+.lang-phrase-en{font-weight:500;color:var(--navy);font-style:italic;}
+.lang-phrase-arrow{color:var(--steel);flex-shrink:0;}
+.lang-phrase-note{font-size:12px;color:var(--grey-blue);}
+
+/* CHECKLIST */
+.checklist{background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden;margin-bottom:20px;}
+.checklist-head{background:var(--navy);padding:12px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.checklist-item{display:flex;gap:14px;padding:12px 20px;border-bottom:1px solid var(--light-grey);align-items:flex-start;}
+.checklist-item:last-child{border-bottom:none;}
+.checklist-box{width:20px;height:20px;border:2px solid var(--border-grey);border-radius:4px;flex-shrink:0;margin-top:2px;}
+.checklist-text{font-size:14px;color:var(--navy);line-height:1.5;}
+.checklist-grammar{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:0.5px;display:block;margin-top:3px;}
+
+/* QUESTION BANK */
+.q-bank{background:var(--light-grey);border:1px solid var(--border-grey);border-radius:10px;padding:18px;margin-bottom:18px;}
+.q-bank-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--sky);font-weight:700;margin-bottom:12px;}
+.q-bank-item{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px dashed var(--border-grey);font-size:14px;}
+.q-bank-item:last-child{border-bottom:none;}
+.q-bank-num{font-size:11px;font-weight:700;color:var(--sky);min-width:20px;}
+.q-bank-text{font-style:italic;color:var(--navy);}
+
+/* TIMER BADGE */
+.timer-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(46,134,171,0.12);border:1px solid rgba(46,134,171,0.3);border-radius:14px;padding:4px 12px;font-size:12px;color:var(--sky);font-weight:700;margin-bottom:14px;}
+
+/* UTILITIES */
+.sec-intro{font-size:15px;color:var(--slate);margin-bottom:18px;line-height:1.7;}
+.h-serif{font-family:var(--font-heading);font-size:18px;color:var(--navy);margin-bottom:12px;margin-top:22px;}
+.divider{height:1px;background:var(--border-grey);margin:22px 0;}
+
+/* NAV FOOTER */
+.nav-footer{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:22px;border-top:1px solid var(--border-grey);gap:12px;}
+.nav-btn{padding:11px 24px;border-radius:7px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all 0.18s;}
+.nav-prev{background:var(--white);color:var(--navy);border:1.5px solid var(--border-grey);}
+.nav-prev:hover:not(:disabled){border-color:var(--gold);color:var(--navy);}
+.nav-prev:disabled{opacity:0.35;cursor:default;}
+.nav-next{background:var(--navy);color:var(--white);}
+.nav-next:hover:not(:disabled){background:var(--gold);color:var(--navy);}
+.nav-next:disabled{background:var(--border-grey);cursor:default;}
+.nav-center{font-size:12px;color:var(--grey-blue);}
+
+/* SITE FOOTER */
+.site-footer{background:var(--navy);border-top:1px solid rgba(201,151,44,0.3);margin-top:60px;}
+.site-footer-inner{max-width:900px;margin:0 auto;padding:20px 32px;display:flex;flex-direction:column;gap:6px;}
+.site-footer-credit{font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,0.75);}
+.site-footer-credit strong{color:var(--gold);font-weight:700;}
+.site-footer-credit a{color:var(--gold-light);text-decoration:none;}
+.site-footer-credit a:hover{text-decoration:underline;}
+.site-footer-legal{font-family:var(--font-body);font-size:10px;color:rgba(255,255,255,0.35);line-height:1.7;border-top:1px solid rgba(255,255,255,0.08);padding-top:10px;margin-top:4px;}
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — Classwork: pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Classwork</div>
+    <h1 class="hero-title">Lesson 10 — Review + Workplace Roleplay</h1>
+    <p class="hero-sub">Unit 1 Consolidation · 60 min · Teacher-led online group session</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">💬 Full conversation practice</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── PROFILE DATA — Activity 2 ─────────────────────────────────────────
+const PROFILES = [
+  {
+    num:'1', emoji:'🧑‍💼', pronoun:'He', poss:'His',
+    name:'Daniel Okafor', job:'Sales Manager', company:'Toyota', city:'Lagos', country:'Nigeria',
+    floor:'third', routine:'reviews client reports and attends sales calls', schedule:'8:00 to 5:00'
+  },
+  {
+    num:'2', emoji:'👩‍💼', pronoun:'She', poss:'Her',
+    name:'Sofia Andersson', job:'HR Assistant', company:'Nestlé', city:'Zurich', country:'Switzerland',
+    floor:'second', routine:'reviews job applications and sends contracts', schedule:'9:00 to 5:30'
+  },
+  {
+    num:'3', emoji:'👩‍💼', pronoun:'She', poss:'Her',
+    name:'Mei-Ling Chen', job:'Operations Coordinator', company:'Microsoft', city:'Taipei', country:'Taiwan',
+    floor:'fifth', routine:'attends team meetings and prepares weekly reports', schedule:'8:30 to 5:30'
+  },
+  {
+    num:'4', emoji:'🧑‍💼', pronoun:'He', poss:'His',
+    name:'James Osei', job:'Finance Analyst', company:'IKEA', city:'Accra', country:'Ghana',
+    floor:'fourth', routine:'analyzes budgets and sends financial reports', schedule:'7:00 to 4:00'
+  },
+  {
+    num:'5', emoji:'👩‍💼', pronoun:'She', poss:'Her',
+    name:'Yuna Kim', job:'Customer Service Specialist', company:'Samsung', city:'Seoul', country:'South Korea',
+    floor:'sixth', routine:'answers customer calls and updates the system', schedule:'9:00 to 6:00'
+  },
+  {
+    num:'6', emoji:'🧑‍💼', pronoun:'He', poss:'His',
+    name:'Thomas Beaumont', job:'Project Manager', company:'Airbus', city:'Toulouse', country:'France',
+    floor:'seventh', routine:'manages project timelines and meets with clients', schedule:'8:00 to 5:00'
+  },
+  {
+    num:'7', emoji:'👩‍💼', pronoun:'She', poss:'Her',
+    name:'Anika Patel', job:'Marketing Executive', company:'Unilever', city:'Mumbai', country:'India',
+    floor:'third', routine:'creates marketing campaigns and presents to clients', schedule:'9:00 to 5:30'
+  },
+  {
+    num:'8', emoji:'🧑‍💼', pronoun:'He', poss:'His',
+    name:'Lucas Ferreira', job:'IT Support Specialist', company:'Spotify', city:'Stockholm', country:'Sweden',
+    floor:'first', routine:'fixes technical issues and installs software', schedule:'8:00 to 4:00'
+  },
+];
+
+// ── SCENARIO DATA — Activity 3 ─────────────────────────────────────────
+const SCENARIOS = [
+  {
+    label:'Scenario A', tag:'Scheduling a meeting',
+    callerName:'Marcus Thompson', callerExt:'305',
+    receiverName:'Priya Kapoor', receiverExt:'212',
+    day:'Wednesday', date:'14th of March', time:'2:15 p.m.'
+  },
+  {
+    label:'Scenario B', tag:'Sharing contact information',
+    callerName:'Sofia Andersson', callerExt:'447',
+    receiverName:'Daniel Okafor', receiverExt:'583',
+    day:'Friday', date:'21st of April', time:'9:30 a.m.'
+  },
+  {
+    label:'Scenario C', tag:'Confirming a schedule',
+    callerName:'Yuna Kim', callerExt:'102',
+    receiverName:'Thomas Beaumont', receiverExt:'634',
+    day:'Monday', date:'3rd of June', time:'10:45 a.m.'
+  },
+];
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 1 — CLASS OVERVIEW
+// ═══════════════════════════════════════════════════════════════════════
+function renderOverview() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Class Overview</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">This is your final Classwork session for Unit 1. Today is about <strong>speaking</strong> — putting everything together in real conversations. There is no new grammar. The focus is on <strong>fluency, confidence, and combining structures naturally</strong>.</p>
+
+    <div class="info-box">
+      <strong>Lesson 10 is a consolidation class.</strong> Students have already completed the Pre-Learning grammar review. They know the structures. This session gives them the space and the pressure to use all of them together — in pairs, in groups, and individually — in a professional context.
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden;margin-bottom:22px;">
+      <div style="background:var(--navy);padding:12px 20px;display:grid;grid-template-columns:80px 1fr auto;gap:12px;align-items:center;">
+        <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;">Time</span>
+        <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;">Activity</span>
+        <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;">Focus</span>
+      </div>
+      ${[
+        ['5 min',  'Warm-Up — Pair Chat',               'Getting warmed up, Unit 1 recall'],
+        ['15 min', 'Activity 1 — Speed Networking',      'Full self-introduction, question forms'],
+        ['15 min', 'Activity 2 — Build a Coworker',      'Third person, he/she, possessives'],
+        ['15 min', 'Activity 3 — Numbers & Time Roleplay','Numbers, times, dates, phone language'],
+        ['10 min', 'Activity 4 — Final Simulation',      'Full 60–90 sec solo introduction'],
+      ].map(([time,act,focus]) => `
+        <div style="display:grid;grid-template-columns:80px 1fr auto;gap:12px;padding:12px 20px;border-bottom:1px solid var(--light-grey);align-items:center;">
+          <div style="font-size:12px;font-weight:700;color:var(--sky);">${time}</div>
+          <div style="font-size:14px;font-weight:600;color:var(--navy);">${act}</div>
+          <div style="font-size:12px;color:var(--grey-blue);text-align:right;">${focus}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📋 Teacher note — Setting expectations for this class</div>
+      Remind students at the start: <em>"Today we are not studying new grammar. Today we speak."</em> The goal is for every student to leave class able to hold a one-minute professional introduction entirely in English. Errors are expected and welcome — what matters is production, not perfection.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 2 — WARM-UP
+// ═══════════════════════════════════════════════════════════════════════
+function renderWarmUp() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Warm-Up — Pair Chat</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="timer-badge">⏱ 5 minutes · Pairs or open group</div>
+
+    <p class="sec-intro">Before the main activities, students activate Unit 1 language with a quick pair discussion. This is low-pressure — just a verbal switch to get everyone using English immediately.</p>
+
+    <div class="activity-card">
+      <div class="activity-card-head">
+        <div class="activity-card-title">💬 Warm-Up Prompt</div>
+        <div class="activity-card-time">5 min · Pairs</div>
+      </div>
+      <div class="activity-card-body">
+        <p style="font-size:15px;color:var(--slate);line-height:1.7;margin-bottom:18px;">Tell your partner <strong>three things about yourself</strong> using Unit 1 grammar. Cover these three points:</p>
+
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:14px;background:var(--light-grey);border-radius:8px;padding:12px 16px;">
+            <span style="font-size:22px;">1️⃣</span>
+            <div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy);">Your name and job title</div>
+              <div style="font-size:13px;color:var(--grey-blue);font-style:italic;margin-top:2px;">"My name is … I am a … at …"</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;background:var(--light-grey);border-radius:8px;padding:12px 16px;">
+            <span style="font-size:22px;">2️⃣</span>
+            <div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy);">Where you are from</div>
+              <div style="font-size:13px;color:var(--grey-blue);font-style:italic;margin-top:2px;">"I am from … The company is from …"</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;background:var(--light-grey);border-radius:8px;padding:12px 16px;">
+            <span style="font-size:22px;">3️⃣</span>
+            <div>
+              <div style="font-size:14px;font-weight:700;color:var(--navy);">One fact about your workspace</div>
+              <div style="font-size:13px;color:var(--grey-blue);font-style:italic;margin-top:2px;">"There is … on my floor." / "My desk is on the … floor."</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(46,134,171,0.08);border:1px solid rgba(46,134,171,0.2);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--sky);">
+          <strong>Partner task:</strong> After your partner speaks, ask them at least <strong>one question</strong> using "Do you…?" or "Are you…?" or "Is there…?"
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📋 Teacher note</div>
+      Keep this short and energetic — 2 minutes per pair, then bring the class back together. Ask 1–2 students to share one thing their partner said. This activates listening AND speaking from the start.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 3 — ACTIVITY 1: SPEED NETWORKING
+// ═══════════════════════════════════════════════════════════════════════
+function renderActivity1() {
+  const promptItems = [
+    { label:'Name', example:'"My name is …"', grammar:'Verb to be' },
+    { label:'Job title & company', example:'"I am a … at …"', grammar:'Verb to be' },
+    { label:'Nationality / origin', example:'"I am from …"', grammar:'Be + from' },
+    { label:'One office item', example:'"My desk is on the … floor. There is a … near …"', grammar:'There is / Possessives' },
+    { label:'One daily routine', example:'"Every day, I …"', grammar:'Present Simple' },
+    { label:'Work schedule', example:'"I work from … to …, with a break at …"', grammar:'Time expressions' },
+    { label:'One more detail (your choice)', example:'Anything from Unit 1!', grammar:'Free choice' },
+  ];
+
+  const questions = [
+    '"Do you work on weekends?"',
+    '"What time do you start work?"',
+    '"Do you have a cafeteria in your office?"',
+    '"Where are you from?"',
+    '"Is there a meeting room near your desk?"',
+    '"Do you attend team meetings every day?"',
+    '"What does your company do?"',
+    '"Do you work from home sometimes?"',
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Activity 1 — Speed Networking Roleplay</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="timer-badge">⏱ 15 minutes · Rotating pairs · Breakout rooms</div>
+
+    <p class="sec-intro">Students rotate in pairs in breakout rooms. Each round, both partners take turns giving a structured workplace introduction. The partner must ask at least <strong>two questions</strong> using Present Simple question forms before rotating.</p>
+
+    <div class="activity-card">
+      <div class="activity-card-head">
+        <div class="activity-card-title">🗣 Your Introduction — Cover All 7 Points</div>
+        <div class="activity-card-time">~90 sec per person</div>
+      </div>
+      <div class="activity-card-body">
+        <p style="font-size:14px;color:var(--slate);margin-bottom:16px;">Work through these seven points in order. You don't need to memorise a script — just use the prompts below to guide what you say.</p>
+
+        <div class="prompt-card">
+          <div class="prompt-card-label">Introduction prompt card — Speed Networking</div>
+          ${promptItems.map((item,i) => `
+            <div class="prompt-item">
+              <span class="prompt-num">${i+1}</span>
+              <div>
+                <div class="prompt-text"><strong>${item.label}</strong> — <em>${item.example}</em></div>
+                <div class="prompt-hint">Grammar: ${item.grammar}</div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="q-bank">
+      <div class="q-bank-label">Partner Question Bank — pick at least 2</div>
+      ${questions.map((q,i) => `
+        <div class="q-bank-item">
+          <span class="q-bank-num">${i+1}.</span>
+          <span class="q-bank-text">${q}</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📋 Teacher facilitation</div>
+      Run 2–3 rotation rounds of 5 minutes each. After each round, bring the class back and ask: <em>"What is one interesting thing you learned about your partner?"</em> This reinforces listening comprehension alongside speaking. Correct errors gently after the round — not during the conversation.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 4 — ACTIVITY 2: BUILD A COWORKER
+// ═══════════════════════════════════════════════════════════════════════
+function renderActivity2() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Activity 2 — Build a Coworker</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="timer-badge">⏱ 15 minutes · Individual speaking · Full group</div>
+
+    <p class="sec-intro">Each student receives a fictional character card. Using the information on the card, they introduce that person to the group in <strong>third person</strong> — practising he/she, his/her, and third-person singular verb forms.</p>
+
+    <div class="info-box">
+      <strong>Grammar targets for this activity:</strong>&nbsp; Subject pronouns (he/she) · Possessive adjectives (his/her) · Verb to be (He is…, She is…) · Be + from · Third person singular +s (He works…, She attends…) · Time expressions
+    </div>
+
+    <h3 class="h-serif" style="margin-top:0;">Introduction Template</h3>
+
+    <div class="prompt-card">
+      <div class="prompt-card-label">Use this structure to introduce your coworker</div>
+      <div class="prompt-item">
+        <span class="prompt-num">1</span>
+        <div>
+          <div class="prompt-text"><strong>Name & job</strong> — <em>"His/Her name is [NAME]. He/She is a [JOB TITLE] at [COMPANY]."</em></div>
+          <div class="prompt-hint">Grammar: Possessive adjective + Verb to be</div>
+        </div>
+      </div>
+      <div class="prompt-item">
+        <span class="prompt-num">2</span>
+        <div>
+          <div class="prompt-text"><strong>Origin</strong> — <em>"He/She is from [CITY], [COUNTRY]."</em></div>
+          <div class="prompt-hint">Grammar: Be + from</div>
+        </div>
+      </div>
+      <div class="prompt-item">
+        <span class="prompt-num">3</span>
+        <div>
+          <div class="prompt-text"><strong>Workspace</strong> — <em>"His/Her desk is on the [FLOOR] floor."</em></div>
+          <div class="prompt-hint">Grammar: Possessive adjective + There is/are</div>
+        </div>
+      </div>
+      <div class="prompt-item">
+        <span class="prompt-num">4</span>
+        <div>
+          <div class="prompt-text"><strong>Routine</strong> — <em>"Every day, he/she [ROUTINE]."</em></div>
+          <div class="prompt-hint">Grammar: Present Simple 3rd person (+s/es)</div>
+        </div>
+      </div>
+      <div class="prompt-item">
+        <span class="prompt-num">5</span>
+        <div>
+          <div class="prompt-text"><strong>Schedule</strong> — <em>"He/She works from [TIME] to [TIME]."</em></div>
+          <div class="prompt-hint">Grammar: Time expressions</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h-serif">Character Cards — Assign one card per student</h3>
+
+    <div class="profile-grid">
+      ${PROFILES.map(p => `
+        <div class="profile-card">
+          <div class="profile-card-head">
+            <span class="profile-card-num">Card ${p.num}</span>
+            <span class="profile-emoji">${p.emoji}</span>
+            <div>
+              <div class="profile-name">${p.name}</div>
+              <div class="profile-role">${p.job} · ${p.company}</div>
+            </div>
+          </div>
+          <div class="profile-body">
+            <div class="profile-detail">
+              <span class="profile-detail-label">From</span>
+              <span class="profile-detail-val">${p.city}, ${p.country}</span>
+            </div>
+            <div class="profile-detail">
+              <span class="profile-detail-label">Desk</span>
+              <span class="profile-detail-val">${p.poss} desk is on the ${p.floor} floor</span>
+            </div>
+            <div class="profile-detail">
+              <span class="profile-detail-label">Routine</span>
+              <span class="profile-detail-val">${p.pronoun} ${p.routine}</span>
+            </div>
+            <div class="profile-detail">
+              <span class="profile-detail-label">Hours</span>
+              <span class="profile-detail-val">${p.pronoun} works from ${p.schedule}</span>
+            </div>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📋 Teacher facilitation</div>
+      Assign one card per student (for a class of 6–8, use cards 1–8). After each student introduces their character, the class asks <strong>two follow-up questions</strong> using "Does he/she…?" or "Is he/she…?" This reinforces question forms AND third-person listening comprehension. Listen specifically for: (1) correct use of he/she vs his/her, (2) the +s on third-person verbs.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 5 — ACTIVITY 3: NUMBERS & TIME ROLEPLAY
+// ═══════════════════════════════════════════════════════════════════════
+function renderActivity3() {
+  const phoneLanguage = [
+    { en:'"Hello, this is [NAME] from [DEPARTMENT]."',        note:'How to open a call' },
+    { en:'"Good morning. Can I speak to [NAME], please?"',   note:'Asking for someone' },
+    { en:'"My extension is [NUMBER]."',                       note:'Sharing your extension' },
+    { en:'"What time is the meeting, please?"',               note:'Asking for the time' },
+    { en:'"The meeting is at [TIME] on [DAY]."',             note:'Giving the time + day' },
+    { en:'"The date is the [ORDINAL] of [MONTH]."',         note:'Saying a date (L9)' },
+    { en:'"Can you repeat that, please?"',                    note:'Asking for clarification' },
+    { en:'"Thank you. See you then. Goodbye."',               note:'Closing the call' },
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Activity 3 — Numbers & Time Roleplay</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="timer-badge">⏱ 15 minutes · Pairs · Phone-call style</div>
+
+    <p class="sec-intro">Pairs practise a short phone-call exchange using the scenarios below. One student is the <strong>caller (Person A)</strong>, the other is the <strong>receiver (Person B)</strong>. The goal is to exchange extension numbers, meeting times, and dates accurately — drawing on skills from Lessons 3, 4, 6, 8, and 9.</p>
+
+    <div class="lang-bank">
+      <div class="lang-bank-label">📞 Phone Call Language Bank</div>
+      ${phoneLanguage.map(p => `
+        <div class="lang-phrase">
+          <span class="lang-phrase-en">${p.en}</span>
+          <span class="lang-phrase-arrow">→</span>
+          <span class="lang-phrase-note">${p.note}</span>
+        </div>`).join('')}
+    </div>
+
+    <h3 class="h-serif">Roleplay Scenarios</h3>
+
+    ${SCENARIOS.map(s => `
+      <div class="scenario-card">
+        <div class="scenario-head">
+          <span class="scenario-label">${s.label}</span>
+          <span class="scenario-tag">${s.tag}</span>
+        </div>
+        <div class="scenario-body">
+          <div>
+            <div class="scenario-field-label">Person A — Caller</div>
+            <div class="scenario-field-val">${s.callerName}</div>
+            <div class="scenario-field-sub">Extension: ${s.callerExt}</div>
+          </div>
+          <div>
+            <div class="scenario-field-label">Person B — Receiver</div>
+            <div class="scenario-field-val">${s.receiverName}</div>
+            <div class="scenario-field-sub">Extension: ${s.receiverExt}</div>
+          </div>
+          <div>
+            <div class="scenario-field-label">Meeting details</div>
+            <div class="scenario-field-val">${s.time}</div>
+            <div class="scenario-field-sub">${s.day} · ${s.date}</div>
+          </div>
+        </div>
+      </div>`).join('')}
+
+    <div class="info-box">
+      <strong>How to run the roleplay:</strong><br><br>
+      <ol style="padding-left:18px;font-size:14px;line-height:2;">
+        <li><strong>Person A</strong> calls Person B using the language bank above.</li>
+        <li>Both students exchange their <strong>extension numbers</strong> clearly.</li>
+        <li>Person A tells Person B the <strong>meeting time, day, and date</strong>.</li>
+        <li>Person B must <strong>repeat the information back</strong> to confirm.</li>
+        <li>Close the call politely, then <strong>swap roles</strong> and use the next scenario.</li>
+      </ol>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📋 Teacher facilitation</div>
+      Run one scenario as a model with a volunteer before pairs start. After pairs complete Scenario A, bring everyone back and ask: <em>"What was the meeting time?"</em> / <em>"What was the date?"</em> to check accuracy. Common issues to watch for: incorrect ordinals ("fourteen" instead of "fourteenth"), wrong time format ("two fifteen" vs "fifteen past two"), skipping the article before the month ("the 14th of March").
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 6 — ACTIVITY 4: FINAL SIMULATION
+// ═══════════════════════════════════════════════════════════════════════
+function renderActivity4() {
+  const checklistItems = [
+    { text:'Your full name',                 grammar:'Verb to be — "My name is … / I am …"' },
+    { text:'Your job title and company',     grammar:'Verb to be — "I am a [title] at [company]."' },
+    { text:'Your nationality or origin',     grammar:'Be + from — "I am from …"' },
+    { text:'Your desk location or floor',    grammar:'Possessives — "My desk is on the … floor."' },
+    { text:'Something in your workspace',    grammar:'There is / There are — "There is a … near …"' },
+    { text:'One or two daily work routines', grammar:'Present Simple — "Every day, I … I also …"' },
+    { text:'Your work schedule',             grammar:'Time expressions — "I work from … to …, with a break at …"' },
+  ];
+
+  const feedbackPrompts = [
+    'Did your classmate use all seven points?',
+    'Did they use "I am" correctly? (not "I is" or "I are")',
+    'Did they say "There is" or "There are" correctly?',
+    'Did their routine verbs sound right? (check, attend, send…)',
+    'Did they use time expressions naturally? (at, from, to, until)',
+    'Was it easy to understand? Could you follow the introduction?',
+  ];
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Activity 4 — Full Workplace Introduction</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="timer-badge">⏱ 10 minutes · Individual · Full group</div>
+
+    <p class="sec-intro">Each student delivers a <strong>60–90 second uninterrupted introduction</strong> to the full group — as if they are at a professional networking event. This is the culmination of Unit 1. Every grammar structure from Lessons 1–9 should appear at least once.</p>
+
+    <div class="activity-card">
+      <div class="activity-card-head">
+        <div class="activity-card-title">🎤 Introduction Framework — 7 Checkpoints</div>
+        <div class="activity-card-time">60–90 seconds</div>
+      </div>
+      <div class="activity-card-body">
+        <p style="font-size:14px;color:var(--slate);margin-bottom:16px;">Prepare and deliver your introduction covering all seven points below. You have 60–90 seconds. Speak to the group — not to your notes.</p>
+
+        <div class="checklist">
+          <div class="checklist-head">Your Introduction Checklist</div>
+          ${checklistItems.map(item => `
+            <div class="checklist-item">
+              <div class="checklist-box"></div>
+              <div class="checklist-text">
+                ${item.text}
+                <span class="checklist-grammar">Grammar: ${item.grammar}</span>
+              </div>
+            </div>`).join('')}
+        </div>
+
+        <div style="background:var(--navy);border-radius:10px;padding:18px 20px;margin-top:4px;">
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;">Sample opening — adapt this to your own words</div>
+          <div style="font-size:15px;color:var(--white);font-style:italic;line-height:1.8;">"Hello, my name is [NAME]. I am a [JOB TITLE] at [COMPANY]. I am from [CITY/COUNTRY]. My desk is on the [Xth] floor — there is [OFFICE FEATURE] near my desk. Every day, I [ROUTINE], and I also [ROUTINE]. I usually work from [TIME] to [TIME], with a lunch break at [TIME]. It's a busy job, but I enjoy it!"</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h-serif">Peer Feedback — Listen while your classmates speak</h3>
+
+    <div class="q-bank">
+      <div class="q-bank-label">🧏 Listener Checklist — one question per classmate</div>
+      ${feedbackPrompts.map((p,i) => `
+        <div class="q-bank-item">
+          <span class="q-bank-num">${i+1}.</span>
+          <span class="q-bank-text">${p}</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Fluency over perfection</div>
+      At this stage of Unit 1, the goal is <strong>putting it all together</strong> — not achieving grammatical perfection. Every student who speaks for a full 60 seconds using Unit 1 structures has succeeded, regardless of how many small errors they make. Celebrate the attempt. Note errors, address the most common ones briefly at the end, and confirm: <em>"This is exactly what you will do in the real workplace."</em><br><br>
+      <span style="font-style:italic;color:var(--grey-blue);font-size:13px;">Fluidez sobre perfección. El estudiante que habla 60 segundos seguidos en inglés — aunque cometa errores — ha logrado el objetivo de esta lección.</span>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📋 Teacher wrap-up — closing the class (2 min)</div>
+      After the final simulation, take 2 minutes to celebrate the milestone: <em>"You have completed Unit 1. You can now introduce yourself, your team, your company, and your workspace entirely in English. That is a real skill. Unit 2 builds on everything you did today."</em> Remind students of their Homework before the next class.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEPS — populated last, after all renderers are defined
+// ═══════════════════════════════════════════════════════════════════════
+STEPS = [
+  { label: '1. Overview',          fn: renderOverview  },
+  { label: '2. Warm-Up',           fn: renderWarmUp    },
+  { label: '3. Speed Networking',  fn: renderActivity1 },
+  { label: '4. Build a Coworker',  fn: renderActivity2 },
+  { label: '5. Numbers & Time',    fn: renderActivity3 },
+  { label: '6. Final Simulation',  fn: renderActivity4 },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

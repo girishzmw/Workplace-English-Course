@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 10 — Review + Workplace Roleplay | A1 · Unit 1 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#1B2D4F;--gold:#C9972C;--gold-light:#D4AC45;--gold-bg:#FDF6E3;
+  --slate:#4A5568;--grey-blue:#6B7A8D;--off-white:#F7F9FC;--light-grey:#F0F4F8;
+  --border-grey:#D9E2EC;--steel:#B8C6D6;--white:#FFFFFF;
+  --green:#1A6B4A;--green-bg:#E8F5EE;--red:#B91C1C;--red-bg:#FEE2E2;--sky:#2E86AB;
+  --font-heading:Georgia,'Times New Roman',serif;
+  --font-body:'Lato',sans-serif;
+}
+body{font-family:var(--font-body);background:var(--off-white);color:var(--slate);min-height:100vh;overflow-x:hidden;}
+
+/* SITE HEADER */
+.site-header{background:var(--navy);border-bottom:2px solid var(--gold);}
+.site-header-inner{max-width:900px;margin:0 auto;padding:12px 32px;display:flex;align-items:center;justify-content:center;}
+.site-header-brand{font-family:var(--font-heading);font-size:22px;font-style:italic;color:var(--white);letter-spacing:0.02em;opacity:0.95;}
+
+/* HERO */
+.hero{background:var(--navy);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:rgba(44,130,173,0.14);}
+.hero::after{content:'';position:absolute;bottom:-40px;left:40px;width:200px;height:200px;border-radius:50%;background:rgba(201,151,44,0.10);}
+.hero-inner{max-width:900px;margin:0 auto;padding:48px 32px 40px;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,151,44,0.15);border:1px solid rgba(201,151,44,0.4);border-radius:20px;padding:5px 14px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px;}
+.hero-title{font-family:var(--font-heading);font-size:clamp(26px,5vw,40px);color:var(--white);line-height:1.15;margin-bottom:6px;}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:28px;font-weight:300;}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap;}
+.pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:5px 14px;font-size:12px;color:rgba(255,255,255,0.7);}
+.pill.accent{background:rgba(201,151,44,0.2);border-color:rgba(201,151,44,0.4);color:var(--gold);}
+.progress-wrap{background:rgba(255,255,255,0.08);height:3px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--sky),var(--gold));transition:width 0.4s ease;}
+
+/* STEP NAV */
+.step-nav{background:var(--white);border-bottom:1px solid var(--border-grey);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.05);}
+.step-nav-inner{max-width:900px;margin:0 auto;padding:0 32px;display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.step-btn{padding:13px 16px;border:none;background:none;border-bottom:3px solid transparent;font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--grey-blue);cursor:pointer;white-space:nowrap;transition:all 0.15s;}
+.step-btn:hover{color:var(--sky);}
+.step-btn.active{border-bottom-color:var(--gold);color:var(--navy);font-weight:700;}
+
+/* MAIN */
+.main{max-width:900px;margin:0 auto;padding:36px 32px 80px;}
+@media(max-width:600px){.main{padding:20px 16px 60px;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.sc{animation:fadeUp 0.28s ease;}
+
+/* SECTION BADGE */
+.sec-badge{display:grid;grid-template-columns:52px 1fr auto;background:var(--navy);border-radius:8px;overflow:hidden;margin-bottom:24px;}
+.sec-badge-num{display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.07);font-family:var(--font-heading);font-size:22px;color:var(--gold);padding:16px;}
+.sec-badge-title{display:flex;align-items:center;padding:16px 20px;font-family:var(--font-heading);font-size:17px;color:var(--white);}
+.sec-badge-time{display:flex;align-items:center;padding:16px 20px;font-size:12px;color:rgba(255,255,255,0.45);font-style:italic;white-space:nowrap;}
+.gold-rule{height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent);border:none;margin:0 0 24px;}
+
+/* INFO / TIP / ES-NOTE */
+.info-box{background:var(--off-white);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);border-left:4px solid var(--navy);border-right:1px solid var(--light-grey);padding:14px 18px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--slate);}
+.tip-box{background:var(--off-white);border-left:4px solid var(--gold);padding:12px 16px;margin-bottom:20px;font-size:14px;line-height:1.7;color:var(--slate);}
+.tip-label{font-weight:700;color:var(--navy);margin-bottom:4px;font-size:13px;}
+.es-note{background:var(--gold-bg);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:10px 16px;font-size:13px;color:#7A5500;font-style:italic;margin-bottom:18px;line-height:1.6;}
+
+/* CHECKLIST */
+.checklist{background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden;margin-bottom:20px;}
+.checklist-head{background:var(--navy);padding:12px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.checklist-item{display:flex;gap:14px;padding:13px 20px;border-bottom:1px solid var(--light-grey);align-items:flex-start;}
+.checklist-item:last-child{border-bottom:none;}
+.checklist-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.checklist-text{font-size:14px;color:var(--navy);line-height:1.5;}
+.checklist-es{font-size:12px;color:var(--grey-blue);font-style:italic;display:block;margin-top:3px;}
+.checklist-example{font-size:13px;color:var(--sky);font-style:italic;display:block;margin-top:4px;}
+
+/* EXAMPLE CARD */
+.example-card{background:var(--white);border:1px solid var(--border-grey);border-radius:14px;overflow:hidden;margin-bottom:8px;box-shadow:0 4px 18px rgba(0,0,0,0.07);}
+.example-card-head{padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.example-style-badge{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:4px 12px;border-radius:12px;white-space:nowrap;}
+.example-style-simple  {background:rgba(46,134,171,0.15);color:var(--sky);}
+.example-style-comfy   {background:rgba(26,107,74,0.12);color:var(--green);}
+.example-style-rich    {background:rgba(201,151,44,0.18);color:#8A6000;}
+.example-person{display:flex;align-items:center;gap:12px;}
+.example-emoji{font-size:28px;flex-shrink:0;}
+.example-name{font-family:var(--font-heading);font-size:16px;color:var(--navy);}
+.example-meta{font-size:12px;color:var(--grey-blue);margin-top:2px;}
+.example-stats{display:flex;gap:8px;flex-shrink:0;}
+.example-stat{font-size:11px;color:var(--grey-blue);background:var(--light-grey);border-radius:10px;padding:3px 10px;white-space:nowrap;}
+.example-script{background:var(--off-white);border-top:1px solid var(--border-grey);border-bottom:1px solid var(--border-grey);padding:22px 24px;font-size:15px;color:var(--navy);line-height:1.95;font-style:italic;}
+.example-script p{margin-bottom:10px;}
+.example-script p:last-child{margin-bottom:0;}
+.example-footer{padding:14px 22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.grammar-tag{background:rgba(201,151,44,0.12);border:1px solid rgba(201,151,44,0.35);border-radius:12px;padding:3px 11px;font-size:11px;color:#7A5500;font-weight:700;white-space:nowrap;}
+
+/* WRITING AREA */
+.writing-area{width:100%;min-height:200px;padding:16px;border:1.5px solid var(--border-grey);border-radius:8px;font-family:var(--font-body);font-size:15px;line-height:1.9;background:var(--white);resize:vertical;outline:none;color:var(--navy);transition:border-color 0.15s;}
+.writing-area:focus{border-color:var(--gold);}
+.word-count-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:12px;color:var(--grey-blue);}
+.word-count-num{font-weight:700;font-size:14px;transition:color 0.2s;}
+
+/* SUBMISSION BOX */
+.submit-box{background:var(--navy);border-radius:12px;padding:22px;margin-bottom:20px;}
+.submit-box-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.submit-box-icon{font-size:32px;flex-shrink:0;}
+.submit-box-title{font-family:var(--font-heading);font-size:18px;color:var(--white);margin-bottom:2px;}
+.submit-box-sub{font-size:12px;color:rgba(255,255,255,0.45);font-style:italic;}
+.submit-steps{display:flex;flex-direction:column;gap:10px;}
+.submit-step{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);border-radius:8px;}
+.submit-step-num{background:var(--gold);color:var(--navy);border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.submit-step-text{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.5;}
+.submit-step-es{font-size:12px;color:rgba(255,255,255,0.4);font-style:italic;display:block;margin-top:3px;}
+
+/* UTILITIES */
+.sec-intro{font-size:15px;color:var(--slate);margin-bottom:18px;line-height:1.7;}
+.h-serif{font-family:var(--font-heading);font-size:18px;color:var(--navy);margin-bottom:14px;margin-top:22px;}
+.divider{height:1px;background:var(--border-grey);margin:22px 0;}
+
+/* NAV FOOTER */
+.nav-footer{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:22px;border-top:1px solid var(--border-grey);gap:12px;}
+.nav-btn{padding:11px 24px;border-radius:7px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all 0.18s;}
+.nav-prev{background:var(--white);color:var(--navy);border:1.5px solid var(--border-grey);}
+.nav-prev:hover:not(:disabled){border-color:var(--gold);color:var(--navy);}
+.nav-prev:disabled{opacity:0.35;cursor:default;}
+.nav-next{background:var(--navy);color:var(--white);}
+.nav-next:hover:not(:disabled){background:var(--gold);color:var(--navy);}
+.nav-next:disabled{background:var(--border-grey);cursor:default;}
+.nav-center{font-size:12px;color:var(--grey-blue);}
+
+/* SITE FOOTER */
+.site-footer{background:var(--navy);border-top:1px solid rgba(201,151,44,0.3);margin-top:60px;}
+.site-footer-inner{max-width:900px;margin:0 auto;padding:20px 32px;display:flex;flex-direction:column;gap:6px;}
+.site-footer-credit{font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,0.75);}
+.site-footer-credit strong{color:var(--gold);font-weight:700;}
+.site-footer-credit a{color:var(--gold-light);text-decoration:none;}
+.site-footer-credit a:hover{text-decoration:underline;}
+.site-footer-legal{font-family:var(--font-body);font-size:10px;color:rgba(255,255,255,0.35);line-height:1.7;border-top:1px solid rgba(255,255,255,0.08);padding-top:10px;margin-top:4px;}
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — Homework: pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 1 · Homework</div>
+    <h1 class="hero-title">Lesson 10 — Your Workplace Introduction</h1>
+    <p class="hero-sub">Write · Record · Send · 15 min · Complete before next class</p>
+    <div class="hero-pills">
+      <span class="pill accent">✍️ Writing task</span>
+      <span class="pill accent">🎙️ Voice recording</span>
+      <span class="pill">3 example styles</span>
+      <span class="pill">~15 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────────────────
+let currentStep  = 0;
+let STEPS        = [];
+let writingText  = '';
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  // Restore writing area text if on Your Turn step
+  const ta = document.getElementById('writingArea');
+  if (ta) { ta.value = writingText; updateWordCount(); }
+}
+
+// ── WRITING AREA FUNCTIONS ─────────────────────────────────────────────
+function updateWriting() {
+  const ta = document.getElementById('writingArea');
+  if (ta) writingText = ta.value;
+  updateWordCount();
+}
+function updateWordCount() {
+  const words = writingText.trim() ? writingText.trim().split(/\s+/).length : 0;
+  const el = document.getElementById('wordCountNum');
+  if (!el) return;
+  el.textContent = words;
+  if (words === 0)        el.style.color = 'var(--grey-blue)';
+  else if (words < 50)    el.style.color = 'var(--gold)';
+  else if (words <= 150)  el.style.color = 'var(--green)';
+  else                    el.style.color = 'var(--sky)';
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 1 — INSTRUCTIONS
+// ═══════════════════════════════════════════════════════════════════════
+function renderInstructions() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">What You Need to Do</div>
+      <div class="sec-badge-time">2 min read</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">This is your Lesson 10 Homework. You will <strong>write a short workplace introduction about yourself</strong>, then <strong>record it as a voice message</strong> and send it to your teacher on WhatsApp before the next class.</p>
+
+    <div class="es-note">
+      Esta es tu tarea del Lesson 10. Vas a <strong>escribir una breve presentación profesional sobre ti mismo/a</strong> en inglés y luego <strong>grabarla como un mensaje de voz</strong> para enviársela a tu profesor/a por WhatsApp antes de la próxima clase.
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-head">Your introduction must include these three things</div>
+
+      <div class="checklist-item">
+        <span class="checklist-icon">1️⃣</span>
+        <div class="checklist-text">
+          <strong>Your name and your age</strong>
+          <span class="checklist-es">Tu nombre completo y tu edad.</span>
+          <span class="checklist-example">"My name is … I am … years old."</span>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <span class="checklist-icon">2️⃣</span>
+        <div class="checklist-text">
+          <strong>Your company and your job title</strong>
+          <span class="checklist-es">El nombre de tu empresa y tu título o profesión.</span>
+          <span class="checklist-example">"I am a [job title] at [company]." / "I work at [company]. I am a [job title]."</span>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <span class="checklist-icon">3️⃣</span>
+        <div class="checklist-text">
+          <strong>A short description of your typical workday</strong> — at least 3 sentences
+          <span class="checklist-es">Una breve descripción de tu día típico en el trabajo — mínimo 3 oraciones.</span>
+          <span class="checklist-example">"Every day, I … I also … I usually work from … to …"</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h-serif" style="margin-top:0;">Language to use — Unit 1 toolkit</h3>
+
+    <div class="es-note">
+      Usa este vocabulario y estas frases de la Unidad 1. No tienes que usarlas todas, pero intenta usar al menos cinco estructuras diferentes.
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border-grey);border-radius:10px;overflow:hidden;margin-bottom:20px;">
+      <div style="background:var(--navy);padding:12px 20px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;">English phrase</span>
+        <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;">Use it for…</span>
+      </div>
+      ${[
+        ['"My name is … / I am …"',                         'Your name (L1)'],
+        ['"I am [age] years old."',                          'Your age (L3 — cardinal numbers)'],
+        ['"I am a [job title] at [company]."',               'Your job (L1)'],
+        ['"I am from [city / country]."',                    'Where you are from (L3)'],
+        ['"My desk is on the … floor."',                     'Your workspace (L4 / L6)'],
+        ['"There is / There are …"',                         'Describing your office (L6)'],
+        ['"Every day, I … / I also …"',                     'Your daily routine (L7)'],
+        ['"I usually work from … to …"',                    'Your schedule (L8)'],
+        ['"I have a break at …"',                            'Break time (L8)'],
+        ['"On [day], I …"',                                  'Weekly events (L1 / L8)'],
+      ].map(([phrase, use]) => `
+        <div style="display:grid;grid-template-columns:1fr 1fr;padding:11px 20px;border-bottom:1px solid var(--light-grey);gap:8px;align-items:center;">
+          <div style="font-size:14px;font-style:italic;font-weight:500;color:var(--navy);">${phrase}</div>
+          <div style="font-size:13px;color:var(--grey-blue);">${use}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">📏 Length guide</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px;text-align:center;">
+        <div style="background:rgba(46,134,171,0.08);border:1px solid rgba(46,134,171,0.2);border-radius:8px;padding:12px;">
+          <div style="font-size:20px;font-weight:700;color:var(--sky);">~65</div>
+          <div style="font-size:12px;color:var(--slate);">words minimum</div>
+          <div style="font-size:11px;color:var(--grey-blue);margin-top:3px;font-style:italic;">35–40 seconds</div>
+        </div>
+        <div style="background:rgba(26,107,74,0.08);border:1px solid rgba(26,107,74,0.2);border-radius:8px;padding:12px;">
+          <div style="font-size:20px;font-weight:700;color:var(--green);">~105</div>
+          <div style="font-size:12px;color:var(--slate);">words target</div>
+          <div style="font-size:11px;color:var(--grey-blue);margin-top:3px;font-style:italic;">55–65 seconds</div>
+        </div>
+        <div style="background:rgba(201,151,44,0.08);border:1px solid rgba(201,151,44,0.2);border-radius:8px;padding:12px;">
+          <div style="font-size:20px;font-weight:700;color:var(--gold);">~150</div>
+          <div style="font-size:12px;color:var(--slate);">words stretch</div>
+          <div style="font-size:11px;color:var(--grey-blue);margin-top:3px;font-style:italic;">80–90 seconds</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:13px;font-style:italic;color:var(--grey-blue);">La duración ideal es entre 45 y 90 segundos. No te apresures — habla con calma y claridad.</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">👀 What to do next</div>
+      Before you write your own introduction, read all three examples in Steps 2, 3, and 4. Each one shows a different level of detail. Choose the style that feels right for you — or challenge yourself to go one level higher.<br><br>
+      <span style="font-size:13px;font-style:italic;color:var(--grey-blue);">Antes de escribir, lee los tres ejemplos en los Pasos 2, 3 y 4. Cada uno muestra un nivel diferente de detalle. Elige el estilo que se adapte mejor a tu nivel — o desafíate a ir un nivel más alto.</span>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 2 — EXAMPLE 1: SHORT AND SIMPLE
+// ═══════════════════════════════════════════════════════════════════════
+function renderExample1() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Example 1 — Short and Simple</div>
+      <div class="sec-badge-time">Study carefully</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">
+      Este es el primer ejemplo — el más corto. Es un buen modelo si el inglés es muy nuevo para ti. Las oraciones son cortas y directas. <strong>Esto también es válido y correcto.</strong> La claridad es más importante que la longitud.
+    </div>
+
+    <div class="example-card">
+      <div class="example-card-head" style="background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%);">
+        <div class="example-person">
+          <span class="example-emoji">🧑‍💼</span>
+          <div>
+            <div class="example-name" style="color:var(--white);">James Osei</div>
+            <div class="example-meta" style="color:rgba(255,255,255,0.55);">Finance Assistant · Deloitte · Accra, Ghana · Age 29</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+          <span class="example-style-badge example-style-simple">Short &amp; Simple</span>
+          <div class="example-stats">
+            <span class="example-stat" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);">~65 words</span>
+            <span class="example-stat" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);">~40 sec</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-script">
+        <p>Hello. My name is James Osei. I am twenty-nine years old. I work at Deloitte. I am a Finance Assistant. I am from Accra, in Ghana.</p>
+        <p>Every day, I check my emails first. Then I prepare financial reports. I usually work from seven o'clock to four o'clock. I have a lunch break at twelve thirty.</p>
+        <p>I like my job. The team is great!</p>
+      </div>
+
+      <div class="example-footer">
+        <span style="font-size:12px;color:var(--grey-blue);font-weight:700;margin-right:6px;">Grammar used:</span>
+        <span class="grammar-tag">Verb to be</span>
+        <span class="grammar-tag">Present Simple</span>
+        <span class="grammar-tag">Time expressions</span>
+        <span class="grammar-tag">Cardinal numbers</span>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>What makes this a good A1 introduction?</strong><br><br>
+      <ul style="padding-left:18px;font-size:14px;line-height:2.1;">
+        <li>Every sentence is short and complete — no unfinished ideas.</li>
+        <li>The three required elements are all there: name + age ✓ · job + company ✓ · workday description ✓</li>
+        <li>The grammar is simple but <em>correct</em> — that is what matters most at A1.</li>
+        <li>It is natural and easy to understand when spoken aloud.</li>
+      </ul>
+      <div style="margin-top:12px;font-size:13px;font-style:italic;color:var(--grey-blue);">
+        ¿Por qué este es un buen ejemplo? Cada oración es corta y completa. Los tres elementos requeridos están presentes. La gramática es sencilla pero correcta. Es fácil de entender al hablar. En inglés, <strong>la simplicidad correcta es mejor que la complejidad con errores.</strong>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🔍 Notice — how James talks about his workday</div>
+      He uses three sentences for his routine: <em>"Every day, I check my emails first. Then I prepare financial reports. I usually work from… I have a break at…"</em><br>
+      Notice: <strong>"check"</strong> and <strong>"prepare"</strong> — no -s because the subject is "I".<br><br>
+      <span style="font-size:13px;font-style:italic;color:var(--grey-blue);">Observa que James usa "check" y "prepare" sin -s porque el sujeto es "I". El -s solo se agrega con he/she/it.</span>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 3 — EXAMPLE 2: COMFORTABLE A1
+// ═══════════════════════════════════════════════════════════════════════
+function renderExample2() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Example 2 — Comfortable A1</div>
+      <div class="sec-badge-time">Study carefully</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">
+      Este es el segundo ejemplo — el nivel objetivo para la mayoría de los estudiantes. <strong>Apunta a este nivel.</strong> Hay más detalle, más conectores ("and", "but", "also") y un uso más natural de las estructuras de la Unidad 1.
+    </div>
+
+    <div class="example-card">
+      <div class="example-card-head" style="background:linear-gradient(135deg,#1A6B4A 0%,var(--navy) 100%);">
+        <div class="example-person">
+          <span class="example-emoji">👩‍💼</span>
+          <div>
+            <div class="example-name" style="color:var(--white);">Anika Patel</div>
+            <div class="example-meta" style="color:rgba(255,255,255,0.55);">Marketing Coordinator · Unilever · Mumbai, India · Age 33</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+          <span class="example-style-badge example-style-comfy">Comfortable A1</span>
+          <div class="example-stats">
+            <span class="example-stat" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);">~105 words</span>
+            <span class="example-stat" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);">~60 sec</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-script">
+        <p>Hello, my name is Anika Patel and I am thirty-three years old. I am a Marketing Coordinator at Unilever. I am from Mumbai, in India. Our head office is in London, but my office is here in Mumbai.</p>
+        <p>Every day, I check my emails and I attend a team meeting at nine o'clock. I also prepare marketing presentations for our clients. I usually work from nine to five thirty, with a lunch break at one o'clock. On Mondays, I have a meeting with my manager.</p>
+        <p>I enjoy my job. It is busy, but it is very interesting!</p>
+      </div>
+
+      <div class="example-footer">
+        <span style="font-size:12px;color:var(--grey-blue);font-weight:700;margin-right:6px;">Grammar used:</span>
+        <span class="grammar-tag">Verb to be</span>
+        <span class="grammar-tag">Be + from</span>
+        <span class="grammar-tag">Possessives</span>
+        <span class="grammar-tag">Present Simple</span>
+        <span class="grammar-tag">Time expressions</span>
+        <span class="grammar-tag">Days of the week</span>
+        <span class="grammar-tag">Connectors (but · and · also)</span>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>What makes this a stronger introduction?</strong><br><br>
+      <ul style="padding-left:18px;font-size:14px;line-height:2.1;">
+        <li><strong>Connectors:</strong> "and", "but", "also" — sentences flow more naturally together.</li>
+        <li><strong>Possessive adjective:</strong> <em>"Our head office is in London, but <u>my</u> office is here in Mumbai."</em> — this shows awareness of place and company structure.</li>
+        <li><strong>Days of the week:</strong> <em>"On Mondays, I have a meeting…"</em> — adds professional detail.</li>
+        <li><strong>Closing sentence:</strong> <em>"It is busy, but it is very interesting!"</em> — personal voice makes it engaging.</li>
+      </ul>
+      <div style="margin-top:12px;font-size:13px;font-style:italic;color:var(--grey-blue);">
+        ¿Qué hace que este ejemplo sea más sólido? Usa conectores ("and", "but", "also") para que las oraciones fluyan. Incluye los días de la semana para agregar detalle profesional. La última oración añade una voz personal. <strong>Este es el nivel objetivo para la mayoría de los estudiantes.</strong>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🔍 Notice — the contrast with "but"</div>
+      Anika says: <em>"Our head office is in London, <strong>but</strong> my office is here in Mumbai."</em><br>
+      The connector "but" introduces a contrast — something different or surprising. It is a simple word that makes your English sound much more natural.<br><br>
+      <span style="font-size:13px;font-style:italic;color:var(--grey-blue);">El conector "but" introduce un contraste — algo diferente o sorprendente. Es una palabra sencilla que hace que tu inglés suene mucho más natural.</span>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 4 — EXAMPLE 3: RICH A1
+// ═══════════════════════════════════════════════════════════════════════
+function renderExample3() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Example 3 — Rich A1</div>
+      <div class="sec-badge-time">Study carefully</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">
+      Este es el tercer ejemplo — el más completo y detallado. Es un nivel de desafío. <strong>Si puedes escribir algo así — ¡excelente trabajo!</strong> Usa casi todas las estructuras de la Unidad 1 de manera natural en un solo texto. No es obligatorio alcanzar este nivel, pero es una meta poderosa.
+    </div>
+
+    <div class="example-card">
+      <div class="example-card-head" style="background:linear-gradient(135deg,#8A6000 0%,var(--navy) 100%);">
+        <div class="example-person">
+          <span class="example-emoji">🧑‍💼</span>
+          <div>
+            <div class="example-name" style="color:var(--white);">Thomas Beaumont</div>
+            <div class="example-meta" style="color:rgba(255,255,255,0.55);">Project Manager · Airbus · Toulouse, France · Age 38</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+          <span class="example-style-badge example-style-rich">Rich A1 ⭐</span>
+          <div class="example-stats">
+            <span class="example-stat" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);">~150 words</span>
+            <span class="example-stat" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);">~85 sec</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-script">
+        <p>Good morning! My name is Thomas Beaumont and I am thirty-eight years old. I am a Project Manager at Airbus. I am from Toulouse, in France. Airbus is a very large company — there are offices in many countries.</p>
+        <p>My desk is on the seventh floor. There is a meeting room next to my desk and there are two printers near reception.</p>
+        <p>Every day, I check my emails first. Then I attend a project meeting with my team. I also send reports to our clients and I prepare timelines for new projects. I work from eight o'clock to five o'clock, Monday to Friday. On Wednesdays, I have a call with our team in Hamburg.</p>
+        <p>My job is challenging, but I love it. The projects are very interesting and the team is excellent!</p>
+      </div>
+
+      <div class="example-footer">
+        <span style="font-size:12px;color:var(--grey-blue);font-weight:700;margin-right:6px;">Grammar used:</span>
+        <span class="grammar-tag">Verb to be</span>
+        <span class="grammar-tag">Be + from</span>
+        <span class="grammar-tag">Possessives</span>
+        <span class="grammar-tag">There is / There are</span>
+        <span class="grammar-tag">Present Simple</span>
+        <span class="grammar-tag">Time expressions</span>
+        <span class="grammar-tag">Days of the week</span>
+        <span class="grammar-tag">Ordinal numbers</span>
+        <span class="grammar-tag">Connectors</span>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>What makes this a rich A1 introduction?</strong><br><br>
+      <ul style="padding-left:18px;font-size:14px;line-height:2.1;">
+        <li><strong>There is / There are:</strong> <em>"There are offices in many countries."</em> / <em>"There is a meeting room next to my desk."</em></li>
+        <li><strong>Workspace description:</strong> A whole paragraph describing his floor and office — this uses L5 and L6 vocabulary naturally.</li>
+        <li><strong>Multiple routines:</strong> Four different actions in the workday section — check, attend, send, prepare — all with correct Present Simple forms.</li>
+        <li><strong>International context:</strong> <em>"On Wednesdays, I have a call with our team in Hamburg."</em> — professional, realistic, world-aware.</li>
+        <li><strong>Every Unit 1 grammar structure</strong> appears at least once.</li>
+      </ul>
+      <div style="margin-top:12px;font-size:13px;font-style:italic;color:var(--grey-blue);">
+        ¿Qué hace que este sea un ejemplo rico? Usa "there is / there are" para describir la oficina. Describe el espacio de trabajo con detalle. Incluye cuatro acciones diferentes en la rutina diaria. Tiene contexto internacional. <strong>Cada estructura gramatical de la Unidad 1 aparece al menos una vez.</strong>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🔍 Notice — "There is" vs "There are" in context</div>
+      Thomas uses both in the same paragraph:<br>
+      <em>"<strong>There is</strong> a meeting room next to my desk"</em> — singular → there is<br>
+      <em>"<strong>There are</strong> two printers near reception"</em> — plural → there are<br><br>
+      This is the most common A1 error with this structure. If you can control both correctly in your recording — excellent work.<br><br>
+      <span style="font-size:13px;font-style:italic;color:var(--grey-blue);">Thomas usa las dos formas en el mismo párrafo. "There is" con sustantivo singular. "There are" con sustantivo plural. Si puedes controlar las dos correctamente en tu grabación — ¡excelente trabajo!</span>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEP 5 — YOUR TURN: WRITE & RECORD
+// ═══════════════════════════════════════════════════════════════════════
+function renderYourTurn() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Your Turn — Write, Record & Send</div>
+      <div class="sec-badge-time">~15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Now it is your turn. Write your own workplace introduction below, then record it and send it to your teacher on WhatsApp. Look at the examples if you need a model — that is completely fine.</p>
+
+    <div class="es-note">
+      Ahora es tu turno. Escribe tu propia presentación profesional en el espacio de abajo. Después, grábala como mensaje de voz y envíasela a tu profesor/a por WhatsApp. Puedes consultar los ejemplos cuando lo necesites — eso es completamente válido.
+    </div>
+
+    <div class="checklist" style="margin-bottom:20px;">
+      <div class="checklist-head">Before you write — quick checklist</div>
+      <div class="checklist-item">
+        <span class="checklist-icon">✅</span>
+        <div class="checklist-text">
+          Include your <strong>name and age</strong>
+          <span class="checklist-es">Incluye tu nombre completo y tu edad.</span>
+          <span class="checklist-example">"My name is … and I am … years old."</span>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-icon">✅</span>
+        <div class="checklist-text">
+          Include your <strong>company and job title</strong>
+          <span class="checklist-es">Incluye el nombre de tu empresa y tu título o profesión.</span>
+          <span class="checklist-example">"I am a [job title] at [company]." / "I work at [company] as a [job title]."</span>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-icon">✅</span>
+        <div class="checklist-text">
+          Describe your <strong>typical workday</strong> — at least 3 sentences
+          <span class="checklist-es">Describe tu día típico de trabajo — al menos 3 oraciones.</span>
+          <span class="checklist-example">"Every day, I … I also … I usually work from … to …"</span>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <span class="checklist-icon">✅</span>
+        <div class="checklist-text">
+          Use <strong>at least 4 different Unit 1 grammar structures</strong>
+          <span class="checklist-es">Usa al menos 4 estructuras gramaticales diferentes de la Unidad 1.</span>
+          <span class="checklist-example">verb to be · be + from · there is/are · present simple · time expressions · possessives</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h-serif" style="margin-top:0;">Write your introduction here</h3>
+
+    <div class="es-note">
+      Escribe tu borrador aquí. No te preocupes por los errores — primero escribe, después revisa. El objetivo es producir un texto completo que puedas leer en voz alta.
+    </div>
+
+    <textarea
+      class="writing-area"
+      id="writingArea"
+      placeholder="Start writing here… / Empieza a escribir aquí…&#10;&#10;Hello, my name is …"
+      oninput="updateWriting()"
+    ></textarea>
+    <div class="word-count-row">
+      <span style="font-style:italic;color:var(--grey-blue);font-size:12px;">50–150 words is the target / 50–150 palabras es el objetivo</span>
+      <span class="word-count-num"><span id="wordCountNum" style="color:var(--grey-blue);">0</span> words</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <h3 class="h-serif">Recording tips — before you press record</h3>
+
+    <div class="es-note">
+      Antes de grabar, lee estos consejos. Una buena grabación es más importante que un texto perfecto.
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+      ${[
+        ['🗣️', 'Speak clearly and slowly',           'This is not a race. Clear speech is more important than speed.',      'No es una carrera. Hablar con claridad es más importante que la velocidad.'],
+        ['📄', 'Read from your notes — that is fine', 'At A1 level, reading your introduction aloud is completely normal.',  'En el nivel A1, leer tu presentación en voz alta es completamente normal.'],
+        ['🎙️', 'Record a practice run first',        'Record once to check how you sound. Then record your final version.', 'Graba una vez para escucharte. Después, graba tu versión final.'],
+        ['⏱️', 'Aim for 45–90 seconds',               'Too short means missing content. Too long means losing focus.',       'Muy corto = falta contenido. Muy largo = pérdida de enfoque.'],
+        ['🔇', 'Find a quiet place to record',         'Background noise makes it harder to evaluate your pronunciation.',   'El ruido de fondo dificulta la evaluación de tu pronunciación.'],
+      ].map(([icon, title, en, es]) => `
+        <div style="display:flex;gap:14px;background:var(--white);border:1px solid var(--border-grey);border-radius:8px;padding:13px 16px;align-items:flex-start;">
+          <span style="font-size:20px;flex-shrink:0;">${icon}</span>
+          <div>
+            <div style="font-size:14px;font-weight:700;color:var(--navy);">${title}</div>
+            <div style="font-size:13px;color:var(--slate);margin-top:3px;">${en}</div>
+            <div style="font-size:12px;color:var(--grey-blue);font-style:italic;margin-top:3px;">${es}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <div class="submit-box">
+      <div class="submit-box-head">
+        <div class="submit-box-icon">📲</div>
+        <div>
+          <div class="submit-box-title">How to submit your recording</div>
+          <div class="submit-box-sub">Send your voice message on WhatsApp before your next class</div>
+        </div>
+      </div>
+      <div class="submit-steps">
+        <div class="submit-step">
+          <span class="submit-step-num">1</span>
+          <div class="submit-step-text">
+            Open WhatsApp and find your teacher's chat or your class group.
+            <span class="submit-step-es">Abre WhatsApp y encuentra el chat de tu profesor/a o el grupo de la clase.</span>
+          </div>
+        </div>
+        <div class="submit-step">
+          <span class="submit-step-num">2</span>
+          <div class="submit-step-text">
+            Press and hold the microphone icon 🎙️ to record your voice message.
+            <span class="submit-step-es">Mantén presionado el ícono del micrófono 🎙️ para grabar tu mensaje de voz.</span>
+          </div>
+        </div>
+        <div class="submit-step">
+          <span class="submit-step-num">3</span>
+          <div class="submit-step-text">
+            Read your introduction clearly and at a comfortable pace. When you finish, release the button to send.
+            <span class="submit-step-es">Lee tu presentación con claridad y a un ritmo cómodo. Cuando termines, suelta el botón para enviar.</span>
+          </div>
+        </div>
+        <div class="submit-step">
+          <span class="submit-step-num">4</span>
+          <div class="submit-step-text">
+            Send before your next class. ¡Buena suerte — you can do this!
+            <span class="submit-step-es">Envía antes de la próxima clase. ¡Tú puedes hacerlo!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Final encouragement</div>
+      You have completed Unit 1. You have studied 10 lessons, learned essential workplace grammar and vocabulary, and now you are producing real English. <strong>Recording your voice and sending it is the most important step.</strong> Your teacher is not looking for perfection — they are looking for progress.<br><br>
+      <span style="font-size:13px;font-style:italic;color:var(--grey-blue);">Has completado la Unidad 1. Grabarte y enviar el mensaje de voz es el paso más importante. Tu profesor/a no busca perfección — busca progreso. <strong>¡Felicitaciones por llegar hasta aquí!</strong></span>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════
+// STEPS — populated last, after all renderers are defined
+// ═══════════════════════════════════════════════════════════════════════
+STEPS = [
+  { label: '1. Instructions',  fn: renderInstructions },
+  { label: '2. Example 1',     fn: renderExample1     },
+  { label: '3. Example 2',     fn: renderExample2     },
+  { label: '4. Example 3',     fn: renderExample3     },
+  { label: '5. Your Turn',     fn: renderYourTurn     },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

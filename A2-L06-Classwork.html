@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Office Communication Channels — Classwork | A2 · Unit 1 · Lesson 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAV */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SEC BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* BLOCKS */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:22px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:12px; }
+
+/* TEACHER BOX */
+.teacher-box { background:var(--navy); border-radius:10px; padding:18px 22px; margin-bottom:18px; display:flex; gap:14px; align-items:flex-start; }
+.teacher-icon { font-size:24px; flex-shrink:0; margin-top:2px; }
+.teacher-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px; }
+.teacher-text { font-size:14px; color:rgba(255,255,255,0.85); line-height:1.7; }
+.teacher-text em { color:var(--gold); font-style:normal; }
+
+/* PROMPT LIST */
+.prompt-list { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+.prompt-item { display:flex; gap:12px; align-items:flex-start; padding:13px 16px; background:var(--white); border:1px solid var(--border-grey); border-radius:8px; }
+.prompt-num { background:var(--navy); color:var(--gold); border-radius:4px; padding:2px 8px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.prompt-text { font-size:14px; color:var(--navy); line-height:1.6; font-style:italic; }
+
+/* SENTENCE STARTERS */
+.starters-wrap { background:var(--navy); border-radius:10px; padding:18px 22px; margin-bottom:20px; }
+.starters-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:14px; }
+.starter-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:14px; }
+.starter-item:last-child { border-bottom:none; padding-bottom:0; }
+.starter-bullet { color:var(--gold); font-weight:700; flex-shrink:0; }
+.starter-text { color:rgba(255,255,255,0.85); font-style:italic; }
+.starter-text strong { color:var(--gold); font-style:normal; }
+
+/* EMAIL THREAD */
+.thread-wrap { margin-bottom:24px; }
+.email-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.email-head { background:var(--light-grey); border-bottom:1px solid var(--border-grey); padding:12px 18px; }
+.email-meta { font-size:12px; color:var(--grey-blue); line-height:1.8; }
+.email-meta strong { color:var(--navy); font-weight:700; }
+.email-subject { font-size:13px; font-weight:700; color:var(--navy); margin-top:4px; }
+.email-body { padding:16px 18px; font-size:14px; color:var(--slate); line-height:1.8; }
+.email-body .hi { color:var(--navy); font-weight:500; margin-bottom:8px; display:block; }
+.email-body .sig { color:var(--grey-blue); font-size:13px; margin-top:8px; display:block; }
+.email-body em { color:var(--sky); font-style:normal; font-weight:600; }
+.thread-connector { display:flex; align-items:center; gap:10px; padding:0 18px; margin-bottom:12px; }
+.thread-line { flex:1; height:1px; background:var(--border-grey); }
+.thread-arrow { font-size:12px; color:var(--steel); white-space:nowrap; }
+
+/* ROLEPLAY CARDS */
+.roleplay-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+@media(max-width:580px){ .roleplay-grid{ grid-template-columns:1fr; } }
+.role-card { border-radius:10px; overflow:hidden; border:1px solid var(--border-grey); }
+.role-card-head { padding:14px 18px; display:flex; align-items:center; gap:10px; }
+.role-card-head.leader { background:var(--navy); }
+.role-card-head.member { background:var(--sky); }
+.role-tag { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.6); }
+.role-name { font-size:15px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.role-emoji { font-size:22px; }
+.role-card-body { padding:16px 18px; background:var(--white); }
+.role-task { font-size:13px; color:var(--slate); line-height:1.7; }
+.role-task strong { color:var(--navy); }
+
+/* PHRASES BOARD */
+.phrases-board { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:10px; padding:18px 22px; margin-bottom:20px; }
+.phrases-board-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:14px; }
+.phrase-item { display:flex; align-items:baseline; gap:10px; padding:6px 0; font-size:14px; border-bottom:1px dashed rgba(201,151,44,0.25); }
+.phrase-item:last-child { border-bottom:none; padding-bottom:0; }
+.phrase-bullet { color:var(--gold); font-weight:700; flex-shrink:0; }
+.phrase-text { color:#5A3E00; font-style:italic; }
+.phrase-text strong { color:var(--navy); font-style:normal; }
+
+/* SCAFFOLD BOX */
+.scaffold-box { background:var(--off-white); border:1px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:16px; }
+.scaffold-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--grey-blue); font-weight:700; margin-bottom:10px; }
+.scaffold-item { display:flex; align-items:baseline; gap:8px; font-size:13px; color:var(--slate); padding:5px 0; border-bottom:1px dashed var(--border-grey); }
+.scaffold-item:last-child { border-bottom:none; }
+.scaffold-arrow { color:var(--gold); font-weight:700; flex-shrink:0; }
+
+/* COMPREHENSION Q */
+.comp-list { display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+.comp-item { display:flex; gap:12px; align-items:flex-start; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.comp-num { background:var(--sky); color:var(--white); border-radius:4px; padding:2px 8px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.comp-text { font-size:14px; color:var(--navy); line-height:1.5; }
+
+/* PAIR ACTIVITY BOX */
+.pair-box { background:rgba(46,134,171,0.07); border:1px solid rgba(46,134,171,0.2); border-radius:8px; padding:16px 18px; margin-bottom:18px; }
+.pair-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky); font-weight:700; margin-bottom:8px; }
+.pair-text { font-size:14px; color:var(--slate); line-height:1.7; }
+
+/* GAME BTN */
+.game-btn { display:inline-flex; align-items:center; gap:10px; background:var(--navy); color:var(--white); padding:12px 22px; border-radius:8px; text-decoration:none; font-family:var(--font-body); font-size:14px; font-weight:700; transition:opacity 0.15s; margin-bottom:6px; border:2px solid var(--gold); }
+.game-btn:hover { opacity:0.88; }
+.game-btn-sub { font-size:12px; color:var(--grey-blue); margin-top:6px; }
+
+/* UTILS */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:18px; color:var(--navy); margin-bottom:12px; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Lesson 6 · Classwork</div>
+    <h1 class="hero-title">Office Communication Channels</h1>
+    <p class="hero-sub">Present Continuous in action · 60 min · Group session</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">✍️ Light writing</span>
+      <span class="pill">5 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderWarmUp() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up — Vocabulary Game</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Start the class with a quick vocabulary game. Match the communication channel words to their meanings — as a group, on screen.</p>
+
+    <div class="teacher-box">
+      <div class="teacher-icon">👩‍🏫</div>
+      <div>
+        <div class="teacher-label">Teacher instruction</div>
+        <div class="teacher-text">Open the Wordwall game on the class screen. Students call out answers together. Target: <em>2 minutes</em> — keep it fast and fun. If the group finishes early, ask: <em>"Which word was the most difficult? Why?"</em></div>
+      </div>
+    </div>
+
+    <a href="https://wordwall.net" target="_blank" class="game-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      Click to Play — Vocabulary Match
+    </a>
+    <div class="game-btn-sub">Opens in a new tab · Play once as a group before moving on</div>
+
+    <div class="tip-box" style="margin-top:20px;">
+      <div class="tip-label">💡 Words in the game</div>
+      email thread · notification · shared document · ping · attachment · calendar invite · platform · forward
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity2() {
+  const sentences = [
+    { icon:'📧', text:'She is reading an email thread.' },
+    { icon:'📅', text:'He is sending a calendar invite.' },
+    { icon:'📄', text:'They are working on a shared document.' },
+    { icon:'💬', text:'She is replying to a message on Teams.' },
+    { icon:'📹', text:'He is joining a video call.' },
+    { icon:'🔔', text:'She is checking her notifications.' },
+  ];
+  const scaffolds = [
+    ['send / update', '"He is sending an update."'],
+    ['reply / email', '"She is replying to an email."'],
+    ['forward / thread', '"He is forwarding the thread."'],
+    ['use / shared document', '"They are using a shared document."'],
+    ['check / notifications', '"She is checking her notifications."'],
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">What's Happening Right Now?</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Look at a workplace scene and describe what everyone is doing. The goal is to produce Present Continuous sentences naturally and quickly.</p>
+
+    <div class="teacher-box">
+      <div class="teacher-icon">👩‍🏫</div>
+      <div>
+        <div class="teacher-label">Teacher instruction</div>
+        <div class="teacher-text">Describe a busy office scene to the group — or draw one on a shared whiteboard. Point to different people and ask: <em>"What is this person doing?"</em> Prompt students to respond in full Present Continuous sentences. Accept any logical answer — the goal is fluency, not a fixed script.</div>
+      </div>
+    </div>
+
+    <div class="h-serif">Example sentences students might produce:</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;">
+      ${sentences.map(s => `
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--white);border:1px solid var(--border-grey);border-radius:8px;font-size:14px;color:var(--navy);">
+          <span style="font-size:20px;flex-shrink:0;">${s.icon}</span>
+          <span style="font-style:italic;">${s.text}</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="scaffold-box">
+      <div class="scaffold-label">🪜 Support cards — for students who need more help</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:12px;">Give these verb prompts to students who are struggling. They produce the full sentence.</p>
+      ${scaffolds.map(([prompt, answer]) => `
+        <div class="scaffold-item">
+          <span class="scaffold-arrow">→</span>
+          <span><strong style="color:var(--navy);">${prompt}</strong> &nbsp;→&nbsp; <em style="color:var(--slate);">${answer}</em></span>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box" style="margin-top:20px;">
+      <div class="tip-label">💡 Teacher tip — push for variety</div>
+      Once students are comfortable with simple sentences, push for negatives and questions: <em>"What is she NOT doing?"</em> / <em>"Is he sending an email or a chat message?"</em> This adds a layer of challenge for faster learners without slowing the group.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity3() {
+  const prompts = [
+    'What app or platform are you using most this week at work?',
+    'Are you using email, chat, or video calls more right now?',
+    'What are you currently working on? How are you sharing information with your team?',
+    'Are you receiving a lot of notifications today?',
+  ];
+  const starters = [
+    { text: '"Right now I am using <strong>________</strong> for <strong>________</strong>."' },
+    { text: '"This week my team is <strong>________</strong>."' },
+    { text: '"I am not using <strong>________</strong> — I am using <strong>________</strong> instead."' },
+    { text: '"We are sharing information by <strong>________</strong>."' },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Speaking — My Daily Communication</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Students describe their own communication habits at work — using the Present Continuous and vocabulary from the lesson. This is real-world output: their own workplace, their own language.</p>
+
+    <div class="teacher-box">
+      <div class="teacher-icon">👩‍🏫</div>
+      <div>
+        <div class="teacher-label">Teacher instruction — Part 1: Group discussion (5 min)</div>
+        <div class="teacher-text">Ask these questions to the group one at a time. Nominate students or take volunteers. Encourage full sentences — not one-word answers. If a student says <em>"Teams"</em>, push: <em>"Can you give me a full sentence? What are you using Teams for?"</em></div>
+      </div>
+    </div>
+
+    <div class="prompt-list">
+      ${prompts.map((p,i) => `
+        <div class="prompt-item">
+          <span class="prompt-num">Q${i+1}</span>
+          <span class="prompt-text">${p}</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="teacher-box">
+      <div class="teacher-icon">👩‍🏫</div>
+      <div>
+        <div class="teacher-label">Teacher instruction — Part 2: Pair activity (8 min)</div>
+        <div class="teacher-text">Put students into pairs. <em>Student A</em> speaks for about 60 seconds — describing their communication day in 4–5 Present Continuous sentences. <em>Student B</em> listens, then asks one follow-up question. Then switch. After both pairs have spoken, ask one pair to share with the group.</div>
+      </div>
+    </div>
+
+    <div class="pair-box">
+      <div class="pair-label">👥 Pair activity — how it works</div>
+      <div class="pair-text">
+        <strong>Student A:</strong> Describe your communication day in 4–5 sentences. Use the Present Continuous.<br>
+        <strong>Student B:</strong> Listen carefully. Ask one question when A finishes.<br>
+        <strong>Then switch roles.</strong>
+      </div>
+    </div>
+
+    <div class="starters-wrap">
+      <div class="starters-label">Sentence starters — on screen for students</div>
+      ${starters.map(s => `
+        <div class="starter-item">
+          <span class="starter-bullet">→</span>
+          <span class="starter-text">${s.text}</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Teacher tip — what to listen for</div>
+      The key errors at A2: missing <em>am / is / are</em>, and using base form instead of -ing (<em>"I using"</em> or <em>"I am use"</em>). Correct gently mid-activity — a quick <em>"Can you say that again with 'is'?"</em> is enough. Don't over-correct or students will stop speaking.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity4() {
+  const emails = [
+    {
+      from: 'Daniel Osei',
+      fromRole: 'Project Manager · Nairobi office',
+      to: 'Mei-Ling Park (Design Lead), Arjun Kapoor (Developer)',
+      subject: 'Dashboard update — feedback needed',
+      greeting: 'Hi team,',
+      body: 'I <em>am sending</em> you the latest version of the dashboard report. Please review and add your comments directly in the shared document. The client is waiting for our response by Thursday.',
+      sign: 'Daniel'
+    },
+    {
+      from: 'Mei-Ling Park',
+      fromRole: 'Design Lead',
+      to: 'Daniel Osei, Arjun Kapoor',
+      subject: 'RE: Dashboard update — feedback needed',
+      greeting: 'Hi Daniel,',
+      body: 'I <em>am reviewing</em> the document now. I <em>am also forwarding</em> this thread to Yasmin — she is covering for me on Thursday. She can join the video call.',
+      sign: 'Mei-Ling'
+    },
+    {
+      from: 'Arjun Kapoor',
+      fromRole: 'Developer',
+      to: 'Daniel Osei, Mei-Ling Park',
+      subject: 'RE: Dashboard update — feedback needed',
+      greeting: 'Quick update:',
+      body: 'I <em>am fixing</em> a small bug in the dashboard right now. I will be ready to share the updated version in one hour. Are we using Teams or Zoom for Thursday\'s call?',
+      sign: 'Arjun'
+    }
+  ];
+  const questions = [
+    'What is Daniel sending?',
+    'What is Mei-Ling doing right now?',
+    'Why is she forwarding the thread to Yasmin?',
+    'What is Arjun doing right now?',
+    'What question does Arjun ask at the end?',
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Read &amp; React — The Email Thread</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">Read a real-world email thread between three colleagues. The Present Continuous appears naturally throughout — in context, the way it actually works in professional communication.</p>
+
+    <div class="teacher-box">
+      <div class="teacher-icon">👩‍🏫</div>
+      <div>
+        <div class="teacher-label">Teacher instruction — Reading (5 min)</div>
+        <div class="teacher-text">Share this screen or the Pre-Learning file. Give students 2–3 minutes to read silently. Then read through together — ask students to read one email each. As you read, highlight the Present Continuous forms: <em>"am sending," "am reviewing," "am forwarding," "am fixing."</em></div>
+      </div>
+    </div>
+
+    <div class="thread-wrap">
+      ${emails.map((e, idx) => `
+        ${idx > 0 ? `<div class="thread-connector"><div class="thread-line"></div><span class="thread-arrow">↩ Reply</span><div class="thread-line"></div></div>` : ''}
+        <div class="email-card">
+          <div class="email-head">
+            <div class="email-meta">
+              <strong>From:</strong> ${e.from} <span style="color:var(--steel);">(${e.fromRole})</span><br>
+              <strong>To:</strong> ${e.to}
+            </div>
+            <div class="email-subject">📧 ${e.subject}</div>
+          </div>
+          <div class="email-body">
+            <span class="hi">${e.greeting}</span>
+            <span>${e.body}</span>
+            <span class="sig">— ${e.sign}</span>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="teacher-box">
+      <div class="teacher-icon">👩‍🏫</div>
+      <div>
+        <div class="teacher-label">Teacher instruction — Comprehension (5 min)</div>
+        <div class="teacher-text">Ask these questions aloud — students answer in full sentences. Do not accept one-word answers. If a student says <em>"the report"</em>, respond: <em>"Good — can you give me a full sentence?"</em></div>
+      </div>
+    </div>
+
+    <div class="comp-list">
+      ${questions.map((q,i) => `
+        <div class="comp-item">
+          <span class="comp-num">Q${i+1}</span>
+          <span class="comp-text">${q}</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="teacher-box">
+      <div class="teacher-icon">👩‍🏫</div>
+      <div>
+        <div class="teacher-label">Teacher instruction — Follow-up speaking (5 min)</div>
+        <div class="teacher-text">Ask the group: <em>"Does your team communicate like this? What is similar? What is different?"</em> This bridges the text to their real work context and generates more Present Continuous production.</div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Follow-up discussion</div>
+      <div class="prompt-list" style="margin-bottom:0;">
+        <div class="prompt-item"><span class="prompt-num">→</span><span class="prompt-text">"Does your team communicate like this? What is similar or different?"</span></div>
+        <div class="prompt-item"><span class="prompt-num">→</span><span class="prompt-text">"Which platform are you using for project updates — email, chat, or something else?"</span></div>
+        <div class="prompt-item"><span class="prompt-num">→</span><span class="prompt-text">"Have you ever forwarded an email thread to a colleague? Why?"</span></div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderActivity5() {
+  const phrases = [
+    { text: '"What are you <strong>working on</strong> right now?"' },
+    { text: '"I am <strong>reviewing</strong> / <strong>updating</strong> / <strong>sending</strong> / <strong>forwarding</strong>…"' },
+    { text: '"We are <strong>using ________</strong> for <strong>________</strong>."' },
+    { text: '"Are you using <strong>email</strong> or <strong>chat</strong> for this?"' },
+    { text: '"I am <strong>waiting for</strong> ________."' },
+    { text: '"I am <strong>not using</strong> ________ — I am using ________ instead."' },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Roleplay — The Status Update</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <p class="sec-intro">A Monday morning team check-in. Students roleplay a real workplace scenario — asking and answering about current tasks and communication tools using the Present Continuous.</p>
+
+    <div class="info-box">
+      <strong>📋 Scenario:</strong> It is 10am on a Monday. Your team is starting a new project this week. The team leader is checking in with each team member to find out what everyone is doing and what tools they are using.
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-icon">👩‍🏫</div>
+      <div>
+        <div class="teacher-label">Teacher instruction</div>
+        <div class="teacher-text">Put students in pairs. Assign roles. Give them 3 minutes to prepare, then 3–4 minutes to roleplay. The team leader should ask at least 3 questions. The team member should give full answers — not just one sentence. After the first round, swap roles and repeat. Close by asking one pair to perform for the group.</div>
+      </div>
+    </div>
+
+    <div class="roleplay-grid">
+      <div class="role-card">
+        <div class="role-card-head leader">
+          <span class="role-emoji">👔</span>
+          <div>
+            <div class="role-tag">Role A</div>
+            <div class="role-name">Team Leader</div>
+          </div>
+        </div>
+        <div class="role-card-body">
+          <div class="role-task">
+            Ask your team members:<br><br>
+            <strong>· What</strong> are they working on right now?<br>
+            <strong>· Which</strong> tools or platforms are they using?<br>
+            <strong>· What</strong> are they waiting for?<br><br>
+            Use questions from the phrases board below.
+          </div>
+        </div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-head member">
+          <span class="role-emoji">💼</span>
+          <div>
+            <div class="role-tag">Role B</div>
+            <div class="role-name">Team Member</div>
+          </div>
+        </div>
+        <div class="role-card-body">
+          <div class="role-task">
+            Explain to your team leader:<br><br>
+            <strong>· What</strong> you are currently working on<br>
+            <strong>· Which</strong> channel or platform you are using<br>
+            <strong>· What</strong> you are waiting for<br><br>
+            Give full sentences — not just one word!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phrases-board">
+      <div class="phrases-board-label">📌 Useful phrases — on screen during the roleplay</div>
+      ${phrases.map(p => `
+        <div class="phrase-item">
+          <span class="phrase-bullet">→</span>
+          <span class="phrase-text">${p.text}</span>
+        </div>`).join('')}
+    </div>
+
+    <div class="pair-box">
+      <div class="pair-label">⏱ Timing guide</div>
+      <div class="pair-text">
+        <strong>3 min</strong> — preparation (students plan what to say)<br>
+        <strong>3–4 min</strong> — first roleplay (A = leader, B = member)<br>
+        <strong>3–4 min</strong> — swap roles and repeat<br>
+        <strong>2 min</strong> — one pair performs for the group
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Teacher tip — what to watch for</div>
+      The most common error in roleplays: students forget to use the Present Continuous and switch to Simple Present (<em>"I work on the report"</em> instead of <em>"I am working on the report"</em>). If you hear this, pause the roleplay briefly and ask the class: <em>"Is that Present Simple or Present Continuous? How do we change it?"</em>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="teacher-box">
+      <div class="teacher-icon">👩‍🏫</div>
+      <div>
+        <div class="teacher-label">Wrap-up — end of class (2 min)</div>
+        <div class="teacher-text">Ask the group: <em>"What was the most useful phrase today?"</em> and <em>"What communication channel do you want to practise more in English?"</em> Remind students that the Homework quiz is short — 10 questions, 15 minutes. It covers everything from today and the Pre-Learning.</div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS — last, after all renderers ─────────────────────
+STEPS = [
+  { label: '1. Warm-Up',   fn: renderWarmUp },
+  { label: '2. Scene',     fn: renderActivity2 },
+  { label: '3. Speaking',  fn: renderActivity3 },
+  { label: '4. Email',     fn: renderActivity4 },
+  { label: '5. Roleplay',  fn: renderActivity5 },
+];
+
+render();
+</script>
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

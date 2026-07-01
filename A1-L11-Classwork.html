@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emails in English | A1 Unit 2 — Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAV */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO / TIP / ES-NOTE */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* TEACHER BOX */
+.teacher-box { background:var(--navy); border-radius:8px; padding:14px 18px; margin-top:18px; margin-bottom:6px; }
+.teacher-box-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px; }
+.teacher-box-text { font-size:13px; color:rgba(255,255,255,0.75); line-height:1.7; font-style:italic; }
+
+/* SENTENCE FORMULA */
+.formula-wrap { border-radius:10px; overflow:hidden; border:1px solid var(--border-grey); margin-bottom:20px; }
+.formula-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.formula-cols { display:flex; background:var(--white); }
+.formula-col { flex:1; padding:18px 16px; text-align:center; border-right:1px solid var(--border-grey); }
+.formula-col:last-child { border-right:none; }
+.formula-col-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--grey-blue); margin-bottom:6px; }
+.formula-col-word { font-family:var(--font-heading); font-size:18px; color:var(--navy); font-weight:700; margin-bottom:4px; }
+.formula-col-note { font-size:12px; color:var(--grey-blue); font-style:italic; }
+
+/* DATA TABLE */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:flex-start; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; line-height:1.6; }
+.mistake-right { display:flex; align-items:flex-start; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; line-height:1.6; }
+.mistake-note { font-size:12px; color:var(--grey-blue); margin-top:4px; font-style:normal; }
+
+/* SCRAMBLE ACTIVITY */
+.scramble-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.scramble-num { display:inline-block; background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; margin-bottom:12px; }
+.scramble-chunks { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+.chunk { background:var(--light-grey); border:1.5px solid var(--border-grey); border-radius:6px; padding:7px 14px; font-size:14px; font-weight:600; color:var(--navy); }
+.scramble-answer { display:none; }
+.scramble-answer.revealed { display:block; }
+.answer-line { display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--green-bg); border:1.5px solid var(--green); border-radius:7px; font-size:14px; color:var(--green); font-weight:600; margin-bottom:8px; }
+.svo-tag-row { display:flex; flex-wrap:wrap; gap:6px; }
+.svo-tag { padding:3px 10px; border-radius:4px; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+.svo-s { background:rgba(44,130,173,0.12); color:var(--sky); }
+.svo-v { background:rgba(201,151,44,0.15); color:#7A5500; }
+.svo-o { background:rgba(26,107,74,0.12); color:var(--green); }
+.reveal-btn { padding:8px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; }
+.reveal-btn:hover { background:var(--sky); }
+
+/* FIX-THE-SENTENCE ACTIVITY */
+.fix-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.fix-wrong { display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); font-style:italic; margin-bottom:10px; }
+.fix-error-tag { font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--grey-blue); margin-bottom:10px; }
+.fix-answer { display:none; margin-top:4px; }
+.fix-answer.revealed { display:block; }
+.fix-correct { display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--green-bg); border:1.5px solid var(--green); border-radius:7px; font-size:14px; color:var(--green); font-weight:600; margin-bottom:8px; }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:10px; padding:16px 20px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:10px; }
+.word-bank-section { margin-bottom:12px; }
+.word-bank-section:last-child { margin-bottom:0; }
+.word-bank-sub { font-size:11px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+.word-bank-chips { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { background:var(--white); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:4px 12px; font-size:13px; color:var(--slate); }
+
+/* SUBJECT PROMPT CARDS */
+.prompt-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:10px; margin-bottom:20px; }
+.prompt-card { background:var(--navy); border-radius:8px; padding:14px 16px; text-align:center; }
+.prompt-card-sub { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:4px; }
+.prompt-card-word { font-family:var(--font-heading); font-size:17px; color:var(--gold); }
+
+/* EMAIL WRITING */
+.email-scaffold { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.email-scaffold-head { background:var(--navy); padding:12px 20px; font-size:13px; color:var(--gold); font-weight:700; font-family:var(--font-heading); }
+.email-scaffold-row { padding:12px 20px; border-bottom:1px solid var(--light-grey); display:flex; align-items:baseline; gap:12px; }
+.email-scaffold-row:last-child { border-bottom:none; }
+.scaffold-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--grey-blue); font-weight:700; min-width:80px; flex-shrink:0; }
+.scaffold-hint { font-size:13px; color:var(--slate); font-style:italic; }
+.writing-area { width:100%; min-height:120px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+
+/* REVEAL ROW (tap-to-reveal) */
+.reveal-row { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:12px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; margin-bottom:10px; cursor:pointer; transition:border-color .12s; }
+.reveal-row:hover { border-color:var(--sky); }
+.reveal-q { font-size:14px; color:var(--navy); flex:1; }
+.reveal-a { font-size:13px; color:var(--green); font-weight:700; display:none; margin-top:4px; }
+.reveal-hint { font-size:11px; color:var(--grey-blue); white-space:nowrap; flex-shrink:0; padding-top:2px; }
+
+/* EX BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:20px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:12px; }
+
+/* BUTTONS */
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); padding:9px 20px; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; transition:all 0.15s; }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:18px; color:var(--navy); margin-bottom:12px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Classwork</div>
+    <h1 class="hero-title">Emails in English</h1>
+    <p class="hero-sub">Basic sentence structure · Speaking and writing · 60 min</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">✍️ Sentence building</span>
+      <span class="pill">5 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) { return STEPS.length === 1 ? 100 : Math.round(((i+1)/STEPS.length)*100); }
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i)=>`<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── SCRAMBLE STATE ─────────────────────────────────────────
+const scrambleRevealed = {};
+function revealScramble(i) {
+  scrambleRevealed[i] = true;
+  const ans = document.getElementById('sc-ans-'+i);
+  const btn = document.getElementById('sc-btn-'+i);
+  if (ans) { ans.classList.add('revealed'); }
+  if (btn) { btn.style.display = 'none'; }
+}
+
+// ── FIX STATE ─────────────────────────────────────────────
+const fixRevealed = {};
+function revealFix(i) {
+  fixRevealed[i] = true;
+  const ans = document.getElementById('fix-ans-'+i);
+  const btn = document.getElementById('fix-btn-'+i);
+  if (ans) { ans.classList.add('revealed'); }
+  if (btn) { btn.style.display = 'none'; }
+}
+
+// ── DATA ──────────────────────────────────────────────────
+const SCRAMBLE = [
+  {
+    chunks: ['in Finance', 'I', 'work'],
+    answer: 'I work in Finance.',
+    s: 'I', v: 'work', o: 'in Finance'
+  },
+  {
+    chunks: ['emails', 'She', 'every morning', 'checks'],
+    answer: 'She checks emails every morning.',
+    s: 'She', v: 'checks', o: 'emails every morning'
+  },
+  {
+    chunks: ['a meeting', 'at 3 PM', 'We', 'have'],
+    answer: 'We have a meeting at 3 PM.',
+    s: 'We', v: 'have', o: 'a meeting at 3 PM'
+  },
+  {
+    chunks: ['my manager', 'He', 'reports to'],
+    answer: 'He reports to my manager.',
+    s: 'He', v: 'reports to', o: 'my manager'
+  },
+  {
+    chunks: ['on the 5th floor', 'The office', 'is'],
+    answer: 'The office is on the 5th floor.',
+    s: 'The office', v: 'is', o: 'on the 5th floor'
+  },
+  {
+    chunks: ['from Monday to Friday', 'works', 'She'],
+    answer: 'She works from Monday to Friday.',
+    s: 'She', v: 'works', o: 'from Monday to Friday'
+  },
+  {
+    chunks: ['a laptop and a monitor', 'has', 'My desk'],
+    answer: 'My desk has a laptop and a monitor.',
+    s: 'My desk', v: 'has', o: 'a laptop and a monitor'
+  },
+  {
+    chunks: ['at 9 AM', 'starts', 'The meeting'],
+    answer: 'The meeting starts at 9 AM.',
+    s: 'The meeting', v: 'starts', o: 'at 9 AM'
+  },
+];
+
+const FIX = [
+  {
+    wrong: 'Work I in Marketing.',
+    right: 'I work in Marketing.',
+    error: 'Wrong word order',
+    s: 'I', v: 'work', o: 'in Marketing'
+  },
+  {
+    wrong: 'She in the meeting room.',
+    right: 'She is in the meeting room.',
+    error: 'Missing verb',
+    s: 'She', v: 'is', o: 'in the meeting room'
+  },
+  {
+    wrong: 'Have we a call at 2 PM.',
+    right: 'We have a call at 2 PM.',
+    error: 'Wrong word order',
+    s: 'We', v: 'have', o: 'a call at 2 PM'
+  },
+  {
+    wrong: 'Reports to the manager David.',
+    right: 'David reports to the manager.',
+    error: 'Misplaced subject',
+    s: 'David', v: 'reports to', o: 'the manager'
+  },
+  {
+    wrong: 'Every morning emails checks he.',
+    right: 'He checks emails every morning.',
+    error: 'Wrong word order',
+    s: 'He', v: 'checks', o: 'emails every morning'
+  },
+];
+
+const OPENER_QS = [
+  'What is your job title?',
+  'What department do you work in?',
+  'What time do you start work?',
+  'What do you do first in the morning at work?',
+];
+
+const SUBJECTS = [
+  { word: 'I', sub: 'Subject' },
+  { word: 'She', sub: 'Subject' },
+  { word: 'He', sub: 'Subject' },
+  { word: 'We', sub: 'Subject' },
+  { word: 'The team', sub: 'Subject' },
+  { word: 'My manager', sub: 'Subject' },
+  { word: 'The office', sub: 'Subject' },
+];
+
+const WRAP_UP = [
+  {
+    wrong: 'I write to you for confirm the meeting.',
+    right: 'I am writing to confirm the meeting.'
+  },
+  {
+    wrong: 'Please the file find attached.',
+    right: 'Please find the file attached.'
+  },
+  {
+    wrong: 'I have question about the report.',
+    right: 'I have a question about the report.'
+  },
+];
+
+// ── RENDERERS ─────────────────────────────────────────────
+
+function renderOpener() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Opener — What Do You Remember?</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Answer each question in a full sentence. Not just one word — a complete sentence.</p>
+
+    <div class="es-note">Intenta responder con una oración completa — no solo una palabra. Ejemplo: <strong>"I work in Sales."</strong> No solo: "Sales."</div>
+
+    <div class="ex-box">
+      <div class="ex-label">Questions — Spoken Round</div>
+      ${OPENER_QS.map((q,i)=>`
+        <div style="display:flex;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px dashed var(--border-grey);">
+          <span style="background:var(--navy);color:var(--gold);border-radius:5px;padding:2px 9px;font-size:11px;font-weight:700;flex-shrink:0;">Q${i+1}</span>
+          <span style="font-size:15px;color:var(--navy);font-weight:500;">${q}</span>
+        </div>`).join('')}
+      <div style="padding-top:8px;"></div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher</div>
+      <div class="teacher-box-text">Cold-call students — one question per person. Listen for whether students attempt full sentences or answer with a single word. If a student says "Sales" instead of "I work in Sales," prompt them: "Can you say that in a full sentence?" This sets the tone for the class. 8 minutes total.</div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammarFocus() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Grammar Focus — The Three Parts</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Every sentence in English has three parts. Learn the formula — then use it all lesson.</p>
+
+    <div class="formula-wrap">
+      <div class="formula-head">The Sentence Formula</div>
+      <div class="formula-cols">
+        <div class="formula-col">
+          <div class="formula-col-label">Subject</div>
+          <div class="formula-col-word">I / She / We</div>
+          <div class="formula-col-note">Who is doing it?</div>
+        </div>
+        <div class="formula-col" style="background:rgba(201,151,44,0.06);">
+          <div class="formula-col-label">Verb</div>
+          <div class="formula-col-word">work / have / check</div>
+          <div class="formula-col-note">What are they doing?</div>
+        </div>
+        <div class="formula-col">
+          <div class="formula-col-label">Object / Complement</div>
+          <div class="formula-col-word">in Sales / a meeting / emails</div>
+          <div class="formula-col-note">What? Where? When?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">Every sentence in English needs a subject and a verb. The object or complement tells us more — what, where, or when. This is true for speaking <strong>and</strong> writing.</div>
+
+    <div class="es-note">En inglés, cada oración necesita un sujeto y un verbo. Por ejemplo: <strong>"I work"</strong> (sujeto + verbo). Sin sujeto, la oración está incompleta.</div>
+
+    <div class="h-serif" style="margin-top:4px;">Three Examples</div>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:2fr 1fr 1fr 2fr;">
+        <span>Full Sentence</span><span>Subject</span><span>Verb</span><span>Object / Complement</span>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:2fr 1fr 1fr 2fr;">
+        <div style="font-size:14px;font-weight:600;color:var(--navy);">I work in the Sales department.</div>
+        <div><span class="svo-tag svo-s">I</span></div>
+        <div><span class="svo-tag svo-v">work</span></div>
+        <div><span class="svo-tag svo-o">in the Sales department</span></div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:2fr 1fr 1fr 2fr;background:var(--off-white);">
+        <div style="font-size:14px;font-weight:600;color:var(--navy);">She checks her emails every morning.</div>
+        <div><span class="svo-tag svo-s">She</span></div>
+        <div><span class="svo-tag svo-v">checks</span></div>
+        <div><span class="svo-tag svo-o">her emails every morning</span></div>
+      </div>
+      <div class="data-table-row" style="grid-template-columns:2fr 1fr 1fr 2fr;">
+        <div style="font-size:14px;font-weight:600;color:var(--navy);">We have a meeting at 10 AM.</div>
+        <div><span class="svo-tag svo-s">We</span></div>
+        <div><span class="svo-tag svo-v">have</span></div>
+        <div><span class="svo-tag svo-o">a meeting at 10 AM</span></div>
+      </div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher</div>
+      <div class="teacher-box-text">Walk through all three examples pointing to each column. Ask: "What is the subject in sentence 2?" — "She." "What is the verb?" — "checks." 3–4 minutes here, then move on. Students do not write anything in this step.</div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderScramble() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Activity 1 — Unscramble the Sentence</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Put the word groups in the correct order to make a sentence. Say it aloud — then tap <strong>Reveal</strong> to check.</p>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Start with the subject — <em>who or what is doing the action?</em> Then find the verb. The rest follows.
+    </div>
+
+    ${SCRAMBLE.map((item,i)=>`
+      <div class="scramble-card">
+        <div class="scramble-num">Sentence ${i+1}</div>
+        <div class="scramble-chunks">
+          ${item.chunks.map(c=>`<div class="chunk">${c}</div>`).join('')}
+        </div>
+        <div style="display:flex;justify-content:flex-end;margin-bottom:4px;">
+          <button class="reveal-btn" id="sc-btn-${i}" onclick="revealScramble(${i})">Reveal Answer</button>
+        </div>
+        <div class="scramble-answer ${scrambleRevealed[i]?'revealed':''}" id="sc-ans-${i}">
+          <div class="answer-line">✅ ${item.answer}</div>
+          <div class="svo-tag-row">
+            <span class="svo-tag svo-s">S: ${item.s}</span>
+            <span class="svo-tag svo-v">V: ${item.v}</span>
+            <span class="svo-tag svo-o">O: ${item.o}</span>
+          </div>
+        </div>
+      </div>`).join('')}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher</div>
+      <div class="teacher-box-text">Do Sentence 1 together as a group. Then give students 20–25 seconds per sentence to think individually before you call on someone. After revealing, always point to the S / V / O tags. For stronger students from Sentence 5 onward: ask them to change one word and say a new version aloud — for example, change "He reports to my manager" → "She reports to the director."</div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderFix() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Activity 2 — Fix the Sentence</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Each sentence below has one structural problem — wrong word order, a missing subject, or a missing verb. Find the error and say the corrected sentence aloud. Then tap <strong>Reveal</strong>.</p>
+
+    ${FIX.map((item,i)=>`
+      <div class="fix-card">
+        <div class="scramble-num">Sentence ${i+1}</div>
+        <div class="fix-wrong">❌ &nbsp;${item.wrong}</div>
+        <div class="fix-error-tag">Error type: ${item.error}</div>
+        <div style="display:flex;justify-content:flex-end;">
+          <button class="reveal-btn" id="fix-btn-${i}" onclick="revealFix(${i})">Reveal Correction</button>
+        </div>
+        <div class="fix-answer ${fixRevealed[i]?'revealed':''}" id="fix-ans-${i}">
+          <div class="fix-correct">✅ &nbsp;${item.right}</div>
+          <div class="svo-tag-row">
+            <span class="svo-tag svo-s">S: ${item.s}</span>
+            <span class="svo-tag svo-v">V: ${item.v}</span>
+            <span class="svo-tag svo-o">O: ${item.o}</span>
+          </div>
+        </div>
+      </div>`).join('')}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher</div>
+      <div class="teacher-box-text">Display one sentence at a time. Give students 15 seconds. Ask: "What is wrong — word order, missing subject, or missing verb?" Take the correction from a student before revealing. After each answer, point to S / V / O in the corrected sentence. Extend for stronger students: "Can anyone make a new sentence using the same verb?"</div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBuildYourOwn() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Activity 3 — Build Your Own Sentence</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Your teacher will give you a subject. Choose a verb and an object from the word bank below — then say two full sentences aloud.</p>
+
+    <div class="es-note">Elige un sujeto, un verbo y un complemento del banco de palabras — luego di tu oración en voz alta.</div>
+
+    <div class="h-serif">Subject Prompts</div>
+    <div class="prompt-grid">
+      ${SUBJECTS.map(s=>`
+        <div class="prompt-card">
+          <div class="prompt-card-sub">${s.sub}</div>
+          <div class="prompt-card-word">${s.word}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="word-bank">
+      <div class="word-bank-label">Word Bank — Choose From These</div>
+      <div class="word-bank-section">
+        <div class="word-bank-sub">Verbs</div>
+        <div class="word-bank-chips">
+          ${['works','checks','has','starts','sends','attends','reports to','is'].map(w=>`<span class="chip">${w}</span>`).join('')}
+        </div>
+      </div>
+      <div class="word-bank-section">
+        <div class="word-bank-sub">Objects / Complements</div>
+        <div class="word-bank-chips">
+          ${['in the HR department','at 8 AM','a report','emails','meetings every Monday','on the third floor','to the director','from home on Fridays'].map(w=>`<span class="chip">${w}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">👀 Remember</div>
+      Every sentence needs: <strong>Subject + Verb + Object.</strong><br>
+      Example: <em>"The team attends meetings every Monday."</em>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher</div>
+      <div class="teacher-box-text">Give each student 20–25 seconds to build their sentences silently, then say them aloud. Do not correct immediately — let the student finish. Then ask the group: "Does this sentence have a subject and a verb? Does it make sense?" If there is an error, ask the student "What is the subject? What is the verb?" and let them self-correct. Aim for 2 sentences per student. Weaker students: allow them to use the word bank directly and read their sentence. Stronger students: ask them to build a sentence without the word bank.</div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderEmail() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Email Application — Write 3 Sentences</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Now put your sentence-building skills to work. Write 3 sentences for the body of a work email. No template — build each sentence yourself using Subject + Verb + Object.</p>
+
+    <div class="info-box">
+      <strong>Scenario:</strong> You want to ask a coworker about a meeting next week. Write 3 sentences for the body of your email.
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Sentence Starters</div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;">
+        <div style="font-size:14px;color:var(--slate);"><span style="font-weight:700;color:var(--navy);">Sentence 1 — Why are you writing?</span><br><em>"I am writing to…"</em></div>
+        <div style="font-size:14px;color:var(--slate);"><span style="font-weight:700;color:var(--navy);">Sentence 2 — What is the question or information?</span><br><em>"I have… / Please…"</em></div>
+        <div style="font-size:14px;color:var(--slate);"><span style="font-weight:700;color:var(--navy);">Sentence 3 — What do you want next?</span><br><em>"Please let me know… / I look forward to…"</em></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:6px;font-size:13px;font-weight:700;color:var(--navy);">Write your 3 sentences here:</div>
+    <textarea class="writing-area" placeholder="Sentence 1: I am writing to...&#10;Sentence 2: ...&#10;Sentence 3: ..."></textarea>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher</div>
+      <div class="teacher-box-text">Allow 5 minutes to write. Then ask one volunteer to read their 3 sentences aloud. Write the sentences on screen or repeat them for the group. Ask: "Can we find the subject and the verb in each sentence?" Greeting, subject line, and closing are NOT the goal here — 3 grammatically correct body sentences are. If a student writes more than 3, let them finish — do not interrupt.</div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapUp() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Wrap-Up — Spot and Fix</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Three more broken sentences. Identify the error and say the correction aloud as a group.</p>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Find the Error — Correct It</div>
+      ${WRAP_UP.map((item,i)=>`
+        <div style="margin-bottom:20px;">
+          <div style="font-size:12px;font-weight:700;color:var(--grey-blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Sentence ${i+1}</div>
+          <div class="mistake-wrong">❌ &nbsp;"${item.wrong}"</div>
+          <div class="mistake-right">✅ &nbsp;"${item.right}"</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="info-box" style="margin-top:4px;">
+      <strong>Today's lesson in one sentence:</strong><br>
+      Every English sentence needs a <strong>Subject</strong> + <strong>Verb</strong> + <strong>Object</strong> — in the right order. Master this and every sentence you write or say will be clearer.
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher</div>
+      <div class="teacher-box-text">Cover the correct version — show only the wrong sentence first. Give students 15 seconds. Ask: "What is wrong?" Take the answer from a student before revealing. Keep the pace fast — 1 minute per sentence maximum. Close the class by asking: "What are the three parts of a sentence?" Students call them out together: Subject — Verb — Object.</div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS ─────────────────────────────────────────────────
+STEPS = [
+  { label: '1. Opener',       fn: renderOpener },
+  { label: '2. Grammar',      fn: renderGrammarFocus },
+  { label: '3. Unscramble',   fn: renderScramble },
+  { label: '4. Fix It',       fn: renderFix },
+  { label: '5. Build It',     fn: renderBuildYourOwn },
+  { label: '6. Email',        fn: renderEmail },
+  { label: '7. Wrap-Up',      fn: renderWrapUp },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

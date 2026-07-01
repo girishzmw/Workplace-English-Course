@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asking Clarification Questions | A2 Unit 1 — Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:120px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:0; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.cq-label { font-family:var(--font-heading); font-size:16px; color:var(--navy); margin-bottom:4px; }
+.cq-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Pre-Learning</div>
+    <h1 class="hero-title">Asking Clarification Questions</h1>
+    <p class="hero-sub">Question forms review · Clarifying information politely · ~45 min</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Ask for clarification politely at work</div><div class="outcome-note">Pedir aclaraciones cortésmente en el trabajo</div></div>
+      <div><div class="outcome-item">Use correct embedded question word order</div><div class="outcome-note">Usar el orden correcto en preguntas incluidas</div></div>
+      <div><div class="outcome-item">Avoid common Spanish-to-English question errors</div><div class="outcome-note">Evitar errores comunes al traducir preguntas</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; }
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const VOCAB = [
+  ["Repeat", "Repetir"],
+  ["Explain", "Explicar"],
+  ["Clarify", "Aclarar"],
+  ["Confirm", "Confirmar"],
+  ["Misunderstand", "Malentender"],
+  ["Rephrase", "Reformular"],
+  ["Mean (verb)", "Querer decir"],
+  ["Follow (= understand)", "Entender / Seguir"],
+  ["Double-check", "Verificar"],
+  ["Get it (informal)", "Entender (informal)"],
+];
+
+const VOC_CQ = [
+  { type:'mc', q:'Which word means "to say something in a different way"?',
+    opts:['Confirm','Rephrase','Follow'], answer:1,
+    hint: '💡 Think about changing your words, not repeating them exactly.',
+    fb: '"Rephrase" means to say the same idea using different words.' },
+  { type:'tf', q:'"Confirm" means to ask a question for the first time.',
+    answer:false,
+    hint: '💡 Confirm is about checking, not asking something new.',
+    fb: '"Confirm" means to check that something is correct — not to ask for the first time.' },
+  { type:'input', q:'Fill in: "Sorry, could you ______ that? I didn\'t catch the deadline."',
+    hint: 'r _ _ _ _ t',
+    answers: ['repeat'],
+    display: 'repeat',
+    fb: '"Could you repeat that?" is the standard polite way to ask someone to say something again.' },
+];
+
+const GRAM_CQ = [
+  { type:'mc', q:'Choose the correct embedded question.',
+    opts:["Could you tell me what is your name?","Could you tell me what your name is?"], answer:1,
+    hint: '💡 After "Could you tell me...", use statement word order — no inversion.',
+    fb: 'Embedded questions use statement word order: "...what your name is," not "...what is your name."' },
+  { type:'input', q:'Correct this sentence: "Explain me the report."',
+    hint: 'Add a small word before "me"',
+    answers: ['explain the report to me','could you explain the report to me'],
+    display: 'Explain the report to me. / Could you explain the report to me?',
+    fb: '"Explain" needs "to" before the person: explain something TO someone.' },
+  { type:'tf', q:'To embed a Yes/No question like "Is this correct?", we add "if" or "whether" after the trigger phrase.',
+    answer:true,
+    hint: '💡 Yes/No questions have no question word, so English inserts "if" or "whether" instead.',
+    fb: 'True — "Is this correct?" becomes "Could you tell me if this is correct?"' },
+];
+
+const LISTEN_CQ = [
+  { type:'mc', q:'What did Jordan ask first?',
+    opts:['Could you clarify...','Could you repeat that, please?','Could you confirm...'], answer:1,
+    hint: '💡 Listen for the very first request Jordan makes.',
+    fb: 'Jordan first asked "Could you repeat that, please?" after missing some details.' },
+  { type:'input', q:'What phrase did Jordan use to double-check the date at the end?',
+    hint: 'Starts with "Just to..."',
+    answers: ['just to confirm','just to confirm the new date is the 15th right','just to confirm,'],
+    display: '"Just to confirm..."',
+    fb: 'Jordan used "Just to confirm, the new date is the 15th, right?" to double-check.' },
+  { type:'tf', q:'Jordan waited until the end of the call to ask about anything unclear.',
+    answer:false,
+    hint: '💡 Jordan asked questions more than once, at different moments.',
+    fb: 'False — Jordan asked for clarification during the call, not only at the end.' },
+];
+
+const QUIZ = [
+  { type:'mc', q:'Which word means "to make something clearer"?',
+    opts:['Confirm','Clarify','Follow'], answer:1,
+    hint: '💡 This word shares its root with "clear."',
+    fb: '"Clarify" means to make something clearer or easier to understand.' },
+  { type:'mc', q:'Choose the correct embedded question.',
+    opts:["Do you know what this word means?","Do you know what does this word mean?"], answer:0,
+    hint: '💡 No auxiliary "does" inside an embedded question.',
+    fb: 'Correct: "Do you know what this word means?" — statement word order, no "does."' },
+  { type:'tf', q:'"Could you repeat that, please?" is a polite way to ask someone to say something again.',
+    answer:true,
+    hint: '💡 Think about tone and politeness.',
+    fb: 'True — it is a common, polite clarification request.' },
+  { type:'input', q:'Correct the mistake: "What means this word?"',
+    hint: 'Add the missing auxiliary verb',
+    answers: ['what does this word mean','what does this word mean?'],
+    display: 'What does this word mean?',
+    fb: 'Direct Wh-questions need the auxiliary "does": "What does this word mean?"' },
+  { type:'mc', q:'"Would you mind explaining that again?" is an example of...',
+    opts:['A direct question','A polite/softened clarification question','An embedded statement'], answer:1,
+    hint: '💡 "Would you mind..." softens a request.',
+    fb: '"Would you mind..." is a softened, polite way to make a request or ask a question.' },
+  { type:'input', q:'Fill in the missing word: "Could you ______ what you meant by that?"',
+    hint: 't _ _ _  m _',
+    answers: ['tell me'],
+    display: 'tell me',
+    fb: '"Could you tell me what you meant by that?" — a common clarification pattern.' },
+  { type:'tf', q:'"Explain me the process" is grammatically correct.',
+    answer:false,
+    hint: '💡 Remember the preposition rule for "explain."',
+    fb: 'False — correct form is "Explain the process to me" or "Could you explain the process to me?"' },
+  { type:'mc', q:'Choose the correct sentence.',
+    opts:["Can you tell me what is the deadline?","Can you tell me what the deadline is?"], answer:1,
+    hint: '💡 Embedded question — no inversion.',
+    fb: '"Can you tell me what the deadline is?" is correct — statement word order after "tell me."' },
+  { type:'input', q:'What is the Spanish word for "misunderstand"?',
+    hint: 'm _ l _ n t _ n d _ r',
+    answers: ['malentender'],
+    display: 'malentender',
+    fb: '"Misunderstand" = malentender.' },
+  { type:'mc', q:'Choose the correct embedded Yes/No question.',
+    opts:["Could you tell me is this correct?","Could you tell me if this is correct?"], answer:1,
+    hint: '💡 Yes/No questions need "if" or "whether" — there\'s no question word to use instead.',
+    fb: '"Could you tell me if this is correct?" — Yes/No questions embed with "if" or "whether."' },
+  { type:'input', q:'Embed this question: "Did you send the email?" → "I\'m not sure ______ you sent the email."',
+    hint: 'One word: if / whether',
+    answers: ['if','whether'],
+    display: 'if / whether',
+    fb: 'Either "if" or "whether" works here — both embed Yes/No questions the same way.' },
+];
+
+// ── Mini quiz (concept check) state ───────────────────────
+const miniState = { voc: {}, gram: {}, listen: {} };
+
+// ── Main quiz state ────────────────────────────────────────
+const quizState = {};
+let quizScore = 0;
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">In international teams, instructions get lost. Accents, video call lag, technical jargon, and fast speakers all make it easy to miss important details. In this lesson, you'll learn how to ask for clarification politely at work — instead of guessing or staying silent.</p>
+
+    <div class="info-box">
+      <strong>Karim El-Sayed</strong>, a Project Coordinator at <strong>Siemens</strong> in Cairo, is on a video call with <strong>Mei Lin</strong>, a Regional Manager at <strong>Unilever</strong> in Singapore. Mei explains a change to a project timeline, but the connection is a little unclear, and Karim isn't sure he understood everything correctly.
+    </div>
+
+    <p class="sec-intro">Instead of nodding and hoping for the best, Karim asks a polite clarification question. By the end of this lesson, you'll be able to do the same — confidently, and without translating word-for-word from Spanish.</p>
+
+    <div class="es-note">
+      Adivinar en el trabajo puede causar errores costosos. Pedir una aclaración no es una señal de debilidad — es una habilidad profesional. Los mejores comunicadores en inglés preguntan cuando algo no está claro.
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Why this matters</div>
+      A ten-second clarification question can save hours of rework. Native speakers ask for clarification constantly — it's completely normal in professional English.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estudia estas palabras. Las necesitarás para pedir aclaraciones de forma natural y profesional.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      "Mean" as a verb is tricky. We say <em>"What do you mean?"</em> — not <em>"What do you want to say?"</em> This is a common direct-translation error from "¿qué quieres decir?"
+    </div>
+
+    <div class="divider"></div>
+    <div class="cq-label">✅ Quick Check — Vocabulary</div>
+    <p class="cq-sub">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('voc', VOC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">This lesson reviews question forms and focuses on how to soften them for polite, professional clarification.</p>
+
+    <div class="h-serif">A. Direct Wh- / Yes-No Questions (Review)</div>
+    <div class="examples-wrap" style="margin-bottom:24px;">
+      <div class="example-item"><span class="example-en">What do you mean by "urgent"?</span></div>
+      <div class="example-item"><span class="example-en">Is that the final version?</span></div>
+      <div class="example-item"><span class="example-en">Are you saying we need to resend it?</span></div>
+    </div>
+
+    <div class="h-serif">B. Polite / Softened Clarification Questions</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Softened Question Forms</div>
+      <div class="pattern-row"><div class="pattern-en">Could you tell me...?</div><div class="pattern-es">¿Podrías decirme...?</div></div>
+      <div class="pattern-row"><div class="pattern-en">Do you know...?</div><div class="pattern-es">¿Sabes...?</div></div>
+      <div class="pattern-row"><div class="pattern-en">I'm not sure...</div><div class="pattern-es">No estoy seguro/a de...</div></div>
+      <div class="pattern-row"><div class="pattern-en">I was wondering...</div><div class="pattern-es">Me preguntaba...</div></div>
+      <div class="pattern-row"><div class="pattern-en">Do you happen to know...?</div><div class="pattern-es">¿Sabes por casualidad...?</div></div>
+      <div class="pattern-row"><div class="pattern-en">Would you know...?</div><div class="pattern-es">¿Sabrías...?</div></div>
+      <div class="pattern-row"><div class="pattern-en">Can you explain...?</div><div class="pattern-es">¿Puedes explicar...?</div></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Register Tip</div>
+      Direct questions ("What's the deadline?") are fine between coworkers you know well. Softened/embedded questions are the safer default with managers, clients, or people you're meeting for the first time.
+    </div>
+
+    <div class="h-serif">C. Embedded Question Word Order — Wh- Questions (Important!)</div>
+    <p class="sec-intro">When a question is placed inside a polite phrase like "Could you tell me...", "Do you know...", or "I'm not sure...", the word order changes. There is <strong>no auxiliary inversion</strong> — we use statement word order instead.</p>
+
+    <div class="info-box">
+      <strong>The Rule:</strong> In embedded questions, never use do/does/did. The main verb changes form to match the subject instead — exactly like a normal statement.<br>
+      Direct: What <strong>does</strong> this mean? → Embedded: ...what this <strong>means</strong>.<br>
+      Direct: What <strong>do</strong> you need? → Embedded: ...what you <strong>need</strong>.
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">DIRECT QUESTION → EMBEDDED QUESTION</div>
+      <div class="builder-ex">"What is the deadline?" → <strong>"Could you tell me what the deadline is?"</strong></div>
+      <div class="builder-ex">"What does this word mean?" → <strong>"Do you know what this word means?"</strong></div>
+      <div class="builder-ex">"When do you need it?" → <strong>"I'm not sure when you need it."</strong></div>
+    </div>
+
+    <div class="h-serif">D. Embedded Yes/No Questions — "if" / "whether" (New!)</div>
+    <p class="sec-intro">Direct Yes/No questions have no question word to carry the embedded clause, so English inserts <strong>"if"</strong> or <strong>"whether"</strong> instead.</p>
+
+    <div class="info-box">
+      <strong>The Rule:</strong> To embed a Yes/No question, add "if" or "whether" right after the trigger phrase. Everything after that follows statement word order — just like the Wh- pattern.
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">DIRECT YES/NO QUESTION → EMBEDDED QUESTION</div>
+      <div class="builder-ex">"Is this the final version?" → <strong>"Could you tell me if this is the final version?"</strong></div>
+      <div class="builder-ex">"Did you send the email?" → <strong>"I'm not sure whether you sent the email."</strong></div>
+      <div class="builder-ex">"Are we meeting today?" → <strong>"Do you know if we're meeting today?"</strong></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      "If" and "whether" are interchangeable in almost all cases at this level — you don't need to choose carefully between them.
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Common Mistakes (Spanish Interference)</div>
+      <div class="mistake-wrong">❌ "Explain me the process."</div>
+      <div class="mistake-right">✅ "Could you explain the process <strong>to</strong> me?"</div>
+      <div class="mistake-wrong">❌ "What means this word?"</div>
+      <div class="mistake-right">✅ "What <strong>does</strong> this word mean?"</div>
+      <div class="mistake-wrong">❌ "Can you tell me what <strong>is</strong> the deadline?"</div>
+      <div class="mistake-right">✅ "Can you tell me what the deadline <strong>is</strong>?"</div>
+      <div class="mistake-wrong">❌ "Could you tell me <strong>is this</strong> correct?"</div>
+      <div class="mistake-right">✅ "Could you tell me <strong>if this is</strong> correct?"</div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="cq-label">✅ Quick Check — Grammar</div>
+    <p class="cq-sub">2–3 quick questions to confirm embedded question word order is clear before you move on.</p>
+    ${renderMiniQ('gram', GRAM_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Listen to Jordan Mitchell, a Team Lead at Toyota, describe a time they had to ask for clarification during a call. Notice how naturally the target phrases fit into real speech.</p>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Asking for Clarification on a Call</div>
+          <div class="audio-box-sub">Jordan Mitchell · Team Lead, Toyota · North American accent</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L7-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>Last week I was on a call with our supplier team, and someone mentioned a change to the shipping schedule, but I didn't catch all the details. So I said, "Sorry, could you repeat that, please?"</p>
+        <p>They explained it again, but I still wasn't sure about one part, so I asked, "Could you clarify what you meant by 'next available slot'?" That really helped.</p>
+        <p>Then, just to be safe, I confirmed everything at the end: "So, just to confirm, the new date is the 15th, right?" They said yes.</p>
+        <p>I always do this now — if something isn't 100% clear, I ask. It takes ten seconds, and it saves us from bigger mistakes later.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="cq-label">✅ Quick Check — Listening</div>
+    <p class="cq-sub">2–3 quick questions to confirm you followed the audio before you move on.</p>
+    ${renderMiniQ('listen', LISTEN_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Exercises</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Practise before the quiz. Tap to reveal answers, match the pairs, and fill in the gaps.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Reorder — Build the Embedded Question</div>
+      ${REORDER.map((r,i) => `
+        <div onclick="this.querySelector('.rev').style.display=
+             this.querySelector('.rev').style.display==='block'?'none':'block'"
+             style="cursor:pointer;background:var(--white);border:1px solid var(--border-grey);border-radius:7px;padding:12px 15px;margin-bottom:${i===REORDER.length-1?'0':'10px'};">
+          <div style="font-size:14px;color:var(--slate);margin-bottom:4px;"><strong>${i+1}.</strong> ${r.scrambled}</div>
+          <span class="rev" style="display:none;color:var(--green);font-weight:700;font-size:14px;">✓ ${r.answer}</span>
+          <div style="font-size:11px;color:var(--grey-blue);margin-top:2px;">Tap to reveal</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Match — Direct Question ↔ Polite Clarification</div>
+      ${renderMatch()}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Gap-Fill — Complete the Exchange</div>
+      ${renderGaps()}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── AUDIO ENGINE ───────────────────────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+
+// ── CONCEPT-CHECK (MINI QUIZ) ENGINE ───────────────────────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const qMap = { voc: VOC_CQ, gram: GRAM_CQ, listen: LISTEN_CQ };
+  const q = qMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,?]$/,'');
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { voc: renderVocabulary, gram: renderGrammar, listen: renderListening };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) {
+    document.getElementById('mainContent').innerHTML = targetFn();
+    if (prefix === 'listen') {
+      const audio = document.getElementById('mainAudio');
+      if (audio) audio.playbackRate = currentSpeed;
+      setSpeed(currentSpeed);
+      if (transcriptOpen) {
+        const box = document.getElementById('transcriptBox');
+        const btn = document.getElementById('transcriptBtn');
+        if (box) box.style.display = 'block';
+        if (btn) btn.textContent = '▲ Hide transcript';
+      }
+    }
+  }
+}
+
+
+// ── EXERCISES ENGINE (reorder / match / gap-fill) ──────────
+const REORDER = [
+  { scrambled: "tell / could / me / the / meeting / when / is / you", answer: "Could you tell me when the meeting is?" },
+  { scrambled: "clarify / mean / you / what / could / by / 'urgent' / you", answer: "Could you clarify what you mean by 'urgent'?" },
+  { scrambled: "repeat / mind / would / that / you / , / please", answer: "Would you mind repeating that, please?" },
+];
+
+const MATCH = [
+  { left: "What is the deadline?", right: "Could you tell me what the deadline is?" },
+  { left: "What does this mean?", right: "Could you clarify what this means?" },
+  { left: "Can you say that again?", right: "Would you mind repeating that?" },
+  { left: "Is this the final version?", right: "Could you confirm this is the final version?" },
+  { left: "What do you want?", right: "Could you tell me what you need?" },
+];
+const matchLeftOrder = [2, 0, 4, 1, 3];
+const matchRightOrder = [1, 3, 0, 4, 2];
+let matchSelectedLeft = null;
+const matchedSet = new Set();
+
+function renderMatch() {
+  return `<div class="match-grid">
+    <div class="match-header">Direct</div>
+    <div></div>
+    <div class="match-header">Polite / Clarification</div>
+    <div class="match-col">
+      ${matchLeftOrder.map(i => `<div class="match-item left ${matchSelectedLeft===i?'selected':''} ${matchedSet.has(i)?'matched':''}" onclick="matchClickLeft(${i})">${MATCH[i].left}</div>`).join('')}
+    </div>
+    <div class="match-arrow-col">
+      ${matchLeftOrder.map(i => `<div class="match-arrow ${matchedSet.has(i)?'matched':''}">→</div>`).join('')}
+    </div>
+    <div class="match-col">
+      ${matchRightOrder.map(i => `<div class="match-item right ${matchedSet.has(i)?'matched':''}" onclick="matchClickRight(${i})">${MATCH[i].right}</div>`).join('')}
+    </div>
+  </div>
+  <div style="font-size:12px;color:var(--grey-blue);margin-bottom:6px;">Tap a direct question, then tap its polite match.</div>`;
+}
+function matchClickLeft(i) {
+  if (matchedSet.has(i)) return;
+  matchSelectedLeft = (matchSelectedLeft === i) ? null : i;
+  rerenderExercises();
+}
+function matchClickRight(i) {
+  if (matchSelectedLeft === null || matchedSet.has(i)) return;
+  if (matchSelectedLeft === i) { matchedSet.add(i); }
+  matchSelectedLeft = null;
+  rerenderExercises();
+}
+
+const GAPS = [
+  { sentence: "Sorry, could you ______ that? I didn't catch the deadline.", answer: "repeat" },
+  { sentence: "Could you ______ what you meant by 'urgent'?", answer: "clarify" },
+  { sentence: "I'm not sure I ______ — can you explain again?", answer: "follow" },
+  { sentence: "Just to ______, the meeting is at 3pm, right?", answer: "confirm" },
+  { sentence: "Could you ______ the process to me, please?", answer: "explain" },
+];
+const gapState = {};
+
+function renderGaps() {
+  return `<div class="blank-list">
+    ${GAPS.map((g,i) => {
+      const s = gapState[i] || {};
+      const cls = s.checked ? (s.correct ? 'blank-input correct' : 'blank-input wrong') : 'blank-input';
+      const parts = g.sentence.split('______');
+      return `<div class="blank-item">
+        <span class="blank-num">${i+1}</span>
+        <span class="blank-sentence">${parts[0]}<input class="${cls}" id="gap-${i}" type="text" value="${s.val||''}" oninput="setGap(${i},this.value)" ${s.checked?'disabled':''}/>${parts[1]}</span>
+      </div>`;
+    }).join('')}
+  </div>
+  <div style="text-align:right;margin-top:14px;"><button class="check-btn" onclick="checkGaps()">Check All</button></div>`;
+}
+function setGap(i, v) { if (!gapState[i]) gapState[i] = {}; gapState[i].val = v; }
+function checkGaps() {
+  const normalise = s => (s||'').trim().toLowerCase().replace(/[.,]$/,'');
+  GAPS.forEach((g,i) => {
+    if (!gapState[i]) gapState[i] = {};
+    gapState[i].checked = true;
+    gapState[i].correct = normalise(gapState[i].val) === normalise(g.answer);
+  });
+  rerenderExercises();
+}
+
+function rerenderExercises() {
+  const si = STEPS.findIndex(s => s.fn === renderExercises);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = renderExercises();
+}
+
+
+// ── MAIN QUIZ ENGINE ───────────────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Welcome",    fn: renderWelcome },
+  { label: "2. Vocabulary", fn: renderVocabulary },
+  { label: "3. Grammar",    fn: renderGrammar },
+  { label: "4. Listening",  fn: renderListening },
+  { label: "5. Exercises",  fn: renderExercises },
+  { label: "6. Quiz",       fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

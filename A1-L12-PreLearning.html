@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 12 — Phone Calls at Work | A1 Unit 2 — Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(24px,4.6vw,38px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+.vocab-moment { font-size:12px; color:var(--grey-blue); font-style:italic; padding:0 20px 4px; margin-top:-6px; }
+.vocab-esnote { font-size:12px; color:#7A5500; font-style:italic; padding:0 20px 11px; border-bottom:1px solid var(--light-grey); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.transcript-card { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:18px; }
+.transcript-card-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:14px; }
+.transcript-line { font-size:14px; line-height:2; color:rgba(255,255,255,0.85); margin-bottom:4px; }
+.transcript-line strong { color:var(--white); }
+.tgold { color:var(--gold); font-weight:700; }
+
+.discover-box { background:var(--white); border:1.5px dashed var(--sky); border-radius:10px; padding:16px 18px; margin-bottom:14px; cursor:pointer; transition:all 0.15s; }
+.discover-box:hover { border-color:var(--gold); }
+.discover-q { font-size:14px; color:var(--navy); font-weight:500; }
+.discover-qes { font-size:12.5px; color:var(--grey-blue); font-style:italic; margin-top:3px; }
+.discover-a { display:none; margin-top:10px; padding:10px 14px; background:var(--green-bg); color:var(--green); border-radius:7px; font-size:13px; line-height:1.6; }
+.discover-a.show { display:block; }
+.discover-a-es { display:block; color:#1A6B4A; font-style:italic; margin-top:4px; opacity:0.85; }
+.discover-tap { font-size:11px; color:var(--sky); margin-top:6px; font-style:italic; }
+
+.rule-box { background:var(--off-white); border-left:4px solid var(--sky); border-radius:0 8px 8px 0; padding:14px 18px; margin-bottom:14px; }
+.rule-num { display:inline-block; background:var(--navy); color:var(--gold); font-family:var(--font-heading); font-size:12px; font-weight:700; border-radius:5px; padding:2px 10px; margin-bottom:8px; }
+.rule-en { font-size:14px; color:var(--navy); font-weight:600; margin-bottom:4px; line-height:1.5; }
+.rule-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.warn-box { background:var(--red-bg); border:2px solid var(--red); border-radius:10px; padding:16px 20px; margin:18px 0; }
+.warn-title { font-size:15px; font-weight:700; color:var(--red); margin-bottom:6px; }
+.warn-en { font-size:14px; color:var(--red); margin-bottom:4px; line-height:1.5; }
+.warn-es { font-size:13px; color:#7A1F1F; font-style:italic; }
+
+.use-tag { display:inline-block; font-size:10px; letter-spacing:1px; text-transform:uppercase; font-weight:700; padding:3px 10px; border-radius:12px; margin-bottom:8px; }
+.use-tag.ability { background:rgba(46,134,171,0.15); color:var(--sky); }
+.use-tag.permission { background:rgba(201,151,44,0.20); color:#7A5500; }
+.use-tag.request { background:rgba(26,107,74,0.15); color:var(--green); }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.cc-label { font-family:var(--font-heading); font-size:16px; color:var(--navy); margin-bottom:4px; }
+.cc-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 12 — Phone Calls at Work</h1>
+    <p class="hero-sub">Grammar focus: Can / Can't — Form &amp; Use · ~45 minutes</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Build can/can't correctly, every time</div><div class="outcome-note">Construir can/can't correctamente, siempre</div></div>
+      <div><div class="outcome-item">Know when to use can/can't</div><div class="outcome-note">Saber cuándo usar can/can't</div></div>
+      <div><div class="outcome-item">Handle a basic phone call</div><div class="outcome-note">Manejar una llamada básica</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const VOCAB = [
+  ["Line", "Línea", "\u201cThe line is busy.\u201d", "Cuando alguien más ya está hablando."],
+  ["Extension", "Extensión", "\u201cHis extension is 204.\u201d", "El número corto de un escritorio."],
+  ["Transfer", "Transferir", "\u201cI'll transfer you to Sales.\u201d", "Mover la llamada a otra persona."],
+  ["Voicemail", "Buzón de voz", "\u201cPlease leave a voicemail.\u201d", "Cuando nadie contesta."],
+  ["Hold", "Espera", "\u201cCan you hold, please?\u201d", "Esperar sin colgar."],
+  ["Speak to", "Hablar con", "\u201cCan I speak to Mr. Kim?\u201d", "Pedir hablar con alguien."],
+];
+
+const VOC_CQ = [
+  { type:'mc', q:'"The line is busy" means...',
+    opts:['You can talk now','The person is on another call','The phone is broken'],
+    answer:1, hint:'Think about what happens when you can\'t get through.',
+    fb:'"The line is busy" means someone else is already on that call — you have to wait or try again.' },
+  { type:'input', q:'You call, but nobody answers. What do you leave?',
+    hint:'v _ _ _ _ m _ _ l', answers:['voicemail'], display:'Voicemail.',
+    fb:'When nobody answers, you leave a voicemail — a recorded message.' },
+  { type:'tf', q:'"Extension" means the same thing as "transfer."',
+    answer:false, hint:'One is a number, one is an action.',
+    fb:'False — an extension is a short internal phone number; a transfer is when someone moves your call to another line.' },
+];
+
+const TRANSCRIPT = [
+  ['David Kim',     'I __CAN__ speak English and Korean.'],
+  ['Sofia Rossi',   '__CAN__ you transfer me to Sales?'],
+  ['Amara Okafor',  'He __CANT__ take the call right now.'],
+  ['Jordan Mitchell','__CAN__ I leave a voicemail?'],
+  ['Sofia Rossi',   'She __CAN__ call you back at 3pm.'],
+  ['David Kim',     'They __CANT__ hear you — the line is bad.'],
+];
+
+const FORM_CQ = [
+  { type:'mc', q:'Which sentence is correct?',
+    opts:['He cans help you.','He can help you.','He can helps you.'],
+    answer:1, hint:'Can never changes form — not even for he/she/it.',
+    fb:'"Can" stays exactly the same for every subject — no -s, ever: "He can help you."' },
+  { type:'input', q:'Fix the mistake: "Do you can transfer me?"',
+    hint:'Can doesn\u2019t need "do" or "does" to ask a question.', answers:['can you transfer me?','can you transfer me'],
+    display:'Can you transfer me?',
+    fb:'Can already builds its own question by jumping to the front — no "do/does" needed.' },
+  { type:'tf', q:'"Cans" is a real English word (the modal verb form for he/she/it).',
+    answer:false, hint:'Think back to the warning box.',
+    fb:'False — "cans" does not exist as a modal verb. It\u2019s always just "can," for every subject.' },
+];
+
+const USE_CQ = [
+  { type:'mc', q:'"She can type 60 words per minute" is an example of...',
+    opts:['Ability','Permission','Request'],
+    answer:0, hint:'This describes what she knows how to do.',
+    fb:'This is Ability — describing a skill, something someone knows how to do.' },
+  { type:'tf', q:'"Can I use your phone?" is a Request — you\u2019re asking someone else to do something.',
+    answer:false, hint:'Who is going to do the action — you, or the other person?',
+    fb:'False — it\u2019s Permission. "Can I...?" asks if YOU are allowed to do something yourself.' },
+  { type:'input', q:'Complete this request: "___ you transfer me to Sales?"',
+    hint:'One word — you\u2019re asking someone else to act.', answers:['can'], display:'Can',
+    fb:'"Can you...?" is how we politely ask someone else to do something for us — a Request.' },
+];
+
+const PHRASE_CQ = [
+  { type:'mc', q:'You answer the phone at your company. What\'s the best opener?',
+    opts:['Hello?','Siemens, how can I help you?','Who is this?'],
+    answer:1, hint:'Think professional, not casual.',
+    fb:'Always open with the company name plus an offer to help: "Siemens, how can I help you?"' },
+  { type:'input', q:'Fill in: "___ I ask who\u2019s calling?"',
+    hint:'Same word you\u2019ve been practising all lesson.', answers:['can'], display:'Can',
+    fb:'"Can I ask who\u2019s calling?" is a polite, standard way to find out who\u2019s on the line — asking permission for yourself.' },
+];
+
+const QUIZ = [
+  { type:'mc', q:'Which sentence is correct?',
+    opts:['She cans help you.','She can help you.','She can helps you.'],
+    answer:1, hint:'💡 No -s, ever — for anyone.',
+    fb:'"Cans" doesn\u2019t exist. It\u2019s always "can": "She can help you."' },
+  { type:'input', q:'Fix the mistake: "He can to take the call."',
+    hint:'Remove one small word.', answers:['he can take the call.','he can take the call'],
+    display:'He can take the call.',
+    fb:'"To" never follows can/can\'t: "He can take the call."' },
+  { type:'tf', q:'"Do you can help me?" is a correct question.',
+    answer:false, hint:'💡 Can doesn\u2019t need "do" or "does."',
+    fb:'False — can builds its own question: "Can you help me?"' },
+  { type:'mc', q:'What do you call the short internal number for someone\u2019s desk phone?',
+    opts:['Voicemail','Extension','Transfer'], answer:1,
+    hint:'💡 It\u2019s often 3–4 digits, like 204.',
+    fb:'An extension is the short internal number — e.g. "His extension is 204."' },
+  { type:'mc', q:'"I\u2019ll ___ you to Sales" means you are moving the call to another department.',
+    opts:['transfer','hold','voicemail'], answer:0,
+    hint:'💡 The call moves from one line to another.',
+    fb:'"Transfer" means sending the call to a different person or department.' },
+  { type:'mc', q:'"I can speak three languages" is an example of...',
+    opts:['Ability','Permission','A request'],
+    answer:0, hint:'💡 It describes a skill.',
+    fb:'This is Ability — something the speaker knows how to do.' },
+  { type:'mc', q:'"Can I speak to Ms. Rossi, please?" is an example of...',
+    opts:['Ability','Permission','Vocabulary only'],
+    answer:1, hint:'💡 The speaker is asking if it\u2019s allowed for THEM to do something.',
+    fb:'This is Permission — asking if it\u2019s okay for you to do something yourself.' },
+  { type:'mc', q:'"Can you hold, please?" is an example of...',
+    opts:['Ability','A request','A greeting'],
+    answer:1, hint:'💡 The speaker is asking someone else to do something.',
+    fb:'This is a Request — politely asking someone else to take an action.' },
+  { type:'tf', q:'"Can" changes to "cans" when the subject is he, she, or it.',
+    answer:false, hint:'💡 Modal verbs like "can" never add -s.',
+    fb:'False — "can" is identical for every subject: I can, you can, he can, she can.' },
+  { type:'input', q:'Complete: "___ I speak to Ms. Rossi, please?"',
+    hint:'One word — the same word you\u2019ve used all lesson.', answers:['can'], display:'Can',
+    fb:'"Can I speak to...?" is the standard polite request on a phone call.' },
+  { type:'mc', q:'You call a company and no one answers. What\u2019s the best next step?',
+    opts:['Hang up and never call again','Leave a voicemail','Shout into the phone'],
+    answer:1, hint:'💡 There\u2019s a vocabulary word for exactly this situation.',
+    fb:'When no one answers, the professional move is to leave a voicemail.' },
+  { type:'mc', q:'A receptionist answers a call politely. Which opener fits best?',
+    opts:['Yeah, who\u2019s this?','Toyota, how can I help you?','What do you want?'],
+    answer:1, hint:'💡 Company name + offer to help = professional.',
+    fb:'"[Company], how can I help you?" is the standard professional phone opener.' },
+];
+
+// ── Quiz state ──────────────────────────────
+const quizState = {};
+let quizScore = 0;
+const miniState = { voc:{}, form:{}, use:{}, phrase:{} };
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Today you're going to master one small word that does a LOT of work on the phone: <strong>can</strong>. By the end of this lesson, you'll know exactly how to build it, and exactly when to use it — for asking, offering, and explaining what's possible.</p>
+    <div class="es-note">Hoy vamos a dominar una palabra pequeña pero muy poderosa: "can". Al final de esta lección, sabrás exactamente cómo construir oraciones con "can" y "can't", y sabrás cuándo usarlas — para pedir algo, ofrecer ayuda, y explicar qué es posible. Vamos a explorar juntos, paso a paso — no te preocupes si no entiendes todo de inmediato.</div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      This lesson goes a little deeper into grammar than usual, because can/can't is a tool you'll use in almost every phone call, email, and meeting from now on — it's worth getting completely solid.
+      <div style="margin-top:6px;font-style:italic;color:#7A5500;">Esta lección profundiza un poco más en la gramática de lo normal, porque can/can't lo usarás en casi todas las llamadas, correos y reuniones de ahora en adelante — vale la pena dominarlo por completo.</div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Lee cada palabra en su "momento" — la situación exacta donde la escucharás. No memorices la lista sola; imagina la llamada.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es,moment,esnote]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>
+        <div class="vocab-moment">${moment}</div>
+        <div class="vocab-esnote">${esnote}</div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Notice that these words almost always appear inside a request or an offer — "Can you hold?" "Can I transfer you?" You'll see exactly why in the next section.
+    </div>
+
+    <div class="divider"></div>
+    <div class="cc-label">✅ Quick Check — Vocabulary</div>
+    <p class="cc-sub">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('voc', VOC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammarForm() {
+  const transcriptHTML = TRANSCRIPT.map(([speaker,line]) => {
+    const highlighted = line
+      .replace(/__CANT__/g, '<span class="tgold">can\u2019t</span>')
+      .replace(/__CAN__/g, '<span class="tgold">can</span>');
+    return `<div class="transcript-line"><strong>${speaker}:</strong> "${highlighted}"</div>`;
+  }).join('');
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar — Notice &amp; Form</div>
+      <div class="sec-badge-time">18 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Before any rules — read these 6 real phone-call lines. The words <span class="tgold">can</span> and <span class="tgold">can't</span> are highlighted in gold. Don't look for rules yet — just observe.</p>
+    <div class="es-note">Antes de aprender las reglas, vamos a observar. Lee estas 6 frases reales de llamadas telefónicas. No busques reglas todavía — solo mira las palabras "can" y "can't" con atención.</div>
+
+    <div class="transcript-card">
+      <div class="transcript-card-label">📞 Six Real Phone Lines</div>
+      ${transcriptHTML}
+    </div>
+
+    <div class="discover-box" onclick="this.querySelector('.discover-a').classList.toggle('show')">
+      <div class="discover-q">🔎 Look at "He can't" and "She can." Do you see an extra -s anywhere?</div>
+      <div class="discover-qes">¿Ves una -s extra en "can" con he/she? Mira con cuidado.</div>
+      <div class="discover-a"><strong>No -s, ever</strong> — not even with he/she/it.<span class="discover-a-es">Nunca hay -s, ni siquiera con he/she/it — esto es diferente a otros verbos como "speaks" o "takes."</span></div>
+      <div class="discover-tap">Tap to reveal</div>
+    </div>
+
+    <div class="discover-box" onclick="this.querySelector('.discover-a').classList.toggle('show')">
+      <div class="discover-q">🔎 In "I can speak English," do you see the word "to" after "can"?</div>
+      <div class="discover-qes">¿Ves la palabra "to" después de "can"? Fíjate bien — no está.</div>
+      <div class="discover-a"><strong>No "to" after can/can't — ever.</strong><span class="discover-a-es">Nunca usamos "to" después de can o can't. Es un error muy común en español porque decimos "puedo hablar," pero en inglés NO se traduce con "to."</span></div>
+      <div class="discover-tap">Tap to reveal</div>
+    </div>
+
+    <div class="discover-box" onclick="this.querySelector('.discover-a').classList.toggle('show')">
+      <div class="discover-q">🔎 Look at "Can you transfer me?" Do you see "Do you can transfer me?" anywhere?</div>
+      <div class="discover-qes">¿La pregunta empieza con "Do you can"? Mira otra vez.</div>
+      <div class="discover-a"><strong>Can jumps to the front by itself — no "do/does" needed.</strong><span class="discover-a-es">Can ya funciona como su propia palabra de pregunta — no necesita "do" o "does" para ayudar.</span></div>
+      <div class="discover-tap">Tap to reveal</div>
+    </div>
+
+    <p class="sec-intro" style="margin-top:10px;">You just discovered the three biggest rules of can/can't — without anyone telling you! Let's name them properly.</p>
+    <div class="es-note">¡Acabas de descubrir las tres reglas más importantes de can/can't tú mismo! Ahora vamos a ponerles nombre.</div>
+
+    <div class="divider"></div>
+    <div class="h-serif">The Form Rules</div>
+
+    <div class="rule-box">
+      <div class="rule-num">Rule 1</div>
+      <div class="rule-en">No "to" after can/can't. We use can/can't + the base verb, without "to."</div>
+      <div class="rule-es">Usamos can/can't + el verbo base, sin "to."</div>
+    </div>
+    <div class="mistake-wrap" style="margin-top:-4px;">
+      <div class="mistake-right">✅ "I can speak to him."</div>
+      <div class="mistake-wrong">❌ "I can to speak to him."</div>
+      <div class="mistake-right">✅ "We can't come to the phone."</div>
+      <div class="mistake-wrong">❌ "We can't to come to the phone."</div>
+    </div>
+
+    <div class="rule-box">
+      <div class="rule-num">Rule 2</div>
+      <div class="rule-en">No "-s" for he/she/it. Can never changes form — not for I, you, he, she, it, we, or they.</div>
+      <div class="rule-es">Can nunca cambia de forma. Ni para I, you, he, she, it, we, ni they.</div>
+    </div>
+
+    <div class="warn-box">
+      <div class="warn-title">⚠️ "Cans" does not exist in English</div>
+      <div class="warn-en">There is no such word as "cans" used as a verb. Not "he cans," not "she cans," not "it cans." Just <strong>can</strong> — always, for everyone.</div>
+      <div class="warn-es">La palabra "cans" NO existe en inglés para el verbo modal. Nunca digas "he cans" o "she cans." Siempre es "can," sin importar quién habla.</div>
+    </div>
+    <div class="mistake-wrap" style="margin-top:-4px;">
+      <div class="mistake-right">✅ "He can help you."</div>
+      <div class="mistake-wrong">❌ "He cans help you."</div>
+      <div class="mistake-right">✅ "She can't take calls today."</div>
+      <div class="mistake-wrong">❌ "She can'ts take calls today."</div>
+    </div>
+
+    <div class="rule-box">
+      <div class="rule-num">Rule 3</div>
+      <div class="rule-en">No do/don't. Can is special — it doesn't need "do" or "don't" to ask a question or make a negative. Can/can't already does that job.</div>
+      <div class="rule-es">Can es especial — no necesita "do" o "don't" para hacer preguntas o negaciones. Can/can't ya hace ese trabajo solo.</div>
+    </div>
+    <div class="mistake-wrap" style="margin-top:-4px;">
+      <div class="mistake-right">✅ "Can you hold, please?"</div>
+      <div class="mistake-wrong">❌ "Do you can hold, please?"</div>
+      <div class="mistake-right">✅ "He can't talk now."</div>
+      <div class="mistake-wrong">❌ "He don't can talk now."</div>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Sentence Formula</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:16px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Question word</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">Can</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Subject</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">you</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:100px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Base verb</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">transfer me?</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"Can you transfer me?"</strong> — no "to," no "do," no "-s."</div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="cc-label">✅ Quick Check — Form</div>
+    <p class="cc-sub">3 quick questions to confirm these three rules are clear before you move on.</p>
+    ${renderMiniQ('form', FORM_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammarUse() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Grammar — How We Use It</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Now that the form is solid, let's look at meaning — the three real reasons we reach for can/can't at work, all tied to phone calls.</p>
+    <div class="es-note">Ahora que la forma está clara, vamos a ver el significado — las tres razones reales por las que usamos can/can't en el trabajo, todas conectadas a las llamadas telefónicas.</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Use 1 — Ability</div>
+      <div style="padding:14px 20px;">
+        <span class="use-tag ability">Ability · Habilidad</span>
+        <p style="font-size:13px;color:var(--grey-blue);font-style:italic;margin-bottom:10px;">We use can/can't to say what we're able to do. — Usamos can/can't para decir lo que sabemos hacer.</p>
+      </div>
+      <div class="pattern-row"><div class="pattern-en">"I can speak English and Spanish."</div><div class="pattern-es">Puedo hablar inglés y español.</div></div>
+      <div class="pattern-row"><div class="pattern-en">"She can't use that software yet."</div><div class="pattern-es">Ella todavía no puede usar ese software.</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Use 2 — Possibility / Permission</div>
+      <div style="padding:14px 20px;">
+        <span class="use-tag permission">Permission · Permiso</span>
+        <p style="font-size:13px;color:var(--grey-blue);font-style:italic;margin-bottom:10px;">We use can/can't to ask permission for ourselves, or to say if something is possible. This is the heart of most phone calls. — Pedimos permiso para nosotros mismos, o decimos si algo es posible.</p>
+      </div>
+      <div class="pattern-row"><div class="pattern-en">"Can I speak to Ms. Rossi?"</div><div class="pattern-es">¿Puedo hablar con la Sra. Rossi?</div></div>
+      <div class="pattern-row"><div class="pattern-en">"He can't come to the phone right now."</div><div class="pattern-es">Él no puede atender el teléfono ahora.</div></div>
+      <div class="pattern-row"><div class="pattern-en">"You can't call after 6pm — the office is closed."</div><div class="pattern-es">No puedes llamar después de las 6pm — la oficina está cerrada.</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Use 3 — Asking for Something (Requests)</div>
+      <div style="padding:14px 20px;">
+        <span class="use-tag request">Request · Solicitud</span>
+        <p style="font-size:13px;color:var(--grey-blue);font-style:italic;margin-bottom:10px;">We use can/can't to politely ask someone else to do something for us — the most common use on a business call. — Pedimos, con cortesía, que alguien más haga algo por nosotros.</p>
+      </div>
+      <div class="pattern-row"><div class="pattern-en">"Can you transfer me to Sales?"</div><div class="pattern-es">¿Puedes transferirme a Ventas?</div></div>
+      <div class="pattern-row"><div class="pattern-en">"Can I leave a voicemail?"</div><div class="pattern-es">¿Puedo dejar un mensaje de voz?</div></div>
+      <div class="pattern-row"><div class="pattern-en">"Can I have his extension number, please?"</div><div class="pattern-es">¿Me puedes dar su número de extensión, por favor?</div></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip — Can I vs. Can you</div>
+      "Can I...?" usually asks permission for yourself. "Can you...?" usually asks someone else to act. Both are polite and both are extremely common on the phone.
+      <div style="margin-top:6px;font-style:italic;color:#7A5500;">"Can I...?" normalmente pide permiso para ti mismo. "Can you...?" normalmente pide que otra persona actúe. Los dos son corteses y muy comunes en el teléfono.</div>
+    </div>
+
+    <div class="es-note">En una llamada de trabajo, usarás "can" para las tres cosas: decir lo que sabes hacer, pedir permiso, y pedir ayuda. ¡Es la palabra más útil del teléfono!</div>
+
+    <div class="divider"></div>
+    <div class="cc-label">✅ Quick Check — Uses</div>
+    <p class="cc-sub">3 quick questions to confirm you can tell the three uses apart before you move on.</p>
+    ${renderMiniQ('use', USE_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPhrases() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Phrases — Making &amp; Receiving Calls</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Here are the exact phrases you'll use to open, navigate, and close a phone call — each one labelled with the use it demonstrates.</p>
+    <div class="es-note">Aquí están las frases exactas que usarás para abrir, navegar y cerrar una llamada — cada una marcada con el uso que representa.</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">📞 Making a Call</div>
+      <div class="pattern-row"><div class="pattern-en">"Hi, this is David Kim from Meridian Logistics."</div><div class="pattern-es">Presentarte a ti y a tu empresa</div></div>
+      <div class="pattern-row"><div class="pattern-en"><span class="use-tag permission" style="margin-bottom:4px;">Permission</span><br>"Can I speak to Sofia Rossi, please?"</div><div class="pattern-es">Pedir hablar con alguien</div></div>
+      <div class="pattern-row"><div class="pattern-en"><span class="use-tag request" style="margin-bottom:4px;">Request</span><br>"Can you transfer me to Amara Okafor?"</div><div class="pattern-es">Pedir que te transfieran</div></div>
+      <div class="pattern-row"><div class="pattern-en"><span class="use-tag request" style="margin-bottom:4px;">Request</span><br>"Can I leave a voicemail?"</div><div class="pattern-es">Pedir dejar un mensaje</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">📞 Receiving a Call</div>
+      <div class="pattern-row"><div class="pattern-en"><span class="use-tag request" style="margin-bottom:4px;">Request</span><br>"Siemens, how can I help you?"</div><div class="pattern-es">Contestar el teléfono profesionalmente</div></div>
+      <div class="pattern-row"><div class="pattern-en"><span class="use-tag permission" style="margin-bottom:4px;">Permission</span><br>"Can I ask who's calling?"</div><div class="pattern-es">Preguntar quién llama</div></div>
+      <div class="pattern-row"><div class="pattern-en"><span class="use-tag request" style="margin-bottom:4px;">Request</span><br>"Can you hold, please?"</div><div class="pattern-es">Pedir que esperen</div></div>
+      <div class="pattern-row"><div class="pattern-en">"I'll transfer you now."</div><div class="pattern-es">Avisar que vas a transferir la llamada</div></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Notice these companies and callers: Jordan Mitchell at Toyota, Amara Okafor and Sofia Rossi at Unilever, David Kim at Meridian Logistics. Phone English sounds the same whether you're calling Tokyo, Lagos, or São Paulo — the phrases don't change.
+    </div>
+
+    <div class="divider"></div>
+    <div class="cc-label">✅ Quick Check — Phrases</div>
+    <p class="cc-sub">2 quick questions to confirm the key phrases are clear before you move on.</p>
+    ${renderMiniQ('phrase', PHRASE_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Practice</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Tap each box to reveal the answer. Try to answer in your head first!</p>
+    <div class="es-note">Toca cada caja para revelar la respuesta. ¡Intenta responder mentalmente primero!</div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise · Correct or Incorrect?</div>
+      <div onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='block'?'none':'block'" style="padding:10px 0;cursor:pointer;border-bottom:1px solid var(--border-grey)">
+        <span>"He cans help you."</span>
+        <span class="rev" style="display:none;color:var(--red);font-weight:700;"> → ❌ Incorrect — "cans" doesn't exist. Say: "He can help you."</span>
+        <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+      </div>
+      <div onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='block'?'none':'block'" style="padding:10px 0;cursor:pointer;border-bottom:1px solid var(--border-grey)">
+        <span>"Can I take a message?"</span>
+        <span class="rev" style="display:none;color:var(--green);font-weight:700;"> → ✅ Correct!</span>
+        <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+      </div>
+      <div onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='block'?'none':'block'" style="padding:10px 0;cursor:pointer;">
+        <span>"Do you can transfer me?"</span>
+        <span class="rev" style="display:none;color:var(--red);font-weight:700;"> → ❌ Incorrect — no "do" needed. Say: "Can you transfer me?"</span>
+        <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise · Can or Can't?</div>
+      <div onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='block'?'none':'block'" style="padding:10px 0;cursor:pointer;border-bottom:1px solid var(--border-grey)">
+        <span>"He ___ take the call — he's in a meeting."</span>
+        <span class="rev" style="display:none;color:var(--green);font-weight:700;"> → can't</span>
+        <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+      </div>
+      <div onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='block'?'none':'block'" style="padding:10px 0;cursor:pointer;">
+        <span>"I ___ call you back after 3pm."</span>
+        <span class="rev" style="display:none;color:var(--green);font-weight:700;"> → can</span>
+        <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise · Ability, Permission, or Request?</div>
+      <div onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='block'?'none':'block'" style="padding:10px 0;cursor:pointer;border-bottom:1px solid var(--border-grey)">
+        <span>"I can use Excel and PowerPoint."</span>
+        <span class="rev" style="display:none;color:var(--green);font-weight:700;"> → Ability</span>
+        <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+      </div>
+      <div onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='block'?'none':'block'" style="padding:10px 0;cursor:pointer;border-bottom:1px solid var(--border-grey)">
+        <span>"Can I sit here?"</span>
+        <span class="rev" style="display:none;color:var(--green);font-weight:700;"> → Permission</span>
+        <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+      </div>
+      <div onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='block'?'none':'block'" style="padding:10px 0;cursor:pointer;">
+        <span>"Can you send me the report?"</span>
+        <span class="rev" style="display:none;color:var(--green);font-weight:700;"> → Request</span>
+        <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise · Reorder the Question</div>
+      <div onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='block'?'none':'block'" style="padding:10px 0;cursor:pointer;">
+        <span>transfer / you / can / me?</span>
+        <span class="rev" style="display:none;color:var(--green);font-weight:700;"> → "Can you transfer me?"</span>
+        <div style="font-size:11px;color:var(--grey-blue);">Tap to reveal</div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ─────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const val=normalise(quizState[qi].inputVal||'');
+  quizState[qi].correct=q.answers.some(a=>val===normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── CONCEPT-CHECK MINI-QUIZ ENGINE ─────────────────────────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const qMap = { voc: VOC_CQ, form: FORM_CQ, use: USE_CQ, phrase: PHRASE_CQ };
+  const q = qMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { voc: renderVocabulary, form: renderGrammarForm, use: renderGrammarUse, phrase: renderPhrases };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = targetFn();
+}
+
+// ── STEPS ───────────────────────────────────
+STEPS = [
+  { label: "1. Welcome",       fn: renderWelcome },
+  { label: "2. Vocabulary",    fn: renderVocabulary },
+  { label: "3. Form",          fn: renderGrammarForm },
+  { label: "4. Use",           fn: renderGrammarUse },
+  { label: "5. Phrases",       fn: renderPhrases },
+  { label: "6. Practice",      fn: renderExercises },
+  { label: "7. Quiz",          fn: renderQuiz },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

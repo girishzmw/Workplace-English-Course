@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asking Clarification Questions | A2 Unit 1 — Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:120px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:0; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.cq-label { font-family:var(--font-heading); font-size:16px; color:var(--navy); margin-bottom:4px; }
+.cq-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Classwork</div>
+    <h1 class="hero-title">Asking Clarification Questions</h1>
+    <p class="hero-sub">Interactive sentence building · Live correction · 60 min</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">✍️ Sentence-building</span>
+      <span class="pill accent">🗣 Speaking</span>
+      <span class="pill">6 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+// "Transform It" — direct question → embedded question, multiple accepted phrasings
+const TRANSFORM_ITEMS = [
+  { q: 'Transform: "What time does the meeting start?"',
+    hint: 'Try "Could you tell me..." or "Do you know..."',
+    answers: ['could you tell me what time the meeting starts','do you know what time the meeting starts'],
+    display: 'Could you tell me what time the meeting starts? / Do you know what time the meeting starts?',
+    fb: 'Wh- embedded question — statement word order, no "does."' },
+  { q: 'Transform: "Is the report finished?"',
+    hint: 'This is a Yes/No question — use "if" or "whether"',
+    answers: ['could you tell me if the report is finished','could you tell me whether the report is finished','i\'m not sure whether the report is finished','i\'m not sure if the report is finished'],
+    display: 'Could you tell me if the report is finished? / I\'m not sure whether the report is finished.',
+    fb: 'Yes/No questions embed with "if" or "whether," not a question word.' },
+  { q: 'Transform: "What does \'ASAP\' mean in this context?"',
+    hint: 'Try "Could you clarify..." or "Do you know..."',
+    answers: ['could you clarify what asap means in this context','do you know what asap means in this context','could you clarify what \'asap\' means in this context'],
+    display: 'Could you clarify what \'ASAP\' means in this context?',
+    fb: 'No "does" inside the embedded clause — "what ASAP means," not "what does ASAP mean."' },
+  { q: 'Transform: "Did Grace send the invoice?"',
+    hint: 'Yes/No question — "if" or "whether"',
+    answers: ['i was wondering if grace sent the invoice','i was wondering whether grace sent the invoice','do you know whether grace sent the invoice','do you know if grace sent the invoice'],
+    display: 'I was wondering if Grace sent the invoice. / Do you know whether Grace sent the invoice?',
+    fb: 'Past simple "did" disappears — the embedded verb becomes "sent."' },
+  { q: 'Transform: "Where is the file saved?"',
+    hint: 'Try "Could you tell me..." or "Would you know..."',
+    answers: ['could you tell me where the file is saved','would you know where the file is saved'],
+    display: 'Could you tell me where the file is saved? / Would you know where the file is saved?',
+    fb: 'Statement word order: "...where the file is saved," not "...where is the file saved."' },
+  { q: 'Transform: "Are we presenting on Friday?"',
+    hint: 'Yes/No question — "if" or "whether"',
+    answers: ['can you confirm if we\'re presenting on friday','can you confirm whether we\'re presenting on friday','i\'m not sure whether we\'re presenting on friday','i\'m not sure if we\'re presenting on friday'],
+    display: 'Can you confirm if we\'re presenting on Friday? / I\'m not sure whether we\'re presenting on Friday.',
+    fb: '"Confirm" pairs naturally with "if/whether" for Yes/No embedded questions.' },
+];
+
+// "Fix My Mistake" — same error patterns as Pre-Learning, new sentences
+const FIX_ITEMS = [
+  { q: 'Fix: "Explain me the schedule."',
+    hint: 'Missing preposition before "me"',
+    answers: ['could you explain the schedule to me','explain the schedule to me'],
+    display: 'Could you explain the schedule to me.',
+    fb: '"Explain" needs "to" before the person.' },
+  { q: 'Fix: "What means \'deliverable\'?"',
+    hint: 'Missing auxiliary verb',
+    answers: ['what does deliverable mean','what does \'deliverable\' mean'],
+    display: 'What does \'deliverable\' mean?',
+    fb: 'Direct Wh- questions need "does": "What does X mean?"' },
+  { q: 'Fix: "Can you tell me what is the password?"',
+    hint: 'Embedded question — check the word order',
+    answers: ['can you tell me what the password is'],
+    display: 'Can you tell me what the password is?',
+    fb: 'Embedded questions use statement word order — no inversion.' },
+  { q: 'Fix: "Could you tell me is the file ready?"',
+    hint: 'This is a Yes/No question inside an embedded clause',
+    answers: ['could you tell me if the file is ready','could you tell me whether the file is ready'],
+    display: 'Could you tell me if the file is ready?',
+    fb: 'Yes/No embedded questions need "if" or "whether" — never just inverted word order.' },
+  { q: 'Fix: "Clarify me the process, please."',
+    hint: 'Missing preposition, or drop the object entirely',
+    answers: ['could you clarify the process for me please','could you clarify the process please','clarify the process for me please','clarify the process please'],
+    display: 'Could you clarify the process for me, please. / Could you clarify the process, please.',
+    fb: '"Clarify" doesn\'t take a direct object pronoun the way Spanish "aclárame" does — add "for me" or drop it.' },
+];
+
+const practiceState = { transform: {}, fix: {} };
+const practiceMap = { transform: TRANSFORM_ITEMS, fix: FIX_ITEMS };
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Quick group game to reactivate what you studied at home — direct questions and their polite/embedded equivalents.</p>
+
+    <a href="#" target="_blank" class="game-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+      </svg>
+      Click to Play
+    </a>
+    <div class="game-btn-sub">Opens in a new tab · Play once as a group before moving on</div>
+
+    <div class="tip-box" style="margin-top:24px;">
+      <div class="tip-label">👩‍🏫 Teacher Note</div>
+      Fast recall check — don't over-explain here. Just confirm the class remembers the core pattern (softened question + statement word order) before moving into production work.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderTransform() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Transform It</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Type the polite, embedded version of each direct question. This isn't a graded quiz — it's a chance to practise before your teacher checks your sentences live.</p>
+
+    ${renderPracticeQ('transform', TRANSFORM_ITEMS)}
+
+    <div class="tip-box">
+      <div class="tip-label">👩‍🏫 Teacher Note</div>
+      Extend for stronger students: ask them to produce a <em>second</em>, different trigger phrase for the same sentence instead of moving to the next item. Circulate and correct register, word order, and preposition use as students type.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderFixMistake() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Fix My Mistake</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Each sentence below has a common mistake. Type the corrected version.</p>
+
+    ${renderPracticeQ('fix', FIX_ITEMS)}
+
+    <div class="tip-box">
+      <div class="tip-label">👩‍🏫 Teacher Note</div>
+      This is your best live-correction moment. Most students get the vocabulary right but slip on preposition placement ("to me," "for me") or forget "if/whether." Pause and drill any error the whole class shares.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Reading</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Read the short email thread below. Grace's instruction is unclear — there's no actual date given.</p>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👩🏾‍💼</div>
+        <div>
+          <div class="model-name">Grace Mensah</div>
+          <div class="model-role">Operations Lead, Nestlé</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Hi Ola, we need the shipment numbers updated — please send it over before it's too late. Thanks!"</div>
+      </div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">🧑🏼‍💼</div>
+        <div>
+          <div class="model-name">Ola Nordström</div>
+          <div class="model-role">Supply Chain Analyst, IKEA</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Hi Grace, sure — I just want to make sure I send it at the right time. ___________________________"</div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Your Turn — Write Ola's Reply</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;">Write <strong>two different clarification questions</strong> Ola could send back to Grace — one using a Wh- embedded form, one using if/whether.</p>
+
+      <p style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;">Question 1 — Wh- embedded form</p>
+      <textarea class="writing-area" id="reading-q1" style="min-height:70px;" placeholder="e.g. Could you tell me when you need the numbers by?" oninput="updateWordCount('reading-q1','reading-wc1')"></textarea>
+      <div class="word-count" id="reading-wc1">0 words</div>
+
+      <p style="font-size:13px;font-weight:700;color:var(--navy);margin:16px 0 6px;">Question 2 — if/whether embedded form</p>
+      <textarea class="writing-area" id="reading-q2" style="min-height:70px;" placeholder="e.g. Could you confirm if tomorrow morning works?" oninput="updateWordCount('reading-q2','reading-wc2')"></textarea>
+      <div class="word-count" id="reading-wc2">0 words</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">👩‍🏫 Teacher Note</div>
+      Circulate and check that students used two genuinely different trigger phrases — not the same one twice with different wording.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  const cards = [
+    { emoji:'🧑🏻‍💼', name:'Wei Zhang', role:'Product Lead, Samsung', line:'"Just send it whenever, but not too late."' },
+    { emoji:'👩🏿‍💼', name:'Amara Chukwu', role:'Marketing Manager, Coca-Cola', line:'"Can you check the numbers before the call?"' },
+    { emoji:'🧑🏼‍💼', name:'Lucas Meyer', role:'Operations Analyst, IKEA', line:'"I need the file in the usual format."' },
+    { emoji:'👩🏽‍💼', name:'Isabela Duarte', role:'Team Lead, Nike', line:"\"Let's touch base sometime this week.\"" },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Speaking</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">In pairs, pick <strong>2 of the 4 cards</strong> below. For each card: first <strong>type</strong> two clarification questions using different trigger phrases, then <strong>say them aloud</strong> to your partner, who invents a clarifying answer.</p>
+
+    ${cards.map((c,i) => `
+    <div class="profile-card">
+      <div class="profile-card-head">
+        <div class="profile-emoji">${c.emoji}</div>
+        <div>
+          <div class="profile-name">${c.name}</div>
+          <div class="profile-role">${c.role}</div>
+        </div>
+      </div>
+      <div class="profile-body" style="grid-template-columns:1fr;">
+        <div class="tip-box" style="margin-bottom:4px;">${c.line}</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div>
+            <div style="font-size:12px;color:var(--grey-blue);margin-bottom:4px;">Question 1</div>
+            <input class="q-input" type="text" placeholder="Type your question…" id="card${i}-q1">
+          </div>
+          <div>
+            <div style="font-size:12px;color:var(--grey-blue);margin-bottom:4px;">Question 2</div>
+            <input class="q-input" type="text" placeholder="Type your question…" id="card${i}-q2">
+          </div>
+        </div>
+      </div>
+    </div>`).join('')}
+
+    <div class="tip-box">
+      <div class="tip-label">👩‍🏫 Teacher Note</div>
+      2 minutes per card, then swap roles. Listen for embedded word order and correct preposition use. Extend stronger pairs by requiring one Yes/No embedded question and one Wh- embedded question per card, not two of the same type.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Wrap-Up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Write <strong>one original clarification question</strong> about a real (or invented) situation from your own job. A few of you will read yours aloud before class ends.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Write Your Own</div>
+      <textarea class="writing-area" id="wrapup-text" style="min-height:110px;" placeholder="e.g. Could you tell me if the client approved the new design?" oninput="updateWordCount('wrapup-text','wrapup-wc')"></textarea>
+      <div class="word-count" id="wrapup-wc">0 words</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">👩‍🏫 Teacher Note</div>
+      This is the accountability check for the lesson. If a student can produce one clean, natural clarification question unprompted, the lesson has landed.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── PRACTICE ENGINE (Transform It / Fix My Mistake) ────────
+function renderPracticeQ(prefix, items) {
+  const state = practiceState[prefix];
+  let html = '';
+  items.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+    html += `<div class="q-card" id="practice-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">💡 ${q.hint}</div>` : ''}
+        </div>
+      </div>
+      <div class="q-input-row">
+        <input class="${cls}" id="practice-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="practiceSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="practiceReveal('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}
+    </div>`;
+  });
+  return html;
+}
+function practiceSetInp(prefix, qi, v) {
+  if (!practiceState[prefix][qi]) practiceState[prefix][qi] = {};
+  practiceState[prefix][qi].inputVal = v;
+}
+function practiceReveal(prefix, qi) {
+  const q = practiceMap[prefix][qi];
+  if (!practiceState[prefix][qi]) practiceState[prefix][qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,?]$/,'').replace(/['']/g,"'");
+  const raw = practiceState[prefix][qi].inputVal || '';
+  practiceState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  practiceState[prefix][qi].revealed = true;
+  practiceRerender(prefix);
+}
+function practiceRerender(prefix) {
+  const fnMap = { transform: renderTransform, fix: renderFixMistake };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = targetFn();
+}
+
+
+// ── WORD COUNT (free-text writing areas — no rerender, keeps focus) ──
+function updateWordCount(inputId, countId) {
+  const val = document.getElementById(inputId).value.trim();
+  const count = val === '' ? 0 : val.split(/\s+/).length;
+  document.getElementById(countId).textContent = count + (count === 1 ? ' word' : ' words');
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Warm-Up",       fn: renderWarmup },
+  { label: "2. Transform It",  fn: renderTransform },
+  { label: "3. Fix My Mistake",fn: renderFixMistake },
+  { label: "4. Reading",       fn: renderReading },
+  { label: "5. Speaking",      fn: renderSpeaking },
+  { label: "6. Wrap-Up",       fn: renderWrapup },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

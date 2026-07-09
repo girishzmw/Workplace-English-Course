@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 13: Video Meetings | A1 Unit 2 Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; flex-wrap:wrap; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-weight:700; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Lesson 13 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 13: Video Meetings</h1>
+    <p class="hero-sub">Grammar Focus: Imperatives · ~45 minutes self-study</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Use 8 essential video-meeting words</div><div class="outcome-note">Usar 8 palabras esenciales de las reuniones por video</div></div>
+      <div><div class="outcome-item">Give and understand simple instructions</div><div class="outcome-note">Dar y entender instrucciones simples</div></div>
+      <div><div class="outcome-item">Say what NOT to do in a meeting</div><div class="outcome-note">Decir qué NO hacer en una reunión</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+  const tbox = document.getElementById('transcriptBox');
+  const tbtn = document.getElementById('transcriptBtn');
+  if (tbox && tbtn) {
+    tbox.style.display = transcriptOpen ? 'block' : 'none';
+    tbtn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+  }
+}
+
+const VOCAB = [
+  ["Mute / Unmute", "Silenciar / Activar el sonido"],
+  ["Camera (on/off)", "Cámara (encendida/apagada)"],
+  ["Screen share", "Compartir pantalla"],
+  ["Connection", "Conexión"],
+  ["Microphone", "Micrófono"],
+  ["Join the meeting", "Unirse a la reunión"],
+  ["Leave the meeting", "Salir de la reunión"],
+  ["Chat box", "Cuadro de chat"],
+];
+
+const VOC_CQ = [
+  { type:'mc', q:'What does "mute" mean?', opts:['Turn on your camera','Turn off your sound','Leave the meeting'], answer:1, hint:'💡 Think about what happens to your microphone.', fb:'"Mute" means to turn off your microphone so others can\'t hear you.' },
+  { type:'tf', q:'"Screen share" means to show your computer screen to other people in the meeting.', answer:true, hint:'💡 Think about what "share" means.', fb:'Correct! When you "share your screen," everyone in the meeting can see what\'s on your computer.' },
+  { type:'input', q:'What is the English word for "conexión" (as in internet)?', hint:'con · nec · tion', answers:['connection'], display:'Connection.', fb:'"Connection" — a bad connection is a common problem in video meetings!' },
+];
+
+const GRAM1_CQ = [
+  { type:'mc', q:'Which sentence is a correct imperative?', opts:['You mute your microphone.','Mute your microphone.','Muting your microphone.'], answer:1, hint:'💡 Imperatives have no subject.', fb:'Imperatives start directly with the base verb — no subject, no "-ing."' },
+  { type:'input', q:'Complete the imperative: "_____ on your camera, please." (base verb for "encender")', hint:'t _ _ n', answers:['turn'], display:'Turn.', fb:'"Turn on your camera" — remember, no subject before the verb!' },
+  { type:'tf', q:'In English, the imperative form changes depending on who you are speaking to (like tú/usted in Spanish).', answer:false, hint:'💡 Compare to Spanish tú/usted forms.', fb:'The English imperative is always the same, no matter who you\'re speaking to.' },
+];
+
+const GRAM2_CQ = [
+  { type:'mc', q:'Which sentence correctly tells someone NOT to do something?', opts:['Not leave the meeting.','Don\'t leave the meeting.','Don\'t leaves the meeting.'], answer:1, hint:'💡 Negative imperatives use "Don\'t."', fb:'Negative imperatives use "Don\'t" + the base verb (no -s, no other ending).' },
+  { type:'input', q:'Translate to English: "No compartas tu pantalla."', hint:'don\'t · share · your · screen', answers:['don\'t share your screen','dont share your screen'], display:'Don\'t share your screen.', fb:'"Don\'t share your screen" — remember, "Don\'t" + base verb, no subject.' },
+  { type:'tf', q:'"Don\'t" changes form depending on who is speaking (I, you, he, she).', answer:false, hint:'💡 Just like affirmative imperatives.', fb:'"Don\'t" is always the same, just like affirmative imperatives.' },
+];
+
+const CTX_CQ = [
+  { type:'mc', q:'Which translation is correct for "No olvides unirte a tiempo"?', opts:['Forget to join on time.','Don\'t forget to join on time.','Not forget join on time.'], answer:1, hint:'💡 "No olvides" = a reminder not to forget.', fb:'"Don\'t forget" + base verb — a negative imperative giving a reminder.' },
+  { type:'input', q:'Unscramble: "camera / turn on / your" → write the full imperative sentence.', hint:'Start with the base verb.', answers:['turn on your camera'], display:'Turn on your camera.', fb:'"Turn on your camera" — the base verb "turn on" starts the sentence.' },
+  { type:'tf', q:'"Please don\'t talk at the same time" is an example of a polite negative imperative.', answer:true, hint:'💡 Look for "Please" + "Don\'t."', fb:'Correct — "Please" + "Don\'t" + base verb makes a polite instruction not to do something.' },
+];
+
+const AUD_CQ = [
+  { type:'mc', q:'What does David ask his team to do before the meeting starts?', opts:['Turn off their cameras','Join five minutes early and test their connection','Leave the meeting'], answer:1, hint:'💡 Listen for the very beginning of the recording.', fb:'David asks his team to join early and test their connection first.' },
+  { type:'tf', q:'David tells his team to mute their microphone only if they are not speaking.', answer:true, hint:'💡 Listen for "if you\'re not speaking."', fb:'Correct — "mute your microphone if you\'re not speaking" avoids background noise.' },
+  { type:'input', q:'What does David remind the team to check at the end of the meeting? (one word)', hint:'It has links and notes.', answers:['chat','chat box'], display:'Chat box.', fb:'"Don\'t forget to check the chat box for links and notes."' },
+];
+
+const QUIZ = [
+  { type:'mc', q:'Which sentence is a correct affirmative imperative?', opts:['You turn on your camera.','Turn on your camera.','Turning on your camera.'], answer:1, hint:'💡 No subject before the verb.', fb:'Imperatives begin directly with the base verb.' },
+  { type:'mc', q:'What does "mute" mean?', opts:['Turn off your sound','Turn on your camera','Share your screen'], answer:0, hint:'💡 Think about your microphone.', fb:'"Mute" means to turn off your microphone.' },
+  { type:'tf', q:'The imperative form changes depending on the subject (I / you / he).', answer:false, hint:'💡 Imperatives never change form.', fb:'The imperative is always the same — no matter who you are speaking to.' },
+  { type:'input', q:'Translate: "No olvides unirte a tiempo."', hint:'don\'t · forget · join · time', answers:['don\'t forget to join on time','dont forget to join on time'], display:'Don\'t forget to join on time.', fb:'"Don\'t forget" + base verb — a negative imperative giving a reminder.' },
+  { type:'mc', q:'Which word starts a negative imperative?', opts:['Not','Don\'t','No'], answer:1, hint:'💡 It comes right before the base verb.', fb:'"Don\'t" + base verb makes a negative imperative.' },
+  { type:'tf', q:'"Please" makes an imperative sound more polite.', answer:true, hint:'💡 Think about tone in the workplace.', fb:'Correct — "Please" softens an instruction and sounds more professional.' },
+  { type:'input', q:'Unscramble: "screen / share / your / please" into a full sentence.', hint:'Start with "Please."', answers:['please share your screen'], display:'Please share your screen.', fb:'"Please share your screen" — an affirmative imperative softened with "please."' },
+  { type:'mc', q:'What does "connection" mean in a video meeting context?', opts:['Internet connection quality','A new coworker','A type of camera'], answer:0, hint:'💡 Think about what can be "slow" in a meeting.', fb:'"Connection" refers to your internet connection quality.' },
+  { type:'mc', q:'Which sentence is correct?', opts:['Don\'t shares your screen.','Don\'t share your screen.','Not share your screen.'], answer:1, hint:'💡 "Don\'t" + base verb — no -s ending.', fb:'"Don\'t share your screen" — the verb after "Don\'t" never takes an -s.' },
+  { type:'tf', q:'You must always add a subject before an imperative verb in English.', answer:false, hint:'💡 Recall Rule 1 from the Grammar segments.', fb:'Imperatives never have a subject — they start directly with the base verb.' },
+];
+
+const miniState = { voc:{}, gram1:{}, gram2:{}, ctx:{}, aud:{} };
+const miniQMap  = { voc:VOC_CQ, gram1:GRAM1_CQ, gram2:GRAM2_CQ, ctx:CTX_CQ, aud:AUD_CQ };
+
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 1;
+
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Welcome back! Last lesson, you learned to make and answer phone calls at work using <em>Can</em> and <em>Can't</em>. Today we move to a different kind of meeting: the <strong>video call</strong>.</p>
+    <p class="sec-intro">Every day, people all over the world join video meetings — on Microsoft Teams, Zoom, or Google Meet — to talk with coworkers in other cities and countries. In this lesson, you will meet <strong>Andrew Murrad</strong>, a project manager at Unilever, who runs a video meeting with his international team: <strong>Mei-Ling Chen</strong> (Taiwan), <strong>David Kim</strong> (Canada), and <strong>Amara Okafor</strong> (Nigeria).</p>
+    <p class="sec-intro">Listen to how Andrew gives instructions:</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">"Please mute your microphone."</span></div>
+      <div class="example-item"><span class="example-en">"Turn on your camera."</span></div>
+      <div class="example-item"><span class="example-en">"Don't share your screen yet."</span></div>
+    </div>
+    <p class="sec-intro">These are <strong>imperatives</strong> — a very important grammar structure for giving instructions, and one you will use constantly at work, in meetings, in emails, and even in daily life.</p>
+    <div class="es-note">Hoy aprenderás a dar instrucciones simples en inglés — como "Mute your microphone" (Silencia tu micrófono) o "Don't share your screen yet" (No compartas tu pantalla todavía). Esta estructura gramatical se llama "imperativo" y la usarás mucho en el trabajo.</div>
+    <div class="info-box">By the end of this lesson, you will be able to understand and give basic instructions during a video meeting — one of the most common situations in international remote work.</div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocab() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary: Video Meeting Basics</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Antes de aprender la gramática de hoy, necesitas conocer las palabras básicas de una reunión por video. Estas palabras aparecerán en todos los ejemplos de la gramática.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      "Mute" and "camera" are two of the most common words you will hear in every English-language video call, anywhere in the world. Learn these two first if you only have time for a few.
+    </div>
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👤</div>
+        <div>
+          <div class="model-name">Andrew Murrad</div>
+          <div class="model-role">Project Manager, Unilever</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Hi everyone! Before we start — please check your connection and turn on your camera."</div>
+        <div class="model-line"><span class="model-en">Mei-Ling: "One moment, my connection is slow today."</span></div>
+        <div class="model-line"><span class="model-en">David: "I can hear you well. Should I mute my microphone?"</span></div>
+        <div class="model-line"><span class="model-en">Andrew: "Yes, please mute it until it's your turn to speak."</span></div>
+      </div>
+    </div>
+    <div class="es-note">Observa cómo Andrew usa palabras como "mute," "camera," y "connection" dentro de instrucciones. Vas a aprender esta estructura de instrucciones ahora mismo.</div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Vocabulary</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('voc', VOC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar1() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar: Affirmative Imperatives</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Let's discover a new grammar structure by noticing a pattern — the same way you did with "Can / Can't" last lesson.</p>
+    <div class="h-serif">Notice</div>
+    <p class="sec-intro">Look at these four sentences Andrew says in the meeting. What do they have in common?</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">1. "Mute your microphone."</span></div>
+      <div class="example-item"><span class="example-en">2. "Turn on your camera."</span></div>
+      <div class="example-item"><span class="example-en">3. "Join the meeting on time."</span></div>
+      <div class="example-item"><span class="example-en">4. "Share your screen now."</span></div>
+    </div>
+    <div class="info-box">Look carefully — is there a subject like "I," "you," or "he" at the beginning of these sentences? What word comes first in each one?</div>
+    <p class="sec-intro"><strong>Notice:</strong> there is <strong>no subject</strong>. The sentence starts directly with the <strong>verb</strong>. This is called an <strong>imperative</strong> — we use it to give instructions, directions, or commands.</p>
+
+    <div class="h-serif">Rule 1 — Base Verb, No Subject</div>
+    <p class="sec-intro">To make an affirmative imperative, use the <strong>base form of the verb</strong> (the infinitive without "to") at the beginning of the sentence. No "I," "you," or "he/she" is needed.</p>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Structure</div>
+      <div class="pattern-row"><span class="pattern-en">Verb (base form) + rest of sentence</span><span class="pattern-es"><strong>Turn on</strong> your camera.</span></div>
+      <div class="pattern-row"><span class="pattern-en">Verb (base form) + rest of sentence</span><span class="pattern-es"><strong>Mute</strong> your microphone.</span></div>
+      <div class="pattern-row"><span class="pattern-en">Verb (base form) + rest of sentence</span><span class="pattern-es"><strong>Join</strong> the meeting.</span></div>
+    </div>
+    <div class="es-note">En español, el imperativo afirmativo cambia según la persona: "habla" (tú), "hable" (usted), "hablen" (ustedes). En inglés, NO hay cambios — siempre usas la misma forma del verbo (el infinitivo sin "to"), sin importar con quién hables. Por ejemplo: "Turn on your camera" sirve para hablarle a una persona o a un grupo entero.</div>
+
+    <div class="h-serif">Rule 2 — Softening with "Please"</div>
+    <p class="sec-intro">Add <strong>"Please"</strong> at the beginning or end to make an instruction sound more polite — very important in a professional workplace.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Examples</div>
+      <div class="example-item"><span class="example-en">Please mute your microphone.</span><span class="example-arrow">→</span><span class="example-es">Por favor, silencia tu micrófono.</span></div>
+      <div class="example-item"><span class="example-en">Turn on your camera, please.</span><span class="example-arrow">→</span><span class="example-es">Enciende tu cámara, por favor.</span></div>
+      <div class="example-item"><span class="example-en">Please join on time.</span><span class="example-arrow">→</span><span class="example-es">Por favor, únete a tiempo.</span></div>
+    </div>
+    <div class="es-note">"Please" funciona igual que "por favor" en español — puedes ponerlo al principio o al final de la instrucción. "Please mute your microphone" y "Mute your microphone, please" significan exactamente lo mismo; solo cambia dónde pones la palabra.</div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👤</div>
+        <div>
+          <div class="model-name">Andrew Murrad</div>
+          <div class="model-role">Project Manager, Unilever</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Please turn on your camera and mute your microphone until it's your turn to speak."</div>
+        <div class="model-line"><span class="model-en">Please turn on your camera</span><span class="model-div">|</span><span class="model-es">Por favor, enciende tu cámara</span></div>
+        <div class="model-line"><span class="model-en">mute your microphone</span><span class="model-div">|</span><span class="model-es">silencia tu micrófono</span></div>
+        <div class="model-line"><span class="model-en">until it's your turn to speak</span><span class="model-div">|</span><span class="model-es">hasta que sea tu turno de hablar</span></div>
+      </div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Common Mistakes</div>
+      <div class="mistake-wrong">❌ "You mute your microphone." (adding an unnecessary subject)</div>
+      <div class="mistake-right">✅ "Mute your microphone."</div>
+      <div class="mistake-wrong">❌ "Please to turn on your camera." (adding "to" before the verb)</div>
+      <div class="mistake-right">✅ "Please turn on your camera."</div>
+    </div>
+
+    <div class="es-note">En español, muchas veces usamos el imperativo con una terminación diferente según la persona (tú/usted). En inglés, el imperativo es siempre igual — no cambia. Solo usas el verbo base, sin importar con quién hables.</div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Affirmative Imperatives</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm this grammar point is clear before you move on.</p>
+    ${renderMiniQ('gram1', GRAM1_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar2() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Grammar: Negative Imperatives</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Now let's learn how to tell someone what NOT to do — just as important in a video meeting!</p>
+    <div class="h-serif">Notice</div>
+    <p class="sec-intro">Listen to Andrew again, later in the meeting:</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">1. "Don't share your screen yet."</span></div>
+      <div class="example-item"><span class="example-en">2. "Don't leave the meeting early."</span></div>
+      <div class="example-item"><span class="example-en">3. "Please don't talk at the same time."</span></div>
+    </div>
+    <div class="info-box">What word do you see at the beginning of each sentence, right before the verb?</div>
+
+    <div class="h-serif">Rule 1 — Don't + Base Verb</div>
+    <p class="sec-intro">To make a <strong>negative imperative</strong>, add <strong>"Don't"</strong> before the base verb.</p>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Structure</div>
+      <div class="pattern-row"><span class="pattern-en">Don't + verb (base form)</span><span class="pattern-es"><strong>Don't share</strong> your screen yet.</span></div>
+      <div class="pattern-row"><span class="pattern-en">Don't + verb (base form)</span><span class="pattern-es"><strong>Don't leave</strong> the meeting early.</span></div>
+      <div class="pattern-row"><span class="pattern-en">Please + don't + verb</span><span class="pattern-es">Please <strong>don't talk</strong> at the same time.</span></div>
+    </div>
+    <div class="es-note">"Don't" es la forma corta de "do not." Se coloca justo antes del verbo, en el mismo lugar donde en español pondrías "no": "No compartas" → "Don't share." La diferencia es que en inglés siempre necesitas la palabra "Don't" — nunca puedes decir solamente "Not share."</div>
+
+    <div class="h-serif">Rule 2 — "Don't" is Always the Same</div>
+    <p class="sec-intro">Just like affirmative imperatives, "Don't" never changes form — no matter who you are speaking to.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Examples</div>
+      <div class="example-item"><span class="example-en">Don't mute your microphone during the presentation.</span><span class="example-arrow">→</span><span class="example-es">No silencies tu micrófono durante la presentación.</span></div>
+      <div class="example-item"><span class="example-en">Don't forget to join on time.</span><span class="example-arrow">→</span><span class="example-es">No olvides unirte a tiempo.</span></div>
+      <div class="example-item"><span class="example-en">Please don't close your camera.</span><span class="example-arrow">→</span><span class="example-es">Por favor, no apagues tu cámara.</span></div>
+    </div>
+    <div class="es-note">Igual que con el imperativo afirmativo, "Don't" no cambia sin importar si hablas con una persona o con un grupo: "Don't leave the meeting" sirve tanto para "no salgas" como para "no salgan."</div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👤</div>
+        <div>
+          <div class="model-name">Amara Okafor</div>
+          <div class="model-role">Marketing Coordinator, Unilever</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Don't worry if your connection is slow — just turn off your camera and stay in the meeting."</div>
+        <div class="model-line"><span class="model-en">Don't worry</span><span class="model-div">|</span><span class="model-es">No te preocupes</span></div>
+        <div class="model-line"><span class="model-en">if your connection is slow</span><span class="model-div">|</span><span class="model-es">si tu conexión es lenta</span></div>
+        <div class="model-line"><span class="model-en">just turn off your camera</span><span class="model-div">|</span><span class="model-es">solo apaga tu cámara</span></div>
+        <div class="model-line"><span class="model-en">and stay in the meeting</span><span class="model-div">|</span><span class="model-es">y quédate en la reunión</span></div>
+      </div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Common Mistakes</div>
+      <div class="mistake-wrong">❌ "Not share your screen." (missing "Don't")</div>
+      <div class="mistake-right">✅ "Don't share your screen."</div>
+      <div class="mistake-wrong">❌ "Don't shares your screen." (adding -s to the verb)</div>
+      <div class="mistake-right">✅ "Don't share your screen."</div>
+    </div>
+
+    <div class="es-note">Recuerda: después de "Don't," siempre usamos el verbo en su forma base — nunca agregamos "-s," "-ing," o cualquier otra terminación.</div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Negative Imperatives</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm this grammar point is clear before you move on.</p>
+    ${renderMiniQ('gram2', GRAM2_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderContext() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Imperatives in Context</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Let's put affirmative and negative imperatives together in real video-meeting situations.</p>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👤</div>
+        <div>
+          <div class="model-name">David Kim</div>
+          <div class="model-role">Software Engineer, Toyota</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Please join the call five minutes early. Don't forget to test your microphone and camera before the meeting starts. Mute your microphone if you're not speaking, but don't leave the meeting without saying goodbye!"</div>
+        <div class="model-line"><span class="model-en">Please join the call five minutes early</span><span class="model-div">|</span><span class="model-es">Por favor, únete a la llamada cinco minutos antes</span></div>
+        <div class="model-line"><span class="model-en">Don't forget to test your microphone and camera</span><span class="model-div">|</span><span class="model-es">No olvides probar tu micrófono y cámara</span></div>
+        <div class="model-line"><span class="model-en">Mute your microphone if you're not speaking</span><span class="model-div">|</span><span class="model-es">Silencia tu micrófono si no estás hablando</span></div>
+        <div class="model-line"><span class="model-en">but don't leave the meeting without saying goodbye</span><span class="model-div">|</span><span class="model-es">pero no salgas de la reunión sin despedirte</span></div>
+      </div>
+    </div>
+    <div class="es-note">Observa que David usa las dos formas juntas en la misma conversación: instrucciones afirmativas ("Mute your microphone") e instrucciones negativas ("don't leave the meeting"). En una reunión real, siempre vas a escuchar y usar ambas formas mezcladas — no una sola a la vez.</div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      When translating, always ask yourself: "Is this a command/instruction with no subject?" If yes, it's an imperative — start with the base verb (or "Don't" + base verb).
+    </div>
+
+    <div class="h-serif">Try It Yourself (preview)</div>
+    <p class="sec-intro">Try translating these on your own — you'll practise more in the Exercises step:</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">1. Enciende tu cámara. → ?</span></div>
+      <div class="example-item"><span class="example-en">2. No compartas tu pantalla todavía. → ?</span></div>
+      <div class="example-item"><span class="example-en">3. Por favor, únete a tiempo. → ?</span></div>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Unscramble</div>
+      <div class="builder-ex">microphone / mute / your / please → <strong>"Please mute your microphone."</strong></div>
+    </div>
+
+    <div class="es-note">Estas frases desordenadas y las traducciones son solo un adelanto. Practicarás más en la sección de Ejercicios, después del Quiz de gramática.</div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Imperatives in Context</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm this segment is clear before you move on.</p>
+    ${renderMiniQ('ctx', CTX_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Listening: A Video Meeting in Progress</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Ahora vas a escuchar una grabación corta. Es un monólogo — una sola persona hablando — donde alguien explica cómo dirige sus reuniones por video en el trabajo. Presta atención a los imperativos.</div>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">A Video Meeting in Progress</div>
+          <div class="audio-box-sub">David Kim · Software Engineer · North American accent · ~70 sec</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L13-Audio-001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>"Hi, I'm David, and I work with a team in three different countries. Every morning, we have a short video meeting. First, I always ask everyone to join five minutes early and test their connection."</p>
+        <p>"Then, I say: 'Please turn on your camera, but mute your microphone if you're not speaking.' This helps us avoid background noise."</p>
+        <p>"During the meeting, if someone has a technical problem, I say: 'Don't worry, just leave your camera off and stay in the meeting.'"</p>
+        <p>"At the end, I always remind the team: 'Please don't forget to check the chat box for links and notes.' I find that these simple instructions make our meetings much smoother, even with people in different time zones."</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Listening</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm you understood the recording before you move on.</p>
+    ${renderMiniQ('aud', AUD_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Exercises</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Practice everything you've learned — vocabulary and imperatives — before the quiz. Tap each item to check the answer.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise A — Fill in the Blanks (Affirmative Imperatives)</div>
+      <div class="blank-list">
+        ${revealItem('_____ (enciende) your camera before the meeting starts.','Turn on')}
+        ${revealItem('_____ (silencia) your microphone, please.','Mute')}
+        ${revealItem('_____ (únete a) the meeting five minutes early.','Join')}
+        ${revealItem('_____ (comparte) your screen now, please.','Share')}
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise B — Fill in the Blanks (Negative Imperatives)</div>
+      <div class="blank-list">
+        ${revealItem('_____ (leave) the meeting without saying goodbye.',"Don't leave")}
+        ${revealItem('_____ (forget) to check your connection.',"Don't forget")}
+        ${revealItem("Please _____ (talk) at the same time.","don't talk")}
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise C — Translate from Spanish</div>
+      <div class="blank-list">
+        ${revealItem('Enciende tu cámara.','Turn on your camera.')}
+        ${revealItem('No compartas tu pantalla todavía.',"Don't share your screen yet.")}
+        ${revealItem('Por favor, únete a tiempo.','Please join on time.')}
+        ${revealItem('No olvides silenciar tu micrófono.',"Don't forget to mute your microphone.")}
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise D — Rearrange the Jumbled Phrases</div>
+      <div class="blank-list">
+        ${revealItem('microphone / your / mute / please','Please mute your microphone.')}
+        ${revealItem("camera / don't / your / turn off","Don't turn off your camera.")}
+        ${revealItem('the / join / meeting / on time','Join the meeting on time.')}
+        ${revealItem("screen / share / don't / yet / your","Don't share your screen yet.")}
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise E — Match the Instruction to the Situation</div>
+      <div class="blank-list">
+        ${revealItem('"Mute your microphone" — when does this apply?','There is background noise')}
+        ${revealItem('"Turn on your camera" — when does this apply?','The meeting is starting')}
+        ${revealItem('"Don\u2019t leave the meeting" — when does this apply?','Someone has a technical problem')}
+        ${revealItem('"Check the chat box" — when does this apply?','Looking for links and notes')}
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function revealItem(prompt, answer) {
+  return `<div class="blank-item" onclick="this.querySelector('.rev').style.display=
+     this.querySelector('.rev').style.display==='inline'?'none':'inline'" style="cursor:pointer;">
+    <span class="blank-sentence">${prompt}</span>
+    <span class="rev" style="display:none;color:var(--green);font-weight:700;">✓ ${answer}</span>
+    <span style="font-size:11px;color:var(--grey-blue);white-space:nowrap;">Tap to reveal</span>
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">8</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':`Attempt ${quizAttempts} · Review the ${wrongCount} question${wrongCount===1?'':'s'} you missed, then retry — you can keep retrying until every answer is correct.`}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const q = miniQMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { voc: renderVocab, gram1: renderGrammar1, gram2: renderGrammar2, ctx: renderContext, aud: renderListening };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) {
+    document.getElementById('mainContent').innerHTML = targetFn();
+    const audio = document.getElementById('mainAudio');
+    if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+    const tbox = document.getElementById('transcriptBox');
+    const tbtn = document.getElementById('transcriptBtn');
+    if (tbox && tbtn) {
+      tbox.style.display = transcriptOpen ? 'block' : 'none';
+      tbtn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+    }
+  }
+}
+
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  quizAttempts++;
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+
+STEPS = [
+  { label: "1. Welcome",    fn: renderWelcome },
+  { label: "2. Vocabulary", fn: renderVocab },
+  { label: "3. Grammar: Affirmative", fn: renderGrammar1 },
+  { label: "4. Grammar: Negative",    fn: renderGrammar2 },
+  { label: "5. In Context", fn: renderContext },
+  { label: "6. Listening",  fn: renderListening },
+  { label: "7. Exercises",  fn: renderExercises },
+  { label: "8. Quiz",       fn: renderQuiz },
+];
+
+render();
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

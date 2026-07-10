@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 13: Video Meetings | A1 Unit 2 Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* TEACHER INSTRUCTION BOX — dashed grey, present on every Classwork activity step */
+.teacher-box { background:var(--white); border:1.5px dashed var(--grey-blue); border-radius:10px; padding:16px 18px; margin-bottom:20px; }
+.teacher-box-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--grey-blue); font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:6px; }
+.teacher-box-row { font-size:13px; color:var(--slate); line-height:1.6; margin-bottom:6px; }
+.teacher-box-row:last-child { margin-bottom:0; }
+.teacher-box-row strong { color:var(--navy); }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; flex-wrap:wrap; cursor:pointer; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-weight:700; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+
+.writing-area { width:100%; min-height:140px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+
+/* FLIP-CARD GAME */
+.flip-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:20px; }
+@media(max-width:600px){ .flip-grid{ grid-template-columns:repeat(2,1fr); } }
+.flip-card { background:var(--navy); border-radius:10px; padding:16px 12px; min-height:110px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; cursor:pointer; transition:transform 0.15s, background 0.15s; border:1px solid rgba(255,255,255,0.1); }
+.flip-card:hover { transform:translateY(-2px); }
+.flip-card.revealed { background:var(--white); border:1.5px solid var(--gold); cursor:default; }
+.flip-card-num { font-family:var(--font-heading); font-size:26px; color:var(--gold); }
+.flip-card-es-face { font-family:var(--font-heading); font-size:17px; color:var(--white); font-weight:700; }
+.flip-card-label { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:6px; }
+.flip-card-word { font-family:var(--font-heading); font-size:15px; color:var(--navy); font-weight:700; }
+.flip-card-es { font-size:12px; color:var(--grey-blue); font-style:italic; margin-top:2px; }
+.flip-card-ex { font-size:11px; color:var(--slate); margin-top:8px; line-height:1.5; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Lesson 13 · Classwork</div>
+    <h1 class="hero-title">Lesson 13: Video Meetings</h1>
+    <p class="hero-sub">Grammar Focus: Imperatives — Production Practice · ~60 minutes</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Grammar-heavy</span>
+      <span class="pill accent">🎮 Built-in game</span>
+      <span class="pill">5 activities</span>
+      <span class="pill">60 min</span>
+      <span class="pill">8 students · main room</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── FLIP-CARD GAME DATA & STATE ───────────────────────────
+// Face shows Spanish — students guess the English word before flipping.
+const FLIP_CARDS = [
+  { es:"Silenciar", word:"Mute", ex:'"Please mute your microphone."' },
+  { es:"Cámara", word:"Camera", ex:'"Turn on your camera."' },
+  { es:"Compartir pantalla", word:"Screen share", ex:"\"Don't share your screen yet.\"" },
+  { es:"Conexión", word:"Connection", ex:'"Check your connection."' },
+  { es:"Micrófono", word:"Microphone", ex:"\"Don't leave your microphone on.\"" },
+  { es:"Unirse a la reunión", word:"Join the meeting", ex:'"Join the meeting on time."' },
+  { es:"Salir de la reunión", word:"Leave the meeting", ex:"\"Don't leave the meeting early.\"" },
+  { es:"Cuadro de chat", word:"Chat box", ex:'"Check the chat box."' },
+];
+const flipState = {};
+
+function flipCard(i) {
+  flipState[i] = !flipState[i];
+  rerenderFlipGrid();
+}
+function rerenderFlipGrid() {
+  const grid = document.getElementById('flipGrid');
+  if (grid) grid.innerHTML = renderFlipGrid();
+}
+function renderFlipGrid() {
+  return FLIP_CARDS.map((c,i) => {
+    const rev = flipState[i];
+    if (rev) {
+      return `<div class="flip-card revealed" onclick="flipCard(${i})">
+        <div class="flip-card-word">${c.word}</div>
+        <div class="flip-card-ex">${c.ex}</div>
+      </div>`;
+    }
+    return `<div class="flip-card" onclick="flipCard(${i})">
+      <div class="flip-card-es-face">${c.es}</div>
+      <div class="flip-card-label">Guess the English · tap to check</div>
+    </div>`;
+  }).join('');
+}
+
+// ── TEACHER INSTRUCTION BOX HELPER ────────────────────────
+function teacherBox(timing, watch, extend, extra) {
+  return `<div class="teacher-box">
+    <div class="teacher-box-label">👩‍🏫 Teacher Notes</div>
+    <div class="teacher-box-row">⏱ <strong>Timing:</strong> ${timing}</div>
+    <div class="teacher-box-row">🎯 <strong>What to correct:</strong> ${watch}</div>
+    <div class="teacher-box-row">📈 <strong>Extend for stronger students:</strong> ${extend}</div>
+    ${extra ? `<div class="teacher-box-row">${extra}</div>` : ''}
+  </div>`;
+}
+
+// ── TAP-TO-REVEAL HELPER (round-robin prompt cards) ───────
+function revealItem(promptHtml, answer) {
+  return `<div class="blank-item" onclick="this.querySelector('.rev').style.display=
+     this.querySelector('.rev').style.display==='inline'?'none':'inline'">
+    <span class="blank-sentence">${promptHtml}</span>
+    <span class="rev" style="display:none;color:var(--green);font-weight:700;">✓ ${answer}</span>
+    <span style="font-size:11px;color:var(--grey-blue);white-space:nowrap;">Tap for model answer</span>
+  </div>`;
+}
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up: Flip-Card Vocabulary Game</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">A quick warm-up before we move into today's grammar practice. Each card shows a Spanish word or phrase — guess the English before you tap to check. One card per student, called in round-robin order.</p>
+
+    <div class="flip-grid" id="flipGrid">${renderFlipGrid()}</div>
+
+    ${teacherBox(
+      '8 minutes — 1 card per student, roughly 1 minute each, called in round-robin order.',
+      'Can the student guess the English word from the Spanish before checking? Confirm pronunciation once the answer is revealed — this is warm-up only, not a graded test.',
+      'Ask them to build one original sentence using the word, not just repeat the example shown.',
+      '🎮 This is the lesson\'s only pure vocabulary segment — everything from Step 2 onward is grammar production.'
+    )}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBuilder() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Grammar Practice: Instruction Builder</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Let's practice imperatives using vocabulary from across the whole course — not just today's words. Read the Spanish sentence, then build the English imperative aloud. This is where you make mistakes, and I'll help you fix them.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Translate — One Sentence Per Student</div>
+      <div class="blank-list">
+        ${revealItem('1. <em>(Office objects, L5)</em> "Trae tu laptop a la reunión, por favor."','Please bring your laptop to the meeting.')}
+        ${revealItem('2. <em>(Time, L8)</em> "Únete a la reunión a las 3:00."','Join the meeting at 3:00.')}
+        ${revealItem('3. <em>(Email, L11)</em> "No olvides revisar tu correo antes de la llamada."',"Don't forget to check your email before the call.")}
+        ${revealItem('4. <em>(Phone calls, L12)</em> "No llames durante la reunión."',"Don't call during the meeting.")}
+        ${revealItem('5. <em>(Job titles, L1)</em> "Pídele al gerente que se una a la llamada a tiempo."','Ask the manager to join the call on time.')}
+        ${revealItem('6. <em>(Numbers, L3–4)</em> "Ve a la sala 204, por favor."','Go to room 204, please.')}
+        ${revealItem('7. <em>(Days, L1)</em> "No olvides que la reunión es el lunes, no el martes."',"Don't forget — the meeting is on Monday, not Tuesday.")}
+        ${revealItem('8. <em>(Office objects + today\'s vocab)</em> "Revisa tu conexión antes de abrir tu laptop."','Check your connection before you open your laptop.')}
+      </div>
+    </div>
+
+    ${teacherBox(
+      '15 minutes — roughly 2 minutes per student, including correction.',
+      'Missing "Don\'t," added subjects ("You bring…"), wrong verb form after "Don\'t," misplaced "please." Correct immediately and have the student repeat the corrected sentence.',
+      'Ask them to combine two prompts into one sentence with a connector — e.g., "Check your connection, and don\'t forget your laptop."'
+    )}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderTransform() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar Practice: Rearrange the Sentence</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Each sentence below is jumbled — put the words in the correct order to build a proper imperative. One sentence per student — say your version aloud, then we'll confirm together as a group.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Unscramble — One Sentence Per Student</div>
+      <div class="blank-list">
+        ${revealItem('1. camera / your / turn on', 'Turn on your camera.')}
+        ${revealItem('2. please / laptop / bring / your', 'Please bring your laptop.')}
+        ${revealItem('3. email / your / check / don\'t forget to', "Don't forget to check your email.")}
+        ${revealItem('4. late / don\'t / meeting / for / be / the', "Don't be late for the meeting.")}
+        ${revealItem('5. yet / share / don\'t / your screen', "Don't share your screen yet.")}
+        ${revealItem('6. microphone / mute / your / please', 'Please mute your microphone.')}
+        ${revealItem('7. Monday / meeting / don\'t forget / is on / the', "Don't forget — the meeting is on Monday.")}
+        ${revealItem('8. connection / your / check / before / opening / your laptop', 'Check your connection before opening your laptop.')}
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Start by finding the verb — in an imperative sentence, the verb (or "Don't" + verb) always comes first, or right after "Please."
+    </div>
+
+    ${teacherBox(
+      '12 minutes — roughly 1.5 minutes per student.',
+      'Watch for word order mistakes — especially students placing "please" mid-sentence incorrectly, or forgetting "Don\'t" needs to stay directly before the verb.',
+      'Ask them to say the sentence a second way — e.g., moving "please" from the front to the end.'
+    )}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Reading: Andrew's Meeting Etiquette Email</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Let's read a real workplace email — the kind of message Andrew Murrad might send his team before a big video meeting.</p>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">✉️</div>
+        <div>
+          <div class="model-name">Andrew Murrad</div>
+          <div class="model-role">Project Manager, Unilever</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">
+          Subject: Quick Reminders Before Tomorrow's Meeting<br><br>
+          Hi team,<br><br>
+          Before our video call tomorrow, please remember a few simple things.<br><br>
+          First, join the meeting five minutes early and test your connection. Turn on your camera when the meeting starts — it helps us feel more connected as a team.<br><br>
+          Please mute your microphone if you are not speaking. This keeps the meeting clear for everyone, especially our colleagues joining from Toyota's Tokyo office.<br><br>
+          Don't share your screen until I ask you to. And please don't leave the meeting early — if you must go, send a quick message in the chat box first.<br><br>
+          See you all tomorrow!<br><br>
+          Andrew
+        </div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Comprehension — One Question Per Student</div>
+      <div class="blank-list">
+        ${revealItem('1. What does Andrew ask the team to do before the meeting starts?','Join five minutes early and test your connection.')}
+        ${revealItem('2. Find one <strong>affirmative</strong> imperative in the email. Read it aloud.','e.g., "Turn on your camera," "Please mute your microphone."')}
+        ${revealItem('3. Find one <strong>negative</strong> imperative in the email. Read it aloud.','e.g., "Don\'t share your screen," "please don\'t leave the meeting early."')}
+        ${revealItem('4. Why does Andrew mention the Tokyo office?','To explain why muting matters — for colleagues joining from a different time zone/office.')}
+        ${revealItem('5. What should you do if you need to leave the meeting early?','Send a quick message in the chat box first.')}
+        ${revealItem('6. Rewrite "Turn on your camera" as a negative imperative.',"Don't turn off your camera.")}
+        ${revealItem('7. Rewrite "Don\'t leave the meeting early" as an affirmative one.','Stay until the meeting ends. / Leave on time.')}
+        ${revealItem('8. Why do you think Andrew says "please" so often in this email?','To sound polite and professional, not like he\'s giving orders.')}
+      </div>
+    </div>
+
+    ${teacherBox(
+      '10 minutes — 3 min silent read, 7 min discussion (roughly 1 question per student).',
+      'Can students find imperative forms inside full paragraphs? This is harder than isolated example sentences — give extra time here if needed.',
+      'Ask them to identify every sentence that uses "please" and explain why it\'s there.'
+    )}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSimulation() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Simulation: The Meeting Chain</div>
+      <div class="sec-badge-time">18 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Below are 10 work instructions in Spanish — most of them straight from today's Pre-Learning. Going around the group, each student picks one card, translates it into English, and tells it to the next person. That person responds, then picks their own card and passes the chain on.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Pick a Card, Tell the Next Person — 10 Options for 8 Students</div>
+      <div class="blank-list">
+        ${revealItem('1. "Enciende tu cámara."','Turn on your camera.')}
+        ${revealItem('2. "Silencia tu micrófono."','Mute your microphone.')}
+        ${revealItem('3. "No compartas tu pantalla todavía."',"Don't share your screen yet.")}
+        ${revealItem('4. "Únete a la reunión a tiempo."','Join the meeting on time.')}
+        ${revealItem('5. "No te vayas de la reunión sin despedirte."',"Don't leave the meeting without saying goodbye.")}
+        ${revealItem('6. "Revisa el cuadro de chat."','Check the chat box.')}
+        ${revealItem('7. "No olvides revisar tu conexión."',"Don't forget to check your connection.")}
+        ${revealItem('8. "Trae tu laptop a la oficina."','Bring your laptop to the office.')}
+        ${revealItem('9. "No llegues tarde a la reunión."',"Don't be late for the meeting.")}
+        ${revealItem('10. "Manda un correo antes de las cinco."','Send an email before five o\'clock.')}
+      </div>
+    </div>
+
+    ${teacherBox(
+      '18 minutes — roughly 2 minutes per student (translate + instruction + response + correction). Two cards are left over — use them as backups or for a stronger student who finishes early.',
+      'Is the translation a correct imperative (no subject, "Don\'t" in the right place)? Is the response from the next student functional, not just one word?',
+      'Ask "why" after their instruction, requiring a short justified response — e.g., "Why is it important not to leave without saying goodbye?"',
+      '👀 <strong>Full supervision:</strong> Whole-class format means every exchange is heard and corrected in real time — no unsupervised pairs at any point.'
+    )}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Wrap-Up: Write a Meeting Email</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Let's close today's class by writing something real: a short email to your colleagues about your next team meeting. Use vocabulary you're already comfortable with — from today's lesson or any earlier one.</p>
+
+    <div class="info-box">
+      Write <strong>4–5 sentences</strong> giving instructions about your next meeting. Use <strong>at least 3 imperatives</strong> — for example: <em>Bring, Prepare, Don't forget, Please join, Check, Send</em>.
+    </div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">✉️</div>
+        <div>
+          <div class="model-name">Example — not to copy directly</div>
+          <div class="model-role">Use this as a model, then write your own</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">
+          Hi team,<br><br>
+          Our next meeting is on Friday at 10:00. Please join five minutes early and check your connection. Bring your laptop and prepare your report before the call. Don't forget to mute your microphone if you're not speaking.<br><br>
+          See you then!
+        </div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Your Email</div>
+      <textarea class="writing-area" id="emailWriting" placeholder="Hi team,&#10;&#10;Our next meeting is..." oninput="updateEmailWordCount()"></textarea>
+      <div id="emailWordCount" style="font-size:12px;color:var(--grey-blue);text-align:right;margin-top:5px;">0 words</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Vocabulary Reminder</div>
+      Feel free to draw on words from any lesson so far — laptop, email, connection, camera, microphone, room number, days of the week, manager — mixed with today's imperative grammar.
+    </div>
+
+    ${teacherBox(
+      '10 minutes — roughly 5–6 min writing, then each of the 8 students reads their email aloud (~30 sec each).',
+      'At least 3 correctly-formed imperatives, and 4–5 sentences that read like a real workplace email rather than a disconnected list of commands.',
+      'Ask them to add one more sentence explaining <em>why</em> an instruction matters — e.g., "Please mute your microphone, because there is often background noise."'
+    )}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function updateEmailWordCount() {
+  const ta = document.getElementById('emailWriting');
+  const counter = document.getElementById('emailWordCount');
+  if (!ta || !counter) return;
+  const words = ta.value.trim().split(/\s+/).filter(Boolean).length;
+  counter.textContent = words + (words === 1 ? ' word' : ' words');
+}
+
+
+STEPS = [
+  { label: "1. Warm-Up",         fn: renderWarmup },
+  { label: "2. Instruction Builder", fn: renderBuilder },
+  { label: "3. Rearrange",       fn: renderTransform },
+  { label: "4. Reading",         fn: renderReading },
+  { label: "5. Meeting Chain",   fn: renderSimulation },
+  { label: "6. Meeting Email",   fn: renderWrapup },
+];
+
+render();
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

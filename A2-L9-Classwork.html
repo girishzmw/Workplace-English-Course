@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 9: Giving Status Updates | A2 · Unit 1 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* TEACHER INSTRUCTION BOX — dashed grey, appears on every classwork step */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* Tap-to-reveal rows */
+.tap-row { display:flex; flex-direction:column; gap:6px; padding:13px 16px; background:var(--white); border:1px solid var(--border-grey); border-radius:8px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.tap-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:2px 9px; font-size:11px; font-weight:700; flex-shrink:0; }
+.tap-q { font-size:14px; color:var(--navy); flex:1; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; font-size:14px; color:var(--green); font-weight:700; padding-top:6px; border-top:1px dashed var(--border-grey); }
+.tap-answer.show { display:block; }
+.tap-answer.wrong-line { color:var(--red); }
+
+/* Numbered project / task cards */
+.card-grid { display:grid; grid-template-columns:1fr; gap:12px; margin-bottom:10px; }
+.num-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.num-card-head { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+.num-badge { background:var(--navy); color:var(--gold); border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0; }
+.num-name { font-family:var(--font-heading); font-size:15px; color:var(--navy); }
+.num-role { font-size:12px; color:var(--grey-blue); }
+.num-status-list { display:flex; flex-direction:column; gap:5px; margin-bottom:10px; }
+.num-status-item { font-size:13px; color:var(--slate); }
+.reveal-toggle { font-size:12px; color:var(--sky); cursor:pointer; display:inline-block; }
+.reveal-model { display:none; margin-top:8px; padding:10px 13px; background:var(--off-white); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; font-size:13px; font-style:italic; color:var(--navy); }
+.reveal-model.show { display:block; }
+
+/* Fixed-frame box for guided drill */
+.frame-box { background:var(--navy); border-radius:10px; padding:20px 22px; margin-bottom:20px; }
+.frame-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:12px; }
+.frame-line { font-size:14px; color:var(--white); padding:6px 0; }
+.frame-line strong { color:var(--gold); }
+
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Classwork</div>
+    <h1 class="hero-title">Lesson 9: Giving Status Updates</h1>
+    <p class="hero-sub">Present Perfect vs. Simple Past — production practice · ~60 min, teacher-led</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">🔁 Grammar drill</span>
+      <span class="pill">6 steps</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function teacherBox(text) {
+  return `<div class="teacher-box"><div class="teacher-box-label">👩‍🏫 Teacher Note</div>${text}</div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const wa = document.getElementById('writingArea');
+  if (wa) updateWordCount();
+}
+
+// ── LESSON DATA ────────────────────────────────────────────
+
+const WARMUP_CARDS = [
+  { q: 'I ___ (finish) the report ___.', a: 'already finished' },
+  { q: 'She ___ (submit) the invoice ___.', a: 'submitted... yesterday' },
+  { q: 'We ___ (not receive) feedback ___.', a: "haven't received... yet" },
+  { q: 'He ___ (review) the numbers ___.', a: 'reviewed... last week' },
+  { q: 'They ___ (not start) the presentation ___.', a: "haven't started... yet" },
+  { q: 'I ___ (send) the email ___.', a: 'sent... this morning' },
+  { q: 'The team ___ (complete) the audit.', a: 'has completed' },
+  { q: 'William ___ (already / approve) the budget.', a: 'has already approved' },
+];
+
+const PROJECT_CARDS = [
+  { name:'Amara Okafor', role:'Lagos, Nigeria · Unilever', items:['✅ vendor contracts','⏳ legal review','⚠️ none'],
+    model:'"I have completed the vendor contracts. The legal review is still pending — I haven\'t heard back yet."' },
+  { name:'Mei-Ling Chen', role:'Taipei, Taiwan · Siemens', items:['✅ software update','⏳ user testing','⚠️ training rollout'],
+    model:'"I have already finished the software update. User testing is still pending, and unfortunately the training rollout has been delayed."' },
+  { name:'David Kim', role:'Seoul, South Korea · Samsung', items:['✅ market research','⏳ none','⚠️ supplier shipment'],
+    model:'"I have completed the market research. Everything else is on track, but the supplier shipment has been delayed."' },
+  { name:'Priya Kapoor', role:'Mumbai, India · Amazon', items:['✅ Q3 report','⏳ manager sign-off','⚠️ none'],
+    model:'"I have finished the Q3 report. It\'s still pending the manager\'s sign-off."' },
+  { name:'Lucas Ferreira', role:'São Paulo, Brazil · Nestlé', items:['✅ none','⏳ client proposal','⚠️ product launch'],
+    model:'"I haven\'t finished the client proposal yet, and the product launch has been delayed."' },
+  { name:'Sofia Andersen', role:'Stockholm, Sweden · IKEA', items:['✅ inventory count','⏳ warehouse audit','⚠️ none'],
+    model:'"I have completed the inventory count. The warehouse audit is still pending."' },
+  { name:'Karim El-Sayed', role:'Cairo, Egypt · Siemens', items:['✅ safety inspection','⏳ certification','⚠️ none'],
+    model:'"I have completed the safety inspection. The certification is still pending."' },
+  { name:'Jolene Wong', role:'Singapore · Unilever', items:['✅ none','⏳ budget approval','⚠️ shipment delay'],
+    model:'"I haven\'t received the budget approval yet, and unfortunately there\'s been a shipment delay."' },
+];
+
+const EMAIL_LINES = [
+  { line:'"I have completed the audit."', ok:true, note:'Correct — no time mentioned, result matters now.' },
+  { line:'"I have completed the audit yesterday."', ok:false, fix:'"I completed the audit yesterday."', note:'"Yesterday" is a specific time — forces Simple Past.' },
+  { line:'"We haven\'t received the shipment yet."', ok:true, note:'Correct — "yet" pairs naturally with Present Perfect.' },
+  { line:'"She has submitted the report last Friday."', ok:false, fix:'"She submitted the report last Friday."', note:'"Last Friday" is a specific time — forces Simple Past.' },
+  { line:'"The team has already reviewed the numbers."', ok:true, note:'Correct — "already" pairs naturally with Present Perfect.' },
+  { line:'"He has finished it this morning at 9am."', ok:false, fix:'"He finished it this morning at 9am."', note:'"At 9am" is a specific time — forces Simple Past.' },
+  { line:'"I haven\'t started the presentation yet."', ok:true, note:'Correct — negative + "yet" is a standard Present Perfect pattern.' },
+  { line:'"They have approved the budget."', ok:true, note:'Correct — no time mentioned, result matters now.' },
+];
+
+const DRILL_CARDS = [
+  { task:'the vendor comparison', status:'done', reply:"Yes, I've already completed it." },
+  { task:'the client proposal', status:'pending', reply:"No, not yet — it's still pending." },
+  { task:'the safety inspection', status:'done', reply:"Yes, I've already completed it." },
+  { task:'the shipment', status:'delayed', reply:"Actually, it's been delayed." },
+  { task:'the budget approval', status:'pending', reply:"No, not yet — it's still pending." },
+  { task:'the user testing', status:'done', reply:"Yes, I've already finished it." },
+  { task:'the training rollout', status:'delayed', reply:"Actually, it's been delayed." },
+  { task:'the inventory count', status:'done', reply:"Yes, I've already completed it." },
+];
+
+// ── RENDERERS ──────────────────────────────────────────────
+
+function renderOverview() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Session Overview</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Today's class puts the Present Perfect from Pre-Learning into real use — reporting on work that's done, pending, or delayed. Every activity gives each of you an individually assigned item, so everyone speaks and produces language throughout the session.</p>
+    <div class="info-box">
+      <strong>Today's flow:</strong> Warm-Up (quick tense check) → Speaking (your own status update) → Reading (spot the mistake) → Guided Drill (question-and-answer chain) → Writing (your own email).
+    </div>
+    <div class="es-note">💬 Recuerda la regla de oro: si mencionas un momento específico (ayer, la semana pasada), usa pasado simple. Si no hay un momento específico y el resultado importa ahora, usa Present Perfect.</div>
+    ${teacherBox('Keep this step brief — 2 minutes max. It exists to orient the group, not to re-teach. Move quickly into the Warm-Up.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Warm-Up — Status Race</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Each of you gets one numbered card. Read it aloud, complete it, then the group confirms together.</p>
+    <div class="ex-box">
+      <div class="ex-label">Tap each card to check after you answer aloud</div>
+      ${WARMUP_CARDS.map((c,i) => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <span class="tap-num">${i+1}</span>
+            <div class="tap-q">${c.q}</div>
+            <div class="tap-hint-label">Tap to check</div>
+          </div>
+          <div class="tap-answer">${c.a}</div>
+        </div>`).join('')}
+    </div>
+    ${teacherBox('5-minute hard cap — keep pace brisk, this is a warm-up, not a teaching moment. If a student hesitates, give the time-marker as a hint ("yesterday" → Simple Past). <strong>Extension:</strong> ask a stronger student to explain why in one sentence.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Speaking — My Status Update</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">You each have a colleague's project card. Turn the notes into a spoken 3-sentence status update using Present Perfect — one sentence per item (completed / pending / delayed).</p>
+    <div class="card-grid">
+      ${PROJECT_CARDS.map((p,i) => `
+        <div class="num-card">
+          <div class="num-card-head">
+            <div class="num-badge">${i+1}</div>
+            <div>
+              <div class="num-name">${p.name}</div>
+              <div class="num-role">${p.role}</div>
+            </div>
+          </div>
+          <div class="num-status-list">
+            ${p.items.map(it => `<div class="num-status-item">${it}</div>`).join('')}
+          </div>
+          <span class="reveal-toggle" onclick="this.nextElementSibling.classList.toggle('show')">Need a model? Tap to reveal ▾</span>
+          <div class="reveal-model">${p.model}</div>
+        </div>`).join('')}
+    </div>
+    ${teacherBox('Listen for correct have/has agreement, correct past participles, and — most importantly — that no student adds a specific time word ("yesterday," "last week") to a Present Perfect sentence. Gently redirect if this slips: "Careful — if you say a specific time, which tense do we need?" <strong>Extension:</strong> ask stronger students to add a "next step" sentence using going to or will.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Reading — Spot the Mistake</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">This is part of a Monday status email thread sent to William Brooks. Some lines are correct; some contain a classic mistake. Read silently first, then work together to find and fix the errors.</p>
+    <div class="ex-box">
+      <div class="ex-label">Tap each line to check your answer</div>
+      ${EMAIL_LINES.map((e,i) => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <span class="tap-num">${i+1}</span>
+            <div class="tap-q">${e.line}</div>
+            <div class="tap-hint-label">Tap to check</div>
+          </div>
+          <div class="tap-answer ${e.ok?'':'wrong-line'}">${e.ok ? '✅ Correct — ' + e.note : '❌ Error → ' + e.fix + ' — ' + e.note}</div>
+        </div>`).join('')}
+    </div>
+    ${teacherBox('Give students 3–4 minutes of silent reading before discussing as a group. Keep the answer key hidden until students have attempted it themselves — don\'t reveal it on the shared screen early. <strong>Extension:</strong> ask stronger students to rewrite each incorrect sentence rather than just identify it.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderDrill() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Guided Drill — "Have You...?" Chain</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">A quick, low-pressure drill before independent writing. Work in pairs: Student A asks the fixed question, Student B answers using the fixed frame that matches their card. Rotate partners after each round.</p>
+
+    <div class="frame-box">
+      <div class="frame-label">Fixed Frames — keep this on screen for the whole class</div>
+      <div class="frame-line">A: "Have you <strong>[finished / completed / submitted]</strong> the ___ yet?"</div>
+      <div class="frame-line">B (if done): "Yes, I've already <strong>[completed/finished]</strong> it."</div>
+      <div class="frame-line">B (if not done): "No, not yet — it's still <strong>pending</strong>."</div>
+      <div class="frame-line">B (if a problem): "Actually, it's been <strong>delayed</strong>."</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">8 task cards — one per student, tap to check the model reply</div>
+      ${DRILL_CARDS.map((d,i) => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <span class="tap-num">${i+1}</span>
+            <div class="tap-q">${d.task} — <em>${d.status}</em></div>
+            <div class="tap-hint-label">Tap for model reply</div>
+          </div>
+          <div class="tap-answer">${d.reply}</div>
+        </div>`).join('')}
+    </div>
+    ${teacherBox('This is meant to feel easy — almost like a drill, not a performance. Keep energy up with quick rotation (30–40 seconds per pair, then switch). The goal is muscle memory for have/has + participle + already/yet/still before students write independently in the next step. <strong>Extension:</strong> let stronger pairs swap in a real project name of their own instead of the card.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWriting() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Wrap-Up — Your Status Update</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Write a short status update email of your own — a real project, task, or course, or an invented one if you prefer. Use at least two Present Perfect sentences and one already/just/yet word.</p>
+    <div class="tip-box">
+      <div class="tip-label">💡 Sentence starters (optional)</div>
+      "Hi [name], here's my update for this week. I have already..." / "...is still pending because..." / "Unfortunately, ... has been delayed..."
+    </div>
+    <textarea class="writing-area" id="writingArea" placeholder="Write your status update here (4–6 sentences)..." oninput="updateWordCount()"></textarea>
+    <div class="word-count" id="wordCount">0 words</div>
+    ${teacherBox('Circulate and check for the specific-time-marker mistake one more time before homework. <strong>Extension:</strong> ask early finishers to add one "delayed" item with a reason.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function updateWordCount() {
+  const wa = document.getElementById('writingArea');
+  const wc = document.getElementById('wordCount');
+  if (!wa || !wc) return;
+  const words = wa.value.trim().length ? wa.value.trim().split(/\s+/).length : 0;
+  wc.textContent = words + ' word' + (words===1?'':'s');
+}
+
+// ── STEPS — populated last ─────────────────────────────────
+STEPS = [
+  { label: "1. Overview",  fn: renderOverview },
+  { label: "2. Warm-Up",   fn: renderWarmup },
+  { label: "3. Speaking",  fn: renderSpeaking },
+  { label: "4. Reading",   fn: renderReading },
+  { label: "5. Drill",     fn: renderDrill },
+  { label: "6. Writing",   fn: renderWriting },
+];
+
+render(); // always last
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

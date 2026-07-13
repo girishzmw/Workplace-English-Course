@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 9: Giving Status Updates | A2 · Unit 1 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-item { margin-bottom:10px; cursor:pointer; }
+.mistake-item:last-child { margin-bottom:0; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); font-style:italic; }
+.mistake-right { display:none; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; margin-top:6px; }
+.mistake-right.show { display:flex; }
+.mistake-tap-label { font-size:11px; color:var(--grey-blue); margin-top:4px; padding-left:2px; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.result-attempts { font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-weight:700; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* SPANISH BRIDGE TABLE (haber/have) */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+
+/* Tap-to-reveal exercise rows */
+.tap-row { display:flex; flex-direction:column; gap:6px; padding:13px 16px; background:var(--white); border:1px solid var(--border-grey); border-radius:8px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; font-size:14px; color:var(--green); font-weight:700; padding-top:6px; border-top:1px dashed var(--border-grey); }
+.tap-answer.show { display:block; }
+
+/* Status category cards (Functional Phrases) */
+.status-grid { display:grid; grid-template-columns:1fr; gap:14px; margin-bottom:20px; }
+.status-card { border-radius:10px; padding:16px 18px; border:1px solid var(--border-grey); background:var(--white); }
+.status-card-head { font-family:var(--font-heading); font-size:15px; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.status-card.completed .status-card-head { color:var(--green); }
+.status-card.pending .status-card-head { color:var(--sky); }
+.status-card.delayed .status-card-head { color:#92400E; }
+.status-phrase { font-size:14px; color:var(--slate); padding:6px 0; border-bottom:1px dashed var(--border-grey); font-style:italic; }
+.status-phrase:last-child { border-bottom:none; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 9: Giving Status Updates</h1>
+    <p class="hero-sub">Present Perfect introduction (have/has + past participle) · ~45 min self-study</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Report completed work clearly</div><div class="outcome-note">Informar sobre trabajo completado</div></div>
+      <div><div class="outcome-item">Use have/has + past participle</div><div class="outcome-note">Usar have/has + participio</div></div>
+      <div><div class="outcome-item">Choose Present Perfect vs Simple Past</div><div class="outcome-note">Elegir entre los dos tiempos correctamente</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+// ── LESSON DATA ────────────────────────────────────────────
+
+const VOCAB = [
+  ["Completed", "Completado"],
+  ["Finished", "Terminado"],
+  ["Pending", "Pendiente"],
+  ["Delayed", "Retrasado"],
+  ["In progress", "En proceso"],
+  ["On track", "Según lo planeado"],
+  ["Overdue", "Vencido / Atrasado"],
+  ["Submitted", "Enviado"],
+  ["Reviewed", "Revisado"],
+  ["Approved", "Aprobado"],
+  ["Update (noun)", "Actualización"],
+  ["Deadline", "Fecha límite"],
+];
+
+const BRIDGE = [
+  ["I have", "Yo he"],
+  ["You have", "Tú has"],
+  ["He/She/It has", "Él/Ella ha"],
+  ["We have", "Nosotros hemos"],
+  ["They/You (pl.) have", "Ellos/Ustedes han"],
+];
+
+const QUIZ = [
+  { type:'mc', q:'Which word means "behind schedule, with a problem"?',
+    opts:['Pending','Delayed','Reviewed'], answer:1,
+    hint:'💡 Think about which word implies something has gone wrong.',
+    fb:'"Delayed" means behind schedule — there is a problem. "Pending" is neutral.' },
+  { type:'tf', q:'"Pending" means the same thing as "delayed."',
+    answer:false,
+    hint:'💡 One of these is neutral, the other implies a problem.',
+    fb:'They are not the same. "Pending" = not finished yet (neutral). "Delayed" = behind schedule (a problem).' },
+  { type:'input', q:'What is the Spanish word for "deadline"?',
+    hint:'fecha · límite',
+    answers:['fecha límite','fecha limite'],
+    display:'Fecha límite.',
+    fb:'"Deadline" = fecha límite — the date by which something must be done.' },
+  { type:'mc', q:'Which sentence is correct?',
+    opts:['I have finished it yesterday.','I finished it yesterday.','I finish it yesterday.'], answer:1,
+    hint:'💡 "Yesterday" is a specific finished time.',
+    fb:'A specific past time like "yesterday" always forces Simple Past — never Present Perfect.' },
+  { type:'tf', q:'You can use Present Perfect with a specific past time, like "last Monday."',
+    answer:false,
+    hint:'💡 Remember the critical contrast rule from the Grammar section.',
+    fb:'False. Present Perfect never combines with a specific finished-time expression like "last Monday," "yesterday," or "in March."' },
+  { type:'input', q:'Complete the parallel: "Ella ___ revisado el informe" → "She ___ reviewed the report."',
+    hint:'one small word — the auxiliary',
+    answers:['has'],
+    display:'Has.',
+    fb:'"Ha" in Spanish and "has" in English are the same auxiliary verb — haber = have.' },
+  { type:'mc', q:'Which sentence is grammatically correct?',
+    opts:["She hasn't approve the budget.","She hasn't approved the budget.","She haven't approved the budget."], answer:1,
+    hint:'💡 Check the past participle form and the auxiliary agreement.',
+    fb:'"Hasn\'t" pairs with the past participle "approved" — not the base form "approve."' },
+  { type:'mc', q:'Which word correctly completes: "I have ___ finished the invoice"?',
+    opts:['already','yesterday','ago'], answer:0,
+    hint:'💡 This word means "sooner than expected" and works with Present Perfect.',
+    fb:'"Already" works naturally with Present Perfect. "Yesterday" and "ago" are specific-time words that require Simple Past.' },
+  { type:'tf', q:'"Yet" is normally used in affirmative (positive) sentences.',
+    answer:false,
+    hint:'💡 Think about where you usually see "yet" in a sentence.',
+    fb:'False. "Yet" is used in negatives and questions: "I haven\'t finished it yet." / "Have you finished it yet?"' },
+  { type:'input', q:'Complete the question: "___ you submitted the report?"',
+    hint:'auxiliary verb, capital letter',
+    answers:['have'],
+    display:'Have.',
+    fb:'Questions in Present Perfect start with Have/Has + subject + past participle.' },
+  { type:'mc', q:'Which phrase reports something with no problem — just not finished yet?',
+    opts:["It's overdue.","It's still pending.","It's been delayed."], answer:1,
+    hint:'💡 Which of these three carries no negative implication?',
+    fb:'"It\'s still pending" is neutral — no problem is implied, unlike "overdue" or "delayed."' },
+  { type:'mc', q:'In Spanish, "he" (as in "he terminado") corresponds to which English form?',
+    opts:['I have','She has','We have'], answer:0,
+    hint:'💡 Check the Spanish Bridge table — first person singular.',
+    fb:'"He" = "I have" — first person singular of the auxiliary haber.' },
+  { type:'tf', q:'"I have sent the invoice" tells you exactly when the invoice was sent.',
+    answer:false,
+    hint:'💡 Present Perfect focuses on the result now, not a specific moment.',
+    fb:'False. Present Perfect deliberately leaves out the specific time — the point is that it\'s done now, not when it happened.' },
+];
+
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 0;
+
+const miniState = { voc: {}, gram: {}, func: {}, lis: {} };
+
+const VOC_CQ = [
+  { type:'mc', q:'Which word means "behind schedule, with a problem"?',
+    opts:['Delayed','Pending','Reviewed'], answer:0,
+    hint:'💡 One word is neutral, one implies a problem.',
+    fb:'"Delayed" means behind schedule — there is a problem to flag.' },
+  { type:'tf', q:'"Pending" means the same as "delayed."',
+    answer:false,
+    hint:'💡 Compare the two tip boxes above.',
+    fb:'False — "pending" is neutral (not finished yet); "delayed" implies a problem.' },
+  { type:'input', q:'What is the Spanish word for "deadline"?',
+    hint:'fecha · límite',
+    answers:['fecha límite','fecha limite'],
+    display:'Fecha límite.',
+    fb:'"Deadline" = fecha límite.' },
+];
+
+const GRAM_CQ = [
+  { type:'mc', q:'Which sentence is correct?',
+    opts:['I have finished it yesterday.','I finished it yesterday.','I finish it yesterday.'], answer:1,
+    hint:'💡 "Yesterday" is a specific finished time.',
+    fb:'A specific time like "yesterday" always requires Simple Past, never Present Perfect.' },
+  { type:'tf', q:'You can use Present Perfect with a specific past time like "last Monday."',
+    answer:false,
+    hint:'💡 This is the critical contrast rule from Use 3.',
+    fb:'False. Present Perfect never combines with a specific finished-time expression.' },
+  { type:'input', q:'Complete the parallel: "Ella ___ revisado el informe" → "She ___ reviewed the report."',
+    hint:'one small auxiliary word',
+    answers:['has'],
+    display:'Has.',
+    fb:'"Ha" (Spanish) and "has" (English) are the same auxiliary verb — haber = have.' },
+];
+
+const FUNC_CQ = [
+  { type:'mc', q:'Which phrase reports something with no problem, just not finished?',
+    opts:["It's been delayed",'It\'s still pending',"It's overdue"], answer:1,
+    hint:'💡 Which option carries no negative implication?',
+    fb:'"It\'s still pending" is neutral — no problem implied.' },
+  { type:'input', q:'Complete Ingrid\'s sentence: "I ___ ___ the vendor comparison."',
+    hint:'have + past participle',
+    answers:['have completed'],
+    display:'Have completed.',
+    fb:'"I have completed the vendor comparison" — the task is done, ready to report.' },
+];
+
+const LIS_CQ = [
+  { type:'mc', q:'What has the team already completed?',
+    opts:['The packaging redesign','The supplier audit','The client feedback'], answer:1,
+    hint:'💡 Listen for what William says is "done" at the start.',
+    fb:'The team has completed the supplier audit — that part is done.' },
+  { type:'tf', q:'The client feedback has arrived.',
+    answer:false,
+    hint:'💡 Listen for the "still pending" part of the update.',
+    fb:'False. They haven\'t received the client\'s feedback yet — it\'s still pending.' },
+  { type:'input', q:'What was delayed?',
+    hint:'a project or task name',
+    answers:['the packaging redesign','packaging redesign'],
+    display:'The packaging redesign.',
+    fb:'The packaging redesign has been delayed — the new delivery date is next Friday.' },
+];
+
+// ── RENDERERS ──────────────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Every Monday, international teams check in on project work — what's done, what's still pending, and what got delayed. Getting this right in English matters: clients and managers make decisions based on what you report.</p>
+
+    <div class="info-box">
+      <strong>Meet the scenario:</strong> Ingrid Solheim, a Project Analyst at Philips in Oslo, Norway, is preparing her weekly status update for her manager, William Brooks, Regional Operations Lead at Philips in Amsterdam. Karim El-Sayed (you may remember him from Lesson 7) is cc'd on the email thread — still in the habit of asking for clarification when something's unclear.
+    </div>
+
+    <p class="sec-intro">Today's lesson introduces a new tense — the <strong>Present Perfect</strong> — used specifically for reporting on work <em>right now</em>: what's done, what isn't, and why it matters in this exact moment.</p>
+
+    <div class="es-note">
+      💬 Este tiempo verbal puede parecer raro al principio — y es normal. El español (especialmente el español latinoamericano) usa el pasado simple ("terminé," "envié") para casi todo lo que ya se completó. El inglés te obliga a tomar una decisión que el español normalmente no exige. Esa decisión es el corazón de esta lección.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">📖 Estas palabras describen el estado de una tarea o proyecto — las vas a usar constantemente al dar actualizaciones en inglés.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip — Pending vs. Delayed</div>
+      "Pending" just means <em>not started or not finished yet</em> — neutral, no problem implied. "Delayed" means <em>behind schedule</em> — there's a problem. Don't use them interchangeably: a manager hears "delayed" very differently from "pending."
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip — Finished vs. Completed</div>
+      These are near-synonyms. "Completed" sounds slightly more formal/official — better for status reports. "Finished" is fine in everyday conversation.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check — Vocabulary</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('voc', VOC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar — Present Perfect</div>
+      <div class="sec-badge-time">18 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="h-serif">Notice</div>
+    <div class="model-card">
+      <div class="model-body">
+        <div class="model-quote">A. "Have you finished the report?" — "Yes, I have finished it. It's ready for review."</div>
+        <div class="model-quote">B. "Did you finish the report?" — "Yes, I finished it yesterday afternoon."</div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">🤔 Think about it</div>
+      Both answers are true — so why doesn't A mention <em>when</em>, while B does? <br>(A is about the result <strong>right now</strong> — the report exists, it's ready. B is about a specific, closed moment in the past.)
+    </div>
+    <div class="info-box">"I haven't submitted the invoice yet." vs. "I submitted the invoice on Monday." — same idea as above, applied to this lesson's vocabulary.</div>
+    <div class="es-note">💬 En español, ambas ideas podrían salir como "Ya envié la factura" / "No he enviado la factura" — el español no exige la misma división estricta. Por eso este tiempo se siente resbaladizo — no porque sea difícil, sino porque tu instinto no te va a avisar cuando elijas mal.</div>
+
+    <div class="divider"></div>
+    <div class="h-serif">Form Rules</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Rule 1 — Affirmative: subject + have/has + past participle</div>
+      <div class="pattern-row"><div class="pattern-en">I / You / We / They <strong>have</strong> completed the task.</div><div class="pattern-es">He/She/It <strong>has</strong> completed the task.</div></div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Contractions</div>
+      I've, you've, we've, they've / he's, she's, it's. Watch out: "he's" can mean "he is" OR "he has" — the past participle right after 's tells you it's Present Perfect. ("He's finished" = he has finished.)
+    </div>
+
+    <div class="bridge-table-wrap">
+      <div class="bridge-table-head"><span>English (have)</span><span>Spanish (haber)</span></div>
+      ${BRIDGE.map(([en,es]) => `<div class="bridge-row"><div class="bridge-en">${en}</div><div class="bridge-es">${es}</div></div>`).join('')}
+    </div>
+    <div class="es-note">
+      💬 <strong>Buenas noticias:</strong> ya tienes esta herramienta gramatical en español. "Have" en inglés es un <strong>verbo auxiliar</strong> — un verbo "ayudante" que no lleva significado por sí mismo, solo construye el tiempo verbal. El español tiene exactamente el mismo tipo de verbo ayudante: <strong>haber</strong>.<br><br>
+      Compara la estructura completa — es casi un espejo directo:<br>
+      <strong>He terminado</strong> el proyecto. → <strong>I have finished</strong> the project.<br>
+      <strong>Ha enviado</strong> el correo. → <strong>She has sent</strong> the email.<br>
+      <strong>Hemos revisado</strong> los números. → <strong>We have reviewed</strong> the numbers.<br><br>
+      Mismo patrón, mismo orden: <em>verbo ayudante + participio</em>. Esta parte es tu amiga, no un problema nuevo.
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Dónde está la verdadera diferencia</div>
+      La forma es casi idéntica — pero la <em>elección</em> entre este tiempo y el pasado simple funciona diferente. En el español latinoamericano cotidiano, <strong>terminé</strong> (pasado simple) se usa constantemente, incluso donde <strong>he terminado</strong> también sería correcto. El inglés es más estricto: si no se menciona un momento específico y el resultado importa ahora mismo, el inglés <em>exige</em> el Present Perfect. El español te da opción; el inglés no.
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Rule 2 — Past participles</div>
+      <div class="pattern-row"><div class="pattern-en">Regular: add <strong>-ed</strong> — completed, finished, reviewed, submitted (same form as Simple Past)</div><div class="pattern-es">Irregular (learn individually): done, sent, written, given, begun, gone, been, made, taken, seen</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Rule 3 — Negative: subject + have/has + not + past participle</div>
+      <div class="pattern-row"><div class="pattern-en">I <strong>haven't</strong> started the presentation.</div><div class="pattern-es">She <strong>hasn't</strong> approved the budget.</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Rule 4 — Question: Have/Has + subject + past participle?</div>
+      <div class="pattern-row"><div class="pattern-en"><strong>Have</strong> you <strong>submitted</strong> the report?</div><div class="pattern-es"><strong>Has</strong> he <strong>reviewed</strong> the numbers?</div></div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Common Mistakes — tap each one to see the fix</div>
+      <div class="mistake-item" onclick="this.querySelector('.mistake-right').classList.toggle('show')">
+        <div class="mistake-wrong">❌ "I have finish the report."</div>
+        <div class="mistake-right">✅ "I have <strong>finished</strong> the report." — the past participle is required after "have."</div>
+        <div class="mistake-tap-label">Tap to reveal the fix</div>
+      </div>
+      <div class="mistake-item" onclick="this.querySelector('.mistake-right').classList.toggle('show')">
+        <div class="mistake-wrong">❌ "She has went to the client meeting."</div>
+        <div class="mistake-right">✅ "She has <strong>gone/been</strong> to the client meeting." — "went" is Simple Past, not the participle.</div>
+        <div class="mistake-tap-label">Tap to reveal the fix</div>
+      </div>
+      <div class="mistake-item" onclick="this.querySelector('.mistake-right').classList.toggle('show')">
+        <div class="mistake-wrong">❌ "He haves completed the task."</div>
+        <div class="mistake-right">✅ "He <strong>has</strong> completed the task." — "haves" isn't a word.</div>
+        <div class="mistake-tap-label">Tap to reveal the fix</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="h-serif">Use</div>
+
+    <div class="info-box"><strong>Use 1 — Reporting a finished action with a result that matters right now:</strong><br>"I have completed the client report." (→ it exists, it's ready)<br>"We have reviewed the proposal." (→ it's been looked at, decision can follow)</div>
+
+    <div class="info-box"><strong>Use 2 — With already, just, yet:</strong><br>
+    <strong>already</strong> = sooner than expected, affirmative → "I have already submitted the invoice."<br>
+    <strong>just</strong> = a very short time ago → "She has just finished the call."<br>
+    <strong>yet</strong> = negatives/questions, "up to now" → "Have you finished it yet?" / "I haven't finished it yet."</div>
+
+    <div class="info-box"><strong>Use 3 — The critical contrast rule:</strong><br>Present Perfect does <strong>not</strong> combine with a specific finished-time expression. Never: "I have finished it yesterday." A specific past time (yesterday, last Monday, in March, at 3pm) forces Simple Past: "I finished it yesterday."</div>
+
+    <div class="es-note">
+      💬 <strong>Terminé</strong> el proyecto <strong>ayer</strong>. → "I finished the project yesterday." <em>(tiempo específico → pasado simple en ambos idiomas)</em><br>
+      <strong>He terminado</strong> el proyecto. → "I have finished the project." <em>(sin tiempo específico, el resultado importa ahora → Present Perfect)</em><br><br>
+      <strong>Envié</strong> la factura <strong>la semana pasada</strong>. → "I sent the invoice last week." <em>(tiempo específico → pasado simple)</em><br>
+      <strong>He enviado</strong> la factura. → "I have sent the invoice." <em>(sin tiempo específico → Present Perfect)</em>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Present Perfect vs. Simple Past — side by side</div>
+      <div class="pattern-row"><div class="pattern-en"><strong>Present Perfect</strong> — no specific time, result matters now:<br>"I have completed the report."</div><div class="pattern-es"><strong>Simple Past</strong> — specific finished time, just reporting history:<br>"I completed the report yesterday."</div></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check — Grammar</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('gram', GRAM_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPhrases() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Functional Phrases</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">A ready-to-use phrase bank for real meetings and emails — this bridges the grammar directly into the function of this lesson: giving a status update.</p>
+
+    <div class="status-grid">
+      <div class="status-card completed">
+        <div class="status-card-head">✅ Completed</div>
+        <div class="status-phrase">"I have completed the vendor comparison."</div>
+        <div class="status-phrase">"We've already finished the first draft."</div>
+        <div class="status-phrase">"The team has submitted all the paperwork."</div>
+      </div>
+      <div class="status-card pending">
+        <div class="status-card-head">⏳ In Progress / Pending</div>
+        <div class="status-phrase">"I haven't finished the analysis yet — I'm still working on it."</div>
+        <div class="status-phrase">"The approval is still pending."</div>
+        <div class="status-phrase">"We haven't received the client's feedback yet."</div>
+      </div>
+      <div class="status-card delayed">
+        <div class="status-card-head">⚠️ Delayed</div>
+        <div class="status-phrase">"Unfortunately, the project has been delayed."</div>
+        <div class="status-phrase">"We haven't met the deadline — the delivery has been pushed to next week."</div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Note</div>
+      "Has been delayed" and "has been pushed" use a pattern called passive voice — you'll see it, but don't worry about building it yourself yet. We'll get there in a later lesson.
+    </div>
+
+    <div class="h-serif" style="margin-top:24px;">Model: Ingrid's Weekly Update Email</div>
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👩‍💼</div>
+        <div>
+          <div class="model-name">Ingrid Solheim</div>
+          <div class="model-role">Project Analyst · Philips, Oslo</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">
+          "Hi William, here's my update for this week. I have completed the vendor comparison, and I've already finished the budget summary. The contract review is still pending — I haven't received legal's feedback yet. One issue: the supplier meeting has been delayed, and we haven't confirmed a new date yet. I'll update you again on Friday. Best, Ingrid"
+        </div>
+      </div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Structure Tip</div>
+      Status updates follow an order: what's done → what's pending → what's delayed (if anything) → next step. Always lead with the good news.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check — Functional Phrases</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('func', FUNC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">6 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Listen to William Brooks's Monday morning team update — notice how naturally he uses Present Perfect to report on the week's progress.</p>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Monday Team Update</div>
+          <div class="audio-box-sub">William Brooks · Regional Operations Lead · ~75 sec</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L9-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>"Hi, this is William Brooks, Regional Operations Lead here at Philips. Every Monday morning, I record a short update for my team before our call. So — where are we this week?</p>
+        <p>First, the good news: we have completed the supplier audit, and the finance team has already reviewed the numbers. That part is done.</p>
+        <p>Now, what's still pending — we haven't received the final feedback from the client yet, so I can't close that file today. And one thing to flag: the packaging redesign has been delayed. We haven't met the original deadline, and the new delivery date is next Friday.</p>
+        <p>So, to summarize — audit done, client feedback pending, packaging delayed. I'll send the full report by email this afternoon."</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check — Listening</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('lis', LIS_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Exercises</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Practice choosing between Present Perfect and Simple Past — tap each item to check your answer.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Part A — Choose the correct tense</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">1. I ___ (finish) the report ___.</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">have already finished — Present Perfect (no specific time)</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">2. She ___ (submit) the invoice ___.</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">submitted... yesterday — Simple Past (specific time)</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">3. We ___ (not receive) feedback ___.</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">haven't received... yet — Present Perfect</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">4. He ___ (review) the numbers ___.</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">reviewed... last week — Simple Past (specific time)</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">5. They ___ (not start) the presentation ___.</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">haven't started... yet — Present Perfect</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">6. I ___ (send) the email ___.</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">sent... this morning at 9am — Simple Past (specific time)</div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Part B — Complete Ingrid's status update</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">1. "I ___ the vendor comparison." (complete)</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">have completed</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">2. "I've already ___ the budget summary." (finish)</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">finished</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">3. "I ___ received legal's feedback yet." (not)</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">haven't</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">4. "The supplier meeting ___ delayed." (be — passive, just recognize it)</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">has been</div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time · Unlimited retries on wrong answers</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry the wrong answers. Only incorrect answers reset — your correct ones stay locked.'}</div>
+      <div class="result-attempts">Attempts so far: ${quizAttempts}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── MAIN QUIZ ENGINE ───────────────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const val=normalise(quizState[qi].inputVal||'');
+  quizState[qi].correct=q.answers.some(a=>val===normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  quizAttempts++;
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── CONCEPT-CHECK (MINI QUIZ) ENGINE ──────────────────────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const qMap = { voc: VOC_CQ, gram: GRAM_CQ, func: FUNC_CQ, lis: LIS_CQ };
+  const q = qMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { voc: renderVocabulary, gram: renderGrammar, func: renderPhrases, lis: renderListening };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = targetFn();
+}
+
+// ── AUDIO FUNCTIONS ────────────────────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── STEPS — populated last ─────────────────────────────────
+STEPS = [
+  { label: "1. Welcome",     fn: renderWelcome },
+  { label: "2. Vocabulary",  fn: renderVocabulary },
+  { label: "3. Grammar",     fn: renderGrammar },
+  { label: "4. Phrases",     fn: renderPhrases },
+  { label: "5. Listening",   fn: renderListening },
+  { label: "6. Exercises",   fn: renderExercises },
+  { label: "7. Quiz",        fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

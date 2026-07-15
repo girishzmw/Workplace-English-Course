@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 10: Review + Networking Conversations | A2 · Unit 1 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.info-box ul { padding-left:18px; margin-top:6px; }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:14px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:14px 18px; display:flex; align-items:center; gap:12px; }
+.model-tag { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.model-body { padding:16px 18px; }
+.model-phrase { font-family:var(--font-heading); font-size:15px; color:var(--navy); font-style:italic; }
+
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; font-style:italic; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:600; }
+.tap-answer.show { display:block; }
+.tap-num { font-size:12px; font-weight:700; color:var(--gold); margin-right:8px; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-weight:700; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 10: Review + Networking Conversations</h1>
+    <p class="hero-sub">Unit 1 Review · Present Simple, There is/are, Frequency Adverbs, Present Continuous, Present Perfect &amp; more</p>
+
+    <div class="hero-outcomes">
+      <div>
+        <div class="outcome-item">Introduce yourself and your company confidently</div>
+        <div class="outcome-note">Preséntate a ti mismo y a tu empresa con confianza</div>
+      </div>
+      <div>
+        <div class="outcome-item">Ask and answer questions about work and skills</div>
+        <div class="outcome-note">Haz y responde preguntas sobre el trabajo y las habilidades</div>
+      </div>
+      <div>
+        <div class="outcome-item">Use Present Perfect to talk about experience</div>
+        <div class="outcome-note">Usa el Present Perfect para hablar de experiencia</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) { return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100); }
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LESSON DATA — VOCABULARY ───────────────────────────
+const VOCAB = [
+  ["to network", "establecer contactos"],
+  ["business contact", "contacto profesional"],
+  ["industry", "industria / sector"],
+  ["to exchange (contact info)", "intercambiar"],
+  ["headquarters", "sede central"],
+  ["branch office", "sucursal"],
+  ["multinational company", "empresa multinacional"],
+  ["to follow up", "dar seguimiento"],
+  ["colleague", "colega"],
+  ["direct report", "subordinado directo"],
+  ["stakeholder", "parte interesada"],
+  ["conversation starter", "frase para iniciar una conversación"],
+];
+
+// ── CONCEPT CHECK DATA ──────────────────────────────────
+const VOC_CQ = [
+  { type:'mc', q:'What does "to follow up" mean after a networking event?',
+    opts:['To walk behind someone','To contact someone again after meeting them','To ask for their business card'],
+    answer:1, hint:'Think about what happens after you meet someone new.',
+    fb:'"Follow up" means to continue contact after the first meeting — e.g., sending an email.' },
+  { type:'tf', q:'"Headquarters" and "branch office" mean the same thing.',
+    answer:false, hint:'One is the main office, one is smaller.',
+    fb:'Headquarters is the main office; a branch office is a smaller, separate location.' },
+  { type:'input', q:'What is the Spanish word for "colleague"?',
+    hint:'a person you work with', answers:['colega'],
+    display:'Colega.', fb:'"Colega" = colleague, a person you work with.' },
+];
+
+const GRAM1_CQ = [
+  { type:'mc', q:'Which sentence uses "There is/There are" correctly?',
+    opts:['There are three floors in our building.','There is three floors in our building.','Are three floors in our building.'],
+    answer:0, hint:'Match the verb to singular or plural.',
+    fb:'Use "There are" with plural nouns like "three floors."' },
+  { type:'tf', q:'"Our company\'s headquarters" is a correct use of possessive \'s.',
+    answer:true, hint:'Think about who the headquarters belongs to.',
+    fb:'Correct — \'s shows that the headquarters belongs to the company.' },
+  { type:'input', q:'Complete: "I ___ (usually) work from home on Fridays." (write the full sentence)',
+    hint:'Where does the frequency adverb go?', answers:['i usually work from home on fridays'],
+    display:'I usually work from home on Fridays.', fb:'Frequency adverbs like "usually" go before the main verb.' },
+];
+
+const GRAM2_CQ = [
+  { type:'mc', q:'"___ you met the new regional director yet?"',
+    opts:['Do','Have','Are'], answer:1, hint:'This is a Present Perfect question.',
+    fb:'Present Perfect questions use "Have/Has" + past participle.' },
+  { type:'tf', q:'"You should interrupt someone who is introducing themselves" is good networking etiquette.',
+    answer:false, hint:'Think about polite behaviour at events.',
+    fb:'It\'s polite to wait until the introduction is finished.' },
+  { type:'input', q:'Complete with the correct preposition: "The meeting room is next ___ the elevator."',
+    hint:'a preposition of place', answers:['to'],
+    display:'To.', fb:'"Next to" describes position — right beside something.' },
+];
+
+const FUNC_CQ = [
+  { type:'mc', q:'Which phrase is best for ending a networking conversation politely?',
+    opts:['Okay, bye.','It was great talking to you — let\'s stay in touch.','I have to go now.'],
+    answer:1, hint:'Think warm, professional, and open to future contact.',
+    fb:'This phrase is warm, professional, and opens the door to future contact.' },
+  { type:'tf', q:'"Could I get your contact details?" is an appropriate way to ask for someone\'s information.',
+    answer:true, hint:'Consider the tone — polite or rude?',
+    fb:'Correct — this is a polite, professional request.' },
+  { type:'input', q:'Complete: "I don\'t think we\'ve ___ — I\'m Ingrid from Marketing."',
+    hint:'a past participle', answers:['met'],
+    display:'Met.', fb:'"We\'ve met" uses Present Perfect for "at some point before now."' },
+];
+
+// ── MAIN QUIZ DATA ──────────────────────────────────────
+const QUIZ = [
+  { type:'mc', q:'"What do you ___ at your company?" (asking about someone\'s job)',
+    opts:['does','do','doing'], answer:1, hint:'Present Simple question form.',
+    fb:'"What do you do" is the standard question for asking about someone\'s job.' },
+  { type:'mc', q:'"___ are two offices in our region."',
+    opts:['There is','There are','It has'], answer:1, hint:'Plural noun — "two offices."',
+    fb:'"There are" is used with plural nouns.' },
+  { type:'tf', q:'"His department handles logistics" uses a possessive adjective correctly.',
+    answer:true, hint:'"His" shows possession.',
+    fb:'Correct — "his" is a possessive adjective showing the department belongs to him.' },
+  { type:'mc', q:'"I ___ attend the Monday meeting, but I rarely travel."',
+    opts:['usually','usually am','am usually'], answer:0, hint:'Frequency adverb + main verb.',
+    fb:'"I usually attend" — the frequency adverb goes before the main verb.' },
+  { type:'mc', q:'"She\'s good ___ negotiation."',
+    opts:['at','in','for'], answer:0, hint:'"Good at" + skill.',
+    fb:'"Good at" is the correct pattern for describing a skill.' },
+  { type:'input', q:'Complete: "I ___ (currently / work) on a project with the São Paulo team." (Present Continuous)',
+    hint:'am + verb-ing', answers:['am currently working','am working currently'],
+    display:'Am currently working.', fb:'Present Continuous describes an action happening around now.' },
+  { type:'mc', q:'Which question form is correct?',
+    opts:['Where you are based?','Where are you based?','Where do you are based?'],
+    answer:1, hint:'Question word + auxiliary + subject.',
+    fb:'"Where are you based?" follows the correct question word order.' },
+  { type:'input', q:'Complete: "Go past reception and turn left — the conference room is ___ the elevator."',
+    hint:'a preposition of place meaning "beside"', answers:['next to'],
+    display:'Next to.', fb:'"Next to" means directly beside something.' },
+  { type:'tf', q:'"You should exchange business cards" is good workplace advice at a networking event.',
+    answer:true, hint:'Think about professional etiquette.',
+    fb:'Correct — exchanging business cards is a normal, polite networking practice.' },
+  { type:'mc', q:'"___ you ever worked with an international team?"',
+    opts:['Do','Have','Are'], answer:1, hint:'Present Perfect for life experience.',
+    fb:'"Have you ever...?" asks about experience at any point up to now.' },
+];
+
+// ── QUIZ STATE ──────────────────────────────
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 0;
+const miniState = { voc:{}, gram1:{}, gram2:{}, func:{} };
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Congratulations — you\'ve reached the end of Unit 1! Over the last nine lessons, you\'ve learned how to introduce yourself, describe your company, talk about your responsibilities, ask questions, give directions, and report on completed work. In this review lesson, you\'ll bring all of that together in one situation: <strong>meeting new colleagues at a company networking event.</strong></p>
+    <p class="sec-intro">This lesson doesn\'t teach new grammar — it helps you use everything from Lessons 1–9 more confidently and naturally, the way you would in a real conversation.</p>
+    <div class="es-note">Esta lección no enseña gramática nueva — te ayuda a usar todo lo que ya aprendiste con más naturalidad, como en una conversación real.</div>
+    <div class="info-box">
+      <strong>Grammar areas reviewed in this lesson:</strong>
+      <ul>
+        <li>Present Simple + extended answers</li>
+        <li>There is / There are</li>
+        <li>Possessive adjectives &amp; possessive \'s</li>
+        <li>Frequency adverbs</li>
+        <li>Can / be good at</li>
+        <li>Present Continuous (review)</li>
+        <li>Question forms (review)</li>
+        <li>Prepositions + imperatives</li>
+        <li>Should / shouldn\'t</li>
+        <li>Present Perfect (have/has + past participle)</li>
+      </ul>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary — Networking Toolkit</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estas son las palabras clave para presentarte y conectar con nuevos colegas en un evento de networking.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      "Networking" is often mistranslated as "trabajo en red" — in a business context it simply means <em>building professional relationships</em>, not a technical network.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Vocabulary</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('voc', VOC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar1() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar Review, Part 1</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Let\'s review four points you\'ve already learned — describing yourself and your company at a networking event.</p>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">1 · Present Simple + Extended Answers</div>
+      <div class="pattern-row"><div class="pattern-en">"What do you do?" → "I work in Finance. I manage budgets and prepare quarterly reports."</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">2 · There is / There are</div>
+      <div class="pattern-row"><div class="pattern-en">"There are two offices in our region — one in Bogotá and one in Medellín."</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">3 · Possessive Adjectives / Possessive \'s</div>
+      <div class="pattern-row"><div class="pattern-en">"Our company\'s headquarters is in Rotterdam." / "His department handles logistics."</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">4 · Frequency Adverbs</div>
+      <div class="pattern-row"><div class="pattern-en">"I usually attend the Monday planning meeting, but I rarely travel for work."</div></div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Common Mistake</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q">❌ "I have three years working here."</div>
+          <div class="tap-hint-label">Tap to reveal correction</div>
+        </div>
+        <div class="tap-answer">✅ "I\'ve worked here for three years." — Spanish "llevar + time" doesn\'t translate directly; English uses Present Perfect + "for."</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Grammar Review Part 1</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm this review is clear before you move on.</p>
+    ${renderMiniQ('gram1', GRAM1_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar2() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Grammar Review, Part 2</div>
+      <div class="sec-badge-time">18 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Now let\'s review skills, actions, etiquette — and give extra attention to Present Perfect, the newest point from Lesson 9.</p>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">5 · Can / Be Good At</div>
+      <div class="pattern-row"><div class="pattern-en">"I can speak three languages." / "She\'s good at negotiation."</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">6 · Present Continuous (Review)</div>
+      <div class="pattern-row"><div class="pattern-en">"I\'m currently working on a regional project with the São Paulo team."</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">7 · Question Forms (Review)</div>
+      <div class="pattern-row"><div class="pattern-en">"Where are you based?" / "What industry are you in?" / "How long have you worked there?"</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">8 · Prepositions + Imperatives</div>
+      <div class="pattern-row"><div class="pattern-en">"Go past reception and turn left — the conference room is next to the elevator."</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">9 · Should / Shouldn\'t</div>
+      <div class="pattern-row"><div class="pattern-en">"You should exchange business cards." / "You shouldn\'t interrupt when someone is introducing themselves."</div></div>
+    </div>
+
+    <hr class="gold-rule" style="margin-top:28px;">
+    <div class="h-serif" style="font-family:var(--font-heading);font-size:18px;color:var(--navy);margin-bottom:12px;">10 · Present Perfect (have/has + past participle)</div>
+
+    <div class="bridge-table-wrap">
+      <div class="bridge-table-head"><span>English (have/has)</span><span>Spanish (haber)</span></div>
+      <div class="bridge-row"><div class="bridge-en">I have met</div><div class="bridge-es">(Yo) he conocido</div></div>
+      <div class="bridge-row"><div class="bridge-en">You have met</div><div class="bridge-es">(Tú) has conocido</div></div>
+      <div class="bridge-row"><div class="bridge-en">He/She has met</div><div class="bridge-es">(Él/Ella) ha conocido</div></div>
+      <div class="bridge-row"><div class="bridge-en">We have met</div><div class="bridge-es">(Nosotros) hemos conocido</div></div>
+      <div class="bridge-row"><div class="bridge-en">They have met</div><div class="bridge-es">(Ellos) han conocido</div></div>
+    </div>
+
+    <div class="es-note">El Present Perfect en inglés (have/has + participio) se parece a "haber + participio" en español. Pero hay una diferencia importante: en español muchas veces usamos el pretérito simple donde el inglés prefiere el Present Perfect para "una acción conectada con el presente." Por ejemplo, "Have you met the new director yet?" no se traduce naturalmente usando "ya conociste."</div>
+
+    <div class="examples-wrap">
+      <div class="examples-label">Contrastive Examples</div>
+      <div class="example-item"><span class="example-en">Have you met the new regional director yet?</span><span class="example-arrow">→</span><span class="example-es">¿Ya conociste / has conocido al nuevo director regional?</span></div>
+      <div class="example-item"><span class="example-en">I\'ve worked here for three years.</span><span class="example-arrow">→</span><span class="example-es">Trabajo aquí desde hace tres años. (not "I have three years")</span></div>
+      <div class="example-item"><span class="example-en">She has just finished the report.</span><span class="example-arrow">→</span><span class="example-es">Ella acaba de terminar el informe.</span></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Grammar Review Part 2</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm this review is clear before you move on.</p>
+    ${renderMiniQ('gram2', GRAM2_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPhrases() {
+  const phrases = [
+    ['Starting a conversation', '"Hi, I don\'t think we\'ve met — I\'m [name] from [department]."'],
+    ['Asking about someone\'s work', '"So, what do you do at [company]?"'],
+    ['Showing interest', '"That sounds interesting — how long have you been doing that?"'],
+    ['Exchanging contact info', '"Could I get your contact details? I\'d like to follow up."'],
+    ['Ending politely', '"It was great talking to you — let\'s stay in touch."'],
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Networking Phrases</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estas frases te ayudarán a iniciar, mantener y terminar una conversación de networking de forma profesional.</div>
+    ${phrases.map(([tag,phrase]) => `
+      <div class="model-card">
+        <div class="model-card-head"><span class="model-tag">${tag}</span></div>
+        <div class="model-body"><div class="model-phrase">${phrase}</div></div>
+      </div>`).join('')}
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Networking Phrases</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm these phrases are clear before you move on.</p>
+    ${renderMiniQ('func', FUNC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  const items = [
+    { n:1, type:'Spot the Mistake', q:'"I have three years working at Siemens."', a:'I\'ve worked at Siemens for three years.' },
+    { n:2, type:'Gap-Fill', q:'"There ___ (be) two branch offices in Asia."', a:'are' },
+    { n:3, type:'Choose the Correct Question', q:'"How long ___ you worked here?" (have / do)', a:'have' },
+    { n:4, type:'Preposition Gap-Fill', q:'"The meeting room is ___ the elevator." (beside)', a:'next to' },
+    { n:5, type:'Spot the Mistake', q:'"I attend usually the Monday meeting."', a:'I usually attend the Monday meeting.' },
+    { n:6, type:'Modal Gap-Fill', q:'"You ___ (should) exchange business cards after a good conversation."', a:'should' },
+    { n:7, type:'Choose the Correct Form', q:'"She ___ negotiation." (is good at / can good at)', a:'is good at' },
+    { n:8, type:'Present Continuous Gap-Fill', q:'"I ___ (currently / work) on a project with the São Paulo team."', a:'am currently working' },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Exercises — Mixed Review</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="ex-box">
+      <div class="ex-label">Exercise</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:10px;">Read each item and think of your answer, then tap to check. Each item reviews a different grammar point from Lessons 1–9.</p>
+    </div>
+    ${items.map(it => `
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q"><span class="tap-num">${it.n}.</span><strong>${it.type}:</strong> ${it.q}</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">✓ ${it.a}</div>
+      </div>`).join('')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:10px;">Attempts so far: ${quizAttempts}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! — You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding — a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+// ── MAIN QUIZ ENGINE ─────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function normalise(s) { return s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,''); }
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=normalise(quizState[qi].inputVal||'');
+  quizState[qi].correct=q.answers.some(a=>val===normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  quizAttempts++;
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── CONCEPT-CHECK MINI ENGINE (shared) ─────────────────────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const qMap = { voc: VOC_CQ, gram1: GRAM1_CQ, gram2: GRAM2_CQ, func: FUNC_CQ };
+  const q = qMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { voc: renderVocabulary, gram1: renderGrammar1, gram2: renderGrammar2, func: renderPhrases };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = targetFn();
+}
+
+// ── STEPS ───────────────────────────────
+STEPS = [
+  { label: "1. Welcome",     fn: renderWelcome },
+  { label: "2. Vocabulary",  fn: renderVocabulary },
+  { label: "3. Grammar I",   fn: renderGrammar1 },
+  { label: "4. Grammar II",  fn: renderGrammar2 },
+  { label: "5. Phrases",     fn: renderPhrases },
+  { label: "6. Exercises",   fn: renderExercises },
+  { label: "7. Quiz",        fn: renderQuiz },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

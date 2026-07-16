@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 15: Giving Simple Instructions | A1 · Unit 2 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:8px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-es-line { font-size:13px; color:var(--grey-blue); font-style:italic; padding:0 18px; margin-bottom:14px; }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* TRANSLATION QUESTION TYPE */
+.translate-prompt { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; margin-bottom:10px; font-size:15px; color:#7A5500; font-weight:600; font-style:italic; }
+
+/* UNJUMBLE QUESTION TYPE */
+.unjumble-build { min-height:48px; background:var(--light-grey); border:1.5px dashed var(--border-grey); border-radius:7px; padding:10px 14px; display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; align-items:center; }
+.unjumble-placeholder { color:var(--grey-blue); font-size:13px; font-style:italic; }
+.unjumble-build-tile { background:var(--sky); color:white; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; border:none; font-family:var(--font-body); transition:opacity 0.12s; }
+.unjumble-build-tile:hover:not(:disabled) { opacity:0.85; }
+.unjumble-build-tile.correct { background:var(--green); cursor:default; }
+.unjumble-build-tile.wrong   { background:var(--red);   cursor:default; }
+.unjumble-bank { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+.unjumble-tile { background:var(--white); border:1.5px solid var(--border-grey); border-radius:6px; padding:8px 14px; font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; font-family:var(--font-body); }
+.unjumble-tile:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.unjumble-tile:disabled { opacity:0.35; cursor:default; }
+
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.sub-heading { font-family:var(--font-body); font-size:15px; font-weight:700; color:var(--navy); }
+
+/* TAP TO REVEAL */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; }
+.tap-answer.show { display:block; }
+.tap-answer.correct-text { color:var(--green); font-weight:600; }
+.tap-answer.wrong-text { color:var(--red); }
+
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 15: Giving Simple Instructions</h1>
+    <p class="hero-sub">Sequencing language (first, then, next, finally) + imperatives · ~45 min self-study</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Use first, then, next, after that, finally to order instructions</div><div class="outcome-note">Ordenar instrucciones con palabras conectoras</div></div>
+      <div><div class="outcome-item">Explain a simple 3–5 step work process</div><div class="outcome-note">Explicar un proceso simple de 3 a 5 pasos</div></div>
+      <div><div class="outcome-item">Use open, send, click, upload correctly</div><div class="outcome-note">Usar correctamente open, send, click, upload</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+const VOCAB = [
+  ["Open", "Abrir"],
+  ["Click", "Hacer clic"],
+  ["Send", "Enviar"],
+  ["Upload", "Subir (un archivo)"],
+  ["Download", "Descargar"],
+  ["Attach", "Adjuntar"],
+  ["Save", "Guardar"],
+  ["Submit", "Enviar / Entregar (formal)"],
+  ["Folder", "Carpeta"],
+  ["Link", "Enlace"],
+];
+
+// ── CONCEPT CHECK DATA (Pre-Learning only) ─────────────────
+const VOC_CQ = [
+  { type:'mc', q:"Which word means \u2018hacer clic\u2019?", opts:['Click','Open','Save'], answer:0,
+    hint:'It\u2019s the action you do with a mouse button.', fb:'Click = hacer clic — pressing a mouse button.' },
+  { type:'translate', q:'Translate into English:', prompt:'Sube el archivo, por favor.',
+    answers:['upload the file please','upload the file, please'],
+    hint:'Upload = subir un archivo.', display:'Upload the file, please.',
+    fb:'\u2018Please\u2019 makes the instruction more polite — common in workplace requests.' },
+  { type:'unjumble', q:'Put the words in the correct order:',
+    words:['folder','the','Open','shared'], answer:'Open the shared folder',
+    hint:'Start with the imperative verb.', fb:'Open the shared folder — the verb always starts the instruction.' },
+];
+
+const GRAM_CQ = [
+  { type:'mc', q:'Which word signals the LAST step in a sequence?', opts:['After that','Finally','Then'], answer:1,
+    hint:'Think about which word can never be used in the middle.', fb:'Finally always marks the last step — never the middle.' },
+  { type:'unjumble', q:'Put the words in the correct order:',
+    words:['send','Finally,','manager.','your','to','it'], answer:'Finally, send it to your manager.',
+    hint:'Finally always comes first in this sentence, with a comma after it.', fb:'Finally, send it to your manager. — Finally + comma + imperative.' },
+  { type:'input', q:'Complete: \u201c___, open the shared drive.\u201d', answers:['first'],
+    hint:'The word that always starts a sequence.', display:'First, open the shared drive.',
+    fb:'First always opens a sequence — it never appears in the middle or at the end.' },
+];
+
+const PROC_CQ = [
+  { type:'mc', q:'In Klara\u2019s example, what does she do right after opening the folder?', opts:['Click the report file','Send the email','Save the file'], answer:0,
+    hint:'Look at the second step in her sequence.', fb:'She clicks the report file right after opening the shared folder.' },
+  { type:'translate', q:'Translate into English:', prompt:'Primero, revisa los n\u00fameros.',
+    answers:['first check the numbers','first, check the numbers'],
+    hint:'First = Primero. Check = revisar.', display:'First, check the numbers.',
+    fb:'First, check the numbers. — remember the comma after First.' },
+];
+
+const LIS_CQ = [
+  { type:'mc', q:'What is the first thing Andrew does?', opts:["Open the company website","Click \u2018New Employee Login\u2019","Type the employee\u2019s name"], answer:0,
+    hint:'Listen for the word \u201cFirst.\u201d', fb:'Andrew always starts by opening the company website.' },
+  { type:'tf', q:'Andrew changes his steps every time he does this process.', answer:false,
+    hint:'Listen for what he says about repeating the process.', fb:'False — he always follows the same steps, so he never forgets anything.' },
+  { type:'unjumble', q:'Put the words in the correct order:',
+    words:['he','After','clicks','Invitation.','Send','that,'], answer:'After that, he clicks Send Invitation.',
+    hint:'Starts with a middle-sequence word.', fb:'After that, he clicks Send Invitation. — a middle step in Andrew\u2019s process.' },
+];
+
+// ── MAIN QUIZ (Step 7) ──────────────────────────────────────
+const QUIZ = [
+  { type:'mc', q:"What does \u2018upload\u2019 mean?",
+    opts:['To send a file to the internet or server','To send a file to your computer','To delete a file'], answer:0,
+    hint:'Think about the arrow direction: \u2b06 or \u2b07?', fb:'Upload = your file goes UP, from your computer to the internet.' },
+  { type:'mc', q:'Which sequencing word can be used more than once in the same sequence?', opts:['Then / Next','Finally','First'], answer:0,
+    hint:'This word is used for middle steps, and there can be several middle steps.', fb:'Then / Next can repeat for multiple middle steps — just don\u2019t repeat the exact same word twice in a row.' },
+  { type:'tf', q:'You should put a comma after \u2018Finally\u2019 before the instruction.', answer:true,
+    hint:'Think of the pattern: sequencing word + comma + imperative.', fb:'True — Finally, send the report. The comma always follows the sequencing word.' },
+  { type:'tf', q:'In the audio, Andrew works in the Sales department.', answer:false,
+    hint:'Listen again to what Andrew says he does.', fb:'False — Andrew works in IT, helping new employees set up their email.' },
+  { type:'input', q:"Fill in the blank: \u201c___, click \u2018submit.\u2019\u201d (a middle-step word, not First or Finally)", answers:['then','next'],
+    hint:'Two words are both correct here.', display:'Then, click \u2018submit.\u2019 (or Next, click \u2018submit.\u2019)',
+    fb:'Both Then and Next work for a middle step.' },
+  { type:'input', q:"Translate to English: \u2018adjuntar\u2019", answers:['attach'],
+    hint:'This is one of today\u2019s vocabulary words.', display:'Attach.',
+    fb:'Attach = adjuntar — attaching a file to an email or message.' },
+  { type:'unjumble', q:'Put the words in the correct order:',
+    words:['open','shared','the','First,','folder.'], answer:'First, open the shared folder.',
+    hint:'Starts with the sequence-opening word.', fb:'First, open the shared folder. — First always opens the sequence.' },
+  { type:'unjumble', q:'Put the words in the correct order:',
+    words:['manager.','the','send','email','Finally,','to','your'], answer:'Finally, send the email to your manager.',
+    hint:'Ends the sequence — starts with the last-step word.', fb:'Finally, send the email to your manager. — the final step in the process.' },
+  { type:'translate', q:'Translate into English:', prompt:'Luego, haz clic en enviar.',
+    answers:['then click send','then, click send','next click send','next, click send'],
+    hint:'Luego = then / next. Enviar = send.', display:'Then, click send. (or Next, click send.)',
+    fb:'Then/Next, click send. — a middle-step instruction.' },
+  { type:'mc', q:'Which sentence uses the correct punctuation?', opts:['First, open the file.','First open the file.','First; open the file.'], answer:0,
+    hint:'Look for the comma right after the sequencing word.', fb:'First, open the file. — sequencing word + comma + imperative sentence.' },
+];
+
+// ── Quiz state ──────────────────────────────
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 0;
+const miniState = { voc:{}, gram:{}, proc:{}, lis:{} };
+const cqMap = { voc:VOC_CQ, gram:GRAM_CQ, proc:PROC_CQ, lis:LIS_CQ };
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">In Lesson 13, you learned how to give simple commands at work — <em>Turn on your camera. Don\u2019t mute yourself.</em> Today you\u2019ll build on that skill. You\u2019ll learn how to put instructions <strong>in order</strong>, so a coworker can follow a process step by step — like uploading a file or sending a report. This is one of the most useful skills in any office job, in any language.</p>
+    <div class="es-note">Ya aprendiste a dar \u00f3rdenes simples (imperativos). Hoy aprender\u00e1s a <strong>ordenarlas</strong> — primero esto, luego esto, despu\u00e9s esto — para explicar un proceso completo.</div>
+    <div class="info-box">By the end of this lesson, you\u2019ll be able to explain a simple work process from start to finish — clearly, and in the correct order.</div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estas son las palabras clave de hoy — todas son verbos que usamos para dar instrucciones sobre computadoras y documentos.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">\u26a0\ufe0f Send vs Submit</div>
+      In casual work chat, we <em>send</em> a message or file. In more formal situations — like handing in a report to a manager — we often say <em>submit</em>. "Enviar un informe" can be either send or submit in English, depending on how formal the situation is.
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">\ud83d\udca1 Upload vs Download</div>
+      These are opposites and easy to confuse. <strong>Upload</strong> = file goes FROM your computer TO the internet/server. <strong>Download</strong> = file comes FROM the internet TO your computer. Arrow direction helps: Upload \u2b06 / Download \u2b07.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">\u2705 Quick Check — Vocabulary</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('voc', VOC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Quick reminder: imperative verbs give direct instructions — <em>Open the file. Click \u2018submit.\u2019 Don\u2019t close the window.</em> You\u2019ve already practised this in Lesson 13. Today we add something new: putting those imperatives <strong>in order</strong>.</p>
+    <div class="es-note">Ya sabes usar los imperativos (Open, Click, Don\u2019t close). Ahora aprender\u00e1s a conectarlos en una secuencia clara.</div>
+
+    <div class="h-serif">Notice</div>
+    <div class="info-box">
+      "First, open the shared folder. Then, click the file. Next, download it. After that, save it to your desktop. Finally, send it to your manager."
+      <br><br>What order words do you see? What comes first, second, third...?
+    </div>
+
+    <div class="h-serif">Form Rules</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Rule 1 — Starting the sequence: First</div>
+      <div class="pattern-row"><div class="pattern-en">First, open your email.</div><div class="pattern-es">Primero, abre tu correo.</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Rule 2 — Middle steps: Then / Next</div>
+      <div class="pattern-row"><div class="pattern-en">Then, click "attachments."</div><div class="pattern-es">Luego, haz clic en "adjuntos."</div></div>
+      <div class="pattern-row"><div class="pattern-en">Next, download the file.</div><div class="pattern-es">Despu\u00e9s, descarga el archivo.</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Rule 3 — Extra middle step: After that</div>
+      <div class="pattern-row"><div class="pattern-en">After that, save it to the folder.</div><div class="pattern-es">Despu\u00e9s de eso, gu\u00e1rdalo en la carpeta.</div></div>
+    </div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Rule 4 — Ending the sequence: Finally</div>
+      <div class="pattern-row"><div class="pattern-en">Finally, send the email.</div><div class="pattern-es">Finalmente, env\u00eda el correo.</div></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">Rule 5 — Punctuation Pattern</div>
+      Sequencing word + comma + imperative sentence.<br>
+      \u2705 First, open the file. &nbsp;&nbsp; \u274c First open the file. (missing comma)
+    </div>
+
+    <div class="bridge-table-wrap">
+      <div class="bridge-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="bridge-row"><div class="bridge-en">First</div><div class="bridge-es">Primero</div></div>
+      <div class="bridge-row"><div class="bridge-en">Then / Next</div><div class="bridge-es">Luego / Despu\u00e9s</div></div>
+      <div class="bridge-row"><div class="bridge-en">After that</div><div class="bridge-es">Despu\u00e9s de eso</div></div>
+      <div class="bridge-row"><div class="bridge-en">Finally</div><div class="bridge-es">Finalmente / Por \u00faltimo</div></div>
+    </div>
+    <div class="es-note">Estas palabras conectoras funcionan casi igual en espa\u00f1ol — el orden de la oraci\u00f3n es muy similar. La diferencia principal es la coma en ingl\u00e9s despu\u00e9s de la palabra conectora.</div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">Common Mistakes</div>
+      <div class="mistake-wrong">\u274c First open the file, then you click submit.</div>
+      <div class="mistake-right">\u2705 First, open the file. Then, click submit.</div>
+      <div class="mistake-wrong">\u274c Finally, then send the report.</div>
+      <div class="mistake-right">\u2705 Finally, send the report.</div>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Sequence Builder</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:22px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 12px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:90px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Step 1</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">First</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic">open folder</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 6px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 12px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:90px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Step 2</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">Then</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic">click file</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 6px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 12px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:90px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Step 3</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">Next</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic">download it</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 6px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 12px;background:rgba(201,151,44,0.22);min-width:90px;flex:1;gap:4px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Step 4</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">Finally</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-style:italic">send email</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"First, open the folder. Then, click the file. Next, download it. Finally, send the email."</strong></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">\u2705 Quick Check — Grammar</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the sequencing rules are clear before you move on.</p>
+    ${renderMiniQ('gram', GRAM_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderProcess() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Process Examples</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Here are two real workplace examples of full sequences, from start to finish.</p>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">\ud83d\udc69\u200d\ud83d\udcbc</div>
+        <div>
+          <div class="model-name">Klara Nowak</div>
+          <div class="model-role">Project Coordinator, Poland — Submitting a Report</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"First, open the shared folder. Then, click the report file. Next, check the numbers. After that, attach it to an email. Finally, send it to your manager."</div>
+      </div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">\ud83d\udc68\u200d\ud83d\udcbb</div>
+        <div>
+          <div class="model-name">David Kim</div>
+          <div class="model-role">Analyst, Canada — Uploading a Document</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"First, open your laptop. Then, click \u2018upload.\u2019 Next, choose the file. Finally, click \u2018submit.\u2019"</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">\ud83d\udca1 Tip</div>
+      Notice both examples skip "after that" when they only have 3–4 steps — you don\u2019t need every sequencing word every time. Use only as many as you need.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">\u2705 Quick Check — Process Examples</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the examples are clear before you move on.</p>
+    ${renderMiniQ('proc', PROC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Listen to Andrew explain a simple process he repeats every week at work.</p>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">\ud83c\udf99\ufe0f</div>
+        <div>
+          <div class="audio-box-title">Explaining a Simple Process</div>
+          <div class="audio-box-sub">Andrew Murrad · IT Coordinator · ~60 sec</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L15-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7\u00d7</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8\u00d7</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9\u00d7</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0\u00d7</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1\u00d7</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">\u25bc Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>Hi, I\u2019m Andrew, and I work in IT. Every week, I help new employees set up their email. It\u2019s a simple process, and I always explain it the same way.</p>
+        <p>First, I open the company website. Then, I click \u2018New Employee Login.\u2019 Next, I type the employee\u2019s name and email address. After that, I click \u2018Send Invitation.\u2019 Finally, I check that the employee received the email.</p>
+        <p>It usually takes about five minutes. I always follow the same steps, so I never forget anything. If a step doesn\u2019t work, I just start again from the beginning.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">\u2705 Quick Check — Listening</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm you understood the audio before you move on.</p>
+    ${renderMiniQ('lis', LIS_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Exercises</div>
+      <div class="sec-badge-time">7 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise A · Put in Order</div>
+      <p class="sec-intro" style="margin-bottom:14px;">These steps for joining a video call are out of order. Tap each card to reveal the correct position and sequencing word.</p>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">Click the meeting link.</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer show correct-text">Position 1 — First, click the meeting link.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">Turn on your camera.</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer correct-text">Position 2 — Then, turn on your camera.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">Check your microphone.</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer correct-text">Position 3 — Next, check your microphone.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">Say hello to the group.</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer correct-text">Position 4 — Finally, say hello to the group.</div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise B · Spot the Mistake</div>
+      <p class="sec-intro" style="margin-bottom:14px;">Each sentence has one mistake. Tap to reveal the correction.</p>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"First open the file."</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer"><span class="wrong-text">\u274c Missing comma.</span><br><span class="correct-text">\u2705 First, open the file.</span></div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"Finally, then send the report."</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer"><span class="wrong-text">\u274c Two sequencing words together.</span><br><span class="correct-text">\u2705 Finally, send the report.</span></div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"Then, click submit. Then, check your email."</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer"><span class="wrong-text">\u274c "Then" repeated right after itself.</span><br><span class="correct-text">\u2705 Then, click submit. Next, check your email.</span></div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">\ud83c\udfaf</div>
+      <div>
+        <h3>\u00a1Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'\ud83c\udf89 \u00a1Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'\u00a1Excelente! Almost perfect.':'Keep practising — \u00a1t\u00fa puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}${quizAttempts>0?' · Attempts so far: '+quizAttempts:''}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">\u21ba Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">\u2190 Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── AUDIO FUNCTIONS ────────────────────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '\u25b2 Hide transcript' : '\u25bc Show transcript';
+}
+
+
+// ── MAIN QUIZ ENGINE ─────────────────────────────────────
+function normalise(s) { return s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,''); }
+
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">\ud83d\udca1 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input' || q.type === 'translate') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    const promptBlock = q.type==='translate' ? `<div class="translate-prompt">\ud83c\udde8\ud83c\uddf4 ${q.prompt}</div>` : '';
+    body = `${promptBlock}<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer in English…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">\u2705 <strong>${q.display}</strong><br>\ud83d\udca1 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'unjumble') {
+    const picked = s.order || [];
+    const bankIdx = q.words.map((_,wi)=>wi).filter(wi=>!picked.includes(wi));
+    const builtStr = picked.map(wi=>q.words[wi]).join(' ');
+    const isCorrect = rev ? s.correct : false;
+    body = `<div class="unjumble-build">
+      ${picked.length ? picked.map((wi,pos)=>{
+        let cls='unjumble-build-tile';
+        if(rev) cls += isCorrect ? ' correct' : ' wrong';
+        return `<button class="${cls}" ${rev?'disabled':`onclick="unpickWord(${i},${pos})"`}>${q.words[wi]}</button>`;
+      }).join('') : '<span class="unjumble-placeholder">Tap words below to build the sentence…</span>'}
+    </div>
+    <div class="unjumble-bank">
+      ${bankIdx.map(wi=>`<button class="unjumble-tile" onclick="pickWord(${i},${wi})" ${rev?'disabled':''}>${q.words[wi]}</button>`).join('')}
+    </div>
+    ${!rev ? `<div style="text-align:right"><button class="check-btn" onclick="revealUnjumble(${i})" ${picked.length===q.words.length?'':'disabled'}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${isCorrect?'correct':'wrong'}">\ud83d\udca1 ${q.fb}${!isCorrect?`<br>\u2705 Correct order: <strong>${q.answer}</strong>`:''}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=quizState[qi].inputVal||'';
+  quizState[qi].correct=q.answers.some(a=>normalise(val)===normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function pickWord(qi,wi) {
+  if(!quizState[qi])quizState[qi]={};
+  if(quizState[qi].revealed)return;
+  if(!quizState[qi].order)quizState[qi].order=[];
+  quizState[qi].order.push(wi);
+  rerender();
+}
+function unpickWord(qi,pos) {
+  if(!quizState[qi]||!quizState[qi].order)return;
+  if(quizState[qi].revealed)return;
+  quizState[qi].order.splice(pos,1);
+  rerender();
+}
+function revealUnjumble(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const order=quizState[qi].order||[];
+  const built=order.map(wi=>q.words[wi]).join(' ');
+  quizState[qi].correct = built.trim()===q.answer.trim();
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  quizAttempts++;
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    const t=QUIZ[i].type;
+    if(t==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(t==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(t==='input'||t==='translate') ok=s.correct;
+    else if(t==='unjumble') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if((q.type==='input'||q.type==='translate')&&st.correct)s++;
+    else if(q.type==='unjumble'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+
+// ── CONCEPT CHECK (MINI) ENGINE ─────────────────────────────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  const letters = ['A','B','C','D'];
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">\ud83d\udca1 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input' || q.type === 'translate') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      const promptBlock = q.type==='translate' ? `<div class="translate-prompt">\ud83c\udde8\ud83c\uddf4 ${q.prompt}</div>` : '';
+      body = `${promptBlock}<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">\u2705 <strong>${q.display}</strong><br>\ud83d\udca1 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'unjumble') {
+      const picked = s.order || [];
+      const bankIdx = q.words.map((_,wi)=>wi).filter(wi=>!picked.includes(wi));
+      const isCorrect = rev ? s.correct : false;
+      body = `<div class="unjumble-build">
+        ${picked.length ? picked.map((wi,pos)=>{
+          let cls='unjumble-build-tile';
+          if(rev) cls += isCorrect ? ' correct' : ' wrong';
+          return `<button class="${cls}" ${rev?'disabled':`onclick="miniUnpickWord('${prefix}',${i},${pos})"`}>${q.words[wi]}</button>`;
+        }).join('') : '<span class="unjumble-placeholder">Tap words below to build the sentence…</span>'}
+      </div>
+      <div class="unjumble-bank">
+        ${bankIdx.map(wi=>`<button class="unjumble-tile" onclick="miniPickWord('${prefix}',${i},${wi})" ${rev?'disabled':''}>${q.words[wi]}</button>`).join('')}
+      </div>
+      ${!rev ? `<div style="text-align:right"><button class="check-btn" onclick="miniRevealUnjumble('${prefix}',${i})" ${picked.length===q.words.length?'':'disabled'}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${isCorrect?'correct':'wrong'}">\ud83d\udca1 ${q.fb}${!isCorrect?`<br>\u2705 Correct order: <strong>${q.answer}</strong>`:''}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const q = cqMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniPickWord(prefix, qi, wi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  if (!miniState[prefix][qi].order) miniState[prefix][qi].order = [];
+  miniState[prefix][qi].order.push(wi);
+  miniRerender(prefix);
+}
+function miniUnpickWord(prefix, qi, pos) {
+  if (!miniState[prefix][qi] || !miniState[prefix][qi].order) return;
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].order.splice(pos,1);
+  miniRerender(prefix);
+}
+function miniRevealUnjumble(prefix, qi) {
+  const q = cqMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const order = miniState[prefix][qi].order || [];
+  const built = order.map(wi=>q.words[wi]).join(' ');
+  miniState[prefix][qi].correct = built.trim() === q.answer.trim();
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { voc: renderVocabulary, gram: renderGrammar, proc: renderProcess, lis: renderListening };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = targetFn();
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+
+// ── STEPS ───────────────────────────
+STEPS = [
+  { label: "1. Welcome",     fn: renderWelcome },
+  { label: "2. Vocabulary",  fn: renderVocabulary },
+  { label: "3. Grammar",     fn: renderGrammar },
+  { label: "4. Process",     fn: renderProcess },
+  { label: "5. Listening",   fn: renderListening },
+  { label: "6. Exercises",   fn: renderExercises },
+  { label: "7. Quiz",        fn: renderQuiz },
+];
+
+render();
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

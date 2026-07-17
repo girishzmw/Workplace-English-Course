@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 15: Giving Simple Instructions | A1 · Unit 2 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.sub-heading { font-family:var(--font-body); font-size:15px; font-weight:700; color:var(--navy); }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+
+/* TAP TO REVEAL */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; }
+.tap-answer.show { display:block; }
+.tap-answer.correct-text { color:var(--green); font-weight:600; }
+.tap-answer.wrong-text { color:var(--red); }
+.tap-num-badge { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:var(--navy); color:var(--gold); border-radius:50%; font-size:11px; font-weight:700; margin-right:10px; flex-shrink:0; }
+
+/* CHAT THREAD */
+.chat-thread { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.chat-bubble { display:flex; gap:12px; margin-bottom:14px; align-items:flex-start; }
+.chat-bubble:last-child { margin-bottom:0; }
+.chat-avatar { width:36px; height:36px; border-radius:50%; background:var(--light-grey); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+.chat-avatar.klara { background:rgba(46,134,171,0.15); }
+.chat-avatar.daniel { background:rgba(201,151,44,0.18); }
+.chat-body { flex:1; }
+.chat-name { font-size:12px; font-weight:700; color:var(--navy); margin-bottom:3px; }
+.chat-msg { background:var(--light-grey); border-radius:0 10px 10px 10px; padding:9px 14px; font-size:14px; color:var(--slate); display:inline-block; }
+.chat-bubble.daniel .chat-msg { background:rgba(46,134,171,0.08); }
+
+/* TASK CARDS */
+.task-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:12px; }
+.task-card-top { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.task-num-badge { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:var(--navy); color:var(--gold); border-radius:50%; font-size:12px; font-weight:700; flex-shrink:0; }
+.task-title { font-size:14px; font-weight:700; color:var(--navy); }
+.task-vocab { font-size:12px; color:var(--grey-blue); font-style:italic; margin:6px 0 10px 36px; }
+.task-reveal-btn { margin-left:36px; }
+
+/* TEACHER INSTRUCTION BOX */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* QUIZ ENGINE (Review & Translation step) */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+.translate-prompt { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; margin-bottom:10px; font-size:15px; color:#7A5500; font-weight:600; font-style:italic; }
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:26px; text-align:center; margin-top:18px; margin-bottom:8px; }
+.result-score { font-family:var(--font-heading); font-size:44px; color:var(--gold); margin-bottom:6px; }
+.result-label { font-size:16px; color:var(--white); margin-bottom:4px; }
+.result-msg   { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Classwork</div>
+    <h1 class="hero-title">Lesson 15: Giving Simple Instructions</h1>
+    <p class="hero-sub">Sequencing language + imperatives · Teacher-led · 60 min</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">\ud83d\udde3 Speaking-heavy</span>
+      <span class="pill accent">\u270d\ufe0f Light writing</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '\u2190 Previous' : '\u2190 ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete \u2713'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' \u2192';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── SHARED TAP-TO-REVEAL TOGGLE ─────────────
+function tapToggle(el) {
+  const ans = el.querySelector('.tap-answer');
+  if (ans) ans.classList.toggle('show');
+}
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  const items = [
+    { scrambled: 'the / click / file', answer: 'Click the file.' },
+    { scrambled: 'email / send / the', answer: 'Send the email.' },
+    { scrambled: 'folder / open / the', answer: 'Open the folder.' },
+    { scrambled: 'it / save / to the desktop', answer: 'Save it to the desktop.' },
+    { scrambled: 'the / attach / photo', answer: 'Attach the photo.' },
+    { scrambled: 'file / the / upload', answer: 'Upload the file.' },
+    { scrambled: 'the / download / form', answer: 'Download the form.' },
+    { scrambled: 'drive / the / open / shared', answer: 'Open the shared drive.' },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Say each scrambled phrase as a full sentence, then tap the card to check.</p>
+    <div class="ex-box">
+      <div class="ex-label">Unscramble &amp; Say It Aloud</div>
+      ${items.map((it,i) => `
+        <div class="tap-row" onclick="tapToggle(this)">
+          <div class="tap-row-top">
+            <div class="tap-q"><span class="tap-num-badge">${i+1}</span>${it.scrambled}</div>
+            <div class="tap-hint-label">Tap to reveal</div>
+          </div>
+          <div class="tap-answer correct-text">\u2705 ${it.answer}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">\ud83d\udc69\u200d\ud83c\udfeb Teacher Note</div>
+      5 min max — keep pace brisk, this is a warm-up not a test. Say each scrambled phrase aloud, call on students by number in order, let them answer verbally before revealing. Extension: ask a stronger student to make a full sentence with a subject ("You should click the file").
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Reading Activity</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Read this chat thread between two coworkers. Klara needs help submitting a report.</p>
+
+    <div class="chat-thread">
+      <div class="chat-bubble klara">
+        <div class="chat-avatar klara">\ud83d\udc69\u200d\ud83d\udcbc</div>
+        <div class="chat-body">
+          <div class="chat-name">Klara Nowak</div>
+          <div class="chat-msg">Hi Daniel, I need to submit my report today but I'm not sure how to attach it.</div>
+        </div>
+      </div>
+      <div class="chat-bubble daniel">
+        <div class="chat-avatar daniel">\ud83e\uddd1\u200d\ud83d\udcbb</div>
+        <div class="chat-body">
+          <div class="chat-name">Daniel · IT Support</div>
+          <div class="chat-msg">No problem! First, open the shared folder.</div>
+        </div>
+      </div>
+      <div class="chat-bubble daniel">
+        <div class="chat-avatar daniel">\ud83e\uddd1\u200d\ud83d\udcbb</div>
+        <div class="chat-body">
+          <div class="chat-name">Daniel · IT Support</div>
+          <div class="chat-msg">Then, click the report file.</div>
+        </div>
+      </div>
+      <div class="chat-bubble daniel">
+        <div class="chat-avatar daniel">\ud83e\uddd1\u200d\ud83d\udcbb</div>
+        <div class="chat-body">
+          <div class="chat-name">Daniel · IT Support</div>
+          <div class="chat-msg">Next, attach it to a new email.</div>
+        </div>
+      </div>
+      <div class="chat-bubble daniel">
+        <div class="chat-avatar daniel">\ud83e\uddd1\u200d\ud83d\udcbb</div>
+        <div class="chat-body">
+          <div class="chat-name">Daniel · IT Support</div>
+          <div class="chat-msg">Finally, send it to your manager.</div>
+        </div>
+      </div>
+      <div class="chat-bubble klara">
+        <div class="chat-avatar klara">\ud83d\udc69\u200d\ud83d\udcbc</div>
+        <div class="chat-body">
+          <div class="chat-name">Klara Nowak</div>
+          <div class="chat-msg">Got it, thank you!</div>
+        </div>
+      </div>
+      <div class="chat-bubble daniel">
+        <div class="chat-avatar daniel">\ud83e\uddd1\u200d\ud83d\udcbb</div>
+        <div class="chat-body">
+          <div class="chat-name">Daniel · IT Support</div>
+          <div class="chat-msg">You're welcome. Let me know if it doesn't work.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Discuss as a Group</div>
+      <div class="tap-row" onclick="tapToggle(this)">
+        <div class="tap-row-top"><div class="tap-q">What does Klara need help with?</div><div class="tap-hint-label">Tap for model answer</div></div>
+        <div class="tap-answer">Model answer (teacher reference): She needs help submitting/attaching her report.</div>
+      </div>
+      <div class="tap-row" onclick="tapToggle(this)">
+        <div class="tap-row-top"><div class="tap-q">What is the first step Daniel gives her?</div><div class="tap-hint-label">Tap for model answer</div></div>
+        <div class="tap-answer">Model answer (teacher reference): First, open the shared folder.</div>
+      </div>
+      <div class="tap-row" onclick="tapToggle(this)">
+        <div class="tap-row-top"><div class="tap-q">Which sequencing word does Daniel use for the last step?</div><div class="tap-hint-label">Tap for model answer</div></div>
+        <div class="tap-answer">Model answer (teacher reference): Finally.</div>
+      </div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">\ud83d\udc69\u200d\ud83c\udfeb Teacher Note</div>
+      Read the thread aloud once as a model (or play it as a quick two-voice read with a volunteer), then ask the 3 questions to the group. Listen for correct sequencing word production — not just recall of content. Extension: ask a stronger student to add a 5th message using "after that."
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderUnjumble() {
+  const items = [
+    { name: 'Klara Nowak', scrambled: 'join / First, / the / call. / video', answer: 'First, join the video call.' },
+    { name: 'David Kim', scrambled: 'upload / Then, / file. / the', answer: 'Then, upload the file.' },
+    { name: 'Amara Okafor', scrambled: 'Next, / drive. / open / the / shared', answer: 'Next, open the shared drive.' },
+    { name: 'Thomas Beaumont', scrambled: 'the / Finally, / manager. / send / to / it', answer: 'Finally, send it to the manager.' },
+    { name: 'Mei-Ling Chen', scrambled: 'form. / download / First, / the', answer: 'First, download the form.' },
+    { name: 'Andrew Murrad', scrambled: 'Then, / email. / attach / an / it / to', answer: 'Then, attach it to an email.' },
+    { name: 'Klara Nowak', scrambled: 'desktop. / Next, / it / your / save / to', answer: 'Next, save it to your desktop.' },
+    { name: 'David Kim', scrambled: 'Finally, / photo. / the / send', answer: 'Finally, send the photo.' },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Unjumble Practice</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Each student has one sentence. Say it in the correct order out loud, then tap to check yourself.</p>
+    <div class="ex-box">
+      <div class="ex-label">Put the Words in Order</div>
+      ${items.map((it,i) => `
+        <div class="tap-row" onclick="tapToggle(this)">
+          <div class="tap-row-top">
+            <div class="tap-q"><span class="tap-num-badge">${i+1}</span>${it.scrambled}</div>
+            <div class="tap-hint-label">Tap to reveal</div>
+          </div>
+          <div class="tap-answer correct-text">\u2705 ${it.answer} <span style="color:var(--grey-blue);font-weight:400;font-style:italic;">(${it.name}'s task)</span></div>
+        </div>`).join('')}
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">\ud83d\udc69\u200d\ud83c\udfeb Teacher Note</div>
+      Each student unscrambles only their own sentence — this keeps the pace fast and gives every student a guaranteed individual rep. Correct any missing commas or wrong sequencing word choice on the spot. Extension: once revealed, ask the student to add one more logical step of their own.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  const tasks = [
+    { title: 'How to join a video call', vocab: 'open · click · join' },
+    { title: 'How to submit a report', vocab: 'open · attach · send' },
+    { title: 'How to upload a file to a shared folder', vocab: 'open · upload · save' },
+    { title: 'How to send an email with an attachment', vocab: 'attach · send · click' },
+    { title: 'How to save a document to the desktop', vocab: 'open · save · click' },
+    { title: 'How to download a file from a link', vocab: 'click · download · save' },
+    { title: 'How to open a shared drive', vocab: 'open · click · folder' },
+    { title: 'How to attach a photo to a message', vocab: 'open · attach · send' },
+  ];
+  const models = [
+    'First, click the meeting link. Then, turn on your camera. Finally, join the call.',
+    'First, open the shared folder. Then, attach the report. Finally, send it to your manager.',
+    'First, open the folder. Then, click upload. Finally, save the file.',
+    'First, open your email. Then, attach the file. Finally, click send.',
+    'First, open the document. Then, click save. Finally, choose the desktop folder.',
+    'First, click the link. Then, click download. Finally, save the file.',
+    'First, open your computer. Then, click the shared drive icon. Finally, open the folder you need.',
+    'First, open the message. Then, click attach. Finally, choose the photo and send it.',
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Speaking · Instruction Chain</div>
+      <div class="sec-badge-time">25 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">A round-robin chain: each student asks the next student to explain their assigned task, using the fixed frame below. Every student asks once and answers once.</p>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Fixed Frame</div>
+      <div class="builder-ex"><strong>A:</strong> "Can you explain how to [task]?"</div>
+      <div class="builder-ex"><strong>B:</strong> "Sure. First, ___. Then, ___. Finally, ___."</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Task Cards — One Per Student</div>
+      ${tasks.map((t,i) => `
+        <div class="task-card">
+          <div class="task-card-top"><span class="task-num-badge">${i+1}</span><span class="task-title">${t.title}</span></div>
+          <div class="task-vocab">Vocabulary reminder: ${t.vocab}</div>
+          <div class="tap-row task-reveal-btn" onclick="tapToggle(this)" style="margin-left:36px;width:calc(100% - 36px);">
+            <div class="tap-row-top"><div class="tap-q">Need a model? Tap to reveal</div><div class="tap-hint-label">\u25be</div></div>
+            <div class="tap-answer">${models[i]}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">\ud83d\udc69\u200d\ud83c\udfeb Teacher Note</div>
+      Model the first exchange yourself with Student 1 before releasing the chain, so the frame is crystal clear. Listen for: comma pause after the sequencing word, correct verb choice (not mixing up upload/download), and natural chain flow — encourage eye contact to the next student rather than reading woodenly. Extension: for stronger students, allow "Could you explain..." instead of "Can you," and encourage a 4th step with "after that." Close with a quick recap: cold-call 2–3 students to name one sequencing word and one vocabulary word from today.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+function renderReviewTranslate() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Review &amp; Translation</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="h-serif">Look Back — Imperatives (Lesson 13)</div>
+    <p class="sec-intro">In Lesson 13, you learned imperative verbs — direct instructions like <em>Turn on your camera. Don't mute yourself. Click "join."</em> Imperatives use the base form of the verb with no subject, and we add <strong>Don't</strong> before the verb to make a negative instruction. Let's review this quickly before moving on to today's sequencing language.</p>
+    <div class="es-note">Los imperativos usan la forma base del verbo, sin sujeto. Para hacerlos negativos, se agrega "Don't" antes del verbo — igual que en Lecci\u00f3n 13.</div>
+
+    ${renderPartQuizBlock('imp', IMP_QUIZ, 'Imperatives Review')}
+
+    <div class="divider"></div>
+
+    <div class="h-serif">Translation Practice</div>
+    <p class="sec-intro">Translate each sentence into English, using imperatives and today's sequencing words.</p>
+
+    ${renderPartQuizBlock('trans', TRANS_QUIZ, 'Translation Practice')}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">\ud83d\udc69\u200d\ud83c\udfeb Teacher Note</div>
+      Use this section as a bridge between the imperative foundation from Lesson 13 and today's new sequencing language. Do the Imperatives Review together as a class first (call on students for each answer before revealing), then let students work through the Translation Practice individually or in pairs. Correct sequencing-word and comma placement errors as they come up.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── IMPERATIVES REVIEW QUIZ DATA ────────────────────────────
+const IMP_QUIZ = [
+  { type:'mc', q:'Which is a correct imperative?', opts:['Open the door.','You open the door.','Opening the door.'], answer:0,
+    hint:'Imperatives have no subject.', fb:'Open the door. — no subject, base form of the verb.' },
+  { type:'mc', q:'What verb form do imperatives use?', opts:["Base form (no -s, no -ing)","Past tense","-ing form"], answer:0,
+    hint:'Think of "Open," "Click," "Send."', fb:'Imperatives always use the base form — Open, Click, Send, not Opens/Opened/Opening.' },
+  { type:'tf', q:"Imperatives always include a subject like 'you'.", answer:false,
+    hint:'Look at "Open the door" — is there a subject?', fb:'False — imperatives never include a subject. "You" is understood, not written.' },
+  { type:'tf', q:"'Don't mute yourself' is a negative imperative.", answer:true,
+    hint:'Look at the word before the verb.', fb:"True — Don't + base verb makes a negative instruction." },
+  { type:'input', q:"Make this negative: 'Close the window.' \u2192 Don't ___ the window.", answers:['close'],
+    hint:'Keep the same base verb.', display:"Don't close the window.",
+    fb:"Don't close the window. — the verb itself doesn't change, only \"Don't\" is added." },
+  { type:'mc', q:'Which sentence is a polite instruction using imperative + please?', opts:['Please turn on your camera.','You should turn on your camera.','Turning on the camera.'], answer:0,
+    hint:'Look for the imperative verb plus a softening word.', fb:'Please turn on your camera. — "please" softens the imperative politely.' },
+  { type:'input', q:"Complete: '___ your microphone before the call.' (imperative meaning 'to check')", answers:['check'],
+    hint:'Base form of the verb "to check."', display:'Check your microphone before the call.',
+    fb:'Check your microphone before the call. — a common workplace instruction.' },
+  { type:'tf', q:"'Click here' is an example of an imperative.", answer:true,
+    hint:'Is there a subject? What form is the verb?', fb:'True — Click is the base verb with no subject, a classic imperative.' },
+];
+
+// ── TRANSLATION PRACTICE QUIZ DATA ──────────────────────────
+const TRANS_QUIZ = [
+  { type:'translate', q:'Translate into English:', prompt:'Abre el archivo.',
+    answers:['open the file'], hint:'Open = Abrir.', display:'Open the file.',
+    fb:'Open the file. — a simple imperative, just like in Lesson 13.' },
+  { type:'translate', q:'Translate into English:', prompt:'No cierres la ventana.',
+    answers:["don't close the window","do not close the window"], hint:"Negative imperative: Don't + verb.", display:"Don't close the window.",
+    fb:"Don't close the window. — negative imperative, reviewed from Lesson 13." },
+  { type:'translate', q:'Translate into English:', prompt:'Primero, env\u00eda el correo.',
+    answers:['first send the email','first, send the email'], hint:'First = Primero. Remember the comma.', display:'First, send the email.',
+    fb:'First, send the email. — sequencing word + comma + imperative.' },
+  { type:'translate', q:'Translate into English:', prompt:'Haz clic en el enlace.',
+    answers:['click the link','click on the link'], hint:'Click = Hacer clic.', display:'Click the link.',
+    fb:'Click the link. — both "click the link" and "click on the link" are correct.' },
+  { type:'translate', q:'Translate into English:', prompt:'Sube el documento a la carpeta.',
+    answers:['upload the document to the folder'], hint:'Upload = Subir. Folder = Carpeta.', display:'Upload the document to the folder.',
+    fb:'Upload the document to the folder. — remember, upload moves something TO the internet/server.' },
+  { type:'translate', q:'Translate into English:', prompt:'Finalmente, guarda el archivo.',
+    answers:['finally save the file','finally, save the file'], hint:'Finally always marks the last step.', display:'Finally, save the file.',
+    fb:'Finally, save the file. — the last step in a sequence.' },
+  { type:'translate', q:'Translate into English:', prompt:'No apagues tu c\u00e1mara.',
+    answers:["don't turn off your camera","do not turn off your camera"], hint:'Negative imperative — remember Lesson 13.', display:"Don't turn off your camera.",
+    fb:"Don't turn off your camera. — same negative imperative pattern from Lesson 13." },
+  { type:'translate', q:'Translate into English:', prompt:'Adjunta la foto al mensaje.',
+    answers:['attach the photo to the message'], hint:'Attach = Adjuntar.', display:'Attach the photo to the message.',
+    fb:'Attach the photo to the message. — today\'s vocabulary in an imperative sentence.' },
+];
+
+// ── INDEPENDENT-PART QUIZ ENGINE (Review = 'imp', Translation = 'trans') ──
+const quizBank = { imp: IMP_QUIZ, trans: TRANS_QUIZ };
+const qState   = { imp: {}, trans: {} };
+const qScore   = { imp: 0, trans: 0 };
+const qAttempts = { imp: 0, trans: 0 };
+
+function normalise(s) { return s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,''); }
+
+function renderPartQuizBlock(part, quiz, title) {
+  const state = qState[part];
+  const answered = Object.values(state).filter(s => s.revealed).length;
+  const pct = quiz.length ? (answered / quiz.length) * 100 : 0;
+  const allDone = answered === quiz.length && quiz.length > 0;
+  const allCorrect = allDone && qScore[part] === quiz.length;
+  const wrongCount = allDone ? quiz.length - qScore[part] : 0;
+
+  return `
+    <div class="score-bar">
+      <span class="score-label">${title}</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${quiz.length}</span>
+    </div>
+    ${quiz.map((q,i) => renderPQ(part,q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScore[part]} / ${quiz.length}</div>
+      <div class="result-label">${allCorrect?'\ud83c\udf89 \u00a1Perfecto!':qScore[part]>=quiz.length*0.8?'\u00a1Excelente!':'Keep practising — \u00a1t\u00fa puedes!'}</div>
+      <div class="result-msg">${allCorrect?'Outstanding — a perfect score!':'Review the wrong answers, then retry.'}${qAttempts[part]>0?' · Attempts so far: '+qAttempts[part]:''}</div>
+      ${!allCorrect?`<div style="margin-top:16px"><button onclick="pRetake('${part}')" style="padding:10px 24px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">\u21ba Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button></div>`:''}
+    </div>` : ''}
+  `;
+}
+
+function renderPQ(part, q, i) {
+  const s = qState[part][i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="pSelectOpt('${part}',${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="pRevealQ('${part}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">\ud83d\udca1 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input' || q.type === 'translate') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    const promptBlock = q.type==='translate' ? `<div class="translate-prompt">\ud83c\udde8\ud83c\uddf4 ${q.prompt}</div>` : '';
+    body = `${promptBlock}<div class="q-input-row">
+      <input class="${cls}" id="pinp-${part}-${i}" type="text" placeholder="Type your answer in English…" value="${s.inputVal||''}" oninput="pSetInp('${part}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="pRevealInp('${part}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">\u2705 <strong>${q.display}</strong><br>\ud83d\udca1 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="pqc-${part}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function pSelectOpt(part,qi,j) { if(!qState[part][qi])qState[part][qi]={}; if(qState[part][qi].revealed)return; qState[part][qi].selected=j; pRerender(part); }
+function pRevealQ(part,qi)      { if(!qState[part][qi])qState[part][qi]={}; qState[part][qi].revealed=true; pRecalc(part); pRerender(part); }
+function pSetInp(part,qi,v)     { if(!qState[part][qi])qState[part][qi]={}; qState[part][qi].inputVal=v; }
+function pRevealInp(part,qi) {
+  const q=quizBank[part][qi]; if(!qState[part][qi])qState[part][qi]={};
+  const val=qState[part][qi].inputVal||'';
+  qState[part][qi].correct=q.answers.some(a=>normalise(val)===normalise(a));
+  qState[part][qi].revealed=true; pRecalc(part); pRerender(part);
+}
+function pRetake(part) {
+  qAttempts[part]++;
+  quizBank[part].forEach((q,i) => {
+    const s=qState[part][i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(q.type==='mc')    ok=s.selected===q.answer;
+    else if(q.type==='tf')    ok=q.answer===(s.selected===0);
+    else if(q.type==='input'||q.type==='translate') ok=s.correct;
+    if(!ok){ delete qState[part][i]; }
+  });
+  pRecalc(part); pRerender(part);
+  setTimeout(()=>{
+    const first=quizBank[part].findIndex((_,i)=>!qState[part][i]||!qState[part][i].revealed);
+    const el=document.getElementById('pqc-'+part+'-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function pRecalc(part) {
+  let sc=0;
+  quizBank[part].forEach((q,i)=>{
+    const st=qState[part][i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)sc++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))sc++;
+    else if((q.type==='input'||q.type==='translate')&&st.correct)sc++;
+  });
+  qScore[part]=sc;
+}
+function pRerender(part) {
+  const si = STEPS.findIndex(s => s.fn === renderReviewTranslate);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = renderReviewTranslate();
+}
+
+
+// ── STEPS ───────────────────────────
+STEPS = [
+  { label: "1. Warm-Up",   fn: renderWarmup },
+  { label: "2. Reading",   fn: renderReading },
+  { label: "3. Unjumble",  fn: renderUnjumble },
+  { label: "4. Speaking",  fn: renderSpeaking },
+  { label: "5. Review",    fn: renderReviewTranslate },
+];
+
+render();
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

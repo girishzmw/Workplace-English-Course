@@ -1,0 +1,404 @@
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.l10-wrap {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --red:         #B91C1C;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+  font-family: var(--font-body); background: var(--off-white); color: var(--slate);
+}
+
+.l10-wrap .site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.l10-wrap .site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.l10-wrap .site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.l10-wrap .hero { background: var(--navy); position: relative; overflow: hidden; }
+.l10-wrap .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.l10-wrap .hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.l10-wrap .hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.l10-wrap .hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.l10-wrap .hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.l10-wrap .hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.l10-wrap .hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.l10-wrap .pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.l10-wrap .pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.l10-wrap .progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.l10-wrap .progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.l10-wrap .step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); }
+.l10-wrap .step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; }
+.l10-wrap .step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; }
+.l10-wrap .step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.l10-wrap .main { max-width:900px; margin:0 auto; padding:36px 32px 60px; }
+.l10-wrap .sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.l10-wrap .sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.l10-wrap .sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.l10-wrap .sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.l10-wrap .gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.l10-wrap .es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.l10-wrap .pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.l10-wrap .pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.l10-wrap .pattern-row { padding:11px 20px; border-bottom:1px solid var(--light-grey); }
+.l10-wrap .pattern-row:last-child { border-bottom:none; }
+.l10-wrap .pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+
+.l10-wrap .data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.l10-wrap .data-table-head { display:grid; grid-template-columns:1fr 1.4fr 1.4fr; background:var(--navy); padding:12px 20px; gap:8px; }
+.l10-wrap .data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.l10-wrap .data-table-row { display:grid; grid-template-columns:1fr 1.4fr 1.4fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; }
+.l10-wrap .data-table-row:last-child { border-bottom:none; }
+.l10-wrap .dt-label { font-size:13px; font-weight:700; color:var(--navy); }
+.l10-wrap .dt-en { font-size:13px; color:var(--navy); }
+.l10-wrap .dt-en strong { color:var(--gold); font-weight:700; }
+
+.l10-wrap .examples-wrap { margin-bottom:24px; }
+.l10-wrap .examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.l10-wrap .example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.l10-wrap .example-item:last-child { border-bottom:none; }
+.l10-wrap .example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.l10-wrap .example-arrow { color:var(--steel); }
+.l10-wrap .example-es { color:var(--grey-blue); font-size:13px; }
+
+.l10-wrap .mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.l10-wrap .mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+
+.l10-wrap .tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.l10-wrap .tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.l10-wrap .tap-q { font-size:14px; color:var(--navy); }
+.l10-wrap .tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; font-style:italic; }
+.l10-wrap .tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:600; }
+.l10-wrap .tap-answer.show { display:block; }
+.l10-wrap .tap-num { font-size:12px; font-weight:700; color:var(--gold); margin-right:8px; }
+.l10-wrap .tap-wrong-line { color:var(--red); font-weight:400; }
+
+.l10-wrap .builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.l10-wrap .builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+
+.l10-wrap .drill-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:10px; display:flex; gap:14px; align-items:flex-start; }
+.l10-wrap .drill-num { background:var(--navy); color:var(--gold); border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0; }
+.l10-wrap .drill-text { font-size:14px; color:var(--navy); line-height:1.6; }
+.l10-wrap .drill-tag { font-size:11px; color:var(--grey-blue); font-style:italic; }
+
+.l10-wrap .teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.l10-wrap .teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+.l10-wrap .nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.l10-wrap .nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; }
+.l10-wrap .nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.l10-wrap .nav-prev:disabled { opacity:0.35; cursor:default; }
+.l10-wrap .nav-next { background:var(--navy); color:var(--white); }
+.l10-wrap .nav-next:disabled { background:var(--border-grey); cursor:default; }
+.l10-wrap .nav-center { font-size:12px; color:var(--grey-blue); }
+
+.l10-wrap .divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.l10-wrap .sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.l10-wrap .sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-weight:700; margin-bottom:10px; }
+
+.l10-wrap .site-footer { background: var(--navy); margin-top: 40px; }
+.l10-wrap .site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.l10-wrap .site-footer-credit { font-size: 12px; color: rgba(255,255,255,0.75); }
+.l10-wrap .site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.l10-wrap .site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.l10-wrap .site-footer-legal { font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+
+<div class="l10-wrap">
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 1 · Classwork</div>
+    <h1 class="hero-title">Lesson 10: Review + Networking Conversations</h1>
+    <p class="hero-sub">Unit 1 Review · Structured speaking practice + Do/Does auxiliary verb brush-up</p>
+    <div class="hero-pills">
+      <span class="pill accent">Speaking-heavy</span>
+      <span class="pill accent">Do/Does Brush-Up</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-fill" id="l10ProgressBar" style="width:0%"></div></div>
+</div>
+
+<div class="step-nav"><div class="step-nav-inner" id="l10StepNav"></div></div>
+<div class="main" id="l10MainContent"></div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All rights reserved. All materials in this curriculum are protected by copyright. Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) { return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100); }
+function goTo(i) { currentStep = i; render(); }
+window.l10goTo = goTo;
+
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="l10goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="l10goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('l10StepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="l10goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('l10MainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('l10ProgressBar').style.width = getProgress(currentStep) + '%';
+}
+
+function teacherBox(text) {
+  return `<div class="teacher-box"><div class="teacher-box-label">Teacher note</div>${text}</div>`;
+}
+
+function renderWarmup() {
+  const items = [
+    { n:1, q:'What is another way to say "establecer contactos" in English?', a:'to network' },
+    { n:2, q:'Spot the mistake: "I have three years working here."', a:'I have worked here for three years.' },
+    { n:3, q:'Complete: "There ___ two branch offices in Asia."', a:'are' },
+    { n:4, q:'What is the opposite of "headquarters"?', a:'branch office' },
+    { n:5, q:'Complete: "She is good ___ negotiation."', a:'at' },
+    { n:6, q:'What do you say to end a networking conversation politely?', a:'It was great talking to you, let us stay in touch.' },
+    { n:7, q:'Complete: "___ you ever worked with an international team?"', a:'Have' },
+    { n:8, q:'What is the Spanish word for "colleague"?', a:'colega' },
+  ];
+  return `<div>
+    <div class="sec-badge"><div class="sec-badge-num">1</div><div class="sec-badge-title">Warm-Up</div><div class="sec-badge-time">5 min</div></div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Quick recall round, 8 cards, one per student. Tap each to check the answer after the student responds.</p>
+    ${items.map(it => `
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q"><span class="tap-num">${it.n}.</span>${it.q}</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">✓ ${it.a}</div>
+      </div>`).join('')}
+    ${teacherBox('Run this as a quick round, calling out numbers in random order, and do not let students dwell. Goal is instant recall, not discussion. About 30 seconds per item.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderUnjumble() {
+  const items = [
+    { n:1, tag:'Karim, Cairo', jumbled:'office / has / three / our / floors', a:'Our office has three floors.' },
+    { n:2, tag:'Ingrid, Oslo', jumbled:'usually / I / meetings / Monday / attend', a:'I usually attend Monday meetings.' },
+    { n:3, tag:'William, Amsterdam', jumbled:"at / good / he's / negotiation", a:"He's good at negotiation." },
+    { n:4, tag:'Sofia, Stockholm', jumbled:"currently / project / I'm / new / a / on / working", a:"I'm currently working on a new project." },
+    { n:5, tag:'Amara, Lagos', jumbled:'should / cards / you / business / exchange', a:'You should exchange business cards.' },
+    { n:6, tag:'David, Seoul', jumbled:'have / you / director / met / new / the / yet', a:'Have you met the new director yet?' },
+    { n:7, tag:'Priya, Mumbai', jumbled:'elevator / room / the / meeting / next / is / to / the', a:'The meeting room is next to the elevator.' },
+    { n:8, tag:'Lucas, Sao Paulo', jumbled:"worked / I've / three / here / for / years", a:"I've worked here for three years." },
+  ];
+  return `<div>
+    <div class="sec-badge"><div class="sec-badge-num">2</div><div class="sec-badge-title">Speaking - Unjumble the Sentences</div><div class="sec-badge-time">15 min</div></div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Each student gets one jumbled sentence reviewing a different grammar point from Unit 1. Reorder the words, say it aloud, then tap to check.</p>
+    ${items.map(it => `
+      <div class="drill-card">
+        <div class="drill-num">${it.n}</div>
+        <div style="flex:1;">
+          <div class="drill-tag">${it.tag}</div>
+          <div class="tap-row" style="margin-top:6px;margin-bottom:0;" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+            <div class="tap-row-top"><div class="tap-q">${it.jumbled}</div><div class="tap-hint-label">Tap to reveal</div></div>
+            <div class="tap-answer">✓ ${it.a}</div>
+          </div>
+        </div>
+      </div>`).join('')}
+    ${teacherBox("Have each student read their unscrambled sentence aloud once revealed, this doubles as pronunciation practice. Extension for stronger students: ask them to use the sentence in a follow-up question to a classmate.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderDoSpotlight() {
+  const practiceA = [
+    ['¿Trabajas en el departamento de Finanzas?', 'Do you work in the Finance department?'],
+    ['¿Ella habla inglés en el trabajo?', 'Does she speak English at work?'],
+    ['¿Ellos tienen una reunión hoy?', 'Do they have a meeting today?'],
+    ['¿Él viaja mucho por trabajo?', 'Does he travel a lot for work?'],
+    ['¿Ustedes asisten a la conferencia?', 'Do you attend the conference?'],
+    ['¿Karim conoce al nuevo director?', 'Does Karim know the new director?'],
+    ['¿Nosotros necesitamos más tiempo?', 'Do we need more time?'],
+    ['¿El equipo revisa los informes cada semana?', 'Does the team review the reports every week?'],
+  ];
+  const practiceB = [
+    ['Yo no trabajo los fines de semana.', "I don't work on weekends."],
+    ['Ella no conoce al nuevo gerente.', "She doesn't know the new manager."],
+    ['Nosotros no tenemos una oficina en Lima.', "We don't have an office in Lima."],
+    ['Él no viaja para reuniones internacionales.', "He doesn't travel for international meetings."],
+    ['Ellos no asisten a la llamada del lunes.', "They don't attend the Monday call."],
+    ['Sofia no habla español en la oficina.', "Sofia doesn't speak Spanish in the office."],
+    ['Yo no entiendo la pregunta.', "I don't understand the question."],
+    ['El equipo no termina el proyecto hoy.', "The team doesn't finish the project today."],
+  ];
+  return `<div>
+    <div class="sec-badge"><div class="sec-badge-num">3</div><div class="sec-badge-title">Grammar Spotlight - The Auxiliary Verb "Do"</div><div class="sec-badge-time">20 min</div></div>
+    <hr class="gold-rule">
+    <p class="sec-intro">In English, the verb "do" does not always mean "hacer." Most of the time, it is a helper verb, an auxiliary — it does not carry its own meaning, it just helps build a question or a negative. Spanish does not have a direct equivalent: you do not need a helper verb to ask a question or say "no" in Spanish, but English almost always needs one in the Present Simple. This is one of the most common sources of mistakes at this level, so let us slow down and get it right.</p>
+    <div class="es-note">En español no necesitas un verbo auxiliar para hacer una pregunta o decir "no" — simplemente cambias la entonación o agregas "no." En inglés, casi siempre necesitas "do/does" o "don't/doesn't" para hacerlo. Por eso muchos estudiantes se equivocan aquí.</div>
+
+    <div class="sub-heading">Rule 1 - Using "Do/Does" to Form Questions</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Notice</div>
+      <div class="pattern-row"><div class="pattern-en">To ask a Present Simple question, English puts <strong>Do</strong> or <strong>Does</strong> at the front of the sentence, before the subject. The main verb goes back to its base form — no -s, even with he/she/it.</div></div>
+    </div>
+    <div class="data-table-wrap">
+      <div class="data-table-head"><span>Subject</span><span>Form</span><span>Example</span></div>
+      <div class="data-table-row"><div class="dt-label">I / You / We / They</div><div class="dt-en"><strong>Do</strong> + subject + base verb</div><div class="dt-en"><strong>Do</strong> you work in Sales?</div></div>
+      <div class="data-table-row"><div class="dt-label">He / She / It</div><div class="dt-en"><strong>Does</strong> + subject + base verb</div><div class="dt-en"><strong>Does</strong> she work in Sales? <span class="tap-wrong-line">(not "Does she works")</span></div></div>
+    </div>
+    <div class="es-note">"¿Trabajas en Ventas?" no tiene una palabra separada para "do" — la pregunta se hace solo cambiando el tono o el orden de las palabras. En inglés, no puedes omitir "do/does" — "Work you in Sales?" no es inglés correcto.</div>
+    <div class="examples-wrap">
+      <div class="examples-label">Examples</div>
+      <div class="example-item"><span class="example-en">Do you attend the Monday meeting?</span><span class="example-arrow">→</span><span class="example-es">¿Asistes a la reunión del lunes?</span></div>
+      <div class="example-item"><span class="example-en">Does he speak French?</span><span class="example-arrow">→</span><span class="example-es">¿Habla francés?</span></div>
+      <div class="example-item"><span class="example-en">Do they have an office in Bogotá?</span><span class="example-arrow">→</span><span class="example-es">¿Tienen una oficina en Bogotá?</span></div>
+    </div>
+
+    <div class="sub-heading">Rule 2 - Using "Don't/Doesn't" to Form Negatives</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Notice</div>
+      <div class="pattern-row"><div class="pattern-en">To make a Present Simple sentence negative, English adds <strong>don't</strong> or <strong>doesn't</strong> before the main verb. Again, the main verb goes back to its base form.</div></div>
+    </div>
+    <div class="data-table-wrap">
+      <div class="data-table-head"><span>Subject</span><span>Form</span><span>Example</span></div>
+      <div class="data-table-row"><div class="dt-label">I / You / We / They</div><div class="dt-en">Subject + <strong>don't</strong> + base verb</div><div class="dt-en">I <strong>don't</strong> work in Sales.</div></div>
+      <div class="data-table-row"><div class="dt-label">He / She / It</div><div class="dt-en">Subject + <strong>doesn't</strong> + base verb</div><div class="dt-en">She <strong>doesn't</strong> work in Sales. <span class="tap-wrong-line">(not "don't" or "doesn't works")</span></div></div>
+    </div>
+    <div class="es-note">"No trabajo en Ventas" solo agrega "no" antes del verbo — una palabra hace el trabajo. En inglés, necesitas "don't/doesn't" Y el verbo mantiene su forma base — nunca agregas "no" directamente antes de un verbo en inglés.</div>
+    <div class="examples-wrap">
+      <div class="examples-label">Examples</div>
+      <div class="example-item"><span class="example-en">I don't know the new director yet.</span><span class="example-arrow">→</span><span class="example-es">Todavía no conozco al nuevo director.</span></div>
+      <div class="example-item"><span class="example-en">He doesn't travel for work.</span><span class="example-arrow">→</span><span class="example-es">Él no viaja por trabajo.</span></div>
+      <div class="example-item"><span class="example-en">We don't have a meeting today.</span><span class="example-arrow">→</span><span class="example-es">No tenemos una reunión hoy.</span></div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">Common Mistakes</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"She don't work here."</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">Correct: "She <strong>doesn't</strong> work here."</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"Does she works in Marketing?"</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">Correct: "Does she <strong>work</strong> in Marketing?"</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"What does you do?"</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">Correct: "What <strong>do</strong> you do?"</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"I no know him."</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">Correct: "I <strong>don't</strong> know him."</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">Practice A - Questions: Spanish to English</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;font-style:italic;">One item per student — translate aloud, then tap to check.</p>
+    ${practiceA.map((pair,i) => `
+      <div class="drill-card">
+        <div class="drill-num">${i+1}</div>
+        <div style="flex:1;">
+          <div class="tap-row" style="margin-bottom:0;" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+            <div class="tap-row-top"><div class="tap-q">${pair[0]}</div><div class="tap-hint-label">Tap to reveal</div></div>
+            <div class="tap-answer">✓ ${pair[1]}</div>
+          </div>
+        </div>
+      </div>`).join('')}
+
+    <div class="divider"></div>
+    <div class="sub-heading">Practice B - Negatives: Spanish to English</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;font-style:italic;">One item per student — translate aloud, then tap to check.</p>
+    ${practiceB.map((pair,i) => `
+      <div class="drill-card">
+        <div class="drill-num">${i+1}</div>
+        <div style="flex:1;">
+          <div class="tap-row" style="margin-bottom:0;" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+            <div class="tap-row-top"><div class="tap-q">${pair[0]}</div><div class="tap-hint-label">Tap to reveal</div></div>
+            <div class="tap-answer">✓ ${pair[1]}</div>
+          </div>
+        </div>
+      </div>`).join('')}
+
+    ${teacherBox("This is the section to slow down for — don't rush past it even though it's \"A1 material.\" Assign one item per student across Practice A/B (two rounds, or split the group). Have them translate aloud rather than silently — this is a speaking rep, not a written exercise. Listen specifically for: dropped do/does, -s wrongly kept on the verb after does/doesn't, and \"no\" used instead of don't/doesn't. Correct immediately — this feeds directly into the chain drill next.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderChainDrill() {
+  const items = [
+    { n:1, q:'"What <strong>do</strong> you do at [your company]?"', tag:'Present Simple' },
+    { n:2, q:'"<strong>Is</strong> there a [department] in your office?"', tag:'There is/are' },
+    { n:3, q:'"How often <strong>do</strong> you attend team meetings?"', tag:'Frequency adverbs' },
+    { n:4, q:'"What are you currently working on?"', tag:'Present Continuous' },
+    { n:5, q:'"What are you good at?"', tag:'Be good at' },
+    { n:6, q:'"Have you ever worked with an international team?"', tag:'Present Perfect' },
+    { n:7, q:'"Where is your office located?"', tag:'Question forms / prepositions' },
+    { n:8, q:'"What <strong>should</strong> a new employee do on their first day?"', tag:"Should/shouldn't" },
+  ];
+  return `<div>
+    <div class="sec-badge"><div class="sec-badge-num">4</div><div class="sec-badge-title">Speaking - Networking Chain Drill</div><div class="sec-badge-time">20 min</div></div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Round-robin chain: Student 1 asks Student 2 their assigned question. Student 2 answers, then asks Student 3 the next question, and so on around the group. Each student has one guaranteed-correct-form question.</p>
+    <div class="builder-wrap">
+      <div class="builder-label">Chain Order</div>
+      ${items.map(it => `
+        <div class="drill-card" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15);">
+          <div class="drill-num">${it.n}</div>
+          <div><div class="drill-text" style="color:var(--white);">${it.q}</div><div class="drill-tag" style="color:rgba(255,255,255,0.5);">${it.tag}</div></div>
+        </div>`).join('')}
+    </div>
+    ${teacherBox("Model the chain once yourself with a strong student before releasing it to the group. Listen for do/does errors specifically, since Step 3 just covered them — this is the live-fire test of whether the brush-up landed. Correct in the moment. Extension: stronger students add one extra follow-up question of their own.")}
+    ${navFooter()}
+  </div>`;
+}
+
+STEPS = [
+  { label: "1. Warm-Up",       fn: renderWarmup },
+  { label: "2. Unjumble",      fn: renderUnjumble },
+  { label: "3. Do/Does",       fn: renderDoSpotlight },
+  { label: "4. Chain Drill",   fn: renderChainDrill },
+];
+
+render();
+})();
+</script>

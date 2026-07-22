@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 11: Writing Better Emails | A2 · Unit 2 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+.example-icon { font-size:15px; margin-right:2px; }
+
+/* SPANISH BRIDGE */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:15px; color:var(--navy); line-height:1.8; font-style:italic; margin-bottom:18px; padding:16px 20px; background:var(--off-white); border-left:4px solid var(--gold); white-space:pre-line; }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:9px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-tag { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; grid-column:1 / -1; margin-top:6px; }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX (tap-to-reveal) */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-item { cursor:pointer; margin-bottom:8px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:5px; font-style:italic; }
+.mistake-right { display:none; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+.mistake-right.show { display:flex; }
+.mistake-hint { font-size:11px; color:var(--grey-blue); text-align:right; padding:2px 4px 0; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:18px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* TAP TO REVEAL (generic) */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:13px; color:var(--green); }
+.tap-answer.show { display:block; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* WRITING (not used here but kept for consistency) */
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-weight:700; }
+.notice-callout { background:var(--light-grey); border-radius:8px; padding:14px 18px; font-size:14px; line-height:1.7; color:var(--slate); margin-bottom:18px; border-left:4px solid var(--sky); }
+.rule-block { margin-bottom:22px; }
+.rule-title { font-family:var(--font-heading); font-size:16px; color:var(--navy); margin-bottom:8px; }
+.rule-frame { display:inline-block; background:var(--navy); color:var(--gold); font-family:var(--font-body); font-size:13px; font-weight:700; padding:4px 12px; border-radius:6px; margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 11: Writing Better Emails</h1>
+    <p class="hero-sub">Grammar Focus: Professional Sentence Patterns · 45 min self-study</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Use key email vocabulary correctly</div><div class="outcome-note">Usar vocabulario clave de correos</div></div>
+      <div><div class="outcome-item">Use common professional sentence patterns</div><div class="outcome-note">Usar patrones de frases profesionales comunes</div></div>
+      <div><div class="outcome-item">Write a clearer, structured professional email</div><div class="outcome-note">Escribir un correo profesional más claro</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE ──────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ────────────────────────────────────────────
+
+const VOCAB = [
+  ["Regarding", "Con respecto a / Sobre"],
+  ["Attached", "Adjunto"],
+  ["Schedule (verb)", "Programar / Agendar"],
+  ["Follow-up", "Seguimiento"],
+  ["Subject line", "Asunto"],
+  ["Forward (verb)", "Reenviar"],
+  ["CC / BCC", "Con copia / Con copia oculta"],
+  ["Reply-all", "Responder a todos"],
+  ["Draft", "Borrador"],
+  ["Recipient", "Destinatario"],
+];
+
+const QUIZ = [
+  { type:'mc', q:'Which word means "adjunto" in English?', opts:['Regarding','Attached','Forward'], answer:1,
+    hint:'💡 Think about files sent with an email.', fb:'"Attached" = adjunto — a file included with the email.' },
+  { type:'tf', q:'"CC" means the email is sent to only one person.', answer:false,
+    hint:'💡 Think about who else receives a copy.', fb:'"CC" (carbon copy) means other people also receive a copy — not just the main recipient.' },
+  { type:'mc', q:'Complete: "I am writing ___ confirm the meeting."', opts:['for','to','on'], answer:1,
+    hint:'💡 "Writing" is followed by an infinitive.', fb:'"I am writing to confirm..." — infinitive of purpose, not "for."' },
+  { type:'input', q:'Complete: "I look forward to ___ from you." (use the -ing form)', hint:'gerund form of "hear"',
+    answers:['hearing'], display:'hearing', fb:'"Look forward to" is always followed by a gerund (-ing), never a base verb.' },
+  { type:'mc', q:'Which sentence could be said on the phone, but NOT written in an email?', opts:['Please find attached the file.','I\'m calling to check on the shipment.','Regarding your question...'], answer:1,
+    hint:'💡 Think about which action only makes sense in speech.', fb:'"I\'m calling to..." only makes sense on the phone — you can\'t "call" in a written email.' },
+  { type:'tf', q:'"Actually" means the same as the Spanish word "actualmente."', answer:false,
+    hint:'💡 A classic false friend — check both meanings carefully.', fb:'"Actually" means "en realidad." "Actualmente" means "currently" — a common false friend for Spanish speakers.' },
+  { type:'mc', q:'Which is correct?', opts:['Regarding to the invoice, I made the correction.','Regarding the invoice, I made the correction.','Regard the invoice, I made the correction.'], answer:1,
+    hint:'💡 No preposition follows "regarding" directly.', fb:'"Regarding" already means "with regard to" — never add "to" after it.' },
+  { type:'input', q:'What is the English word for "destinatario"?', hint:'the person who receives the email',
+    answers:['recipient'], display:'recipient', fb:'"Recipient" = destinatario — the person who receives the message.' },
+  { type:'mc', q:'Complete: "Would it be possible ___ send the file by Friday?"', opts:['send','to send','sending'], answer:1,
+    hint:'💡 "Would it be possible" is followed by an infinitive.', fb:'"Would it be possible to send..." — infinitive form after "possible."' },
+  { type:'tf', q:'"Follow-up" and "seguimiento" mean the same thing.', answer:true,
+    hint:'💡 Think about checking on something after the first contact.', fb:'Correct — a follow-up (seguimiento) is a message sent to check on something after an earlier contact.' },
+];
+
+// ── Quiz state ─────────────────────────────────────────────
+const quizState = {};
+let quizScore = 0;
+
+// ── Concept-check data (isolated per segment) ─────────────
+const VOC_CQ = [
+  { type:'mc', q:'What does "attached" mean in an email?', opts:['Sent yesterday','Included as a separate file','Deleted'], answer:1,
+    hint:'💡 Think about files.', fb:'"Attached" = adjunto — a file included with the email, like a PDF or image.' },
+  { type:'tf', q:'"CC" means you send a message only to one person.', answer:false,
+    hint:'💡 Think about who else receives a copy.', fb:'"CC" (carbon copy) means other people also receive a copy of the email, not just the main recipient.' },
+  { type:'input', q:'What is the English word for "seguimiento" in the context of email?', hint:'a message you send to check on something',
+    answers:['follow-up','followup','follow up'], display:'follow-up', fb:'A follow-up email is a message you send to check on something after the first email.' },
+];
+
+const GRAM_CQ = [
+  { type:'mc', q:'Which sentence could be said on the phone, NOT written in an email?', opts:['Please find attached the file.','I\'m calling to check on the shipment.','Regarding your question...'], answer:1,
+    hint:'💡 Think about what "attach" requires.', fb:'"Please find attached" only makes sense in writing — you can\'t attach a file to a phone call!' },
+  { type:'input', q:'Complete: "I look forward to ___ from you." (use the -ing form)', hint:'gerund form of "hear"',
+    answers:['hearing'], display:'hearing', fb:'"Look forward to" is always followed by a gerund (-ing), never a base verb.' },
+  { type:'tf', q:'"Regarding" and "with regard to" can both be used in speech and in writing.', answer:true,
+    hint:'💡 Think about meetings, calls, and emails.', fb:'Both are formal but flexible — you can use them in a meeting, a call, or an email.' },
+];
+
+const MOD_CQ = [
+  { type:'mc', q:'In Sofia\'s email, which sentence attaches a file?', opts:['I am writing to confirm the updated delivery schedule.','Please find attached the updated schedule.','I look forward to hearing from you.'], answer:1,
+    hint:'💡 Look for the attachment phrase.', fb:'"Please find attached the updated schedule" is the attachment sentence (Rule 3).' },
+  { type:'input', q:'What phrase does Sofia use to close the email politely?', hint:'starts with "I look forward to..."',
+    answers:['i look forward to hearing from you','look forward to hearing from you'], display:'I look forward to hearing from you.',
+    fb:'This is the standard polite closing frame (Rule 4) — followed by the gerund "hearing."' },
+];
+
+const miniState = { voc: {}, gram: {}, mod: {} };
+
+
+// ── SECTION RENDERERS ──────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">In Unit 1, you learned how to talk about your job, your company, and your daily routines. Now we start Unit 2: Professional Communication. This unit is all about how you communicate at work — starting with email, the most-used tool in any international company.</p>
+    <p class="sec-intro">In this lesson, you'll learn the sentence patterns professional emails use again and again — so you don't have to invent a new email from scratch every time. Once you know the patterns, you just change the details.</p>
+    <div class="es-note">En esta lección vas a aprender las frases y estructuras que se repiten en los correos profesionales en inglés. Una vez que conoces los patrones, solo necesitas cambiar los detalles según la situación.</div>
+    <div class="info-box">
+      <strong>By the end of this lesson, you will be able to:</strong><br>
+      ✓ Use key email vocabulary correctly<br>
+      ✓ Recognize and use common professional sentence patterns<br>
+      ✓ Write a clearer, more structured professional email
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estas son las palabras y frases que vas a ver una y otra vez en correos de trabajo. Tómate tu tiempo — no necesitas memorizarlas todas de una vez.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      "Regarding" is more formal than "about." Use it at the start of a sentence or subject line: <em>"Regarding your request..."</em> / <em>"Subject: Regarding the Q3 report."</em>
+    </div>
+    <div class="info-box">
+      ⚠️ Careful — "Actually" does not mean "actualmente." "Actualmente" in Spanish means <em>currently</em> / <em>at this time</em>, not "actually" (which means <em>en realidad</em>). This matters in emails: <em>"I am currently working on the report"</em> = <em>"Actualmente estoy trabajando en el informe."</em>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Vocabulary</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('voc', VOC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="sub-heading" style="margin-bottom:10px;">Notice</div>
+    <p class="sec-intro">Look at these sentences from different workplace situations — not just email. What do they have in common?</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-icon">✉️</span><span class="example-en">"I am writing to confirm our meeting on Friday."</span></div>
+      <div class="example-item"><span class="example-icon">💬</span><span class="example-en">"Just following up on the report — any update?"</span></div>
+      <div class="example-item"><span class="example-icon">📞</span><span class="example-en">"I'm calling regarding the invoice you sent."</span></div>
+      <div class="example-item"><span class="example-icon">🗣️</span><span class="example-en">"I'd like to raise a point regarding the schedule."</span></div>
+      <div class="example-item"><span class="example-icon">✉️</span><span class="example-en">"Please find attached the updated file."</span></div>
+    </div>
+    <div class="notice-callout">These sentences all come from real workplace situations — an email, a chat, a phone call, a meeting. But look closely: the <strong>frames are the same</strong>. "Regarding + topic" works whether you're writing, calling, or speaking. Once you learn a frame, you can use it anywhere at work, not just in email.</div>
+    <div class="es-note">Estos patrones no son solo para correos electrónicos — funcionan en llamadas, chats y reuniones también. Por eso vale la pena aprenderlos bien: los vas a usar en muchas situaciones de trabajo, no solo al escribir.</div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:14px;">Form Rules</div>
+
+    <div class="rule-block">
+      <div class="rule-title">Rule 1 — Stating your purpose</div>
+      <div class="rule-frame">I am writing to / I'm calling to / I'd like to + [verb]</div>
+      <div class="examples-wrap">
+        <div class="example-item"><span class="example-icon">✉️</span><span class="example-en">I am writing to confirm the delivery date.</span></div>
+        <div class="example-item"><span class="example-icon">📞</span><span class="example-en">I'm calling to check on the shipment.</span></div>
+        <div class="example-item"><span class="example-icon">🗣️</span><span class="example-en">I'd like to update you on the project.</span></div>
+      </div>
+      <div class="tip-box"><div class="tip-label">💡 Tip</div>Same underlying frame — <em>[purpose phrase] + to + base verb</em>. The opener changes with the medium; the grammar doesn't.</div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-title">Rule 2 — Referring to a topic already known to both people</div>
+      <div class="rule-frame">Regarding / With regard to + [topic]</div>
+      <div class="examples-wrap">
+        <div class="example-item"><span class="example-icon">✉️</span><span class="example-en">Regarding your question, the report is attached.</span></div>
+        <div class="example-item"><span class="example-icon">📞</span><span class="example-en">Regarding the invoice, I made the correction yesterday.</span></div>
+        <div class="example-item"><span class="example-icon">🗣️</span><span class="example-en">Regarding the Q3 numbers, I have a concern.</span></div>
+      </div>
+      <div class="tip-box"><div class="tip-label">💡 Tip</div>"Regarding" is more formal than "about." Both are correct — "regarding" is safer in professional writing and meetings; "about" is fine in chat or casual speech.</div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-title">Rule 3 — Sharing something (a file, an update, information)</div>
+      <div class="rule-frame">Please find attached / I have attached + [noun] · Here's the update on + [noun]</div>
+      <div class="examples-wrap">
+        <div class="example-item"><span class="example-icon">✉️</span><span class="example-en">Please find attached the meeting schedule.</span></div>
+        <div class="example-item"><span class="example-icon">✉️</span><span class="example-en">I have attached the invoice for your reference.</span></div>
+        <div class="example-item"><span class="example-icon">💬</span><span class="example-en">Here's the update on the client meeting — went well!</span></div>
+      </div>
+      <div class="tip-box"><div class="tip-label">💡 Tip</div>"Please find attached" is <strong>email-only</strong> — you'd never say it on the phone. Notice that some frames are medium-specific, while others (Rules 1, 2, 4) travel across all situations.</div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-title">Rule 4 — Closing / signaling next steps</div>
+      <div class="rule-frame">I look forward to + [verb-ing] · Let me know if + [clause]</div>
+      <div class="examples-wrap">
+        <div class="example-item"><span class="example-icon">✉️</span><span class="example-en">I look forward to hearing from you.</span></div>
+        <div class="example-item"><span class="example-icon">📞</span><span class="example-en">Let me know if you need anything else.</span></div>
+        <div class="example-item"><span class="example-icon">💬</span><span class="example-en">Let me know if that works — talk soon!</span></div>
+      </div>
+      <div class="tip-box"><div class="tip-label">💡 Tip</div>"I look forward to" + <strong>-ing</strong> (gerund), never the base verb. This is one of the most common mistakes for Spanish speakers, because Spanish uses an infinitive here ("espero <em>verte</em> pronto" → NOT "I look forward to <em>see</em> you").</div>
+    </div>
+
+    <div class="rule-block">
+      <div class="rule-title">Rule 5 — Softening a request across situations</div>
+      <div class="rule-frame">Would it be possible to / Could you possibly + [verb]?</div>
+      <div class="examples-wrap">
+        <div class="example-item"><span class="example-icon">✉️</span><span class="example-en">Would it be possible to send the file by Friday?</span></div>
+        <div class="example-item"><span class="example-icon">📞</span><span class="example-en">Could you possibly resend that email?</span></div>
+        <div class="example-item"><span class="example-icon">🗣️</span><span class="example-en">Would it be possible to move the meeting to 3pm?</span></div>
+      </div>
+      <div class="tip-box"><div class="tip-label">💡 Tip</div>More polite than a plain "Can you...?" — useful in email, on the phone, or in a meeting.</div>
+      <div class="es-note">Nota rápida: usamos "would" y "could" (en vez de "can" o "will") porque suenan más educados y menos directos en inglés — no porque cambien el significado de la pregunta. Vamos a ver esto con más detalle en la Lección 18 ("Making Requests at Work") — por ahora, solo nota que "would/could" = más cortesía.</div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:10px;">Spanish Bridge — Partial Parallel (Rule 1)</div>
+    <div class="bridge-table-wrap">
+      <div class="bridge-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="bridge-row"><div class="bridge-en">I am writing to confirm...</div><div class="bridge-es">Le escribo para confirmar...</div></div>
+      <div class="bridge-row"><div class="bridge-en">I'm calling to check on...</div><div class="bridge-es">Le llamo para revisar...</div></div>
+      <div class="bridge-row"><div class="bridge-en">I'd like to update you on...</div><div class="bridge-es">Quisiera informarle sobre...</div></div>
+    </div>
+    <div class="es-note">El patrón "verbo + para + infinitivo" en español se parece a "verb + to + infinitive" en inglés — por eso la Regla 1 es más fácil. Pero cuidado: esta similitud <strong>no se aplica</strong> a la Regla 2 ("regarding") ni a la Regla 4 ("look forward to + -ing") — ahí las estructuras son diferentes y hay que aprenderlas por separado.</div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:10px;">Use — When to Use Each Frame</div>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1fr;"><span>Situation</span><span>Best-fit rule</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><div>Starting a new email</div><div>Rule 1</div></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><div>Replying / referencing a known topic</div><div>Rule 2</div></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><div>Sharing a file or update</div><div>Rule 3</div></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><div>Ending an email or call</div><div>Rule 4</div></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><div>Making a polite request (any medium)</div><div>Rule 5</div></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Common Mistakes — Tap Each to Reveal the Fix</div>
+      ${renderMistakes()}
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Grammar</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('gram', GRAM_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderMistakes() {
+  const mistakes = [
+    { wrong:'I am writing for confirm the meeting.', right:'I am writing to confirm the meeting.' },
+    { wrong:'I look forward to hear from you.', right:'I look forward to hearing from you.' },
+    { wrong:'Please find attach the file.', right:'Please find attached the file.' },
+    { wrong:'I\'m calling regarding to the invoice.', right:'I\'m calling regarding the invoice.' },
+    { wrong:'Would it be possible send the file?', right:'Would it be possible to send the file?' },
+  ];
+  return mistakes.map((m,i) => `
+    <div class="mistake-item" onclick="this.querySelector('.mistake-right').classList.toggle('show')">
+      <div class="mistake-wrong">❌ ${m.wrong}</div>
+      <div class="mistake-right">✅ ${m.right}</div>
+      <div class="mistake-hint">Tap to reveal correction</div>
+    </div>`).join('');
+}
+
+function renderModelEmail() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Model Email</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Here's a complete email that uses all four core patterns from this lesson. Read it once for the overall message, then look at the breakdown below.</p>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👩‍💼</div>
+        <div>
+          <div class="model-name">Sofia Andersen</div>
+          <div class="model-role">Supply Chain Coordinator · IKEA, Stockholm</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">Subject: Regarding the Updated Delivery Schedule
+
+Hi Lucas,
+
+I am writing to confirm the updated delivery schedule for the Stockholm warehouse project. Regarding your question from yesterday, the new dates are confirmed for next week.
+
+Please find attached the updated schedule for your reference.
+
+Let me know if you have any questions, and I look forward to hearing from you.
+
+Best regards,
+Sofia Andersen
+IKEA – Supply Chain Coordinator</div>
+
+        <div class="model-tag">Subject line</div>
+        <div class="model-line"><div class="model-en">Regarding the Updated Delivery Schedule</div><div class="model-div">→</div><div class="model-es">Con respecto al cronograma de entrega actualizado</div></div>
+
+        <div class="model-tag">Opening — Rule 1</div>
+        <div class="model-line"><div class="model-en">I am writing to confirm...</div><div class="model-div">→</div><div class="model-es">Le escribo para confirmar...</div></div>
+
+        <div class="model-tag">Reference — Rule 2</div>
+        <div class="model-line"><div class="model-en">Regarding your question from yesterday...</div><div class="model-div">→</div><div class="model-es">Con respecto a su pregunta de ayer...</div></div>
+
+        <div class="model-tag">Attachment — Rule 3</div>
+        <div class="model-line"><div class="model-en">Please find attached the updated schedule.</div><div class="model-div">→</div><div class="model-es">Adjunto encontrará el cronograma actualizado.</div></div>
+
+        <div class="model-tag">Closing — Rule 4</div>
+        <div class="model-line"><div class="model-en">I look forward to hearing from you.</div><div class="model-div">→</div><div class="model-es">Espero tener noticias suyas.</div></div>
+
+        <div class="model-tag">Sign-off</div>
+        <div class="model-line"><div class="model-en">Best regards, Sofia Andersen</div><div class="model-div">→</div><div class="model-es">Saludos cordiales, Sofia Andersen</div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Model Email</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('mod', MOD_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Exercises</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Practice before the quiz. These exercises don't count toward a score — just check your answers as you go.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">Match the Opener to the Completion</div>
+      <div id="matchWrap">${renderMatch()}</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Spot the Mistake — Tap Each Line to Reveal</div>
+      ${renderSpotMistakes()}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Unscramble the Sentence — Tap to Reveal the Correct Order</div>
+      ${renderUnscramble()}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+// Match exercise data/state
+const MATCH_PAIRS = [
+  ["I am writing to", "confirm the meeting."],
+  ["Regarding", "your question, the report is attached."],
+  ["Please find attached", "the updated schedule."],
+  ["I look forward to", "hearing from you."],
+];
+let matchState = { selectedLeft:null, matched:[] };
+const matchRightOrder = [1,3,0,2]; // shuffled display order for right column (indices into MATCH_PAIRS)
+
+function renderMatch() {
+  return `<div class="match-grid">
+    <div class="match-header">Opener</div><div></div><div class="match-header">Completion</div>
+    <div class="match-col">
+      ${MATCH_PAIRS.map((p,i) => `<div class="match-item left ${matchState.matched.includes(i)?'matched':(matchState.selectedLeft===i?'selected':'')}" onclick="matchSelectLeft(${i})">${p[0]}</div>`).join('')}
+    </div>
+    <div class="match-arrow-col">
+      ${MATCH_PAIRS.map((p,i) => `<div class="match-arrow ${matchState.matched.includes(i)?'matched':''}">${matchState.matched.includes(i)?'✓':'—'}</div>`).join('')}
+    </div>
+    <div class="match-col">
+      ${matchRightOrder.map(i => `<div class="match-item right ${matchState.matched.includes(i)?'matched':''}" onclick="matchSelectRight(${i})">${MATCH_PAIRS[i][1]}</div>`).join('')}
+    </div>
+  </div>`;
+}
+function matchSelectLeft(i) {
+  if (matchState.matched.includes(i)) return;
+  matchState.selectedLeft = i;
+  rerenderMatch();
+}
+function matchSelectRight(i) {
+  if (matchState.matched.includes(i)) return;
+  if (matchState.selectedLeft === null) return;
+  if (matchState.selectedLeft === i) { matchState.matched.push(i); matchState.selectedLeft = null; }
+  else { matchState.selectedLeft = null; }
+  rerenderMatch();
+}
+function rerenderMatch() {
+  const el = document.getElementById('matchWrap');
+  if (el) el.innerHTML = renderMatch();
+}
+
+function renderSpotMistakes() {
+  const items = [
+    { line:'I am writing regarding to the delivery schedule.', verdict:'Incorrect', fix:'No "to" after "regarding" — say "I am writing regarding the delivery schedule."' },
+    { line:'Please find attached the invoice for your reference.', verdict:'Correct', fix:'Correct as written — "please find attached" + noun.' },
+    { line:'I look forward to receive your reply.', verdict:'Incorrect', fix:'Use the gerund: "I look forward to receiving your reply."' },
+  ];
+  return items.map((it,i) => `
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top">
+        <div class="tap-q">${i+1}. "${it.line}"</div>
+        <div class="tap-hint-label">Tap to reveal</div>
+      </div>
+      <div class="tap-answer">${it.verdict === 'Correct' ? '✅' : '❌'} <strong>${it.verdict}</strong> — ${it.fix}</div>
+    </div>`).join('');
+}
+
+function renderUnscramble() {
+  const items = [
+    { scrambled: 'attached / please / schedule / find / the updated', answer: 'Please find attached the updated schedule.' },
+    { scrambled: 'to / I / the shipment / check on / calling / am', answer: 'I am calling to check on the shipment.' },
+  ];
+  return items.map((it,i) => `
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top">
+        <div class="tap-q">${i+1}. ${it.scrambled}</div>
+        <div class="tap-hint-label">Tap to reveal</div>
+      </div>
+      <div class="tap-answer">✅ ${it.answer}</div>
+    </div>`).join('');
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── QUIZ ENGINE (main quiz) ────────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const val = normalise(quizState[qi].inputVal||'');
+  quizState[qi].correct=q.answers.some(a=>val===normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+
+// ── CONCEPT-CHECK ENGINE (shared across voc / gram / mod) ─
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const qMap = { voc: VOC_CQ, gram: GRAM_CQ, mod: MOD_CQ };
+  const q = qMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { voc: renderVocabulary, gram: renderGrammar, mod: renderModelEmail };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = targetFn();
+}
+
+
+// ── STEPS — defined last ───────────────────────────────────
+STEPS = [
+  { label: "1. Welcome",     fn: renderWelcome },
+  { label: "2. Vocabulary",  fn: renderVocabulary },
+  { label: "3. Grammar",     fn: renderGrammar },
+  { label: "4. Model Email", fn: renderModelEmail },
+  { label: "5. Exercises",   fn: renderExercises },
+  { label: "6. Quiz",        fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

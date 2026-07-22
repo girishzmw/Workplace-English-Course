@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 15: Giving Simple Instructions | A1 · Unit 2 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.sub-heading { font-family:var(--font-body); font-size:15px; font-weight:700; color:var(--navy); }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+
+/* QUIZ ENGINE */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+.translate-prompt { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; margin-bottom:10px; font-size:15px; color:#7A5500; font-weight:600; font-style:italic; }
+
+/* UNJUMBLE */
+.unjumble-build { min-height:48px; background:var(--light-grey); border:1.5px dashed var(--border-grey); border-radius:7px; padding:10px 14px; display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; align-items:center; }
+.unjumble-placeholder { color:var(--grey-blue); font-size:13px; font-style:italic; }
+.unjumble-build-tile { background:var(--sky); color:white; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; border:none; font-family:var(--font-body); transition:opacity 0.12s; }
+.unjumble-build-tile:hover:not(:disabled) { opacity:0.85; }
+.unjumble-build-tile.correct { background:var(--green); cursor:default; }
+.unjumble-build-tile.wrong   { background:var(--red);   cursor:default; }
+.unjumble-bank { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+.unjumble-tile { background:var(--white); border:1.5px solid var(--border-grey); border-radius:6px; padding:8px 14px; font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; font-family:var(--font-body); }
+.unjumble-tile:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.unjumble-tile:disabled { opacity:0.35; cursor:default; }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* WRITING */
+.writing-area { width:100%; min-height:180px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+.starter-chip { display:inline-block; background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:20px; padding:6px 14px; font-size:13px; color:#7A5500; margin:0 8px 8px 0; font-style:italic; }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Homework</div>
+    <h1 class="hero-title">Lesson 15: Giving Simple Instructions</h1>
+    <p class="hero-sub">Listening, quiz, and writing practice · 15 min independent</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">\ud83c\udfa7 Listening</span>
+      <span class="pill accent">\ud83d\udcdd Quiz</span>
+      <span class="pill">\u270d\ufe0f Writing</span>
+      <span class="pill">15 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '\u2190 Previous' : '\u2190 ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete \u2713'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' \u2192';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+  const wa = document.getElementById('writingArea');
+  if (wa) updateWordCount();
+}
+
+function normalise(s) { return s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,''); }
+
+
+// ── PART A — LISTENING QUIZ DATA ────────────────────────────
+const QUIZ_A = [
+  { type:'input', q:'What department does Amara work in?', answers:['finance'],
+    hint:'Listen for the department name near the beginning.', display:'Finance.',
+    fb:'Amara works in the finance department.' },
+  { type:'mc', q:'What day does she send her report?', opts:['Friday','Monday','Wednesday'], answer:0,
+    hint:'Listen for the day of the week.', fb:'She sends her weekly report every Friday.' },
+  { type:'input', q:'How long does the whole process take?', answers:['about ten minutes','ten minutes'],
+    hint:'Listen near the middle of the recording.', display:'About ten minutes.',
+    fb:'The whole process takes about ten minutes.' },
+  { type:'tf', q:'Amara changes her steps every week.', answer:false,
+    hint:'Listen for what she says about following the same steps.', fb:'False — she always follows the same steps every week, so she never forgets a step.' },
+  { type:'mc', q:"What does 'attach' mean, based on the audio?", opts:['To connect a file to an email','To delete a file','To open a file'], answer:0,
+    hint:'Listen for what she does right before clicking send.', fb:"Attach means to connect a file to an email — she attaches the report before sending it." },
+  { type:'input', q:'What does she do right after checking the numbers?', answers:['save the file','save it'],
+    hint:'Listen for the step right after "check."', fb:'Right after checking the numbers, she saves the file to her folder.' },
+];
+
+// ── PART B — MAIN QUIZ DATA ─────────────────────────────────
+const QUIZ_B = [
+  { type:'mc', q:"Which word means 'subir un archivo'?", opts:['Upload','Download','Save'], answer:0,
+    hint:'Think about the arrow direction: \u2b06 or \u2b07?', fb:'Upload = subir un archivo — the file goes up to the internet or server.' },
+  { type:'mc', q:'Which sequencing word marks the LAST step?', opts:['Finally','Then','First'], answer:0,
+    hint:'This word never appears in the middle of a sequence.', fb:'Finally always marks the last step.' },
+  { type:'mc', q:'Which sentence has correct punctuation?', opts:['Then, click submit.','Then click submit.','Then; click submit.'], answer:0,
+    hint:'Look for the comma right after the sequencing word.', fb:'Then, click submit. — sequencing word + comma + imperative.' },
+  { type:'tf', q:"You can use 'Finally' more than once in the same sequence.", answer:false,
+    hint:'Think about what Finally signals.', fb:'False — Finally only ever marks the one, single last step.' },
+  { type:'tf', q:"'Don't close the window' is a negative imperative.", answer:true,
+    hint:"Remember the pattern from Lesson 13: Don't + base verb.", fb:"True — Don't + base verb makes a negative imperative, just like in Lesson 13." },
+  { type:'input', q:"Fill in the blank: '___, open the shared folder.' (first word of a sequence)", answers:['first'],
+    hint:'The word that always starts a sequence.', display:'First, open the shared folder.',
+    fb:'First always opens a sequence.' },
+  { type:'input', q:"Translate to English: 'guardar'", answers:['save'],
+    hint:'This is one of this lesson\u2019s vocabulary words.', display:'Save.',
+    fb:'Save = guardar — saving a file to your computer or folder.' },
+  { type:'unjumble', q:'Put the words in the correct order:',
+    words:['open','the','First,','email.'], answer:'First, open the email.',
+    hint:'Starts with the sequence-opening word.', fb:'First, open the email. — First always opens the sequence.' },
+  { type:'unjumble', q:'Put the words in the correct order:',
+    words:['attach','the','Then,','report.'], answer:'Then, attach the report.',
+    hint:'A middle-step word starts this sentence.', fb:'Then, attach the report. — a middle step in the process.' },
+  { type:'translate', q:'Translate into English:', prompt:'Despu\u00e9s, sube el archivo.',
+    answers:['then upload the file','then, upload the file','next upload the file','next, upload the file'],
+    hint:'Despu\u00e9s = then / next. Subir = upload.', display:'Then, upload the file. (or Next, upload the file.)',
+    fb:'Then/Next, upload the file. — a middle-step instruction.' },
+];
+
+// ── INDEPENDENT-PART QUIZ ENGINE (A = Listening, B = Main Quiz) ──
+const quizBank = { A: QUIZ_A, B: QUIZ_B };
+const qState   = { A: {}, B: {} };
+const qScore   = { A: 0, B: 0 };
+const qAttempts = { A: 0, B: 0 };
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderListening() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">A</div>
+      <div class="sec-badge-title">Part A · Listening</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Listen to Amara describe a process she repeats every Friday at work. Then answer the questions below.</p>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">\ud83c\udf99\ufe0f</div>
+        <div>
+          <div class="audio-box-title">A Friday Report Routine</div>
+          <div class="audio-box-sub">Amara Okafor · Finance Analyst · ~60 sec</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L15-Audio002.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7\u00d7</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8\u00d7</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9\u00d7</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0\u00d7</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1\u00d7</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">\u25bc Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>Hi, I'm Amara, and I work in the finance department. Every Friday, I send my weekly report to my manager.</p>
+        <p>First, I open my computer and click on the report file. Then, I check all the numbers carefully. Next, I save the file to my folder. After that, I attach it to an email. Finally, I click send.</p>
+        <p>The whole process takes about ten minutes. I always follow the same steps every week, so I never forget a step. If I have a question, I ask my manager before I send the report. I really enjoy this part of my job — it helps our whole team stay organized.</p>
+      </div>
+    </div>
+
+    ${renderPartQuizBlock('A', QUIZ_A, 'Comprehension')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuizB() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">B</div>
+      <div class="sec-badge-title">Part B · Quiz</div>
+      <div class="sec-badge-time">7 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">\ud83c\udfaf</div>
+      <div>
+        <h3>\u00a1Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ_B.length} questions · Take your time</p>
+      </div>
+    </div>
+
+    ${renderPartQuizBlock('B', QUIZ_B, 'Progress')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWriting() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">C</div>
+      <div class="sec-badge-title">Part C · Writing</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box">Think of a simple process you do at work or at home — for example, sending an email, uploading a document, or starting a video call. Write 5–8 sentences explaining the process in order. Use at least three sequencing words (first, then, next, after that, finally) and at least two vocabulary words from this lesson (open, click, send, upload, download, attach, save, submit).</div>
+
+    <div class="sub-heading" style="margin-bottom:10px;">Need help starting? Use these sentence starters:</div>
+    <div style="margin-bottom:18px;">
+      <span class="starter-chip">Every day/week, I ___.</span>
+      <span class="starter-chip">First, I ___.</span>
+      <span class="starter-chip">Then, I ___.</span>
+      <span class="starter-chip">Finally, I ___.</span>
+    </div>
+
+    <textarea id="writingArea" class="writing-area" placeholder="Write your process here…" oninput="updateWordCount()"></textarea>
+    <div class="word-count" id="wordCount">0 words</div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── AUDIO FUNCTIONS ────────────────────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '\u25b2 Hide transcript' : '\u25bc Show transcript';
+}
+
+// ── WRITING WORD COUNT ─────────────────────────────────────
+function updateWordCount() {
+  const wa = document.getElementById('writingArea');
+  const wc = document.getElementById('wordCount');
+  if (!wa || !wc) return;
+  const words = wa.value.trim().split(/\s+/).filter(Boolean);
+  wc.textContent = (wa.value.trim()==='' ? 0 : words.length) + ' words';
+}
+
+
+// ── INDEPENDENT-PART QUIZ ENGINE (shared by Part A and Part B) ──
+function renderPartQuizBlock(part, quiz, label) {
+  const state = qState[part];
+  const answered = Object.values(state).filter(s => s.revealed).length;
+  const pct = quiz.length ? (answered / quiz.length) * 100 : 0;
+  const allDone = answered === quiz.length && quiz.length > 0;
+  const allCorrect = allDone && qScore[part] === quiz.length;
+  const wrongCount = allDone ? quiz.length - qScore[part] : 0;
+
+  return `
+    <div class="score-bar">
+      <span class="score-label">${label}</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${quiz.length}</span>
+    </div>
+    ${quiz.map((q,i) => renderPQ(part,q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScore[part]} / ${quiz.length}</div>
+      <div class="result-label">${allCorrect?'\ud83c\udf89 \u00a1Perfecto! — Great work!':qScore[part]>=quiz.length*0.8?'\u00a1Excelente! Almost perfect.':'Keep practising — \u00a1t\u00fa puedes!'}</div>
+      <div class="result-msg">${allCorrect?'Outstanding — a perfect score!':'Review the sections where you made mistakes, then retry.'}${qAttempts[part]>0?' · Attempts so far: '+qAttempts[part]:''}</div>
+      ${!allCorrect?`<div style="margin-top:16px"><button onclick="pRetake('${part}')" style="padding:10px 24px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">\u21ba Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button></div>`:''}
+    </div>` : ''}
+  `;
+}
+
+function renderPQ(part, q, i) {
+  const s = qState[part][i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="pSelectOpt('${part}',${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="pRevealQ('${part}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">\ud83d\udca1 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input' || q.type === 'translate') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    const promptBlock = q.type==='translate' ? `<div class="translate-prompt">\ud83c\udde8\ud83c\uddf4 ${q.prompt}</div>` : '';
+    body = `${promptBlock}<div class="q-input-row">
+      <input class="${cls}" id="pinp-${part}-${i}" type="text" placeholder="Type your answer in English…" value="${s.inputVal||''}" oninput="pSetInp('${part}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="pRevealInp('${part}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">\u2705 <strong>${q.display}</strong><br>\ud83d\udca1 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'unjumble') {
+    const picked = s.order || [];
+    const bankIdx = q.words.map((_,wi)=>wi).filter(wi=>!picked.includes(wi));
+    const isCorrect = rev ? s.correct : false;
+    body = `<div class="unjumble-build">
+      ${picked.length ? picked.map((wi,pos)=>{
+        let cls='unjumble-build-tile';
+        if(rev) cls += isCorrect ? ' correct' : ' wrong';
+        return `<button class="${cls}" ${rev?'disabled':`onclick="pUnpickWord('${part}',${i},${pos})"`}>${q.words[wi]}</button>`;
+      }).join('') : '<span class="unjumble-placeholder">Tap words below to build the sentence…</span>'}
+    </div>
+    <div class="unjumble-bank">
+      ${bankIdx.map(wi=>`<button class="unjumble-tile" onclick="pPickWord('${part}',${i},${wi})" ${rev?'disabled':''}>${q.words[wi]}</button>`).join('')}
+    </div>
+    ${!rev ? `<div style="text-align:right"><button class="check-btn" onclick="pRevealUnjumble('${part}',${i})" ${picked.length===q.words.length?'':'disabled'}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${isCorrect?'correct':'wrong'}">\ud83d\udca1 ${q.fb}${!isCorrect?`<br>\u2705 Correct order: <strong>${q.answer}</strong>`:''}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="pqc-${part}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function pSelectOpt(part,qi,j) { if(!qState[part][qi])qState[part][qi]={}; if(qState[part][qi].revealed)return; qState[part][qi].selected=j; pRerender(part); }
+function pRevealQ(part,qi)      { if(!qState[part][qi])qState[part][qi]={}; qState[part][qi].revealed=true; pRecalc(part); pRerender(part); }
+function pSetInp(part,qi,v)     { if(!qState[part][qi])qState[part][qi]={}; qState[part][qi].inputVal=v; }
+function pRevealInp(part,qi) {
+  const q=quizBank[part][qi]; if(!qState[part][qi])qState[part][qi]={};
+  const val=qState[part][qi].inputVal||'';
+  qState[part][qi].correct=q.answers.some(a=>normalise(val)===normalise(a));
+  qState[part][qi].revealed=true; pRecalc(part); pRerender(part);
+}
+function pPickWord(part,qi,wi) {
+  if(!qState[part][qi])qState[part][qi]={};
+  if(qState[part][qi].revealed)return;
+  if(!qState[part][qi].order)qState[part][qi].order=[];
+  qState[part][qi].order.push(wi);
+  pRerender(part);
+}
+function pUnpickWord(part,qi,pos) {
+  if(!qState[part][qi]||!qState[part][qi].order)return;
+  if(qState[part][qi].revealed)return;
+  qState[part][qi].order.splice(pos,1);
+  pRerender(part);
+}
+function pRevealUnjumble(part,qi) {
+  const q=quizBank[part][qi]; if(!qState[part][qi])qState[part][qi]={};
+  const order=qState[part][qi].order||[];
+  const built=order.map(wi=>q.words[wi]).join(' ');
+  qState[part][qi].correct = built.trim()===q.answer.trim();
+  qState[part][qi].revealed=true; pRecalc(part); pRerender(part);
+}
+function pRetake(part) {
+  qAttempts[part]++;
+  quizBank[part].forEach((q,i) => {
+    const s=qState[part][i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(q.type==='mc')    ok=s.selected===q.answer;
+    else if(q.type==='tf')    ok=q.answer===(s.selected===0);
+    else if(q.type==='input'||q.type==='translate') ok=s.correct;
+    else if(q.type==='unjumble') ok=s.correct;
+    if(!ok){ delete qState[part][i]; }
+  });
+  pRecalc(part); pRerender(part);
+  setTimeout(()=>{
+    const first=quizBank[part].findIndex((_,i)=>!qState[part][i]||!qState[part][i].revealed);
+    const el=document.getElementById('pqc-'+part+'-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function pRecalc(part) {
+  let sc=0;
+  quizBank[part].forEach((q,i)=>{
+    const st=qState[part][i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)sc++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))sc++;
+    else if((q.type==='input'||q.type==='translate')&&st.correct)sc++;
+    else if(q.type==='unjumble'&&st.correct)sc++;
+  });
+  qScore[part]=sc;
+}
+function pRerender(part) {
+  const stepFn = part==='A' ? renderListening : renderQuizB;
+  const si = STEPS.findIndex(s => s.fn === stepFn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = stepFn();
+  if (part==='A') {
+    const audio = document.getElementById('mainAudio');
+    if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+  }
+}
+
+
+// ── STEPS ───────────────────────────
+STEPS = [
+  { label: "A. Listening", fn: renderListening },
+  { label: "B. Quiz",      fn: renderQuizB },
+  { label: "C. Writing",   fn: renderWriting },
+];
+
+render();
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

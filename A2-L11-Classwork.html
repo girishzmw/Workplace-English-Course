@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 11: Writing Better Emails | A2 · Unit 2 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* FLIP CARDS */
+.flip-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:10px; }
+@media(max-width:700px){ .flip-grid{ grid-template-columns:repeat(2,1fr); } }
+.flip-card { perspective:1000px; height:110px; cursor:pointer; }
+.flip-card-inner { position:relative; width:100%; height:100%; transition:transform 0.5s; transform-style:preserve-3d; }
+.flip-card.flipped .flip-card-inner { transform:rotateY(180deg); }
+.flip-face { position:absolute; width:100%; height:100%; backface-visibility:hidden; border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:8px; text-align:center; }
+.flip-front { background:var(--navy); color:var(--gold-light); font-style:italic; font-size:13px; }
+.flip-back { background:var(--gold-bg); color:var(--navy); font-weight:700; font-size:14px; transform:rotateY(180deg); border:1.5px solid var(--gold); }
+.flip-num { position:absolute; top:6px; left:8px; font-size:10px; color:rgba(255,255,255,0.4); }
+.flip-hint { font-size:10px; color:var(--grey-blue); text-align:center; margin-bottom:16px; }
+
+/* TAP TO REVEAL */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:13px; color:var(--green); }
+.tap-answer.show { display:block; }
+
+/* TASK CARDS (Speaking / Guided Drill) */
+.task-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:12px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.task-num { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; background:var(--navy); color:var(--gold); border-radius:50%; font-size:12px; font-weight:700; margin-right:10px; }
+.task-top { display:flex; align-items:center; margin-bottom:8px; }
+.task-rule-tag { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky); font-weight:700; }
+.task-situation { font-size:14px; color:var(--slate); margin-bottom:6px; line-height:1.6; }
+.task-frame { display:inline-block; background:var(--light-grey); color:var(--navy); font-size:12px; font-weight:700; padding:3px 10px; border-radius:5px; margin-bottom:8px; }
+.task-model-row { cursor:pointer; }
+.task-model-label { font-size:11px; color:var(--grey-blue); }
+.task-model-answer { display:none; font-size:13px; color:var(--green); font-style:italic; margin-top:6px; padding-top:6px; border-top:1px dashed var(--border-grey); }
+.task-model-answer.show { display:block; }
+
+/* EMAIL THREAD */
+.email-thread { margin-bottom:20px; }
+.email-msg { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; margin-bottom:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.email-head { background:var(--light-grey); padding:10px 16px; font-size:12px; color:var(--grey-blue); line-height:1.6; }
+.email-head strong { color:var(--navy); }
+.email-body { padding:16px; font-size:14px; line-height:1.8; color:var(--slate); white-space:pre-line; }
+
+/* TEACHER INSTRUCTION BOX */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* BUILDER (column-and-pipe) */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+.builder-cols { display:flex; align-items:stretch; flex-wrap:wrap; gap:0; margin-bottom:18px; border-radius:9px; overflow:hidden; border:1px solid rgba(255,255,255,0.12); }
+.builder-col { display:flex; flex-direction:column; align-items:center; padding:14px 18px; background:rgba(201,151,44,0.22); border-right:2px solid rgba(255,255,255,0.1); min-width:100px; flex:1; gap:4px; }
+.builder-col:last-child { border-right:none; }
+.builder-col-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:2px; }
+.builder-col-main { font-size:15px; font-weight:700; color:var(--gold); text-align:center; }
+.builder-col-detail { font-size:12px; color:rgba(255,255,255,0.6); font-style:italic; text-align:center; }
+.builder-pipe { display:flex; align-items:center; padding:0 10px; font-size:22px; color:rgba(255,255,255,0.2); font-weight:300; }
+
+/* TRANSLATION EXERCISE */
+.trans-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.trans-es { font-size:14px; color:var(--navy); font-weight:500; margin-bottom:10px; font-style:italic; }
+.trans-input-row { display:flex; gap:10px; }
+.trans-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.trans-input:focus { border-color:var(--sky); }
+.trans-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.trans-input.wrong { border-color:var(--red); background:var(--red-bg); }
+.trans-check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; white-space:nowrap; transition:background 0.15s; }
+.trans-check-btn:hover { background:var(--sky); }
+.trans-check-btn:disabled { opacity:0.4; cursor:default; }
+.trans-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.trans-feedback.correct { background:var(--green-bg); color:var(--green); }
+.trans-feedback.wrong { background:var(--red-bg); color:var(--red); }
+
+/* UNJUMBLE EXERCISE */
+.unjumble-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.unjumble-tag { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.chip-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+.chip { padding:7px 13px; background:var(--light-grey); border:1.5px solid var(--border-grey); border-radius:20px; font-size:13px; color:var(--navy); cursor:pointer; transition:all 0.12s; font-family:var(--font-body); }
+.chip:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.chip:disabled { opacity:0.35; cursor:default; }
+.answer-preview { min-height:40px; background:var(--off-white); border:1.5px dashed var(--border-grey); border-radius:7px; padding:9px 14px; font-size:14px; color:var(--navy); margin-bottom:10px; line-height:1.6; }
+.answer-preview .placeholder { color:var(--grey-blue); font-style:italic; }
+.unjumble-actions { display:flex; gap:10px; justify-content:flex-end; }
+.clear-btn { padding:9px 16px; background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; transition:all 0.12s; }
+.clear-btn:hover { border-color:var(--gold); color:var(--navy); }
+.unjumble-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.unjumble-feedback.correct { background:var(--green-bg); color:var(--green); }
+.unjumble-feedback.wrong { background:var(--red-bg); color:var(--red); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-weight:700; margin-bottom:10px; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Classwork</div>
+    <h1 class="hero-title">Lesson 11: Writing Better Emails</h1>
+    <p class="hero-sub">Applying professional sentence patterns — speaking, reading, and guided practice</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">📧 Reading</span>
+      <span class="pill">6 activities</span>
+      <span class="pill">~75 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE ──────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── TRANSLATION DATA (Spanish → English) ──────────────────
+const TRANSLATE = [
+  { es:"Le escribo para confirmar la fecha de entrega.",
+    answers:["i am writing to confirm the delivery date"],
+    display:"I am writing to confirm the delivery date.",
+    fb:"Rule 1 — stating your purpose in writing." },
+  { es:"Con respecto a su pregunta, el informe está adjunto.",
+    answers:["regarding your question the report is attached"],
+    display:"Regarding your question, the report is attached.",
+    fb:"Rule 2 — referring to a topic already known to both people." },
+  { es:"Adjunto encontrará el cronograma actualizado.",
+    answers:["please find attached the updated schedule"],
+    display:"Please find attached the updated schedule.",
+    fb:"Rule 3 — sharing a file. Note: attached, not attach." },
+  { es:"Espero tener noticias suyas.",
+    answers:["i look forward to hearing from you"],
+    display:"I look forward to hearing from you.",
+    fb:"Rule 4 — closing politely. Remember: look forward to + -ing, not the base verb." },
+  { es:"¿Sería posible reprogramar la reunión?",
+    answers:["would it be possible to reschedule the meeting"],
+    display:"Would it be possible to reschedule the meeting?",
+    fb:"Rule 5 — softening a request. Would/could sound more polite, not different in meaning." },
+  { es:"Le llamo para revisar el envío.",
+    answers:["i am calling to check on the shipment","i'm calling to check on the shipment"],
+    display:"I'm calling to check on the shipment.",
+    fb:"Rule 1 — the spoken version of stating your purpose, used on the phone." },
+  { es:"Con respecto a los números del tercer trimestre, tengo una pregunta.",
+    answers:["regarding the q3 numbers i have a question","regarding the third quarter numbers i have a question"],
+    display:"Regarding the Q3 numbers, I have a question.",
+    fb:"Rule 2 — this frame works in meetings too, not just email." },
+  { es:"Avíseme si tiene alguna pregunta.",
+    answers:["let me know if you have any questions"],
+    display:"Let me know if you have any questions.",
+    fb:"Rule 4 — a common closing variant alongside look forward to." },
+];
+const translateState = {};
+
+// ── UNJUMBLE DATA (words in correct order + a fixed shuffle) ─
+const UNJUMBLE = [
+  { words:["Please","find","attached","the","report."], shuffled:[2,0,4,1,3] },
+  { words:["I","am","writing","to","confirm","the","meeting."], shuffled:[4,1,6,0,3,5,2] },
+  { words:["Regarding","your","message,","I","have","an","update."], shuffled:[3,6,1,4,0,2,5] },
+  { words:["I","look","forward","to","hearing","from","you."], shuffled:[5,0,3,6,1,4,2] },
+  { words:["Would","it","be","possible","to","reschedule","the","call?"], shuffled:[6,2,0,7,4,1,5,3] },
+  { words:["I'm","calling","to","check","on","the","order."], shuffled:[3,0,6,2,4,1,5] },
+  { words:["Regarding","the","schedule,","I","have","one","question."], shuffled:[4,0,6,1,3,5,2] },
+  { words:["Please","let","me","know","if","you","have","questions."], shuffled:[5,1,7,0,3,6,2,4] },
+];
+const unjumbleState = {};
+
+function teacherBox(text) {
+  return `<div class="teacher-box">
+    <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+    ${text}
+  </div>`;
+}
+
+
+// ── SECTION RENDERERS ──────────────────────────────────────
+
+function renderWarmup() {
+  const cards = [
+    ["Con respecto a / Sobre", "Regarding"],
+    ["Adjunto", "Attached"],
+    ["Seguimiento", "Follow-up"],
+    ["Asunto", "Subject line"],
+    ["Reenviar", "Forward"],
+    ["Con copia", "CC"],
+    ["Responder a todos", "Reply-all"],
+    ["Destinatario", "Recipient"],
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Quick recall before we start. Tap each card to flip it and check your answer.</p>
+    <div class="flip-hint">Tap a card to flip</div>
+    <div class="flip-grid">
+      ${cards.map((c,i) => `
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-face flip-front"><span class="flip-num">${i+1}</span>${c[0]}</div>
+            <div class="flip-face flip-back">${c[1]}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+    ${teacherBox('5 minutes. Have students call out answers before flipping, in pairs or as a group. If a student flips too fast, ask them to cover the back and guess out loud first. Extension: ask a stronger student to use the word in a full sentence once revealed.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  const tasks = [
+    { rule:'Rule 1', situation:'You need to confirm a delivery date with a supplier.', frame:'I\'d like to + [verb] / I am writing to + [verb]', model:'I\'d like to confirm the delivery date for next Tuesday.' },
+    { rule:'Rule 2', situation:'A colleague asked about the budget report yesterday. Reply to them now.', frame:'Regarding + [topic]', model:'Regarding your question, the budget report is ready.' },
+    { rule:'Rule 3', situation:'You need to send an invoice to a client.', frame:'Please find attached + [noun]', model:'Please find attached the invoice for this month.' },
+    { rule:'Rule 4', situation:'You are closing an email about a proposal and want feedback.', frame:'I look forward to + [verb-ing]', model:'I look forward to hearing your feedback on the proposal.' },
+    { rule:'Rule 5', situation:'You want to ask your manager to reschedule a meeting to Friday.', frame:'Would it be possible to + [verb]?', model:'Would it be possible to reschedule the meeting to Friday?' },
+    { rule:'Rule 1', situation:'You are calling a coworker to check on a shipment.', frame:'I\'m calling to + [verb]', model:'I\'m calling to check on the shipment status.' },
+    { rule:'Rule 2', situation:'In a meeting, you want to raise a point about the Q3 numbers.', frame:'Regarding + [topic]', model:'Regarding the Q3 numbers, I have a few questions.' },
+    { rule:'Rule 3 + 4', situation:'You are sending a contract draft and want to close the email politely.', frame:'Please find attached... / I look forward to...', model:'Please find attached the contract draft. I look forward to hearing your thoughts.' },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Speaking &amp; Guided Drill</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro"><strong>Email Relay.</strong> Each student gets one numbered card. Read your situation out loud, then produce one sentence using the frame shown. The rest of the class listens and can suggest corrections before you tap to check the model.</p>
+    ${tasks.map((t,i) => `
+      <div class="task-card">
+        <div class="task-top"><span class="task-num">${i+1}</span><span class="task-rule-tag">${t.rule}</span></div>
+        <div class="task-situation">${t.situation}</div>
+        <div class="task-frame">${t.frame}</div>
+        <div class="task-model-row" onclick="this.querySelector('.task-model-answer').classList.toggle('show')">
+          <div class="task-model-label">Need a model? Tap to reveal ▾</div>
+          <div class="task-model-answer">✅ ${t.model}</div>
+        </div>
+      </div>`).join('')}
+    ${teacherBox('This is a structured guided drill, not open roleplay — the sentence frame is fixed, only the content varies, so every student gets a guaranteed-correct-form rep. Circulate and correct verb form errors in the moment (especially "to + base verb" vs "look forward to + -ing"). Extension for stronger students: ask them to add one extra sentence combining two rules, as in Card 8.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  const questions = [
+    { q:'What day was the delivery originally scheduled for?', a:'Thursday.' },
+    { q:'Why does Ingrid want to change the delivery date?', a:'Because her warehouse team is not available on Thursday.' },
+    { q:'True or False: Karim attaches the delivery schedule in his first email.', a:'True — he writes "Please find attached the updated delivery schedule."' },
+    { q:'What day does Ingrid request instead?', a:'Friday.' },
+    { q:'What phrase does Karim use to close his first email?', a:'"Let me know if you have any questions."' },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Reading — Email Thread</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Read the email exchange below between two colleagues from different offices. Then answer the questions that follow.</p>
+
+    <div class="email-thread">
+      <div class="email-msg">
+        <div class="email-head"><strong>From:</strong> Karim El-Sayed (Siemens, Cairo)<br><strong>To:</strong> Ingrid Solheim (Philips, Oslo)<br><strong>Subject:</strong> Regarding the Equipment Delivery</div>
+        <div class="email-body">Hi Ingrid,
+
+I am writing to confirm the delivery date for the new equipment. Regarding your message from Monday, the shipment is now scheduled for next Thursday.
+
+Please find attached the updated delivery schedule for your records.
+
+Let me know if you have any questions.
+
+Best regards,
+Karim</div>
+      </div>
+
+      <div class="email-msg">
+        <div class="email-head"><strong>From:</strong> Ingrid Solheim<br><strong>To:</strong> Karim El-Sayed<br><strong>Subject:</strong> RE: Regarding the Equipment Delivery</div>
+        <div class="email-body">Hi Karim,
+
+Thank you for the update. Would it be possible to move the delivery to Friday instead? Our warehouse team is not available on Thursday.
+
+I look forward to hearing from you.
+
+Best,
+Ingrid</div>
+      </div>
+
+      <div class="email-msg">
+        <div class="email-head"><strong>From:</strong> Karim El-Sayed<br><strong>To:</strong> Ingrid Solheim<br><strong>Subject:</strong> RE: Regarding the Equipment Delivery</div>
+        <div class="email-body">Hi Ingrid,
+
+Friday works well on our end. I have updated the schedule and will send the final confirmation tomorrow.
+
+Best regards,
+Karim</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">Comprehension — Tap Each to Reveal</div>
+    ${questions.map((it,i) => `
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q">${i+1}. ${it.q}</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">✅ ${it.a}</div>
+      </div>`).join('')}
+
+    ${teacherBox('Have students read the thread aloud in pairs (one voice per email) before answering. Ask the group first, then reveal — this keeps it a discussion rather than a silent worksheet. Point out how the thread reuses Rules 1–5 across three short emails. Extension: ask stronger students to identify which rule each sentence in the thread belongs to.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderTranslation() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Translation — Spanish to English</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Translate each sentence into English using today's patterns. Type your answer, then tap Check.</p>
+    ${TRANSLATE.map((item,i) => {
+      const s = translateState[i] || {};
+      const rev = s.revealed;
+      const cls = rev ? (s.correct ? 'trans-input correct' : 'trans-input wrong') : 'trans-input';
+      return `<div class="trans-card">
+        <div class="trans-es">${i+1}. "${item.es}"</div>
+        <div class="trans-input-row">
+          <input class="${cls}" type="text" placeholder="Type your translation…" value="${s.inputVal || ''}" oninput="setTransInp(${i},this.value)" ${rev ? 'disabled' : ''}/>
+          ${!rev ? `<button class="trans-check-btn" onclick="revealTrans(${i})">Check</button>` : ''}
+        </div>
+        ${rev ? `<div class="trans-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${item.display}</strong><br>💡 ${item.fb}</div>` : ''}
+      </div>`;
+    }).join('')}
+    ${teacherBox("Let students attempt each translation individually first, then compare with a partner before checking. Common error to watch for: infinitive instead of gerund after look forward to, and adding to after regarding. These sentences reuse Rules 1–5 from the Pre-Learning grammar section.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function setTransInp(i, v) {
+  if (!translateState[i]) translateState[i] = {};
+  translateState[i].inputVal = v;
+}
+function revealTrans(i) {
+  const item = TRANSLATE[i];
+  if (!translateState[i]) translateState[i] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/[.,!?;:]/g,'').replace(/\s+/g,' ');
+  const val = normalise(translateState[i].inputVal || '');
+  translateState[i].correct = item.answers.some(a => val === normalise(a));
+  translateState[i].revealed = true;
+  rerenderTranslation();
+}
+function rerenderTranslation() {
+  const si = STEPS.findIndex(s => s.fn === renderTranslation);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = renderTranslation();
+}
+
+function renderUnjumble() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Unjumble</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Tap the words in the correct order to build each sentence. Tap Clear to start over, then Check when you're ready.</p>
+    ${UNJUMBLE.map((item,i) => {
+      const st = unjumbleState[i] || { order:[], revealed:false };
+      const preview = st.order.map(idx => item.words[idx]).join(' ');
+      const doneSelecting = st.order.length === item.words.length;
+      return `<div class="unjumble-card">
+        <div class="unjumble-tag">Sentence ${i+1}</div>
+        <div class="chip-row">
+          ${item.shuffled.map(origIdx => `<button class="chip ${st.order.includes(origIdx) ? 'used' : ''}" onclick="unjumbleClick(${i},${origIdx})" ${(st.order.includes(origIdx) || st.revealed) ? 'disabled' : ''}>${item.words[origIdx]}</button>`).join('')}
+        </div>
+        <div class="answer-preview">${preview || '<span class="placeholder">Tap words above to build your sentence…</span>'}</div>
+        <div class="unjumble-actions">
+          <button class="clear-btn" onclick="unjumbleClear(${i})" ${st.revealed ? 'disabled' : ''}>Clear</button>
+          ${!st.revealed ? `<button class="trans-check-btn" onclick="unjumbleCheck(${i})" ${doneSelecting ? '' : 'disabled'}>Check</button>` : ''}
+        </div>
+        ${st.revealed ? `<div class="unjumble-feedback ${st.correct ? 'correct' : 'wrong'}">${st.correct ? '✅ Correct!' : '❌ Not quite — here is the correct order:'} <strong>${item.words.join(' ')}</strong></div>` : ''}
+      </div>`;
+    }).join('')}
+    ${teacherBox("This is a favorite format for A1/A2 students — expect strong engagement. Circulate while pairs work through each sentence and prompt them to say the sentence aloud once the order is built, before tapping Check. If a pair finishes early, ask them to explain why the word order works.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function unjumbleClick(i, idx) {
+  if (!unjumbleState[i]) unjumbleState[i] = { order:[], revealed:false };
+  if (unjumbleState[i].revealed) return;
+  if (unjumbleState[i].order.includes(idx)) return;
+  unjumbleState[i].order.push(idx);
+  rerenderUnjumble();
+}
+function unjumbleClear(i) {
+  if (!unjumbleState[i]) unjumbleState[i] = { order:[], revealed:false };
+  unjumbleState[i].order = [];
+  unjumbleState[i].revealed = false;
+  rerenderUnjumble();
+}
+function unjumbleCheck(i) {
+  const item = UNJUMBLE[i];
+  const st = unjumbleState[i];
+  if (!st) return;
+  st.correct = st.order.length === item.words.length && st.order.every((v,idx) => v === idx);
+  st.revealed = true;
+  rerenderUnjumble();
+}
+function rerenderUnjumble() {
+  const si = STEPS.findIndex(s => s.fn === renderUnjumble);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = renderUnjumble();
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Wrap-Up</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">As a class, build one more email opener together — combine one piece from each column below into a full sentence.</p>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Build an Opener — Choose One From Each Column</div>
+      <div class="builder-cols">
+        <div class="builder-col">
+          <div class="builder-col-label">Opener</div>
+          <div class="builder-col-main">I am writing to</div>
+          <div class="builder-col-detail">/ I'd like to</div>
+        </div>
+        <div class="builder-pipe">|</div>
+        <div class="builder-col">
+          <div class="builder-col-label">Verb</div>
+          <div class="builder-col-main">confirm / request / check on</div>
+          <div class="builder-col-detail">choose one</div>
+        </div>
+        <div class="builder-pipe">|</div>
+        <div class="builder-col">
+          <div class="builder-col-label">Topic</div>
+          <div class="builder-col-main">the training schedule</div>
+          <div class="builder-col-detail">or your own topic</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>"I'd like to confirm the training schedule."</strong></div>
+    </div>
+
+    <p class="sec-intro">Before you go, think about one email you might write this week at your own job. Which rule from today would you use first?</p>
+    <div class="info-box">Next lesson: <strong>Responding to Emails</strong> — how to reply professionally, confirm, and follow up. Your Homework for this lesson includes a short listening task, a quiz, and a writing task using today's patterns.</div>
+
+    ${teacherBox("Run this as an open-class call-and-response — pick different students for each column so everyone contributes to the final sentence. Close with a quick verbal round: each student says one situation from their own job where they could use today's patterns. Keep it light — this is a cool-down, not a test.")}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── STEPS — defined last ───────────────────────────────────
+STEPS = [
+  { label: "1. Warm-Up",     fn: renderWarmup },
+  { label: "2. Speaking",    fn: renderSpeaking },
+  { label: "3. Reading",     fn: renderReading },
+  { label: "4. Translation", fn: renderTranslation },
+  { label: "5. Unjumble",    fn: renderUnjumble },
+  { label: "6. Wrap-Up",     fn: renderWrapup },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

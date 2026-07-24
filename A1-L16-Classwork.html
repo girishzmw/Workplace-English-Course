@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 16: Chat Messages and Office Communication | A1 · Unit 2 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* TEACHER INSTRUCTION BOX */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* FLIP CARDS (Warm-Up) — Spanish face, English on flip */
+.flip-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:8px; }
+@media(max-width:600px){ .flip-grid{ grid-template-columns:1fr; } }
+.flip-card { perspective:1000px; cursor:pointer; min-height:84px; }
+.flip-card-inner { position:relative; width:100%; height:100%; min-height:84px; transition:transform 0.5s; transform-style:preserve-3d; }
+.flip-card.flipped .flip-card-inner { transform:rotateY(180deg); }
+.flip-face { position:absolute; inset:0; backface-visibility:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:9px; padding:14px; text-align:center; gap:4px; }
+.flip-front { background:var(--gold-bg); border:1.5px solid rgba(201,151,44,0.4); color:#7A5500; }
+.flip-front .flip-num { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.flip-front .flip-text { font-size:14px; font-style:italic; }
+.flip-back { background:var(--navy); color:var(--white); transform:rotateY(180deg); font-weight:700; font-size:16px; }
+
+/* MODEL CARD (chat thread) */
+.chat-thread-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.chat-msg { display:flex; gap:12px; padding:9px 0; border-bottom:1px dashed var(--border-grey); }
+.chat-msg:last-child { border-bottom:none; }
+.chat-msg-avatar { width:34px; height:34px; border-radius:50%; background:var(--light-grey); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:var(--navy); flex-shrink:0; }
+.chat-msg-body { flex:1; }
+.chat-msg-name { font-size:12px; font-weight:700; color:var(--navy); }
+.chat-msg-time { font-size:11px; color:var(--grey-blue); font-weight:400; margin-left:6px; }
+.chat-msg-text { font-size:14px; color:var(--slate); margin-top:2px; }
+
+/* TAP-TO-REVEAL */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:600; }
+.tap-answer.show { display:block; }
+
+/* UNJUMBLE (tap-to-build, unscored) */
+.jumble-item { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.jumble-item-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.jumble-built { min-height:50px; display:flex; flex-wrap:wrap; gap:8px; padding:12px; background:var(--off-white); border:1.5px dashed var(--border-grey); border-radius:8px; margin-bottom:12px; }
+.jumble-bank { display:flex; flex-wrap:wrap; gap:8px; padding:12px; background:var(--light-grey); border-radius:8px; border:1px solid var(--border-grey); margin-bottom:10px; }
+.jumble-tile { padding:8px 14px; background:var(--white); border:1.5px solid var(--border-grey); border-radius:6px; font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; font-family:var(--font-body); }
+.jumble-tile:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.jumble-tile.placed { background:var(--light-grey); border-color:var(--sky); }
+.jumble-tile:disabled { cursor:default; opacity:0.6; }
+.jumble-empty-hint { font-size:12px; color:var(--grey-blue); font-style:italic; }
+.jumble-feedback { margin-top:6px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.jumble-feedback.correct { background:var(--green-bg); color:var(--green); }
+.jumble-feedback.wrong { background:var(--red-bg); color:var(--red); }
+
+/* SPEAKING TASK CARDS */
+.task-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:8px; }
+@media(max-width:600px){ .task-grid{ grid-template-columns:1fr; } }
+.task-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 16px; }
+.task-card-num { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:var(--navy); color:var(--gold); border-radius:5px; font-size:12px; font-weight:700; margin-bottom:8px; }
+.task-card-task { font-size:14px; font-weight:700; color:var(--navy); }
+.task-card-time { font-size:13px; color:var(--sky); font-weight:600; margin-top:2px; }
+
+/* FRAME BOX (guided drill) */
+.frame-box { background:var(--navy); border-radius:12px; padding:20px 22px; margin-bottom:20px; }
+.frame-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:12px; }
+.frame-line { font-size:14px; color:var(--white); line-height:1.9; }
+.frame-line strong { color:var(--gold); }
+
+/* BUTTONS */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+
+/* TRANSLATION PRACTICE — scored mini-quiz (matches L15 Review & Translation step) */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.translate-prompt { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:12px 16px; margin-bottom:12px; font-size:15px; color:#7A5500; font-style:italic; }
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Classwork</div>
+    <h1 class="hero-title">Lesson 16: Chat Messages and Office Communication</h1>
+    <p class="hero-sub">Applying chat expressions &amp; short replies · 60 min</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">💬 Chat-focused</span>
+      <span class="pill">5 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE ──────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── TAP-TO-REVEAL (simple, no state tracking needed) ──────
+function toggleTap(el) {
+  el.querySelector('.tap-answer').classList.toggle('show');
+}
+function toggleFlip(el) {
+  el.classList.toggle('flipped');
+}
+
+// ── UNJUMBLE STATE (unscored — per-item feedback only) ─────
+const jumbleState = {};
+
+const JUMBLE_ITEMS = [
+  { words:["available","I'm","at","3pm"], answer:"I'm available at 3pm" },
+  { words:["send","I'll","ASAP","it"], answer:"I'll send it ASAP" },
+  { words:["now","meeting","I'm","in","a"], answer:"I'm in a meeting now" },
+  { words:["update","send","an","I'll"], answer:"I'll send an update" },
+  { words:["it","on","I'm"], answer:"I'm on it" },
+  { words:["WFH","tomorrow","I'm"], answer:"I'm WFH tomorrow" },
+  { words:["minutes","BRB","five","give","me"], answer:"BRB give me five minutes" },
+  { words:["do","will","that","I"], answer:"I will do that" },
+];
+
+function jumblePick(i, idx) {
+  if (!jumbleState[i]) jumbleState[i] = {};
+  if (jumbleState[i].revealed) return;
+  if (!jumbleState[i].picked) jumbleState[i].picked = [];
+  jumbleState[i].picked.push(idx);
+  rerenderJumbles();
+}
+function jumbleRemove(i, pos) {
+  if (!jumbleState[i] || jumbleState[i].revealed) return;
+  jumbleState[i].picked.splice(pos,1);
+  rerenderJumbles();
+}
+function jumbleCheck(i) {
+  const item = JUMBLE_ITEMS[i];
+  if (!jumbleState[i]) jumbleState[i] = {};
+  const picked = jumbleState[i].picked || [];
+  const built = picked.map(idx => item.words[idx]).join(' ');
+  const norm = s => s.trim().replace(/\s+/g,' ');
+  jumbleState[i].correct = norm(built) === norm(item.answer);
+  jumbleState[i].revealed = true;
+  rerenderJumbles();
+}
+function jumbleReset(i) {
+  jumbleState[i] = {};
+  rerenderJumbles();
+}
+function rerenderJumbles() {
+  const si = STEPS.findIndex(s => s.fn === renderUnjumble);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = renderUnjumble();
+}
+
+
+// ── TRANSLATION PRACTICE — scored mini-quiz (own state, own score) ─
+const trState = {};
+let trScore = 0;
+let trAttempts = 0;
+const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,!]$/,'');
+
+const TRANSLATE_ITEMS = [
+  { prompt:"Puedo enviarlo lo antes posible.",
+    answers:["i can send it asap","i can send it as soon as possible"],
+    display:"I can send it ASAP.", hint:"Use the short form for \"lo antes posible.\"",
+    fb:"\"Lo antes posible\" = ASAP — the standard short form in workplace chat." },
+  { prompt:"Para tu información, la reunión se movió.",
+    answers:["fyi the meeting moved","fyi, the meeting moved"],
+    display:"FYI, the meeting moved.", hint:"Start with the abbreviation for \"para tu información.\"",
+    fb:"\"Para tu información\" = FYI — used to share information calmly, without urgency." },
+  { prompt:"Ya me pongo con eso.",
+    answers:["on it","i'm on it","im on it"],
+    display:"On it! / I'm on it!", hint:"Two or three words — very short.",
+    fb:"\"Ya me pongo con eso\" = \"On it!\" — shows you're starting the task right away." },
+  { prompt:"Estoy disponible después de las 3pm.",
+    answers:["i'm available after 3pm","im available after 3pm","i am available after 3pm"],
+    display:"I'm available after 3pm.", hint:"Use the contraction \"I'm.\"",
+    fb:"\"I'm available after 3pm\" — natural chat phrasing using the contraction." },
+  { prompt:"Ya vuelvo, dame cinco minutos.",
+    answers:["brb give me five minutes","brb, give me five minutes","brb give me 5 minutes","brb, give me 5 minutes","be right back give me five minutes","be right back, give me five minutes"],
+    display:"BRB, give me five minutes.", hint:"Use the short form for \"ya vuelvo.\"",
+    fb:"\"BRB\" = \"be right back\" — a common short form in workplace chat." },
+  { prompt:"Lo haré antes del almuerzo.",
+    answers:["i'll do it before lunch","ill do it before lunch","will do before lunch","will do, before lunch"],
+    display:"I'll do it before lunch. / Will do, before lunch.", hint:"\"Lo haré\" has a short chat-reply equivalent too.",
+    fb:"\"Lo haré\" can be \"I'll do it\" or the very short chat reply \"Will do.\"" },
+  { prompt:"Estoy trabajando desde casa hoy.",
+    answers:["i'm working from home today","im working from home today","i am working from home today","i'm wfh today","im wfh today"],
+    display:"I'm working from home today. / I'm WFH today.", hint:"There's a common abbreviation for this phrase.",
+    fb:"\"Trabajando desde casa\" = \"working from home,\" often shortened to WFH in chat." },
+  { prompt:"Entendido, gracias.",
+    answers:["got it thanks","got it, thanks"],
+    display:"Got it, thanks.", hint:"Two words for \"entendido,\" plus \"thanks.\"",
+    fb:"\"Entendido\" = \"Got it\" — the natural chat reply confirming you understood." },
+];
+
+function trSetInp(i, v) {
+  if (!trState[i]) trState[i] = {};
+  trState[i].inputVal = v;
+}
+function trReveal(i) {
+  const item = TRANSLATE_ITEMS[i];
+  if (!trState[i]) trState[i] = {};
+  const raw = trState[i].inputVal || '';
+  trState[i].correct = item.answers.some(a => normalise(raw) === normalise(a));
+  trState[i].revealed = true;
+  trRecalc();
+  rerenderTranslate();
+}
+function trRetake() {
+  trAttempts++;
+  TRANSLATE_ITEMS.forEach((_,i) => {
+    const s = trState[i];
+    if (s && s.revealed && !s.correct) delete trState[i];
+  });
+  trRecalc();
+  rerenderTranslate();
+  setTimeout(()=>{
+    const first = TRANSLATE_ITEMS.findIndex((_,i)=>!trState[i]||!trState[i].revealed);
+    const el = document.getElementById('tr-qc-'+first);
+    if (el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function trRecalc() {
+  let s = 0;
+  TRANSLATE_ITEMS.forEach((_,i) => { const st = trState[i]; if (st && st.revealed && st.correct) s++; });
+  trScore = s;
+}
+function rerenderTranslate() {
+  const si = STEPS.findIndex(s => s.fn === renderTranslation);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = renderTranslation();
+}
+
+
+// ── SECTION RENDERERS ──────────────────────────────────────
+
+function renderWarmup() {
+  const cards = [
+    ["Lo antes posible","ASAP"],
+    ["Para tu información","FYI"],
+    ["Ya me pongo con eso","On it!"],
+    ["Entendido","Got it!"],
+    ["Trabajando desde casa","WFH"],
+    ["Ya vuelvo","BRB"],
+    ["Lo haré","Will do"],
+    ["No hay problema","No problem"],
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up: Chat Expression Flash Cards</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Tap each card to check your answer. Guess the English before you flip!</p>
+    <div class="flip-grid">
+      ${cards.map(([es,en],i) => `
+        <div class="flip-card" onclick="toggleFlip(this)">
+          <div class="flip-card-inner">
+            <div class="flip-face flip-front">
+              <div class="flip-num">${i+1}</div>
+              <div class="flip-text">"${es}"</div>
+            </div>
+            <div class="flip-face flip-back">${en}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Whole-class warm-up, 5 minutes max. Read the Spanish side aloud, students guess the English before tapping. Correct pronunciation of "ASAP" and "FYI" letter-by-letter as they come up. Extension: ask a stronger student to use the expression in a one-sentence example before revealing.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  const thread = [
+    ["TB","Thomas Beaumont","9:02am","Morning team — quick one, is the Q3 report ready?"],
+    ["MC","Mei-Ling Chen","9:03am","Almost! I'm finishing the last section now."],
+    ["TB","Thomas Beaumont","9:03am","Great, ASAP if possible — client call at 11."],
+    ["MC","Mei-Ling Chen","9:04am","On it! Will send by 10."],
+    ["DK","David Kim","9:10am","FYI, I'm WFH today — available on Teams all day."],
+    ["TB","Thomas Beaumont","9:11am","Noted, thanks David."],
+    ["MC","Mei-Ling Chen","9:45am","Report sent! Let me know if you need anything else."],
+    ["TB","Thomas Beaumont","9:46am","Got it, thank you!"],
+  ];
+  const questions = [
+    ["Why does Thomas need the report ASAP?","Because he has a client call at 11."],
+    ["Is David working from the office today?","No — he's WFH."],
+    ["What does Mei-Ling reply when Thomas asks for the report quickly?","\"On it!\""],
+    ["How does Thomas reply when the report arrives?","\"Got it, thank you!\" — short, not a full formal sentence."],
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Reading: Office Chat Thread</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Read the chat thread below, then discuss the questions as a group.</p>
+    <div class="chat-thread-wrap">
+      ${thread.map(([initials,name,time,text]) => `
+        <div class="chat-msg">
+          <div class="chat-msg-avatar">${initials}</div>
+          <div class="chat-msg-body">
+            <div class="chat-msg-name">${name}<span class="chat-msg-time">${time}</span></div>
+            <div class="chat-msg-text">${text}</div>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div class="es-note">Lee el hilo de chat en voz alta como grupo, luego discutan las preguntas juntos.</div>
+    ${questions.map(([q,a]) => `
+      <div class="tap-row" onclick="toggleTap(this)">
+        <div class="tap-row-top">
+          <div class="tap-q">${q}</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">${a}</div>
+      </div>`).join('')}
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Read the thread aloud once as a model — assign a student to each character voice if the group is comfortable. Discuss as a whole class; tap to reveal the model answer only after students attempt aloud. Listen for correct pronunciation of "FYI" and "ASAP."
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderUnjumble() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Unjumble Practice</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Tap the words in the correct order to build each sentence. Tap a placed word to remove it.</p>
+    ${JUMBLE_ITEMS.map((item,i) => {
+      const s = jumbleState[i] || {};
+      const picked = s.picked || [];
+      const usedSet = new Set(picked);
+      const rev = s.revealed;
+      return `<div class="jumble-item">
+        <div class="jumble-item-label">Item ${i+1}</div>
+        <div class="jumble-built">
+          ${picked.length===0 ? `<span class="jumble-empty-hint">Tap words below to build the sentence…</span>` : ''}
+          ${picked.map((idx,pos) => `<button class="jumble-tile placed" onclick="jumbleRemove(${i},${pos})" ${rev?'disabled':''}>${item.words[idx]}</button>`).join('')}
+        </div>
+        <div class="jumble-bank">
+          ${item.words.map((w,idx) => usedSet.has(idx) ? '' : `<button class="jumble-tile" onclick="jumblePick(${i},${idx})" ${rev?'disabled':''}>${w}</button>`).join('')}
+        </div>
+        ${!rev ? `<button class="check-btn" onclick="jumbleCheck(${i})" ${picked.length===0?'disabled':''}>Check</button>`
+               : `<div class="jumble-feedback ${s.correct?'correct':'wrong'}">${s.correct?'✅ Correct! ':'❌ Not quite. '}<strong>${item.answer}</strong></div>
+                  <button class="check-btn" style="margin-top:10px;background:var(--grey-blue);" onclick="jumbleReset(${i})">↺ Try Again</button>`}
+      </div>`;
+    }).join('')}
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Run individually or in pairs. Circulate and help students rebuild the sentence tile by tile before they check. Extension: ask fast finishers to say the sentence aloud naturally, not word by word. Item 8 is a good discussion point — ask students why "Will do!" sounds more natural in chat than "I will do that."
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  const tasks = [
+    ["the budget file","ASAP"],
+    ["the client email","by 2pm"],
+    ["the meeting notes","today"],
+    ["the training schedule","by lunch"],
+    ["the shared folder link","ASAP"],
+    ["the report draft","by 4pm"],
+    ["the invoice","today"],
+    ["the presentation slides","by 3pm"],
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Speaking: Guided Chat Reply Chain</div>
+      <div class="sec-badge-time">18 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Use the fixed frame below with your assigned task card. Take turns around the group.</p>
+    <div class="frame-box">
+      <div class="frame-label">Fixed Frame</div>
+      <div class="frame-line"><strong>A:</strong> "Can you [check/send/finish] the ___ [ASAP / by 2pm / today]?"</div>
+      <div class="frame-line"><strong>B</strong> (if starting now): "On it! I'll [check/send/finish] it [now/right away]."</div>
+      <div class="frame-line"><strong>B</strong> (if not available): "Sorry, I'm not available right now — I'll [check/send/finish] it after [time]."</div>
+    </div>
+    <div class="task-grid">
+      ${tasks.map(([task,time],i) => `
+        <div class="task-card">
+          <div class="task-card-num">${i+1}</div>
+          <div class="task-card-task">${task}</div>
+          <div class="task-card-time">${time}</div>
+        </div>`).join('')}
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Round-robin — student 1 gives student 2 the fixed-frame prompt using their assigned task card, student 2 replies in frame, then student 2 becomes "A" for student 3, and so on around the group. Correct any full-sentence formal replacements in the moment (steer back to "On it!" not "I will do that immediately"). Extension: ask fast-finishing students to add the "not available" branch with a reason of their own (e.g. "I'm in a meeting").
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+
+function renderTranslation() {
+  const answered = Object.values(trState).filter(s => s.revealed).length;
+  const pct = TRANSLATE_ITEMS.length ? (answered / TRANSLATE_ITEMS.length) * 100 : 0;
+  const allDone = answered === TRANSLATE_ITEMS.length;
+  const allCorrect = allDone && trScore === TRANSLATE_ITEMS.length;
+  const wrongCount = allDone ? TRANSLATE_ITEMS.length - trScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Translation Practice</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Translate each sentence into English using today's chat expressions. Type your answer, then tap Check.</p>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${TRANSLATE_ITEMS.length}</span>
+    </div>
+    ${TRANSLATE_ITEMS.map((item,i) => {
+      const s = trState[i] || {};
+      const rev = s.revealed;
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      return `<div class="q-card" id="tr-qc-${i}">
+        <div class="q-top">
+          <span class="q-num">Q${i+1}</span>
+          <div>
+            <div class="q-text">Translate into English:</div>
+            <div class="q-hint">${item.hint}</div>
+          </div>
+        </div>
+        <div class="translate-prompt">${item.prompt}</div>
+        <div class="q-input-row">
+          <input class="${cls}" id="tr-inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="trSetInp(${i},this.value)" ${rev?'disabled':''}/>
+          ${!rev ? `<button class="check-btn" onclick="trReveal(${i})">Check</button>` : ''}
+        </div>
+        ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${item.display}</strong><br>💡 ${item.fb}</div>` : ''}
+      </div>`;
+    }).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${trScore} / ${TRANSLATE_ITEMS.length}</div>
+      <div class="result-label">${trScore===TRANSLATE_ITEMS.length?'🎉 ¡Perfecto! — Great translation work!':trScore>=TRANSLATE_ITEMS.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${trScore===TRANSLATE_ITEMS.length?'Outstanding — a perfect score!':'Review the sentences where you made mistakes, then retry.'}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:10px;">Attempts so far: ${trAttempts}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="trRetake()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+      </div>
+    </div>` : ''}
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      This can run individually (typing) or as a group call-out before typing, whichever suits the pace of the class. Several sentences accept more than one correct phrasing (e.g. Q6 accepts both "I'll do it before lunch" and the shorter "Will do, before lunch") — if a student's answer is reasonable but marked wrong, use it as a live discussion point rather than treating the engine as the final word.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── STEPS — defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Warm-Up",      fn: renderWarmup },
+  { label: "2. Reading",      fn: renderReading },
+  { label: "3. Unjumble",     fn: renderUnjumble },
+  { label: "4. Speaking",     fn: renderSpeaking },
+  { label: "5. Translation",  fn: renderTranslation },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 17: Understanding Office Signs and Notices | A1 · Unit 2 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* Pills */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO / TIP */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* QUIZ (shared engine — used for Part A & Part C) */
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* UNJUMBLE */
+.unjumble-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.unjumble-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:12px; }
+.unjumble-answer-slot { min-height:46px; background:var(--off-white); border:1.5px dashed var(--border-grey); border-radius:8px; padding:8px; display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px; align-items:center; }
+.unjumble-answer-slot.correct { border-color:var(--green); background:var(--green-bg); border-style:solid; }
+.unjumble-answer-slot.wrong   { border-color:var(--red);   background:var(--red-bg);   border-style:solid; }
+.unjumble-bank { display:flex; flex-wrap:wrap; gap:8px; }
+.uj-chip { padding:8px 14px; border-radius:7px; font-size:14px; font-family:var(--font-body); cursor:pointer; border:1.5px solid var(--border-grey); background:var(--white); color:var(--navy); transition:all 0.12s; }
+.uj-chip:hover { border-color:var(--sky); }
+.uj-chip.used { opacity:0.3; cursor:default; border-style:dashed; }
+.uj-chip.placed { background:var(--navy); color:var(--white); border-color:var(--navy); }
+.unjumble-footer { display:flex; justify-content:space-between; align-items:center; margin-top:10px; gap:10px; }
+.unjumble-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.unjumble-feedback.correct { background:var(--green-bg); color:var(--green); }
+.unjumble-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* TRANSLATION */
+.translate-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.translate-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.translate-es { font-size:15px; color:var(--navy); font-style:italic; margin-bottom:12px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:18px; color:var(--navy); margin-bottom:10px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Homework</div>
+    <h1 class="hero-title">Lesson 17: Understanding Office Signs and Notices</h1>
+    <p class="hero-sub">Grammar: Must / Can't (rules) · Independent work · 15 minutes</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">🎧 Listening</span>
+      <span class="pill accent">✍️ Unjumble &amp; Translate</span>
+      <span class="pill">3 parts</span>
+      <span class="pill">15 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+// PART A — Listening comprehension
+const PARTA_QUIZ = [
+  { type:'mc', q:'What must every employee wear?',
+    opts:['A uniform', 'An ID badge', 'A visitor sticker'], answer:1,
+    fb:'David says every employee must wear an ID badge.' },
+  { type:'tf', q:'David can enter the IT room without permission.',
+    answer:false,
+    fb:'The "Authorized Personnel Only" sign means that room is for IT staff only — David can\u2019t go in.' },
+  { type:'mc', q:'What must staff do in the kitchen after lunch?',
+    opts:['Order food', 'Clean up / wash their dishes', 'Turn off the lights'], answer:1,
+    fb:'David says "Staff must clean up after lunch" — he washes his cup and plate.' },
+  { type:'tf', q:'This is a smoking building.',
+    answer:false,
+    fb:'David says it\u2019s a non-smoking building — nobody can smoke inside.' },
+  { type:'input', q:'What must everyone do in a fire?',
+    hint:'two words',
+    answers:['use the stairs','use stairs'], display:'Use the stairs.',
+    fb:'In an emergency, everyone must use the stairs — you can\u2019t use the elevator.' },
+  { type:'mc', q:'What does "Authorized Personnel Only" mean?',
+    opts:['Anyone can enter', 'Only certain staff can enter', 'The room is closed forever'], answer:1,
+    fb:'It means only specific, approved staff — like IT — can enter that room.' },
+];
+
+// PART B — Unjumble (tokens already carry correct capitalization/punctuation)
+const UNJUMBLE = [
+  { bank: ['badge.','must','You','wear','your'], target: 'You must wear your badge.' },
+  { bank: ["here.","You","can't","smoke"],        target: "You can't smoke here." },
+  { bank: ['after','Staff','clean','must','lunch.'], target: 'Staff must clean after lunch.' },
+  { bank: ['permission.','enter','You',"can't",'without'], target: "You can't enter without permission." },
+  { bank: ['the','In','use','you','stairs.','a fire,','must'], target: 'In a fire, you must use the stairs.' },
+];
+
+// PART B — Translate from Spanish (normalized comparison, minor variants accepted)
+const TRANSLATE = [
+  { es: 'Debes llevar tu credencial.', answers: ['you must wear your badge','you must wear your id badge'], display:'You must wear your badge.' },
+  { es: 'No puedes fumar aquí.', answers: ["you can't smoke here","you cant smoke here"], display:"You can't smoke here." },
+  { es: 'El personal debe limpiar después del almuerzo.', answers: ['staff must clean up after lunch','staff must clean after lunch'], display:'Staff must clean up after lunch.' },
+  { es: 'No puedes entrar sin permiso.', answers: ["you can't enter without permission","you cant enter without permission"], display:"You can't enter without permission." },
+  { es: 'En caso de incendio, debes usar las escaleras.', answers: ['in a fire you must use the stairs','in a fire, you must use the stairs'], display:'In a fire, you must use the stairs.' },
+];
+
+// PART C — MC Quiz (includes 2 blended Grammar Bridge / Lesson 7 questions)
+const PARTC_QUIZ = [
+  { type:'mc', q:'"Staff Only" means...',
+    opts:['Only employees can enter', 'Everyone can enter', 'No one can enter'], answer:0,
+    hint:'Think about who the sign is for.',
+    fb:'"Staff Only" means only employees can enter — not visitors.' },
+  { type:'tf', q:'"Authorized Personnel Only" means everyone can enter.',
+    answer:false,
+    hint:'"Authorized" means special permission is needed.',
+    fb:'It means only specific, approved employees can enter — not everyone.' },
+  { type:'input', q:'Complete: "You ___ wear your ID badge every day." (rule word)',
+    hint:'obligation word, never takes -s',
+    answers:['must'], display:'Must.',
+    fb:'"Must" shows this is a required rule.' },
+  { type:'mc', q:'Choose the correct form.',
+    opts:['She must wears a badge.', 'She must wear a badge.', 'She musts wear a badge.'], answer:1,
+    hint:'"Must" never changes form.',
+    fb:'"Must" stays the same for every subject — no -s.' },
+  { type:'tf', q:'"You can\u2019t smoke here" means smoking is optional.',
+    answer:false,
+    hint:'"Can\u2019t" = forbidden, not optional.',
+    fb:'"Can\u2019t" means it is forbidden, not a choice.' },
+  { type:'mc', q:'Which sentence describes a prohibition?',
+    opts:['You must sign in.', "You can't enter without a badge.", 'You should ask a question.'], answer:1,
+    hint:'Prohibition = not allowed.',
+    fb:'"Can\u2019t" shows something is forbidden — a prohibition.' },
+  { type:'input', q:'What is the Spanish translation of "Emergency Exit"?',
+    hint:'two Spanish words',
+    answers:['salida de emergencia'], display:'Salida de emergencia.',
+    fb:'"Emergency Exit" = "Salida de emergencia."' },
+  { type:'mc', q:'Grammar Bridge (Lesson 7): Choose the correct sentence.',
+    opts:['He check his email every morning.', 'He checks his email every morning.', 'He checking his email every morning.'], answer:1,
+    hint:'Remember the -s rule for he/she/it in Present Simple.',
+    fb:'Present Simple affirmative adds -s for he/she/it: "He checks his email."' },
+  { type:'tf', q:'Grammar Bridge (Lesson 7): "She attend meetings every day" is correct.',
+    answer:false,
+    hint:'Check the verb ending for "she."',
+    fb:'It should be "She attends meetings every day" — regular verbs take -s for he/she/it.' },
+  { type:'mc', q:'What does the sign "Keep Clear" mean?',
+    opts:['Clean this area', "Don't block this area", 'This area is closed forever'], answer:1,
+    hint:'Think about doors and exits.',
+    fb:'"Keep Clear" means don\u2019t put anything in front of this area — keep it open.' },
+];
+
+// ── GENERIC QUIZ ENGINE (shared by Part A and Part C, independent state each) ──
+const QSTATE = { partA:{}, partC:{} };
+const QSCORE = { partA:0, partC:0 };
+const QBANKS = { partA: PARTA_QUIZ, partC: PARTC_QUIZ };
+const QRENDER_FN = {};
+
+function renderGenericQ(prefix, q, i) {
+  const s = QSTATE[prefix][i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="genSelectOpt('${prefix}',${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="genRevealQ('${prefix}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="genSetInp('${prefix}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="genRevealInp('${prefix}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${prefix}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function genSelectOpt(prefix,qi,j) { if(!QSTATE[prefix][qi])QSTATE[prefix][qi]={}; if(QSTATE[prefix][qi].revealed)return; QSTATE[prefix][qi].selected=j; genRerender(prefix); }
+function genRevealQ(prefix,qi)    { if(!QSTATE[prefix][qi])QSTATE[prefix][qi]={}; QSTATE[prefix][qi].revealed=true; genRecalc(prefix); genRerender(prefix); }
+function genSetInp(prefix,qi,v)   { if(!QSTATE[prefix][qi])QSTATE[prefix][qi]={}; QSTATE[prefix][qi].inputVal=v; }
+function genRevealInp(prefix,qi) {
+  const q=QBANKS[prefix][qi]; if(!QSTATE[prefix][qi])QSTATE[prefix][qi]={};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw=(QSTATE[prefix][qi].inputVal||'');
+  QSTATE[prefix][qi].correct=q.answers.some(a=>normalise(raw)===normalise(a));
+  QSTATE[prefix][qi].revealed=true; genRecalc(prefix); genRerender(prefix);
+}
+function genRecalc(prefix) {
+  const bank = QBANKS[prefix];
+  let s=0;
+  bank.forEach((q,i)=>{
+    const st=QSTATE[prefix][i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  QSCORE[prefix]=s;
+}
+function genRetake(prefix) {
+  const bank = QBANKS[prefix];
+  bank.forEach((_,i) => {
+    const s=QSTATE[prefix][i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(bank[i].type==='mc')    ok=s.selected===bank[i].answer;
+    else if(bank[i].type==='tf')    ok=bank[i].answer===(s.selected===0);
+    else if(bank[i].type==='input') ok=s.correct;
+    if(!ok){ delete QSTATE[prefix][i]; }
+  });
+  genRecalc(prefix); genRerender(prefix);
+}
+function genRerender(prefix) {
+  const fn = QRENDER_FN[prefix];
+  const si = STEPS.findIndex(s => s.fn === fn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = fn();
+}
+function renderQuizBlock(prefix, title, icon) {
+  const bank = QBANKS[prefix];
+  const answered = Object.values(QSTATE[prefix]).filter(s => s.revealed).length;
+  const pct = bank.length ? (answered / bank.length) * 100 : 0;
+  const allDone = answered === bank.length && bank.length > 0;
+  const allCorrect = allDone && QSCORE[prefix] === bank.length;
+  const wrongCount = allDone ? bank.length - QSCORE[prefix] : 0;
+
+  return `
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">${icon}</div>
+      <div><h3>${title}</h3><p>${bank.length} questions · Take your time</p></div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${bank.length}</span>
+    </div>
+    ${bank.map((q,i) => renderGenericQ(prefix,q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${QSCORE[prefix]} / ${bank.length}</div>
+      <div class="result-label">${QSCORE[prefix]===bank.length?'🎉 ¡Perfecto!':QSCORE[prefix]>=bank.length*0.8?'¡Excelente!':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${QSCORE[prefix]===bank.length?'Outstanding — a perfect score!':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="genRetake('${prefix}')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+      </div>
+    </div>` : ''}`;
+}
+
+// ── UNJUMBLE ENGINE ─────────────────────────────
+const UJSTATE = {};
+function ujTapBank(i, wordIdx) {
+  if (!UJSTATE[i]) UJSTATE[i] = { placed: [], revealed:false };
+  if (UJSTATE[i].revealed) return;
+  if (UJSTATE[i].placed.includes(wordIdx)) return;
+  UJSTATE[i].placed.push(wordIdx);
+  rerenderHomework();
+}
+function ujTapAnswer(i, posInPlaced) {
+  if (!UJSTATE[i] || UJSTATE[i].revealed) return;
+  UJSTATE[i].placed.splice(posInPlaced, 1);
+  rerenderHomework();
+}
+function ujCheck(i) {
+  if (!UJSTATE[i]) UJSTATE[i] = { placed: [], revealed:false };
+  const built = UJSTATE[i].placed.map(idx => UNJUMBLE[i].bank[idx]).join(' ');
+  UJSTATE[i].correct = built === UNJUMBLE[i].target;
+  UJSTATE[i].revealed = true;
+  rerenderHomework();
+}
+function ujRetry(i) {
+  UJSTATE[i] = { placed: [], revealed:false };
+  rerenderHomework();
+}
+function renderUnjumbleCard(item, i) {
+  const s = UJSTATE[i] || { placed: [], revealed:false };
+  const slotCls = !s.revealed ? '' : (s.correct ? 'correct' : 'wrong');
+  return `<div class="unjumble-card">
+    <div class="unjumble-label">Sentence ${i+1}</div>
+    <div class="unjumble-answer-slot ${slotCls}">
+      ${s.placed.length===0 ? '<span style="color:var(--grey-blue);font-size:13px;font-style:italic;">Tap words below to build the sentence…</span>' : ''}
+      ${s.placed.map((wordIdx,pos) => `<span class="uj-chip placed" onclick="ujTapAnswer(${i},${pos})">${item.bank[wordIdx]}</span>`).join('')}
+    </div>
+    <div class="unjumble-bank">
+      ${item.bank.map((word,wordIdx) => `<span class="uj-chip ${s.placed.includes(wordIdx)?'used':''}" onclick="ujTapBank(${i},${wordIdx})">${word}</span>`).join('')}
+    </div>
+    <div class="unjumble-footer">
+      ${!s.revealed ? `<button class="check-btn" onclick="ujCheck(${i})" ${s.placed.length===0?'disabled':''}>Check</button>` : `<button class="check-btn" onclick="ujRetry(${i})">↺ Retry</button>`}
+    </div>
+    ${s.revealed ? `<div class="unjumble-feedback ${s.correct?'correct':'wrong'}">${s.correct?'✅ Correct!':'❌ Not quite.'} <strong>${item.target}</strong></div>` : ''}
+  </div>`;
+}
+
+// ── TRANSLATE ENGINE ─────────────────────────────
+const TRSTATE = {};
+function trSetInp(i,v) { if(!TRSTATE[i])TRSTATE[i]={}; TRSTATE[i].inputVal=v; }
+function trCheck(i) {
+  if(!TRSTATE[i])TRSTATE[i]={};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'').replace(/'/g,"'");
+  const raw = TRSTATE[i].inputVal || '';
+  TRSTATE[i].correct = TRANSLATE[i].answers.some(a => normalise(raw) === normalise(a));
+  TRSTATE[i].revealed = true;
+  rerenderHomework();
+}
+function renderTranslateCard(item, i) {
+  const s = TRSTATE[i] || {};
+  const rev = s.revealed;
+  const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+  return `<div class="translate-card">
+    <div class="translate-label">Translate ${i+1}</div>
+    <div class="translate-es">"${item.es}"</div>
+    <div class="q-input-row">
+      <input class="${cls}" type="text" placeholder="Type the English translation…" value="${s.inputVal||''}" oninput="trSetInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="trCheck(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">${s.correct?'✅ Correct!':'❌ Not quite.'} <strong>${item.display}</strong></div>` : ''}
+  </div>`;
+}
+
+function rerenderHomework() {
+  const si = STEPS.findIndex(s => s.fn === renderPartB);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = renderPartB();
+}
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderPartA() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">A</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Listen to David Kim talk about his first week at a new job, and the office signs he learned.</p>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">My First Week</div>
+          <div class="audio-box-sub">David Kim · New Employee · ~55 seconds</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L17-Audio002.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>Hi, I'm David Kim. I started my new job last week. On my first day, I learned a lot of rules from the signs around the office.</p>
+        <p>Every employee must wear an ID badge — I clip mine to my shirt every morning. Near the elevator, there's a sign that says "Authorized Personnel Only." That room is for IT staff only, so I can't go in there.</p>
+        <p>In the kitchen, there's a sign: "Staff must clean up after lunch." I always wash my cup and plate before I leave. This is a non-smoking building too, so nobody can smoke inside, not even near the exit doors.</p>
+        <p>Last Friday, the fire alarm rang. Everyone must use the stairs in an emergency — you can't use the elevator. We all walked down together, calmly. Now I understand the office signs much better than I did on day one!</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    ${renderQuizBlock('partA', 'Listening Check', '🎧')}
+    ${navFooter()}
+  </div>`;
+}
+QRENDER_FN.partA = renderPartA;
+
+function renderPartB() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">B</div>
+      <div class="sec-badge-title">Unjumble &amp; Translate</div>
+      <div class="sec-badge-time">7 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Tap the words in the correct order to build each sentence. Tap a word you've already placed to remove it.</p>
+    <div class="h-serif">Unjumble</div>
+    ${UNJUMBLE.map((item,i) => renderUnjumbleCard(item,i)).join('')}
+
+    <div class="divider"></div>
+    <p class="sec-intro">Now translate each Spanish sentence into English.</p>
+    <div class="h-serif">Translate from Spanish</div>
+    ${TRANSLATE.map((item,i) => renderTranslateCard(item,i)).join('')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartC() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">C</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    ${renderQuizBlock('partC', '¡Pon a prueba lo que aprendiste!', '🎯')}
+    ${navFooter()}
+  </div>`;
+}
+QRENDER_FN.partC = renderPartC;
+
+// ── AUDIO FUNCTIONS (Pattern A) ──
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── STEPS — defined last ───────────────────────
+STEPS = [
+  { label: "A. Listening",         fn: renderPartA },
+  { label: "B. Unjumble/Translate",fn: renderPartB },
+  { label: "C. Quiz",              fn: renderPartC },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

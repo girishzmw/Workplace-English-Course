@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 17: Understanding Office Signs and Notices | A1 · Unit 2 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* Pills — Classwork / Homework hero variant */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* TAP-TO-REVEAL */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-style:italic; }
+.tap-answer.show { display:block; }
+
+/* NOTICE BOARD (Reading) */
+.notice-card { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--gold); border-radius:8px; padding:16px 18px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.notice-title { font-family:var(--font-heading); font-size:15px; color:var(--navy); margin-bottom:6px; }
+.notice-body { font-size:14px; color:var(--slate); line-height:1.7; font-style:italic; }
+.notice-by { font-size:12px; color:var(--grey-blue); margin-top:8px; text-align:right; }
+
+/* SAY THE RULE — blank-fill tap row */
+.blank-tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:14px 16px; margin-bottom:10px; }
+.blank-tap-text { font-size:15px; color:var(--navy); line-height:1.7; }
+.blank-tap-text .blank-space { display:inline-block; min-width:64px; border-bottom:2px dashed var(--gold); text-align:center; color:transparent; user-select:none; }
+.blank-tap-text .blank-space.revealed { color:var(--green); font-weight:700; border-bottom-style:solid; border-color:var(--green); }
+.blank-tap-btn { margin-top:8px; }
+
+/* SPEAKING LADDER */
+.ladder-stage { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:18px; }
+.ladder-stage-head { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.ladder-stage-num { background:var(--navy); color:var(--gold); border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0; }
+.ladder-stage-title { font-family:var(--font-heading); font-size:16px; color:var(--navy); }
+.ladder-stage-sub { font-size:12px; color:var(--grey-blue); font-style:italic; margin-left:38px; margin-top:-8px; margin-bottom:12px; }
+.model-line-box { background:var(--navy); border-radius:8px; padding:14px 18px; margin-bottom:14px; }
+.model-line-text { font-family:var(--font-heading); font-size:16px; color:var(--white); font-style:italic; }
+
+/* TEACHER INSTRUCTION BOX */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* WRITING */
+.writing-area { width:100%; min-height:110px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.starter-box { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:12px 16px; margin-bottom:14px; font-size:14px; color:#7A5500; }
+.starter-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; margin-bottom:4px; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:18px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Classwork</div>
+    <h1 class="hero-title">Lesson 17: Understanding Office Signs and Notices</h1>
+    <p class="hero-sub">Grammar: Must / Can't (rules) · Teacher-led · ~67 minutes</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">📖 Reading</span>
+      <span class="pill">6 sections</span>
+      <span class="pill">~67 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const WARMUP_CARDS = [
+  { es:'Solo personal autorizado', en:'Authorized Personnel Only' },
+  { es:'Salida de emergencia',      en:'Emergency Exit' },
+  { es:'No entrar',                 en:'No Entry / Do Not Enter' },
+  { es:'Solo empleados',            en:'Staff Only' },
+  { es:'Mantener despejado',        en:'Keep Clear' },
+  { es:'No fumar',                  en:'No Smoking' },
+  { es:'Piso mojado',               en:'Wet Floor' },
+  { es:'Salida',                    en:'Exit' },
+];
+
+const RECAP_CHECKS = [
+  { q: '"She check her email every morning." — correct or incorrect?', a: '❌ Incorrect → "She checks her email every morning."' },
+  { q: '"He ___ (attend) meetings on Mondays." — what\u2019s the missing word?', a: 'attends' },
+];
+
+const NOTICES = [
+  { title: 'Reception', body: "Visitors must sign in at reception. Visitors can't enter the offices without a visitor badge.", by: '— Front Desk' },
+  { title: 'Kitchen', body: "Staff must clean up after lunch. You can't leave dirty dishes in the sink.", by: '— Thomas Beaumont, Office Manager' },
+  { title: 'Server Room', body: "Authorized Personnel Only. You can't bring food or drinks into this room.", by: '— IT Department' },
+  { title: 'Fire Safety', body: "In a fire, you must use the stairs. You can't use the elevator.", by: '— Amara Okafor, Safety Officer' },
+];
+
+const READING_CHECKS = [
+  { q: 'Who posted the kitchen notice?', a: 'Thomas Beaumont' },
+  { q: 'Can visitors enter the offices without a badge?', a: "No, they can't." },
+  { q: 'What must staff do after lunch?', a: 'Clean up / wash their dishes.' },
+  { q: "What can't you bring into the server room?", a: 'Food or drinks.' },
+  { q: 'Who posted the fire safety notice?', a: 'Amara Okafor' },
+];
+
+// SAY THE RULE — full sentence stays visible, only the modal word is blanked.
+const SAY_THE_RULE_CARDS = [
+  { before: 'Visitors ', after: ' sign in at reception.', answer: 'must' },
+  { before: 'Visitors ', after: " enter the offices without a visitor badge.", answer: "can't" },
+  { before: 'Staff ', after: ' clean up after lunch.', answer: 'must' },
+  { before: 'You ', after: ' leave dirty dishes in the sink.', answer: "can't" },
+  { before: 'You ', after: ' enter the server room without authorization.', answer: "can't" },
+  { before: 'You ', after: ' bring food or drinks into the server room.', answer: "can't" },
+  { before: 'In a fire, you ', after: ' use the stairs.', answer: 'must' },
+  { before: 'In a fire, you ', after: ' use the elevator.', answer: "can't / must not" },
+];
+
+const CHAIN_DRILL_CARDS = [
+  { sign: 'Authorized Personnel Only', model: "You can't enter without permission." },
+  { sign: 'Emergency Exit',            model: 'You must use this door in an emergency.' },
+  { sign: 'No Smoking',                model: "You can't smoke here." },
+  { sign: 'Staff Only',                model: "You can't enter unless you work here." },
+  { sign: 'ID Badge Required',         model: 'You must wear your badge.' },
+  { sign: 'Keep Clear',                model: "You can't block this door." },
+  { sign: 'Wet Floor',                 model: 'You must be careful — the floor is wet.' },
+  { sign: 'No Entry',                  model: "You can't go in." },
+];
+
+const CUE_ROUND_CARDS = [
+  { cue: 'fire alarm · stairs',    model: 'In a fire, you must use the stairs.' },
+  { cue: 'meeting room · knock',   model: 'You must knock before you enter.' },
+  { cue: 'parking · visitors',     model: "Visitors can't park here." },
+  { cue: 'phone · meeting',        model: "You can't use your phone in a meeting." },
+  { cue: 'kitchen · clean',        model: 'You must clean up after lunch.' },
+  { cue: 'server room · IT only',  model: "You can't enter without IT permission." },
+  { cue: 'badge · lost',           model: 'You must report a lost badge.' },
+  { cue: 'reception · sign in',    model: 'Visitors must sign in at reception.' },
+];
+
+const SIGN_MODELS = [
+  { sign: 'Copy Room', model: "You can't use the copier after 6pm." },
+  { sign: 'Elevator',  model: 'You must hold the door for others.' },
+];
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up: Sign Match</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Look at the Spanish sign. Say the English out loud, then tap the card to check.</p>
+    <div class="ex-box">
+      <div class="ex-label">Warm-Up</div>
+      ${WARMUP_CARDS.map(c => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <div class="tap-q">${c.es}</div>
+            <div class="tap-hint-label">Tap to reveal</div>
+          </div>
+          <div class="tap-answer">${c.en}</div>
+        </div>`).join('')}
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Run this as a quick whole-class call-out: show a card, let students shout the English guess, then tap to confirm together. Don't slow down for pronunciation drilling here; that comes later in the Speaking Ladder. Keep the whole warm-up under 5 minutes.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderRecap() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Quick Recap</div>
+      <div class="sec-badge-time">4 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box">
+      <strong>Quick reminder from Lesson 7</strong> — regular verbs in Present Simple add <strong>-s</strong> for he/she/it.
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">Quick Check</div>
+      ${RECAP_CHECKS.map(c => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <div class="tap-q">${c.q}</div>
+            <div class="tap-hint-label">Tap to reveal</div>
+          </div>
+          <div class="tap-answer">${c.a}</div>
+        </div>`).join('')}
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      This should take one to two minutes, tops. Cold-call two or three students for the answers before revealing — don't let it turn into a full grammar re-teach.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Reading: The Notice Board</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Read the four notices posted around the office. Look for <strong>must</strong> and <strong>can't</strong> in each one.</p>
+    ${NOTICES.map(n => `
+      <div class="notice-card">
+        <div class="notice-title">📌 ${n.title}</div>
+        <div class="notice-body">${n.body}</div>
+        <div class="notice-by">${n.by}</div>
+      </div>`).join('')}
+    <div class="divider"></div>
+    <div class="h-serif">Comprehension Check</div>
+    <div class="ex-box">
+      ${READING_CHECKS.map(c => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <div class="tap-q">${c.q}</div>
+            <div class="tap-hint-label">Tap to reveal</div>
+          </div>
+          <div class="tap-answer">${c.a}</div>
+        </div>`).join('')}
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Give students 3–4 minutes to read silently first, then go through the comprehension questions as a class. Listen for must/can't pronunciation, especially students dropping the "t" sound in "can't," which makes it sound like "can."
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSayTheRule() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Say the Rule</div>
+      <div class="sec-badge-time">7-8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">The sentence stays on screen — only the rule word is missing. Say the <strong>full sentence</strong> out loud, then tap to check.</p>
+    <div class="ex-box">
+      <div class="ex-label">Say the Rule</div>
+      ${SAY_THE_RULE_CARDS.map((c,i) => `
+        <div class="blank-tap-row">
+          <div class="blank-tap-text">${i+1}. ${c.before}<span class="blank-space" id="stq-blank-${i}">${c.answer}</span>${c.after}</div>
+          <button class="tap-hint-label blank-tap-btn" style="background:none;border:1px solid var(--border-grey);border-radius:6px;padding:5px 10px;cursor:pointer;"
+            onclick="document.getElementById('stq-blank-${i}').classList.toggle('revealed')">Tap to reveal the word</button>
+        </div>`).join('')}
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Each student says the full sentence aloud, not just the missing word — this is a speaking rep, not a fill-in-the-blank quiz. The sentence stays visible the whole time, so this is reproduction with support, not memory recall. Correct gently and move on; the goal is fluency with the modal, not a test.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderLadder() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Speaking Ladder</div>
+      <div class="sec-badge-time">32 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">All 8 students go through every stage. Turn-taking stays teacher-controlled throughout — round-robin, one student at a time.</p>
+
+    <div class="ladder-stage">
+      <div class="ladder-stage-head">
+        <div class="ladder-stage-num">1</div>
+        <div class="ladder-stage-title">Model &amp; Chorus</div>
+      </div>
+      <div class="ladder-stage-sub">Whole class together · 2 min</div>
+      <div class="model-line-box">
+        <div class="model-line-text">"You must wear your ID badge."</div>
+      </div>
+      <p style="font-size:14px;color:var(--slate);">Teacher models the sentence twice. Whole class repeats chorally, together, twice. No individual student is called on yet.</p>
+      <div class="teacher-box">
+        <div class="teacher-box-label">👩‍🏫 Teacher Note — Stage 1</div>
+        Focus on rhythm and the "must" sound, it's often swallowed by Spanish speakers. Don't correct individuals here; this is a zero-risk warm-up rep for the whole class together.
+      </div>
+    </div>
+
+    <div class="ladder-stage">
+      <div class="ladder-stage-head">
+        <div class="ladder-stage-num">2</div>
+        <div class="ladder-stage-title">Chain Drill</div>
+      </div>
+      <div class="ladder-stage-sub">Round-robin, fixed frame: "This sign means: You ___." · ~15 min</div>
+      ${CHAIN_DRILL_CARDS.map((c,i) => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <div class="tap-q">${i+1}. ${c.sign}</div>
+            <div class="tap-hint-label">Need a model? Tap ▾</div>
+          </div>
+          <div class="tap-answer">${c.model}</div>
+        </div>`).join('')}
+      <div class="teacher-box">
+        <div class="teacher-box-label">👩‍🏫 Teacher Note — Stage 2</div>
+        Errors here mean the student went "off-script," they didn't use the given frame. Correct gently and move to the next student; don't dwell.
+      </div>
+    </div>
+
+    <div class="ladder-stage">
+      <div class="ladder-stage-head">
+        <div class="ladder-stage-num">3</div>
+        <div class="ladder-stage-title">Cue-Only Independent Round</div>
+      </div>
+      <div class="ladder-stage-sub">Same round-robin, only keywords, no frame · ~15 min</div>
+      ${CUE_ROUND_CARDS.map((c,i) => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <div class="tap-q">${i+1}. ${c.cue}</div>
+            <div class="tap-hint-label">Need a model? Tap ▾</div>
+          </div>
+          <div class="tap-answer">${c.model}</div>
+        </div>`).join('')}
+      <div class="teacher-box">
+        <div class="teacher-box-label">👩‍🏫 Teacher Note — Stage 3</div>
+        These are genuine production gaps, not off-script errors. Note mistakes for later, but don't over-correct in the moment, if you jump in too fast, this collapses back into a controlled drill and defeats the purpose. Any grammatically correct must/can't sentence using the cue words counts as a win, even if it's not the model answer.
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Wrap-Up: Design Your Own Sign</div>
+      <div class="sec-badge-time">9 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Write one office rule using <strong>must</strong> or <strong>can't</strong> for a sign of your choice, real or invented, like "Meeting Room," "Elevator," or "Copy Room."</p>
+
+    <div class="starter-box">
+      <div class="starter-label">Sentence Starter</div>
+      "This sign means: You ___."
+    </div>
+
+    <textarea class="writing-area" placeholder="Write your sign and your sentence here…"></textarea>
+
+    <div class="divider"></div>
+    <div class="h-serif">Need Inspiration?</div>
+    <div class="ex-box">
+      ${SIGN_MODELS.map(s => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <div class="tap-q">${s.sign}</div>
+            <div class="tap-hint-label">Tap to reveal</div>
+          </div>
+          <div class="tap-answer">${s.model}</div>
+        </div>`).join('')}
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Circulate while students write, checking form (no -s on must/can't) rather than content creativity. If time allows, ask 2–3 volunteers to read their sign aloud to the class.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS — defined last ───────────────────────
+STEPS = [
+  { label: "1. Warm-Up",       fn: renderWarmup },
+  { label: "2. Recap",         fn: renderRecap },
+  { label: "3. Reading",       fn: renderReading },
+  { label: "4. Say the Rule",  fn: renderSayTheRule },
+  { label: "5. Speaking",      fn: renderLadder },
+  { label: "6. Wrap-Up",       fn: renderWrapup },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

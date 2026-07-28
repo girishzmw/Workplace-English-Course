@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 12: Responding to Emails | A2 · Unit 2 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-weight:700; margin-bottom:10px; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+
+.bridge-callout { background:var(--navy); border:1.5px solid var(--gold); border-radius:12px; padding:20px 22px; margin-bottom:20px; }
+.bridge-callout-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.bridge-callout p { font-size:14px; color:rgba(255,255,255,0.85); line-height:1.8; margin-bottom:8px; }
+.bridge-callout strong { color:var(--gold-light); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:15px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:14px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-quote:last-child { margin-bottom:0; }
+
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; flex:1; }
+.tap-hint-label { font-size:11px; color:var(--sky); text-transform:uppercase; letter-spacing:1px; white-space:nowrap; flex-shrink:0; }
+.tap-answer { display:none; padding-top:10px; margin-top:10px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-style:italic; }
+.tap-answer.show { display:block; }
+.tap-answer-label { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--grey-blue); font-style:normal; display:block; margin-bottom:3px; }
+
+.cue-card { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.35); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.cue-num { background:var(--gold); color:var(--navy); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; }
+.cue-words { font-size:14px; color:#7A5500; font-weight:700; flex:1; }
+
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+.starter-list { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 20px; margin-bottom:18px; }
+.starter-item { font-size:14px; color:var(--navy); font-style:italic; padding:6px 0; border-bottom:1px dashed var(--border-grey); }
+.starter-item:last-child { border-bottom:none; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Classwork</div>
+    <h1 class="hero-title">Lesson 12: Responding to Emails</h1>
+    <p class="hero-sub">Grammar: Polite requests and responses · 60 min</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">✍️ Light writing</span>
+      <span class="pill">6 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const WARMUP_CARDS = [
+  { q: "This word means 'the date something must be finished.'", a: "deadline" },
+  { q: "This word means 'free to do something at a certain time.'", a: "available" },
+  { q: "Complete: I can ___ the meeting is at 3 PM.", a: "confirm" },
+  { q: "This word means 'to be thankful for something.'", a: "appreciate" },
+  { q: "True or false: 'reply' means to ask for something.", a: "False — reply means to answer a message." },
+  { q: "Complete: She sent a ___ for the updated file.", a: "request" },
+  { q: "Missing word: I'm sorry, I can't join, but I ___ send my notes.", a: "can" },
+  { q: "This word is the opposite of 'busy' when talking about your schedule.", a: "available" }
+];
+
+const CHAIN_DRILL_CARDS = [
+  { prompt: "Could you send the invoice by Wednesday?", answer: "Yes, of course, I can send it by Wednesday." },
+  { prompt: "Would you be able to confirm the numbers today?", answer: "Yes, of course, I can confirm the numbers today." },
+  { prompt: "Could you join the 9 AM call?", answer: "I'm sorry, I can't join at 9, but I can join at 10." },
+  { prompt: "Would it be possible to review the document this afternoon?", answer: "Yes, of course, I can review it this afternoon." },
+  { prompt: "Could you reply to the client by Friday?", answer: "Yes, of course, I can reply by Friday." },
+  { prompt: "Would you be able to attend the meeting on Monday?", answer: "I'm sorry, I can't attend on Monday, but I can send my notes." },
+  { prompt: "Could you confirm the deadline for the report?", answer: "Yes, of course, I can confirm the deadline is Thursday." },
+  { prompt: "Would it be possible to send the file today?", answer: "I'm sorry, I can't send it today, but I can send it tomorrow morning." }
+];
+
+const CUE_CARDS = [
+  { words: "report / tomorrow / yes", sample: "Yes, of course, I can send the report tomorrow." },
+  { words: "call / 3 PM / no → 4 PM", sample: "I'm sorry, I can't join the call at 3, but I can join at 4." },
+  { words: "document / today / yes", sample: "Yes, of course, I can review the document today." },
+  { words: "meeting / Friday / no → send notes", sample: "I'm sorry, I can't attend the meeting on Friday, but I can send my notes." },
+  { words: "deadline / next week / yes", sample: "Yes, of course, I can confirm the deadline is next week." },
+  { words: "file / this afternoon / yes", sample: "Yes, of course, I can send the file this afternoon." },
+  { words: "client email / today / no → tomorrow", sample: "I'm sorry, I can't reply to the client today, but I can reply tomorrow." },
+  { words: "numbers / now / yes", sample: "Yes, of course, I can confirm the numbers now." }
+];
+
+const READING_ITEMS = [
+  { q: "Find the sentence where Sofia makes a polite request.", a: "\"Would it be possible to send the updated budget by Thursday?\"" },
+  { q: "Find the sentence where William confirms he can help.", a: "\"Yes, of course, I can confirm the budget will be ready by Thursday morning.\"" },
+  { q: "Find the sentence where William politely says he can't do something today.", a: "\"I'm sorry I can't send it today, but Thursday works well.\"" },
+  { q: "What word does Sofia use to thank William in advance?", a: "\"appreciate\"" }
+];
+
+// ── Tap-reveal state (warm-up, recap, reading) ────────────
+const tapState = {};
+function toggleTap(key) {
+  tapState[key] = !tapState[key];
+  const el = document.getElementById('tap-' + key);
+  if (el) el.classList.toggle('show', tapState[key]);
+}
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Quick recall — one card per student. Tap to check the answer after you guess.</p>
+    ${WARMUP_CARDS.map((c,i) => `
+      <div class="tap-row" onclick="toggleTap('warm${i}')">
+        <div class="tap-row-top">
+          <span class="tap-num">${i+1}</span>
+          <div class="tap-q">${c.q}</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer" id="tap-warm${i}"><span class="tap-answer-label">Answer</span>${c.a}</div>
+      </div>`).join('')}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      5 minutes. Go around the room quickly — one card per student, no more than 15–20 seconds each. This is a warm-up, not a test; if a student hesitates, give the first letter as a hint rather than waiting in silence.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderRecap() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Quick Recap</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="bridge-callout">
+      <div class="bridge-callout-label">🔁 Quick Reminder — Can / Can't (A1, Lesson 12)</div>
+      <p>Back in A1 Lesson 12, you used <strong>can</strong> and <strong>can't</strong> to talk about phone calls at work. Today you're using them to reply to emails: <strong>can</strong> to say yes, <strong>can't</strong> to say no politely.</p>
+    </div>
+
+    <div class="tap-row" onclick="toggleTap('recap0')">
+      <div class="tap-row-top">
+        <span class="tap-num">1</span>
+        <div class="tap-q">How do you say you ARE able to do something?</div>
+        <div class="tap-hint-label">Tap to reveal</div>
+      </div>
+      <div class="tap-answer" id="tap-recap0"><span class="tap-answer-label">Answer</span>can + base verb — e.g. "I can send it."</div>
+    </div>
+    <div class="tap-row" onclick="toggleTap('recap1')">
+      <div class="tap-row-top">
+        <span class="tap-num">2</span>
+        <div class="tap-q">How do you say you're NOT able to do something?</div>
+        <div class="tap-hint-label">Tap to reveal</div>
+      </div>
+      <div class="tap-answer" id="tap-recap1"><span class="tap-answer-label">Answer</span>can't + base verb — e.g. "I can't join."</div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      This should take 2 minutes, no more. It's a nudge, not a re-teach — if most of the class answers instantly, move straight on to the Speaking Ladder.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeakingLadder() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Speaking Ladder</div>
+      <div class="sec-badge-time">25 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="sub-heading">Stage 1 — Model &amp; Chorus (2 min)</div>
+    <div class="model-card">
+      <div class="model-body">
+        <div class="model-quote">"Yes, of course, I can send it by Friday."</div>
+      </div>
+    </div>
+    <p class="sec-intro">Teacher models the sentence twice. The whole class repeats together, chorally, twice. No individual student is called on yet.</p>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Model at natural classroom pace, then slightly slower. Listen for the whole class saying it together — don't isolate anyone in this stage.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">Stage 2 — Chain Drill (10 min)</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Fixed frame</div>
+      <div class="pattern-row"><div class="pattern-en">A reads the request card aloud.</div><div class="pattern-es">B replies using the frame below.</div></div>
+      <div class="pattern-row"><div class="pattern-en">Yes, of course, I can [task] by [time].</div><div class="pattern-es">— or —</div></div>
+      <div class="pattern-row"><div class="pattern-en">I'm sorry, I can't [task], but I can [alternative].</div><div class="pattern-es">Use whichever fits the card.</div></div>
+    </div>
+    <p class="sec-intro">Round-robin — one card per student. Read the request, then reply using the frame. Tap a card to check the model reply once you've answered.</p>
+    ${CHAIN_DRILL_CARDS.map((c,i) => `
+      <div class="tap-row" onclick="toggleTap('chain${i}')">
+        <div class="tap-row-top">
+          <span class="tap-num">${i+1}</span>
+          <div class="tap-q">"${c.prompt}"</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer" id="tap-chain${i}"><span class="tap-answer-label">Model reply</span>"${c.answer}"</div>
+      </div>`).join('')}
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      10 minutes, one card per student, round-robin. Errors here mean the student went off the given frame — correct gently and have them repeat the fixed structure before moving to the next student.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">Stage 3 — Cue-Only Independent Round (13 min)</div>
+    <p class="sec-intro">Same round-robin, one student at a time. No sentence frame this time — each student gets keywords only and produces their own sentence using can / can't and today's polite response language. All 8 students take a turn.</p>
+    ${CUE_CARDS.map((c,i) => `
+      <div class="cue-card" onclick="toggleTap('cue${i}')">
+        <div class="tap-row-top">
+          <span class="cue-num">${i+1}</span>
+          <div class="cue-words">${c.words}</div>
+          <div class="tap-hint-label">Tap for teacher reference</div>
+        </div>
+        <div class="tap-answer" id="tap-cue${i}"><span class="tap-answer-label">One possible response (teacher reference only)</span>"${c.sample}"</div>
+      </div>`).join('')}
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      13 minutes. This is genuine independent production — there's no frame to fall back on. Errors here are real production gaps, not "off-script" mistakes like Stage 2. Note them for later, but don't over-correct in the moment or the activity collapses back into a controlled drill. Let each student finish their sentence before giving feedback.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Reading</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Read the email exchange between Sofia Andersen (Stockholm, IKEA) and William Brooks (Amsterdam, Philips).</p>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">📧</div>
+        <div>
+          <div class="model-name">Sofia Andersen → William Brooks</div>
+          <div class="model-role">Email 1</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Hi William, would it be possible to send the updated budget by Thursday? I appreciate your help with this — I know things have been busy. Thanks, Sofia"</div>
+      </div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">📧</div>
+        <div>
+          <div class="model-name">William Brooks → Sofia Andersen</div>
+          <div class="model-role">Email 2 — Reply</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Hi Sofia, yes, of course, I can confirm the budget will be ready by Thursday morning. I'm sorry I can't send it today, but Thursday works well. Let me know if that's still convenient. Best, William"</div>
+      </div>
+    </div>
+
+    <p class="sec-intro">Find the answers in the emails above, then tap each card to check.</p>
+    ${READING_ITEMS.map((r,i) => `
+      <div class="tap-row" onclick="toggleTap('read${i}')">
+        <div class="tap-row-top">
+          <span class="tap-num">${i+1}</span>
+          <div class="tap-q">${r.q}</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer" id="tap-read${i}"><span class="tap-answer-label">Answer</span>${r.a}</div>
+      </div>`).join('')}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      10 minutes. Read the emails aloud once as a class first, then have students find the answers individually before revealing. This doubles as light reading practice and reinforces today's grammar in a real context.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWriting() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Guided Writing</div>
+      <div class="sec-badge-time">13 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Your colleague emails you: "Could you send the sales report by tomorrow morning?" Write a short, polite reply. Use at least one sentence starter below.</p>
+
+    <div class="starter-list">
+      <div class="starter-item">Yes, of course, I can...</div>
+      <div class="starter-item">I appreciate you letting me know...</div>
+      <div class="starter-item">I'm sorry, I can't..., but I can...</div>
+      <div class="starter-item">I can confirm...</div>
+    </div>
+
+    <textarea class="writing-area" id="writingBox" placeholder="Write your reply here..." oninput="updateWordCount()"></textarea>
+    <div class="word-count" id="wordCount">0 words</div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Give students 6–7 minutes to write, then invite 2–3 volunteers to read their reply aloud. Praise correct use of can/can't and the polite request-acknowledgement pattern — this is the same structure they've been drilling all lesson, just in writing now.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Wrap-up</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="model-card">
+      <div class="model-body">
+        <div class="model-quote">Today you practiced replying to requests politely: acknowledge, confirm with can or explain politely with can't, and offer an alternative when needed. Tomorrow's homework will let you practice this on your own with a short listening and some quick exercises.</div>
+      </div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Quick show of hands: who feels confident replying to a request in English now? Use this as an informal temperature check before dismissing the class — no need to log it anywhere.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function updateWordCount() {
+  const box = document.getElementById('writingBox');
+  const count = document.getElementById('wordCount');
+  if (!box || !count) return;
+  const words = box.value.trim().length ? box.value.trim().split(/\s+/).length : 0;
+  count.textContent = words + ' words';
+}
+
+// ── STEPS — defined last ───────────────────
+STEPS = [
+  { label: "1. Warm-up",  fn: renderWarmup },
+  { label: "2. Recap",    fn: renderRecap },
+  { label: "3. Speaking", fn: renderSpeakingLadder },
+  { label: "4. Reading",  fn: renderReading },
+  { label: "5. Writing",  fn: renderWriting },
+  { label: "6. Wrap-up",  fn: renderWrapup },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

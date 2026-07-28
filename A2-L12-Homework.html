@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 12: Responding to Emails | A2 · Unit 2 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-weight:700; margin-bottom:10px; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.unj-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px 22px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.unj-label { display:flex; gap:10px; align-items:flex-start; margin-bottom:14px; }
+.unj-bank { display:flex; flex-wrap:wrap; gap:8px; padding:14px; background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:8px; margin-bottom:12px; }
+.unj-chip { padding:8px 14px; background:var(--white); border:1.5px solid var(--border-grey); border-radius:20px; font-size:14px; color:var(--navy); cursor:pointer; transition:all .12s; font-family:var(--font-body); }
+.unj-chip:hover:not(:disabled) { border-color:var(--sky); }
+.unj-chip:disabled { opacity:0.25; cursor:default; }
+.unj-sequence { display:flex; flex-wrap:wrap; align-items:center; gap:8px; min-height:48px; padding:14px; background:var(--off-white); border:1.5px dashed var(--border-grey); border-radius:8px; margin-bottom:12px; }
+.unj-sequence-chip { padding:8px 14px; background:var(--white); border:1.5px solid var(--sky); border-radius:20px; font-size:14px; color:var(--navy); cursor:pointer; font-family:var(--font-body); }
+.unj-sequence-chip.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); cursor:default; }
+.unj-sequence-chip.wrong   { border-color:var(--red); background:var(--red-bg); color:var(--red); cursor:default; }
+.unj-placeholder { color:var(--grey-blue); font-size:13px; font-style:italic; }
+
+.tr-prompt { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-style:italic; margin-bottom:12px; padding:12px 16px; background:var(--off-white); border-left:4px solid var(--gold); }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Homework</div>
+    <h1 class="hero-title">Lesson 12: Responding to Emails</h1>
+    <p class="hero-sub">Grammar: Polite requests and responses · 15 min</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">🎧 Listening</span>
+      <span class="pill accent">✍️ Practice</span>
+      <span class="pill">3 parts</span>
+      <span class="pill">15 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const QUIZ_A = [
+  { type:"mc", q:"What does Priya do first when she gets a request?",
+    opts:["She replies immediately", "She reads it first, then decides", "She forwards it to her team"],
+    answer: 1, hint: "Listen for the very first thing she says she does.",
+    fb: "Priya reads the message first, then decides what she can do." },
+  { type:"mc", q:"How did Priya respond to the request to send the schedule?",
+    opts:["Maybe later", "Yes, of course, I can send it by Monday morning.", "I don't have time"],
+    answer: 1, hint: "This is her example of confirming a request.",
+    fb: "She replied clearly and politely, confirming Monday morning." },
+  { type:"tf", q:"Priya was available for the nine o'clock call.",
+    answer: false, hint: "Listen for the time she mentions instead of nine.",
+    fb: "She wasn't available at nine, but she was available at ten." },
+  { type:"input", q:"What word does Priya use to describe respecting someone's request? (means to be thankful for)",
+    hint: "app...", answers: ["appreciate"], display: "Appreciate",
+    fb: "Appreciate means to be thankful for something someone did." },
+  { type:"mc", q:"According to Priya, what should a good reply do instead of just saying no?",
+    opts:["Ignore the message", "Give an alternative", "Ask someone else to reply"],
+    answer: 1, hint: "Think about the pattern: acknowledge, answer, then...",
+    fb: "A good reply offers an alternative instead of just saying no." },
+  { type:"tf", q:"Priya says a good reply respects the other person's deadline and your own schedule.",
+    answer: true, hint: "This is close to her closing thought.",
+    fb: "Yes — she says this is how she keeps her inbox organized and her team happy." }
+];
+
+const UNJUMBLE = [
+  { words: ["of", "course", "I", "send", "can", "it", "by", "Friday", "Yes"],
+    answer: ["Yes", "of", "course", "I", "can", "send", "it", "by", "Friday"],
+    hint: "Start with the word that means agreement.",
+    fb: "Yes, of course, I can send it by Friday." },
+  { words: ["confirm", "can", "the", "deadline", "I", "Thursday", "is"],
+    answer: ["I", "can", "confirm", "the", "deadline", "is", "Thursday"],
+    hint: "Start with the subject.",
+    fb: "I can confirm the deadline is Thursday." },
+  { words: ["sorry", "can't", "I'm", "but", "I", "join", "can", "send", "notes", "my"],
+    answer: ["I'm", "sorry", "I", "can't", "join", "but", "I", "can", "send", "my", "notes"],
+    hint: "Start with an apology.",
+    fb: "I'm sorry, I can't join, but I can send my notes." },
+  { words: ["it", "possible", "be", "would", "to", "confirm", "deadline", "the"],
+    answer: ["Would", "it", "be", "possible", "to", "confirm", "the", "deadline"],
+    hint: "This is a polite request — start with Would.",
+    fb: "Would it be possible to confirm the deadline?" },
+  { words: ["appreciate", "your", "reply", "I", "quick"],
+    answer: ["I", "appreciate", "your", "quick", "reply"],
+    hint: "Start with the subject.",
+    fb: "I appreciate your quick reply." }
+];
+
+const TRANSLATE = [
+  { prompt: "Sí, claro, puedo enviarlo mañana.",
+    answers: ["yes, of course, i can send it tomorrow"],
+    display: "Yes, of course, I can send it tomorrow.",
+    hint: "Remember: can + base verb, no 'to'.",
+    fb: "Yes, of course, I can send it tomorrow." },
+  { prompt: "Lo siento, no puedo asistir, pero puedo enviar mis notas.",
+    answers: ["i'm sorry, i can't attend, but i can send my notes", "i am sorry, i can't attend, but i can send my notes", "i'm sorry i can't attend, but i can send my notes"],
+    display: "I'm sorry, I can't attend, but I can send my notes.",
+    hint: "This is a polite negative reply with an alternative.",
+    fb: "I'm sorry, I can't attend, but I can send my notes." },
+  { prompt: "¿Sería posible confirmar la fecha límite?",
+    answers: ["would it be possible to confirm the deadline"],
+    display: "Would it be possible to confirm the deadline?",
+    hint: "Use the polite request pattern from the Grammar segment.",
+    fb: "Would it be possible to confirm the deadline?" },
+  { prompt: "Aprecio tu respuesta rápida.",
+    answers: ["i appreciate your quick reply"],
+    display: "I appreciate your quick reply.",
+    hint: "Appreciate is a regular verb here — no extra words needed.",
+    fb: "I appreciate your quick reply." },
+  { prompt: "No estoy disponible hoy, pero estoy disponible mañana.",
+    answers: ["i'm not available today, but i'm available tomorrow", "i am not available today, but i am available tomorrow"],
+    display: "I'm not available today, but I'm available tomorrow.",
+    hint: "Available is an adjective, not a verb.",
+    fb: "I'm not available today, but I'm available tomorrow." }
+];
+
+const QUIZ_C = [
+  { type:"mc", q:"What does \"deadline\" mean?",
+    opts:["The date something must be finished", "A type of email", "A meeting room"],
+    answer: 0, hint: "It's often followed by a day of the week.",
+    fb: "A deadline is the date or time something must be finished." },
+  { type:"mc", q:"Which word means free to do something at a certain time?",
+    opts:["deadline", "available", "request"],
+    answer: 1, hint: "Think of the opposite of busy.",
+    fb: "Available means free or able to do something at a certain time." },
+  { type:"tf", q:"I can confirm the deadline is Friday is a way of politely declining a request.",
+    answer: false, hint: "Think about what confirm means.",
+    fb: "It's a way of confirming or agreeing, not declining." },
+  { type:"input", q:"Complete: I ___ your quick reply. (word meaning to be thankful for)",
+    hint: "app...", answers: ["appreciate"], display: "I appreciate your quick reply.",
+    fb: "Appreciate means to be thankful for something someone did." },
+  { type:"mc", q:"Which is the most polite way to ask for something?",
+    opts:["Send it now.", "Would you be able to send it?", "You must send it."],
+    answer: 1, hint: "Polite requests often start with Would or Could.",
+    fb: "\"Would you be able to...?\" is indirect and polite." },
+  { type:"mc", q:"Choose the best reply to Could you confirm the numbers today?",
+    opts:["Maybe.", "Yes, of course, I can confirm the numbers today.", "Numbers."],
+    answer: 1, hint: "Look for a clear, direct confirmation.",
+    fb: "A clear, confirming reply sounds professional and direct." },
+  { type:"tf", q:"A polite negative reply should offer an alternative when possible.",
+    answer: true, hint: "Think about the pattern: acknowledge, answer, offer.",
+    fb: "Offering an alternative keeps the tone professional, even when the answer is no." },
+  { type:"mc", q:"Complete: I'm sorry, I ___ attend the meeting, but I can send my notes.",
+    opts:["can", "can't", "could"],
+    answer: 1, hint: "This is a polite negative reply.",
+    fb: "Can't is the negative form used to say you are not able to do something." },
+  { type:"mc", q:"Choose the correct sentence: I ___ join the call today, but I can join tomorrow.",
+    opts:["can", "can't", "am can't"],
+    answer: 1, hint: "This links to what you learned in A1 Lesson 12.",
+    fb: "Can't shows the speaker is not able to join today, but they offer an alternative." },
+  { type:"tf", q:"I can send the file today means the speaker is able to send it today.",
+    answer: true, hint: "Can shows ability — remember A1 Lesson 12?",
+    fb: "Can means the speaker is able to do something, here, to send the file today." }
+];
+
+// ── Quiz state — two independent instances (Part A, Part C) ──
+const qState = { A: {}, C: {} };
+const qScore = { A: 0, C: 0 };
+const QUIZ_BANK = { A: QUIZ_A, C: QUIZ_C };
+
+// ── Part B state (Unjumble + Translation, independent) ──────
+const unjState = {};
+const trState = {};
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderPartA() {
+  const answered = Object.values(qState.A).filter(s => s.revealed).length;
+  const total = QUIZ_A.length;
+  const pct = total ? (answered / total) * 100 : 0;
+  const allDone = answered === total && total > 0;
+  const allCorrect = allDone && qScore.A === total;
+  const wrongCount = allDone ? total - qScore.A : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">A</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">6 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Listen to Priya talk about how she replies to requests at work, then answer the questions below.</p>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Replying to Requests at Work</div>
+          <div class="audio-box-sub">Priya Kapoor, Project Coordinator, Mumbai · ~75 seconds</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L12-Audio002.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>Hello, my name is Priya, and I coordinate projects for my team. I get a lot of requests every day, by email and by chat, and I always try to reply quickly. When someone asks me something, I read it first, and then I decide what I can do. If I can help, I confirm right away.</p>
+        <p>Yesterday, a colleague asked, "Would it be possible to send the schedule by Monday?" I replied, "Yes, of course, I can send it by Monday morning." That's clear, and it shows I appreciate the request. But sometimes I can't do exactly what someone asks. Last week, someone wanted a call at nine, but I wasn't available. So I wrote, "I'm sorry, I can't join at nine, but I'm available at ten."</p>
+        <p>I always try to give an alternative, not just a "no." A good reply respects the other person's deadline and your own schedule. That's how I keep my inbox organized and my team happy.</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${total}</span>
+    </div>
+    ${QUIZ_A.map((q,i) => renderQ(q,i,'A')).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScore.A} / ${total}</div>
+      <div class="result-label">${qScore.A===total?'🎉 ¡Perfecto!':qScore.A>=total*0.8?'¡Excelente!':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${qScore.A===total?'Outstanding — a perfect score!':'Review your answers, then retry the wrong ones.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakePart('A')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartB() {
+  const unjCorrect = Object.values(unjState).filter(s => s.revealed && s.correct).length;
+  const trCorrect = Object.values(trState).filter(s => s.revealed && s.correct).length;
+  const unjAnswered = Object.values(unjState).filter(s => s.revealed).length;
+  const trAnswered = Object.values(trState).filter(s => s.revealed).length;
+  const totalItems = UNJUMBLE.length + TRANSLATE.length;
+  const totalAnswered = unjAnswered + trAnswered;
+  const totalCorrect = unjCorrect + trCorrect;
+  const pct = totalItems ? (totalAnswered / totalItems) * 100 : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">B</div>
+      <div class="sec-badge-title">Practice</div>
+      <div class="sec-badge-time">6 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${totalAnswered} / ${totalItems}</span>
+    </div>
+
+    <div class="sub-heading">Unjumble</div>
+    <p class="sec-intro">Tap the words in the correct order to build the sentence. Tap a word in your answer to remove it.</p>
+    ${UNJUMBLE.map((q,i) => renderUnjumble(q,i)).join('')}
+
+    <div class="divider"></div>
+
+    <div class="sub-heading">Translation</div>
+    <p class="sec-intro">Translate each Spanish sentence into English using today's grammar.</p>
+    ${TRANSLATE.map((q,i) => renderTranslate(q,i)).join('')}
+
+    ${totalAnswered === totalItems ? `<div class="quiz-result">
+      <div class="result-score">${totalCorrect} / ${totalItems}</div>
+      <div class="result-label">${totalCorrect===totalItems?'🎉 ¡Perfecto!':'Nice work — check any you missed above.'}</div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartC() {
+  const answered = Object.values(qState.C).filter(s => s.revealed).length;
+  const total = QUIZ_C.length;
+  const pct = total ? (answered / total) * 100 : 0;
+  const allDone = answered === total && total > 0;
+  const allCorrect = allDone && qScore.C === total;
+  const wrongCount = allDone ? total - qScore.C : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">C</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Última prueba!</h3>
+        <p>${total} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${total}</span>
+    </div>
+    ${QUIZ_C.map((q,i) => renderQ(q,i,'C')).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScore.C} / ${total}</div>
+      <div class="result-label">${qScore.C===total?'🎉 ¡Perfecto! — Great work on this lesson!':qScore.C>=total*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${qScore.C===total?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakePart('C')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Homework</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE (shared by Part A and Part C) ─────────────
+function renderQ(q, i, part) {
+  const s = qState[part][i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt('${part}',${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ('${part}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${part}-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp('${part}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp('${part}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${part}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(part,qi,j) { if(!qState[part][qi])qState[part][qi]={}; if(qState[part][qi].revealed)return; qState[part][qi].selected=j; rerenderPart(part); }
+function revealQ(part,qi)      { if(!qState[part][qi])qState[part][qi]={}; qState[part][qi].revealed=true; recalc(part); rerenderPart(part); }
+function setInp(part,qi,v)     { if(!qState[part][qi])qState[part][qi]={}; qState[part][qi].inputVal=v; }
+function revealInp(part,qi) {
+  const q=QUIZ_BANK[part][qi]; if(!qState[part][qi])qState[part][qi]={};
+  const val=(qState[part][qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  qState[part][qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  qState[part][qi].revealed=true; recalc(part); rerenderPart(part);
+}
+function retakePart(part) {
+  const QUIZ = QUIZ_BANK[part];
+  QUIZ.forEach((_,i) => {
+    const s=qState[part][i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete qState[part][i]; }
+  });
+  recalc(part); rerenderPart(part);
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!qState[part][i]||!qState[part][i].revealed);
+    const el=document.getElementById('qc-'+part+'-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc(part) {
+  let s=0;
+  const QUIZ = QUIZ_BANK[part];
+  QUIZ.forEach((q,i)=>{
+    const st=qState[part][i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  qScore[part]=s;
+}
+function rerenderPart(part) {
+  const fnMap = { A: renderPartA, C: renderPartC };
+  const targetFn = fnMap[part];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) {
+    document.getElementById('mainContent').innerHTML = targetFn();
+    const audio = document.getElementById('mainAudio');
+    if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+  }
+}
+
+// ── UNJUMBLE ENGINE ────────────────────────────────────────
+function renderUnjumble(q, qi) {
+  if (!unjState[qi]) unjState[qi] = { placed: [] };
+  const s = unjState[qi];
+  const rev = s.revealed;
+  const placedWords = s.placed.map(idx => q.words[idx]);
+  const isCorrect = rev && s.correct;
+
+  const sequenceHtml = s.placed.length
+    ? s.placed.map((idx, seqPos) => {
+        let cls = 'unj-sequence-chip';
+        if (rev) cls += isCorrect ? ' correct' : ' wrong';
+        return `<button class="${cls}" onclick="removeFromPlaced(${qi},${seqPos})" ${rev?'disabled':''}>${q.words[idx]}</button>`;
+      }).join('')
+    : `<span class="unj-placeholder">Tap words below to build your sentence…</span>`;
+
+  const bankHtml = q.words.map((w, idx) => {
+    const used = s.placed.includes(idx);
+    return `<button class="unj-chip" ${used||rev?'disabled':''} onclick="addToPlaced(${qi},${idx})">${w}</button>`;
+  }).join('');
+
+  return `<div class="unj-wrap" id="unj-${qi}">
+    <div class="unj-label"><span class="q-num">Q${qi+1}</span></div>
+    <div class="unj-sequence">${sequenceHtml}</div>
+    <div class="unj-bank">${bankHtml}</div>
+    ${!rev ? `<div style="text-align:right"><button class="check-btn" onclick="checkUnjumble(${qi})" ${s.placed.length===0?'disabled':''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${isCorrect?'correct':'wrong'}">${isCorrect?'✅':'💡'} <strong>${q.fb}</strong></div>` : ''}
+  </div>`;
+}
+
+function addToPlaced(qi, idx) {
+  const s = unjState[qi]; if (s.revealed) return;
+  if (s.placed.includes(idx)) return;
+  s.placed.push(idx);
+  rerenderPartB();
+}
+function removeFromPlaced(qi, seqPos) {
+  const s = unjState[qi]; if (s.revealed) return;
+  s.placed.splice(seqPos, 1);
+  rerenderPartB();
+}
+function checkUnjumble(qi) {
+  const q = UNJUMBLE[qi]; const s = unjState[qi];
+  const placedWords = s.placed.map(idx => q.words[idx]);
+  s.correct = placedWords.length === q.answer.length && q.answer.every((w,i) => w === placedWords[i]);
+  s.revealed = true;
+  rerenderPartB();
+}
+
+// ── TRANSLATE ENGINE ───────────────────────────────────────
+function renderTranslate(q, qi) {
+  const s = trState[qi] || (trState[qi] = {});
+  const rev = s.revealed;
+  const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+  return `<div class="unj-wrap" id="tr-${qi}">
+    <div class="unj-label"><span class="q-num">Q${qi+1}</span></div>
+    <div class="tr-prompt">${q.prompt}</div>
+    ${q.hint && !rev ? `<div class="q-hint" style="margin-bottom:10px;">${q.hint}</div>` : ''}
+    <div class="q-input-row">
+      <input class="${cls}" id="tr-inp-${qi}" type="text" placeholder="Type your translation…" value="${s.inputVal||''}" oninput="setTrInp(${qi},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="checkTranslate(${qi})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}
+  </div>`;
+}
+
+function setTrInp(qi, v) {
+  if (!trState[qi]) trState[qi] = {};
+  trState[qi].inputVal = v;
+}
+function checkTranslate(qi) {
+  const q = TRANSLATE[qi]; if (!trState[qi]) trState[qi] = {};
+  const normalise = str => str.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = trState[qi].inputVal || '';
+  trState[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  trState[qi].revealed = true;
+  rerenderPartB();
+}
+
+function rerenderPartB() {
+  const si = STEPS.findIndex(s => s.fn === renderPartB);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = renderPartB();
+}
+
+// ── AUDIO (Pattern A — single player) ─────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── STEPS — defined last ───────────────────
+STEPS = [
+  { label: "A. Listening", fn: renderPartA },
+  { label: "B. Practice",  fn: renderPartB },
+  { label: "C. Quiz",      fn: renderPartC },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 13: Participating in Meetings | A2 · Unit 2 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* GRAMMAR BRIDGE CALLOUT — spiral review touch-back to a past concept */
+.bridge-callout { background:var(--off-white); border-top:2px solid var(--sky); border-bottom:2px solid var(--sky); border-left:4px solid var(--navy); padding:14px 18px; margin-bottom:16px; font-size:14px; line-height:1.7; color:var(--slate); }
+.bridge-label { font-weight:700; color:var(--navy); margin-bottom:6px; font-size:13px; letter-spacing:0.3px; }
+.bridge-examples { margin-top:10px; }
+.bridge-ex-item { font-size:14px; color:var(--navy); font-style:italic; padding:5px 0; border-bottom:1px dashed var(--border-grey); }
+.bridge-ex-item:last-child { border-bottom:none; }
+
+/* CONCEPT CHECK WRAPPER */
+.cc-wrap { margin-top:6px; margin-bottom:28px; }
+.cc-heading { font-family:var(--font-heading); font-size:15px; color:var(--navy); margin-bottom:12px; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS (also used by Concept Check mini-quiz engine) */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* TAP-TO-REVEAL ROWS — matching & gap-fill exercises, model sentences */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--sky); white-space:nowrap; font-style:italic; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:500; }
+.tap-answer.show { display:block; }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 13: Participating in Meetings</h1>
+    <p class="hero-sub">Expressions for participation · Agenda, point, topic, discussion · 45 min self-study</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Contribute to meetings</div><div class="outcome-note">Contribuye en las reuniones</div></div>
+      <div><div class="outcome-item">Follow an agenda</div><div class="outcome-note">Sigue una agenda</div></div>
+      <div><div class="outcome-item">Ask and answer on-topic</div><div class="outcome-note">Pregunta y responde sobre el tema</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── AUDIO STATE (Pattern A — single player in this file) ──
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ──────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  // Restore audio speed state if this step contains the audio player
+  const audioEl = document.getElementById('mainAudio');
+  if (audioEl) { audioEl.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+
+// ── LESSON DATA: VOCABULARY ────────────────────────────────
+const VOCAB = [
+  ["agenda", "la agenda (la lista de temas a tratar)"],
+  ["point", "un punto o una opinion"],
+  ["topic", "el tema de conversacion"],
+  ["discussion", "la discusion o el debate"],
+  ["item", "cada punto individual de la agenda"],
+  ["contribution", "tu aporte a la conversacion"],
+  ["participant", "la persona que participa en la reunion"],
+  ["minutes", "el acta de la reunion (no son minutos de tiempo)"],
+];
+
+// ── CONCEPT CHECK DATA (one array per content segment) ─────
+const VOC_CQ = [
+  { type:"mc", q:"What does \"agenda\" mean in a meeting?", opts:["A personal calendar","The list of topics to be discussed","The meeting room"], answer:1, hint:"💡 Think about what a meeting starts with.", fb:"\"Agenda\" is the list of topics a meeting will cover — not your personal schedule." },
+  { type:"tf", q:"\"Minutes\" in a meeting refers to how many minutes the meeting lasts.", answer:false, hint:"💡 Think about what gets written down after a meeting.", fb:"\"Minutes\" means the written summary of what was discussed and decided — not time." },
+  { type:"input", q:"What is the English word for \"tema\" in a meeting?", hint:"Starts with the letter t...", answers:["topic"], display:"Topic.", fb:"\"Topic\" = tema. Careful — \"topico\" in Spanish means \"cliche,\" not \"topic.\"" },
+];
+
+const GRAM_CQ = [
+  { type:"mc", q:"Which phrase is used to politely ask for permission to speak?", opts:["I think that's wrong.","Could I say something?","Stop talking."], answer:1, hint:"💡 Look for the phrase that asks, not tells.", fb:"\"Could I say something?\" is a polite way to ask for the floor." },
+  { type:"tf", q:"\"I'm not sure I agree\" is a rude way to disagree.", answer:false, hint:"💡 Think about how it softens the disagreement.", fb:"It's actually a softer, more polite way to disagree in a meeting." },
+  { type:"mc", q:"Which expression brings the group back to the agenda?", opts:["Can we get back to the agenda?","That's a good point.","Could I ask something?"], answer:0, hint:"💡 Which one mentions the agenda directly?", fb:"This phrase redirects the discussion back on topic." },
+];
+
+const BRIDGE_CQ = [
+  { type:"mc", q:"Which sentence is an imperative?", opts:["She mutes her microphone.","Please mute your microphone.","Is your microphone muted?"], answer:1, hint:"💡 Imperatives give a direct instruction.", fb:"Imperatives give direct instructions — \"Please mute your microphone\" is a polite imperative." },
+  { type:"tf", q:"Imperatives always need a subject like \"you.\"", answer:false, hint:"💡 Think about how \"Mute your microphone\" is formed.", fb:"Imperatives drop the subject — \"Mute your microphone,\" not \"You mute your microphone.\"" },
+];
+
+const LIS_CQ = [
+  { type:"mc", q:"What does Klara say when she disagrees with a colleague?", opts:["That's wrong.","I see it a bit differently.","No, I don't agree."], answer:1, hint:"💡 Listen for the softer phrase.", fb:"Klara softens her disagreement instead of saying \"no\" directly." },
+  { type:"tf", q:"Klara says the meeting happens every Friday afternoon.", answer:false, hint:"💡 Listen for the day and time at the start.", fb:"She says the meeting is every Monday morning." },
+  { type:"input", q:"What does someone write at the end of the meeting to remember decisions?", hint:"It's a vocabulary word from this lesson.", answers:["minutes"], display:"Minutes.", fb:"\"Minutes\" is the written summary of a meeting — a common vocabulary trap for Spanish speakers." },
+];
+
+const MINI_QUESTIONS = { voc: VOC_CQ, gram: GRAM_CQ, bridge: BRIDGE_CQ, lis: LIS_CQ };
+const miniState = { voc: {}, gram: {}, bridge: {}, lis: {} };
+
+// ── MAIN QUIZ DATA ──────────────────────────────────────────
+const QUIZ = [
+  { type:"input", q:"What is the written summary of a meeting called?", hint:"A vocabulary word from this lesson.", answers:["minutes"], display:"Minutes.", fb:"\"Minutes\" is the written record of what was discussed and decided." },
+  { type:"mc", q:"Which phrase politely asks for permission to speak?", opts:["Could I say something?","Be quiet, please.","I am talking now."], answer:0, hint:"💡 Look for the polite question form.", fb:"\"Could I say something?\" is the polite way to ask for the floor." },
+  { type:"tf", q:"\"Topic\" and \"topico\" mean the same thing.", answer:false, hint:"💡 One means a subject, the other means a cliche.", fb:"\"Topic\" means tema. \"Topico\" in Spanish means cliche — a classic translation trap." },
+  { type:"mc", q:"Which phrase means \"I disagree\" politely?", opts:["That's completely wrong.","I'm not sure I agree.","No way."], answer:1, hint:"💡 Which option softens the disagreement?", fb:"\"I'm not sure I agree\" is a polite, professional way to disagree." },
+  { type:"input", q:"Complete: \"Can we get back to the ___?\"", hint:"The list of topics for the meeting.", answers:["agenda"], display:"Agenda.", fb:"\"Can we get back to the agenda?\" redirects an off-topic discussion." },
+  { type:"mc", q:"Which sentence is an imperative? (Remember Lesson 13, A1)", opts:["He repeats the point.","Please repeat that.","Did he repeat it?"], answer:1, hint:"💡 Imperatives give a direct instruction, no subject.", fb:"\"Please repeat that\" is a polite imperative — no subject needed." },
+  { type:"tf", q:"Imperatives require a stated subject like \"you.\" (Remember Lesson 13, A1)", answer:false, hint:"💡 Think about how commands are formed in English.", fb:"Imperatives drop the subject entirely — \"Turn on your camera,\" not \"You turn on your camera.\"" },
+  { type:"mc", q:"What does \"contribution\" mean in a meeting?", opts:["The meeting room","What you add to the discussion","The agenda itself"], answer:1, hint:"💡 Think about what you \"contribute.\"", fb:"A \"contribution\" is what you add to the conversation — an idea, a point, feedback." },
+  { type:"input", q:"What word describes a person attending a meeting?", hint:"It's a vocabulary word from this lesson.", answers:["participant"], display:"Participant.", fb:"\"Participant\" refers to anyone taking part in the meeting." },
+  { type:"mc", q:"Which phrase keeps a discussion focused on the right subject?", opts:["That's an interesting point.","Can we get back to the agenda?","Could I add something?"], answer:1, hint:"💡 Which one redirects the group?", fb:"\"Can we get back to the agenda?\" is used to bring the group back on topic." },
+];
+
+// ── Quiz state (do not edit) ──────────────────────────────
+const quizState = {};
+let quizScore = 0;
+
+
+// ── SECTION RENDERERS ──────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">En muchas reuniones, la parte mas dificil no es entender el ingles — es saber cuando y como intervenir sin sonar brusco o inseguro. En esta leccion vas a aprender frases cortas y naturales para participar activamente: pedir la palabra, dar tu opinion, hacer una pregunta o volver al tema de la reunion.</p>
+    <div class="info-box">Vas a repasar tambien los imperativos de la Leccion 13 de A1 (Video Meetings) — esas mismas estructuras te van a servir ahora para pedirle a un companero que repita algo o comparta su pantalla mientras participas en la discusion.</div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Antes de la clase, revisa cada seccion con calma. Vas a escuchar a Klara, coordinadora de proyectos, contarte como participa en las reuniones de su equipo.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estas son las palabras clave para hablar sobre reuniones y su estructura. Leelas con atencion — varias tienen trampas de traduccion con el espanol.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join('')}
+    </div>
+    <div class="examples-wrap">
+      <div class="examples-label">Model Sentences</div>
+      <div class="example-item"><span class="example-en">"Let's move to the next item on the agenda."</span></div>
+      <div class="example-item"><span class="example-en">"That's an interesting point."</span></div>
+      <div class="example-item"><span class="example-en">"Can we stay on topic, please?"</span></div>
+      <div class="example-item"><span class="example-en">"I'd like to make a small contribution."</span></div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Cuidado con "topic" y "topico": en ingles "topic" significa tema, pero "topico" en espanol significa cliche. Y "minutes" no son minutos de tiempo — son el acta de la reunion.
+    </div>
+    <div class="cc-wrap">
+      <div class="cc-heading">Comprueba lo que aprendiste</div>
+      ${renderMiniQ("voc", VOC_CQ)}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Esta leccion no trata una regla gramatical compleja, sino frases funcionales — expresiones fijas que usamos para participar en una reunion: pedir la palabra, dar una opinion, estar de acuerdo o en desacuerdo, y hacer preguntas.</p>
+
+    <div class="h-serif">Notice</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Function → Expression</div>
+      <div class="pattern-row"><div class="pattern-en">Asking to speak</div><div class="pattern-es">"Could I say something?" / "Can I add a point?"</div></div>
+      <div class="pattern-row"><div class="pattern-en">Giving an opinion</div><div class="pattern-es">"I think..." / "In my opinion..."</div></div>
+      <div class="pattern-row"><div class="pattern-en">Agreeing</div><div class="pattern-es">"I agree with that." / "That's a good point."</div></div>
+      <div class="pattern-row"><div class="pattern-en">Disagreeing (softly)</div><div class="pattern-es">"I see it a bit differently." / "I'm not sure I agree."</div></div>
+      <div class="pattern-row"><div class="pattern-en">Asking a question</div><div class="pattern-es">"Could I ask something about that?"</div></div>
+      <div class="pattern-row"><div class="pattern-en">Staying on topic</div><div class="pattern-es">"Can we get back to the agenda?"</div></div>
+    </div>
+
+    <div class="h-serif">Form</div>
+    <p class="sec-intro">La mayoria de estas expresiones siguen un patron fijo y no cambian segun el sujeto — son formulas que puedes memorizar tal cual:</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">Could / Can + I + verbo...?</span><span class="example-arrow">→</span><span class="example-es">para pedir permiso de hablar: "Could I say something?"</span></div>
+      <div class="example-item"><span class="example-en">I think / In my opinion + oracion</span><span class="example-arrow">→</span><span class="example-es">para dar tu opinion</span></div>
+      <div class="example-item"><span class="example-en">I agree / I'm not sure I agree</span><span class="example-arrow">→</span><span class="example-es">para reaccionar a una opinion ajena</span></div>
+    </div>
+
+    <div class="h-serif">Use</div>
+    <p class="sec-intro">Usa estas frases para sonar natural y profesional, no brusco. Decir directamente "No estoy de acuerdo" sin suavizar seria demasiado directo en una reunion en ingles — por eso usamos frases como "I'm not sure I agree" o "I see it a bit differently."</p>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">📌 Spanish Pitfall</div>
+      <div class="mistake-wrong">✗ "Sorry, but..." used to interrupt abruptly, copied directly from "Perdon, pero..."</div>
+      <div class="mistake-right">✓ "Sorry to interrupt, but..." / "Could I jump in here?"</div>
+    </div>
+
+    <div class="cc-wrap">
+      <div class="cc-heading">Comprueba lo que aprendiste</div>
+      ${renderMiniQ("gram", GRAM_CQ)}
+    </div>
+
+    <div class="bridge-callout">
+      <div class="bridge-label">🔁 Recordando la Leccion 13 de A1</div>
+      En esa leccion aprendiste los imperativos para reuniones por video: "Mute your microphone," "Please share your screen," "Turn on your camera." Esas mismas estructuras siguen siendo utiles ahora que participas activamente en una reunion — por ejemplo, para pedirle a alguien que repita algo.
+      <div class="bridge-examples">
+        <div class="bridge-ex-item">"Please mute your microphone during the presentation."</div>
+        <div class="bridge-ex-item">"Turn on your camera, please."</div>
+        <div class="bridge-ex-item">"Please repeat your last point."</div>
+      </div>
+    </div>
+
+    <div class="cc-wrap">
+      <div class="cc-heading">Recap: Imperatives (Leccion 13, A1)</div>
+      ${renderMiniQ("bridge", BRIDGE_CQ)}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Escucha a Klara, coordinadora de proyectos en Polonia, mientras describe como participa activamente en las reuniones de su equipo. Puedes bajar la velocidad si lo necesitas.</div>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">How I Participate in Meetings</div>
+          <div class="audio-box-sub">Klara Nowak · Project Coordinator, Poland · ~75 seconds</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L13-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>In my team, we have a meeting every Monday morning to go through the agenda for the week. I always try to participate actively. If I have an idea, I usually say, "Could I add a point here?" and then I explain my idea clearly. When I agree with a colleague, I say, "That's a good point," and when I don't agree, I try to be polite. I say something like, "I see it a bit differently," instead of just saying no.</p>
+        <p>Sometimes the discussion moves away from the topic, so someone says, "Can we get back to the agenda?" At the end of the meeting, someone always writes the minutes, so we remember what we decided. For me, the most important thing is to listen first, and then contribute when I really have something useful to say.</p>
+      </div>
+    </div>
+
+    <div class="cc-wrap">
+      <div class="cc-heading">Comprueba lo que aprendiste</div>
+      ${renderMiniQ("lis", LIS_CQ)}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Exercises</div>
+      <div class="sec-badge-time">7 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Practica emparejando cada funcion con su frase. Toca cada fila para revelar la respuesta.</div>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Match the Function</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">Asking to speak</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">"Could I say something?"</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">Giving an opinion</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">"In my opinion, this could work."</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">Agreeing</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">"That's a good point."</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">Disagreeing politely</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">"I'm not sure I agree."</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">Staying on topic</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">"Can we get back to the agenda?"</div>
+      </div>
+    </div>
+
+    <div class="word-bank">
+      <div class="word-bank-label">Word Bank</div>
+      <div class="word-bank-words">Please · add · see · Turn</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Complete the Sentence</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">1. "___ mute your microphone during the call."</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">Please mute your microphone during the call.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">2. "Could I ___ a point here?"</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">Could I add a point here?</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">3. "I ___ it a bit differently."</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">I see it a bit differently.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">4. "___ your camera on, please."</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">Turn your camera on, please.</div>
+      </div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tu puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── CONCEPT CHECK (MINI-QUIZ) ENGINE — shared by all segments ──
+function renderMiniQ(prefix, questions) {
+  return `<div class="mini-quiz" id="mini-${prefix}">
+    ${questions.map((q,i) => renderMiniCard(prefix,q,i)).join('')}
+  </div>`;
+}
+
+function renderMiniCard(prefix, q, i) {
+  const state = miniState[prefix];
+  const s = state[i] || {};
+  const rev = s.revealed;
+  const letters = ['A','B','C','D'];
+  let body = '';
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+    const lets = q.type === 'mc' ? letters : ['T', 'F'];
+    body = `<div class="q-options">
+      ${opts.map((opt, j) => {
+        let cls = 'q-opt';
+        const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+        if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+        else if (s.selected === j) cls += ' selected';
+        return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="miniSetInp('${prefix}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="mini-${prefix}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function miniSelectOpt(prefix, i, j) {
+  if (!miniState[prefix][i]) miniState[prefix][i] = {};
+  if (miniState[prefix][i].revealed) return;
+  miniState[prefix][i].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, i) {
+  if (!miniState[prefix][i]) miniState[prefix][i] = {};
+  miniState[prefix][i].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, i, v) {
+  if (!miniState[prefix][i]) miniState[prefix][i] = {};
+  miniState[prefix][i].inputVal = v;
+}
+function miniRevealInp(prefix, i) {
+  const q = MINI_QUESTIONS[prefix][i];
+  if (!miniState[prefix][i]) miniState[prefix][i] = {};
+  const val = (miniState[prefix][i].inputVal || '').trim().toLowerCase().replace(/\.$/, '');
+  miniState[prefix][i].correct = q.answers.some(a => val === a.toLowerCase().replace(/\.$/, ''));
+  miniState[prefix][i].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const el = document.getElementById('mini-' + prefix);
+  if (el) el.outerHTML = renderMiniQ(prefix, MINI_QUESTIONS[prefix]);
+}
+
+
+// ── MAIN QUIZ ENGINE (do not edit) ─────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  // Calls renderQuiz() directly — do not change to STEPS[currentStep].fn()
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+
+// ── AUDIO FUNCTIONS (Pattern A — single player) ────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Welcome",    fn: renderWelcome },
+  { label: "2. Vocabulary", fn: renderVocabulary },
+  { label: "3. Grammar",    fn: renderGrammar },
+  { label: "4. Listening",  fn: renderListening },
+  { label: "5. Exercises",  fn: renderExercises },
+  { label: "6. Quiz",       fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 13: Participating in Meetings | A2 · Unit 2 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* GRAMMAR BRIDGE CALLOUT — spiral review touch-back to a past concept */
+.bridge-callout { background:var(--off-white); border-top:2px solid var(--sky); border-bottom:2px solid var(--sky); border-left:4px solid var(--navy); padding:14px 18px; margin-bottom:16px; font-size:14px; line-height:1.7; color:var(--slate); }
+.bridge-label { font-weight:700; color:var(--navy); margin-bottom:6px; font-size:13px; letter-spacing:0.3px; }
+.bridge-examples { margin-top:10px; }
+.bridge-ex-item { font-size:14px; color:var(--navy); font-style:italic; padding:5px 0; border-bottom:1px dashed var(--border-grey); }
+.bridge-ex-item:last-child { border-bottom:none; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* TAP-TO-REVEAL ROWS — polite/direct pairs, quick-checks, model answers */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--sky); white-space:nowrap; font-style:italic; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:500; }
+.tap-answer.show { display:block; }
+
+/* NUMBERED CARD GRID — task cards / cue cards for the Speaking Ladder */
+.card-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px; }
+@media(max-width:640px){ .card-grid{ grid-template-columns:repeat(2,1fr); } }
+.num-card { background:var(--white); border:1.5px solid var(--border-grey); border-radius:9px; padding:14px 12px; text-align:center; }
+.num-card-num { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:11px; font-weight:700; margin-bottom:8px; }
+.num-card-text { font-size:13px; color:var(--navy); font-weight:500; }
+
+/* CUE BANK LIST */
+.cue-bank { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 20px; margin-bottom:16px; }
+.cue-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.cue-bank.reactive .cue-bank-label { color:var(--sky); }
+.cue-item { font-size:14px; color:var(--navy); font-style:italic; padding:6px 0; border-bottom:1px dashed var(--border-grey); }
+.cue-item:last-child { border-bottom:none; }
+
+/* READING PASSAGE */
+.passage-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:22px; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.passage-wrap p { font-size:15px; line-height:1.9; color:var(--slate); margin-bottom:16px; }
+.passage-wrap p:last-child { margin-bottom:0; }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* TEACHER INSTRUCTION BOX — Classwork only, every step */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Classwork</div>
+    <h1 class="hero-title">Lesson 13: Participating in Meetings</h1>
+    <p class="hero-sub">Expressions for participation · Agenda, point, topic, discussion · 60 min class</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">Speaking 60%</span>
+      <span class="pill accent">Reading 20%</span>
+      <span class="pill">6 sections</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── NAVIGATION ENGINE ──────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── SECTION RENDERERS ──────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Antes de empezar, vamos a repasar rapidamente las frases que viste en la Pre-Learning. Toca cada par para ver cual opcion es mas educada.</div>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Polite or Direct?</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"That's wrong." &nbsp;vs.&nbsp; "I'm not sure I agree."</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">The second one — softer, more professional.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"Give me the floor." &nbsp;vs.&nbsp; "Could I say something?"</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">The second one — a polite request.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"Stop talking about that." &nbsp;vs.&nbsp; "Can we get back to the agenda?"</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">The second one — redirects without being rude.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">"I want to talk now." &nbsp;vs.&nbsp; "Could I add a point here?"</div><div class="tap-hint-label">Tap to reveal</div></div>
+        <div class="tap-answer">The second one.</div>
+      </div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Timing: 5 minutes. Read each pair aloud with contrasting intonation — flat/abrupt for the first option, warm/polite for the second — so students hear the difference, not just read it. Don't over-explain; let them tap and self-correct. Extension for stronger students: ask them to suggest one more "direct" version and elicit the polite alternative from the group.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderRecap() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Quick Recap Activity</div>
+      <div class="sec-badge-time">5–6 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="bridge-callout">
+      <div class="bridge-label">🔁 Recordando la Leccion 13 de A1</div>
+      En esa leccion aprendiste los imperativos para reuniones por video. Ahora vas a hacer dos cosas con cada oracion: primero, decirla en ingles como imperativo directo. Despues, convertirla en una peticion educada — igual que practicaste en el Warm-up de hoy.
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Example</div>
+      Spanish: "Silencia tu microfono."<br>
+      Step 1 — Direct imperative: "Mute your microphone."<br>
+      Step 2 — Polite form: "Could you mute your microphone, please?"
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Imperative → Polite Request (say both forms aloud)</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">1. "Silencia tu microfono."</div><div class="tap-hint-label">Model answer (teacher reference)</div></div>
+        <div class="tap-answer">Mute your microphone. → Could you mute your microphone, please?</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">2. "Enciende tu camara."</div><div class="tap-hint-label">Model answer (teacher reference)</div></div>
+        <div class="tap-answer">Turn on your camera. → Could you turn on your camera, please?</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">3. "Comparte tu pantalla."</div><div class="tap-hint-label">Model answer (teacher reference)</div></div>
+        <div class="tap-answer">Share your screen. → Could you share your screen, please?</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">4. "Habla mas fuerte."</div><div class="tap-hint-label">Model answer (teacher reference)</div></div>
+        <div class="tap-answer">Speak up. → Could you speak up a little, please?</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">5. "Repite eso."</div><div class="tap-hint-label">Model answer (teacher reference)</div></div>
+        <div class="tap-answer">Repeat that. → Could you repeat that, please?</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">6. "Envia la agenda."</div><div class="tap-hint-label">Model answer (teacher reference)</div></div>
+        <div class="tap-answer">Send the agenda. → Could you send the agenda, please?</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">7. "Escribe los puntos de accion."</div><div class="tap-hint-label">Model answer (teacher reference)</div></div>
+        <div class="tap-answer">Write down the action items. → Could you write down the action items, please?</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">8. "Revisa tu conexion."</div><div class="tap-hint-label">Model answer (teacher reference)</div></div>
+        <div class="tap-answer">Check your connection. → Could you check your connection, please?</div>
+      </div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Timing: 5–6 minutes. Round-robin, one student per card. Show the Spanish sentence; the student says the direct imperative first, then converts it to a polite request unprompted. Errors on Step 1 (the imperative itself) are the bridged-grammar gap — correct those in the moment. Errors on Step 2 (politeness) are new-lesson production — note but don't over-correct, since Stage 3 of the Speaking Ladder gives more independent practice with this. If time is short, run only cards 1–6 and hold 7–8 in reserve.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderLadderStage1() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Speaking Ladder · Stage 1</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Ahora vamos a practicar hablando. Primero, repite conmigo.</div>
+
+    <div class="h-serif">Model &amp; Chorus</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">"Could I add a point?"</span></div>
+      <div class="example-item"><span class="example-en">"I think that's a good idea."</span></div>
+      <div class="example-item"><span class="example-en">"Can we get back to the agenda?"</span></div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Timing: 2 minutes. Model each sentence twice at natural speed, then have the whole class repeat together — chorally, not individually. Focus on rhythm and the "could/can" question intonation (rising, polite). No one is singled out at this stage — the goal is to prime pronunciation at zero risk.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderLadderStage2() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Speaking Ladder · Stage 2</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Ahora vas a combinar una de estas frases con el tema que te toque, para formar una oracion completa.</div>
+
+    <div class="cue-bank">
+      <div class="cue-bank-label">Cue Bank — Combine With a Topic</div>
+      <div class="cue-item">"Could I say something about..." / "Can I add a point about..."</div>
+      <div class="cue-item">"I think..." / "In my opinion..."</div>
+      <div class="cue-item">"Could I ask something about..."</div>
+    </div>
+
+    <div class="cue-bank reactive">
+      <div class="cue-bank-label">Cue Bank — Reactive Expressions (reference only, not used in this drill)</div>
+      <div class="cue-item">"I agree with that." / "That's a good point."</div>
+      <div class="cue-item">"I see it a bit differently." / "I'm not sure I agree."</div>
+      <div class="cue-item">"Can we get back to the agenda?"</div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Example</div>
+      "In my opinion, the software update is very important for the new project."
+    </div>
+
+    <div class="h-serif">Task Cards — Topics</div>
+    <div class="card-grid">
+      <div class="num-card"><div class="num-card-num">1</div><div class="num-card-text">the budget</div></div>
+      <div class="num-card"><div class="num-card-num">2</div><div class="num-card-text">the deadline</div></div>
+      <div class="num-card"><div class="num-card-num">3</div><div class="num-card-text">the new client</div></div>
+      <div class="num-card"><div class="num-card-num">4</div><div class="num-card-text">the marketing plan</div></div>
+      <div class="num-card"><div class="num-card-num">5</div><div class="num-card-text">the team schedule</div></div>
+      <div class="num-card"><div class="num-card-num">6</div><div class="num-card-text">the software update</div></div>
+      <div class="num-card"><div class="num-card-num">7</div><div class="num-card-text">the meeting time</div></div>
+      <div class="num-card"><div class="num-card-num">8</div><div class="num-card-text">the next agenda item</div></div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Timing: 8 minutes. Round-robin, one student at a time. Show or read a task card, and the student picks any cue from the "combine with a topic" bank and builds a full sentence — e.g., Card 6 → "I think the software update is very important." Errors mean "off-script" — redirect gently to the frame, don't treat as a production gap yet. The reactive-expression bank stays visible for reference but isn't drilled here; it gets its natural workout in Stage 3.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderLadderStage3() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Speaking Ladder · Stage 3</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Ahora no hay frase fija — solo palabras clave. Construye tu propia oracion.</div>
+
+    <div class="h-serif">Cue Cards — Keywords Only</div>
+    <div class="card-grid">
+      <div class="num-card"><div class="num-card-num">1</div><div class="num-card-text">agenda / add</div></div>
+      <div class="num-card"><div class="num-card-num">2</div><div class="num-card-text">topic / agree</div></div>
+      <div class="num-card"><div class="num-card-num">3</div><div class="num-card-text">point / opinion</div></div>
+      <div class="num-card"><div class="num-card-num">4</div><div class="num-card-text">discussion / disagree (polite)</div></div>
+      <div class="num-card"><div class="num-card-num">5</div><div class="num-card-text">meeting / interrupt (polite)</div></div>
+      <div class="num-card"><div class="num-card-num">6</div><div class="num-card-text">item / question</div></div>
+      <div class="num-card"><div class="num-card-num">7</div><div class="num-card-text">agenda / return to topic</div></div>
+      <div class="num-card"><div class="num-card-num">8</div><div class="num-card-text">contribution / offer</div></div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Timing: 8 minutes. Same round-robin, teacher-controlled, one student at a time — but now give only the 2–3 keywords on the card, no frame. Each of the 8 students produces their own sentence using the lesson's target language. Go straight from the cue card to the student speaking — no silent rehearsal beat. Errors here are genuine production gaps: note them for later, but don't over-correct in the moment, or the activity collapses back into Stage 2's controlled drill.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Reading Activity</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Vamos a leer un texto sobre una reunion de equipo. Cada estudiante va a leer una parte en voz alta — el profesor va a corregir la pronunciacion mientras lees. Despues, vas a responder 4 preguntas y presentar tu respuesta en clase.</div>
+
+    <div class="passage-wrap">
+      <p>Every Monday, Thomas Beaumont leads a short team meeting to go through the week's agenda. Last Monday, the first item was the marketing budget. Amara Okafor asked, "Could I say something about the budget? I think we're spending too much on the new campaign." Thomas agreed that it was a good point, and asked David Kim for his opinion. David said, "In my opinion, the campaign is working well, but I see it a bit differently on the budget — maybe we can reduce it next month instead of stopping it now."</p>
+      <p>The discussion continued for a few minutes, and Klara Nowak reminded the group that they still had three more items on the agenda. "Can we get back to the agenda?" she asked politely. Thomas agreed, and the team moved on to the next topic. At the end of the meeting, Priya Kapoor wrote the minutes, so everyone could remember what was decided. Thomas thanked the team for their contributions and closed the meeting on time.</p>
+    </div>
+
+    <div class="h-serif">Comprehension Questions</div>
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Answer Independently — Teacher Calls on Students</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">1. What was the first item on the agenda?</div><div class="tap-hint-label">Model answer (teacher only)</div></div>
+        <div class="tap-answer">The marketing budget.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">2. What did Amara think about the budget?</div><div class="tap-hint-label">Model answer (teacher only)</div></div>
+        <div class="tap-answer">She thought they were spending too much on the new campaign.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">3. Why did Klara interrupt the discussion?</div><div class="tap-hint-label">Model answer (teacher only)</div></div>
+        <div class="tap-answer">Because there were still three more items on the agenda and she wanted to keep the meeting on track.</div>
+      </div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top"><div class="tap-q">4. Who wrote the minutes, and why is that important?</div><div class="tap-hint-label">Model answer (teacher only)</div></div>
+        <div class="tap-answer">Priya Kapoor wrote the minutes, so the team could remember what was decided.</div>
+      </div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Timing: 10 minutes total — about 3–4 minutes for the read-aloud (correct pronunciation in the moment, don't stop for grammar at this stage), then 8–10 minutes for students to prepare answers silently before you call on them one by one. Since answers aren't scripted, expect natural variation in wording between students even on the same question — that's the point of this stage, not a problem to fix. Extension: ask a stronger student to summarize the whole passage in 2–3 sentences after the Q&amp;A.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Warm-up",       fn: renderWarmup },
+  { label: "2. Quick Recap",   fn: renderRecap },
+  { label: "3. Ladder: Stage 1", fn: renderLadderStage1 },
+  { label: "4. Ladder: Stage 2", fn: renderLadderStage2 },
+  { label: "5. Ladder: Stage 3", fn: renderLadderStage3 },
+  { label: "6. Reading",       fn: renderReading },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

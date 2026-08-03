@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 20: Review + Communication Simulation | A1 Unit 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:0; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* TAP TO REVEAL */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; flex-shrink:0; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); color:var(--green); font-weight:700; font-size:14px; }
+.tap-answer.show { display:block; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* BUTTONS */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* JOURNEY STRIP (Welcome step) */
+.journey-strip { display:grid; grid-template-columns:repeat(9,1fr); gap:8px; margin-bottom:22px; }
+@media(max-width:700px){ .journey-strip{ grid-template-columns:repeat(3,1fr); } }
+.journey-item { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:12px 6px; text-align:center; }
+.journey-icon { font-size:22px; margin-bottom:6px; }
+.journey-label { font-size:10px; color:var(--grey-blue); font-weight:700; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 2 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 20: Review + Communication Simulation</h1>
+    <p class="hero-sub">Repaso de la Unidad 2 · Sin gramática nueva · Prepárate para la simulación de hoy</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Write and respond to workplace emails</div><div class="outcome-note">Escribir y responder correos de trabajo</div></div>
+      <div><div class="outcome-item">Handle phone and video calls professionally</div><div class="outcome-note">Manejar llamadas y videollamadas</div></div>
+      <div><div class="outcome-item">Ask for help and give simple instructions</div><div class="outcome-note">Pedir ayuda y dar instrucciones</div></div>
+      <div><div class="outcome-item">Use chat messages the way native speakers do</div><div class="outcome-note">Usar el chat como un hablante nativo</div></div>
+      <div><div class="outcome-item">Understand office signs and greet visitors</div><div class="outcome-note">Entender letreros y saludar visitantes</div></div>
+      <div><div class="outcome-item">Handle basic customer service situations</div><div class="outcome-note">Resolver situaciones básicas de servicio al cliente</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? "← Previous" : "← " + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,"");
+  const nextLabel = isLast  ? "Complete ✓"  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,"") + " →";
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?"disabled":`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?"disabled":`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById("stepNav").innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?"active":""}" onclick="goTo(${i})">${s.label}</button>`)
+    .join("");
+  document.getElementById("mainContent").innerHTML = STEPS[currentStep].fn();
+  document.getElementById("progressBar").style.width = getProgress(currentStep) + "%";
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const WRITTEN_VOCAB = [
+  ["Subject line", "Asunto"],
+  ["Attachment", "Adjunto"],
+  ["Regards", "Saludos (para cerrar un correo)"],
+  ["ASAP", "Lo antes posible"],
+  ["FYI", "Para tu información"],
+  ["Available", "Disponible"],
+  ["Update", "Actualización"],
+];
+
+const SPOKEN_VOCAB = [
+  ["Transfer", "Transferir"],
+  ["Voicemail", "Buzón de voz"],
+  ["Extension", "Extensión"],
+  ["Mute", "Silenciar"],
+  ["Screen share", "Compartir pantalla"],
+  ["Connection", "Conexión"],
+];
+
+const HELP_VOCAB = [
+  ["Help desk", "Mesa de ayuda"],
+  ["IT support", "Soporte técnico"],
+  ["Issue", "Problema"],
+  ["Password", "Contraseña"],
+  ["Upload", "Subir"],
+];
+
+const SIGNS_VOCAB = [
+  ["Authorized personnel", "Personal autorizado"],
+  ["Emergency exit", "Salida de emergencia"],
+  ["Appointment", "Cita"],
+  ["Conference room", "Sala de conferencias"],
+];
+
+const CUSTSVC_VOCAB = [
+  ["Order", "Pedido"],
+  ["Problem", "Problema"],
+  ["Support ticket", "Ticket de soporte"],
+  ["Solution", "Solución"],
+];
+
+// ── Concept-check question banks ──────────────────────────
+
+const WRITTEN_CQ = [
+  { type:"mc", q:"You need to ask a coworker a quick 2-line question. What's the best channel?",
+    opts:["Send a formal email","Send a chat message","Call a meeting"], answer:1,
+    hint:"Piensa en cuál canal es más rápido y directo.",
+    fb:"Chat es perfecto para preguntas cortas y rápidas. El email es mejor para mensajes más formales o largos." },
+  { type:"tf", q:"\"FYI\" means \"as soon as possible.\"", answer:false,
+    hint:"Recuerda: F-Y-I son las iniciales de tres palabras.",
+    fb:"\"FYI\" significa \"for your information\" (para tu información). \"Lo antes posible\" es ASAP." },
+  { type:"input", q:"What's the Spanish word for \"attachment\" (a file in an email)?",
+    hint:"a d j _ _ t o",
+    answers:["adjunto"], display:"Adjunto.",
+    fb:"\"Attachment\" = adjunto. Es el archivo que envías junto con tu correo." },
+];
+
+const SPOKEN_CQ = [
+  { type:"mc", q:"You can't hear a coworker on a video call. What do you say?",
+    opts:["Can you transfer me?","I think there's a connection problem.","Please mute your microphone."], answer:1,
+    hint:"Busca la frase que describe un problema técnico, no una instrucción.",
+    fb:"\"I think there's a connection problem\" describe lo que está pasando. \"Mute\" es lo opuesto de lo que necesitas aquí." },
+  { type:"tf", q:"\"Extension\" refers to a person's job title.", answer:false,
+    hint:"Piensa en llamadas telefónicas de oficina.",
+    fb:"\"Extension\" es el número corto para llamar a alguien dentro de la misma oficina, no un puesto de trabajo." },
+  { type:"input", q:"Complete: \"Can you ___ your screen so I can see the report?\"",
+    hint:"s h a r e",
+    answers:["share"], display:"Share.",
+    fb:"\"Screen share\" = compartir pantalla. La forma verbal es simplemente \"share your screen.\"" },
+];
+
+const HELP_CQ = [
+  { type:"mc", q:"What's the correct order of these instruction words?",
+    opts:["Then, first, next","First, then, next","Next, then, first"], answer:1,
+    hint:"Piensa en el orden lógico de una secuencia.",
+    fb:"El orden correcto para dar instrucciones paso a paso es: first → then → next." },
+  { type:"tf", q:"\"Can you help me?\" is a polite way to ask for assistance.", answer:true,
+    hint:"Compara con formas menos educadas de pedir ayuda.",
+    fb:"Correcto. \"Can you help me?\" es una forma simple y educada de pedir ayuda en el trabajo." },
+  { type:"input", q:"What's the Spanish word for \"issue\" (a workplace problem)?",
+    hint:"p r o b l _ m a",
+    answers:["problema"], display:"Problema.",
+    fb:"\"Issue\" en este contexto = problema. Es la palabra que usamos para describir algo que no funciona bien." },
+];
+
+const SIGNS_CQ = [
+  { type:"mc", q:"A visitor asks if they can enter a restricted area. The sign says \"Authorized personnel only.\" What do you say?",
+    opts:["\"Yes, go right in.\"","\"Sorry, you can't enter this area.\"","\"You must enter here.\""], answer:1,
+    hint:"Piensa en el significado real del letrero.",
+    fb:"\"Authorized personnel only\" significa que solo empleados autorizados pueden entrar — por eso usamos \"can't.\"" },
+  { type:"tf", q:"\"Authorized personnel only\" means anyone can enter.", answer:false,
+    hint:"Lee el letrero con cuidado.",
+    fb:"Al contrario — significa que solo personal autorizado puede entrar." },
+  { type:"input", q:"What's the Spanish word for \"appointment\"?",
+    hint:"c i t a",
+    answers:["cita"], display:"Cita.",
+    fb:"\"Appointment\" = cita. Es muy común escuchar \"Do you have an appointment?\" en recepción." },
+];
+
+const CUSTSVC_CQ = [
+  { type:"mc", q:"Which question word do you use to ask about timing?",
+    opts:["Who","When","Where"], answer:1,
+    hint:"Piensa en las preguntas Wh- que aprendiste en la Lección 19.",
+    fb:"\"When\" se usa para preguntar sobre tiempo — por ejemplo, \"When did you place the order?\"" },
+  { type:"tf", q:"A \"support ticket\" is a type of bus ticket.", answer:false,
+    hint:"Piensa en el contexto de servicio al cliente.",
+    fb:"Un \"support ticket\" es un registro de un problema del cliente que el equipo de soporte necesita resolver — nada que ver con transporte." },
+  { type:"input", q:"What's the Spanish word for \"solution\"?",
+    hint:"s o l u c _ ó n",
+    answers:["solucion","solución"], display:"Solución.",
+    fb:"\"Solution\" = solución. Es la palabra clave para cerrar cualquier conversación de servicio al cliente." },
+];
+
+const QUIZ = [
+  { type:"mc", q:"You need to tell a coworker something short and informal. What do you send?",
+    opts:["A formal email","A chat message","A voicemail"], answer:1,
+    hint:"💡 Piensa en velocidad e informalidad.",
+    fb:"Un mensaje de chat es rápido e informal — perfecto para actualizaciones cortas." },
+  { type:"input", q:"Complete the email closing: \"Best ___,\"",
+    hint:"r e g a r d s",
+    answers:["regards"], display:"Regards.",
+    fb:"\"Best regards\" es una de las formas más comunes de cerrar un correo profesional." },
+  { type:"tf", q:"\"Can you transfer me to extension 204?\" is something you might say on a phone call.", answer:true,
+    hint:"💡 Piensa en el contexto de una llamada telefónica de oficina.",
+    fb:"Correcto — es exactamente el tipo de frase que se usa para pedir que te conecten con otra persona." },
+  { type:"mc", q:"What do you say to ask someone to stop screen sharing background noise on a video call?",
+    opts:["Please mute your microphone.","Please share your screen.","Please transfer the call."], answer:0,
+    hint:"💡 Busca la instrucción relacionada con el sonido.",
+    fb:"\"Mute your microphone\" apaga el sonido de tu micrófono — es la instrucción correcta para el ruido de fondo." },
+  { type:"mc", q:"You forgot your password. Who do you contact?",
+    opts:["Customer service","IT support","Reception"], answer:1,
+    hint:"💡 Piensa en quién resuelve problemas técnicos.",
+    fb:"IT support (soporte técnico) es responsable de contraseñas y problemas técnicos." },
+  { type:"input", q:"Complete the instruction sequence: \"First, open the file. ___, click 'upload'.\"",
+    hint:"t h e n",
+    answers:["then"], display:"Then.",
+    fb:"\"Then\" conecta el primer paso con el segundo en una secuencia de instrucciones." },
+  { type:"tf", q:"\"Authorized personnel only\" means the area is open to all visitors.", answer:false,
+    hint:"💡 Recuerda lo que significa este letrero.",
+    fb:"Falso — significa que solo el personal autorizado puede entrar en esa área." },
+  { type:"mc", q:"A visitor arrives at reception. What's the most polite way to greet them?",
+    opts:["\"What do you want?\"","\"Good morning! Do you have an appointment?\"","\"You can't be here.\""], answer:1,
+    hint:"💡 Piensa en cortesía profesional.",
+    fb:"Un saludo cálido y una pregunta educada sobre su cita es la forma correcta de recibir a un visitante." },
+  { type:"input", q:"What's the Spanish word for \"conference room\"?",
+    hint:"s a l a  d e  c o n f e r e n c i a s",
+    answers:["sala de conferencias"], display:"Sala de conferencias.",
+    fb:"\"Conference room\" = sala de conferencias — un vocabulario muy común en oficinas." },
+  { type:"mc", q:"A customer calls about a problem with their order. What do you ask first?",
+    opts:["\"What's the problem with your order?\"","\"Do you have an appointment?\"","\"Can you transfer me?\""], answer:0,
+    hint:"💡 Piensa en el primer paso de servicio al cliente.",
+    fb:"Siempre empieza preguntando cuál es el problema — así puedes ayudar de manera efectiva." },
+  { type:"tf", q:"A \"support ticket\" helps track a customer's problem until it's solved.", answer:true,
+    hint:"💡 Piensa en cómo las empresas organizan los problemas de clientes.",
+    fb:"Correcto — el ticket sigue el problema desde que se reporta hasta que se encuentra una solución." },
+  { type:"mc", q:"Which word best completes: \"I would appreciate ___ you could send the report by Friday.\"",
+    opts:["if","that","for"], answer:0,
+    hint:"💡 Recuerda las estructuras educadas de la Lección 11.",
+    fb:"\"I would appreciate it if...\" es una estructura educada y muy común en correos de trabajo." },
+];
+
+// ── Mini-quiz (concept check) shared state ────────────────
+const miniState = { written:{}, spoken:{}, help:{}, signs:{}, custsvc:{} };
+
+// ── Quiz state ──────────────────────────
+const quizState = {};
+let quizScore = 0;
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box">
+      ¡Felicidades! Llegaste a la Lección 20 y completaste toda la Unidad 2. En las últimas nueve lecciones aprendiste a comunicarte en el trabajo de nueve maneras diferentes: por correo, por teléfono, en videollamadas, pidiendo ayuda, dando instrucciones, por chat, leyendo letreros de oficina, hablando con visitantes y resolviendo problemas de clientes.
+    </div>
+    <p class="sec-intro">Hoy no vas a aprender nada nuevo. Vas a repasar y conectar todo lo que ya sabes, para usarlo con confianza en la simulación de la clase de hoy.</p>
+
+    <div class="journey-strip">
+      <div class="journey-item"><div class="journey-icon">📧</div><div class="journey-label">L11 Email</div></div>
+      <div class="journey-item"><div class="journey-icon">📞</div><div class="journey-label">L12 Phone</div></div>
+      <div class="journey-item"><div class="journey-icon">🎥</div><div class="journey-label">L13 Video</div></div>
+      <div class="journey-item"><div class="journey-icon">🙋</div><div class="journey-label">L14 Help</div></div>
+      <div class="journey-item"><div class="journey-icon">📋</div><div class="journey-label">L15 Instructions</div></div>
+      <div class="journey-item"><div class="journey-icon">💬</div><div class="journey-label">L16 Chat</div></div>
+      <div class="journey-item"><div class="journey-icon">🚪</div><div class="journey-label">L17 Signs</div></div>
+      <div class="journey-item"><div class="journey-icon">🤝</div><div class="journey-label">L18 Visitors</div></div>
+      <div class="journey-item"><div class="journey-icon">🎧</div><div class="journey-label">L19 Customer Svc</div></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Cómo usar esta lección</div>
+      Vamos a repasar estas nueve destrezas en cinco grupos temáticos. Cada grupo tiene un pequeño repaso, ejemplos y una comprobación rápida. Al final, verás cómo todo se conecta en un solo día de trabajo.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWritten() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Comunicación escrita: Email y Chat</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Repasemos dos formas de comunicarte por escrito en el trabajo: el correo electrónico (formal) y el chat (rápido e informal).</div>
+
+    <div class="h-serif">📧 Correos electrónicos (Lección 11)</div>
+    <p class="sec-intro">Recuerda la estructura básica: saludo, motivo del correo, cuerpo del mensaje y despedida.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Ejemplos</div>
+      <div class="example-item"><span class="example-en">"Hi Amara, please find the report attached."</span><span class="example-arrow">→</span><span class="example-es">Hola Amara, aquí está el reporte adjunto.</span></div>
+      <div class="example-item"><span class="example-en">"Best regards, David"</span><span class="example-arrow">→</span><span class="example-es">Saludos, David</span></div>
+    </div>
+
+    <div class="h-serif">💬 Mensajes de chat (Lección 16)</div>
+    <p class="sec-intro">El chat es más corto e informal — no necesita saludo ni despedida.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Ejemplos</div>
+      <div class="example-item"><span class="example-en">"Hi Mei — quick update, report is ready."</span><span class="example-arrow">→</span><span class="example-es">Hola Mei, actualización rápida: el reporte está listo.</span></div>
+      <div class="example-item"><span class="example-en">"FYI, I'll send it by 3pm."</span><span class="example-arrow">→</span><span class="example-es">Para tu información, lo enviaré antes de las 3pm.</span></div>
+    </div>
+
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${WRITTEN_VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join("")}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Consejo</div>
+      Usa el email para mensajes formales o largos. Usa el chat para preguntas rápidas o actualizaciones cortas entre compañeros.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Comprobación rápida — Comunicación escrita</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">Tres preguntas rápidas antes de continuar.</p>
+    ${renderMiniQ("written", WRITTEN_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpoken() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Comunicación oral: Llamadas y Videollamadas</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Ahora repasemos cómo comunicarte por teléfono y en videollamadas.</div>
+
+    <div class="h-serif">📞 Llamadas telefónicas (Lección 12)</div>
+    <p class="sec-intro">Usamos "can/can't" para pedir cosas de manera educada por teléfono.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Ejemplos</div>
+      <div class="example-item"><span class="example-en">"Can you transfer me to extension 204, please?"</span><span class="example-arrow">→</span><span class="example-es">¿Me puede transferir a la extensión 204, por favor?</span></div>
+      <div class="example-item"><span class="example-en">"I can't hear you. Can you call back?"</span><span class="example-arrow">→</span><span class="example-es">No puedo escucharte. ¿Puedes volver a llamar?</span></div>
+    </div>
+
+    <div class="h-serif">🎥 Videollamadas (Lección 13)</div>
+    <p class="sec-intro">En videollamadas usamos imperativos directos para instrucciones técnicas.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Ejemplos</div>
+      <div class="example-item"><span class="example-en">"Please mute your microphone."</span><span class="example-arrow">→</span><span class="example-es">Por favor, silencia tu micrófono.</span></div>
+      <div class="example-item"><span class="example-en">"Can you share your screen?"</span><span class="example-arrow">→</span><span class="example-es">¿Puedes compartir tu pantalla?</span></div>
+    </div>
+
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${SPOKEN_VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join("")}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Consejo</div>
+      Las llamadas suelen usar peticiones más indirectas ("Can you...?"). Las videollamadas suelen usar instrucciones más directas porque son técnicas ("Please mute...").
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Comprobación rápida — Comunicación oral</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">Tres preguntas rápidas antes de continuar.</p>
+    ${renderMiniQ("spoken", SPOKEN_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderHelp() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Pedir ayuda y dar instrucciones</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estas dos destrezas se conectan naturalmente: alguien pide ayuda, y otra persona da instrucciones paso a paso.</div>
+
+    <div class="h-serif">🙋 Pedir ayuda (Lección 14)</div>
+    <p class="sec-intro">Usamos "Can you...?" para pedir ayuda de manera educada.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Ejemplos</div>
+      <div class="example-item"><span class="example-en">"Can you help me? I forgot my password."</span><span class="example-arrow">→</span><span class="example-es">¿Me puedes ayudar? Olvidé mi contraseña.</span></div>
+    </div>
+
+    <div class="h-serif">📋 Dar instrucciones simples (Lección 15)</div>
+    <p class="sec-intro">Usamos imperativos junto con palabras de secuencia: first, then, next.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Ejemplos</div>
+      <div class="example-item"><span class="example-en">"First, open the file. Then, click 'upload'. Next, send it to your manager."</span><span class="example-arrow">→</span><span class="example-es">Primero, abre el archivo. Luego, haz clic en 'subir'. Después, envíalo a tu jefe.</span></div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">🧑‍💻</div>
+        <div>
+          <div class="model-name">Andrew Murrad — IT Coordinator</div>
+          <div class="model-role">Un intercambio típico en la oficina</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Can you help me? I can't open this file."<br>"Sure. First, close the program. Then, open it again. Next, try the file one more time."</div>
+      </div>
+    </div>
+
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${HELP_VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join("")}
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Comprobación rápida — Ayuda e instrucciones</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">Tres preguntas rápidas antes de continuar.</p>
+    ${renderMiniQ("help", HELP_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSigns() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Letreros de oficina y visitantes</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Entender las reglas de la oficina te ayuda a explicarlas de manera educada a los visitantes.</div>
+
+    <div class="h-serif">🚪 Letreros de oficina (Lección 17)</div>
+    <p class="sec-intro">Usamos "must" y "can't" para hablar de reglas.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Ejemplos</div>
+      <div class="example-item"><span class="example-en">"Visitors must sign in at reception."</span><span class="example-arrow">→</span><span class="example-es">Los visitantes deben registrarse en recepción.</span></div>
+      <div class="example-item"><span class="example-en">"You can't enter without an ID badge."</span><span class="example-arrow">→</span><span class="example-es">No puedes entrar sin una credencial.</span></div>
+    </div>
+
+    <div class="h-serif">🤝 Visitantes y clientes (Lección 18)</div>
+    <p class="sec-intro">Usamos expresiones educadas para saludar y recibir visitantes.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Ejemplos</div>
+      <div class="example-item"><span class="example-en">"Good morning! Do you have an appointment?"</span><span class="example-arrow">→</span><span class="example-es">¡Buenos días! ¿Tiene una cita?</span></div>
+      <div class="example-item"><span class="example-en">"Please, follow me to the conference room."</span><span class="example-arrow">→</span><span class="example-es">Por favor, sígame a la sala de conferencias.</span></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Conexión</div>
+      Cuando recibes a un visitante, a veces también le explicas una regla: "You must wear a visitor badge while you're here" — así unimos las dos lecciones en una sola conversación.
+    </div>
+
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${SIGNS_VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join("")}
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Comprobación rápida — Letreros y visitantes</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">Tres preguntas rápidas antes de continuar.</p>
+    ${renderMiniQ("signs", SIGNS_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderCustsvc() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Servicio al cliente básico</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Esta es la destreza que más vas a usar en la simulación de hoy — atender a un cliente con un problema.</div>
+
+    <div class="h-serif">🎧 Preguntas Wh- (Lección 19)</div>
+    <p class="sec-intro">Usamos what, where, when, who para entender el problema de un cliente.</p>
+    <div class="examples-wrap">
+      <div class="examples-label">Ejemplos</div>
+      <div class="example-item"><span class="example-en">"What's the problem with your order?"</span><span class="example-arrow">→</span><span class="example-es">¿Cuál es el problema con su pedido?</span></div>
+      <div class="example-item"><span class="example-en">"When did you place it?"</span><span class="example-arrow">→</span><span class="example-es">¿Cuándo lo hizo?</span></div>
+    </div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">🎧</div>
+        <div>
+          <div class="model-name">Priya Kapoor — Project Coordinator</div>
+          <div class="model-role">Atendiendo una llamada de servicio al cliente</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">"Hello, thank you for calling. What's the problem with your order?"<br>"I have a support ticket, but no solution yet."<br>"I understand. Let me check that for you right now."</div>
+      </div>
+    </div>
+
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${CUSTSVC_VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join("")}
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Comprobación rápida — Servicio al cliente</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">Tres preguntas rápidas antes de continuar.</p>
+    ${renderMiniQ("custsvc", CUSTSVC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBigPicture() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Todo junto: un día en la oficina</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Ahora veamos cómo las nueve destrezas de la Unidad 2 aparecen juntas en un solo día de trabajo real.</div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👨‍💼</div>
+        <div>
+          <div class="model-name">William Brooks — Amsterdam, Philips</div>
+          <div class="model-role">Un día típico de comunicación en el trabajo</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <div class="model-quote">
+          At 9am, William writes an <strong>email</strong> to his manager: "Please find the report attached."<br><br>
+          At 9:30, he gets a <strong>phone call</strong>: "Can you transfer me to extension 204?"<br><br>
+          At 10am, he joins a <strong>video meeting</strong>: "Please mute your microphone."<br><br>
+          At 11am, he <strong>asks IT for help</strong>: "Can you help me? I forgot my password." IT <strong>gives him instructions</strong>: "First, click 'reset'. Then, check your email."<br><br>
+          At 1pm, he sends a quick <strong>chat message</strong>: "FYI, the report is ready."<br><br>
+          At 2pm, he reads an <strong>office sign</strong>: "Authorized personnel only" — and explains it to a <strong>visitor</strong> at reception: "Good morning! Do you have an appointment?"<br><br>
+          At 3pm, he helps a <strong>customer</strong>: "What's the problem with your order?"
+        </div>
+      </div>
+    </div>
+
+    <p class="sec-intro">¿Ves cómo las nueve destrezas se conectan en un solo día? Eso es exactamente lo que vas a practicar en la simulación de la clase de hoy.</p>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Antes de la clase</div>
+      No necesitas memorizar frases exactas. Lo importante es reconocer qué canal usar (email, chat, teléfono, video, cara a cara) y qué lenguaje funciona mejor en cada situación.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">8</div>
+      <div class="sec-badge-title">Ejercicios</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="ex-box">
+      <div class="ex-label">Ejercicio</div>
+      <p style="font-size:13px;color:var(--slate);margin-bottom:12px;">Toca cada tarjeta para ver la respuesta correcta.</p>
+
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q">1. You need to send a quick 2-line message to a coworker. Email or chat?</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">✓ Chat — it's short, fast, and informal.</div>
+      </div>
+
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q">2. Complete: "___ you hear me? I think there's a connection problem."</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">✓ Can — "Can you hear me?"</div>
+      </div>
+
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q">3. Put in order: "then / first / next" for giving instructions.</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">✓ First → then → next</div>
+      </div>
+
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q">4. Choose the polite phrase for greeting an office visitor.</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">✓ "Good morning! Do you have an appointment?"</div>
+      </div>
+
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q">5. Which modal do we use for office rules — "must" or "would"?</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">✓ Must — "Visitors must sign in at reception."</div>
+      </div>
+
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q">6. Complete a customer service question: "What's the ___ with your order?"</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">✓ Problem — "What's the problem with your order?"</div>
+      </div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">9</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba toda la Unidad 2!</h3>
+        <p>${QUIZ.length} questions covering Lessons 11–19 · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join("")}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?"🎉 ¡Perfecto! — You are ready for class!":quizScore>=QUIZ.length*0.8?"¡Excelente! Almost perfect.":"Keep practising — ¡tú puedes!"}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?"Outstanding — a perfect score across the whole unit! See you in class.":"Review the sections where you made mistakes, then retry."}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?"":"s"}</button>`:""}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ""}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── QUIZ ENGINE (main) ─────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = "";
+  const letters = ["A","B","C","D"];
+
+  if (q.type === "mc" || q.type === "tf") {
+    const opts    = q.type==="mc" ? q.opts : ["True","False"];
+    const lets    = q.type==="mc" ? letters : ["T","F"];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = "q-opt";
+        const isAns = q.type==="mc" ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=" correct"; else if(s.selected===j) cls+=" wrong"; }
+        else if (s.selected===j) cls+=" selected";
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?"disabled":""}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join("")}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?"disabled":""}>Check</button></div>` : ""}
+    ${rev  ? `<div class="q-feedback ${(q.type==="mc"?s.selected===q.answer:q.answer===(s.selected===0))?"correct":"wrong"}">💡 ${q.fb}</div>` : ""}`;
+  }
+
+  if (q.type === "input") {
+    const cls = rev ? (s.correct?"q-input correct":"q-input wrong") : "q-input";
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||""}" oninput="setInp(${i},this.value)" ${rev?"disabled":""}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ""}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?"correct":"wrong"}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ""}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ""}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||"").trim().toLowerCase().replace(/\.$/,"");
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,""));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==="mc")    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==="tf")    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==="input") ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById("qc-"+first);
+    if(el) el.scrollIntoView({behavior:"smooth",block:"center"});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==="mc"&&st.selected===q.answer)s++;
+    else if(q.type==="tf"&&q.answer===(st.selected===0))s++;
+    else if(q.type==="input"&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById("mainContent").innerHTML=renderQuiz();
+}
+
+
+// ── CONCEPT-CHECK (mini-quiz) ENGINE ───────────────────────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = "";
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ["A","B","C","D"];
+    let body = "";
+
+    if (q.type === "mc" || q.type === "tf") {
+      const opts = q.type === "mc" ? q.opts : ["True", "False"];
+      const lets = q.type === "mc" ? letters : ["T", "F"];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = "q-opt";
+          const isAns = q.type === "mc" ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += " correct"; else if (s.selected === j) cls += " wrong"; }
+          else if (s.selected === j) cls += " selected";
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? "disabled" : ""}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join("")}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? "disabled" : ""}>Check</button></div>` : ""}
+      ${rev ? `<div class="q-feedback ${(q.type==="mc"?s.selected===q.answer:q.answer===(s.selected===0)) ? "correct" : "wrong"}">💡 ${q.fb}</div>` : ""}`;
+    }
+
+    if (q.type === "input") {
+      const cls = rev ? (s.correct ? "q-input correct" : "q-input wrong") : "q-input";
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ""}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? "disabled" : ""}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ""}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? "correct" : "wrong"}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ""}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ""}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const qMap = { written: WRITTEN_CQ, spoken: SPOKEN_CQ, help: HELP_CQ, signs: SIGNS_CQ, custsvc: CUSTSVC_CQ };
+  const q = qMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g," ").replace(/[.,]$/,"");
+  const raw = miniState[prefix][qi].inputVal || "";
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { written: renderWritten, spoken: renderSpoken, help: renderHelp, signs: renderSigns, custsvc: renderCustsvc };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) document.getElementById("mainContent").innerHTML = targetFn();
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Welcome",          fn: renderWelcome },
+  { label: "2. Email & Chat",     fn: renderWritten },
+  { label: "3. Phone & Video",    fn: renderSpoken },
+  { label: "4. Help & Instructions", fn: renderHelp },
+  { label: "5. Signs & Visitors", fn: renderSigns },
+  { label: "6. Customer Service", fn: renderCustsvc },
+  { label: "7. Big Picture",      fn: renderBigPicture },
+  { label: "8. Exercises",        fn: renderExercises },
+  { label: "9. Quiz",             fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

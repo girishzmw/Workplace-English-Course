@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 15: Taking Notes in Meetings | A2 · Unit 2 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); font-style:italic; white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:600; }
+.tap-answer.show { display:block; }
+
+.drill-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:20px; }
+@media(max-width:600px){ .drill-grid{ grid-template-columns:1fr; } }
+.drill-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 16px; }
+.drill-num { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:12px; font-weight:700; margin-bottom:8px; }
+.drill-field { font-size:13px; color:var(--slate); margin-bottom:3px; }
+.drill-field strong { color:var(--navy); }
+
+.cue-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:20px; }
+@media(max-width:600px){ .cue-grid{ grid-template-columns:1fr; } }
+.cue-card { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:10px; padding:14px 16px; }
+.cue-num { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:var(--gold); color:var(--navy); font-size:12px; font-weight:700; margin-bottom:8px; }
+.cue-text { font-size:14px; color:#7A5500; font-style:italic; }
+
+.email-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:20px 22px; margin-bottom:20px; font-size:14px; line-height:1.85; color:var(--slate); }
+.email-meta { font-size:12px; color:var(--grey-blue); border-bottom:1px solid var(--border-grey); padding-bottom:10px; margin-bottom:14px; }
+.email-meta strong { color:var(--navy); }
+.email-box ol { padding-left:20px; margin:8px 0; }
+
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Classwork</div>
+    <h1 class="hero-title">Lesson 15: Taking Notes in Meetings</h1>
+    <p class="hero-sub">Speaking Ladder, reading, and a grammar bridge review — 60 minutes</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">📖 Reading</span>
+      <span class="pill">5 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const WARMUP = [
+  ["¿Cómo se dice 'tarea' en inglés (en el contexto de una reunión)?", "action item"],
+  ["¿Cómo se dice 'responsable de la tarea'?", "task owner"],
+  ["Complete: \"The team ___ a decision.\" (make/take)", "made"],
+  ["¿Cómo se dice 'acta de la reunión'?", "minutes"],
+  ["Complete: \"We need to ___ the deadline.\" (meet/win)", "meet"],
+  ["¿Cómo se dice 'fecha límite'?", "deadline"],
+  ["Plural of \"action item\"?", "action items"],
+  ["¿Cómo se dice 'seguimiento'?", "follow-up"],
+];
+
+const RECAP = [
+  ["Plural of \"deadline\"?", "deadlines"],
+  ["Plural of \"person\"?", "people (irregular)"],
+];
+
+const CHAIN_DRILL = [
+  ["update the website", "Sofia", "homepage design", "May 1st"],
+  ["hire a new designer", "Karim", "job posting", "April 15th"],
+  ["change the schedule", "Klara", "new calendar", "April 20th"],
+  ["cut the budget", "Amara", "cost report", "April 25th"],
+  ["launch the app", "David", "testing", "May 5th"],
+  ["move the office", "Ingrid", "floor plan", "June 1st"],
+  ["train the team", "William", "training materials", "April 30th"],
+  ["fix the bug", "Yuki", "bug report", "April 12th"],
+];
+
+const CUE_ROUND = [
+  ["budget", "Priya", "Friday"],
+  ["marketing plan", "Thomas", "next week"],
+  ["new client", "Andrew", "Monday"],
+  ["server upgrade", "Daniel", "tonight"],
+  ["team meeting", "Camila", "tomorrow"],
+  ["report", "Karim", "end of day"],
+  ["supplier contract", "Ingrid", "next month"],
+  ["office move", "Klara", "July"],
+];
+
+const READING_Q = [
+  ["What is the decision from this meeting?", "To launch the new dashboard feature on May 1st."],
+  ["Who is the task owner for the user documentation?", "Priya."],
+  ["What is Andrew's deadline?", "April 18th."],
+  ["When is the follow-up meeting?", "Monday, April 22nd."],
+];
+
+function tapRow(q, a) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top"><div class="tap-q">${q}</div><div class="tap-hint-label">Tap to reveal</div></div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+
+function teacherBox(text) {
+  return `<div class="teacher-box">
+    <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+    ${text}
+  </div>`;
+}
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Toca cada tarjeta para ver la respuesta en inglés.</div>
+    ${WARMUP.map((w,i) => tapRow(`${i+1}. ${w[0]}`, w[1])).join('')}
+    ${teacherBox('5 minutes. Read each Spanish prompt aloud, give students 5–10 seconds to think, then tap to reveal the English answer together as a class. Move briskly — this is a warm-up, not a teaching moment.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderRecap() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Quick Recap</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="h-serif" style="font-size:16px;">🔁 Grammar Bridge: Singular/Plural Nouns</div>
+    <div class="es-note">Recuerda: la mayoría de los sustantivos en inglés forman el plural con -s (one decision → two decisions), pero algunos son irregulares (one person → two people).</div>
+    ${RECAP.map((r,i) => tapRow(`${i+1}. ${r[0]}`, r[1])).join('')}
+    ${teacherBox('1–2 minutes only. This is a fast touch-back to A1 singular/plural nouns, not a new lesson. Read the callout aloud, then click through the two quick-check questions together as a class.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderLadder() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Speaking Ladder</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box"><strong>Target frame:</strong> "The main decision was to [verb phrase]. [Name] is the task owner for [task], and the deadline is [date]."</div>
+
+    <div class="h-serif" style="font-size:16px;">Stage 1 — Model &amp; Chorus</div>
+    <p class="sec-intro">Teacher models the frame twice using a sample meeting: <em>"The main decision was to launch the new product page. Lucas is the task owner for the photos, and the deadline is April 10th."</em> Whole class repeats chorally, together, twice.</p>
+    ${teacherBox('Model at natural speed first, then slightly slower. Class repeats together — do not call on individuals yet. Focus on rhythm and the fixed phrase "is the task owner for."')}
+
+    <div class="divider"></div>
+    <div class="h-serif" style="font-size:16px;">Stage 2 — Chain Drill</div>
+    <p class="sec-intro">Round-robin. Each student uses their card to complete the target frame out loud.</p>
+    <div class="drill-grid">
+      ${CHAIN_DRILL.map((d,i) => `
+        <div class="drill-card">
+          <div class="drill-num">${i+1}</div>
+          <div class="drill-field"><strong>Decision:</strong> ${d[0]}</div>
+          <div class="drill-field"><strong>Name:</strong> ${d[1]}</div>
+          <div class="drill-field"><strong>Task:</strong> ${d[2]}</div>
+          <div class="drill-field"><strong>Deadline:</strong> ${d[3]}</div>
+        </div>`).join('')}
+    </div>
+    ${teacherBox('Round-robin, one student at a time. Errors here mean the student went off the given frame — gently redirect back to the fixed structure. Correct the frame, not the content.')}
+
+    <div class="divider"></div>
+    <div class="h-serif" style="font-size:16px;">Stage 3 — Cue-Only Independent Round</div>
+    <p class="sec-intro">No frame this time. Each student gets only a few keywords and produces their own sentence using today's target language.</p>
+    <div class="cue-grid">
+      ${CUE_ROUND.map((c,i) => `
+        <div class="cue-card">
+          <div class="cue-num">${i+1}</div>
+          <div class="cue-text">${c[0]} · ${c[1]} · ${c[2]}</div>
+        </div>`).join('')}
+    </div>
+    ${teacherBox('Go straight from the cue card to production — no rehearsal pause. These are genuine independent attempts, not off-script errors. Note gaps for later feedback, but don\u2019t over-correct mid-activity or this collapses back into a drill.')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Reading</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Lee este correo con las notas de una reunión. Después, responde a las preguntas.</div>
+    <div class="email-box">
+      <div class="email-meta"><strong>Subject:</strong> Meeting Notes — Product Team, April 8</div>
+      <p>Hi team,</p>
+      <p>Here's a quick summary of today's meeting.</p>
+      <p><strong>Decision:</strong> We are launching the new dashboard feature on May 1st.</p>
+      <p><strong>Action items:</strong></p>
+      <ol>
+        <li>Karim — finish the design mockups (deadline: April 15th)</li>
+        <li>Priya — write the user documentation (deadline: April 20th)</li>
+        <li>Andrew — set up the testing environment (deadline: April 18th)</li>
+      </ol>
+      <p><strong>Follow-up:</strong> We will check progress on Monday, April 22nd.</p>
+      <p>Thanks,<br>Ingrid</p>
+    </div>
+    ${READING_Q.map((q,i) => tapRow(`${i+1}. ${q[0]}`, q[1])).join('')}
+    ${teacherBox('Have one student read the email aloud, then work through the 4 questions as a class, tapping to reveal each answer after students respond. For stronger students, ask them to summarize the email in their own words using today\u2019s target phrases.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Wrap-up</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Hoy aprendiste a tomar notas de una reunión: identificar la decisión, los action items, el task owner y la fecha límite de cada tarea.</div>
+    <div class="info-box">Great work today! You can now record the key information from a meeting — the decision, the action items, who owns each task, and the deadlines.</div>
+    ${teacherBox('Quick verbal recap. Ask 2–3 students to name one phrase they\u2019ll use to summarize a meeting. Preview next lesson if time allows.')}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS — defined last ───────────────────────────────────
+STEPS = [
+  { label: "1. Warm-up",         fn: renderWarmup },
+  { label: "2. Quick Recap",     fn: renderRecap },
+  { label: "3. Speaking Ladder", fn: renderLadder },
+  { label: "4. Reading",         fn: renderReading },
+  { label: "5. Wrap-up",         fn: renderWrapup },
+];
+
+render();
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

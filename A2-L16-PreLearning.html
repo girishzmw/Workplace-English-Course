@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 16: Taking Notes in Meetings | A2 · Unit 2 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; grid-template-columns:1fr 1fr 1.4fr; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; grid-template-columns:1fr 1fr 1.4fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; font-size:13px; color:var(--slate); }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+.data-table-row strong { color:var(--navy); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:block; padding:10px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.reveal-btn { padding:8px 16px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; margin-top:8px; }
+.reveal-btn:hover { background:var(--sky); }
+.reveal-answer { display:none; margin-top:10px; padding:10px 14px; background:var(--green-bg); color:var(--green); border-radius:7px; font-size:13px; }
+.reveal-answer.show { display:block; }
+.tap-word { display:inline-block; padding:5px 11px; margin:3px; border-radius:6px; background:var(--white); border:1.5px solid var(--border-grey); font-size:13px; cursor:pointer; transition:all .12s; }
+.tap-word.tapped { background:var(--gold-bg); border-color:var(--gold); color:#7A5500; font-weight:700; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* CONCEPT CHECK */
+.cc-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin:8px 0 24px; }
+.cc-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.cc-label::before { content:'🔍'; font-size:13px; }
+.cc-label.bridge { color:#7A5500; }
+.cc-label.bridge::before { content:'🔗'; }
+.cc-card { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:14px 16px; margin-bottom:10px; }
+.cc-card:last-child { margin-bottom:0; }
+.cc-q { font-size:13px; font-weight:500; color:var(--navy); margin-bottom:10px; }
+.cc-opts { display:flex; flex-direction:column; gap:6px; }
+.cc-opt { padding:8px 12px; border:1.5px solid var(--border-grey); border-radius:6px; background:var(--off-white); font-size:13px; color:var(--navy); cursor:pointer; text-align:left; font-family:var(--font-body); }
+.cc-opt:hover:not(:disabled) { border-color:var(--sky); }
+.cc-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.cc-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:600; }
+.cc-opt.wrong { border-color:var(--red); background:var(--red-bg); color:var(--red); }
+.cc-input-row { display:flex; gap:8px; }
+.cc-input { flex:1; padding:8px 12px; border:1.5px solid var(--border-grey); border-radius:6px; font-family:var(--font-body); font-size:13px; background:var(--off-white); outline:none; color:var(--navy); }
+.cc-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.cc-input.wrong { border-color:var(--red); background:var(--red-bg); }
+.cc-check { padding:8px 14px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-size:11px; font-weight:700; text-transform:uppercase; cursor:pointer; }
+.cc-check:disabled { opacity:0.4; cursor:default; }
+.cc-fb { margin-top:8px; padding:7px 11px; border-radius:6px; font-size:12px; }
+.cc-fb.correct { background:var(--green-bg); color:var(--green); }
+.cc-fb.wrong { background:var(--red-bg); color:var(--red); }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 16: Taking Notes in Meetings</h1>
+    <p class="hero-sub">Sequencing language · first, then, after that, finally · ~45 min self-study</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Describe a workflow step-by-step</div><div class="outcome-note">Describir un proceso paso a paso</div></div>
+      <div><div class="outcome-item">Use first, then, after that, finally</div><div class="outcome-note">Usar palabras de secuencia correctamente</div></div>
+      <div><div class="outcome-item">Understand process vocabulary</div><div class="outcome-note">Entender vocabulario de procesos de trabajo</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-fill" id="progressBar" style="width:0%"></div></div>
+</div>
+
+<div class="step-nav"><div class="step-nav-inner" id="stepNav"></div></div>
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) { return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100); }
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const VOCAB = [
+  ["process (v./n.)", "procesar / proceso"],
+  ["submit", "enviar / entregar (para revisión)"],
+  ["review", "revisar"],
+  ["approve", "aprobar"],
+  ["reject", "rechazar"],
+  ["request", "solicitud / solicitar"],
+  ["complete", "completar"],
+  ["deadline", "fecha límite"],
+  ["pending", "pendiente"],
+  ["notify", "notificar / avisar"],
+  ["update", "actualizar / actualización"],
+  ["confirm", "confirmar"],
+];
+
+const AUDIO_CC = [
+  { id:'ac1', type:'mc', q:"What does the employee do first?", opts:["Ask the director for approval","Submit a request through the online system","Email the finance team"], answer:1, fb:"Karim says employees submit a request through the online system first." },
+  { id:'ac2', type:'tf', q:"The finance team approves the request themselves.", answer:false, fb:"False — the finance team processes the numbers; Karim (the team lead) approves or rejects it." },
+  { id:'ac3', type:'input', answers:["two days","2 days","about two days"], q:"How long does the whole process normally take?", fb:"About two days, according to Karim." },
+];
+
+const VOCAB_CC = [
+  { id:'vc1', type:'mc', q:'Which word means "to say yes officially"?', opts:["submit","approve","review"], answer:1, fb:'"Approve" means to officially say yes to something, like a request or a budget.' },
+  { id:'vc2', type:'mc', q:'"Please ___ your timesheet before Friday."', opts:["submit","reject","process"], answer:0, fb:'"Submit" means to hand something in for review.' },
+  { id:'vc3', type:'tf', q:'"Process" can be used as both a verb and a noun.', answer:true, fb:'Correct — "to process an invoice" (verb) and "the approval process" (noun).' },
+];
+
+const GRAMMAR_CC = [
+  { id:'gc1', type:'mc', q:"Choose the correct sequencing word for the last step: ___, the manager approves it.", opts:["First","Then","Finally"], answer:2, fb:'"Finally" introduces the last step in a sequence.' },
+  { id:'gc2', type:'input', answers:["first","First"], q:'"___, I check my email. Then, I start work."', fb:'"First" introduces the opening step.' },
+  { id:'gc3', type:'mc', q:"Which sentence is correctly punctuated?", opts:["Then, she reviews it.","Then she, reviews it.","Then she reviews, it."], answer:0, fb:"Sequencing words sit at the start of the sentence, followed by a comma." },
+];
+
+const BRIDGE_CC = [
+  { id:'bc1', type:'mc', q:"Which of these is the imperative form?", opts:['"First, open the file."','"First, she opens the file."'], answer:0, fb:'Imperatives give a direct instruction — no subject, just the verb: "First, open the file."' },
+  { id:'bc2', type:'input', answers:["fill out","Fill out"], q:'"First, ___ the form." (imperative)', fb:'"Fill out" is the base form of the verb, used for instructions.' },
+  { id:'bc3', type:'tf', q:"Imperatives and process descriptions can use the same sequencing words.", answer:true, fb:"True — first, then, after that, and finally work for both giving instructions and describing a process." },
+];
+
+const MODEL_CC = [
+  { id:'mc1', type:'mc', q:"In the model paragraph, who reviews the request first?", opts:["The director","The supervisor","The finance team"], answer:1, fb:"After the employee submits it, the supervisor reviews the details next." },
+  { id:'mc2', type:'tf', q:"The finance team approves the request.", answer:false, fb:"False — the finance team processes the numbers. The director approves or rejects it." },
+  { id:'mc3', type:'mc', q:'Which sequencing word comes right before "the director approves"?', opts:["Then","After that","Finally"], answer:2, fb:'"Finally" introduces the last step, where the director approves or rejects the request.' },
+];
+
+const QUIZ = [
+  { type:"mc", q:"Which word means to officially hand in a document for review?", opts:["submit","reject","notify"], answer:0, hint:"💡 Think about turning in a report.", fb:"Submit means to hand something in officially." },
+  { type:"mc", q:"Which word means to say yes to a request?", opts:["review","approve","process"], answer:1, hint:"💡 The opposite of reject.", fb:"Approve means to officially agree to something." },
+  { type:"input", q:"What is the opposite of 'approve'?", hint:"r _ _ e c t", answers:["reject"], display:"Reject.", fb:"Reject means to say no to a request." },
+  { type:"tf", q:"'Pending' means a task is already finished.", answer:false, hint:"💡 Think about a request that is still waiting.", fb:"False — pending means still waiting for a decision or action." },
+  { type:"mc", q:"'The finance team ___ the invoices every Friday.'", opts:["process","processes","processing"], answer:1, hint:"💡 Third person singular.", fb:"With 'the finance team' (singular), we use 'processes'." },
+  { type:"mc", q:"Choose the correct sequencing word: '___, an employee submits a request.'", opts:["Finally","First","After that"], answer:1, hint:"💡 This is the very first step.", fb:"'First' introduces the opening step of a process." },
+  { type:"input", q:"'___, the supervisor reviews the details.' (middle step)", hint:"t _ _ n", answers:["Then","then"], display:"Then.", fb:"'Then' introduces a step that comes after the first one." },
+  { type:"mc", q:"Which sentence uses correct punctuation?", opts:["After that the director approves it.","After that, the director approves it.","After, that the director approves it."], answer:1, hint:"💡 Look for the comma placement.", fb:"Sequencing words are followed by a comma: 'After that, ...'" },
+  { type:"tf", q:"'Finally' can introduce the first step of a process.", answer:false, hint:"💡 Think about what 'finally' usually means.", fb:"False — 'finally' introduces the last step, not the first." },
+  { type:"mc", q:"In the model paragraph about the approval process, what does the finance team do?", opts:["Submit the request","Process the numbers","Approve the request"], answer:1, hint:"💡 Re-read the third step.", fb:"The finance team processes the numbers, especially for budget-related requests." },
+  { type:"mc", q:"Which sentence is an imperative (a direct instruction)?", opts:["First, she opens the file.","First, open the file.","First, he opened the file."], answer:1, hint:"💡 Imperatives have no subject.", fb:"'First, open the file' is an imperative — a direct command with no subject." },
+  { type:"input", q:"Imperative form: '___ the form.' (fill out)", hint:"base verb form", answers:["Fill out","fill out"], display:"Fill out.", fb:"Imperatives use the base form of the verb, with no subject." },
+];
+
+// ── Quiz / Concept-Check state ──────────────────────────
+const quizState = {};
+let quizScore = 0;
+const ccState = {};
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">3 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Welcome back! In this lesson, you will learn how to describe a workflow step-by-step — the way you explain a process to a colleague, or take notes during a meeting about how something gets done.</p>
+    <div class="es-note">Bienvenido de nuevo. En esta lección aprenderás a describir un proceso paso a paso — la forma en que le explicas un procedimiento a un compañero, o tomas notas en una reunión sobre cómo se hace algo.</div>
+    <div class="info-box">
+      <strong>By the end of this lesson, you will be able to:</strong> describe a workflow using sequencing words like <em>first, then, after that,</em> and <em>finally.</em><br>
+      <em style="color:var(--grey-blue)">Al final de esta lección, podrás describir un flujo de trabajo usando palabras de secuencia como first, then, after that y finally.</em>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estas son las palabras clave para hablar de procesos en el trabajo: cómo se mueve un documento, una solicitud o una tarea de una etapa a la siguiente.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `<div class="vocab-row"><div class="vocab-en">${en}</div><div class="vocab-es">${es}</div></div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">⚠️ Tip</div>
+      "Submit" no significa "someter" en el sentido de obligar a alguien — significa entregar algo oficialmente, como un formulario o una solicitud, para que otra persona lo revise.
+    </div>
+    <div class="examples-wrap">
+      <div class="examples-label">Examples</div>
+      <div class="example-item"><span class="example-en">First, I fill out the form. Then, I submit it to my supervisor.</span></div>
+      <div class="example-item"><span class="example-en">After the manager reviews it, she approves or rejects it.</span></div>
+      <div class="example-item"><span class="example-en">The team processes all requests within 48 hours.</span></div>
+      <div class="example-item"><span class="example-en">My request is still pending — I haven't received an update yet.</span></div>
+      <div class="example-item"><span class="example-en">Please confirm the deadline before you submit your report.</span></div>
+    </div>
+    ${renderCC('Concept Check', VOCAB_CC)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro"><strong>Notice</strong> — look at how Camila explains her morning routine at work:</p>
+    <div class="info-box" style="font-style:italic;">"First, I check my email. Then, I review my task list. After that, I attend the team meeting. Finally, I start my main project."</div>
+    <p class="sec-intro">Notice how each sentence connects to the next using a <strong>sequencing word</strong> — these words show the order of steps in a process.</p>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Form Rules</div>
+      <div class="pattern-row"><div class="pattern-en"><strong>First,</strong> — start of first step</div><div class="pattern-es">Begins the sequence</div></div>
+      <div class="pattern-row"><div class="pattern-en"><strong>Then, / Next,</strong> — start of a middle step</div><div class="pattern-es">Shows the next step</div></div>
+      <div class="pattern-row"><div class="pattern-en"><strong>After that,</strong> — start of a later step</div><div class="pattern-es">Shows a step that follows another</div></div>
+      <div class="pattern-row"><div class="pattern-en"><strong>Finally,</strong> — start of last step</div><div class="pattern-es">Shows the last step</div></div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">Rule: sequencing words go at the beginning of the sentence, followed by a comma</div>
+      <div class="mistake-right">✅ First, you fill out the request.</div>
+      <div class="mistake-wrong">❌ You first fill out the request.</div>
+    </div>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head"><span>English</span><span>Spanish</span><span></span></div>
+      <div class="data-table-row"><span>First, ...</span><span>Primero, ...</span><span></span></div>
+      <div class="data-table-row"><span>Then / Next, ...</span><span>Luego / Después, ...</span><span></span></div>
+      <div class="data-table-row"><span>After that, ...</span><span>Después de eso, ...</span><span></span></div>
+      <div class="data-table-row"><span>Finally, ...</span><span>Finalmente, ...</span><span></span></div>
+    </div>
+    <div class="es-note">Buenas noticias: el orden y el uso son casi idénticos al español. Solo recuerda la coma después de la palabra de secuencia en inglés.</div>
+
+    <div class="examples-wrap">
+      <div class="examples-label">More Examples</div>
+      <div class="example-item"><span class="example-en">First, the employee submits the request. Then, the supervisor reviews it. After that, the director approves it. Finally, HR processes the paperwork.</span></div>
+      <div class="example-item"><span class="example-en">First, open the app. Then, log in. After that, click "New Report." Finally, submit it.</span></div>
+      <div class="example-item"><span class="example-en">First, I read the meeting notes. Then, I highlight the action points. After that, I email the team. Finally, I update the shared file.</span></div>
+      <div class="example-item"><span class="example-en">First, the client sends a request. Then, we check the deadline. After that, we confirm the details. Finally, we notify the client by email.</span></div>
+      <div class="example-item"><span class="example-en">First, fill out the form. Then, attach the receipt. After that, send it to your manager. Finally, wait for approval.</span></div>
+      <div class="example-item"><span class="example-en">First, we collect the data. Then, we review it as a team. After that, we prepare the report. Finally, we present it on Friday.</span></div>
+    </div>
+
+    <div class="info-box">
+      🔗 <strong>Remember this?</strong> Back in A1, you learned to give instructions using imperatives + sequencing: "First, open the file. Then, save it." Now in A2, you'll use the same sequencing words, but to <strong>describe</strong> a process (not just give a command) — often using regular present simple instead of imperative form.<br>
+      <em style="color:var(--grey-blue)">¿Recuerdas esto? En A1 aprendiste a dar instrucciones con imperativos + secuencia. Ahora en A2 usarás las mismas palabras de secuencia, pero para describir un proceso — a menudo usando el presente simple en vez del imperativo.</em>
+    </div>
+    ${renderCC('Grammar Bridge Check', BRIDGE_CC, true)}
+    ${renderCC('Concept Check', GRAMMAR_CC)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Model Sentences</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Ahora vas a ver un proceso completo descrito de principio a fin. Fíjate en cómo se conectan los pasos.</div>
+    <div class="model-card" style="background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07);">
+      <div style="padding:22px;">
+        <p style="font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold);">
+        "In my department, we have a simple approval process. First, an employee submits a request through the online system. Then, their supervisor reviews the details. After that, the finance team processes the numbers. Finally, the director approves or rejects the request, and everyone receives an email with the result."
+        </p>
+      </div>
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">Guided Noticing Questions</div>
+      <p style="font-size:14px; margin-bottom:8px;">How many steps are in this process?</p>
+      <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show answer</button>
+      <div class="reveal-answer">4 steps.</div>
+    </div>
+    <div class="ex-box">
+      <p style="font-size:14px; margin-bottom:8px;">Who is involved?</p>
+      <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show answer</button>
+      <div class="reveal-answer">Employee, supervisor, finance team, director.</div>
+    </div>
+    <div class="ex-box">
+      <p style="font-size:14px; margin-bottom:8px;">Which word introduces the last step?</p>
+      <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show answer</button>
+      <div class="reveal-answer">Finally.</div>
+    </div>
+    ${renderCC('Concept Check', MODEL_CC)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderAudio() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">6 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Escucha a Karim explicar cómo funciona el proceso de aprobación en su equipo. Presta atención a las palabras de secuencia.</div>
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">How Our Approval Process Works</div>
+          <div class="audio-box-sub">Karim El-Sayed · Team Lead, Cairo · ~70 sec</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L16-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7,this)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8,this)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9,this)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0,this)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1,this)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen?'▲ Hide transcript':'▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen?'block':'none'};">
+        <p>"Hi, I'm Karim, and I'm a team lead here in Cairo. I want to explain how our approval process works, because a lot of new employees find it confusing at first.</p>
+        <p>First, an employee submits a request through our online system. It only takes a minute to fill out. Then, their supervisor reviews the details — they check that everything is correct and complete. After that, the finance team processes the numbers, especially if the request involves a budget. Finally, I approve or reject the request myself, and the system sends an automatic email with the result.</p>
+        <p>The whole process normally takes about two days. I always tell my team: if you follow the steps in order, everything moves quickly."</p>
+      </div>
+    </div>
+    ${renderCC('Concept Check', AUDIO_CC)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Exercises</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="ex-box">
+      <div class="ex-label">Exercise A — Order the Steps</div>
+      <p style="font-size:14px; margin-bottom:10px;">Tap to reveal the correct order of this ordering-supplies process:</p>
+      <p style="font-size:13px; line-height:1.9;">
+        a) Then, the manager reviews the order.<br>
+        b) First, an employee checks the stock list.<br>
+        c) Finally, the supplier delivers the items.<br>
+        d) After that, the office submits the order to the supplier.
+      </p>
+      <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show correct order</button>
+      <div class="reveal-answer">b → a → d → c<br>First, an employee checks the stock list. Then, the manager reviews the order. After that, the office submits the order to the supplier. Finally, the supplier delivers the items.</div>
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">Exercise B — Fill in the Sequencing Word</div>
+      <div class="word-bank" style="background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:14px;">
+        <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:6px;">Word Bank</div>
+        <div style="font-size:14px; color:var(--slate); font-style:italic;">first · then · after that · finally</div>
+      </div>
+      <p style="font-size:14px; line-height:2;">
+        1. ___, I read my emails.<br>
+        2. ___, I reply to urgent messages.<br>
+        3. ___, I attend the team meeting.<br>
+        4. ___, I start my main task of the day.
+      </p>
+      <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show answers</button>
+      <div class="reveal-answer">1. First 2. Then 3. After that 4. Finally</div>
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">Exercise C — Spot the Process</div>
+      <p style="font-size:14px; margin-bottom:10px;">Tap the four sequencing words in this paragraph:</p>
+      <p style="font-size:14px; line-height:2;">
+        <span class="tap-word" onclick="this.classList.toggle('tapped')">First</span>, the client sends a request.
+        <span class="tap-word" onclick="this.classList.toggle('tapped')">Then</span>, we check the deadline.
+        <span class="tap-word" onclick="this.classList.toggle('tapped')">After that</span>, we confirm the details.
+        <span class="tap-word" onclick="this.classList.toggle('tapped')">Finally</span>, we notify the client.
+      </p>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── AUDIO PLAYER (Pattern A — single player) ──────────
+let transcriptOpen = false;
+function setSpeed(rate, btn) {
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── CONCEPT CHECK ENGINE ──────────────────────
+function renderCC(label, items, isBridge) {
+  return `<div class="cc-wrap">
+    <div class="cc-label${isBridge?' bridge':''}">${label}</div>
+    ${items.map(q => renderCCItem(q)).join('')}
+  </div>`;
+}
+function renderCCItem(q) {
+  const s = ccState[q.id] || {};
+  const rev = s.revealed;
+  let body = '';
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+    body = `<div class="cc-opts">
+      ${opts.map((opt,j) => {
+        let cls = 'cc-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="ccSelect('${q.id}',${j})" ${rev?'disabled':''}>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:8px;text-align:right"><button class="cc-check" onclick="ccReveal('${q.id}')" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev ? `<div class="cc-fb ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'cc-input correct':'cc-input wrong') : 'cc-input';
+    body = `<div class="cc-input-row">
+      <input class="${cls}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="ccSetInp('${q.id}',this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="cc-check" onclick="ccRevealInp('${q.id}')">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="cc-fb ${s.correct?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+  return `<div class="cc-card"><div class="cc-q">${q.q}</div>${body}</div>`;
+}
+function findCCItem(id) {
+  return [...AUDIO_CC, ...VOCAB_CC, ...GRAMMAR_CC, ...BRIDGE_CC, ...MODEL_CC].find(q => q.id === id);
+}
+function ccSelect(id,j) { if(!ccState[id])ccState[id]={}; if(ccState[id].revealed)return; ccState[id].selected=j; rerenderCurrent(); }
+function ccReveal(id) { if(!ccState[id])ccState[id]={}; ccState[id].revealed=true; rerenderCurrent(); }
+function ccSetInp(id,v) { if(!ccState[id])ccState[id]={}; ccState[id].inputVal=v; }
+function ccRevealInp(id) {
+  const q = findCCItem(id); if(!ccState[id])ccState[id]={};
+  const val = (ccState[id].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  ccState[id].correct = q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  ccState[id].revealed = true; rerenderCurrent();
+}
+function rerenderCurrent() {
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+}
+
+// ── QUIZ ENGINE (do not edit) ─────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── STEPS ───────────────────────
+STEPS = [
+  { label: "1. Welcome",     fn: renderWelcome },
+  { label: "2. Vocabulary",  fn: renderVocabulary },
+  { label: "3. Grammar",     fn: renderGrammar },
+  { label: "4. Model",       fn: renderModel },
+  { label: "5. Listening",   fn: renderAudio },
+  { label: "6. Exercises",   fn: renderExercises },
+  { label: "7. Quiz",        fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

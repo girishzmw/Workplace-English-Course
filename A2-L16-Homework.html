@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 16: Taking Notes in Meetings | A2 · Unit 2 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* ATTEMPT COUNTER / SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; min-width:80px; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; }
+.attempt-count { font-size:11px; color:var(--grey-blue); font-style:italic; white-space:nowrap; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* QUESTION CARDS (shared by Part A + Part C) */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* UNJUMBLE */
+.unjumble-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px 22px; margin-bottom:16px; }
+.unjumble-num { font-size:11px; font-weight:700; color:var(--gold); margin-bottom:10px; }
+.unjumble-answer-row { display:flex; flex-wrap:wrap; gap:8px; min-height:44px; padding:10px; background:var(--off-white); border:1.5px dashed var(--border-grey); border-radius:8px; margin-bottom:12px; }
+.unjumble-word.placed { display:inline-block; padding:7px 13px; background:var(--navy); color:var(--white); border-radius:6px; font-size:14px; cursor:pointer; transition:all .12s; }
+.unjumble-word.placed:hover { background:var(--red); }
+.unjumble-bank { display:flex; flex-wrap:wrap; gap:8px; }
+.unjumble-word.bank { display:inline-block; padding:7px 13px; background:var(--light-grey); border:1.5px solid var(--border-grey); color:var(--navy); border-radius:6px; font-size:14px; cursor:pointer; transition:all .12s; }
+.unjumble-word.bank:hover { border-color:var(--sky); }
+.unjumble-word.used { visibility:hidden; }
+.unjumble-check-row { display:flex; justify-content:flex-end; margin-top:10px; gap:10px; align-items:center; }
+.unjumble-fb { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; }
+.unjumble-fb.correct { background:var(--green-bg); color:var(--green); }
+.unjumble-fb.wrong { background:var(--red-bg); color:var(--red); }
+
+/* TRANSLATION */
+.translate-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px 22px; margin-bottom:16px; }
+.translate-es { font-size:15px; font-style:italic; color:var(--navy); margin-bottom:12px; }
+
+/* PART NAV DOTS */
+.part-tag { display:inline-block; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Homework</div>
+    <h1 class="hero-title">Lesson 16: Taking Notes in Meetings</h1>
+    <p class="hero-sub">Independent practice · 3 parts, independent scoring</p>
+    <div class="hero-pills">
+      <span class="pill accent">Part A: Listening</span>
+      <span class="pill accent">Part B: Unjumble + Translation</span>
+      <span class="pill accent">Part C: Quiz</span>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-fill" id="progressBar" style="width:0%"></div></div>
+</div>
+
+<div class="step-nav"><div class="step-nav-inner" id="stepNav"></div></div>
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) { return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100); }
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+// PART A — Listening comprehension
+const PART_A = [
+  { type:"mc", q:"What does the employee do first?", opts:["Submit a vacation request through the HR portal","Email the supervisor directly","Book flights immediately"], answer:0, hint:"💡 Think about the very first step David describes.", fb:"The employee submits a vacation request through the HR portal first." },
+  { type:"mc", q:"Who reviews the dates?", opts:["The HR director","The supervisor","The finance team"], answer:1, hint:"💡 Listen for who checks the team's schedule.", fb:"The supervisor reviews the dates to check the team's schedule." },
+  { type:"tf", q:"The supervisor always approves every request immediately.", answer:false, hint:"💡 Listen for the word 'if'.", fb:"False — the supervisor checks for conflicts first, then approves within two business days if there's none." },
+  { type:"input", q:"How many business days does approval normally take?", hint:"a number, written as a word or digit", answers:["two","2"], display:"Two.", fb:"Approval normally takes two business days." },
+  { type:"mc", q:"What happens if the dates are already booked by someone else?", opts:["The request is automatically rejected","The supervisor contacts the employee to suggest alternative dates","The employee must wait until next year"], answer:1, hint:"💡 Listen to the part after the main process.", fb:"The supervisor contacts the employee to suggest alternative dates." },
+  { type:"tf", q:"The employee receives a confirmation email once approved.", answer:true, hint:"💡 Listen for the final step.", fb:"True — the employee receives a confirmation email and the days are added to the calendar." },
+];
+
+// PART B — Unjumble
+const UNJUMBLE = [
+  { words:["First,","the","employee","submits","a","request."], answer:"First, the employee submits a request." },
+  { words:["Then,","the","supervisor","reviews","the","dates."], answer:"Then, the supervisor reviews the dates." },
+  { words:["After","that,","she","approves","the","request."], answer:"After that, she approves the request." },
+  { words:["Finally,","the","employee","receives","an","email."], answer:"Finally, the employee receives an email." },
+  { words:["Please","submit","your","timesheet","before","Friday."], answer:"Please submit your timesheet before Friday." },
+];
+
+// PART B — Translation
+const TRANSLATE = [
+  { es: "Primero, reviso mi lista de tareas.", answers:["first, i review my task list.","first, i review my task list"], display:"First, I review my task list." },
+  { es: "Luego, confirmo la fecha límite.", answers:["then, i confirm the deadline.","then, i confirm the deadline"], display:"Then, I confirm the deadline." },
+  { es: "Después de eso, el gerente aprueba la solicitud.", answers:["after that, the manager approves the request.","after that, the manager approves the request"], display:"After that, the manager approves the request." },
+  { es: "Finalmente, notificamos al cliente.", answers:["finally, we notify the client.","finally, we notify the client"], display:"Finally, we notify the client." },
+  { es: "Mi solicitud todavía está pendiente.", answers:["my request is still pending.","my request is still pending"], display:"My request is still pending." },
+];
+
+// PART C — MC Quiz (12 questions, last 2 are grammar-bridge, blended)
+const PART_C = [
+  { type:"mc", q:'Which word means "to officially say yes"?', opts:["approve","reject","submit"], answer:0, hint:"💡 The opposite of reject.", fb:"Approve means to officially agree to something." },
+  { type:"mc", q:'Which word means "to officially say no"?', opts:["review","reject","process"], answer:1, hint:"💡 The opposite of approve.", fb:"Reject means to officially decline something." },
+  { type:"input", q:'"Please ___ your report by Monday."', hint:"s _ _ m i t", answers:["submit"], display:"Submit.", fb:"Submit means to hand something in officially." },
+  { type:"tf", q:"'Pending' means a task is already finished.", answer:false, hint:"💡 Think about a request that is still waiting.", fb:"False — pending means still waiting for a decision or action." },
+  { type:"mc", q:"'___, an employee submits a request.' (first step)", opts:["First","Then","Finally"], answer:0, hint:"💡 This is the opening step.", fb:"'First' introduces the opening step of a process." },
+  { type:"input", q:"'___, the supervisor reviews it.' (middle step)", hint:"t _ _ n", answers:["then","Then"], display:"Then.", fb:"'Then' introduces a step that comes after the first one." },
+  { type:"mc", q:"Which sentence is correctly punctuated?", opts:["After that, the director approves it.","After, that the director approves it.","After that the director, approves it."], answer:0, hint:"💡 Look at the comma placement.", fb:"Sequencing words are followed by a comma: 'After that, ...'" },
+  { type:"tf", q:"'Finally' can introduce the first step of a process.", answer:false, hint:"💡 Think about what 'finally' usually means.", fb:"False — 'finally' introduces the last step, not the first." },
+  { type:"mc", q:"'The finance team ___ the invoices every Friday.'", opts:["process","processes","processing"], answer:1, hint:"💡 Third person singular.", fb:"With 'the finance team' (singular), we use 'processes'." },
+  { type:"mc", q:"In David's audio, what happens if the requested dates are already booked?", opts:["The request is rejected automatically","The supervisor suggests alternative dates","The employee loses the vacation days"], answer:1, hint:"💡 Recall the end of the audio.", fb:"The supervisor contacts the employee to suggest alternative dates." },
+  { type:"mc", q:"Which is the imperative form?", opts:['"First, submit the form."','"First, she submits the form."'], answer:0, hint:"💡 Imperatives have no subject.", fb:"'First, submit the form' is an imperative — a direct command with no subject." },
+  { type:"input", q:'Imperative form: "___ the request." (approve)', hint:"base verb form", answers:["approve","Approve"], display:"Approve.", fb:"Imperatives use the base form of the verb, with no subject — 'Approve the request.'" },
+];
+
+// ── Independent state per part ──────────────────────────
+const stateA = {}; let scoreA = 0; let attemptsA = 0;
+const stateB_unjumble = {}; // { idx: { placed:[idxIntoWords...], revealed, correct } }
+const stateB_translate = {}; // { idx: { val, revealed, correct } }
+const stateC = {}; let scoreC = 0;
+
+let transcriptOpenHW = false;
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderPartA() {
+  const answered = Object.values(stateA).filter(s=>s.revealed).length;
+  const pct = PART_A.length ? (answered/PART_A.length)*100 : 0;
+  const allDone = answered === PART_A.length && PART_A.length>0;
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">A</div>
+      <div class="sec-badge-title">Listening Comprehension</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Escucha a David explicar el proceso de solicitud de vacaciones en su empresa. Responde las preguntas después de escuchar.</div>
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Requesting Time Off</div>
+          <div class="audio-box-sub">David Kim · Operations Coordinator, Canada · ~65 sec</div>
+        </div>
+      </div>
+      <audio id="hwAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L16-Audio002.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeedHW(0.7,this)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeedHW(0.8,this)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeedHW(0.9,this)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeedHW(1.0,this)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeedHW(1.1,this)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtnHW" onclick="toggleTranscriptHW()">${transcriptOpenHW?'▲ Hide transcript':'▼ Show transcript'}</button>
+      <div id="transcriptBoxHW" class="transcript-box" style="display:${transcriptOpenHW?'block':'none'};">
+        <p>"Hi, I'm David, and I work in operations here in Toronto. A lot of people ask me how our time-off process works, so let me explain it quickly.</p>
+        <p>First, an employee submits a vacation request through our HR portal. Then, their supervisor reviews the dates to check the team's schedule. After that, if there's no conflict, the supervisor approves the request within two business days. Finally, the employee receives a confirmation email, and the days are added to the shared calendar.</p>
+        <p>If the dates are already booked by someone else, the supervisor will contact the employee to suggest alternative dates. Most requests get approved without any problems."</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${PART_A.length}</span>
+      <span class="attempt-count">Attempts: ${attemptsA}</span>
+    </div>
+    ${PART_A.map((q,i)=>renderQ(q,i,stateA,'A')).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${scoreA} / ${PART_A.length}</div>
+      <div class="result-label">${scoreA===PART_A.length?'🎉 ¡Perfecto!':'¡Bien hecho!'}</div>
+      <div class="result-msg">${scoreA===PART_A.length?'Great listening — see you in class!':'Retry the wrong answers below to improve your score.'}</div>
+      ${scoreA<PART_A.length?`<button onclick="retakePart('A')" style="margin-top:18px;padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry Wrong Answers</button>`:''}
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartB() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">B</div>
+      <div class="sec-badge-title">Unjumble &amp; Translation</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Practica el orden de las palabras y la traducción usando el vocabulario y la gramática de esta lección.</div>
+
+    <div class="part-tag">Unjumble</div>
+    ${UNJUMBLE.map((item,i)=>renderUnjumble(item,i)).join('')}
+
+    <div class="part-tag" style="margin-top:10px;">Translation</div>
+    ${TRANSLATE.map((item,i)=>renderTranslate(item,i)).join('')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartC() {
+  const answered = Object.values(stateC).filter(s=>s.revealed).length;
+  const pct = PART_C.length ? (answered/PART_C.length)*100 : 0;
+  const allDone = answered === PART_C.length && PART_C.length>0;
+  const allCorrect = allDone && scoreC === PART_C.length;
+  const wrongCount = allDone ? PART_C.length - scoreC : 0;
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">C</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">12 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box">${PART_C.length} questions covering grammar, vocabulary, and this lesson's listening — take your time.</div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${PART_C.length}</span>
+    </div>
+    ${PART_C.map((q,i)=>renderQ(q,i,stateC,'C')).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${scoreC} / ${PART_C.length}</div>
+      <div class="result-label">${scoreC===PART_C.length?'🎉 ¡Perfecto! — You are ready for class!':scoreC>=PART_C.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${scoreC===PART_C.length?'Outstanding — a perfect score!':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakePart('C')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── AUDIO PLAYER ──────────
+function setSpeedHW(rate, btn) {
+  const audio = document.getElementById('hwAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+function toggleTranscriptHW() {
+  transcriptOpenHW = !transcriptOpenHW;
+  const box = document.getElementById('transcriptBoxHW');
+  const btn = document.getElementById('transcriptBtnHW');
+  if (box) box.style.display = transcriptOpenHW ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpenHW ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── SHARED QUESTION ENGINE (Part A + Part C) ──────────
+function renderQ(q, i, state, part) {
+  const s = state[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOptShared('${part}',${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQShared('${part}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInpShared('${part}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInpShared('${part}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${part}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function getPartData(part) { return part==='A' ? PART_A : PART_C; }
+function getPartState(part) { return part==='A' ? stateA : stateC; }
+
+function selectOptShared(part,i,j) {
+  const st = getPartState(part);
+  if(!st[i]) st[i]={};
+  if(st[i].revealed) return;
+  st[i].selected=j;
+  rerenderPart(part);
+}
+function revealQShared(part,i) {
+  const st = getPartState(part);
+  if(!st[i]) st[i]={};
+  st[i].revealed=true;
+  if (part==='A') attemptsA++;
+  recalcPart(part);
+  rerenderPart(part);
+}
+function setInpShared(part,i,v) {
+  const st = getPartState(part);
+  if(!st[i]) st[i]={};
+  st[i].inputVal=v;
+}
+function revealInpShared(part,i) {
+  const data = getPartData(part)[i];
+  const st = getPartState(part);
+  if(!st[i]) st[i]={};
+  const val=(st[i].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  st[i].correct = data.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  st[i].revealed=true;
+  if (part==='A') attemptsA++;
+  recalcPart(part);
+  rerenderPart(part);
+}
+function recalcPart(part) {
+  const data = getPartData(part);
+  const st = getPartState(part);
+  let s=0;
+  data.forEach((q,i)=>{
+    const item=st[i]; if(!item||!item.revealed)return;
+    if(q.type==='mc'&&item.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(item.selected===0))s++;
+    else if(q.type==='input'&&item.correct)s++;
+  });
+  if (part==='A') scoreA=s; else scoreC=s;
+}
+function retakePart(part) {
+  const data = getPartData(part);
+  const st = getPartState(part);
+  data.forEach((q,i) => {
+    const s=st[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(q.type==='mc')    ok=s.selected===q.answer;
+    else if(q.type==='tf')    ok=q.answer===(s.selected===0);
+    else if(q.type==='input') ok=s.correct;
+    if(!ok){ delete st[i]; }
+  });
+  recalcPart(part);
+  rerenderPart(part);
+  setTimeout(()=>{
+    const first=data.findIndex((_,i)=>!st[i]||!st[i].revealed);
+    const el=document.getElementById('qc-'+part+'-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function rerenderPart(part) {
+  const fn = part==='A' ? renderPartA : renderPartC;
+  const idx = STEPS.findIndex(s=>s.fn===fn);
+  if (currentStep===idx) document.getElementById('mainContent').innerHTML = fn();
+}
+
+// ── UNJUMBLE ENGINE (Part B) ──────────
+// state: { placed: [wordIndices in order], revealed, correct }
+function renderUnjumble(item, i) {
+  const s = stateB_unjumble[i] || { placed: [] };
+  const placed = s.placed || [];
+  const usedSet = new Set(placed);
+  const currentSentence = placed.map(wi => item.words[wi]).join(' ');
+  const rev = s.revealed;
+  return `<div class="unjumble-card">
+    <div class="unjumble-num">Sentence ${i+1}</div>
+    <div class="unjumble-answer-row" id="ans-row-${i}">
+      ${placed.map((wi,pos) => `<span class="unjumble-word placed" onclick="${rev?'':`unjumbleRemove(${i},${pos})`}">${item.words[wi]}</span>`).join('')}
+    </div>
+    <div class="unjumble-bank">
+      ${item.words.map((w,wi) => `<span class="unjumble-word bank ${usedSet.has(wi)?'used':''}" onclick="${rev||usedSet.has(wi)?'':`unjumbleAdd(${i},${wi})`}">${w}</span>`).join('')}
+    </div>
+    <div class="unjumble-check-row">
+      <button class="check-btn" onclick="unjumbleCheck(${i})" ${rev?'disabled':''}>Check</button>
+    </div>
+    ${rev ? `<div class="unjumble-fb ${s.correct?'correct':'wrong'}">${s.correct?'✅ Correct!':'💡 Correct answer: '+item.answer}</div>` : ''}
+  </div>`;
+}
+function unjumbleAdd(i, wordIdx) {
+  if(!stateB_unjumble[i]) stateB_unjumble[i] = { placed: [] };
+  if (stateB_unjumble[i].revealed) return;
+  stateB_unjumble[i].placed.push(wordIdx);
+  rerenderPartB();
+}
+function unjumbleRemove(i, pos) {
+  if(!stateB_unjumble[i]) return;
+  if (stateB_unjumble[i].revealed) return;
+  stateB_unjumble[i].placed.splice(pos, 1);
+  rerenderPartB();
+}
+function unjumbleCheck(i) {
+  const item = UNJUMBLE[i];
+  const s = stateB_unjumble[i] || { placed: [] };
+  const sentence = s.placed.map(wi => item.words[wi]).join(' ');
+  s.correct = sentence === item.answer;
+  s.revealed = true;
+  stateB_unjumble[i] = s;
+  rerenderPartB();
+}
+
+// ── TRANSLATION ENGINE (Part B) ──────────
+function renderTranslate(item, i) {
+  const s = stateB_translate[i] || {};
+  const rev = s.revealed;
+  const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+  return `<div class="translate-card">
+    <div class="translate-es">${item.es}</div>
+    <div class="q-input-row">
+      <input class="${cls}" type="text" placeholder="Write the English translation…" value="${s.val||''}" oninput="translateSetInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="translateCheck(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${item.display}</strong></div>` : ''}
+  </div>`;
+}
+function translateSetInp(i,v) { if(!stateB_translate[i]) stateB_translate[i]={}; stateB_translate[i].val=v; }
+function translateCheck(i) {
+  const item = TRANSLATE[i];
+  if(!stateB_translate[i]) stateB_translate[i]={};
+  const val = (stateB_translate[i].val||'').trim().toLowerCase().replace(/\.$/,'');
+  stateB_translate[i].correct = item.answers.some(a=>val===a.replace(/\.$/,''));
+  stateB_translate[i].revealed = true;
+  rerenderPartB();
+}
+function rerenderPartB() {
+  const idx = STEPS.findIndex(s=>s.fn===renderPartB);
+  if (currentStep===idx) document.getElementById('mainContent').innerHTML = renderPartB();
+}
+
+// ── STEPS ───────────────────────
+STEPS = [
+  { label: "A. Listening",  fn: renderPartA },
+  { label: "B. Practice",   fn: renderPartB },
+  { label: "C. Quiz",       fn: renderPartC },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

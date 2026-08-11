@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 16: Taking Notes in Meetings | A2 · Unit 2 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; font-size:13px; color:var(--slate); }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; align-items:center; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:0; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.reveal-btn { padding:8px 16px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; margin-top:8px; }
+.reveal-btn:hover { background:var(--sky); }
+.reveal-answer { display:none; margin-top:10px; padding:10px 14px; background:var(--green-bg); color:var(--green); border-radius:7px; font-size:13px; }
+.reveal-answer.show { display:block; }
+
+.teacher-box { background:#EAF2EE; border:1.5px dashed var(--green); border-radius:10px; padding:14px 18px; margin-bottom:20px; }
+.teacher-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--green); font-weight:700; margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+.teacher-label::before { content:'🧑‍🏫'; font-size:13px; }
+.teacher-box p { font-size:13px; line-height:1.65; color:var(--slate); }
+
+.card-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:20px; }
+@media(max-width:600px){ .card-grid{ grid-template-columns:1fr; } }
+.drill-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 16px; }
+.drill-card-num { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:var(--navy); color:var(--gold); font-size:12px; font-weight:700; border-radius:50%; margin-bottom:8px; }
+.drill-card-text { font-size:13px; color:var(--navy); line-height:1.6; }
+.drill-card-text strong { color:var(--sky); }
+
+.cue-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px; }
+.cue-card-num { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; background:var(--gold); color:var(--navy); font-size:12px; font-weight:700; border-radius:50%; margin-bottom:8px; }
+.cue-keywords { font-size:14px; color:var(--navy); font-weight:600; margin-bottom:10px; }
+.cue-plan { width:100%; padding:8px 10px; border:1.5px dashed var(--border-grey); border-radius:6px; font-family:var(--font-body); font-size:13px; background:var(--off-white); outline:none; color:var(--navy); }
+.cue-plan:focus { border-color:var(--gold); }
+.cue-plan-label { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--grey-blue); margin-bottom:4px; }
+
+.confidence-row { display:flex; gap:10px; justify-content:center; margin-top:16px; flex-wrap:wrap; }
+.conf-btn { width:52px; height:52px; border-radius:50%; border:1.5px solid var(--border-grey); background:var(--white); font-size:20px; cursor:pointer; transition:all .12s; display:flex; align-items:center; justify-content:center; flex-direction:column; }
+.conf-btn:hover { border-color:var(--sky); }
+.conf-btn.selected { border-color:var(--gold); background:var(--gold-bg); }
+.conf-num { font-size:9px; color:var(--grey-blue); margin-top:1px; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Classwork</div>
+    <h1 class="hero-title">Lesson 16: Taking Notes in Meetings</h1>
+    <p class="hero-sub">Speaking Day · Sequencing language · 60 min, teacher-led</p>
+    <div class="hero-pills">
+      <span class="pill accent">Speaking Day</span>
+      <span class="pill accent">3-Stage Speaking Ladder</span>
+      <span class="pill">4 sections</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap"><div class="progress-fill" id="progressBar" style="width:0%"></div></div>
+</div>
+
+<div class="step-nav"><div class="step-nav-inner" id="stepNav"></div></div>
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) { return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100); }
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const WARMUP_Q = [
+  { es: '¿Cómo se dice "enviar un formulario" en inglés?', en: "submit" },
+  { es: '¿Cómo se dice "revisar" en inglés?', en: "review" },
+  { es: '¿Cómo se dice "aprobar" en inglés?', en: "approve" },
+  { es: '¿Cómo se dice "rechazar" en inglés?', en: "reject" },
+  { es: '¿Cómo se dice "pendiente" en inglés?', en: "pending" },
+  { es: '¿Cómo se dice "fecha límite" en inglés?', en: "deadline" },
+  { es: '¿Cómo se dice "confirmar" en inglés?', en: "confirm" },
+  { es: '¿Cómo se dice "notificar" en inglés?', en: "notify" },
+];
+
+const CHAIN_CARDS = [
+  { s1: "submit the request", s2: "my manager reviews it" },
+  { s1: "check the deadline", s2: "I confirm the details" },
+  { s1: "fill out the form", s2: "I send it to HR" },
+  { s1: "send the invoice", s2: "the client approves it" },
+  { s1: "review the report", s2: "I notify my team" },
+  { s1: "process the order", s2: "the warehouse ships it" },
+  { s1: "update the file", s2: "I inform my supervisor" },
+  { s1: "confirm the meeting", s2: "I send a calendar invite" },
+];
+
+const CUE_CARDS = [
+  "submit → request → approve",
+  "check → deadline → confirm",
+  "review → report → notify",
+  "process → order → ship",
+  "update → file → inform",
+  "send → invoice → approve",
+  "confirm → meeting → invite",
+  "fill out → form → send",
+];
+
+let selectedConfidence = null;
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="teacher-box">
+      <div class="teacher-label">Teacher Instruction Box</div>
+      <p>Ask each of the 8 students one question aloud, round-robin. Don't reveal the English word — let them produce it. Keep pace brisk; this is retrieval, not teaching. If a student blanks, give a one-word cue rather than the answer.</p>
+    </div>
+    <p class="sec-intro">Oral vocabulary recall — 8 questions, one per student:</p>
+    <div class="data-table-wrap">
+      <div class="data-table-head"><span>Question (Spanish)</span><span>Answer (English)</span></div>
+      ${WARMUP_Q.map((q,i) => `<div class="data-table-row"><span>${i+1}. ${q.es}</span><span style="font-weight:700;color:var(--navy)">${q.en}</span></div>`).join('')}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModelReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Model Reading &amp; Grammar Reminder</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="pattern-box">
+      <div class="pattern-box-head">Grammar Pattern Reminder</div>
+      <div class="pattern-row"><div class="pattern-en">First, ...</div><div class="pattern-es">Primero, ...</div><div></div></div>
+      <div class="pattern-row"><div class="pattern-en">Then / Next, ...</div><div class="pattern-es">Luego, ...</div><div></div></div>
+      <div class="pattern-row"><div class="pattern-en">After that, ...</div><div class="pattern-es">Después de eso, ...</div><div></div></div>
+      <div class="pattern-row"><div class="pattern-en">Finally, ...</div><div class="pattern-es">Finalmente, ...</div><div></div></div>
+    </div>
+    <div class="es-note">Recuerda: la palabra de secuencia va al principio de la oración, seguida de una coma.</div>
+
+    <div class="teacher-box">
+      <div class="teacher-label">Teacher Instruction Box</div>
+      <p>This is a short model, not a Reading Day passage — don't stretch it into a full narrative. Read it aloud once at natural pace, then once more slowly. Ask 2–3 students to read a line each. This primes the sentence rhythm before the Speaking Ladder.</p>
+    </div>
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👩‍💼</div>
+        <div>
+          <div class="model-name">Alicia</div>
+          <div class="model-role">Client Requests Coordinator</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <p class="model-quote">"Hi, I'm Alicia. I want to explain how we handle client requests on my team. First, the client sends an email with their request. Then, I check the deadline and confirm the details. After that, I submit the request to our design team for review. Finally, I notify the client once everything is approved."</p>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Quick Comprehension Check</div>
+      <p style="font-size:14px; margin-bottom:8px;">Who sends the first email?</p>
+      <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show answer</button>
+      <div class="reveal-answer">The client.</div>
+    </div>
+    <div class="ex-box">
+      <p style="font-size:14px; margin-bottom:8px;">What does Alicia do right after she checks the deadline?</p>
+      <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show answer</button>
+      <div class="reveal-answer">She confirms the details.</div>
+    </div>
+    <div class="ex-box">
+      <p style="font-size:14px; margin-bottom:8px;">Which word introduces the last step?</p>
+      <button class="reveal-btn" onclick="this.nextElementSibling.classList.toggle('show')">Show answer</button>
+      <div class="reveal-answer">Finally.</div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeakingLadder() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">3-Stage Speaking Ladder</div>
+      <div class="sec-badge-time">25 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="teacher-box">
+      <div class="teacher-label">Teacher Instruction Box — Stage 1 &amp; 2</div>
+      <p>Stage 1 is choral only — no individual student is singled out yet, so keep energy light and low-risk. Stage 2 errors are "off-script" errors: correct the frame, not the content. Move briskly through all 8 students.</p>
+    </div>
+
+    <div class="info-box">
+      <strong>Stage 1 — Model &amp; Chorus (~2 min)</strong><br>
+      Teacher models the target sentence twice: <em>"First, I submit the request. Then, my manager reviews it."</em><br>
+      Whole class repeats chorally, twice.
+    </div>
+
+    <p class="sec-intro"><strong>Stage 2 — Chain Drill</strong> (fixed frame, content varies via 8 numbered cards)</p>
+    <div class="info-box">Sentence frame: <em>"First, I [step 1]. Then, [step 2]."</em></div>
+    <div class="card-grid">
+      ${CHAIN_CARDS.map((c,i) => `<div class="drill-card">
+        <div class="drill-card-num">${i+1}</div>
+        <div class="drill-card-text">First, I <strong>${c.s1}</strong>. Then, <strong>${c.s2}</strong>.</div>
+      </div>`).join('')}
+    </div>
+    <p style="font-size:13px; color:var(--grey-blue); margin-bottom:24px;">Each of the 8 students takes one numbered card, round-robin, producing the sentence aloud using the fixed frame.</p>
+
+    <div class="teacher-box">
+      <div class="teacher-label">Teacher Instruction Box — Stage 3 (distinct from Stage 2)</div>
+      <p>These are genuine production gaps, not off-script errors — note them for later, but don't over-correct in the moment or the activity collapses back into a controlled drill. Give students real silent time to write their line before calling on them.</p>
+    </div>
+
+    <p class="sec-intro"><strong>Stage 3 — Cue-Only Independent Round</strong> (all 8 students, plan-before-you-speak)</p>
+    <p style="font-size:13px; color:var(--grey-blue); margin-bottom:14px;">Each student receives 2–3 keywords only (no sentence frame). They first write one line silently under their cue card, then say it aloud when called.</p>
+    <div class="card-grid">
+      ${CUE_CARDS.map((kw,i) => `<div class="cue-card">
+        <div class="cue-card-num">${i+1}</div>
+        <div class="cue-keywords">${kw}</div>
+        <div class="cue-plan-label">Plan your sentence (not scored)</div>
+        <input class="cue-plan" type="text" placeholder="Write your sentence here…">
+      </div>`).join('')}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Wrap-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box">
+      Today you practiced describing a workflow step-by-step, using <strong>first, then, after that,</strong> and <strong>finally</strong>.
+    </div>
+    <p class="sec-intro" style="text-align:center; margin-top:20px;">How confident do you feel describing a process in English?</p>
+    <div class="confidence-row" id="confidenceRow">
+      ${[1,2,3,4,5].map(n => `<button class="conf-btn ${selectedConfidence===n?'selected':''}" onclick="selectConfidence(${n})">
+        <span>${['😕','🙁','😐','🙂','😄'][n-1]}</span><span class="conf-num">${n}</span>
+      </button>`).join('')}
+    </div>
+    <div class="info-box" style="margin-top:24px; text-align:center; font-style:italic;">
+      Cushion: 10 min reserved for clarifying doubts.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function selectConfidence(n) {
+  selectedConfidence = n;
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+}
+
+// ── STEPS ───────────────────────
+STEPS = [
+  { label: "1. Warm-up",          fn: renderWarmup },
+  { label: "2. Model Reading",    fn: renderModelReading },
+  { label: "3. Speaking Ladder",  fn: renderSpeakingLadder },
+  { label: "4. Wrap-up",          fn: renderWrapup },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

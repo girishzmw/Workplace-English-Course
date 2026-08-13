@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 17: Talking About Technology Problems | A2 · Unit 2 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+
+/* TEACHER INSTRUCTION BOX */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* TAP-TO-REVEAL (answer keys / model content) */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:all 0.15s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--sky); font-style:italic; white-space:nowrap; }
+.tap-answer { display:none; padding-top:6px; margin-top:6px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:600; }
+.tap-answer.show { display:block; }
+.tap-row.show .tap-hint-label { display:none; }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.writing-area.small { min-height:80px; }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* QUIZ: QUESTION CARDS (Reading comprehension T/F) */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:26px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:44px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:16px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Classwork</div>
+    <h1 class="hero-title">Lesson 17: Talking About Technology Problems</h1>
+    <p class="hero-sub">Reading Day · Present Continuous + problem expressions · 60 min</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">Reading Day</span>
+      <span class="pill accent">Writing 20%</span>
+      <span class="pill">4 sections</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? "← Previous" : "← " + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,"");
+  const nextLabel = isLast  ? "Complete ✓"  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,"") + " →";
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?"disabled":`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?"disabled":`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById("stepNav").innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?"active":""}" onclick="goTo(${i})">${s.label}</button>`)
+    .join("");
+  document.getElementById("mainContent").innerHTML = STEPS[currentStep].fn();
+  document.getElementById("progressBar").style.width = getProgress(currentStep) + "%";
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const WARMUP = [
+  { q: "¿Cómo se dice \"fallar/bloquearse\" en inglés?", a: "crash" },
+  { q: "¿Cómo se dice \"congelarse\" en inglés?", a: "freeze" },
+  { q: "What's the Spanish word for \"update\"?", a: "actualización" },
+  { q: "¿Cómo se dice \"conexión\" en inglés?", a: "connection" },
+  { q: "What's the Spanish word for \"platform\"?", a: "plataforma" },
+  { q: "¿Cómo se dice \"reiniciar\" en inglés?", a: "restart / reboot" },
+  { q: "What's the Spanish word for \"error message\"?", a: "mensaje de error" },
+  { q: "¿Cómo se dice \"iniciar sesión\" en inglés?", a: "log in" },
+];
+
+// Reading comprehension — uses the standard quiz engine
+const QUIZ = [
+  { type:"tf", q:"Klara works as a marketing manager.",
+    answer: false,
+    fb: "False — she's a project manager." },
+  { type:"tf", q:"Klara's computer won't turn on when she arrives, and she has to restart it twice.",
+    answer: true,
+    fb: "True — that's how her morning starts." },
+  { type:"tf", q:"The internet connection is working perfectly all morning.",
+    answer: false,
+    fb: "False — it keeps disconnecting." },
+  { type:"tf", q:"According to IT, the connection problem is affecting only Klara's computer.",
+    answer: false,
+    fb: "False — the whole building is having problems, because of a network update." },
+  { type:"tf", q:"Klara's video call is with a client in Berlin, about a new project.",
+    answer: true,
+    fb: "True — that's the ten o'clock call." },
+  { type:"tf", q:"Klara gets angry and ends the call immediately.",
+    answer: false,
+    fb: "False — she stays calm and asks the client to call back in fifteen minutes." },
+];
+
+// ── Quiz state ──────────────────────────────
+const quizState = {};
+let quizScore = 0;
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Oral vocabulary recall — ask each question aloud, one per student, round-robin.</p>
+    ${WARMUP.map((w,i) => `
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show'); this.classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q">${i+1}. ${w.q}</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">${w.a}</div>
+      </div>`).join("")}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Ask each question aloud, one per student, round-robin. Accept the target word even with a small pronunciation slip — this is a fluency warm-up, not a test. If a student blanks, give the first sound as a hint before moving to the next student.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Reading</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">📖</div>
+        <div>
+          <div class="model-name">Klara's Difficult Morning</div>
+          <div class="model-role">Read silently first, then we'll check the answers together</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <p style="font-size:15px;line-height:1.9;color:var(--slate);margin-bottom:14px;">Klara Nowak works as a project manager in Warsaw. This morning, she is having a really difficult day at the office. When she arrives at eight o'clock, her computer won't turn on, so she has to restart it twice before it finally works. She sits down at her desk, feeling a little stressed already, and opens her laptop to check her messages.</p>
+        <p style="font-size:15px;line-height:1.9;color:var(--slate);margin-bottom:14px;">Then, she is trying to check her email, but the internet connection keeps disconnecting. Every time she opens a new message, the page freezes for a few seconds. Klara calls the IT team, and they tell her the whole building is having connection problems today because of an update to the office network. They say they are working on it, but they can't give her an exact time.</p>
+        <p style="font-size:15px;line-height:1.9;color:var(--slate);margin-bottom:14px;">At ten o'clock, Klara has an important video call with a client in Berlin about a new project. Unfortunately, the platform keeps freezing during the call. She can't hear the client clearly, the audio keeps cutting out, and the client can't see her screen share properly. Klara is getting frustrated, but she stays calm and asks the client if they can call back in fifteen minutes.</p>
+        <p style="font-size:15px;line-height:1.9;color:var(--slate);">While she waits, she is installing a software update on her laptop, hoping it will fix some of the problems. The update takes a long time, and a small progress bar barely moves. Klara starts to worry about her afternoon meetings, because she still has a report to finish and two more calls scheduled before lunch. She decides to write a quick message to her team, warning them that she might be a few minutes late to everything today.</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">True or False</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join("")}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?"🎉 ¡Perfecto!":"Nice work — review any wrong answers together."}</div>
+    </div>` : ""}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Have students read silently first (2–3 min), then go over the True/False questions as a class, calling on individuals. If time allows, ask one or two students to summarize the passage in their own words before checking answers, or ask "What would you do if this happened to you?" as a quick oral extension.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Main Grammar</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Quick review: Present Continuous for problems happening right now.</p>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Pattern</div>
+      <div class="pattern-row"><div class="pattern-en">Subject + am/is/are + verb-ing</div><div class="pattern-es">Sujeto + am/is/are + verbo-ing</div></div>
+      <div class="pattern-row"><div class="pattern-en">"It's crashing." / "I'm having trouble with..."</div><div class="pattern-es">"Se está bloqueando." / "Estoy teniendo problemas con..."</div></div>
+      <div class="pattern-row"><div class="pattern-en">"It keeps + verb-ing" (repeated problem)</div><div class="pattern-es">"It keeps freezing." = pasa una y otra vez</div></div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Remember</div>
+      Present Continuous describes a problem happening right now, today — not a general fact. "The system is crashing" (right now) vs. "The system crashes" (sounds like a permanent flaw). "Keep + verb-ing" adds the idea that it's happening again and again.
+    </div>
+
+    <div class="examples-wrap">
+      <div class="examples-label">Your turn</div>
+      <p style="font-size:14px;color:var(--slate);margin-bottom:12px;">Think about a real tech problem you've had this week — at work, at home, on your phone. Write one or two sentences using Present Continuous or "keep + verb-ing."</p>
+    </div>
+    <textarea class="writing-area small" placeholder="Write your 1–2 example sentences here…"></textarea>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      This is re-explanation, not re-teaching from zero — the grammar was already fully taught in Pre-Learning. Keep this brisk: pattern box on screen, quick oral run-through, then move students into writing their own examples. Call on 4–5 students to share aloud and correct live — this is your chance to catch the Present Simple/Continuous mix-up before the Writing task.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWriting() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Writing Task</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box">Imagine it's a busy day at your office and several things are going wrong with your technology. Write 3–5 sentences describing what's happening right now. Use Present Continuous and at least one "keep + verb-ing" sentence.</div>
+
+    <div class="word-bank">
+      <div class="word-bank-label">Word Bank</div>
+      <div class="word-bank-words">crash · freeze · connection · platform · update · glitch · error message · restart · sync · log in/out · won't turn on · keep + verb-ing</div>
+    </div>
+
+    <textarea class="writing-area" placeholder="Write your 3–5 sentences here…"></textarea>
+
+    <div class="divider"></div>
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show'); this.classList.toggle('show')">
+      <div class="tap-row-top">
+        <div class="tap-q">Need a model? Tap to reveal ▾</div>
+        <div class="tap-hint-label">Tap to reveal</div>
+      </div>
+      <div class="tap-answer">"Right now, I'm having a terrible morning. My laptop keeps freezing every few minutes, and I can't open my email. The wifi connection isn't working properly, so I'm trying to restart the router. Also, the new software update won't install, and I'm getting an error message every time I try."</div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      A2 = free writing, 3–5 original sentences. Give students the full 10 minutes to write without interrupting, then correct live, one student at a time or by pulling 3–4 example sentences onto the shared screen. Focus corrections on Present Continuous form and the "keep + -ing" pattern — don't over-correct vocabulary choices. Reveal the model answer only after students finish writing. Use the remaining 10-minute cushion for lingering questions, a few more students sharing sentences aloud, or extra time on Steps 2 or 3 if the group needed it.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE (Reading comprehension) ─────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = "";
+  const opts = ["True","False"];
+  const lets = ["T","F"];
+
+  body = `<div class="q-options">
+    ${opts.map((opt,j) => {
+      let cls = "q-opt";
+      const isAns = q.answer === (j === 0);
+      if (rev) { if(isAns) cls+=" correct"; else if(s.selected===j) cls+=" wrong"; }
+      else if (s.selected===j) cls+=" selected";
+      return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?"disabled":""}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+    }).join("")}
+  </div>
+  ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?"disabled":""}>Check</button></div>` : ""}
+  ${rev  ? `<div class="q-feedback ${q.answer===(s.selected===0)?"correct":"wrong"}">💡 ${q.fb}</div>` : ""}`;
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.answer===(st.selected===0))s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderReading);
+  if(currentStep===qi) document.getElementById("mainContent").innerHTML=renderReading();
+}
+
+// ── STEPS — defined last ───────
+STEPS = [
+  { label: "1. Warm-up",  fn: renderWarmup },
+  { label: "2. Reading",  fn: renderReading },
+  { label: "3. Grammar",  fn: renderGrammar },
+  { label: "4. Writing",  fn: renderWriting },
+];
+
+render();
+</script>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

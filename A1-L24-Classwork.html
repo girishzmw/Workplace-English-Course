@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 24: Projects and Tasks | A1 · Unit 3 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* TEACHER INSTRUCTION BOX (Classwork only) */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* PASSAGE CARD (Reading step) */
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.passage-head { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.passage-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; }
+.passage-student { font-size:12px; color:var(--grey-blue); font-style:italic; }
+.passage-text { font-size:14px; line-height:1.8; color:var(--slate); margin-bottom:14px; }
+.passage-q { display:flex; flex-direction:column; gap:8px; }
+.passage-q-item { padding:10px 14px; background:var(--off-white); border-radius:7px; cursor:pointer; font-size:13px; }
+.passage-q-item .rev { display:none; color:var(--green); font-weight:700; margin-left:6px; }
+.passage-q-item .tap-hint { font-size:11px; color:var(--grey-blue); float:right; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 3 · Classwork — Speaking Day</div>
+    <h1 class="hero-title">Lesson 24: Projects and Tasks</h1>
+    <p class="hero-sub">Grammar: Have / Has · 60 minutes, live class</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking-heavy</span>
+      <span class="pill accent">📖 8 reading passages</span>
+      <span class="pill">4 steps</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block — never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly — not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START — replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const WARMUP = [
+  { es: "¿Cómo se dice \u201Cfecha límite\u201D en inglés?", en: "deadline" },
+  { es: "¿Cómo se dice \u201Centregable\u201D en inglés?", en: "deliverable" },
+  { es: "¿Cómo se dice \u201Chito\u201D en inglés?", en: "milestone" },
+  { es: "¿Cómo se dice \u201Ctarea\u201D en inglés?", en: "task" },
+  { es: "¿Cómo se dice \u201Cprioridad\u201D en inglés?", en: "priority" },
+  { es: "¿Cómo se dice \u201Cactualización\u201D en inglés?", en: "update" },
+  { es: "¿Cómo se dice \u201Ccliente\u201D en inglés?", en: "client" },
+  { es: "¿Cómo se dice \u201Cequipo\u201D en inglés?", en: "team" },
+];
+
+const PASSAGES = [
+  { student: "Student 1", text: "Hi, I'm David. I have a project this month. My team has a big deadline on Friday. David's manager has a new priority for the client. We have three deliverables to finish. Everyone has their own tasks. I have my update ready for tomorrow.",
+    q: [ ["How many projects does David have this month?", "One."], ["What day is the team's deadline?", "Friday."] ] },
+  { student: "Student 2", text: "Priya has a new assignment today. She has two tasks: a report and a presentation. Her deadline is Wednesday. Priya's team has a milestone this week — finishing the client proposal. She has good progress so far.",
+    q: [ ["How many tasks does Priya have today?", "Two."], ["What is Priya's deadline day?", "Wednesday."] ] },
+  { student: "Student 3", text: "Karim has a busy schedule this week. He has a project meeting on Monday and a client call on Tuesday. His team has three deliverables for this project. Karim has an update ready for his manager.",
+    q: [ ["What does Karim have on Monday?", "A project meeting."], ["How many deliverables does Karim's team have?", "Three."] ] },
+  { student: "Student 4", text: "We have a new client this month. Our team has a big milestone: the first product launch. I have a task to prepare the schedule. My colleagues have their assignments too. We have a deadline on Friday.",
+    q: [ ["What is the team's milestone?", "The first product launch."], ["When is the deadline?", "Friday."] ] },
+  { student: "Student 5", text: "Sofia has a project with a tight deadline. She has four tasks this week. Her team has a priority: finishing the deliverable for the client. Sofia has a meeting to check the team's progress.",
+    q: [ ["How many tasks does Sofia have this week?", "Four."], ["What does Sofia's team have as a priority?", "Finishing the deliverable for the client."] ] },
+  { student: "Student 6", text: "Thomas has an assignment for a new project. He has a deadline next Monday. His team has two milestones this month. Thomas has an update every Friday for his manager.",
+    q: [ ["When is Thomas's deadline?", "Next Monday."], ["How many milestones does Thomas's team have this month?", "Two."] ] },
+  { student: "Student 7", text: "Our client has a new priority. We have a deliverable ready for tomorrow. My team has a project meeting today. I have three tasks to finish before the deadline.",
+    q: [ ["How many tasks does the speaker have to finish?", "Three."], ["What does the team have today?", "A project meeting."] ] },
+  { student: "Student 8", text: "Yuki has a schedule full of tasks this week. She has a milestone on Thursday. Her manager has a new deadline for the client's project. Yuki has an update ready for the team.",
+    q: [ ["What does Yuki have on Thursday?", "A milestone."], ["Who has a new deadline for the client's project?", "Yuki's manager."] ] },
+];
+
+const CHAIN_CARDS = [
+  { subj: "I", frame: "I have ___.", cue: "a deadline on Monday", model: "I have a deadline on Monday." },
+  { subj: "She", frame: "She has ___.", cue: "a new task", model: "She has a new task." },
+  { subj: "I", frame: "I have ___.", cue: "three deliverables", model: "I have three deliverables." },
+  { subj: "He", frame: "He has ___.", cue: "an important milestone", model: "He has an important milestone." },
+  { subj: "I", frame: "I have ___.", cue: "a project meeting", model: "I have a project meeting." },
+  { subj: "She", frame: "She has ___.", cue: "an update for the client", model: "She has an update for the client." },
+  { subj: "I", frame: "I have ___.", cue: "a new priority", model: "I have a new priority." },
+  { subj: "He", frame: "He has ___.", cue: "a busy schedule", model: "He has a busy schedule." },
+];
+
+const CUE_CARDS = [
+  { cue: "team / deadline", model: "My team has a deadline this week." },
+  { cue: "client / update", model: "I have an update for the client." },
+  { cue: "project / priority", model: "This project has a new priority." },
+  { cue: "deliverable / Friday", model: "We have a deliverable ready on Friday." },
+  { cue: "task / this week", model: "I have a task this week." },
+  { cue: "milestone / next month", model: "Our team has a milestone next month." },
+  { cue: "schedule / busy", model: "He has a busy schedule." },
+  { cue: "assignment / today", model: "She has an assignment today." },
+];
+
+// State for the plan-before-you-speak text inputs (Stage 3, unscored)
+const cuePlans = {};
+function setCuePlan(i, v) { cuePlans[i] = v; }
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+// One function per step. Each returns HTML and ends with navFooter().
+// Rename, add, or remove to match your STEPS array at the bottom.
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Oral vocabulary recall — ask each student one question aloud, round-robin. No writing.</p>
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Oral Recall — 8 Questions</div>
+      <div class="blank-list">
+        ${WARMUP.map((w,i) => `
+        <div class="passage-q-item" onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='inline'?'none':'inline'">
+          <span class="blank-num">${i+1}</span> &nbsp;${w.es}
+          <span class="rev">✓ ${w.en}</span>
+          <span class="tap-hint">Tap to reveal</span>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Keep pace brisk — this is recall, not teaching. If a student blanks, give the first sound as a hint before moving to the next student. All 8 students get one question each.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Reading</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Grammar Reminder — Have / Has</div>
+      <div class="pattern-row"><span class="pattern-en">I / You / We / They <strong>have</strong></span><span class="pattern-es">tengo / tienes / tenemos / tienen</span></div>
+      <div class="pattern-row"><span class="pattern-en">He / She / It <strong>has</strong></span><span class="pattern-es">tiene</span></div>
+      <div class="pattern-row"><span class="pattern-en">She has <strong>her</strong> deadline.</span><span class="pattern-es">El adjetivo posesivo concuerda con el sujeto.</span></div>
+    </div>
+
+    <p class="sec-intro">Each student reads one passage aloud, then the class answers the two questions together.</p>
+
+    <div id="passageList">
+      ${PASSAGES.map((p,i) => `
+        <div class="passage-card">
+          <div class="passage-head">
+            <span class="passage-num">${i+1}</span>
+            <span class="passage-student">${p.student}</span>
+          </div>
+          <div class="passage-text">"${p.text}"</div>
+          <div class="passage-q">
+            ${p.q.map(([q,a]) => `
+              <div class="passage-q-item" onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='inline'?'none':'inline'">
+                ${q}
+                <span class="rev">✓ ${a}</span>
+                <span class="tap-hint">Tap to reveal</span>
+              </div>`).join('')}
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      With 8 students and 8 passages, assign one passage per student — each student reads their passage aloud once, then the class answers the 2 questions together (choral or cold-call). This replaces the single shared passage and gives every student an individual reading turn before the Speaking Ladder begins. Keep pace tight — roughly 1 minute per passage (read + 2 questions) to stay within the 15-minute step.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeakingLadder() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Speaking Ladder</div>
+      <div class="sec-badge-time">25 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="h-serif">Stage 1 — Model &amp; Chorus (~2 min)</div>
+    <p class="sec-intro">Teacher models each sentence once or twice. Whole class repeats chorally, together.</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">"I have a deadline on Friday."</span></div>
+      <div class="example-item"><span class="example-en">"She has a milestone this week."</span></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="h-serif">Stage 2 — Chain Drill</div>
+    <p class="sec-intro">Round-robin, fixed sentence frame. Each student gets one numbered card; content varies, structure stays the same.</p>
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] 8 Task Cards</div>
+      <div class="blank-list">
+        ${CHAIN_CARDS.map((c,i) => `
+        <div class="passage-q-item" onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='inline'?'none':'inline'">
+          <span class="blank-num">${i+1}</span> &nbsp;<strong>${c.frame}</strong> &nbsp;<em style="color:var(--grey-blue)">(${c.cue})</em>
+          <span class="rev">✓ ${c.model}</span>
+          <span class="tap-hint">Tap for model</span>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note — Stage 2</div>
+      Errors here mean "off-script" — the student didn't use the given frame. Correct immediately and have them repeat the full sentence.
+    </div>
+
+    <div class="divider"></div>
+    <div class="h-serif">Stage 3 — Cue-Only Independent Round</div>
+    <p class="sec-intro">Round-robin, teacher-controlled. Each student gets 2–3 keywords only — no sentence frame. Write your sentence silently first, then say it aloud when called on.</p>
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] 8 Cue Cards — Plan Before You Speak</div>
+      <div class="blank-list">
+        ${CUE_CARDS.map((c,i) => `
+        <div class="blank-item" style="flex-direction:column;align-items:stretch;gap:8px;">
+          <div><span class="blank-num">${i+1}</span> &nbsp;<strong>${c.cue}</strong></div>
+          <input class="writing-area" style="min-height:auto;padding:8px 12px;font-size:13px;" type="text"
+            placeholder="Write your sentence here…" oninput="setCuePlan(${i}, this.value)" />
+          <div class="passage-q-item" style="margin-top:0;" onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='inline'?'none':'inline'">
+            Need a model?
+            <span class="rev">✓ ${c.model}</span>
+            <span class="tap-hint">Tap to reveal</span>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note — Stage 3</div>
+      Give each student roughly 15–20 seconds to write their plan before calling on them. Errors here are genuine production gaps — flag them for later, but avoid over-correcting in the moment, or the activity collapses back into a controlled drill.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Wrap-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box">
+      Today you practiced talking about work tasks using <strong>have</strong> and <strong>has</strong>. You can now say what deadlines, deliverables, and milestones you and your team have.
+    </div>
+    <div class="h-serif">Confidence Check</div>
+    <p class="sec-intro">How confident do you feel using have/has to talk about your tasks?</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">1 = not confident</span></div>
+      <div class="example-item"><span class="example-en">2</span></div>
+      <div class="example-item"><span class="example-en">3</span></div>
+      <div class="example-item"><span class="example-en">4</span></div>
+      <div class="example-item"><span class="example-en">5 = very confident</span></div>
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Ask students to call out or show fingers 1–5. Note any student who scores 1–2 for a quick individual check-in before the next class. 10-minute cushion follows — use it to clarify doubts, re-run a Speaking Ladder round, or extend Stage 3 with stronger students producing two sentences instead of one.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Warm-up",         fn: renderWarmup },
+  { label: "2. Reading",         fn: renderReading },
+  { label: "3. Speaking Ladder", fn: renderSpeakingLadder },
+  { label: "4. Wrap-up",         fn: renderWrapup },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

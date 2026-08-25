@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 19: Giving Status Updates | A2 · Unit 2 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* UNJUMBLE */
+.jumble-answer { min-height:48px; border:1.5px dashed var(--border-grey); border-radius:8px; padding:10px; display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:12px; background:var(--off-white); }
+.jumble-answer.correct { border-color:var(--green); border-style:solid; background:var(--green-bg); }
+.jumble-answer.wrong { border-color:var(--red); border-style:solid; background:var(--red-bg); }
+.jumble-bank { display:flex; flex-wrap:wrap; gap:8px; }
+.word-pill { padding:8px 15px; background:var(--white); border:1.5px solid var(--border-grey); border-radius:20px; font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; font-family:var(--font-body); }
+.word-pill:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.word-pill.placed { background:var(--navy); color:var(--white); border-color:var(--navy); }
+.word-pill:disabled { cursor:default; opacity:0.85; }
+.word-pill.pill-correct { background:var(--green); border-color:var(--green); color:white; }
+.word-pill.pill-wrong { background:var(--red); border-color:var(--red); color:white; }
+.jumble-empty { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.result-attempts { font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* BUTTONS */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+.retry-btn { padding:12px 28px; background:var(--gold); color:var(--navy); border:none; border-radius:8px; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; }
+.retry-btn:hover { background:var(--gold-light); }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Homework</div>
+    <h1 class="hero-title">Lesson 19: Giving Status Updates</h1>
+    <p class="hero-sub">Present Perfect · Complete independently before next class</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">🎧 Listening</span>
+      <span class="pill accent">🔤 Unjumble + Translation</span>
+      <span class="pill accent">📝 MC Quiz</span>
+      <span class="pill">3 parts</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ─────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+// ── AUDIO (Pattern A — single audio player in this file) ──
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── LESSON DATA — PART A: LISTENING ───────────────────
+const QUIZ_A = [
+  { type:"tf", q:"The training materials have been fully approved by HR.", answer:false,
+    hint:"Listen again to the first update.", fb:"They have been submitted and reviewed once, but Klara is still waiting on final sign-off." },
+  { type:"mc", q:"Why is the client migration delayed?", opts:["David is on vacation","The client has not sent the final files","The project was cancelled"], answer:1,
+    hint:"Listen to the second update.", fb:"David has not received the final files from the client yet." },
+  { type:"input", q:"How many reminder emails has David sent?", hint:"A number between one and five.",
+    answers:["three","3"], display:"Three.", fb:"David has sent three reminder emails, but nothing has arrived." },
+  { type:"tf", q:"Sofia has submitted the new homepage design for review.", answer:true,
+    hint:"Listen to the third update.", fb:"Correct — Sofia finished the design and has submitted it for review." },
+  { type:"mc", q:"How is the website update project going, according to Klara?", opts:["Behind schedule","Ahead of the curve","Cancelled"], answer:1,
+    hint:"Klara compares it to what they expected.", fb:"It is ahead of the curve — faster than the team expected." },
+  { type:"input", q:"Which project is delayed, according to the update?", hint:"It is the second project mentioned.",
+    answers:["the client migration","client migration"], display:"The client migration.", fb:"The client migration is delayed because the final files have not arrived." },
+];
+
+// ── LESSON DATA — PART B: UNJUMBLE + TRANSLATION ──────
+const QUIZ_B = [
+  { type:"unjumble", words:["has","the","David","completed","not","transfer","data"],
+    answer:["David","has","not","completed","the","data","transfer"],
+    hint:"Start with the subject.", fb:"David has not completed the data transfer." },
+  { type:"unjumble", words:["approval","for","submitted","I","it","have"],
+    answer:["I","have","submitted","it","for","approval"],
+    hint:"Subject + have + past participle.", fb:"I have submitted it for approval." },
+  { type:"unjumble", words:["the","reviewed","draft","has","HR","first"],
+    answer:["HR","has","reviewed","the","first","draft"],
+    hint:"HR is singular — which auxiliary does it need?", fb:"HR has reviewed the first draft." },
+  { type:"unjumble", words:["she","design","finished","has","the"],
+    answer:["she","has","finished","the","design"],
+    hint:"Subject + has + past participle.", fb:"She has finished the design." },
+  { type:"unjumble", words:["sent","emails","he","reminder","has","three"],
+    answer:["he","has","sent","three","reminder","emails"],
+    hint:"The number goes right before the noun.", fb:"He has sent three reminder emails." },
+  { type:"translate", prompt:"He terminado el informe.",
+    answers:["i have finished the report"], display:"I have finished the report.",
+    hint:"yo he... = I have...", fb:"\u201cHe terminado\u201d = \u201cI have finished.\u201d" },
+  { type:"translate", prompt:"Todavía no ha aprobado el presupuesto.",
+    answers:["she has not approved the budget yet","he has not approved the budget yet"], display:"She has not approved the budget yet.",
+    hint:"Negative Present Perfect + \u201ctodavía\u201d = \u201cyet.\u201d", fb:"\u201cTodavía no ha aprobado\u201d = \u201chas not approved... yet.\u201d" },
+  { type:"translate", prompt:"¿Han revisado el contrato?",
+    answers:["have they reviewed the contract"], display:"Have they reviewed the contract?",
+    hint:"Question word order: Have + subject + past participle?", fb:"\u201c¿Han revisado?\u201d = \u201cHave they reviewed?\u201d" },
+  { type:"translate", prompt:"El proyecto está retrasado.",
+    answers:["the project is delayed"], display:"The project is delayed.",
+    hint:"This uses \u201cto be,\u201d not Present Perfect.", fb:"\u201cRetrasado\u201d = \u201cdelayed.\u201d" },
+  { type:"translate", prompt:"Estamos por delante de lo esperado.",
+    answers:["we are ahead of the curve"], display:"We are ahead of the curve.",
+    hint:"Today's idiom.", fb:"\u201cPor delante de lo esperado\u201d = \u201cahead of the curve.\u201d" },
+];
+
+// ── LESSON DATA — PART C: MC QUIZ (2 bridged items) ───
+const QUIZ_C = [
+  { type:"mc", q:'Choose the correct auxiliary: "He ___ finished the report."', opts:["has","have","had"], answer:0,
+    hint:"He/she/it → has.", fb:'"He" takes "has."' },
+  { type:"mc", q:'Choose the correct auxiliary: "We ___ submitted the form."', opts:["have","has","had"], answer:0,
+    hint:"We → have.", fb:'"We" takes "have."' },
+  { type:"input", q:'What is the past participle of "eat"?', hint:"Not the Simple Past form.",
+    answers:["eaten"], display:"Eaten.", fb:"Eat → ate (Simple Past) → eaten (past participle)." },
+  { type:"tf", q:"For most regular verbs, the Simple Past and past participle are the same word.", answer:true,
+    hint:"Think of finish → finished → finished.", fb:"True — regular verbs use the same -ed form for both." },
+  { type:"mc", q:'"Delayed" means the project is…', opts:["early","on time","late"], answer:2,
+    hint:"Delayed = running behind.", fb:'"Delayed" means the project is running late.' },
+  { type:"mc", q:'"Ahead of the curve" means…', opts:["late","more prepared than expected","confused"], answer:1,
+    hint:"It is a positive idiom about progress.", fb:'"Ahead of the curve" means more advanced or prepared than expected.' },
+  { type:"input", q:'Complete with Present Perfect: "She ___ (submit) the design."', hint:"has + past participle",
+    answers:["has submitted"], display:"Has submitted.", fb:'"She" = he/she/it, so the auxiliary is "has."' },
+  { type:"mc", q:"Which sentence is correct?", opts:["I have finished it yesterday.","I finished it yesterday."], answer:1,
+    hint:'"Yesterday" cannot appear with Present Perfect.', fb:'Specific time words like "yesterday" require Simple Past.' },
+  { type:"input", q:'[Bridge — A1 L34] What is the Simple Past of "send"?', hint:"An irregular verb — no pattern, must be memorized.",
+    answers:["sent"], display:"Sent.", fb:'"Send" is irregular: send → sent.' },
+  { type:"mc", q:'[Bridge — A1 L34] Which pronoun pair uses "was" in the Simple Past of "to be"?', opts:["You / We","I / He / She / It","They / We"], answer:1,
+    hint:"Remember the exception table.", fb:'"I," "he," "she," and "it" use "was." Everyone else uses "were."' },
+  { type:"mc", q:'What is the past participle of "write"?', opts:["wrote","written","writed"], answer:1,
+    hint:"Different from the Simple Past form.", fb:'Write → wrote (Simple Past) → written (past participle).' },
+  { type:"mc", q:'"Pending" means the task is…', opts:["done","not yet done","cancelled"], answer:1,
+    hint:"It is still waiting.", fb:'"Pending" = waiting to be done.' },
+];
+
+// ── STATE for three independent quiz parts ────────────
+const qState    = { A:{}, B:{}, C:{} };
+const qScore    = { A:0,  B:0,  C:0  };
+const qAttempts = { A:0,  B:0,  C:0  };
+const quizBank  = { A:QUIZ_A, B:QUIZ_B, C:QUIZ_C };
+const jumbleUI  = { A:{}, B:{}, C:{} }; // per-question placed[] arrays, for unjumble type only
+
+function normalise(s) { return s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,''); }
+
+// ── SHARED QUESTION RENDERER (mc / tf / input / unjumble / translate) ──
+function renderQuestion(part, q, i) {
+  const s = qState[part][i] || {};
+  const rev = s.revealed;
+  const letters = ['A','B','C','D'];
+  let body = '';
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+    const lets = q.type === 'mc' ? letters : ['T', 'F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt('${part}',${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ('${part}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input' || q.type === 'translate') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${part}-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp('${part}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp('${part}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'unjumble') {
+    if (!jumbleUI[part][i]) jumbleUI[part][i] = [];
+    const placed = jumbleUI[part][i];
+    const bankIdx = q.words.map((_,wi) => wi).filter(wi => !placed.includes(wi));
+    let jClass = 'jumble-answer';
+    if (rev) jClass += s.correct ? ' correct' : ' wrong';
+    body = `<div class="${jClass}">
+      ${placed.length === 0 ? '<span class="jumble-empty">Tap words below to build the sentence…</span>' : ''}
+      ${placed.map((wi,pos) => {
+        let pcls = 'word-pill placed';
+        if (rev) pcls += s.correct ? ' pill-correct' : ' pill-wrong';
+        return `<button class="${pcls}" onclick="removeJumbleWord('${part}',${i},${pos})" ${rev?'disabled':''}>${q.words[wi]}</button>`;
+      }).join('')}
+    </div>
+    <div class="jumble-bank">
+      ${bankIdx.map(wi => `<button class="word-pill" onclick="addJumbleWord('${part}',${i},${wi})" ${rev?'disabled':''}>${q.words[wi]}</button>`).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealJumble('${part}',${i})" ${placed.length===0?'disabled':''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.answer.join(' ')}.</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${part}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q || q.prompt}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+// ── ENGINE FUNCTIONS ───────────────────────────────────
+function selectOpt(part,qi,j) { if(!qState[part][qi])qState[part][qi]={}; if(qState[part][qi].revealed)return; qState[part][qi].selected=j; rerenderPart(part); }
+function revealQ(part,qi)      { if(!qState[part][qi])qState[part][qi]={}; qState[part][qi].revealed=true; recalc(part); rerenderPart(part); }
+function setInp(part,qi,v)     { if(!qState[part][qi])qState[part][qi]={}; qState[part][qi].inputVal=v; }
+function revealInp(part,qi) {
+  const q=quizBank[part][qi]; if(!qState[part][qi])qState[part][qi]={};
+  const raw=qState[part][qi].inputVal||'';
+  qState[part][qi].correct=q.answers.some(a=>normalise(raw)===normalise(a));
+  qState[part][qi].revealed=true; recalc(part); rerenderPart(part);
+}
+function addJumbleWord(part,qi,wordIdx) {
+  if (qState[part][qi] && qState[part][qi].revealed) return;
+  if (!jumbleUI[part][qi]) jumbleUI[part][qi] = [];
+  jumbleUI[part][qi].push(wordIdx);
+  rerenderPart(part);
+}
+function removeJumbleWord(part,qi,pos) {
+  if (qState[part][qi] && qState[part][qi].revealed) return;
+  jumbleUI[part][qi].splice(pos,1);
+  rerenderPart(part);
+}
+function revealJumble(part,qi) {
+  const q=quizBank[part][qi]; if(!qState[part][qi])qState[part][qi]={};
+  const placed = jumbleUI[part][qi] || [];
+  const built = placed.map(wi => q.words[wi]).join(' ').toLowerCase();
+  const target = q.answer.join(' ').toLowerCase();
+  qState[part][qi].correct = built === target;
+  qState[part][qi].revealed = true;
+  recalc(part); rerenderPart(part);
+}
+function isCorrect(part,qi) {
+  const q=quizBank[part][qi], s=qState[part][qi];
+  if(!s||!s.revealed) return false;
+  if(q.type==='mc')    return s.selected===q.answer;
+  if(q.type==='tf')    return q.answer===(s.selected===0);
+  if(q.type==='input' || q.type==='translate' || q.type==='unjumble') return !!s.correct;
+  return false;
+}
+function recalc(part) {
+  let sc=0;
+  quizBank[part].forEach((q,i)=>{ if(isCorrect(part,i)) sc++; });
+  qScore[part]=sc;
+}
+function retakePart(part) {
+  qAttempts[part]++;
+  quizBank[part].forEach((_,i) => {
+    const s=qState[part][i]; if(!s||!s.revealed)return;
+    if(!isCorrect(part,i)){ delete qState[part][i]; if(jumbleUI[part][i]) jumbleUI[part][i]=[]; }
+  });
+  recalc(part); rerenderPart(part);
+  setTimeout(()=>{
+    const first=quizBank[part].findIndex((_,i)=>!qState[part][i]||!qState[part][i].revealed);
+    const el=document.getElementById('qc-'+part+'-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function rerenderPart(part) {
+  const fnMap = { A: renderListening, B: renderUnjumbleTranslate, C: renderMcQuiz };
+  const stepFn = fnMap[part];
+  const si = STEPS.findIndex(s => s.fn === stepFn);
+  if (currentStep === si) {
+    document.getElementById('mainContent').innerHTML = stepFn();
+    const audio = document.getElementById('mainAudio');
+    if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+  }
+}
+
+function scoreLabel(part) {
+  const total = quizBank[part].length;
+  if (qScore[part] === total) return '🎉 ¡Perfecto! — Great work.';
+  if (qScore[part] >= total * 0.85) return '¡Excelente! Almost perfect.';
+  if (qScore[part] >= total * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg(part) {
+  const total = quizBank[part].length;
+  if (qScore[part] === total) return 'Outstanding — a perfect score!';
+  if (qScore[part] >= total * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (qScore[part] >= total * 0.7)  return 'Go back and check the ones you missed.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+// ── SECTION RENDERERS ──────────────────────────────────
+
+function renderListening() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Part A — Listening</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Listen to a voicemail update. Use the transcript only after you have listened at least once.</p>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Voicemail: Project Status Update</div>
+          <div class="audio-box-sub">Klara Nowak · about 80 seconds · neutral accent</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L19-Audio002.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>Hi, it's Klara. I know you missed the meeting this morning, so I wanted to give you a quick update.</p>
+        <p>First, the onboarding project. I have finished the training materials, and I have already submitted them to HR for approval. They have reviewed the first draft, and I am waiting for their final sign-off.</p>
+        <p>Second, the client migration. This one is delayed. David has not completed the data transfer yet, because the client has not sent the final files. He has sent three reminder emails, but nothing has arrived. This task is still pending.</p>
+        <p>Third, the website update. Good news — Sofia has finished the new homepage design, and she has submitted it for review. This project is on track, actually ahead of the curve, since we expected it to take another week.</p>
+        <p>So, to summarize: onboarding is almost done, the client migration is delayed, and the website update is finished. Call me back if you have any questions. Thanks!</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${(Object.keys(qState.A).filter(i=>qState.A[i].revealed).length / QUIZ_A.length) * 100}%"></div></div>
+      <span class="score-count">${Object.keys(qState.A).filter(i=>qState.A[i].revealed).length} / ${QUIZ_A.length}</span>
+    </div>
+    ${QUIZ_A.map((q,i) => renderQuestion('A',q,i)).join('')}
+    ${renderResultCard('A')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderResultCard(part) {
+  const bank = quizBank[part];
+  const answered = Object.keys(qState[part]).filter(i => qState[part][i].revealed).length;
+  const allDone = answered === bank.length && bank.length > 0;
+  if (!allDone) return '';
+  const allCorrect = qScore[part] === bank.length;
+  const wrongCount = bank.length - qScore[part];
+  return `<div class="quiz-result">
+    <div class="result-score">${qScore[part]} / ${bank.length}</div>
+    <div class="result-label">${scoreLabel(part)}</div>
+    <div class="result-msg">${scoreMsg(part)}</div>
+    ${qAttempts[part] > 0 ? `<div class="result-attempts">Attempts so far: ${qAttempts[part]}</div>` : ''}
+    ${!allCorrect ? `<div style="margin-top:24px;"><button class="retry-btn" onclick="retakePart('${part}')">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button></div>` : ''}
+  </div>`;
+}
+
+function renderUnjumbleTranslate() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Part B — Unjumble &amp; Translation</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Questions 1–5: tap the words in the correct order. Tap a placed word to remove it. Questions 6–10: translate the Spanish sentence into English.</p>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${(Object.keys(qState.B).filter(i=>qState.B[i].revealed).length / QUIZ_B.length) * 100}%"></div></div>
+      <span class="score-count">${Object.keys(qState.B).filter(i=>qState.B[i].revealed).length} / ${QUIZ_B.length}</span>
+    </div>
+    ${QUIZ_B.map((q,i) => renderQuestion('B',q,i)).join('')}
+    ${renderResultCard('B')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderMcQuiz() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Part C — MC Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ_C.length} questions · includes 2 review questions from Lesson 34</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${(Object.keys(qState.C).filter(i=>qState.C[i].revealed).length / QUIZ_C.length) * 100}%"></div></div>
+      <span class="score-count">${Object.keys(qState.C).filter(i=>qState.C[i].revealed).length} / ${QUIZ_C.length}</span>
+    </div>
+    ${QUIZ_C.map((q,i) => renderQuestion('C',q,i)).join('')}
+    ${renderResultCard('C')}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS ───────────────────────────────────────────────
+STEPS = [
+  { label: "1. Part A — Listening",     fn: renderListening },
+  { label: "2. Part B — Unjumble/Translate", fn: renderUnjumbleTranslate },
+  { label: "3. Part C — MC Quiz",       fn: renderMcQuiz },
+];
+
+render();
+</script>
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

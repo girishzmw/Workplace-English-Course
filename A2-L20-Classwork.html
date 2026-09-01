@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 20: Review + Team Communication Roleplay | A2 · Unit 2 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+.example-tag { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700; background:rgba(201,151,44,0.12); border-radius:4px; padding:2px 7px; margin-left:auto; white-space:nowrap; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* FILL IN THE BLANKS / LISTS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* TEACHER INSTRUCTION BOX (Classwork only) */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* PASSAGE CARD (Reading step) */
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.passage-head { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.passage-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; }
+.passage-student { font-size:12px; color:var(--grey-blue); font-style:italic; }
+.passage-tag { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700; background:rgba(201,151,44,0.12); border-radius:4px; padding:2px 7px; margin-left:auto; white-space:nowrap; }
+.passage-text { font-size:14px; line-height:1.8; color:var(--slate); margin-bottom:14px; }
+.passage-q { display:flex; flex-direction:column; gap:8px; }
+.passage-q-item { padding:10px 14px; background:var(--off-white); border-radius:7px; cursor:pointer; font-size:13px; }
+.passage-q-item .rev { display:none; color:var(--green); font-weight:700; margin-left:6px; }
+.passage-q-item .tap-hint { font-size:11px; color:var(--grey-blue); float:right; }
+
+/* TAP TO REVEAL (generic) */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); flex:1; }
+.tap-hint-label { font-size:11px; color:var(--sky); white-space:nowrap; font-style:italic; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:600; }
+.tap-answer.show { display:block; }
+.tap-answer .es { display:block; color:var(--grey-blue); font-weight:400; font-style:italic; font-size:13px; margin-top:3px; }
+
+/* SPEAKING LADDER */
+.ladder-stage { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:18px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.ladder-stage-head { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.ladder-stage-num { background:var(--navy); color:var(--gold); border-radius:50%; width:32px; height:32px; display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-size:15px; font-weight:700; flex-shrink:0; }
+.ladder-stage-title { font-family:var(--font-heading); font-size:17px; color:var(--navy); }
+.ladder-stage-time { font-size:11px; color:var(--grey-blue); font-style:italic; margin-left:auto; white-space:nowrap; }
+.model-sentence { background:var(--navy); border-radius:8px; padding:16px 20px; font-family:var(--font-heading); font-size:16px; color:var(--white); font-style:italic; margin-bottom:6px; }
+.frame-box { background:var(--off-white); border-left:4px solid var(--gold); border-radius:0 7px 7px 0; padding:12px 16px; margin-bottom:14px; font-size:14px; color:var(--navy); line-height:1.8; }
+.frame-box strong { color:var(--gold); }
+.card-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:10px; }
+@media(max-width:600px){ .card-grid{ grid-template-columns:repeat(2,1fr); } }
+.drill-card { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:10px 8px; text-align:center; font-size:13px; font-weight:600; color:var(--navy); }
+.drill-card-num { display:block; font-size:10px; color:var(--gold); font-weight:700; margin-bottom:3px; }
+.cue-card { background:var(--white); border:1.5px solid var(--border-grey); border-radius:8px; padding:14px 16px; margin-bottom:10px; }
+.cue-card-top { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.cue-card-num { background:var(--gold-bg); color:#7A5500; border-radius:5px; padding:2px 9px; font-size:11px; font-weight:700; }
+.cue-card-keywords { font-size:14px; color:var(--navy); font-weight:600; }
+.cue-plan-input { width:100%; padding:9px 12px; border:1.5px solid var(--border-grey); border-radius:6px; font-family:var(--font-body); font-size:13px; color:var(--navy); outline:none; transition:border-color 0.12s; }
+.cue-plan-input:focus { border-color:var(--gold); }
+.cue-plan-label { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--grey-blue); margin-bottom:4px; }
+
+/* CONFIDENCE SCALE */
+.confidence-row { display:flex; justify-content:space-between; gap:8px; margin-bottom:16px; }
+.confidence-item { flex:1; display:flex; flex-direction:column; align-items:center; gap:6px; padding:14px 8px; background:var(--white); border:1.5px solid var(--border-grey); border-radius:8px; cursor:pointer; transition:all 0.15s; }
+.confidence-item:hover { border-color:var(--gold); }
+.confidence-item.selected { border-color:var(--gold); background:var(--gold-bg); }
+.confidence-emoji { font-size:24px; }
+.confidence-num { font-size:12px; font-weight:700; color:var(--navy); }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 2 · Classwork — Speaking Day (Unit Review)</div>
+    <h1 class="hero-title">Lesson 20: Review + Team Communication Roleplay</h1>
+    <p class="hero-sub">Cumulative Unit 2 review · Speaking-focused · 60 minutes, live class</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">🗣️ Speaking-heavy</span>
+      <span class="pill accent">📖 8 reading passages</span>
+      <span class="pill">4 steps</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ─────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── TAP TO REVEAL HELPER ──────────────────────────────
+function tapRow(question, answerHtml) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top">
+      <div class="tap-q">${question}</div>
+      <div class="tap-hint-label">Tap to reveal</div>
+    </div>
+    <div class="tap-answer">${answerHtml}</div>
+  </div>`;
+}
+
+// ── LESSON DATA ───────────────────────────────────────
+
+const WARMUP = [
+  { es: "¿Cómo se dice \u201Ccon respecto a\u201D en inglés?", en: "regarding" },
+  { es: "¿Cómo se dice \u201Cseguimiento\u201D en inglés?", en: "follow-up" },
+  { es: "¿Cómo se dice \u201Cagradecer\u201D en inglés?", en: "appreciate" },
+  { es: "¿Cómo se dice \u201Cfecha límite\u201D en inglés?", en: "deadline" },
+  { es: "¿Cómo se dice \u201Cpunto (de discusión)\u201D en inglés?", en: "point" },
+  { es: "¿Cómo se dice \u201Ctarea asignada\u201D en inglés?", en: "action item" },
+  { es: "¿Cómo se dice \u201Cenviar / presentar\u201D en inglés?", en: "submit" },
+  { es: "¿Cómo se dice \u201Cconexión\u201D en inglés?", en: "connection" },
+];
+
+const PASSAGES = [
+  { student: "Karim · Cairo", tag: "L11 + L19", text: "Karim is writing to confirm the client meeting. He has already sent the agenda by email. He has not received a reply yet.",
+    q: [ ["What has Karim already sent?", "The agenda, by email."], ["Has he received a reply yet?", "No, not yet."] ] },
+  { student: "Klara · Warsaw", tag: "L12 + L13", text: "Klara asked, \u2018Could you please send the notes from yesterday\u2019s meeting?\u2019 Her colleague replied, \u2018Of course, I\u2019ll send them today.\u2019 Klara also added one point about the new deadline.",
+    q: [ ["What did Klara ask for?", "The notes from yesterday's meeting."], ["What did Klara add a point about?", "The new deadline."] ] },
+  { student: "Andrew · Melbourne", tag: "L14 + L17", text: "During the call, Andrew said, \u2018Could I just say something?\u2019 He explained that the system is crashing again. The team is now waiting for IT\u2019s help.",
+    q: [ ["What did Andrew ask before speaking?", "\u201CCould I just say something?\u201D"], ["What problem is happening right now?", "The system is crashing."] ] },
+  { student: "David · Seoul", tag: "L16 + L19", text: "David\u2019s team has finished the first phase of the project. First, they reviewed the plan. Then, they approved the budget. Now they have started the second phase.",
+    q: [ ["What did David's team do first?", "They reviewed the plan."], ["What have they started now?", "The second phase."] ] },
+  { student: "Sofia · Stockholm", tag: "L18 + L15", text: "Sofia sent an email: \u2018Would you be able to revise the proposal by Friday?\u2019 She also noted one action item for the finance team.",
+    q: [ ["What does Sofia ask her colleague to do?", "Revise the proposal by Friday."], ["What did Sofia note for the finance team?", "One action item."] ] },
+  { student: "William · Toronto", tag: "L19 + L11", text: "William has already submitted his report. He is now planning a follow-up call with the client. He has not scheduled the call yet.",
+    q: [ ["Has William submitted his report?", "Yes, already."], ["Has he scheduled the follow-up call yet?", "No, not yet."] ] },
+  { student: "Priya · Mumbai", tag: "L13 + L16", text: "In the meeting, Priya raised a point about the new deadline. First, the team discussed the budget. Then, they discussed the timeline. Priya\u2019s point is now on the agenda.",
+    q: [ ["What did Priya raise a point about?", "The new deadline."], ["What did the team discuss first?", "The budget."] ] },
+  { student: "Lukas · Berlin", tag: "L17 + L12", text: "Lukas noticed that the connection is dropping during the call. He asked, \u2018Could you please check the Wi-Fi?\u2019 His colleague is helping him now.",
+    q: [ ["What problem did Lukas notice?", "The connection is dropping."], ["What did Lukas ask his colleague to do?", "Check the Wi-Fi."] ] },
+];
+
+const DRILL_CARDS = ["report", "budget", "presentation", "contract", "proposal", "agenda", "transcript", "invoice"];
+
+const CUE_CARDS = [
+  { num: 1, keywords: "email / confirm" },
+  { num: 2, keywords: "deadline / Friday" },
+  { num: 3, keywords: "meeting / point" },
+  { num: 4, keywords: "system / crashing" },
+  { num: 5, keywords: "report / already" },
+  { num: 6, keywords: "call / reschedule" },
+  { num: 7, keywords: "notes / send" },
+  { num: 8, keywords: "budget / approved" },
+];
+
+// State for Stage 3 plan-before-speak inputs (unscored)
+const cuePlans = {};
+function setCuePlan(i, v) { cuePlans[i] = v; }
+
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Oral vocabulary recall — ask each student one question aloud, round-robin. No writing. Cumulative vocabulary from across Unit 2.</p>
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Oral Recall — 8 Questions</div>
+      <div class="blank-list">
+        ${WARMUP.map((w,i) => `
+        <div class="passage-q-item" onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='inline'?'none':'inline'">
+          <span class="blank-num">${i+1}</span> &nbsp;${w.es}
+          <span class="rev">✓ ${w.en}</span>
+          <span class="tap-hint">Tap to reveal</span>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Keep pace brisk — this is recall, not teaching. If a student blanks, give the first sound as a hint before moving to the next student. All 8 students get one question each.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Reading</div>
+      <div class="sec-badge-time">15–20 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Grammar Reminder — Unit 2 Recap</div>
+      <div class="pattern-row"><span class="pattern-en">I / You / We / They <strong>have</strong> + past participle</span><span class="pattern-es">he/has/hemos/han + participio</span></div>
+      <div class="pattern-row"><span class="pattern-en">He / She / It <strong>has</strong> + past participle</span><span class="pattern-es">ha + participio</span></div>
+      <div class="pattern-row"><span class="pattern-en"><strong>Could</strong> / <strong>Would</strong> you...? (polite request)</span><span class="pattern-es">¿Podrías...? / ¿Sería posible...?</span></div>
+    </div>
+
+    <p class="sec-intro">Each student reads their own passage aloud once. Then the class answers the two questions together. Every passage blends two grammar points from across Unit 2.</p>
+
+    <div id="passageList">
+      ${PASSAGES.map((p,i) => `
+        <div class="passage-card">
+          <div class="passage-head">
+            <span class="passage-num">${i+1}</span>
+            <span class="passage-student">${p.student}</span>
+            <span class="passage-tag">${p.tag}</span>
+          </div>
+          <div class="passage-text">"${p.text}"</div>
+          <div class="passage-q">
+            ${p.q.map(([q,a]) => `
+              <div class="passage-q-item" onclick="this.querySelector('.rev').style.display=this.querySelector('.rev').style.display==='inline'?'none':'inline'">
+                ${q}
+                <span class="rev">✓ ${a}</span>
+                <span class="tap-hint">Tap to reveal</span>
+              </div>`).join('')}
+          </div>
+        </div>`).join('')}
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Assign one passage per student. Each student reads their passage aloud once, then the class answers the 2 questions together (choral or cold-call). At roughly 1–1.5 min per passage this step runs closer to 18–20 min rather than 15 — trim to 5–6 passages if you need to hit the clock exactly, borrowing the extra time from the 10-minute cushion.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderLadder() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Speaking Ladder</div>
+      <div class="sec-badge-time">25 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Three stages, teacher-controlled, round-robin. No pairs, no roleplay — every student gets a guaranteed rep at each stage.</p>
+
+    <div class="ladder-stage">
+      <div class="ladder-stage-head">
+        <div class="ladder-stage-num">1</div>
+        <div class="ladder-stage-title">Model &amp; Chorus</div>
+        <div class="ladder-stage-time">~2 min</div>
+      </div>
+      <div class="model-sentence">"I have already sent the report."</div>
+      <p style="font-size:13px;color:var(--grey-blue);">Teacher models the sentence once or twice. Whole class repeats chorally, together. No individual student is called on yet.</p>
+    </div>
+
+    <div class="ladder-stage">
+      <div class="ladder-stage-head">
+        <div class="ladder-stage-num">2</div>
+        <div class="ladder-stage-title">Chain Drill</div>
+        <div class="ladder-stage-time">~10 min</div>
+      </div>
+      <div class="frame-box">
+        A: <strong>"Have you finished the ___ yet?"</strong><br>
+        B (if done): <strong>"Yes, I've already finished it."</strong><br>
+        B (if not done): <strong>"No, not yet — it's still pending."</strong>
+      </div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:10px;">Round-robin — each student asks the next student, using one card below.</p>
+      <div class="card-grid">
+        ${DRILL_CARDS.map((c,i) => `
+          <div class="drill-card"><span class="drill-card-num">Card ${i+1}</span>${c}</div>`).join('')}
+      </div>
+    </div>
+
+    <div class="ladder-stage">
+      <div class="ladder-stage-head">
+        <div class="ladder-stage-num">3</div>
+        <div class="ladder-stage-title">Cue-Only Independent Round</div>
+        <div class="ladder-stage-time">~13 min</div>
+      </div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:12px;">Same round-robin, teacher-controlled. Each student gets 2–3 keywords, writes one line silently ("plan before you speak"), then says it aloud when called on. No sentence frame this time.</p>
+      ${CUE_CARDS.map((c,i) => `
+        <div class="cue-card">
+          <div class="cue-card-top">
+            <span class="cue-card-num">Card ${c.num}</span>
+            <span class="cue-card-keywords">${c.keywords}</span>
+          </div>
+          <div class="cue-plan-label">Your sentence (write, then say aloud)</div>
+          <input class="cue-plan-input" type="text" placeholder="Write your sentence here…" oninput="setCuePlan(${i}, this.value)" />
+        </div>`).join('')}
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Stage 2 errors mean "off-script" — the student didn't use the given frame. Stage 3 errors are genuine production gaps: note them for later, but avoid over-correcting in the moment, or the activity collapses back into a controlled drill. Give each student 15–20 seconds to write their plan before calling on them in Stage 3.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuickWrite() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Quick Write — My Week at Work</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">To finish, write 3–4 sentences about your own week at work. Describe your role, then give a status update using Present Perfect — the same pattern from today's Speaking Ladder.</p>
+    <div class="es-note">Para terminar, escribe 3–4 oraciones sobre tu semana de trabajo. Describe tu rol y luego da una actualización de estado usando Present Perfect — el mismo patrón de la Escalera de Speaking de hoy.</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Sentence Frame</div>
+      <div class="pattern-row"><span class="pattern-en">I am a <strong>[role]</strong> at <strong>[company]</strong>.</span><span class="pattern-es">Soy [rol] en [empresa].</span></div>
+      <div class="pattern-row"><span class="pattern-en">This week, I have already <strong>[completed action]</strong>.</span><span class="pattern-es">Esta semana, ya he [acción completada].</span></div>
+      <div class="pattern-row"><span class="pattern-en">I have not <strong>[pending action]</strong> yet.</span><span class="pattern-es">Todavía no he [acción pendiente].</span></div>
+    </div>
+
+    <div class="word-bank">
+      <div class="word-bank-label">Word Bank</div>
+      <div class="word-bank-words">responsibilities · coordinate · submitted · reviewed · approved · pending · in progress · follow-up · deadline</div>
+    </div>
+
+    <textarea class="writing-area" style="min-height:110px;" placeholder="I am a… This week, I have already…"></textarea>
+    <div class="word-count">3–4 sentences</div>
+
+    <div class="divider"></div>
+    ${tapRow("Need a model? Tap to see a sample answer.",
+      "I am a project coordinator at a logistics company. This week, I have already submitted the monthly report and reviewed two supplier contracts. I have not finished the budget update yet, because I am waiting for numbers from finance. I will follow up with them tomorrow.")}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      This is a quick, self-directed close to the lesson — 5 minutes only, no live correction block this time (unlike a Reading-day writing task). Circulate briefly if time allows, but the goal is fluency and confidence on the last day of the unit, not full correction. If a student finishes early, they can read their sentences aloud to a neighbor.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Warm-up",         fn: renderWarmup },
+  { label: "2. Reading",         fn: renderReading },
+  { label: "3. Speaking Ladder", fn: renderLadder },
+  { label: "4. Quick Write",     fn: renderQuickWrite },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

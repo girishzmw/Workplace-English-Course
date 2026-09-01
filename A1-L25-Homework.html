@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 25: Priorities at Work | A1 · Unit 3 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* PART BADGE / SUB-HEADING */
+.part-heading { font-family:var(--font-heading); font-size:18px; color:var(--navy); font-weight:700; margin-bottom:4px; }
+.part-sub { font-size:13px; color:var(--grey-blue); font-style:italic; margin-bottom:16px; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-weight:700; }
+
+/* UNJUMBLE */
+.unjumble-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.unjumble-slots { display:flex; flex-wrap:wrap; gap:8px; min-height:46px; padding:10px; background:var(--off-white); border:1.5px dashed var(--border-grey); border-radius:8px; margin-bottom:14px; }
+.slot-chip { padding:8px 14px; background:var(--navy); color:var(--white); border-radius:6px; font-size:14px; cursor:pointer; font-family:var(--font-body); transition:opacity 0.12s; }
+.slot-chip:hover { opacity:0.85; }
+.unjumble-slots.correct .slot-chip { background:var(--green); }
+.unjumble-slots.wrong .slot-chip { background:var(--red); }
+.unjumble-bank { display:flex; flex-wrap:wrap; gap:8px; }
+.word-chip { padding:8px 14px; background:var(--light-grey); border:1px solid var(--border-grey); border-radius:6px; font-size:14px; color:var(--navy); cursor:pointer; font-family:var(--font-body); transition:opacity 0.12s; }
+.word-chip:hover { border-color:var(--sky); }
+.word-chip.used { opacity:0.25; pointer-events:none; }
+.unjumble-foot { display:flex; justify-content:flex-end; align-items:center; gap:10px; margin-top:14px; }
+
+/* TRANSLATE */
+.translate-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.translate-prompt { font-size:15px; color:var(--navy); font-style:italic; margin-bottom:14px; padding:10px 14px; background:var(--off-white); border-left:3px solid var(--gold); }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 3 · Homework</div>
+    <h1 class="hero-title">Lesson 25: Priorities at Work</h1>
+    <p class="hero-sub">Grammar: Adverbs of Frequency · ~15 minutes, self-study</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">🎧 Listening</span>
+      <span class="pill accent">🧩 Unjumble + Translate</span>
+      <span class="pill">3 parts</span>
+      <span class="pill">15 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block — never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly — not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START — replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+// Part A — Listening Comprehension
+const PART_A_Q = [
+  { type:'mc', q:'What does Yusuf always do first?',
+    opts:['Check emails from friends', 'Deal with urgent problems', 'Write his to-do list'],
+    answer: 1,
+    hint: '💡 Listen for what he calls his top priority.',
+    fb: 'Yusuf always starts his day with urgent problems that need attention right away.' },
+  { type:'input', q:'What does Yusuf usually focus on after urgent problems?',
+    hint: '💡 Two words — the opposite of "low priority."',
+    answers: ['important tasks'],
+    display: 'Important tasks.',
+    fb: 'After urgent problems, he usually focuses on important tasks, like the weekly report.' },
+  { type:'tf', q:'Yusuf is often late with his deadlines.',
+    answer: false,
+    hint: '💡 Listen for the word "never."',
+    fb: 'He says, "I\'m never late — if something becomes overdue, I deal with it immediately."' },
+  { type:'mc', q:'What does Yusuf do with low-priority tasks?',
+    opts:['Ignores them completely', 'Sometimes postpones them until Friday', 'Finishes them first'],
+    answer: 1,
+    hint: '💡 Listen for "sometimes."',
+    fb: 'He sometimes postpones low-priority tasks until Friday.' },
+  { type:'mc', q:'In the audio, what does "overdue" mean?',
+    opts:['Finished early', 'Past the deadline, not finished on time', 'Not started yet'],
+    answer: 1,
+    hint: '💡 Think about what happens when a deadline passes.',
+    fb: '"Overdue" means past the deadline — Yusuf deals with it immediately when this happens.' },
+  { type:'input', q:'Complete Yusuf\'s plan: "First, urgent issues. ___, important work."',
+    hint: '💡 One word — a sequencing word from Lesson 15.',
+    answers: ['then'],
+    display: 'Then, important work.',
+    fb: '"Then" comes right after "first" when explaining the order you do things in.' },
+];
+
+// Part B — Unjumble
+const UNJUMBLE = [
+  { words: ['always', 'urgent', 'I', 'tasks', 'check'],
+    answer: ['I', 'always', 'check', 'urgent', 'tasks'],
+    display: 'I always check urgent tasks.',
+    hint: '💡 Subject + frequency adverb + verb + what.',
+    fb: 'Remember: the frequency adverb goes before the main verb.' },
+  { words: ['deadline', 'Friday', 'is', 'the', 'on'],
+    answer: ['the', 'deadline', 'is', 'on', 'Friday'],
+    display: 'The deadline is on Friday.',
+    hint: '💡 Subject first, then the verb "is."',
+    fb: '"The deadline is on Friday" — subject + verb + day.' },
+  { words: ['never', 'late', 'she', 'is'],
+    answer: ['she', 'is', 'never', 'late'],
+    display: 'She is never late.',
+    hint: '💡 With "to be," the adverb comes right after it.',
+    fb: '"Never" goes right after "is," matching the to-be pattern.' },
+  { words: ['postpone', 'we', 'meetings', 'sometimes'],
+    answer: ['we', 'sometimes', 'postpone', 'meetings'],
+    display: 'We sometimes postpone meetings.',
+    hint: '💡 Subject + frequency adverb + verb + what.',
+    fb: '"Sometimes" goes before the main verb "postpone."' },
+];
+
+// Part B — Translate (Spanish → English)
+const TRANSLATE = [
+  { prompt: 'Siempre reviso los correos urgentes primero.',
+    answers: ['i always check urgent emails first'],
+    display: 'I always check urgent emails first.',
+    hint: '💡 Siempre = always.',
+    fb: 'The adverb "always" goes right before the main verb "check."' },
+  { prompt: 'Su carga de trabajo es normalmente pesada.',
+    answers: ['her workload is usually heavy'],
+    display: 'Her workload is usually heavy.',
+    hint: '💡 Normalmente = usually.',
+    fb: '"Usually" goes right after "is," just like other frequency adverbs with "to be."' },
+  { prompt: 'Nunca llego tarde a las reuniones.',
+    answers: ['i am never late to meetings', "i'm never late to meetings"],
+    display: 'I am never late to meetings.',
+    hint: '💡 Nunca = never.',
+    fb: '"Never" follows "am," the same pattern as other "to be" sentences.' },
+  { prompt: 'A veces posponemos las tareas de baja prioridad.',
+    answers: ['we sometimes postpone low-priority tasks', 'we sometimes postpone low priority tasks'],
+    display: 'We sometimes postpone low-priority tasks.',
+    hint: '💡 A veces = sometimes.',
+    fb: '"Sometimes" goes before the main verb "postpone."' },
+];
+
+// Part C — MC Quiz (blends 2 bridged sequencing questions from Lesson 15)
+const PART_C_Q = [
+  { type:'mc', q:'What does "urgent" mean?',
+    opts:['Not important', 'Needs attention right away', 'Finished already'],
+    answer: 1,
+    hint: '💡 Think about tasks that can\'t wait.',
+    fb: '"Urgent" means it needs attention right away — no delay.' },
+  { type:'mc', q:'Complete: "She ___ finishes reports on time." (usually)',
+    opts:['usually finishes', 'finishes usually', 'finishes it usually'],
+    answer: 0,
+    hint: '💡 Adverb before the main verb.',
+    fb: '"She usually finishes" — the adverb goes right before the main verb.' },
+  { type:'input', q:'What is the Spanish word for "overdue"?',
+    hint: '💡 Two acceptable answers — pick one.',
+    answers: ['atrasado', 'vencido'],
+    display: 'Atrasado / Vencido.',
+    fb: '"Overdue" = atrasado or vencido — both describe something past its deadline.' },
+  { type:'mc', q:'Complete: "I ___ postpone urgent tasks." (never)',
+    opts:['never postpone', 'postpone never', 'never I postpone'],
+    answer: 0,
+    hint: '💡 Subject + adverb + verb.',
+    fb: '"I never postpone" — correct adverb position.' },
+  { type:'tf', q:'"Low priority" means a task that can wait.',
+    answer: true,
+    hint: '💡 Think about the opposite of "urgent."',
+    fb: 'Correct — low priority tasks are not urgent and can wait.' },
+  { type:'mc', q:'Where does the frequency adverb go with the verb "to be"?',
+    opts:['Before the subject', 'Right after "is/are/am"', 'At the end of the sentence'],
+    answer: 1,
+    hint: '💡 "She is usually busy" — where is "usually"?',
+    fb: 'With "to be," the adverb comes right after it: "is usually," "am never," etc.' },
+  { type:'input', q:'What is the Spanish word for "deadline"?',
+    hint: '💡 fecha · límite',
+    answers: ['fecha limite', 'fecha límite'],
+    display: 'Fecha límite.',
+    fb: '"Deadline" = fecha límite.' },
+  { type:'mc', q:'(Lesson 15 Bridge) Which word usually comes first in a sequence?',
+    opts:['Then', 'Next', 'First'],
+    answer: 2,
+    hint: '💡 Remember Lesson 15!',
+    fb: '"First" opens a sequence, before "then" and "next."' },
+  { type:'tf', q:'(Lesson 15 Bridge) "First, then, next" show the order of steps.',
+    answer: true,
+    hint: '💡 This is the sequencing language from Lesson 15.',
+    fb: 'Correct — these connector words show the order actions happen in.' },
+  { type:'mc', q:'What does "deal with" mean?',
+    opts:['Ignore', 'Handle / take care of', 'Postpone'],
+    answer: 1,
+    hint: '💡 Think of "deal with a problem."',
+    fb: '"Deal with" means to handle or take care of something.' },
+];
+
+// ── Quiz state (do not edit) ──────────────────────────────
+// (legacy quizState/quizScore not used — see Q_STATE/Q_SCORE below)
+
+// ── Independent per-part quiz engine state (Parts A + C) ──
+const Q_STATE = { A: {}, C: {} };
+const Q_SCORE = { A: 0, C: 0 };
+
+// ── Part B state (Unjumble + Translate) ────────────────────
+const unjumbleState = {};   // { [itemIndex]: { placed:[bankIdx,...], revealed:bool, correct:bool } }
+const translateState = {};  // { [itemIndex]: { inputVal:'', revealed:bool, correct:bool } }
+
+// ── Audio state ─────────────────────────────────────────────
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+// One function per step. Each returns HTML and ends with navFooter().
+// Rename, add, or remove to match your STEPS array at the bottom.
+
+function renderPartA() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">A</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">5–6 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="part-heading">A Day of Priorities</div>
+    <div class="part-sub">Listen to Yusuf talk about how he manages his tasks at work, then answer the questions below.</div>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Managing My Tasks</div>
+          <div class="audio-box-sub">Yusuf · Operations Analyst · ~70 sec</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L25-Audio002.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn ${currentSpeed===0.7?'active':''}" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn ${currentSpeed===0.8?'active':''}" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn ${currentSpeed===0.9?'active':''}" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn ${currentSpeed===1.0?'active':''}" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn ${currentSpeed===1.1?'active':''}" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen?'▲ Hide transcript':'▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen?'block':'none'};">
+        <p>"Hi, I'm Yusuf. I work as an operations analyst, and every day I have a list of tasks to manage. I always start with urgent problems — things that need attention right away, like a system error or an angry client email. After that, I usually focus on important tasks, like preparing the weekly report."</p>
+        <p>"Some tasks are low priority, so I sometimes postpone them until Friday. My manager gives me a new deadline almost every week, but I'm never late — if something becomes overdue, I deal with it immediately."</p>
+        <p>"My workload changes a lot, but I always stay organized. First, I check urgent issues. Then, I focus on important work. Next, I deal with everything else."</p>
+      </div>
+    </div>
+
+    ${renderFullQuiz('A')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartB() {
+  const totalItems = UNJUMBLE.length + TRANSLATE.length;
+  const doneItems = Object.values(unjumbleState).filter(s=>s.revealed).length
+                   + Object.values(translateState).filter(s=>s.revealed).length;
+  const correctItems = Object.values(unjumbleState).filter(s=>s.revealed&&s.correct).length
+                      + Object.values(translateState).filter(s=>s.revealed&&s.correct).length;
+  const pct = totalItems ? (doneItems/totalItems)*100 : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">B</div>
+      <div class="sec-badge-title">Unjumble + Translate</div>
+      <div class="sec-badge-time">4–5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${correctItems} / ${totalItems}</span>
+    </div>
+
+    <div class="part-heading">Unjumble</div>
+    <div class="part-sub">Tap the words in order to build the sentence. Tap a placed word to remove it.</div>
+    ${UNJUMBLE.map((item,i) => renderUnjumbleItem(item,i)).join('')}
+
+    <div class="divider"></div>
+
+    <div class="part-heading">Translate</div>
+    <div class="part-sub">Translate each sentence from Spanish to English.</div>
+    ${TRANSLATE.map((item,i) => renderTranslateItem(item,i)).join('')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderUnjumbleItem(item, i) {
+  const s = unjumbleState[i] || { placed: [] };
+  const placed = s.placed || [];
+  const usedIdx = new Set(placed);
+  const rev = s.revealed;
+  const slotClass = rev ? (s.correct ? 'correct' : 'wrong') : '';
+
+  return `<div class="unjumble-card" id="uj-card-${i}">
+    <div class="q-top" style="margin-bottom:2px;">
+      <span class="q-num">${i+1}</span>
+      <div><div class="q-hint" style="margin:0;">${item.hint}</div></div>
+    </div>
+    <div class="unjumble-slots ${slotClass}">
+      ${placed.length === 0 ? '<span style="color:var(--grey-blue);font-size:13px;">Tap words below to build the sentence…</span>' : ''}
+      ${placed.map((bankIdx, slotPos) => `<span class="slot-chip" onclick="${rev?'':`tapSlot(${i},${slotPos})`}">${item.words[bankIdx]}</span>`).join('')}
+    </div>
+    <div class="unjumble-bank">
+      ${item.words.map((w, bankIdx) => `<span class="word-chip ${usedIdx.has(bankIdx)?'used':''}" onclick="${rev?'':`tapBank(${i},${bankIdx})`}">${w}</span>`).join('')}
+    </div>
+    <div class="unjumble-foot">
+      ${!rev ? `<button class="check-btn" onclick="checkUnjumble(${i})" ${placed.length!==item.words.length?'disabled':''}>Check</button>` : ''}
+      ${rev && !s.correct ? `<button class="check-btn" onclick="retryUnjumble(${i})">↺ Try Again</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${item.display}</strong><br>💡 ${item.fb}</div>` : ''}
+  </div>`;
+}
+
+function renderTranslateItem(item, i) {
+  const s = translateState[i] || {};
+  const rev = s.revealed;
+  const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+
+  return `<div class="translate-card" id="tr-card-${i}">
+    <div class="q-top" style="margin-bottom:2px;">
+      <span class="q-num">${i+1}</span>
+      <div><div class="q-hint" style="margin:0;">${item.hint}</div></div>
+    </div>
+    <div class="translate-prompt">"${item.prompt}"</div>
+    <div class="q-input-row">
+      <input class="${cls}" id="tr-inp-${i}" type="text"
+        placeholder="Type your translation…" value="${s.inputVal || ''}"
+        oninput="setTranslate(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="checkTranslate(${i})">Check</button>` : ''}
+    </div>
+    ${rev && !s.correct ? `<div style="text-align:right;margin-top:8px;"><button class="check-btn" onclick="retryTranslate(${i})">↺ Try Again</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${item.display}</strong><br>💡 ${item.fb}</div>` : ''}
+  </div>`;
+}
+
+function tapBank(qi, bankIdx) {
+  if (!unjumbleState[qi]) unjumbleState[qi] = { placed: [] };
+  if (unjumbleState[qi].revealed) return;
+  if (unjumbleState[qi].placed.includes(bankIdx)) return;
+  unjumbleState[qi].placed.push(bankIdx);
+  rerenderPartB();
+}
+function tapSlot(qi, slotPos) {
+  if (!unjumbleState[qi] || unjumbleState[qi].revealed) return;
+  unjumbleState[qi].placed.splice(slotPos, 1);
+  rerenderPartB();
+}
+function checkUnjumble(qi) {
+  const item = UNJUMBLE[qi];
+  const s = unjumbleState[qi];
+  const builtWords = s.placed.map(idx => item.words[idx].toLowerCase());
+  const answerWords = item.answer.map(w => w.toLowerCase());
+  s.correct = builtWords.length === answerWords.length && builtWords.every((w,i) => w === answerWords[i]);
+  s.revealed = true;
+  rerenderPartB();
+}
+function retryUnjumble(qi) {
+  unjumbleState[qi] = { placed: [] };
+  rerenderPartB();
+}
+function setTranslate(qi, v) {
+  if (!translateState[qi]) translateState[qi] = {};
+  translateState[qi].inputVal = v;
+}
+function checkTranslate(qi) {
+  const item = TRANSLATE[qi];
+  if (!translateState[qi]) translateState[qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = translateState[qi].inputVal || '';
+  translateState[qi].correct = item.answers.some(a => normalise(raw) === normalise(a));
+  translateState[qi].revealed = true;
+  rerenderPartB();
+}
+function retryTranslate(qi) {
+  translateState[qi] = { inputVal: '' };
+  rerenderPartB();
+}
+function rerenderPartB() {
+  const bi = STEPS.findIndex(s => s.fn === renderPartB);
+  if (currentStep === bi) document.getElementById('mainContent').innerHTML = renderPartB();
+}
+
+// (renderGrammar not used in Homework — see renderPartA / renderPartB / renderPartC)
+
+function renderPartC() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">C</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">6–8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${PART_C_Q.length} questions · Includes a quick Lesson 15 review</p>
+      </div>
+    </div>
+    ${renderFullQuiz('C')}
+    ${navFooter()}
+  </div>`;
+}
+
+// (No additional renderers needed — Parts A, B, C above cover this Homework file.)
+
+
+// ── GENERALIZED QUIZ ENGINE (Parts A + C, do not edit) ────
+const Q_DATA = { A: PART_A_Q, C: PART_C_Q };
+
+function renderFullQuiz(prefix) {
+  const QUIZ = Q_DATA[prefix];
+  const state = Q_STATE[prefix];
+  const answered = Object.values(state).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && Q_SCORE[prefix] === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - Q_SCORE[prefix] : 0;
+
+  return `<div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQItem(prefix,q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${Q_SCORE[prefix]} / ${QUIZ.length}</div>
+      <div class="result-label">${Q_SCORE[prefix]===QUIZ.length?'🎉 ¡Perfecto!':Q_SCORE[prefix]>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${Q_SCORE[prefix]===QUIZ.length?'Outstanding — a perfect score!':'Review the questions you missed, then retry.'}</div>
+      ${!allCorrect?`<div style="margin-top:24px;"><button onclick="retakeFullQuiz('${prefix}')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button></div>`:''}
+    </div>` : ''}`;
+}
+
+function renderQItem(prefix, q, i) {
+  const s = Q_STATE[prefix][i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOptQ('${prefix}',${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQQ('${prefix}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${prefix}-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInpQ('${prefix}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInpQ('${prefix}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${prefix}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOptQ(prefix,qi,j) { if(!Q_STATE[prefix][qi])Q_STATE[prefix][qi]={}; if(Q_STATE[prefix][qi].revealed)return; Q_STATE[prefix][qi].selected=j; rerenderQ(prefix); }
+function revealQQ(prefix,qi)     { if(!Q_STATE[prefix][qi])Q_STATE[prefix][qi]={}; Q_STATE[prefix][qi].revealed=true; recalcQ(prefix); rerenderQ(prefix); }
+function setInpQ(prefix,qi,v)    { if(!Q_STATE[prefix][qi])Q_STATE[prefix][qi]={}; Q_STATE[prefix][qi].inputVal=v; }
+function revealInpQ(prefix,qi) {
+  const q=Q_DATA[prefix][qi]; if(!Q_STATE[prefix][qi])Q_STATE[prefix][qi]={};
+  const val=(Q_STATE[prefix][qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  Q_STATE[prefix][qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  Q_STATE[prefix][qi].revealed=true; recalcQ(prefix); rerenderQ(prefix);
+}
+function retakeFullQuiz(prefix) {
+  Q_DATA[prefix].forEach((_,i) => {
+    const s=Q_STATE[prefix][i]; if(!s||!s.revealed)return;
+    let ok=false;
+    const q=Q_DATA[prefix][i];
+    if(q.type==='mc')    ok=s.selected===q.answer;
+    else if(q.type==='tf')    ok=q.answer===(s.selected===0);
+    else if(q.type==='input') ok=s.correct;
+    if(!ok){ delete Q_STATE[prefix][i]; }
+  });
+  recalcQ(prefix); rerenderQ(prefix);
+  setTimeout(()=>{
+    const first=Q_DATA[prefix].findIndex((_,i)=>!Q_STATE[prefix][i]||!Q_STATE[prefix][i].revealed);
+    const el=document.getElementById('qc-'+prefix+'-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalcQ(prefix) {
+  let sc=0;
+  Q_DATA[prefix].forEach((q,i)=>{
+    const st=Q_STATE[prefix][i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)sc++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))sc++;
+    else if(q.type==='input'&&st.correct)sc++;
+  });
+  Q_SCORE[prefix]=sc;
+}
+function rerenderQ(prefix) {
+  const fnMap = { A: renderPartA, C: renderPartC };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = targetFn();
+}
+
+
+// ── AUDIO CONTROLS (Pattern A — single player per file) ───
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+// Edit labels and function names to match your lesson sections.
+// Add or remove entries freely — the nav builds itself automatically.
+STEPS = [
+  { label: "A. Listening",           fn: renderPartA },
+  { label: "B. Unjumble + Translate",fn: renderPartB },
+  { label: "C. Quiz",                fn: renderPartC },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

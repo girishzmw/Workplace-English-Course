@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Policies | A1 Unit 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); }
+
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; }
+.speed-btn { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; padding:6px 12px; border-radius:6px; cursor:pointer; transition:all 0.15s; }
+.speed-btn:hover { border-color:var(--gold); color:var(--gold); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · UNIT 3 · PRE-LEARNING</div>
+    <h1 class="hero-title">Company Policies</h1>
+    <p class="hero-sub">Grammar: Must / Allowed to · Lesson 28</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Talk about workplace rules</div><div class="outcome-note">Hablar sobre las reglas del trabajo</div></div>
+      <div><div class="outcome-item">Use must / must not correctly</div><div class="outcome-note">Usar must / must not correctamente</div></div>
+      <div><div class="outcome-item">Use allowed to / not allowed to</div><div class="outcome-note">Usar allowed to / not allowed to</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = currentSpeed;
+}
+
+const VOCAB = [
+  ["compliance", "cumplimiento"],
+  ["confidentiality", "confidencialidad"],
+  ["attendance", "asistencia"],
+  ["policy", "política"],
+  ["regulation", "reglamento / norma"],
+  ["deadline", "fecha límite"],
+  ["permission", "permiso"],
+  ["violation", "infracción"],
+  ["dress code", "código de vestimenta"],
+  ["punctuality", "puntualidad"],
+  ["to report (an issue)", "reportar"],
+  ["ID badge", "credencial / gafete"],
+];
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Every workplace has rules. Some things you <em>must</em> do. Some things you are <em>allowed to</em> do. Today you will learn how to talk about company policies — what is required, and what is permitted.</p>
+    <div class="es-note">Todos los lugares de trabajo tienen reglas. Hay cosas que <em>debes</em> hacer. Hay cosas que <em>tienes permiso</em> para hacer. Hoy vas a aprender a hablar sobre las políticas de la empresa — lo que es obligatorio y lo que está permitido.</div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Lee cada palabra y su significado en español. Toca cada tarjeta para revisar tu comprensión.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Many of these words appear on real office signs and HR documents — learning them now will help you read workplace memos later.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Vocabulary</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">
+      2–3 quick questions to confirm the key words are clear before you move on.
+    </p>
+    ${renderMiniQ('voc', VOC_CHECK)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar Bridge</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Remember this from Lesson 17? You learned two important words for rules: <strong>must</strong> (obligation) and <strong>can't</strong> (prohibition).</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">You must wear a badge.</span><span class="example-arrow">→</span><span class="example-es">Debes usar una credencial.</span></div>
+      <div class="example-item"><span class="example-en">You can't smoke inside.</span><span class="example-arrow">→</span><span class="example-es">No puedes fumar adentro.</span></div>
+    </div>
+    <div class="es-note">Hoy agregamos una nueva frase: <strong>allowed to</strong>, que habla sobre el permiso — algo diferente de una orden o una prohibición.</div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Grammar Bridge (Lesson 17)</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">
+      A quick recall check on must / can't from Lesson 17.
+    </p>
+    ${renderMiniQ('bridge', BRIDGE_CHECK)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Grammar</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Words like <em>must</em>, <em>must not</em>, and <em>(be) allowed to</em> are called <strong>modal verbs</strong> (or modal expressions). They don't describe an action by themselves — they describe how necessary, prohibited, or permitted an action is. This is why we always use a modal + a base verb, never a modal alone.</p>
+    <div class="es-note">Palabras como <em>must</em>, <em>must not</em>, y <em>(be) allowed to</em> se llaman <strong>verbos modales</strong>. No describen una acción por sí solas — describen qué tan necesaria, prohibida o permitida es una acción. Por eso siempre usamos un modal + un verbo base, nunca un modal solo.</div>
+
+    <div class="examples-wrap">
+      <div class="examples-label">Notice</div>
+      <div class="example-item"><span class="example-en">You must wear your ID badge at all times.</span></div>
+      <div class="example-item"><span class="example-en">You must not share confidential client files.</span></div>
+      <div class="example-item"><span class="example-en">You are allowed to work from home on Fridays.</span></div>
+    </div>
+
+    <div class="h-serif" style="font-size:16px;">Form Rules</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">1. must + base verb (no "to")</div>
+      <div class="pattern-row"><span class="pattern-en">You must sign in every morning.</span><span class="pattern-es">tener que / deber</span></div>
+    </div>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Pitfall</div>
+      <div class="mistake-wrong">✗ You must to sign in.</div>
+      <div class="mistake-right">✓ You must sign in.</div>
+    </div>
+    <div class="es-note">En español usamos "tener que" o "deber," pero en inglés, <strong>nunca</strong> decimos "must to." Solo: must + verbo base.</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">2. must not (mustn't) + base verb</div>
+      <div class="pattern-row"><span class="pattern-en">You must not use your phone during meetings.</span><span class="pattern-es">no deber / está prohibido</span></div>
+      <div class="pattern-row"><span class="pattern-en">You mustn't use your phone during meetings.</span><span class="pattern-es">(contraction)</span></div>
+    </div>
+    <div class="es-note">"Must not" = prohibición fuerte, como "no debes" o "está prohibido."</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">3. be allowed to + base verb (this one DOES use "to")</div>
+      <div class="pattern-row"><span class="pattern-en">You are allowed to take a 30-minute lunch break.</span><span class="pattern-es">tener permiso para / poder</span></div>
+    </div>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Pitfall</div>
+      <div class="mistake-wrong">✗ You allowed to leave early.</div>
+      <div class="mistake-right">✓ You are allowed to leave early.</div>
+    </div>
+    <div class="es-note">"Allowed to" siempre necesita el verbo "be" (am/is/are) antes. No es como el español "poder," que no necesita un verbo extra.</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">4. not allowed to + base verb</div>
+      <div class="pattern-row"><span class="pattern-en">You are not allowed to eat at your desk.</span><span class="pattern-es">no tener permiso para</span></div>
+    </div>
+    <div class="es-note">"Not allowed to" = falta de permiso. Es parecido a "must not," pero suena más como "no tienes permiso" en vez de "es una orden."</div>
+
+    <div class="h-serif" style="font-size:16px;">Use</div>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1.4fr 1fr;"><span>Form</span><span>Meaning</span><span>Feels like...</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1.4fr 1fr;"><span>must</span><span>strong obligation, a rule from authority</span><span>an order</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1.4fr 1fr;"><span>must not</span><span>strong prohibition</span><span>a command against something</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1.4fr 1fr;"><span>allowed to</span><span>permission granted</span><span>"yes, this is OK"</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1.4fr 1fr;"><span>not allowed to</span><span>permission denied</span><span>"no, this is not OK"</span></div>
+    </div>
+
+    <div class="h-serif" style="font-size:16px;">Spanish Bridge</div>
+    <div class="bridge-table-wrap">
+      <div class="bridge-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="bridge-row"><span class="bridge-en">must</span><span class="bridge-es">tener que / deber</span></div>
+      <div class="bridge-row"><span class="bridge-en">must not</span><span class="bridge-es">no deber / está prohibido</span></div>
+      <div class="bridge-row"><span class="bridge-en">(be) allowed to</span><span class="bridge-es">tener permiso para / poder</span></div>
+      <div class="bridge-row"><span class="bridge-en">not allowed to</span><span class="bridge-es">no tener permiso para</span></div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Common Mistakes</div>
+      <div class="mistake-wrong">✗ You must to sign in.</div>
+      <div class="mistake-right">✓ You must sign in. (no "to" after must)</div>
+      <div class="mistake-wrong">✗ You allowed to leave early.</div>
+      <div class="mistake-right">✓ You are allowed to leave early. (need "be")</div>
+    </div>
+    <div class="es-note">Recuerda: "must" nunca lleva "to," y "allowed to" siempre necesita "am/is/are" antes.</div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Grammar</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">
+      2–3 quick questions to confirm the grammar is clear before you move on.
+    </p>
+    ${renderMiniQ('gram', GRAM_CHECK)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Model Sentences</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">Employees must complete compliance training every year.</span></div>
+      <div class="example-item"><span class="example-en">You must not discuss salary information with clients.</span></div>
+      <div class="example-item"><span class="example-en">You are allowed to wear casual clothes on Fridays.</span></div>
+      <div class="example-item"><span class="example-en">Visitors are not allowed to enter the server room.</span></div>
+      <div class="example-item"><span class="example-en">All staff must report safety violations immediately.</span></div>
+      <div class="example-item"><span class="example-en">New employees are allowed to ask questions during onboarding.</span></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Model Sentences</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">
+      2–3 quick questions to confirm the model sentences are clear before you move on.
+    </p>
+    ${renderMiniQ('mod', MOD_CHECK)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Welcome to the Company — HR Policy Briefing</div>
+          <div class="audio-box-sub">Priya Nair, HR Manager · ~50 seconds · Neutral English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L28-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <button class="speed-btn" onclick="setSpeed(0.7,this)">0.7×</button>
+        <button class="speed-btn" onclick="setSpeed(0.8,this)">0.8×</button>
+        <button class="speed-btn" onclick="setSpeed(0.9,this)">0.9×</button>
+        <button class="speed-btn active" onclick="setSpeed(1.0,this)">1.0×</button>
+        <button class="speed-btn" onclick="setSpeed(1.1,this)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>Good morning, everyone, and welcome to the company. My name is Priya Nair, and I'm the HR Manager. Today I want to explain a few important policies.</p>
+        <p>First, attendance: you must arrive by 9 AM every day. Second, your ID badge: you must wear it at all times inside the building.</p>
+        <p>Now, about confidentiality — you must not share client information with anyone outside the company. This is very important.</p>
+        <p>Let's talk about permissions. You are allowed to work from home on Fridays, if your manager approves. You are also allowed to take a one-hour lunch break. However, you are not allowed to use personal phones during team meetings.</p>
+        <p>If you ever have a question about a policy, you must report it to your supervisor. That's all for now — welcome to the team!</p>
+      </div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Comprehension Questions</div>
+      ${renderMiniQ('lis', LIS_CQ)}
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Exercises</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Tap each sentence to reveal its rule type: Obligation, Prohibition, Permission, or No Permission.</p>
+    ${EXERCISES.map((ex,i) => `
+      <div class="ex-box">
+        <div class="ex-label">Sentence ${i+1}</div>
+        <p style="font-size:14px;margin-bottom:10px;font-style:italic;color:var(--navy);">${ex.sentence}</p>
+        ${!exState[i] ? `<button class="check-btn" onclick="revealExercise(${i})">Reveal Answer</button>` :
+          `<div class="q-feedback correct">✅ <strong>${ex.answer}</strong></div>`}
+      </div>
+    `).join('')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">8</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+const VOC_CHECK = [
+  { type:"mc", q:"What does \"confidentiality\" mean?", opts:["Sharing information with everyone","Keeping information private","Arriving on time"], answer:1, fb:"Confidentiality means keeping information private and protected." },
+  { type:"tf", q:"\"Attendance\" means being present at work or in class.", answer:true, fb:"Correct — attendance refers to being present." },
+  { type:"input", q:"What is the English word for \"código de vestimenta\"?", answers:["dress code"], display:"dress code", fb:"\"Dress code\" refers to the rules about what clothing is appropriate at work." },
+];
+
+const BRIDGE_CHECK = [
+  { type:"mc", q:"\"You must sign in\" means the same as...", opts:["It's forbidden","It's required","It's optional"], answer:1, fb:"\"Must\" shows a strong obligation — it's required." },
+  { type:"mc", q:"\"You can't use your phone\" means...", opts:["It's required","It's forbidden","It's allowed"], answer:1, fb:"\"Can't\" shows a strong prohibition — it's forbidden." },
+  { type:"tf", q:"\"Must\" and \"allowed to\" mean exactly the same thing.", answer:false, fb:"No — \"must\" is an obligation, while \"allowed to\" is a permission. They are different." },
+];
+
+const GRAM_CHECK = [
+  { type:"mc", q:"Which sentence is correct?", opts:["You must to sign in.","You must sign in.","You musts sign in."], answer:1, fb:"\"Must\" is followed directly by the base verb — no \"to.\"" },
+  { type:"tf", q:"\"Allowed to\" always needs a form of \"be\" (am/is/are) before it.", answer:true, fb:"Correct — for example, \"You are allowed to leave early,\" not \"You allowed to leave early.\"" },
+  { type:"input", q:"Complete: You ___ not share confidential files. (obligation word for prohibition)", answers:["must"], display:"must", fb:"\"Must not\" expresses a strong prohibition." },
+];
+
+const MOD_CHECK = [
+  { type:"mc", q:"\"Visitors are not allowed to enter the server room\" expresses...", opts:["Obligation","Permission denied","Permission granted"], answer:1, fb:"\"Not allowed to\" means permission is denied." },
+  { type:"tf", q:"\"All staff must report safety violations immediately\" is an example of permission.", answer:false, fb:"No — this is an obligation, shown by \"must.\"" },
+  { type:"mc", q:"Which sentence shows permission granted?", opts:["Employees must complete compliance training.","You are allowed to wear casual clothes on Fridays.","You must not discuss salary with clients."], answer:1, fb:"\"Allowed to\" shows permission that has been granted." },
+];
+
+const LIS_CQ = [
+  { type:"input", q:"What time must employees arrive?", answers:["9 am","9am","9 a.m.","9:00 am","nine am"], display:"9 AM", fb:"Priya said employees must arrive by 9 AM every day." },
+  { type:"mc", q:"What must employees wear at all times inside the building?", opts:["A jacket","Their ID badge","A name tag"], answer:1, fb:"Employees must wear their ID badge at all times." },
+  { type:"tf", q:"Employees are allowed to share client information with people outside the company.", answer:false, fb:"No — employees must not share confidential client information." },
+  { type:"mc", q:"When are employees allowed to work from home?", opts:["Every day","On Fridays, with manager approval","Never"], answer:1, fb:"Priya said employees are allowed to work from home on Fridays, if their manager approves." },
+  { type:"tf", q:"Employees are allowed to use personal phones during team meetings.", answer:false, fb:"No — Priya said employees are not allowed to use personal phones during meetings." },
+  { type:"input", q:"What must employees do if they have a question about a policy?", answers:["report it to their supervisor","report it to supervisor","tell their supervisor","report to supervisor"], display:"Report it to their supervisor", fb:"Priya said to report any policy questions to your supervisor." },
+];
+
+const exState = {};
+const EXERCISES = [
+  { sentence:"You must wear your ID badge at all times.", answer:"Obligation" },
+  { sentence:"You must not share confidential client information.", answer:"Prohibition" },
+  { sentence:"You are allowed to work from home on Fridays.", answer:"Permission" },
+  { sentence:"You are not allowed to use your phone during meetings.", answer:"No Permission" },
+  { sentence:"All staff must report safety violations immediately.", answer:"Obligation" },
+  { sentence:"You are allowed to take a one-hour lunch break.", answer:"Permission" },
+];
+function revealExercise(i) {
+  exState[i] = true;
+  document.getElementById('mainContent').innerHTML = renderExercises();
+}
+
+const QUIZ = [
+  { type:"mc", q:"Employees ___ wear their ID badge at all times.", opts:["allowed to","must","are allowed"], answer:1, hint:"Think obligation.", fb:"\"Must\" shows a required action." },
+  { type:"mc", q:"You ___ discuss salary with clients.", opts:["must not","allowed to","are allowed to"], answer:0, hint:"Think prohibition.", fb:"\"Must not\" shows a strong prohibition." },
+  { type:"mc", q:"New employees ___ ask questions during onboarding.", opts:["must","are allowed to","allowed to"], answer:1, hint:"Think permission.", fb:"\"Are allowed to\" shows permission granted." },
+  { type:"mc", q:"Visitors ___ enter the server room.", opts:["are not allowed to","must","not allowed"], answer:0, hint:"Think permission denied.", fb:"\"Are not allowed to\" shows permission denied." },
+  { type:"mc", q:"Fix the error: \"You must to sign in every morning.\"", opts:["You must sign in every morning.","You must signing in every morning.","You must not sign in every morning."], answer:0, hint:"Remove the extra word.", fb:"\"Must\" never takes \"to\" before the base verb." },
+  { type:"mc", q:"Fix the error: \"You allowed to leave early today.\"", opts:["You allow to leave early today.","You are allowed to leave early today.","You allowed leaving early today."], answer:1, hint:"A verb is missing.", fb:"\"Allowed to\" always needs a form of \"be\" (am/is/are)." },
+  { type:"mc", q:"All staff ___ complete compliance training every year.", opts:["allowed to","must","are allowed"], answer:1, hint:"Think obligation.", fb:"\"Must\" shows a required action." },
+  { type:"mc", q:"You ___ wear casual clothes on Fridays.", opts:["are allowed to","must","must to"], answer:0, hint:"Think permission.", fb:"\"Are allowed to\" shows permission." },
+  { type:"mc", q:"(Review — L17) Which word shows a strong prohibition, like a sign that says \"No Smoking\"?", opts:["allowed to","can't","are allowed"], answer:1, hint:"Recall Lesson 17.", fb:"\"Can't\" shows strong prohibition, just like \"must not.\"" },
+  { type:"mc", q:"(Review — L17) \"You must complete the form\" means the same as:", opts:["It's optional","It's forbidden","It's required"], answer:2, hint:"Recall Lesson 17.", fb:"\"Must\" always shows something required." },
+  { type:"mc", q:"Fix the error: \"Employees must reporting safety issues.\"", opts:["Employees must report safety issues.","Employees must to report safety issues.","Employees are must report safety issues."], answer:0, hint:"Use the base verb.", fb:"\"Must\" is followed by the base verb, not the -ing form." },
+  { type:"mc", q:"Priya said employees ___ use personal phones during meetings.", opts:["are allowed to","are not allowed to","must"], answer:1, hint:"Recall the listening.", fb:"Employees are not allowed to use personal phones during meetings." },
+];
+
+const quizState = {};
+let quizScore = 0;
+const miniState = { voc: {}, bridge: {}, gram: {}, mod: {}, lis: {} };
+
+function setSpeed(rate, btn) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const qMap = { voc: VOC_CHECK, bridge: BRIDGE_CHECK, gram: GRAM_CHECK, mod: MOD_CHECK, lis: LIS_CQ };
+  const q = qMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { voc: renderVocabulary, bridge: renderBridge, gram: renderGrammar, mod: renderModel, lis: renderListening };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) {
+    document.getElementById('mainContent').innerHTML = targetFn();
+    const audio = document.getElementById('mainAudio');
+    if (audio) audio.playbackRate = currentSpeed;
+  }
+}
+
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+STEPS = [
+  { label: "1. Welcome",     fn: renderWelcome },
+  { label: "2. Vocabulary",  fn: renderVocabulary },
+  { label: "3. Bridge",      fn: renderBridge },
+  { label: "4. Grammar",     fn: renderGrammar },
+  { label: "5. Model",       fn: renderModel },
+  { label: "6. Listening",   fn: renderListening },
+  { label: "7. Exercises",   fn: renderExercises },
+  { label: "8. Quiz",        fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

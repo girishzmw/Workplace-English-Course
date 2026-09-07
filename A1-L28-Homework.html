@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Policies | A1 Unit 3 — Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:19px; color:var(--navy); margin-bottom:12px; margin-top:8px; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; }
+.speed-btn { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; padding:6px 12px; border-radius:6px; cursor:pointer; transition:all 0.15s; }
+.speed-btn:hover { border-color:var(--gold); color:var(--gold); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* QUIZ CARDS (shared visual style) */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; margin-bottom:4px; }
+.result-attempts { font-size:12px; color:rgba(255,255,255,0.4); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* UNJUMBLE */
+.unjumble-answer { display:flex; flex-wrap:wrap; gap:8px; min-height:46px; padding:10px; background:var(--off-white); border:1.5px dashed var(--border-grey); border-radius:8px; margin-bottom:14px; }
+.unjumble-answer.correct { border-color:var(--green); border-style:solid; background:var(--green-bg); }
+.unjumble-answer.wrong { border-color:var(--red); border-style:solid; background:var(--red-bg); }
+.unjumble-slot { background:var(--navy); color:var(--white); padding:7px 13px; border-radius:6px; font-size:13px; cursor:pointer; transition:opacity 0.12s; }
+.unjumble-slot:hover { opacity:0.85; }
+.unjumble-bank { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+.unjumble-word { background:var(--white); border:1.5px solid var(--border-grey); color:var(--navy); padding:7px 13px; border-radius:6px; font-size:13px; cursor:pointer; transition:all 0.12s; }
+.unjumble-word:hover:not(:disabled) { border-color:var(--sky); color:var(--sky); }
+.unjumble-word:disabled { opacity:0.25; cursor:default; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · UNIT 3 · HOMEWORK</div>
+    <h1 class="hero-title">Company Policies</h1>
+    <p class="hero-sub">Grammar: Must / Allowed to · Lesson 28</p>
+    <div class="hero-pills">
+      <span class="pill accent">Listening</span>
+      <span class="pill accent">Unjumble + Translation</span>
+      <span class="pill accent">MC Quiz</span>
+      <span class="pill">3 parts</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = currentSpeed;
+}
+
+function normalise(s) { return s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,''); }
+
+// ── AUDIO FUNCTIONS ─────────────────────────────────────────
+function setSpeed(rate, btn) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── PART A DATA — LISTENING ─────────────────────────────────
+const QUIZ_A = [
+  { type:'input', q:'What time must employees arrive at their desk?', answers:['9 am','9am','9 a.m.','9:00 am','nine am'], display:'9 AM', fb:'Andrés said employees must arrive at their desk by 9 AM, not just enter the building.' },
+  { type:'mc', q:'What must employees submit every Friday before 5 PM?', opts:['Their vacation request','Their weekly report','Their ID badge'], answer:1, fb:'Andrés said employees must submit their weekly report every Friday before 5 PM.' },
+  { type:'tf', q:'Employees are allowed to wear shorts in summer.', answer:false, fb:'No — employees are allowed to wear jeans on Fridays, but not shorts, even in summer.' },
+  { type:'mc', q:'What must employees do if they are sick?', opts:['Call their supervisor before 8 AM','Come to work anyway','Send an email at noon'], answer:0, fb:'Andrés said employees must call their supervisor before 8 AM if they are sick.' },
+  { type:'mc', q:'When are employees allowed to work from home?', opts:['Every day','Only if they have a doctor\'s note','Never'], answer:1, fb:'Andrés said employees are allowed to work from home only with a doctor\'s note.' },
+  { type:'input', q:'Why are employees not allowed to leave their laptop unlocked?', answers:['confidentiality','because of confidentiality','for confidentiality'], display:'Because of confidentiality', fb:'Leaving a laptop unlocked risks exposing confidential company information.' },
+];
+
+// ── PART B DATA — UNJUMBLE + TRANSLATE ──────────────────────
+const QUIZ_B = [
+  { type:'unjumble',
+    words:['badge','your','at','times','wear','all','must','you'],
+    answer:['you','must','wear','your','badge','at','all','times'],
+    hint:'Start with the subject.',
+    fb:'"You must wear your badge at all times." — must is followed by the base verb, no "to."' },
+  { type:'unjumble',
+    words:['not','share','must','information','confidential','you'],
+    answer:['you','must','not','share','confidential','information'],
+    hint:'Remember: must not = strong prohibition.',
+    fb:'"You must not share confidential information."' },
+  { type:'unjumble',
+    words:['Fridays','home','are','work','to','from','allowed','you','on'],
+    answer:['you','are','allowed','to','work','from','home','on','Fridays'],
+    hint:'"Allowed to" needs a form of "be" first.',
+    fb:'"You are allowed to work from home on Fridays."' },
+  { type:'unjumble',
+    words:['meetings','not','phones','use','are','to','allowed','you','in'],
+    answer:['you','are','not','allowed','to','use','phones','in','meetings'],
+    hint:'Negative permission needs "are not allowed to."',
+    fb:'"You are not allowed to use phones in meetings."' },
+  { type:'unjumble',
+    words:['report','must','issues','employees','safety'],
+    answer:['employees','must','report','safety','issues'],
+    hint:'Subject first, then the modal.',
+    fb:'"Employees must report safety issues."' },
+  { type:'unjumble',
+    words:['take','a','allowed','lunch','to','are','you','break'],
+    answer:['you','are','allowed','to','take','a','lunch','break'],
+    hint:'"Allowed to" + base verb.',
+    fb:'"You are allowed to take a lunch break."' },
+  { type:'translate',
+    prompt:'Debes llegar a las 9 AM.',
+    answers:['you must arrive at 9 am','you must arrive at 9am','you must arrive at nine am'],
+    display:'You must arrive at 9 AM.',
+    hint:'debes = must',
+    fb:'"Debes" here expresses obligation — translated as "must."' },
+  { type:'translate',
+    prompt:'No debes compartir información confidencial.',
+    answers:['you must not share confidential information'],
+    display:'You must not share confidential information.',
+    hint:'no debes = must not',
+    fb:'"No debes" expresses strong prohibition — "must not."' },
+  { type:'translate',
+    prompt:'Tienes permiso para trabajar desde casa los viernes.',
+    answers:['you are allowed to work from home on fridays'],
+    display:'You are allowed to work from home on Fridays.',
+    hint:'tienes permiso para = are allowed to',
+    fb:'"Tienes permiso para" translates to "are allowed to."' },
+  { type:'translate',
+    prompt:'No tienes permiso para usar tu teléfono en las reuniones.',
+    answers:['you are not allowed to use your phone in meetings'],
+    display:'You are not allowed to use your phone in meetings.',
+    hint:'no tienes permiso para = are not allowed to',
+    fb:'"No tienes permiso para" translates to "are not allowed to."' },
+  { type:'translate',
+    prompt:'Los empleados deben usar su credencial.',
+    answers:['employees must wear their badge','the employees must wear their badge'],
+    display:'Employees must wear their badge.',
+    hint:'deben = must',
+    fb:'"Deben" expresses obligation — "must."' },
+  { type:'translate',
+    prompt:'Tienes permiso para tomar un descanso para almorzar.',
+    answers:['you are allowed to take a lunch break'],
+    display:'You are allowed to take a lunch break.',
+    hint:'tienes permiso para = are allowed to',
+    fb:'"Tienes permiso para" translates to "are allowed to."' },
+];
+
+// ── PART C DATA — MC QUIZ (10, 2 bridged) ───────────────────
+const QUIZ_C = [
+  { type:'mc', q:'Employees ___ arrive by 9 AM.', opts:['are allowed to','must','allowed'], answer:1, hint:'Think obligation.', fb:'"Must" shows a required action.' },
+  { type:'mc', q:'You ___ share confidential files.', opts:['must not','are allowed to','allowed to'], answer:0, hint:'Think prohibition.', fb:'"Must not" shows a strong prohibition.' },
+  { type:'mc', q:'You ___ wear casual clothes on Fridays.', opts:['are allowed to','must','must to'], answer:0, hint:'Think permission.', fb:'"Are allowed to" shows permission granted.' },
+  { type:'mc', q:'Visitors ___ enter the server room.', opts:['must','are not allowed to','not allowed'], answer:1, hint:'Think permission denied.', fb:'"Are not allowed to" shows permission denied.' },
+  { type:'mc', q:'Fix the error: "You must to sign in."', opts:['You must sign in.','You must signing in.','You must not sign in.'], answer:0, hint:'Remove the extra word.', fb:'"Must" never takes "to" before the base verb.' },
+  { type:'mc', q:'Fix the error: "You allowed to leave early."', opts:['You allow to leave early.','You are allowed to leave early.','You allowed leaving early.'], answer:1, hint:'A verb is missing.', fb:'"Allowed to" always needs a form of "be" (am/is/are).' },
+  { type:'mc', q:'All staff ___ complete compliance training.', opts:['allowed to','must','are allowed'], answer:1, hint:'Think obligation.', fb:'"Must" shows a required action.' },
+  { type:'mc', q:'(Review — L17) Which word shows a strong prohibition, like a "No Smoking" sign?', opts:['allowed to','can\'t','are allowed'], answer:1, hint:'Recall Lesson 17.', fb:'"Can\'t" shows strong prohibition, just like "must not."' },
+  { type:'mc', q:'(Review — L17) "You must complete the form" means it\'s...', opts:['optional','forbidden','required'], answer:2, hint:'Recall Lesson 17.', fb:'"Must" always shows something required.' },
+  { type:'mc', q:'Andrés said employees are allowed to work from home only if they have...', opts:['a manager\'s email','a doctor\'s note','a signed contract'], answer:1, hint:'Recall the listening.', fb:'Andrés said employees need a doctor\'s note to work from home.' },
+];
+
+// ── STATE (independent per part) ────────────────────────────
+const qState = { A: {}, B: {}, C: {} };
+const qScore = { A: 0, B: 0, C: 0 };
+const qAttempts = { A: 0, B: 0, C: 0 };
+const quizBank = { A: QUIZ_A, B: QUIZ_B, C: QUIZ_C };
+const unjumbleState = {}; // { qi: { placed: [wordIndices in bank order], revealed, correct } }
+
+function scoreLabel(part) {
+  const Q = quizBank[part];
+  if (qScore[part] === Q.length) return '🎉 ¡Perfecto! — Great work!';
+  if (qScore[part] >= Q.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (qScore[part] >= Q.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg(part) {
+  const Q = quizBank[part];
+  if (qScore[part] === Q.length) return 'Outstanding — a perfect score!';
+  if (qScore[part] >= Q.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (qScore[part] >= Q.length * 0.7)  return 'Go back and check the items you missed.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+function recalc(part) {
+  let s = 0;
+  quizBank[part].forEach((q,i) => {
+    const st = qState[part][i]; if (!st || !st.revealed) return;
+    if (q.type==='mc' && st.selected===q.answer) s++;
+    else if (q.type==='tf' && q.answer===(st.selected===0)) s++;
+    else if (q.type==='input' && st.correct) s++;
+    else if (q.type==='translate' && st.correct) s++;
+    else if (q.type==='unjumble' && st.correct) s++;
+  });
+  qScore[part] = s;
+}
+
+function rerenderPart(part) {
+  const fnMap = { A: renderPartA, B: renderPartB, C: renderPartC };
+  const targetFn = fnMap[part];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) {
+    document.getElementById('mainContent').innerHTML = targetFn();
+    const audio = document.getElementById('mainAudio');
+    if (audio) audio.playbackRate = currentSpeed;
+  }
+}
+
+// ── SHARED MC/TF/INPUT QUESTION RENDERER (Parts A & C) ──────
+function renderStdQ(part, q, i) {
+  const s = qState[part][i] || {};
+  const rev = s.revealed;
+  const letters = ['A','B','C','D'];
+  let body = '';
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="stdSelectOpt('${part}',${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="stdRevealQ('${part}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="stdSetInp('${part}',${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="stdRevealInp('${part}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${part}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function stdSelectOpt(part,qi,j) { if(!qState[part][qi])qState[part][qi]={}; if(qState[part][qi].revealed)return; qState[part][qi].selected=j; rerenderPart(part); }
+function stdRevealQ(part,qi) { if(!qState[part][qi])qState[part][qi]={}; qState[part][qi].revealed=true; qAttempts[part]++; recalc(part); rerenderPart(part); }
+function stdSetInp(part,qi,v) { if(!qState[part][qi])qState[part][qi]={}; qState[part][qi].inputVal=v; }
+function stdRevealInp(part,qi) {
+  const q=quizBank[part][qi]; if(!qState[part][qi])qState[part][qi]={};
+  const val = qState[part][qi].inputVal||'';
+  qState[part][qi].correct = q.answers.some(a=>normalise(val)===normalise(a));
+  qState[part][qi].revealed=true; qAttempts[part]++; recalc(part); rerenderPart(part);
+}
+
+function retakePart(part) {
+  quizBank[part].forEach((q,i) => {
+    const s = qState[part][i]; if(!s||!s.revealed) return;
+    let ok=false;
+    if(q.type==='mc') ok = s.selected===q.answer;
+    else if(q.type==='tf') ok = q.answer===(s.selected===0);
+    else if(q.type==='input') ok = s.correct;
+    else if(q.type==='translate') ok = s.correct;
+    else if(q.type==='unjumble') ok = s.correct;
+    if(!ok){ delete qState[part][i]; }
+  });
+  recalc(part); rerenderPart(part);
+}
+
+// ── PART A — LISTENING ───────────────────────────────────────
+function renderPartA() {
+  const Q = QUIZ_A;
+  const answered = Object.values(qState.A).filter(s=>s.revealed).length;
+  const pct = Q.length ? (answered/Q.length)*100 : 0;
+  const allDone = answered === Q.length;
+  const allCorrect = allDone && qScore.A === Q.length;
+  const wrongCount = allDone ? Q.length - qScore.A : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">A</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">A Reminder from the Office — Policy Briefing</div>
+          <div class="audio-box-sub">Andrés Rojas, Office Administrator · ~55 seconds · Neutral English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L28-Audio002.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <button class="speed-btn" onclick="setSpeed(0.7,this)">0.7×</button>
+        <button class="speed-btn" onclick="setSpeed(0.8,this)">0.8×</button>
+        <button class="speed-btn" onclick="setSpeed(0.9,this)">0.9×</button>
+        <button class="speed-btn active" onclick="setSpeed(1.0,this)">1.0×</button>
+        <button class="speed-btn" onclick="setSpeed(1.1,this)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>Hello, I'm Andrés Rojas, the office administrator. I want to remind everyone about a few company policies.</p>
+        <p>First, punctuality: you must arrive at your desk by 9 AM, not just enter the building by 9 AM. Second, deadlines: you must submit your weekly report every Friday before 5 PM.</p>
+        <p>Now, about dress code — you are allowed to wear jeans on Fridays, but you are not allowed to wear shorts, even in summer.</p>
+        <p>About attendance — if you are sick, you must call your supervisor before 8 AM. You are allowed to work from home only if you have a doctor's note.</p>
+        <p>One more thing: you are not allowed to leave your laptop unlocked when you leave your desk, because of confidentiality.</p>
+        <p>If you have any questions about these policies, you must speak to me directly. Thank you, and have a productive week!</p>
+      </div>
+    </div>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${Q.length}</span>
+    </div>
+    ${Q.map((q,i)=>renderStdQ('A',q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScore.A} / ${Q.length}</div>
+      <div class="result-label">${scoreLabel('A')}</div>
+      <div class="result-msg">${scoreMsg('A')}</div>
+      <div class="result-attempts">Attempts so far: ${qAttempts.A}</div>
+      ${!allCorrect ? `<div style="margin-top:20px;"><button onclick="retakePart('A')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button></div>` : ''}
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── PART B — UNJUMBLE + TRANSLATE ───────────────────────────
+function renderPartB() {
+  const Q = QUIZ_B;
+  const answered = Object.values(qState.B).filter(s=>s.revealed).length;
+  const pct = Q.length ? (answered/Q.length)*100 : 0;
+  const allDone = answered === Q.length;
+  const allCorrect = allDone && qScore.B === Q.length;
+  const wrongCount = allDone ? Q.length - qScore.B : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">B</div>
+      <div class="sec-badge-title">Unjumble &amp; Translation</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Items 1–6: tap the words in order to build the sentence. Tap a placed word to remove it. Items 7–12: type the English translation.</p>
+
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${Q.length}</span>
+    </div>
+
+    ${Q.map((q,i) => q.type==='unjumble' ? renderUnjumbleQ(q,i) : renderTranslateQ(q,i)).join('')}
+
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScore.B} / ${Q.length}</div>
+      <div class="result-label">${scoreLabel('B')}</div>
+      <div class="result-msg">${scoreMsg('B')}</div>
+      <div class="result-attempts">Attempts so far: ${qAttempts.B}</div>
+      ${!allCorrect ? `<div style="margin-top:20px;"><button onclick="retakePart('B')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button></div>` : ''}
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderUnjumbleQ(q, i) {
+  const s = qState.B[i] || {};
+  const rev = s.revealed;
+  const placed = s.placed || []; // array of bank indices, in placement order
+  const usedSet = new Set(placed);
+
+  const answerHtml = placed.length
+    ? placed.map((bankIdx, pos) => `<span class="unjumble-slot" onclick="unjumbleRemove(${i},${pos})">${q.words[bankIdx]}</span>`).join('')
+    : '<span style="color:var(--grey-blue);font-size:13px;font-style:italic;">Tap words below to build your sentence…</span>';
+
+  const answerCls = rev ? (s.correct ? 'unjumble-answer correct' : 'unjumble-answer wrong') : 'unjumble-answer';
+
+  return `<div class="q-card" id="qc-B-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">Unjumble the sentence:</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    <div class="${answerCls}">${answerHtml}</div>
+    <div class="unjumble-bank">
+      ${q.words.map((w,bankIdx) => `<button class="unjumble-word" onclick="unjumbleAdd(${i},${bankIdx})" ${(usedSet.has(bankIdx)||rev)?'disabled':''}>${w}</button>`).join('')}
+    </div>
+    ${!rev ? `<div style="text-align:right"><button class="check-btn" onclick="unjumbleCheck(${i})" ${placed.length!==q.words.length?'disabled':''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.answer.join(' ')}</strong><br>💡 ${q.fb}</div>` : ''}
+  </div>`;
+}
+
+function unjumbleAdd(qi, bankIdx) {
+  if (!qState.B[qi]) qState.B[qi] = {};
+  if (qState.B[qi].revealed) return;
+  if (!qState.B[qi].placed) qState.B[qi].placed = [];
+  qState.B[qi].placed.push(bankIdx);
+  rerenderPart('B');
+}
+function unjumbleRemove(qi, pos) {
+  if (!qState.B[qi] || qState.B[qi].revealed) return;
+  qState.B[qi].placed.splice(pos, 1);
+  rerenderPart('B');
+}
+function unjumbleCheck(qi) {
+  const q = QUIZ_B[qi];
+  if (!qState.B[qi]) qState.B[qi] = {};
+  const placedWords = (qState.B[qi].placed || []).map(bi => q.words[bi]);
+  qState.B[qi].correct = placedWords.join(' ') === q.answer.join(' ');
+  qState.B[qi].revealed = true;
+  qAttempts.B++;
+  recalc('B');
+  rerenderPart('B');
+}
+
+function renderTranslateQ(q, i) {
+  const s = qState.B[i] || {};
+  const rev = s.revealed;
+  const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+  return `<div class="q-card" id="qc-B-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">Translate: <em>"${q.prompt}"</em></div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    <div class="q-input-row">
+      <input class="${cls}" type="text" placeholder="Type your answer in English…" value="${s.inputVal||''}" oninput="translateSetInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="translateCheck(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}
+  </div>`;
+}
+function translateSetInp(qi, v) { if(!qState.B[qi]) qState.B[qi]={}; qState.B[qi].inputVal=v; }
+function translateCheck(qi) {
+  const q = QUIZ_B[qi];
+  if (!qState.B[qi]) qState.B[qi] = {};
+  const val = qState.B[qi].inputVal || '';
+  qState.B[qi].correct = q.answers.some(a => normalise(val)===normalise(a));
+  qState.B[qi].revealed = true;
+  qAttempts.B++;
+  recalc('B');
+  rerenderPart('B');
+}
+
+// ── PART C — MC QUIZ ─────────────────────────────────────────
+function renderPartC() {
+  const Q = QUIZ_C;
+  const answered = Object.values(qState.C).filter(s=>s.revealed).length;
+  const pct = Q.length ? (answered/Q.length)*100 : 0;
+  const allDone = answered === Q.length;
+  const allCorrect = allDone && qScore.C === Q.length;
+  const wrongCount = allDone ? Q.length - qScore.C : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">C</div>
+      <div class="sec-badge-title">MC Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${Q.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${Q.length}</span>
+    </div>
+    ${Q.map((q,i)=>renderStdQ('C',q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${qScore.C} / ${Q.length}</div>
+      <div class="result-label">${scoreLabel('C')}</div>
+      <div class="result-msg">${scoreMsg('C')}</div>
+      <div class="result-attempts">Attempts so far: ${qAttempts.C}</div>
+      ${!allCorrect ? `<div style="margin-top:20px;"><button onclick="retakePart('C')" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button></div>` : ''}
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS ────────────────────────────────────────────────────
+STEPS = [
+  { label: "A. Listening",   fn: renderPartA },
+  { label: "B. Unjumble & Translate", fn: renderPartB },
+  { label: "C. MC Quiz",     fn: renderPartC },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Policies | A1 Unit 3 — Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+
+/* PASSAGE CARD */
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.passage-num { display:inline-flex; align-items:center; justify-content:center; background:var(--navy); color:var(--gold); font-size:11px; font-weight:700; border-radius:5px; padding:3px 10px; margin-bottom:10px; }
+.passage-name { font-family:var(--font-heading); font-size:15px; color:var(--navy); margin-bottom:8px; display:inline-block; margin-left:8px; }
+.passage-text { font-size:14px; line-height:1.8; color:var(--slate); font-style:italic; margin-bottom:14px; padding:12px 16px; background:var(--off-white); border-left:3px solid var(--gold); }
+
+/* TAP-TO-REVEAL */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row:last-child { margin-bottom:0; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:13.5px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--sky); font-style:italic; white-space:nowrap; flex-shrink:0; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:13.5px; color:var(--green); }
+.tap-answer.show { display:block; }
+
+/* SPEAKING LADDER STAGE HEADER */
+.stage-header { display:flex; align-items:center; gap:12px; margin-bottom:14px; margin-top:26px; }
+.stage-header:first-of-type { margin-top:0; }
+.stage-num { background:var(--sky); color:var(--white); width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-size:15px; flex-shrink:0; }
+.stage-title { font-family:var(--font-heading); font-size:17px; color:var(--navy); }
+.stage-time { font-size:12px; color:var(--grey-blue); font-style:italic; margin-left:auto; }
+
+/* CHORUS BOX */
+.chorus-box { background:var(--navy); border-radius:10px; padding:18px 22px; margin-bottom:20px; }
+.chorus-line { font-size:14px; color:var(--white); padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+.chorus-line:last-child { border-bottom:none; }
+.chorus-line::before { content:'🔊 '; }
+
+/* FRAME BOX */
+.frame-box { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.35); border-radius:8px; padding:12px 18px; margin-bottom:18px; font-size:14px; color:#7A5500; font-weight:600; text-align:center; }
+
+/* CARD GRID */
+.card-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px; }
+@media(max-width:640px){ .card-grid{ grid-template-columns:repeat(2,1fr); } }
+.drill-card { background:var(--white); border:1.5px solid var(--border-grey); border-radius:8px; padding:12px 10px; text-align:center; }
+.drill-card-num { font-size:11px; font-weight:700; color:var(--gold); margin-bottom:6px; }
+.drill-card-text { font-size:13px; color:var(--navy); }
+
+/* CUE CARD (Stage 3) */
+.cue-card { background:var(--white); border:1.5px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:12px; }
+.cue-card-top { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.cue-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; }
+.cue-keywords { font-size:14px; color:var(--navy); font-weight:600; }
+.plan-input { width:100%; padding:9px 12px; border:1.5px dashed var(--border-grey); border-radius:6px; font-family:var(--font-body); font-size:13px; background:var(--off-white); outline:none; color:var(--slate); }
+.plan-input:focus { border-color:var(--sky); }
+.plan-label { font-size:11px; color:var(--grey-blue); font-style:italic; margin-bottom:5px; }
+
+/* TEACHER BOX */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · UNIT 3 · CLASSWORK — SPEAKING DAY</div>
+    <h1 class="hero-title">Company Policies</h1>
+    <p class="hero-sub">Grammar: Must / Allowed to · Lesson 28 · 60 min</p>
+    <div class="hero-pills">
+      <span class="pill accent">Speaking 60%</span>
+      <span class="pill">4 sections</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+function toggleTap(el) {
+  el.querySelector('.tap-answer').classList.toggle('show');
+}
+
+// ── WARM-UP DATA ────────────────────────────────────────────
+const WARMUP = [
+  { q:"What word means \"the rules a company gives to employees\"?", a:"Policy" },
+  { q:"What do you call the card that proves who you are at work?", a:"ID badge" },
+  { q:"What word means \"arriving on time\"?", a:"Punctuality" },
+  { q:"What is the word for \"keeping information private\"?", a:"Confidentiality" },
+  { q:"What do you call breaking a rule?", a:"Violation" },
+  { q:"What word means \"being present at work\"?", a:"Attendance" },
+  { q:"What do you call the clothing rules at a company?", a:"Dress code" },
+  { q:"What do you do when you tell your supervisor about a problem?", a:"Report it" },
+];
+
+// ── READING PASSAGES DATA (8 short passages, 2 questions each) ─
+const PASSAGES = [
+  {
+    name: "Carlos",
+    text: "My name is Carlos. I must arrive at work by 9 AM every day. I am also allowed to work from home on Fridays.",
+    q1: "What time must Carlos arrive at work?", a1: "He must arrive by 9 AM.",
+    q2: "When is Carlos allowed to work from home?", a2: "He is allowed to work from home on Fridays."
+  },
+  {
+    name: "Ana",
+    text: "My name is Ana. I must wear my ID badge at all times in the building. I am not allowed to enter the server room without permission.",
+    q1: "What must Ana wear at all times?", a1: "She must wear her ID badge.",
+    q2: "Is Ana allowed to enter the server room without permission?", a2: "No, she is not allowed to enter without permission."
+  },
+  {
+    name: "Diego",
+    text: "My name is Diego. I must not share client information with anyone outside the company. This is a very important rule.",
+    q1: "What must Diego not do?", a1: "He must not share client information with anyone outside the company.",
+    q2: "Why is this rule important?", a2: "Because it protects confidential client information."
+  },
+  {
+    name: "Valentina",
+    text: "My name is Valentina. I am allowed to take a one-hour lunch break every day. I am not allowed to eat at my desk during meetings.",
+    q1: "How long is Valentina's lunch break?", a1: "She is allowed to take a one-hour lunch break.",
+    q2: "Is Valentina allowed to eat at her desk during meetings?", a2: "No, she is not allowed to eat at her desk during meetings."
+  },
+  {
+    name: "Mateo",
+    text: "My name is Mateo. I must complete compliance training every year. I am also allowed to ask my manager questions about the training.",
+    q1: "What must Mateo complete every year?", a1: "He must complete compliance training every year.",
+    q2: "What is Mateo allowed to do about the training?", a2: "He is allowed to ask his manager questions."
+  },
+  {
+    name: "Camila",
+    text: "My name is Camila. I am allowed to wear casual clothes on Fridays. I must not wear casual clothes on other days.",
+    q1: "When is Camila allowed to wear casual clothes?", a1: "She is allowed to wear casual clothes on Fridays.",
+    q2: "What must Camila not do on other days?", a2: "She must not wear casual clothes on other days."
+  },
+  {
+    name: "Santiago",
+    text: "My name is Santiago. I must report any safety issue to my supervisor immediately. I am not allowed to ignore a safety problem.",
+    q1: "What must Santiago do if he sees a safety issue?", a1: "He must report it to his supervisor immediately.",
+    q2: "Is Santiago allowed to ignore a safety problem?", a2: "No, he is not allowed to ignore it."
+  },
+  {
+    name: "Isabella",
+    text: "My name is Isabella. I am not allowed to use my personal phone during team meetings. However, I am allowed to use it during my lunch break.",
+    q1: "When is Isabella not allowed to use her phone?", a1: "She is not allowed to use it during team meetings.",
+    q2: "When is she allowed to use her phone?", a2: "She is allowed to use it during her lunch break."
+  },
+];
+
+// ── SPEAKING LADDER DATA ────────────────────────────────────
+const CHORUS_LINES = [
+  "You must wear your ID badge.",
+  "You must not share confidential information.",
+  "You are allowed to work from home on Fridays.",
+  "You are not allowed to use your phone in meetings.",
+];
+
+const DRILL_CARDS = [
+  "arrive on time",
+  "wear an ID badge",
+  "share client information",
+  "take a lunch break",
+  "wear casual clothes on Fridays",
+  "use phones in meetings",
+  "report safety issues",
+  "work from home",
+];
+
+const CUE_CARDS = [
+  "badge / office",
+  "phone / meeting",
+  "lunch / hour",
+  "Friday / home",
+  "safety / report",
+  "dress code / Friday",
+  "confidential / client",
+  "arrive / 9 AM",
+];
+
+// ── SECTION RENDERERS ───────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-Up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Oral vocabulary recall — teacher asks, students answer aloud, round-robin.</p>
+    ${WARMUP.map((w,i) => `
+      <div class="tap-row" onclick="toggleTap(this)">
+        <div class="tap-row-top">
+          <div class="tap-q">${i+1}. ${w.q}</div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer">${w.a}</div>
+      </div>
+    `).join('')}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Keep pace brisk — this is oral recall, not a written exercise. Call on students round-robin rather than allowing shout-outs, so every student gets at least one turn.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Reading</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="h-serif" style="font-size:15px;">Grammar Reminder</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Must / Allowed to</div>
+      <div class="pattern-row"><span class="pattern-en">must + base verb</span><span class="pattern-es">tener que / deber</span></div>
+      <div class="pattern-row"><span class="pattern-en">must not + base verb</span><span class="pattern-es">no deber / está prohibido</span></div>
+      <div class="pattern-row"><span class="pattern-en">(be) allowed to + base verb</span><span class="pattern-es">tener permiso para</span></div>
+      <div class="pattern-row"><span class="pattern-en">not allowed to + base verb</span><span class="pattern-es">no tener permiso para</span></div>
+    </div>
+
+    <p class="sec-intro">Each student reads one short passage below, then answers the two questions. Tap a question to reveal the answer.</p>
+
+    ${PASSAGES.map((p,i) => `
+      <div class="passage-card">
+        <span class="passage-num">Student ${i+1}</span><span class="passage-name">${p.name}</span>
+        <div class="passage-text">${p.text}</div>
+        <div class="tap-row" onclick="toggleTap(this)">
+          <div class="tap-row-top">
+            <div class="tap-q">1. ${p.q1}</div>
+            <div class="tap-hint-label">Tap to reveal</div>
+          </div>
+          <div class="tap-answer">${p.a1}</div>
+        </div>
+        <div class="tap-row" onclick="toggleTap(this)">
+          <div class="tap-row-top">
+            <div class="tap-q">2. ${p.q2}</div>
+            <div class="tap-hint-label">Tap to reveal</div>
+          </div>
+          <div class="tap-answer">${p.a2}</div>
+        </div>
+      </div>
+    `).join('')}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Assign one passage per student (adjust if the class has fewer or more than 8). Have each student read their passage aloud before answering — this doubles as pronunciation practice ahead of the Speaking Ladder. If time is short, the two questions can be answered orally rather than revealed on screen.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeakingLadder() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Speaking Ladder</div>
+      <div class="sec-badge-time">25 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="stage-header">
+      <div class="stage-num">1</div>
+      <div class="stage-title">Model &amp; Chorus</div>
+      <div class="stage-time">~2 min</div>
+    </div>
+    <p class="sec-intro">Teacher models each sentence once or twice. The whole class repeats chorally, together.</p>
+    <div class="chorus-box">
+      ${CHORUS_LINES.map(l => `<div class="chorus-line">${l}</div>`).join('')}
+    </div>
+
+    <div class="stage-header">
+      <div class="stage-num">2</div>
+      <div class="stage-title">Chain Drill</div>
+      <div class="stage-time">~10 min</div>
+    </div>
+    <p class="sec-intro">Round-robin, one student at a time. Each student takes a numbered card and produces one sentence using the fixed frame below.</p>
+    <div class="frame-box">"In our office, employees ___ (must / are allowed to / must not / are not allowed to) ___."</div>
+    <div class="card-grid">
+      ${DRILL_CARDS.map((c,i) => `
+        <div class="drill-card">
+          <div class="drill-card-num">Card ${i+1}</div>
+          <div class="drill-card-text">${c}</div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Stage 2 errors mean "off-script" — the student didn't use the given frame. Correct these gently and have the student retry with the frame. This stage guarantees correct output before independent production begins.
+    </div>
+
+    <div class="stage-header">
+      <div class="stage-num">3</div>
+      <div class="stage-title">Cue-Only Independent Round</div>
+      <div class="stage-time">~13 min</div>
+    </div>
+    <p class="sec-intro">Same round-robin, teacher-controlled turn-taking — but no sentence frame this time. Each student gets 2–3 keywords, writes one sentence silently (15–20 seconds), then says it aloud on their turn.</p>
+    ${CUE_CARDS.map((c,i) => `
+      <div class="cue-card">
+        <div class="cue-card-top">
+          <span class="cue-num">Student ${i+1}</span>
+          <span class="cue-keywords">${c}</span>
+        </div>
+        <div class="plan-label">Write your sentence here (not graded — just for you):</div>
+        <input class="plan-input" type="text" placeholder="Type your sentence…">
+      </div>
+    `).join('')}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Stage 3 errors are genuine production gaps, not off-script mistakes — note them for later feedback but avoid over-correcting in the moment, or the activity collapses back into a controlled drill and defeats its purpose. Give each student roughly 15–20 seconds to write their plan before calling on them. All 8 students go through this stage — no subset or rotation.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Wrap-Up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Ask 2–3 students to share one real rule from their own workplace, using <em>must</em> or <em>allowed to</em>.</p>
+    <div class="info-box">
+      Example prompt: "Tell me one rule from your own job — what must you do, or what are you allowed to do?"
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      This is a light, low-pressure close — celebrate correct use of the target grammar rather than correcting minor errors. A 10-minute cushion follows this step; use it to revisit any stage of the Speaking Ladder that needs more practice, or to let stronger students share a second workplace rule.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS ────────────────────────────────────────────────────
+STEPS = [
+  { label: "1. Warm-Up",         fn: renderWarmup },
+  { label: "2. Reading",         fn: renderReading },
+  { label: "3. Speaking Ladder", fn: renderSpeakingLadder },
+  { label: "4. Wrap-Up",         fn: renderWrapup },
+];
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

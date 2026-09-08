@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 21: Project Management Basics | A2 · Unit 3 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* TEACHER INSTRUCTION BOX */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* PASSAGE CARD */
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.passage-head { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.passage-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; }
+.passage-student { font-size:12px; color:var(--grey-blue); font-style:italic; }
+.passage-text { font-size:14px; line-height:1.8; color:var(--slate); margin-bottom:14px; }
+.passage-q { display:flex; flex-direction:column; gap:8px; }
+.passage-q-item { padding:10px 14px; background:var(--off-white); border-radius:7px; cursor:pointer; font-size:13px; }
+.passage-q-item .rev { display:none; color:var(--green); font-weight:700; margin-left:6px; }
+.passage-q-item .tap-hint { font-size:11px; color:var(--grey-blue); float:right; }
+
+/* IDIOM BOX */
+.idiom-box { background:linear-gradient(135deg,var(--navy) 0%,#26406B 100%); border-radius:10px; padding:18px 20px; margin-bottom:20px; }
+.idiom-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.idiom-phrase { font-family:var(--font-heading); font-size:19px; color:var(--white); margin-bottom:8px; }
+.idiom-es { font-size:13px; color:rgba(255,255,255,0.75); line-height:1.7; margin-bottom:10px; font-style:italic; }
+.idiom-example { font-size:14px; color:var(--gold-light); font-style:italic; background:rgba(255,255,255,0.06); border-radius:6px; padding:9px 13px; margin-bottom:10px; }
+
+/* TONGUE TWISTER BOX */
+.twister-box { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:10px; padding:20px 22px; margin-bottom:20px; text-align:center; }
+.twister-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:12px; }
+.twister-text { font-family:var(--font-heading); font-size:19px; color:var(--navy); line-height:1.5; margin-bottom:10px; }
+.twister-note { font-size:12px; color:var(--slate); font-style:italic; }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* TAP TO REVEAL */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-hint-label { font-size:11px; color:var(--sky); white-space:nowrap; font-style:italic; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:500; line-height:1.6; }
+.tap-answer.show { display:block; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 3, Lesson 21 · Classwork</div>
+    <h1 class="hero-title">Project Management Basics</h1>
+    <p class="hero-sub">Reading Day · Future plans with "going to"</p>
+    <div class="hero-pills">
+      <span class="pill accent">Reading Focus</span>
+      <span class="pill">8 Passages</span>
+      <span class="pill">Idiom + Tongue Twister</span>
+      <span class="pill">Writing Task</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+// ── STATE ───────────────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+const WARMUP_CARDS = [
+  "milestone", "timeline", "deliverable", "launch",
+  "stakeholder", "budget", "kickoff", "scope"
+];
+
+const PASSAGES = [
+  {
+    name: "Fatima", city: "Dubai",
+    text: "Fatima is going to launch a new customer app next month. The design team has already finished the first milestone. She is going to check the timeline again tomorrow.",
+    q1: "What is Fatima going to launch?", a1: "A new customer app.",
+    q2: "What has the design team already finished?", a2: "The first milestone."
+  },
+  {
+    name: "Chen Wei", city: "Beijing",
+    text: "Chen Wei is going to present the project budget to the stakeholders. He is going to explain why the team needs more resources. The meeting starts at 10 AM.",
+    q1: "Who is Chen Wei going to present the budget to?", a1: "The stakeholders.",
+    q2: "What does the team need more of?", a2: "Resources."
+  },
+  {
+    name: "Isabella", city: "Milan",
+    text: "Isabella is going to schedule the kickoff meeting for Friday. She wants to explain the project's scope before the team starts working. This is her top priority this week.",
+    q1: "What is Isabella going to schedule?", a1: "The kickoff meeting.",
+    q2: "What does she want to explain before the team starts?", a2: "The project's scope."
+  },
+  {
+    name: "Kwame", city: "Accra",
+    text: "Kwame's team is going to deliver the first prototype next week. It is their most important deliverable this month. Kwame is going to check the progress every day until it's ready.",
+    q1: "What are they going to deliver next week?", a1: "The first prototype.",
+    q2: "How often is Kwame going to check the progress?", a2: "Every day."
+  },
+  {
+    name: "Emma", city: "London",
+    text: "Emma is going to update the project timeline this afternoon. Two tasks are behind schedule, so she is going to talk to the team about priorities. She still thinks they will finish on time.",
+    q1: "What is Emma going to update?", a1: "The project timeline.",
+    q2: "How many tasks are behind schedule?", a2: "Two."
+  },
+  {
+    name: "Hiroshi", city: "Tokyo",
+    text: "Hiroshi is going to review the budget with his manager tomorrow. The project needs more resources than they planned. He is going to ask for approval before the next milestone.",
+    q1: "Who is Hiroshi going to review the budget with?", a1: "His manager.",
+    q2: "What does the project need more of?", a2: "Resources."
+  },
+  {
+    name: "Valentina", city: "Buenos Aires",
+    text: "Valentina is going to lead the kickoff meeting on Monday. She is going to explain the project scope and the main deliverables. The whole team is excited about the launch.",
+    q1: "When is Valentina going to lead the kickoff meeting?", a1: "On Monday.",
+    q2: "What is the team excited about?", a2: "The launch."
+  },
+  {
+    name: "Noah", city: "Toronto",
+    text: "Noah is going to check the project's progress this Friday. If everything is on schedule, the team is going to launch next week. This is an important milestone for the whole company.",
+    q1: "When is Noah going to check the progress?", a1: "This Friday.",
+    q2: "What happens if everything is on schedule?", a2: "The team is going to launch next week."
+  }
+];
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up</div>
+      <div class="sec-badge-time"></div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Cada estudiante recibe una palabra. Explica qué significa en tus propias palabras, sin traducirla directamente.</div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Round-robin: call on one student per card. If a student struggles, let a classmate help before revealing the word yourself.
+    </div>
+    <div class="word-bank" style="margin-top:20px;">
+      <div class="word-bank-label">Today's Recall Words</div>
+      <div class="word-bank-words">${WARMUP_CARDS.join(' · ')}</div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Reading</div>
+      <div class="sec-badge-time">8 passages</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Cada estudiante lee su propio párrafo en voz alta. Después, toda la clase responde las 2 preguntas juntos.</div>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1fr;"><span>English</span><span>Spanish</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><div>I am / You are / We are / They are going to + verb</div><div>voy a / vas a / vamos a / van a + verbo</div></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><div>He is / She is going to + verb</div><div>va a + verbo</div></div>
+    </div>
+
+    ${PASSAGES.map((p,i) => `
+      <div class="passage-card">
+        <div class="passage-head">
+          <span class="passage-num">Passage ${i+1}</span>
+          <span class="passage-student">${p.name} (${p.city})</span>
+        </div>
+        <div class="passage-text">${p.text}</div>
+        <div class="passage-q">
+          <div class="passage-q-item tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+            <div class="tap-row-top"><div class="tap-q">Q1: ${p.q1}</div><div class="tap-hint-label">Tap to reveal</div></div>
+            <div class="tap-answer">${p.a1}</div>
+          </div>
+          <div class="passage-q-item tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+            <div class="tap-row-top"><div class="tap-q">Q2: ${p.q2}</div><div class="tap-hint-label">Tap to reveal</div></div>
+            <div class="tap-answer">${p.a2}</div>
+          </div>
+        </div>
+      </div>
+    `).join('')}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderIdiom() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Idiom Spotlight</div>
+      <div class="sec-badge-time"></div>
+    </div>
+    <hr class="gold-rule">
+    <div class="idiom-box">
+      <div class="idiom-label">🗣️ Idiom</div>
+      <div class="idiom-phrase">"In the pipeline"</div>
+      <div class="idiom-es">Algo que está planeado o en desarrollo y que va a suceder pronto. Es como decir "en camino" o "en proceso." Se conecta con la gramática de hoy porque cuando algo está "in the pipeline," normalmente lo describimos con "going to."</div>
+      <div class="idiom-example">"We have three new features in the pipeline. We're going to launch the first one next month."</div>
+    </div>
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">"My company has a new office in the pipeline." What does this mean?</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer">A new office is planned and is going to open soon.</div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderTwister() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Tongue Twister</div>
+      <div class="sec-badge-time"></div>
+    </div>
+    <hr class="gold-rule">
+    <div class="twister-box">
+      <div class="twister-label">Say it three times, faster each time</div>
+      <div class="twister-text">"Which stakeholder should schedule which shipment?"</div>
+      <div class="twister-note">Practica el sonido "sh" (como en "shipment") y el sonido "ch" (como en "which"). Son sonidos diferentes en inglés que a veces se confunden en español.</div>
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Model it slowly first, then have the class repeat together, then call on 2-3 individual students to try it at normal speed.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWriting() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Writing Task</div>
+      <div class="sec-badge-time"></div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Escribe de 3 a 5 oraciones sobre un proyecto en el que vas a trabajar (real o imaginario). Usa al menos 3 palabras del vocabulario de hoy y la estructura "going to."</div>
+    <div class="word-bank">
+      <div class="word-bank-label">Word Bank</div>
+      <div class="word-bank-words">milestone · timeline · deliverable · launch · stakeholder · budget · kickoff · scope · priority · resources · schedule · progress</div>
+    </div>
+    <textarea class="writing-area" id="writingArea" placeholder="Write your sentences here..." oninput="updateWordCount()"></textarea>
+    <div class="word-count" id="wordCount">0 words</div>
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">Need a model? Tap to reveal</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer">"Next month, I am going to start a new project at work. The first milestone is going to be the kickoff meeting. I am going to check the timeline every week to stay on schedule."</div>
+    </div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Give students the full 10 minutes to write before any correction begins. Correction should be live and individual: read each student's sentences aloud with them, fix errors together, and have them say the corrected version aloud once.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function updateWordCount() {
+  const val = document.getElementById('writingArea').value.trim();
+  const count = val === '' ? 0 : val.split(/\s+/).length;
+  document.getElementById('wordCount').textContent = count + ' words';
+}
+
+
+// ── STEPS ───────────────────────────────
+STEPS = [
+  { label: "1. Warm-up",   fn: renderWarmup },
+  { label: "2. Reading",   fn: renderReading },
+  { label: "3. Idiom",     fn: renderIdiom },
+  { label: "4. Twister",   fn: renderTwister },
+  { label: "5. Writing",   fn: renderWriting },
+];
+
+render();
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

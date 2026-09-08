@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1 Lesson 29 | Unit 3 — Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* GRAMMAR BRIDGE CALLOUT (spiral review — past lesson touch-back) */
+.bridge-callout { background:var(--navy); border-radius:12px; padding:20px 22px; margin-bottom:20px; }
+.bridge-callout-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.bridge-callout-text { font-size:14px; color:rgba(255,255,255,0.85); line-height:1.7; margin-bottom:10px; }
+.bridge-example { background:rgba(255,255,255,0.06); border-radius:7px; padding:10px 14px; font-size:13px; color:rgba(255,255,255,0.75); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* TAP-TO-REVEAL */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--sky); white-space:nowrap; font-style:italic; }
+.tap-answer { display:none; padding-top:10px; margin-top:10px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:500; }
+.tap-answer.show { display:block; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 3 · Pre-Learning</div>
+    <h1 class="hero-title">Giving Instructions to New Employees</h1>
+    <p class="hero-sub">Imperatives Review · Lesson 29</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Give clear step-by-step instructions</div><div class="outcome-note">Dar instrucciones claras paso a paso</div></div>
+      <div><div class="outcome-item">Guide a new employee through onboarding</div><div class="outcome-note">Guiar a un nuevo empleado en su inducción</div></div>
+      <div><div class="outcome-item">Use imperatives politely and correctly</div><div class="outcome-note">Usar imperativos de forma correcta y cortés</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const stepFn = STEPS[currentStep].fn;
+  if (stepFn === renderListening) {
+    const audio = document.getElementById('mainAudio');
+    if (audio) audio.playbackRate = currentSpeed;
+    setSpeed(currentSpeed);
+  }
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const VOCAB = [
+  ["orientation", "orientación / inducción"],
+  ["training", "capacitación"],
+  ["handbook", "manual del empleado"],
+  ["procedure", "procedimiento"],
+  ["new employee", "nuevo empleado"],
+  ["badge", "credencial / gafete"],
+  ["supervisor", "supervisor/a"],
+  ["checklist", "lista de verificación"],
+  ["schedule", "horario"],
+  ["department", "departamento"],
+  ["policy", "política (de la empresa)"],
+  ["welcome package", "paquete de bienvenida"],
+];
+
+const VOC_CQ = [
+  { type:'mc', q:'What does "handbook" mean?',
+    opts:['A schedule for the week', 'A manual with company rules and information', 'A name badge'],
+    answer: 1,
+    hint: 'Think about what a new employee reads to learn the rules.',
+    fb: 'A "handbook" is the manual employees read for company rules and procedures.' },
+  { type:'tf', q:'"Badge" means a written document.',
+    answer: false,
+    hint: 'A badge is something you wear.',
+    fb: 'A "badge" is an ID card an employee wears — not a document.' },
+  { type:'input', q:'What is the English word for "procedimiento"?',
+    hint: 'It starts with "pro..."',
+    answers: ['procedure'],
+    display: 'Procedure.',
+    fb: '"Procedure" = a set of steps a company follows to do something.' },
+];
+
+const GRAM_CQ = [
+  { type:'mc', q:'Choose the correct imperative:',
+    opts:['To complete the form', 'Complete the form', 'Completing the form'],
+    answer: 1,
+    hint: 'The imperative uses the base form of the verb — no "to", no "-ing".',
+    fb: 'The imperative uses the base verb with no subject: "Complete the form."' },
+  { type:'tf', q:'"Don\'t be late" is an example of a polite imperative.',
+    answer: false,
+    hint: 'Polite imperatives use "please".',
+    fb: '"Don\'t be late" is a negative imperative, not a polite one. A polite version would be "Please don\'t be late."' },
+  { type:'input', q:'Make this polite: "Sign here."',
+    hint: 'Add one word at the start or end.',
+    answers: ['please sign here', 'sign here please', 'sign here, please'],
+    display: 'Please sign here. / Sign here, please.',
+    fb: 'Adding "please" at the start or end makes an imperative polite.' },
+];
+
+const BRIDGE_CQ = [
+  { type:'mc', q:'Complete: "First, wash your hands. ___, put on your gloves."',
+    opts:['First', 'Then', 'Finally'],
+    answer: 1,
+    hint: 'This connects two steps that happen one after the other.',
+    fb: '"Then" connects two steps in sequence — like in Lesson 15.' },
+  { type:'mc', q:'Which sentence uses the imperative correctly?',
+    opts:['You read the handbook', 'Read the handbook', 'Reading the handbook'],
+    answer: 1,
+    hint: 'No subject, no "-ing" — just the base verb.',
+    fb: 'The imperative drops the subject and uses the base verb: "Read the handbook."' },
+];
+
+const MOD_CQ = [
+  { type:'mc', q:'Which sentence is polite?',
+    opts:['Wear your badge', 'Please wear your badge', 'Wearing your badge'],
+    answer: 1,
+    hint: 'Look for the word that softens the instruction.',
+    fb: '"Please wear your badge" is the polite version — "please" softens the imperative.' },
+  { type:'tf', q:'"Finally" is used to introduce the first step in a sequence.',
+    answer: false,
+    hint: 'Think about where "finally" usually appears in a list of steps.',
+    fb: '"Finally" introduces the last step, not the first. "First" introduces the first step.' },
+  { type:'input', q:'Complete with a sequencing word: "___, meet your supervisor." (this is the third step, after "first" and "then")',
+    hint: 'It comes right before "finally".',
+    answers: ['next'],
+    display: 'Next.',
+    fb: '"Next" is used for a step that comes after "first" and "then", and before "finally".' },
+];
+
+const LIS_CQ = [
+  { type:'mc', q:'What is the first thing the new employee should do?',
+    opts:['Meet the supervisor', 'Get a badge at the front desk', 'Complete the safety training'],
+    answer: 1,
+    hint: 'Listen for what Priya says right after "First".',
+    fb: 'Priya says: "First, go to the front desk and get your badge."' },
+  { type:'tf', q:'The new employee meets the supervisor in the IT department.',
+    answer: false,
+    hint: 'Listen for the department name near "Mr. Alvarez".',
+    fb: 'The supervisor, Mr. Alvarez, is in the Sales department, not IT.' },
+  { type:'input', q:'By what day should the safety training be completed?',
+    hint: 'Listen near the end of the recording.',
+    answers: ['friday'],
+    display: 'Friday.',
+    fb: 'Priya says: "Please complete your safety training by Friday."' },
+];
+
+const QUIZ = [
+  { type:'mc', q:'What does "handbook" mean?',
+    opts:['credencial', 'manual del empleado', 'horario'],
+    answer: 1,
+    hint: 'It is the document with company rules.',
+    fb: '"Handbook" = manual del empleado.' },
+  { type:'mc', q:'What does "supervisor" mean?',
+    opts:['supervisor/a', 'departamento', 'capacitación'],
+    answer: 0,
+    hint: 'This word looks similar in Spanish and English.',
+    fb: '"Supervisor" = supervisor/a. The person who manages your daily work.' },
+  { type:'mc', q:'Choose the correct imperative:',
+    opts:['To complete the form', 'Complete the form', 'Completing the form'],
+    answer: 1,
+    hint: 'No "to", no "-ing" — just the base verb.',
+    fb: 'The imperative uses the base verb: "Complete the form."' },
+  { type:'mc', q:'Make polite: "Sign here."',
+    opts:['Please sign here.', 'You sign here', 'Signing here please'],
+    answer: 0,
+    hint: 'Add "please" to soften the instruction.',
+    fb: '"Please sign here." is the polite form.' },
+  { type:'mc', q:'What does "badge" mean?',
+    opts:['política', 'credencial', 'lista de verificación'],
+    answer: 1,
+    hint: 'It is the ID card employees wear.',
+    fb: '"Badge" = credencial / gafete.' },
+  { type:'mc', q:'Complete: "___ read the handbook. Then, sign the form."',
+    opts:['First', 'Finally', 'Next'],
+    answer: 0,
+    hint: 'This is the very first step in the sequence.',
+    fb: '"First" introduces the first step in a sequence.' },
+  { type:'mc', q:'Complete: "First, wash your hands. ___, put on your gloves."',
+    opts:['Then', 'Before', 'Finally'],
+    answer: 0,
+    hint: 'Bridge concept — from Lesson 15.',
+    fb: '"Then" connects two steps in order — a concept from Lesson 15.' },
+  { type:'mc', q:'What does "orientation" mean?',
+    opts:['orientación', 'procedimiento', 'horario'],
+    answer: 0,
+    hint: 'It is the process of introducing a new employee to the company.',
+    fb: '"Orientation" = orientación / inducción.' },
+  { type:'mc', q:'Choose the negative imperative:',
+    opts:['Don\'t be late', 'Not be late', 'No being late'],
+    answer: 0,
+    hint: '"Don\'t" + base verb forms the negative imperative.',
+    fb: 'The negative imperative is "Don\'t" + base verb: "Don\'t be late."' },
+  { type:'mc', q:'What does "checklist" mean?',
+    opts:['paquete de bienvenida', 'lista de verificación', 'política'],
+    answer: 1,
+    hint: 'It is a list you use to check off completed tasks.',
+    fb: '"Checklist" = lista de verificación.' },
+  { type:'mc', q:'Which sentence uses the imperative correctly?',
+    opts:['You read the handbook', 'Read the handbook', 'Reading the handbook'],
+    answer: 1,
+    hint: 'Bridge concept — from Lesson 15.',
+    fb: 'The imperative drops the subject and uses the base verb: "Read the handbook." (Lesson 15)' },
+  { type:'mc', q:'Complete the sequence: "First, get your badge. Then, meet your supervisor. ___, complete your training."',
+    opts:['Next', 'Don\'t', 'Please'],
+    answer: 0,
+    hint: 'This word introduces the third step, before "finally".',
+    fb: '"Next" introduces a step that comes after "first" and "then".' },
+];
+
+// ── Quiz state ──────────────────────────────
+const quizState = {};
+let quizScore = 0;
+const miniState = { voc: {}, gram: {}, bridge: {}, mod: {}, lis: {} };
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">2 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">¡Bienvenido/a a la Lección 29! Hoy vas a aprender a dar instrucciones claras a un nuevo empleado durante su primer día de trabajo. Vas a repasar los imperativos y aprender vocabulario relacionado con la orientación e inducción de personal.</p>
+    <div class="info-box">
+      <strong>Objetivo:</strong> Al final de esta lección, podrás guiar a un nuevo empleado paso a paso usando instrucciones simples y claras.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Vocabulary</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estas son las 12 palabras clave de la lección. Léelas en voz alta y fíjate en su significado en español.</div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,es]) => `
+        <div class="vocab-row">
+          <div class="vocab-en">${en}</div>
+          <div class="vocab-es">${es}</div>
+        </div>`).join('')}
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Muchas de estas palabras (orientation, procedure, policy) se parecen a su equivalente en español — úsalas para reconocer el vocabulario más rápido.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Vocabulary</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('voc', VOC_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Grammar</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note"><strong>Notice:</strong> Observa estas instrucciones que un supervisor le da a un nuevo empleado:</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">"Complete the training today."</span></div>
+      <div class="example-item"><span class="example-en">"Don't forget your badge."</span></div>
+      <div class="example-item"><span class="example-en">"Please read the handbook."</span></div>
+    </div>
+
+    <p class="sec-intro"><strong>Form Rules:</strong></p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">Complete the form.</span><span class="example-arrow">→</span><span class="example-es">Imperativo afirmativo: forma base del verbo, sin sujeto.</span></div>
+      <div class="example-item"><span class="example-en">Don't be late.</span><span class="example-arrow">→</span><span class="example-es">Imperativo negativo: Don't + verbo base.</span></div>
+      <div class="example-item"><span class="example-en">Please sign here. / Sign here, please.</span><span class="example-arrow">→</span><span class="example-es">Imperativo cortés: Please + verbo, o verbo + please al final.</span></div>
+      <div class="example-item"><span class="example-en">First, ... Then, ... Next, ... Finally, ...</span><span class="example-arrow">→</span><span class="example-es">Conectores de secuencia para organizar instrucciones.</span></div>
+    </div>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1fr;"><span>English</span><span>Spanish</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span>Complete the training.</span><span>Completa la capacitación.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span>Don't forget your badge.</span><span>No olvides tu credencial.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span>Please read the handbook.</span><span>Por favor, lee el manual.</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr;"><span>First... Then... Next... Finally...</span><span>Primero... Luego... Después... Finalmente...</span></div>
+    </div>
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Pitfall</div>
+      <div class="mistake-wrong">❌ "To complete the form"</div>
+      <div class="mistake-right">✅ "Complete the form."</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-top:8px;">En español a veces usamos el infinitivo para dar instrucciones ("Completar el formulario"), pero en inglés el imperativo usa la forma base del verbo, no el infinitivo con "to".</p>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Grammar</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('gram', GRAM_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Grammar Bridge</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="bridge-callout">
+      <div class="bridge-callout-label">🔗 Puente gramatical — Lección 15</div>
+      <div class="bridge-callout-text">¿Recuerdas cómo usábamos el imperativo con "first, then, next" para dar instrucciones en orden en la Lección 15? Hoy usamos la misma estructura, pero aplicada a instrucciones de trabajo para un nuevo empleado.</div>
+      <div class="bridge-example">"First, wash your hands. Then, put on your gloves."</div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Grammar Bridge</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('bridge', BRIDGE_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Model Sentences</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Lee estas frases modelo en voz alta. Son ejemplos de instrucciones típicas de un supervisor a un nuevo empleado.</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">"First, complete your orientation."</span></div>
+      <div class="example-item"><span class="example-en">"Then, read the employee handbook."</span></div>
+      <div class="example-item"><span class="example-en">"Next, meet your supervisor in the marketing department."</span></div>
+      <div class="example-item"><span class="example-en">"Please wear your badge at all times."</span></div>
+      <div class="example-item"><span class="example-en">"Don't forget to check your schedule for training."</span></div>
+      <div class="example-item"><span class="example-en">"Finally, review the company policy on your checklist."</span></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Model Sentences</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('mod', MOD_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Listening</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Escucha a Priya, la coordinadora de Recursos Humanos, explicando el primer día de trabajo de un nuevo empleado.</div>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Your First Day</div>
+          <div class="audio-box-sub">Priya Nair, HR Onboarding Coordinator · ~90 sec · American English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L29-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">▼ Show transcript</button>
+      <div id="transcriptBox" class="transcript-box" style="display:none;">
+        <p>"Good morning, and welcome to the team! My name is Priya, and I'm the HR Onboarding Coordinator. Let me walk you through your first day.</p>
+        <p>First, go to the front desk and get your badge. Don't forget to show your ID.</p>
+        <p>Then, come to my office for a short orientation session. I'll give you your welcome package and your employee handbook.</p>
+        <p>Next, visit the IT department. They will set up your laptop and email account.</p>
+        <p>After that, meet your supervisor, Mr. Alvarez, in the Sales department. He will explain your daily schedule.</p>
+        <p>Please complete your safety training by Friday. It's on the checklist I gave you.</p>
+        <p>Finally, review the company policies in the handbook before our meeting next week.</p>
+        <p>If you have any questions, don't hesitate to ask. Welcome aboard!"</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — Listening</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">2–3 quick questions to confirm the key words are clear before you move on.</p>
+    ${renderMiniQ('lis', LIS_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  const items = [
+    { q: '1. ___ (read) the handbook before your first meeting.', a: 'Read' },
+    { q: '2. ___ (not/be) late on your first day.', a: "Don't be" },
+    { q: '3. ___, please sign the welcome form.', a: 'First' },
+    { q: '4. Please ___ (wear) your badge at all times.', a: 'wear' },
+    { q: '5. ___ (not/forget) to check your schedule.', a: "Don't forget" },
+    { q: '6. ___ (complete) your training, then ___ (meet) your supervisor.', a: 'Complete... meet' },
+  ];
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Exercises</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Completa cada oración con el imperativo correcto. Toca cada tarjeta para revelar la respuesta.</div>
+    <div class="ex-box">
+      <div class="ex-label">Sentence Completion — Imperatives</div>
+      ${items.map(it => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <div class="tap-q">${it.q}</div>
+            <div class="tap-hint-label">Tap to reveal</div>
+          </div>
+          <div class="tap-answer">✅ ${it.a}</div>
+        </div>`).join('')}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">8</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── MAIN QUIZ ENGINE ─────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = quizState[qi].inputVal || '';
+  quizState[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── CONCEPT-CHECK MINI-QUIZ ENGINE ─────────────────────────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const qMap = { voc: VOC_CQ, gram: GRAM_CQ, bridge: BRIDGE_CQ, mod: MOD_CQ, lis: LIS_CQ };
+  const q = qMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { voc: renderVocabulary, gram: renderGrammar, bridge: renderBridge, mod: renderModel, lis: renderListening };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) {
+    document.getElementById('mainContent').innerHTML = targetFn();
+    if (targetFn === renderListening) {
+      const audio = document.getElementById('mainAudio');
+      if (audio) audio.playbackRate = currentSpeed;
+      setSpeed(currentSpeed);
+    }
+  }
+}
+
+// ── AUDIO FUNCTIONS ─────────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── STEPS — defined last ───────────────────
+STEPS = [
+  { label: "1. Welcome",         fn: renderWelcome },
+  { label: "2. Vocabulary",      fn: renderVocabulary },
+  { label: "3. Grammar",         fn: renderGrammar },
+  { label: "4. Grammar Bridge",  fn: renderBridge },
+  { label: "5. Model Sentences", fn: renderModel },
+  { label: "6. Listening",       fn: renderListening },
+  { label: "7. Exercises",       fn: renderExercises },
+  { label: "8. Quiz",            fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

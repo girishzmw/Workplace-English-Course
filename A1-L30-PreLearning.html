@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 30: Review + Project Discussion | A1 Unit 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* MODEL CARD — used for the Step 7 narrative */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:0; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+
+/* ICON STRIP (Welcome step) */
+.icon-strip { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:6px; }
+.icon-chip { display:flex; flex-direction:column; align-items:center; gap:6px; background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 12px; min-width:78px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.icon-chip-glyph { font-size:24px; }
+.icon-chip-label { font-size:11px; font-weight:700; color:var(--navy); letter-spacing:0.5px; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.ex-reveal-btn { padding:8px 16px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; margin-top:10px; }
+.ex-reveal-btn:hover { background:var(--sky); }
+.ex-answer { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; background:var(--green-bg); color:var(--green); display:none; }
+.ex-answer.show { display:block; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* BUTTONS */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.sub-heading { font-family:var(--font-heading); font-size:16px; color:var(--navy); }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 3 Review · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 30: Review + Project Discussion</h1>
+    <p class="hero-sub">Bringing together everything from Unit 3 — Projects, Tasks &amp; Productivity</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Plan projects and assign tasks</div><div class="outcome-note">Planificar proyectos y asignar tareas</div></div>
+      <div><div class="outcome-item">Manage time and priorities</div><div class="outcome-note">Manejar el tiempo y las prioridades</div></div>
+      <div><div class="outcome-item">Report problems and suggest fixes</div><div class="outcome-note">Reportar problemas y sugerir soluciones</div></div>
+      <div><div class="outcome-item">Compare methods and describe pressure</div><div class="outcome-note">Comparar métodos y describir presión</div></div>
+      <div><div class="outcome-item">Explain company policies</div><div class="outcome-note">Explicar políticas de la empresa</div></div>
+      <div><div class="outcome-item">Instruct a new employee</div><div class="outcome-note">Dar instrucciones a un nuevo empleado</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ───────────────────────────────────
+let currentStep = 0;
+let STEPS = [];
+
+// ── NAVIGATION ENGINE ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── CONCEPT-CHECK DATA ──────────────────────────────────────
+const PLAN_CQ = [
+  { type:'mc', q:'Which form talks about a future intention?', opts:['Going to','Have to'], answer:0,
+    hint:'Think about plans, not obligations.', fb:'"Going to" states a future plan or intention, like launching a new system next month.' },
+  { type:'tf', q:'"Deliverable" means the deadline for a task.', answer:false,
+    hint:'A deliverable is a thing, not a date.', fb:'A "deliverable" is the actual output of a project — a report, a product, a result — not the deadline.' },
+  { type:'input', q:'What is the Spanish word for "responsibility"?', hint:'r _ _ _ _ n _ _ _ i l i d a d',
+    answers:['responsabilidad'], display:'Responsabilidad.', fb:'"Responsibility" = responsabilidad — what a person is assigned to handle.' }
+];
+
+const TIME_CQ = [
+  { type:'mc', q:'Which word means "to move something to a later time"?', opts:['Postpone','Prioritize'], answer:0,
+    hint:'Think about pushing something back on the calendar.', fb:'"Postpone" means to delay something to a later time, like rescheduling a meeting.' },
+  { type:'tf', q:'"Availability" means how busy someone\u2019s workload is.', answer:false,
+    hint:'Availability is about free time, not busy time.', fb:'"Availability" means the time someone is free — the opposite idea of a full workload.' },
+  { type:'input', q:'Complete: "The report is due ___ Friday." (by / until)', hint:'Think about a deadline, not a duration.',
+    answers:['by'], display:'By.', fb:'"By Friday" means the deadline is Friday at the latest. "Until Friday" would describe something continuing up to that point.' }
+];
+
+const PROB_CQ = [
+  { type:'mc', q:'Which one describes something that already happened?', opts:['Past Simple','Should'], answer:0,
+    hint:'One looks back, one gives advice.', fb:'Past Simple describes finished actions, like reporting a mistake that happened yesterday.' },
+  { type:'tf', q:'"Should" is used to give a strong order.', answer:false,
+    hint:'Think about advice versus a command.', fb:'"Should" gives a suggestion or piece of advice, not a strong order — that would be "must."' },
+  { type:'input', q:'What is the Spanish word for "mistake"?', hint:'e _ r _ r',
+    answers:['error'], display:'Error.', fb:'"Mistake" = error — the same word appears in both languages.' }
+];
+
+const PROD_CQ = [
+  { type:'mc', q:'Which sentence compares two things?', opts:['This process is more efficient than the old one.','This task is extremely urgent.'], answer:0,
+    hint:'Look for the comparative word "than."', fb:'Comparative adjectives use "more ___ than" to compare two things directly, like two work methods.' },
+  { type:'tf', q:'"Multitasking" means doing one task very slowly.', answer:false,
+    hint:'Think about how many tasks are involved, not the speed.', fb:'"Multitasking" means handling several tasks at the same time, often under pressure.' },
+  { type:'input', q:'What is the Spanish word for "priority"?', hint:'p r _ o r _ d a d',
+    answers:['prioridad'], display:'Prioridad.', fb:'"Priority" = prioridad — what needs attention first.' }
+];
+
+const POLICY_CQ = [
+  { type:'mc', q:'Which modal expresses a rule you cannot break?', opts:['Must','Should'], answer:0,
+    hint:'Think about a strict company rule versus friendly advice.', fb:'"Must" expresses an obligation or strict rule, like signing a confidentiality agreement.' },
+  { type:'tf', q:'An imperative is a good way to give step-by-step instructions.', answer:true,
+    hint:'Think about "First, open the file. Then, click upload."', fb:'Imperatives (open, click, send) are the natural form for clear, direct instructions.' },
+  { type:'input', q:'What is the Spanish word for "handbook"?', hint:'m a n _ a l',
+    answers:['manual'], display:'Manual.', fb:'"Handbook" = manual — the document new employees read during orientation.' }
+];
+
+const miniState = { plan:{}, time:{}, prob:{}, prod:{}, policy:{} };
+
+// ── MAIN QUIZ DATA ───────────────────────────────────────────
+const QUIZ = [
+  { type:'mc', q:'We ___ launch the new system next month.', opts:['are going to','have to only'], answer:0,
+    hint:'This is a future plan.', fb:'"Going to" expresses a plan already decided — perfect for describing what a project will do next.' },
+  { type:'mc', q:'Choose the correct sentence for delegating a task.', opts:['I need to assign this task to Maria.','I am assigning tomorrow Maria.'], answer:0,
+    hint:'Think "need to" + verb.', fb:'"Need to" + base verb is the natural structure for stating an obligation or requirement.' },
+  { type:'tf', q:'"Reschedule" means to cancel a meeting completely.', answer:false,
+    hint:'Re- often means "again."', fb:'"Reschedule" means to move a meeting to a new time, not cancel it.' },
+  { type:'input', q:'Complete: "I am not available ___ 3pm." (until / by)', hint:'This describes a continuing period, not a deadline.',
+    answers:['until'], display:'Until.', fb:'"Until 3pm" means the period of unavailability continues up to that time.' },
+  { type:'mc', q:'What should you say if a colleague explains a mistake?', opts:['You should double-check the numbers next time.','You must fired immediately.'], answer:0,
+    hint:'Think about a helpful suggestion.', fb:'"Should" offers constructive advice after a problem is reported — much more natural in this context.' },
+  { type:'tf', q:'Past Simple is the correct tense for reporting something that already happened.', answer:true,
+    hint:'Think about "There was a misunderstanding yesterday."', fb:'Past Simple is exactly right for describing completed past events, like reporting an error.' },
+  { type:'mc', q:'Which sentence uses a comparative correctly?', opts:['This process is more efficient than the old one.','This process is efficient than old one.'], answer:0,
+    hint:'Comparatives need "more ___ than."', fb:'The full pattern is "more + adjective + than" when comparing two things.' },
+  { type:'input', q:'What is the Spanish word for "urgent"?', hint:'u r g _ n t e',
+    answers:['urgente'], display:'Urgente.', fb:'"Urgent" = urgente — describing something that needs attention right away.' },
+  { type:'mc', q:'Which sentence expresses a strict company rule?', opts:['All employees must sign the confidentiality agreement.','All employees should maybe sign something.'], answer:0,
+    hint:'Look for the strongest obligation.', fb:'"Must" is used for firm rules and requirements, like signing a confidentiality agreement.' },
+  { type:'tf', q:'"You are not allowed to" means something is optional.', answer:false,
+    hint:'Think about permission, not choice.', fb:'"Not allowed to" means something is forbidden — the opposite of optional.' },
+  { type:'mc', q:'Which is the correct imperative instruction sequence?', opts:['First, read the handbook. Then, complete the orientation training.','First reading handbook, then you completing.'], answer:0,
+    hint:'Imperatives use the base form of the verb.', fb:'Imperatives (read, complete) plus sequencing words (first, then) give clear step-by-step instructions.' },
+  { type:'input', q:'What is the Spanish word for "workload"?', hint:'c a r g a d e t r a b a j o',
+    answers:['carga de trabajo','carga laboral'], display:'Carga de trabajo.', fb:'"Workload" = carga de trabajo — the amount of work assigned to someone.' }
+];
+
+const quizState = {};
+let quizScore = 0;
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Welcome</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="info-box">
+      ¡Felicidades! Llegaste a la Lección 30 y completaste toda la Unidad 3. En las últimas nueve lecciones aprendiste a manejar proyectos y tareas en el trabajo: planificar, asignar responsabilidades, manejar el tiempo, resolver problemas, reportar errores, comparar métodos de trabajo, describir presión, entender políticas de la empresa y dar instrucciones a nuevos empleados. Hoy no vas a aprender nada nuevo — vas a repasar y conectar todo lo que ya sabes, para usarlo con confianza en la conversación de proyecto de hoy.
+    </div>
+    <div class="examples-label">Unit 3 · Lessons 21–29</div>
+    <div class="icon-strip">
+      <div class="icon-chip"><div class="icon-chip-glyph">🎯</div><div class="icon-chip-label">L21</div></div>
+      <div class="icon-chip"><div class="icon-chip-glyph">📋</div><div class="icon-chip-label">L22</div></div>
+      <div class="icon-chip"><div class="icon-chip-glyph">⏰</div><div class="icon-chip-label">L23</div></div>
+      <div class="icon-chip"><div class="icon-chip-glyph">💡</div><div class="icon-chip-label">L24</div></div>
+      <div class="icon-chip"><div class="icon-chip-glyph">⚠️</div><div class="icon-chip-label">L25</div></div>
+      <div class="icon-chip"><div class="icon-chip-glyph">📈</div><div class="icon-chip-label">L26</div></div>
+      <div class="icon-chip"><div class="icon-chip-glyph">⚡</div><div class="icon-chip-label">L27</div></div>
+      <div class="icon-chip"><div class="icon-chip-glyph">📄</div><div class="icon-chip-label">L28</div></div>
+      <div class="icon-chip"><div class="icon-chip-glyph">📘</div><div class="icon-chip-label">L29</div></div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPlanning() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Planning &amp; Assigning Tasks</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Repaso de las Lecciones 21 y 22: planificar proyectos y asignar tareas.</div>
+    <p class="sec-intro"><strong>Future plans with "going to" (L21):</strong> use <em>am / is / are + going to + verb</em> to state an intention already decided.</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">We are going to launch the new system next month.</span><span class="example-arrow">→</span><span class="example-es">Vamos a lanzar el nuevo sistema el próximo mes.</span></div>
+    </div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="vocab-row"><div class="vocab-en">Milestone</div><div class="vocab-es">Hito</div></div>
+      <div class="vocab-row"><div class="vocab-en">Timeline</div><div class="vocab-es">Cronograma</div></div>
+      <div class="vocab-row"><div class="vocab-en">Deliverable</div><div class="vocab-es">Entregable</div></div>
+      <div class="vocab-row"><div class="vocab-en">Launch</div><div class="vocab-es">Lanzamiento</div></div>
+    </div>
+    <p class="sec-intro"><strong>Have to / need to (L22):</strong> obligation forms used for delegating responsibilities.</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">You have to finish the report by Friday.</span><span class="example-arrow">→</span><span class="example-es">Tienes que terminar el informe para el viernes.</span></div>
+      <div class="example-item"><span class="example-en">I need to assign this task to Maria.</span><span class="example-arrow">→</span><span class="example-es">Necesito asignarle esta tarea a María.</span></div>
+    </div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="vocab-row"><div class="vocab-en">Assign</div><div class="vocab-es">Asignar</div></div>
+      <div class="vocab-row"><div class="vocab-en">Prioritize</div><div class="vocab-es">Priorizar</div></div>
+      <div class="vocab-row"><div class="vocab-en">Responsibility</div><div class="vocab-es">Responsabilidad</div></div>
+      <div class="vocab-row"><div class="vocab-en">Deadline</div><div class="vocab-es">Fecha límite</div></div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      A plan (L21) usually leads directly to an assignment (L22): "We are going to launch the new system, so I need to assign the testing task today."
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check — Planning &amp; Assigning</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin:4px 0 16px;font-style:italic;">2–3 quick questions to confirm this cluster is clear before you move on.</p>
+    ${renderMiniQ('plan', PLAN_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderTime() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Managing Time</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Repaso de la Lección 23: manejar el tiempo con expresiones como by, until, before, after.</div>
+    <p class="sec-intro"><strong>Time expressions (L23):</strong> used for schedules, deadlines, and priorities.</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">Can we reschedule the meeting?</span><span class="example-arrow">→</span><span class="example-es">¿Podemos reprogramar la reunión?</span></div>
+      <div class="example-item"><span class="example-en">I am not available until after 3pm.</span><span class="example-arrow">→</span><span class="example-es">No estoy disponible hasta después de las 3pm.</span></div>
+    </div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="vocab-row"><div class="vocab-en">Postpone</div><div class="vocab-es">Posponer</div></div>
+      <div class="vocab-row"><div class="vocab-en">Reschedule</div><div class="vocab-es">Reprogramar</div></div>
+      <div class="vocab-row"><div class="vocab-en">Availability</div><div class="vocab-es">Disponibilidad</div></div>
+      <div class="vocab-row"><div class="vocab-en">Workload</div><div class="vocab-es">Carga de trabajo</div></div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      When time management goes wrong, it often becomes a problem to report — which is exactly the next skill you will review.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check — Managing Time</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin:4px 0 16px;font-style:italic;">2–3 quick questions to confirm this cluster is clear before you move on.</p>
+    ${renderMiniQ('time', TIME_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderProblems() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Problems &amp; Solutions</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Repaso de las Lecciones 24 y 25: resolver problemas y reportar errores.</div>
+    <p class="sec-intro"><strong>Past Simple review (L25):</strong> used to report what already happened.</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">There was a misunderstanding yesterday, so the shipment was delayed.</span><span class="example-arrow">→</span><span class="example-es">Hubo un malentendido ayer, así que el envío se retrasó.</span></div>
+    </div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="vocab-row"><div class="vocab-en">Mistake</div><div class="vocab-es">Error</div></div>
+      <div class="vocab-row"><div class="vocab-en">Delay</div><div class="vocab-es">Retraso</div></div>
+      <div class="vocab-row"><div class="vocab-en">Misunderstanding</div><div class="vocab-es">Malentendido</div></div>
+      <div class="vocab-row"><div class="vocab-en">Error</div><div class="vocab-es">Error</div></div>
+    </div>
+    <p class="sec-intro"><strong>Suggestions with "should" (L24):</strong> used for offering a solution once the problem is clear.</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">You should try a different approach.</span><span class="example-arrow">→</span><span class="example-es">Deberías intentar un enfoque diferente.</span></div>
+      <div class="example-item"><span class="example-en">Maybe an alternative solution would work better.</span><span class="example-arrow">→</span><span class="example-es">Quizás una solución alternativa funcionaría mejor.</span></div>
+    </div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="vocab-row"><div class="vocab-en">Issue</div><div class="vocab-es">Asunto / problema</div></div>
+      <div class="vocab-row"><div class="vocab-en">Solution</div><div class="vocab-es">Solución</div></div>
+      <div class="vocab-row"><div class="vocab-en">Alternative</div><div class="vocab-es">Alternativa</div></div>
+      <div class="vocab-row"><div class="vocab-en">Improvement</div><div class="vocab-es">Mejora</div></div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      A natural 2-turn exchange: "There was a delay yesterday" (past problem) → "You should update the client today" (present suggestion).
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check — Problems &amp; Solutions</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin:4px 0 16px;font-style:italic;">2–3 quick questions to confirm this cluster is clear before you move on.</p>
+    ${renderMiniQ('prob', PROB_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPressure() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Productivity &amp; Working Under Pressure</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Repaso de las Lecciones 26 y 27: comparar métodos de trabajo y describir presión.</div>
+    <p class="sec-intro"><strong>Comparative adjectives (L26):</strong> used for comparing work methods.</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">This new process is more efficient than the old one.</span><span class="example-arrow">→</span><span class="example-es">Este nuevo proceso es más eficiente que el anterior.</span></div>
+    </div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="vocab-row"><div class="vocab-en">Productive</div><div class="vocab-es">Productivo</div></div>
+      <div class="vocab-row"><div class="vocab-en">Efficient</div><div class="vocab-es">Eficiente</div></div>
+      <div class="vocab-row"><div class="vocab-en">Flexible</div><div class="vocab-es">Flexible</div></div>
+      <div class="vocab-row"><div class="vocab-en">Organized</div><div class="vocab-es">Organizado</div></div>
+    </div>
+    <p class="sec-intro"><strong>Adverbs and intensifiers (L27):</strong> used for describing stressful situations.</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">This task is extremely urgent.</span><span class="example-arrow">→</span><span class="example-es">Esta tarea es extremadamente urgente.</span></div>
+      <div class="example-item"><span class="example-en">I am working under a lot of pressure today.</span><span class="example-arrow">→</span><span class="example-es">Hoy estoy trabajando bajo mucha presión.</span></div>
+    </div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="vocab-row"><div class="vocab-en">Urgent</div><div class="vocab-es">Urgente</div></div>
+      <div class="vocab-row"><div class="vocab-en">Pressure</div><div class="vocab-es">Presión</div></div>
+      <div class="vocab-row"><div class="vocab-en">Multitasking</div><div class="vocab-es">Multitarea</div></div>
+      <div class="vocab-row"><div class="vocab-en">Priority</div><div class="vocab-es">Prioridad</div></div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Comparing methods (L26) is often why a team ends up under pressure or improves its productivity (L27) — one leads to the other.
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check — Productivity &amp; Pressure</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin:4px 0 16px;font-style:italic;">2–3 quick questions to confirm this cluster is clear before you move on.</p>
+    ${renderMiniQ('prod', PROD_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPolicy() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">6</div>
+      <div class="sec-badge-title">Policies &amp; Instructions</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Repaso de las Lecciones 28 y 29: políticas de la empresa e instrucciones para nuevos empleados.</div>
+    <p class="sec-intro"><strong>Must / allowed to (L28):</strong> used for rules and permissions.</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">All employees must sign the confidentiality agreement.</span><span class="example-arrow">→</span><span class="example-es">Todos los empleados deben firmar el acuerdo de confidencialidad.</span></div>
+      <div class="example-item"><span class="example-en">You are not allowed to share client data.</span><span class="example-arrow">→</span><span class="example-es">No tienes permitido compartir los datos de los clientes.</span></div>
+    </div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="vocab-row"><div class="vocab-en">Compliance</div><div class="vocab-es">Cumplimiento</div></div>
+      <div class="vocab-row"><div class="vocab-en">Confidentiality</div><div class="vocab-es">Confidencialidad</div></div>
+      <div class="vocab-row"><div class="vocab-en">Attendance</div><div class="vocab-es">Asistencia</div></div>
+    </div>
+    <p class="sec-intro"><strong>Imperatives review (L29):</strong> used for onboarding instructions.</p>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">First, read the handbook. Then, complete the orientation training.</span><span class="example-arrow">→</span><span class="example-es">Primero, lee el manual. Luego, completa la capacitación de orientación.</span></div>
+    </div>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="vocab-row"><div class="vocab-en">Orientation</div><div class="vocab-es">Orientación</div></div>
+      <div class="vocab-row"><div class="vocab-en">Training</div><div class="vocab-es">Capacitación</div></div>
+      <div class="vocab-row"><div class="vocab-en">Handbook</div><div class="vocab-es">Manual</div></div>
+      <div class="vocab-row"><div class="vocab-en">Procedure</div><div class="vocab-es">Procedimiento</div></div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      This is close to the skill you will use most in today's project discussion: explaining expectations clearly. "Remember, you must attend orientation on your first day."
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check — Policies &amp; Instructions</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin:4px 0 16px;font-style:italic;">2–3 quick questions to confirm this cluster is clear before you move on.</p>
+    ${renderMiniQ('policy', POLICY_CQ)}
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBigPicture() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">7</div>
+      <div class="sec-badge-title">Big Picture: Putting It All Together</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Lee esta historia y observa cómo se conectan las nueve destrezas de la Unidad 3 en un solo día de trabajo.</div>
+    <div class="model-card">
+      <div class="model-card-head">
+        <div class="model-avatar">👩‍💼</div>
+        <div>
+          <div class="model-name">Farah Haddad</div>
+          <div class="model-role">Project Coordinator · Beirut</div>
+        </div>
+      </div>
+      <div class="model-body">
+        <p class="model-quote">
+          This morning, Farah told her team: "We are going to launch the new client portal next month." She needed to assign the testing task to David, so she asked him to finish it by Friday. Later, a client asked to reschedule a call, and Farah was not available until after 3pm. When a delay happened on another task, Farah explained the misunderstanding to her manager and suggested that the team should try a different approach. In the afternoon, she compared two work methods and found the new one more efficient — helpful, since the whole team was working under a lot of pressure that week. Before leaving, Farah reminded a new employee: "You must sign the confidentiality agreement. First, read the handbook. Then, complete your orientation training."
+        </p>
+      </div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">8</div>
+      <div class="sec-badge-title">Exercises</div>
+      <div class="sec-badge-time">8 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Toca "Ver respuesta" después de pensar tu propia respuesta.</div>
+
+    <div class="ex-box">
+      <div class="ex-label">1 · Complete the plan</div>
+      <p>Complete the sentence: "Next month, we ___ ___ open a new office." (going to)</p>
+      <button class="ex-reveal-btn" onclick="toggleAnswer(this)">Ver respuesta</button>
+      <div class="ex-answer">are going to — "Next month, we are going to open a new office."</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">2 · Have to or need to?</div>
+      <p>Choose the better option: "I ___ finish this by 5pm." (have to / need to — both work; which feels more like a strict deadline?)</p>
+      <button class="ex-reveal-btn" onclick="toggleAnswer(this)">Ver respuesta</button>
+      <div class="ex-answer">Both are correct here — "have to" often sounds slightly more like an external deadline, while "need to" can sound more personal, but they are largely interchangeable in this context.</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">3 · Time expression</div>
+      <p>Complete: "The proposal must be ready ___ Monday." (by / until)</p>
+      <button class="ex-reveal-btn" onclick="toggleAnswer(this)">Ver respuesta</button>
+      <div class="ex-answer">by — "The proposal must be ready by Monday" (a deadline, not a continuing period).</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">4 · Match the suggestion</div>
+      <p>Problem: "The report had several errors." What is a good "should" suggestion?</p>
+      <button class="ex-reveal-btn" onclick="toggleAnswer(this)">Ver respuesta</button>
+      <div class="ex-answer">"You should double-check the numbers before sending it next time."</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">5 · Comparative</div>
+      <p>Complete: "This method is ___ (efficient) than the old one."</p>
+      <button class="ex-reveal-btn" onclick="toggleAnswer(this)">Ver respuesta</button>
+      <div class="ex-answer">more efficient — "This method is more efficient than the old one."</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">6 · Company rule</div>
+      <p>Complete: "Employees ___ wear their ID badge at all times." (must / should)</p>
+      <button class="ex-reveal-btn" onclick="toggleAnswer(this)">Ver respuesta</button>
+      <div class="ex-answer">must — "Employees must wear their ID badge at all times" (a strict rule, not just advice).</div>
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">9</div>
+      <div class="sec-badge-title">Quiz</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba todo lo que repasaste!</h3>
+        <p>${QUIZ.length} questions · Cumulative review of Unit 3</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${quizScore===QUIZ.length?'🎉 ¡Perfecto! — You are ready for class!':quizScore>=QUIZ.length*0.8?'¡Excelente! Almost perfect.':'Keep practising — ¡tú puedes!'}</div>
+      <div class="result-msg">${quizScore===QUIZ.length?'Outstanding — a perfect score on all of Unit 3! See you in class.':'Review the sections where you made mistakes, then retry.'}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── EXERCISES ENGINE (tap-to-reveal) ─────────────────────
+function toggleAnswer(btn) {
+  const ans = btn.nextElementSibling;
+  ans.classList.toggle('show');
+  btn.textContent = ans.classList.contains('show') ? 'Ocultar respuesta' : 'Ver respuesta';
+}
+
+// ── QUIZ ENGINE (do not edit) ─────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=(quizState[qi].inputVal||'').trim().toLowerCase().replace(/\.$/,'');
+  quizState[qi].correct=q.answers.some(a=>val===a.toLowerCase().replace(/\.$/,''));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── CONCEPT-CHECK ENGINE (shared, isolated per prefix) ────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="miniSetInp('${prefix}',${i},this.value)" ${rev?'disabled':''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const qMap = { plan: PLAN_CQ, time: TIME_CQ, prob: PROB_CQ, prod: PROD_CQ, policy: POLICY_CQ };
+  const q = qMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const fnMap = { plan: renderPlanning, time: renderTime, prob: renderProblems, prod: renderPressure, policy: renderPolicy };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep === si) document.getElementById('mainContent').innerHTML = targetFn();
+}
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Welcome",             fn: renderWelcome },
+  { label: "2. Planning & Tasks",    fn: renderPlanning },
+  { label: "3. Managing Time",       fn: renderTime },
+  { label: "4. Problems & Solutions",fn: renderProblems },
+  { label: "5. Productivity & Pressure", fn: renderPressure },
+  { label: "6. Policies & Instructions", fn: renderPolicy },
+  { label: "7. Big Picture",         fn: renderBigPicture },
+  { label: "8. Exercises",           fn: renderExercises },
+  { label: "9. Quiz",                fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

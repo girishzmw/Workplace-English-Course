@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 22: Assigning Tasks | A2 · Unit 3 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* TEACHER INSTRUCTION BOX */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* TAP TO REVEAL (answer keys, model content) */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; line-height:1.5; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; margin-top:2px; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:13px; color:var(--green); font-weight:600; }
+.tap-answer.show { display:block; }
+
+/* WARM-UP CARDS */
+.hint-box, .answer-box { display:none; padding:9px 13px; border-radius:6px; font-size:13px; margin-top:8px; }
+.hint-box.show, .answer-box.show { display:block; }
+.hint-box { background:var(--gold-bg); color:#7A5500; font-style:italic; }
+.answer-box { background:var(--green-bg); color:var(--green); font-weight:700; }
+
+/* PASSAGE CARDS */
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.passage-num { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.passage-text { font-size:14px; color:var(--slate); line-height:1.75; margin-bottom:16px; }
+
+/* SPEAKING CARDS */
+.speak-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); display:flex; gap:14px; align-items:flex-start; }
+.speak-num { background:var(--navy); color:var(--gold); border-radius:50%; width:30px; height:30px; min-width:30px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; }
+.speak-q { font-size:15px; color:var(--navy); font-weight:500; line-height:1.6; }
+
+/* RATING */
+.rating-row { display:flex; gap:10px; margin:18px 0; }
+.rating-btn { width:44px; height:44px; border-radius:50%; border:1.5px solid var(--border-grey); background:var(--white); font-family:var(--font-body); font-size:15px; font-weight:700; color:var(--navy); cursor:pointer; transition:all 0.15s; }
+.rating-btn:hover { border-color:var(--gold); }
+.rating-btn.selected { background:var(--gold); border-color:var(--gold); color:var(--navy); }
+.rating-msg { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 3 · Classwork</div>
+    <h1 class="hero-title">Lesson 22: Assigning Tasks</h1>
+    <p class="hero-sub">Speaking Day, extended with 8 reading passages · Have to / Need to</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking + Reading</span>
+      <span class="pill accent">8 reading passages</span>
+      <span class="pill">4 open discussion questions</span>
+      <span class="pill">Self-paced, no strict timing</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+function tapRow(question, answer) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top">
+      <div class="tap-q">${question}</div>
+      <div class="tap-hint-label">Tap to reveal</div>
+    </div>
+    <div class="tap-answer">✓ ${answer}</div>
+  </div>`;
+}
+
+function warmupCard(num, defEn, defEs, word) {
+  return `<div class="ex-box">
+    <div style="font-size:14px;color:var(--navy);font-weight:500;margin-bottom:10px;">${num}. "${defEn}"</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn btn-ghost" onclick="this.closest('.ex-box').querySelector('.hint-box').classList.toggle('show')">💡 Show Spanish hint</button>
+      <button class="btn btn-gold" onclick="this.closest('.ex-box').querySelector('.answer-box').classList.toggle('show')">Show answer</button>
+    </div>
+    <div class="hint-box">ES: "${defEs}"</div>
+    <div class="answer-box">${word}</div>
+  </div>`;
+}
+
+function passageCard(num, name, text, q1, q1Answer, q2, q2Sample) {
+  return `<div class="passage-card">
+    <div class="passage-num">Passage ${num} · ${name}</div>
+    <div class="passage-text">${text}</div>
+    ${tapRow('Q1: ' + q1, q1Answer)}
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top">
+        <div class="tap-q">Q2: ${q2}</div>
+        <div class="tap-hint-label">Need an idea? Tap</div>
+      </div>
+      <div class="tap-answer">Sample response: "${q2Sample}"</div>
+    </div>
+  </div>`;
+}
+
+const WARMUP = [
+  ['To give a task to a specific person.', 'Dar una tarea a una persona específica.', 'assign'],
+  ['To give a task or responsibility to someone else so they can do it.', 'Dar una tarea o responsabilidad a otra persona para que la haga.', 'delegate'],
+  ['To decide which task is the most important and do it first.', 'Decidir qué tarea es la más importante y hacerla primero.', 'prioritize'],
+  ['The date or time by which something must be finished.', 'La fecha u hora límite en la que algo debe estar terminado.', 'deadline'],
+  ['Something that needs attention or action right now.', 'Algo que necesita atención o acción inmediatamente.', 'urgent'],
+  ['The amount of work a person has to do.', 'La cantidad de trabajo que tiene una persona.', 'workload'],
+  ['To organize people or tasks so they work well together.', 'Organizar personas o tareas para que trabajen bien juntas.', 'coordinate'],
+  ['To check on something again after some time to see its progress.', 'Revisar algo de nuevo después de un tiempo para ver su progreso.', 'follow up'],
+];
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">El profesor lee cada definición en voz alta, una por estudiante. Adivina la palabra. Si te quedas trabado, pide la pista en español.</div>
+    ${WARMUP.map(([en,es,word],i) => warmupCard(i+1, en, es, word)).join('')}
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Read the definition, then pause 3 to 5 seconds before offering any hint. The goal is to make students reach for the word actively, not recall it passively. Only reveal the Spanish hint if the student is genuinely stuck, not automatically. Keep pace brisk, about 30 to 40 seconds per student.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Reading</div>
+      <div class="sec-badge-time">Self-paced</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="tip-box">
+      <div class="tip-label">Have to / Need to = obligación. Should = consejo.</div>
+      You <strong>have to</strong> send the report today. (obligatorio)<br>
+      You <strong>should</strong> double-check it first. (consejo, no obligatorio)<br>
+      Recuerda: nunca "should to". Siempre should + verbo base.
+    </div>
+
+    <div class="es-note">Lee cada texto corto. Responde la Pregunta 1 con la información del texto, en una oración. La Pregunta 2 es sobre ti: piensa y responde con tu propia experiencia.</div>
+
+    ${passageCard(1, 'Marcus',
+      'Marcus manages a small team at a logistics company. Every Monday, he has to assign new tasks based on each person\u2019s workload. This week, he needs to delegate the shipment tracking task to someone who isn\u2019t too busy. He decides to give it to Aisha, since her workload is lighter this week.',
+      'What does Marcus have to do every Monday?', 'He has to assign new tasks based on each person\u2019s workload.',
+      'How do you decide who should get a task at your job?', 'I usually think about who has time and who has the right skills for it.')}
+
+    ${passageCard(2, 'Aisha',
+      'Aisha has three tasks this week, but only one is truly urgent. She has to prioritize the client\u2019s request first, because the deadline is tomorrow morning. The other two tasks can wait until next week.',
+      'Why does Aisha prioritize the client\u2019s request?', 'Because the deadline is tomorrow morning.',
+      'How do you decide which task is the most urgent one on your list?', 'I look at the deadlines first, then decide what the client is waiting for.')}
+
+    ${passageCard(3, 'Diego',
+      'Diego is a new supervisor. He isn\u2019t sure how to handle a difficult situation. One of his team members missed a deadline twice. Diego needs to talk to him today, calmly, and find out what the real problem is.',
+      'What does Diego need to do today?', 'He needs to talk to his team member calmly and find out the real problem.',
+      'What would you say to a coworker who missed a deadline twice?', 'I would ask them what happened and if they need help finishing it.')}
+
+    ${passageCard(4, 'Ingrid',
+      'Ingrid needs to coordinate a project between two departments: sales and design. This isn\u2019t easy, because both teams have different priorities. She has to follow up with both managers every Friday to check progress.',
+      'What does Ingrid have to do every Friday?', 'She has to follow up with both managers to check progress.',
+      'What\u2019s difficult about coordinating work between two different teams?', 'Each team has different priorities, so it can be hard to keep everyone happy.')}
+
+    ${passageCard(5, 'Wei',
+      'Wei\u2019s manager gave him a new responsibility: reviewing weekly reports. Wei doesn\u2019t have to do this alone. He can ask Sofia for help if his workload gets too heavy. He should ask for help early, not wait until the deadline.',
+      'Does Wei have to review the reports alone?', 'No, he doesn\u2019t have to. He can ask Sofia for help.',
+      'Do you usually ask for help early, or do you wait? Why?', 'I try to ask early, because waiting usually makes the deadline more stressful.')}
+
+    ${passageCard(6, 'Fatima',
+      'Fatima has a lot on her plate this week. She has to finish the budget report, follow up with two suppliers, and assign new tasks to her interns. She needs to prioritize carefully so nothing gets missed.',
+      'What three things does Fatima have to do this week?', 'Finish the budget report, follow up with two suppliers, and assign new tasks to her interns.',
+      'When was the last time you had "a lot on your plate"? What did you do?', 'Last month I had three deadlines in one week, so I made a list and did the most urgent one first.')}
+    <div class="tip-box">
+      <div class="tip-label">💡 Idiom</div>
+      "To have a lot on your plate" significa tener mucho trabajo o estar sobrecargado. No se refiere a comida. Se refiere a la cantidad de tareas y responsabilidades que alguien tiene en un momento dado. Es muy común en el trabajo, por ejemplo: "Sorry, I can\u2019t take on more right now, I already have a lot on my plate."
+    </div>
+
+    ${passageCard(7, 'Tariq',
+      'Last month, Tariq forgot to send the client a signed contract on time. His manager said the team "dropped the ball" on this task, and now they have to work hard to rebuild the client\u2019s trust.',
+      'What did Tariq forget to do last month?', 'He forgot to send the client a signed contract on time.',
+      'Have you ever seen a team "drop the ball" on something? What happened?', 'Yes, once we forgot to confirm an order and the client had to wait an extra week.')}
+    <div class="tip-box">
+      <div class="tip-label">💼 Corporate Expression</div>
+      "To drop the ball" significa fallar en una responsabilidad, cometer un error que afecta a otras personas. Viene del deporte: cuando alguien deja caer la pelota en un juego de equipo. En el trabajo se usa mucho en reuniones, por ejemplo: "We dropped the ball on this one. Let\u2019s make sure it doesn\u2019t happen again."
+    </div>
+
+    ${passageCard(8, 'Noemi',
+      'Noemi needs to coordinate the year-end report with four different teams. It\u2019s a big responsibility, and the deadline is tight. She has to send reminders every few days so no one forgets their part.',
+      'Why does Noemi send reminders every few days?', 'So no one forgets their part of the report.',
+      'What\u2019s your strategy for making sure a team doesn\u2019t forget a deadline?', 'I send a short reminder message two or three days before the deadline.')}
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      This lesson uses 8 individual passages instead of one long text, so assign passages to make sure every student reads or answers at least one out loud. Ask for a full-sentence answer on Q1, then let Q2 open into a short natural exchange with the group. Give a little extra time to Passage 6 and Passage 7. They introduce a new idiom and a new corporate expression, and a bit of repetition helps these stick.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+const SPEAKING_QUESTIONS = [
+  'Tell us about a task you had to delegate recently. How did you decide who should do it?',
+  'What\u2019s one thing on your plate right now that you need to prioritize this week?',
+  'Describe a time when a deadline felt really urgent. How did you handle it?',
+  'What\u2019s your approach when you have to coordinate a task with a coworker who already has a heavy workload?',
+];
+
+function renderSpeaking() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Speaking</div>
+      <div class="sec-badge-time">Self-paced</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Ronda de preguntas abiertas. No hay una estructura fija: usa el vocabulario y la gramática de hoy lo mejor que puedas, y responde con tu propia experiencia.</div>
+    ${SPEAKING_QUESTIONS.map((q,i) => `
+      <div class="speak-card">
+        <div class="speak-num">${i+1}</div>
+        <div class="speak-q">${q}</div>
+      </div>`).join('')}
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      This replaces the standard Speaking Ladder for this lesson. Since there is no fixed frame, expect more varied, sometimes messier output, and that\u2019s fine, it\u2019s genuine independent production. Prompt with a natural follow-up if a student gives a one-line answer, for example "Why did you choose them?" or "What happened next?" Note vocabulary and grammar slips for a light mention at wrap-up, but don\u2019t over-correct mid-flow. There\u2019s no time pressure this lesson, so let the discussion breathe.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Wrap-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <p class="sec-intro">Today you practised assigning tasks, delegating responsibility, and talking about what\u2019s necessary (have to / need to) versus what\u2019s advisable (should).</p>
+    <div class="es-note">¿Qué tan cómodo te sientes coordinando tareas en inglés hoy? (Escala de 1 a 5)</div>
+    <div class="rating-row" id="ratingRow">
+      ${[1,2,3,4,5].map(n => `<button class="rating-btn" onclick="selectRating(${n})">${n}</button>`).join('')}
+    </div>
+    <div class="rating-msg" id="ratingMsg">Toca un número para responder.</div>
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Ask each student for their number, then a quick one-word reason why. This isn\u2019t scored. It\u2019s a temperature check for how confident the group feels before moving on to Homework.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function selectRating(n) {
+  document.querySelectorAll('#ratingRow .rating-btn').forEach((b,i) => {
+    b.classList.toggle('selected', i === n-1);
+  });
+  const msgs = {
+    1: 'No te preocupes, seguiremos practicando esto.',
+    2: 'Buen comienzo, la práctica te ayudará a sentirte más seguro.',
+    3: 'Vas por buen camino.',
+    4: 'Muy bien, casi dominado.',
+    5: '¡Excelente! Te sientes muy cómodo con esto.',
+  };
+  document.getElementById('ratingMsg').textContent = msgs[n] || '';
+}
+
+STEPS = [
+  { label: "1. Warm-up",  fn: renderWarmup },
+  { label: "2. Reading",  fn: renderReading },
+  { label: "3. Speaking", fn: renderSpeaking },
+  { label: "4. Wrap-up",  fn: renderWrapup },
+];
+
+render();
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

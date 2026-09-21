@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 23: Managing Time | A2 · Unit 3 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ============================================================
+   CLASSWORK-SPECIFIC BLOCKS (A2-L23): all colours via variables
+   ============================================================ */
+:root { --gold-dark: #7A5500; }
+
+/* Teacher Instruction Box (Classwork only) */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+.teacher-box p { margin-bottom:6px; }
+.teacher-box p:last-child { margin-bottom:0; }
+
+/* Tap to reveal (answer keys, model content) */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row:focus-visible, .btn:focus-visible, .rating-btn:focus-visible { outline:2px solid var(--sky); outline-offset:2px; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; line-height:1.5; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; margin-top:2px; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:13px; color:var(--green); font-weight:600; line-height:1.6; }
+.tap-answer.show { display:block; }
+
+/* Warm-up cards */
+.warm-def { font-size:14px; color:var(--navy); font-weight:500; margin-bottom:10px; line-height:1.6; }
+.warm-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.hint-box, .answer-box { display:none; padding:9px 13px; border-radius:6px; font-size:13px; margin-top:8px; }
+.hint-box.show, .answer-box.show { display:block; }
+.hint-box { background:var(--gold-bg); color:var(--gold-dark); font-style:italic; }
+.answer-box { background:var(--green-bg); color:var(--green); font-weight:700; }
+
+/* Passage cards */
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:16px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.passage-num { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.passage-text { font-size:14px; color:var(--slate); line-height:1.75; margin-bottom:16px; }
+
+/* Grammar reminder lines inside the tip box */
+.remind-line { font-size:14px; line-height:1.7; color:var(--slate); }
+.remind-line strong { color:var(--navy); }
+.remind-es { color:var(--grey-blue); font-style:italic; font-size:13px; }
+
+/* Speaking cards */
+.speak-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); display:flex; gap:14px; align-items:flex-start; }
+.speak-num { background:var(--navy); color:var(--gold); border-radius:50%; width:30px; height:30px; min-width:30px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; }
+.speak-q { font-size:15px; color:var(--navy); font-weight:500; line-height:1.6; }
+
+/* Rating */
+.rating-row { display:flex; gap:10px; margin:18px 0; }
+.rating-btn { width:44px; height:44px; border-radius:50%; border:1.5px solid var(--border-grey); background:var(--white); font-family:var(--font-body); font-size:15px; font-weight:700; color:var(--navy); cursor:pointer; transition:all 0.15s; }
+.rating-btn:hover { border-color:var(--gold); }
+.rating-btn.selected { background:var(--gold); border-color:var(--gold); color:var(--navy); }
+.rating-msg { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+@media (prefers-reduced-motion: reduce) { .sc { animation:none; } .progress-fill { transition:none; } }
+
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 3 · Classwork</div>
+    <h1 class="hero-title">Lesson 23: Managing Time</h1>
+    <p class="hero-sub">Reading Day, 8 short passages · Expressions of time (by, until, before, after)</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">📖 Reading + Speaking</span>
+      <span class="pill accent">8 reading passages</span>
+      <span class="pill">4 open discussion questions</span>
+      <span class="pill">Self-paced, no strict timing</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block — never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly — not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START — replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+// Warm-up: [English definition, Spanish hint, answer]
+const WARMUP = [
+  [`To move an event or task to a later time.`, `Mover un evento o una tarea a un momento posterior.`, `postpone`],
+  [`To change the day or time of a meeting or event.`, `Cambiar el día o la hora de una reunión o evento.`, `reschedule`],
+  [`The times when you are free to work or meet.`, `Los momentos en que estás libre para trabajar o reunirte.`, `availability`],
+  [`All the tasks a person has to finish in a period of time.`, `Todas las tareas que una persona debe terminar en un periodo de tiempo.`, `workload`],
+  [`Having no free time in your calendar.`, `No tener tiempo libre en tu agenda.`, `fully booked`],
+  [`Late. It should have been finished or paid before now.`, `Atrasado. Debía haberse terminado o pagado antes de ahora.`, `overdue`],
+  [`To give more time for something, like a deadline.`, `Dar más tiempo para algo, por ejemplo un plazo.`, `extend`],
+  [`Slower than the plan. Not finished when you expected.`, `Más lento que el plan. No terminado cuando se esperaba.`, `behind schedule`],
+];
+
+// Speaking: 4 open-ended questions, no sentence frame
+const SPEAKING_QUESTIONS = [
+  `Tell us about your typical week at work. When are you fully booked, and when do you have some free time?`,
+  `What is your workload like right now? What do you need to finish by the end of this week?`,
+  `Tell us about a time when you had to postpone or reschedule something at work. What happened, and how did you handle it?`,
+  `When you have too many tasks and not enough time, how do you decide what to do first and what to leave for later?`,
+];
+
+let ratingChoice = 0;
+
+// ── SMALL HELPERS ─────────────────────────────────────────
+function secBadge(n, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${n}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+
+function teacherBox(html) {
+  return `<div class="teacher-box">
+    <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+    ${html}
+  </div>`;
+}
+
+function tapToggle(el) {
+  const ans = el.querySelector('.tap-answer');
+  const lab = el.querySelector('.tap-hint-label');
+  const open = ans.classList.toggle('show');
+  if (lab) lab.textContent = open ? 'Tap to hide' : el.dataset.label;
+}
+function tapKey(e, el) {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tapToggle(el); }
+}
+
+function tapRow(question, answerHtml, label) {
+  return `<div class="tap-row" role="button" tabindex="0" data-label="${label}" onclick="tapToggle(this)" onkeydown="tapKey(event,this)">
+    <div class="tap-row-top">
+      <div class="tap-q">${question}</div>
+      <div class="tap-hint-label">${label}</div>
+    </div>
+    <div class="tap-answer">${answerHtml}</div>
+  </div>`;
+}
+
+function warmupCard(num, defEn, defEs, word) {
+  return `<div class="ex-box">
+    <div class="warm-def">${num}. "${defEn}"</div>
+    <div class="warm-actions">
+      <button class="btn btn-ghost" onclick="this.closest('.ex-box').querySelector('.hint-box').classList.toggle('show')">💡 Show Spanish hint</button>
+      <button class="btn btn-gold" onclick="this.closest('.ex-box').querySelector('.answer-box').classList.toggle('show')">Show answer</button>
+    </div>
+    <div class="hint-box">ES: "${defEs}"</div>
+    <div class="answer-box">${word}</div>
+  </div>`;
+}
+
+function passageCard(num, name, text, q1, q1Answer, q2, q2Sample) {
+  return `<div class="passage-card">
+    <div class="passage-num">Passage ${num} · ${name}</div>
+    <div class="passage-text">${text}</div>
+    ${tapRow(`Q1: ${q1}`, `✓ ${q1Answer}`, `Tap to reveal`)}
+    ${tapRow(`Q2: ${q2}`, `Sample response: "${q2Sample}"`, `Need an idea? Tap`)}
+  </div>`;
+}
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    ${secBadge(1, `Warm-up`, `5 min`)}
+    <div class="es-note">El profesor lee cada definición en voz alta, una por estudiante. Adivina la palabra. Si te quedas trabado, pide la pista en español.</div>
+    ${WARMUP.map(([en, es, word], i) => warmupCard(i + 1, en, es, word)).join('')}
+    ${teacherBox(`
+      <p>Read the definition, then pause 3 to 5 seconds before offering any hint. The aim is active recall, not passive recognition. Only reveal the Spanish hint if the student is genuinely stuck.</p>
+      <p>Cards 1 and 2 are the pair students most often mix up. If someone answers "reschedule" for card 1, ask: "Can you reschedule to an earlier time? Can you postpone to an earlier time?"</p>`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    ${secBadge(2, `Reading`, `Self-paced`)}
+
+    <div class="tip-box">
+      <div class="tip-label">by · until · before · after</div>
+      <div class="remind-line"><strong>by</strong> = a deadline: <em>Send it by Friday.</em> <span class="remind-es">(para el viernes, a más tardar)</span></div>
+      <div class="remind-line"><strong>until</strong> = continues, then stops: <em>I'm busy until 3 p.m.</em> <span class="remind-es">(hasta las 3)</span></div>
+      <div class="remind-line"><strong>before / after</strong> = earlier / later: <em>before lunch, after the call</em> <span class="remind-es">(antes de, después de)</span></div>
+      <div class="remind-line remind-es">Recuerda: nunca "before of" ni "after of".</div>
+    </div>
+
+    <div class="es-note">Lee tu texto corto. Responde la Pregunta 1 con información del texto, en una oración completa. Para la Pregunta 2, piensa y responde con tu propia experiencia.</div>
+
+    ${passageCard(1, `Jamal`,
+      `Jamal has to finish a report by Thursday at noon. His workload is very heavy this week, so he starts work at 7 a.m. every day. He doesn't read any emails until he finishes the first part of the report.`,
+      `When does Jamal have to finish the report?`, `By Thursday at noon.`,
+      `What do you do first when you have a big deadline?`, `I make a list of the steps, and then I start with the hardest one.`)}
+
+    ${passageCard(2, `Yuki`,
+      `Yuki is fully booked until 2 p.m. on Tuesday. She has three back-to-back meetings in the morning, and then a client lunch at noon. After 2 p.m., she has one free time slot. She uses it to answer her emails.`,
+      `When does Yuki have some free time on Tuesday?`, `She has a free time slot after 2 p.m.`,
+      `Do you prefer to have meetings in the morning or in the afternoon? Why?`, `I prefer the morning, because I have more energy and I can do my other work in the afternoon.`)}
+
+    ${passageCard(3, `Elena`,
+      `Elena has a simple routine. Before she starts work, she writes a list of three important tasks. After each meeting, she checks the list and updates it. Her manager says she has excellent time management.`,
+      `What does Elena do before she starts work?`, `She writes a list of three important tasks.`,
+      `What is one habit that helps you stay organized at work?`, `I check my calendar every morning before I open my email.`)}
+
+    ${passageCard(4, `Kofi`,
+      `Kofi's project is behind schedule because two team members were sick last week. He decided to postpone the client presentation until next Monday. He wrote to the client this morning and explained the situation.`,
+      `Why did Kofi postpone the presentation?`, `Because the project is behind schedule. Two team members were sick.`,
+      `Have you ever had to postpone a meeting or a task at work? What happened?`, `Yes, last month I postponed a meeting because my manager was traveling. We had it the next week.`)}
+
+    ${passageCard(5, `Sanjana`,
+      `Sanjana has a schedule conflict on Wednesday. Her client call and her team meeting are both at 10 a.m. She sends the client her availability and asks to reschedule the call for after lunch. The client replies, "Two o'clock works for me."`,
+      `What does Sanjana ask the client to do?`, `She asks the client to reschedule the call for after lunch.`,
+      `How do you share your availability with your clients or coworkers?`, `I use a shared calendar, and I send two or three free time slots by email.`)}
+
+    ${passageCard(6, `Lars`,
+      `Lars has a long to-do list this month. The client proposal is due by Friday, so it is his first priority. The website update is not urgent, so he put it on the back burner until next month. He won't think about it again until the proposal is finished.`,
+      `What is Lars's first priority, and why?`, `The client proposal, because it is due by Friday.`,
+      `What is on your "back burner" at the moment?`, `I want to learn advanced Excel, but I put it on the back burner until the end of the year.`)}
+    <div class="tip-box">
+      <div class="tip-label">💡 Idiom</div>
+      <strong>"To put something on the back burner"</strong> significa dejar algo para más tarde porque ahora no es prioridad. En una cocina, el quemador de atrás de la estufa se usa para cosas que se cocinan despacio y no necesitan atención inmediata. En el trabajo, no abandonas la tarea: solo la dejas para después. Ejemplo: "We put the website update on the back burner until the launch is finished."
+    </div>
+
+    ${passageCard(7, `Nadia`,
+      `Nadia's manager asks her to join a new project next week. Nadia already has three projects and a tight schedule. She answers politely, "I'd love to help, but I don't have the bandwidth right now. Can we talk again after the 15th?"`,
+      `Why does Nadia say she can't join the new project now?`, `Because she already has three projects and a tight schedule.`,
+      `What do you say when you have too much work and someone asks you for more?`, `I say I'm very busy right now, and I ask if we can talk again next week.`)}
+    <div class="tip-box">
+      <div class="tip-label">💼 Corporate Expression</div>
+      <strong>"I don't have the bandwidth"</strong> significa no tener el tiempo ni la energía para más trabajo en este momento. Viene de la tecnología: el "ancho de banda" de internet, que tiene un límite. Una persona también tiene un límite de trabajo que puede manejar. Es una forma educada y muy común de decir "estoy demasiado ocupado". Ejemplo: "Let's talk next week. I don't have the bandwidth today."
+    </div>
+
+    ${passageCard(8, `Hassan`,
+      `Hassan is usually ahead of schedule. Every Friday afternoon, he plans his next week and blocks time in his calendar for important tasks. He also sets a reminder the day before each deadline. He always sends his reports by the end of the day, never after the deadline.`,
+      `What does Hassan do every Friday afternoon?`, `He plans his next week and blocks time in his calendar for important tasks.`,
+      `What tools or tricks do you use to remember your deadlines?`, `I use phone reminders, and I keep a small list on my desk.`)}
+
+    ${teacherBox(`
+      <p>One passage per student, 8 students. The student reads their passage aloud, then answers Q1 in one full sentence taken from the text. Q2 is a personal answer, so accept anything reasonable and ask one follow-up ("Why?" / "What happened next?") if the answer is only a few words. Sample answers stay hidden until the student has answered.</p>
+      <p>Pause after Passages 6 and 7 to go through the callouts. Ask the class for another example sentence using "back burner" or "bandwidth" before moving on. Passage 5 is a good moment to point out "reschedule for" versus "postpone until".</p>`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  return `<div class="sc">
+    ${secBadge(3, `Speaking`, `Self-paced`)}
+    <div class="es-note">Responde con tus propias palabras. No hay una frase modelo. Usa el vocabulario y la gramática de hoy cuando puedas. Si quieres, intenta usar "back burner" o "bandwidth".</div>
+    ${SPEAKING_QUESTIONS.map((q, i) => `
+      <div class="speak-card">
+        <div class="speak-num">${i + 1}</div>
+        <div class="speak-q">${q}</div>
+      </div>`).join('')}
+    ${teacherBox(`
+      <p>Round-robin, one student at a time. There is no fixed sentence frame, so expect messier output. That is normal and it is real independent production. Follow up on short answers ("What time exactly?" / "Why?" / "What happened next?").</p>
+      <p>Listen for by / until / before / after used correctly, especially "by" for deadlines and "before" without "of". Note slips and give a light mention at wrap-up. Do not over-correct mid-flow. The "back burner" and "bandwidth" prompt is an optional stretch for stronger students.</p>`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    ${secBadge(4, `Wrap-up`, `5 min`)}
+    <p class="sec-intro">Today you practised talking about schedules, deadlines and priorities using <strong>by, until, before and after</strong>. You also learned to postpone and reschedule politely.</p>
+    <div class="es-note">¿Qué tan cómodo te sientes hablando de tu agenda en inglés hoy? (Escala de 1 a 5)</div>
+    <div class="rating-row" id="ratingRow">
+      ${[1, 2, 3, 4, 5].map(n => `<button class="rating-btn ${ratingChoice === n ? 'selected' : ''}" onclick="selectRating(${n})" aria-label="Rating ${n} of 5">${n}</button>`).join('')}
+    </div>
+    <div class="rating-msg" id="ratingMsg">${ratingChoice ? RATING_MSGS[ratingChoice] : 'Toca un número para responder.'}</div>
+    ${teacherBox(`
+      <p>Ask for a quick show of fingers, 1 to 5. If several students say 1 or 2, note whether the trouble was "by" versus "until". Mention it at the start of the next class.</p>`)}
+    ${navFooter()}
+  </div>`;
+}
+
+const RATING_MSGS = {
+  1: `No te preocupes, seguiremos practicando esto.`,
+  2: `Buen comienzo, la práctica te ayudará a sentirte más seguro.`,
+  3: `Vas por buen camino.`,
+  4: `Muy bien, casi dominado.`,
+  5: `¡Excelente! Te sientes muy cómodo con esto.`,
+};
+
+function selectRating(n) {
+  ratingChoice = n;
+  document.querySelectorAll('#ratingRow .rating-btn').forEach((b, i) => {
+    b.classList.toggle('selected', i === n - 1);
+  });
+  document.getElementById('ratingMsg').textContent = RATING_MSGS[n] || '';
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Warm-up",  fn: renderWarmup },
+  { label: "2. Reading",  fn: renderReading },
+  { label: "3. Speaking", fn: renderSpeaking },
+  { label: "4. Wrap-up",  fn: renderWrapup },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

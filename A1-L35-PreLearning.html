@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 35: Giving Basic Opinions | A1 · Unit 4 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── LESSON ADDITIONS: A1-L35 ───────────────────────────── */
+.sub-heading { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin:26px 0 12px; }
+.rule-title { font-size:14px; font-weight:700; color:var(--navy); margin:18px 0 10px; }
+.mini-sub { font-size:13px; color:var(--grey-blue); margin-bottom:14px; font-style:italic; }
+.dt-first { font-size:14px; font-weight:700; color:var(--navy); }
+.dt-cell { font-size:14px; color:var(--slate); line-height:1.5; }
+.dt-small { font-size:12px; font-weight:400; color:var(--grey-blue); }
+/* Column-and-pipe builder */
+.bcols { display:flex; align-items:stretch; flex-wrap:wrap; margin-bottom:18px; border-radius:9px; overflow:hidden; border:1px solid rgba(255,255,255,0.12); }
+.bcol { display:flex; flex-direction:column; align-items:center; padding:14px 18px; background:rgba(201,151,44,0.22); border-right:2px solid rgba(255,255,255,0.1); min-width:100px; flex:1; gap:4px; }
+.bcol.last { border-right:none; }
+.bcol-step { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:2px; text-align:center; }
+.bcol-main { font-size:15px; font-weight:700; color:var(--gold); }
+.bcol-detail { font-size:13px; color:rgba(255,255,255,0.6); font-style:italic; }
+.bpipe { display:flex; align-items:center; padding:0 10px; font-size:22px; color:rgba(255,255,255,0.2); font-weight:300; }
+/* Tap-to-reveal */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--gold); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.5; }
+.tap-q.wrong-line { color:var(--red); font-style:italic; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); line-height:1.6; }
+.tap-answer.show { display:block; }
+/* Spanish Bridge table */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+/* Audio box */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+/* Quiz result extras */
+.result-attempts { font-size:12px; color:rgba(255,255,255,0.45); margin-top:10px; }
+.result-btn { padding:12px 28px; font-size:13px; border-radius:8px; }
+.result-btn-ghost { background:rgba(255,255,255,0.1); color:var(--white); border:1px solid rgba(255,255,255,0.25); }
+@media(max-width:600px){ .data-table-row, .data-table-head { grid-template-columns:1fr !important; } .data-table-head span + span { display:none; } }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 4 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 35: Giving Basic Opinions</h1>
+    <p class="hero-sub">Like / don't like + -ing · Grammar Bridge: Present Continuous · 45 min self-study</p>
+
+    <!-- OPTION A: Outcomes grid — use for Pre-Learning files -->
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Talk about what you like and don't like at work</div><div class="outcome-note">Hablar de lo que te gusta y no te gusta en el trabajo</div></div>
+      <div><div class="outcome-item">Use like, love, enjoy, hate + -ing correctly</div><div class="outcome-note">Usar like, love, enjoy, hate + -ing correctamente</div></div>
+      <div><div class="outcome-item">Tell “I'm working” from “I like working”</div><div class="outcome-note">Diferenciar “I'm working” de “I like working”</div></div>
+    </div>
+    <!-- OPTION B: Pills — use for Classwork / Homework files (swap with A above)
+    <div class="hero-pills">
+      <span class="pill accent">[Speaking X%]</span>
+      <span class="pill accent">[Writing X%]</span>
+      <span class="pill">[N sections]</span>
+      <span class="pill">[X min]</span>
+    </div>
+    -->
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block — never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly — not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START — replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 0;
+const miniState = { voc: {}, bridge: {}, gram: {}, mod: {}, lis: {} };
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const AUDIO_URL = "https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L35-Audio001.mp3";
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LAYOUT HELPERS ────────────────────────────────────────
+function secBadge(n, title, time) {
+  return `<div class="sec-badge"><div class="sec-badge-num">${n}</div><div class="sec-badge-title">${title}</div><div class="sec-badge-time">${time}</div></div><hr class="gold-rule">`;
+}
+function tipBox(label, body) { return `<div class="tip-box"><div class="tip-label">${label}</div>${body}</div>`; }
+function esNote(t) { return `<div class="es-note">${t}</div>`; }
+function subHead(t) { return `<div class="sub-heading">${t}</div>`; }
+function dataTable(heads, rows, tmpl) {
+  return `<div class="data-table-wrap">
+    <div class="data-table-head" style="grid-template-columns:${tmpl}">${heads.map(h => `<span>${h}</span>`).join('')}</div>
+    ${rows.map(r => `<div class="data-table-row" style="grid-template-columns:${tmpl}">${r.map((c,i) => `<div class="${i===0?'dt-first':'dt-cell'}">${c}</div>`).join('')}</div>`).join('')}
+  </div>`;
+}
+function builder(label, cols, ex) {
+  const colHtml = cols.map((c,i) => {
+    const last = i === cols.length - 1;
+    return `<div class="bcol${last?' last':''}"><div class="bcol-step">${c[0]}</div><div class="bcol-main">${c[1]}</div><div class="bcol-detail">${c[2]}</div></div>${last?'':'<div class="bpipe">|</div>'}`;
+  }).join('');
+  return `<div class="builder-wrap"><div class="builder-label">${label}</div><div class="bcols">${colHtml}</div><div class="builder-ex"><strong>${ex}</strong></div></div>`;
+}
+function tapRow(q, a, cls) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top"><div class="tap-q ${cls||''}">${q}</div><div class="tap-hint-label">Tap to reveal</div></div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+function exList(label, pairs) {
+  return `<div class="examples-wrap"><div class="examples-label">${label}</div>${pairs.map(p => `<div class="example-item"><span class="example-en">${p[0]}</span>${p[1] ? `<span class="example-arrow">→</span><span class="example-es">${p[1]}</span>` : ''}</div>`).join('')}</div>`;
+}
+function bridgeTable(headEn, headEs, rows) {
+  return `<div class="bridge-table-wrap"><div class="bridge-table-head"><span>${headEn}</span><span>${headEs}</span></div>${rows.map(r => `<div class="bridge-row"><div class="bridge-en">${r[0]}</div><div class="bridge-es">${r[1]}</div></div>`).join('')}</div>`;
+}
+function miniBlock(prefix, arr, title, sub) {
+  return `<div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ ${title}</div>
+    <p class="mini-sub">${sub}</p>
+    <div id="mini-wrap-${prefix}">${renderMiniQ(prefix, arr)}</div>`;
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const VOCAB = [
+  ["presentation", "presentación", "I like giving <strong>presentations</strong> to clients."],
+  ["training", "capacitación / formación", "We have a <strong>training</strong> session on Monday."],
+  ["strategy", "estrategia", "I enjoy discussing our sales <strong>strategy</strong>."],
+  ["opinion", "opinión", "What's your <strong>opinion</strong> about remote work?"],
+  ["feedback", "retroalimentación / comentarios", "My manager gives me <strong>feedback</strong> every week."],
+  ["teamwork", "trabajo en equipo", "I love <strong>teamwork</strong>. It's fun."],
+  ["workload", "carga de trabajo", "My <strong>workload</strong> is heavy this month."],
+  ["overtime", "horas extra", "I don't like working <strong>overtime</strong>."],
+  ["remote work", "trabajo remoto", "<strong>Remote work</strong> is popular in my company."],
+  ["brainstorming", "lluvia de ideas", "We do <strong>brainstorming</strong> on Monday mornings."],
+  ["multitasking", "hacer varias tareas a la vez", "I hate <strong>multitasking</strong>. I prefer one task at a time."],
+  ["open-plan office", "oficina abierta (sin divisiones)", "Our <strong>open-plan office</strong> is very noisy."],
+  ["public speaking", "hablar en público", "<strong>Public speaking</strong> is difficult for me."],
+  ["paperwork", "papeleo", "I don't like doing <strong>paperwork</strong>."],
+  ["stressful", "estresante", "Deadlines are <strong>stressful</strong>."],
+  ["useful", "útil", "The training was very <strong>useful</strong>."]
+];
+
+const VOC_CQ = [
+  { type:"mc", q:"What is “training” in a company?",
+    opts:["A sports activity", "A session where you learn new skills", "A trip by train"],
+    answer:1, fb:"In a company, <em>training</em> = capacitación. For the gym, we say <em>workout</em>." },
+  { type:"tf", q:"“Feedbacks” is correct when you get many comments.",
+    answer:false, fb:"<em>Feedback</em> is uncountable, so it never takes -s. Say “a lot of feedback.”" },
+  { type:"input", q:"Write the English word: <em>horas extra</em>",
+    hint:"One word.", answers:["overtime"], display:"overtime",
+    fb:"<em>Overtime</em> is one word. Example: “I don't like working overtime.”" }
+];
+
+const BRIDGE_CQ = [
+  { type:"mc", q:"Choose the correct sentence.",
+    opts:["The printer not working.", "The printer isn't working.", "The printer isn't work."],
+    answer:1, fb:"Present Continuous needs <em>be</em> + verb-ing: <em>is not working → isn't working</em>." },
+  { type:"tf", q:"“What do you do?” means “¿Qué estás haciendo ahora?”",
+    answer:false, fb:"“What do you do?” = ¿A qué te dedicas? For right now, say “What are you doing?”" },
+  { type:"input", q:"Write the -ing form of <em>prepare</em>.",
+    hint:"Ends in -e.", answers:["preparing"], display:"preparing",
+    fb:"Ends in -e: drop the e and add -ing → <em>preparing</em>." }
+];
+
+const GRAM_CQ = [
+  { type:"mc", q:"Choose the correct sentence.",
+    opts:["I am like working from home.", "I like working from home.", "I like work from home."],
+    answer:1, fb:"Like + verb-ing, with no “am”: <em>I like working from home.</em>" },
+  { type:"tf", q:"“I enjoy to give presentations” is correct.",
+    answer:false, fb:"<em>Enjoy</em> only takes -ing: <em>I enjoy giving presentations.</em>" },
+  { type:"input", q:"Complete: She ______ (not like) doing paperwork.",
+    hint:"Two words (or three).", answers:["doesn't like", "does not like"], display:"doesn't like",
+    fb:"She → <em>doesn't like</em> (no -s on “like” after doesn't)." }
+];
+
+const MOD_CQ = [
+  { type:"mc", q:"Which sentence talks about something happening NOW?",
+    opts:["I like writing reports.", "I'm writing a report.", "I hate writing reports."],
+    answer:1, fb:"<em>am + writing</em> = right now. <em>Like/hate + writing</em> = a general opinion." },
+  { type:"tf", q:"“I don't mind working late” means “I hate working late.”",
+    answer:false, fb:"<em>Don't mind</em> = no me molesta. It's neutral, not negative." },
+  { type:"input", q:"Translate: <em>Me encanta trabajar en equipo.</em>",
+    hint:"I love…", answers:["i love working in a team", "i love working in teams", "i love teamwork", "i love working as a team"],
+    display:"I love working in a team.", fb:"Me encanta = I love, + working (-ing)." }
+];
+
+const LIS_CQ = [
+  { type:"mc", q:"What is Amara doing right now?",
+    opts:["Giving a training session", "Preparing a presentation", "Doing paperwork"],
+    answer:1, fb:"“Right now, I'm preparing a presentation for our new employees.”" },
+  { type:"mc", q:"What does Amara love?",
+    opts:["Working with people", "Working overtime", "Doing paperwork"],
+    answer:0, fb:"“I love working with people.”" },
+  { type:"tf", q:"Amara likes doing paperwork.",
+    answer:false, fb:"“I don't like doing paperwork. It's boring.”" },
+  { type:"mc", q:"When does Amara work from home?",
+    opts:["On Mondays", "Every day", "On Fridays"],
+    answer:2, fb:"“I like working from home on Fridays.”" },
+  { type:"mc", q:"What does Daniel like?",
+    opts:["Working from home", "Talking to people in the office", "Working overtime"],
+    answer:1, fb:"“He doesn't like working from home. He likes talking to people in the office.”" },
+  { type:"input", q:"Complete: Amara hates working ______.",
+    hint:"One word.", answers:["overtime"], display:"overtime",
+    fb:"“I hate working overtime, because I get home very late.”" }
+];
+
+const MINI_BANK = { voc: VOC_CQ, bridge: BRIDGE_CQ, gram: GRAM_CQ, mod: MOD_CQ, lis: LIS_CQ };
+
+const QUIZ = [
+  { type:"mc", q:"I love ______ with my team.",
+    opts:["work", "working", "to working"], answer:1,
+    hint:"Love + verb-ing.", fb:"<em>I love working with my team.</em>" },
+  { type:"mc", q:"What is “capacitación” in English?",
+    opts:["workout", "training", "teamwork"], answer:1,
+    fb:"<em>Training</em> = capacitación. For sports, we say <em>workout</em>." },
+  { type:"tf", q:"“She like giving presentations” is correct.",
+    answer:false, hint:"Think about he / she / it.",
+    fb:"She → <em>likes</em>: <em>She likes giving presentations.</em>" },
+  { type:"mc", q:"______ you enjoy working from home?",
+    opts:["Are", "Do", "Does"], answer:1,
+    fb:"You → <em>Do</em>: <em>Do you enjoy working from home?</em>" },
+  { type:"mc", q:"Look! The printer ______.",
+    opts:["isn't working", "doesn't working", "not working"], answer:0,
+    hint:"It's happening right now.",
+    fb:"Right now → Present Continuous: <em>is not working = isn't working</em>." },
+  { type:"input", q:"Complete: I hate ______ (work) overtime.",
+    hint:"One word.", answers:["working"], display:"working",
+    fb:"Hate + verb-ing → <em>working</em>." },
+  { type:"mc", q:"Which word is uncountable (no -s)?",
+    opts:["presentation", "strategy", "feedback"], answer:2,
+    fb:"<em>Feedback</em> is uncountable: “a lot of feedback,” never “feedbacks.”" },
+  { type:"mc", q:"Choose the correct sentence.",
+    opts:["I am like brainstorming.", "I like brainstorming.", "I like brainstorm."], answer:1,
+    fb:"No “am” with like, and the verb takes -ing." },
+  { type:"tf", q:"“I don't mind working late” is a negative opinion.",
+    answer:false, fb:"<em>Don't mind</em> is neutral: no me molesta." },
+  { type:"input", q:"Complete: He ______ (not like) doing paperwork.",
+    hint:"He → doesn't…", answers:["doesn't like", "does not like"], display:"doesn't like",
+    fb:"He → <em>doesn't like</em>, with no -s on like." },
+  { type:"mc", q:"“What are you doing?” means:",
+    opts:["¿A qué te dedicas?", "¿Qué estás haciendo ahora?", "¿Qué te gusta hacer?"], answer:1,
+    fb:"<em>Are you doing</em> = Present Continuous = right now." },
+  { type:"mc", q:"Which sentence gives an opinion about work in general?",
+    opts:["I'm giving a presentation now.", "I enjoy giving presentations.", "I'm preparing the slides."], answer:1,
+    fb:"<em>Enjoy + -ing</em> = a general preference. The other two describe actions happening now." }
+];
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    ${secBadge(1, "Welcome", "3 min")}
+    <p class="sec-intro">¡Bienvenido a la Lección 35! En el trabajo, la gente siempre comparte opiniones: sobre las reuniones, las capacitaciones, el trabajo remoto, las presentaciones... Hoy vas a aprender a decir lo que te gusta y lo que no te gusta de tu trabajo en inglés.</p>
+    <p class="sec-intro">Primero vas a conocer una forma muy importante del verbo: la terminación <strong>-ing</strong>. Vas a ver que el <strong>-ing</strong> tiene dos trabajos distintos en inglés:</p>
+    ${dataTable(["Trabajo del -ing", "Ejemplo"], [
+      ["<strong>1. Presente Continuo</strong><br><span class='dt-small'>Algo que está pasando ahora</span>", "<em>I'm preparing a presentation.</em>"],
+      ["<strong>2. Después de “like”</strong><br><span class='dt-small'>Para hablar de gustos</span>", "<em>I like preparing presentations.</em>"]
+    ], "1fr 1fr")}
+    <div class="info-box">Misma forma, trabajo diferente. Al final de esta lección, vas a poder usar las dos sin confundirlas.</div>
+    ${tipBox("💡 Cómo usar esta lección", "Tiempo estimado: 45 minutos. Haz cada sección en orden. Al final de cada sección hay un Quick Check de 2 o 3 preguntas. Escucha el audio al menos dos veces antes de ver la transcripción.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    ${secBadge(2, "Vocabulary", "7 min")}
+    ${esNote("Estas son las palabras que vas a usar para dar tu opinión sobre el trabajo. Lee cada palabra, su traducción y el ejemplo.")}
+    ${dataTable(["English", "Español", "Example"], VOCAB.map(v => [v[0], v[1], `<em>${v[2]}</em>`]), "1fr 1fr 1.6fr")}
+    ${tipBox("💡 Opinion words (bonus)", "<strong>boring</strong> (aburrido) · <strong>interesting</strong> (interesante) · <strong>fun</strong> (divertido) · <strong>difficult</strong> (difícil) · <strong>easy</strong> (fácil)")}
+    ${subHead("⚠️ ¡Cuidado con estas palabras!")}
+    <p class="mini-sub">Toca cada error para ver la corrección.</p>
+    ${tapRow("❌ I have an <em>entrenamiento</em>.", "✅ <strong>training.</strong> En inglés, “entrenamiento” deportivo es <em>workout</em>. En el trabajo, se dice <strong>training</strong>.", "wrong-line")}
+    ${tapRow("❌ My manager gave me good <em>feedbacks</em>.", "✅ <strong>feedback</strong> (sin -s). Feedback es incontable, igual que <em>information</em> (¿recuerdas la Lección 33?).", "wrong-line")}
+    ${tapRow("❌ We need a new <em>estrategy</em>.", "✅ <strong>strategy.</strong> No empieza con “e”. Lo mismo pasa con <em>student, Spain, special</em>.", "wrong-line")}
+    ${tapRow("❌ I have a lot of <em>paperworks</em>.", "✅ <strong>paperwork</strong> (incontable, sin -s).", "wrong-line")}
+    ${tapRow("❌ I work <em>over time</em>.", "✅ <strong>overtime</strong> (una sola palabra).", "wrong-line")}
+    ${miniBlock("voc", VOC_CQ, "Quick Check — Vocabulary", "2–3 quick questions to confirm the key words are clear before you move on.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    ${secBadge(3, "Grammar Bridge: Present Continuous", "8 min")}
+    <div class="info-box"><strong>🌉 From Lesson 29 · Simple Problem Solving</strong><br>Antes de aprender a hablar de tus gustos, necesitas conocer la forma <strong>-ing</strong> del verbo. La vamos a ver primero en el <strong>Presente Continuo</strong>, un tiempo que se usa para hablar de lo que está pasando <strong>ahora mismo</strong>. Es muy útil en el trabajo, especialmente para reportar problemas.</div>
+
+    ${subHead("👀 Notice")}
+    <p class="sec-intro">Lee estos mensajes de un chat de trabajo. ¿Qué tienen en común?</p>
+    ${exList("Team chat", [
+      ["“I'm checking the system now.”", ""],
+      ["“The network is having a problem.”", ""],
+      ["“We are waiting for IT support.”", ""],
+      ["“Sorry, the video is loading very slowly.”", ""]
+    ])}
+    ${esNote("Todos usan <strong>am / is / are + verbo-ing</strong>, y todos hablan de algo que pasa <strong>en este momento</strong>.")}
+
+    ${subHead("🧩 Form Rules")}
+    <p class="rule-title">Rule 1 — The formula</p>
+    ${builder("Present Continuous", [["Subject","I","Yo"],["be","am","estoy"],["verb + -ing","working","trabajando"]], "“I am working on the report.”")}
+
+    <p class="rule-title">Rule 2 — Match “be” to the subject</p>
+    ${dataTable(["Subject", "be", "-ing"], [
+      ["I", "am ('m)", "working"],
+      ["He / She / It", "is ('s)", "working"],
+      ["You / We / They", "are ('re)", "working"]
+    ], "1.2fr 1fr 1fr")}
+
+    <p class="rule-title">Rule 3 — Negative: add “not”</p>
+    ${exList("Examples", [["I'm not working.", "No estoy trabajando."], ["The system isn't working.", "El sistema no está funcionando."], ["They aren't answering.", "No están contestando."]])}
+
+    <p class="rule-title">Rule 4 — Questions: move “be” to the front</p>
+    ${exList("Examples", [["Are you working?", "Yes, I am. / No, I'm not."], ["Is the printer working?", "Yes, it is. / No, it isn't."]])}
+
+    <p class="rule-title">Rule 5 — Spelling of -ing</p>
+    ${esNote("¡Importante! Vas a usar estas mismas reglas en la siguiente sección.")}
+    ${dataTable(["Rule", "Examples"], [
+      ["Most verbs: + ing", "work → work<strong>ing</strong>, check → check<strong>ing</strong>, send → send<strong>ing</strong>"],
+      ["Ends in -e: drop the e + ing", "give → giv<strong>ing</strong>, write → writ<strong>ing</strong>, prepare → prepar<strong>ing</strong>"],
+      ["Short verb, consonant-vowel-consonant: double the last letter", "run → ru<strong>nn</strong>ing, plan → pla<strong>nn</strong>ing, chat → cha<strong>tt</strong>ing"],
+      ["Ends in -ie: change to y + ing", "lie → l<strong>ying</strong>, die → d<strong>ying</strong>"]
+    ], "1fr 1.4fr")}
+
+    ${subHead("🎯 Use")}
+    <p class="sec-intro">Usamos el Presente Continuo para acciones que están pasando <strong>ahora</strong> o <strong>en este período</strong>.</p>
+    ${exList("At work", [
+      ["The network is having a problem right now.", "La red está teniendo un problema ahora mismo."],
+      ["We are experiencing a delay.", "Estamos teniendo un retraso."],
+      ["I'm waiting for the IT team.", "Estoy esperando al equipo de TI."],
+      ["The system is showing an error.", "El sistema está mostrando un error."]
+    ])}
+    ${esNote("Palabras clave que acompañan este tiempo: <strong>now, right now, at the moment, today, this week.</strong>")}
+    ${tipBox("💡 Lesson 29 vocabulary", "<strong>system error</strong> (error del sistema) · <strong>delay</strong> (retraso) · <strong>network issue</strong> (problema de red). Son palabras clave para reportar problemas en el trabajo.")}
+
+    ${subHead("🌉 Spanish Bridge: estar + gerundio = be + -ing")}
+    ${bridgeTable("English (be + -ing)", "Spanish (estar + gerundio)", [
+      ["I am working", "Yo estoy trabajando"],
+      ["You are working", "Tú estás trabajando"],
+      ["He / She is working", "Él / Ella está trabajando"],
+      ["We are working", "Nosotros estamos trabajando"],
+      ["They are working", "Ellos están trabajando"]
+    ])}
+    ${esNote("¡Buenas noticias! Esta estructura funciona casi igual que en español: <strong>estar = be</strong>, y <strong>-ando / -iendo = -ing</strong>. <em>Estoy revisando</em> = <em>I'm checking.</em>")}
+    <div class="info-box"><strong>¿Dónde es diferente?</strong><br>
+      <strong>1.</strong> El español usa mucho el presente simple para “ahora”; el inglés no. En español decimos <em>“¿Qué haces?”</em> para preguntar qué estás haciendo ahora. En inglés, <em>“What do you do?”</em> significa <em>“¿A qué te dedicas?”</em>. Para el momento actual, se dice: <strong>“What are you doing?”</strong><br>
+      <strong>2.</strong> En inglés, “be” nunca se omite. ❌ <em>I working.</em> ✅ <em>I'm working.</em>
+    </div>
+
+    ${subHead("⚠️ Errores comunes")}
+    <p class="mini-sub">Toca cada error para ver la corrección.</p>
+    ${tapRow("❌ I working on the report.", "✅ <strong>I'm working on the report.</strong> Falta “am”.", "wrong-line")}
+    ${tapRow("❌ The system is not work.", "✅ <strong>The system isn't working.</strong> Falta “-ing”.", "wrong-line")}
+    ${tapRow("❌ She are checking the network.", "✅ <strong>She is checking the network.</strong> She → is.", "wrong-line")}
+    ${tapRow("❌ We are planing the meeting.", "✅ <strong>We are planning the meeting.</strong> Hay que duplicar la “n”.", "wrong-line")}
+
+    ${miniBlock("bridge", BRIDGE_CQ, "Quick Check — Grammar Bridge", "2–3 quick questions to confirm the Present Continuous is clear before you move on.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    ${secBadge(4, "Grammar: Like / Don't like + -ing", "10 min")}
+    ${esNote("Ya conoces la forma <strong>-ing</strong>. Ahora vas a ver su segundo trabajo: después de verbos de gusto como <strong>like, love, enjoy, hate</strong>, el verbo va con <strong>-ing</strong> para hablar de actividades que te gustan o no te gustan <strong>en general</strong> (no ahora mismo).")}
+
+    ${subHead("👀 Notice")}
+    <p class="sec-intro">Mira estas dos columnas. ¿Qué observas?</p>
+    ${dataTable(["Column A (noun)", "Column B (verb + -ing)"], [
+      ["I like <strong>coffee</strong>.", "I like <strong>drinking</strong> coffee."],
+      ["I love <strong>teamwork</strong>.", "I love <strong>working</strong> in a team."],
+      ["I don't like <strong>paperwork</strong>.", "I don't like <strong>doing</strong> paperwork."],
+      ["She hates <strong>presentations</strong>.", "She hates <strong>giving</strong> presentations."]
+    ], "1fr 1fr")}
+    ${esNote("Después de <em>like</em>, puedes usar un sustantivo (<em>coffee, teamwork</em>) o una actividad. Cuando es una actividad, el verbo lleva <strong>-ing</strong>. Piensa en el <strong>-ing</strong> como una forma de convertir la acción en “una cosa” que te gusta. En español usamos el infinitivo: <em>Me gusta trabajar</em>. En inglés se usa <strong>-ing</strong>: <em>I like working</em>.")}
+
+    ${subHead("🧩 Form Rules")}
+    <p class="rule-title">Rule 1 — The formula</p>
+    ${builder("Like + -ing", [["Subject","I","Yo"],["Opinion verb","enjoy","disfruto"],["verb + -ing","giving","dar"],["Rest","presentations","presentaciones"]], "“I enjoy giving presentations.”")}
+
+    <p class="rule-title">Rule 2 — The opinion scale</p>
+    ${dataTable(["", "English", "Español", "Example"], [
+      ["😍", "<strong>love</strong>", "encantar", "<em>I love working with my team.</em>"],
+      ["😊", "<strong>like / enjoy</strong>", "gustar / disfrutar", "<em>I enjoy learning new things.</em>"],
+      ["😐", "<strong>don't mind</strong>", "no me molesta", "<em>I don't mind working on Saturdays.</em>"],
+      ["🙁", "<strong>don't like</strong>", "no gustar", "<em>I don't like doing paperwork.</em>"],
+      ["😫", "<strong>hate</strong>", "odiar", "<em>I hate working overtime.</em>"]
+    ], "40px 1fr 1fr 2fr")}
+
+    <p class="rule-title">Rule 3 — Negative: don't / doesn't + like (never “no like”)</p>
+    ${exList("Examples", [["I don't like multitasking.", "No me gusta hacer varias cosas a la vez."], ["She doesn't like public speaking.", "A ella no le gusta hablar en público."]])}
+
+    <p class="rule-title">Rule 4 — He / She / It: add -s to the opinion verb</p>
+    ${esNote("Es la misma regla del Presente Simple (Lección 21).")}
+    ${exList("Examples", [["He like<strong>s</strong> brainstorming.", "A él le gusta la lluvia de ideas."], ["She love<strong>s</strong> giving training.", "A ella le encanta dar capacitaciones."], ["He <strong>doesn't like</strong> working overtime.", "Después de doesn't, sin -s: ❌ doesn't likes"]])}
+
+    <p class="rule-title">Rule 5 — Questions and short answers</p>
+    ${exList("Examples", [["Do you like giving presentations?", "Yes, I do. / No, I don't."], ["Does she enjoy working remotely?", "Yes, she does. / No, she doesn't."], ["What do you like doing at work?", "I like helping clients."]])}
+
+    <p class="rule-title">Rule 6 — Spelling</p>
+    ${esNote("¡Las mismas reglas del Grammar Bridge! <em>give → giving, plan → planning, write → writing.</em>")}
+
+    ${tipBox("💡 Like to work vs. like working", "<em>I like to work</em> también es correcto, y en inglés hablado lo vas a escuchar. En esta lección vamos a practicar con <strong>-ing</strong> porque funciona con todos los verbos de opinión. <strong>Cuidado:</strong> <em>enjoy</em> y <em>don't mind</em> <strong>solo</strong> aceptan -ing: ❌ <em>I enjoy to work.</em> ✅ <em>I enjoy working.</em>")}
+
+    ${subHead("🎯 Use")}
+    <p class="sec-intro">Usamos <strong>like / love / enjoy / hate + -ing</strong> para:</p>
+    ${exList("At work", [
+      ["I like working in the morning.", "Hablar de preferencias en el trabajo"],
+      ["I don't like doing reports. They're boring.", "Dar una opinión simple sobre tareas"],
+      ["Do you enjoy traveling for work?", "Preguntar por gustos de colegas o clientes"]
+    ])}
+    ${tipBox("💡 Add a reason", "Una opinión es más clara con una razón corta: <em>I love brainstorming. <strong>It's fun.</strong></em> / <em>I hate working overtime. <strong>It's stressful.</strong></em>")}
+
+    ${subHead("🌉 Spanish Bridge: Me gusta + infinitivo = I like + -ing")}
+    ${bridgeTable("English", "Español", [
+      ["I like working", "Me gusta trabajar"],
+      ["You like working", "Te gusta trabajar"],
+      ["He / She likes working", "Le gusta trabajar"],
+      ["We like working", "Nos gusta trabajar"],
+      ["They like working", "Les gusta trabajar"]
+    ])}
+    <div class="info-box"><strong>¿Dónde es diferente? (¡muy importante!)</strong><br>
+      <strong>1. Sujeto al revés.</strong> En español decimos “<em>Me</em> gusta” (la cosa me gusta a mí). En inglés, la persona es el sujeto: “<strong>I</strong> like”. ❌ <em>Me like working.</em> ✅ <em>I like working.</em><br>
+      <strong>2. Infinitivo vs. -ing.</strong> Español: <em>gustar + trabajar</em>. Inglés: <em>like + working</em>. No traduzcas palabra por palabra: ❌ <em>I like work</em> significa “me gusta el trabajo” (el sustantivo).<br>
+      <strong>3. No uses “am”.</strong> Es un error muy común después de aprender el Presente Continuo: ❌ <em>I am like working.</em> ✅ <em>I like working.</em>
+    </div>
+
+    ${subHead("⚠️ Top errors")}
+    <p class="mini-sub">Toca cada error para ver la corrección.</p>
+    ${tapRow("❌ I am like giving presentations.", "✅ <strong>I like giving presentations.</strong> No hay “am” con like.", "wrong-line")}
+    ${tapRow("❌ I no like paperwork.", "✅ <strong>I don't like paperwork.</strong>", "wrong-line")}
+    ${tapRow("❌ She like working from home.", "✅ <strong>She likes working from home.</strong>", "wrong-line")}
+    ${tapRow("❌ He doesn't likes overtime.", "✅ <strong>He doesn't like overtime.</strong>", "wrong-line")}
+    ${tapRow("❌ I enjoy to work in a team.", "✅ <strong>I enjoy working in a team.</strong>", "wrong-line")}
+    ${tapRow("❌ I like to working with clients.", "✅ <strong>I like working with clients.</strong> (o <em>I like to work</em>, pero no las dos formas juntas)", "wrong-line")}
+
+    ${miniBlock("gram", GRAM_CQ, "Quick Check — Grammar", "2–3 quick questions to confirm like + -ing is clear before you move on.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  return `<div class="sc">
+    ${secBadge(5, "Model Sentences", "4 min")}
+    ${esNote("Lee estas oraciones en voz alta. Son ejemplos reales de cómo la gente da su opinión en el trabajo.")}
+    ${exList("Sharing workplace preferences", [
+      ["I love working with my team. It's fun.", "Me encanta trabajar con mi equipo. Es divertido."],
+      ["I really enjoy giving training sessions.", "Disfruto mucho dar capacitaciones."],
+      ["I like brainstorming new ideas on Mondays.", "Me gusta hacer lluvia de ideas los lunes."],
+      ["I don't mind working late sometimes.", "No me molesta trabajar tarde a veces."],
+      ["I don't like multitasking. It's stressful.", "No me gusta hacer varias cosas a la vez. Es estresante."],
+      ["I hate working overtime on Fridays.", "Odio hacer horas extra los viernes."],
+      ["My manager likes getting feedback from the team.", "A mi jefe le gusta recibir comentarios del equipo."],
+      ["Sofia doesn't like working in an open-plan office. It's noisy.", "A Sofía no le gusta trabajar en una oficina abierta. Es ruidosa."],
+      ["Do you like working from home? Yes, I do.", "¿Te gusta trabajar desde casa? Sí."],
+      ["What do you enjoy doing at work? I enjoy planning our strategy.", "¿Qué disfrutas hacer en el trabajo? Disfruto planear nuestra estrategia."]
+    ])}
+    ${subHead("⚖️ One -ing, two jobs")}
+    ${dataTable(["NOW (Present Continuous)", "IN GENERAL (Like + -ing)"], [
+      ["I'm giving a presentation now.", "I like giving presentations."],
+      ["She's working from home today.", "She loves working from home."],
+      ["We're brainstorming at the moment.", "We enjoy brainstorming."],
+      ["He isn't doing paperwork right now.", "He doesn't like doing paperwork."]
+    ], "1fr 1fr")}
+    ${esNote("¿Cómo saber cuál es cuál? Si hay <strong>am / is / are</strong> antes del -ing, es algo que está pasando <strong>ahora</strong>. Si hay <strong>like / love / enjoy / hate</strong> antes del -ing, es un <strong>gusto</strong> en general.")}
+    ${miniBlock("mod", MOD_CQ, "Quick Check — Model Sentences", "2–3 quick questions to confirm you can tell the two jobs of -ing apart.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  const speeds = [0.7, 0.8, 0.9, 1.0, 1.1];
+  return `<div class="sc">
+    ${secBadge(6, "Listening", "5 min")}
+    ${esNote("Escucha a Amara hablar sobre lo que le gusta y no le gusta de su trabajo. Escucha una vez sin leer. Luego, escucha otra vez y responde las preguntas. Usa la velocidad 0.8× si lo necesitas.")}
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">What I Like About My Job</div>
+          <div class="audio-box-sub">Amara Okafor · Training Coordinator · ~70 sec · Nigerian English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload" src="${AUDIO_URL}" onplay="this.playbackRate=currentSpeed">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        ${speeds.map(r => `<button class="speed-btn ${r===currentSpeed?'active':''}" data-rate="${r}" onclick="setSpeed(${r})">${r.toFixed(1)}×</button>`).join('')}
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        <p>Hi, I'm Amara Okafor. I'm a training coordinator at Brightline Logistics in Lagos. Right now, I'm preparing a presentation for our new employees.</p>
+        <p>So, what do I like about my job? I love working with people. I really enjoy giving training sessions, and I like helping new employees. I also like brainstorming with my team on Monday mornings. We always have great ideas.</p>
+        <p>But not everything is fun. I don't like doing paperwork. It's boring. And I hate working overtime, because I get home very late.</p>
+        <p>What about remote work? I like working from home on Fridays. It's quiet, and I can focus. My manager, Daniel, is different. He doesn't like working from home. He likes talking to people in the office.</p>
+        <p>And public speaking? Well, I don't mind it now. But two years ago, I hated it!</p>
+      </div>
+    </div>
+    ${miniBlock("lis", LIS_CQ, "Listening Comprehension", "6 questions about Amara. All the answers are in the audio.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    ${secBadge(7, "Exercises", "4 min")}
+    ${esNote("Responde cada pregunta en tu cabeza o en papel. Después, toca para ver la respuesta.")}
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise A · Choose the correct form</div>
+      <p class="mini-sub">Elige la forma correcta.</p>
+      ${tapRow("1. I love (work / working) with clients.", "✅ <strong>working</strong>")}
+      ${tapRow("2. She (like / likes) giving presentations.", "✅ <strong>likes</strong>")}
+      ${tapRow("3. We don't like (to doing / doing) paperwork.", "✅ <strong>doing</strong>")}
+      ${tapRow("4. He (doesn't like / don't like) multitasking.", "✅ <strong>doesn't like</strong>")}
+      ${tapRow("5. They enjoy (planning / planing) the strategy.", "✅ <strong>planning</strong>")}
+      ${tapRow("6. I'm (write / writing) an email right now.", "✅ <strong>writing</strong>")}
+      ${tapRow("7. Do you (like / likes) working remotely?", "✅ <strong>like</strong>")}
+      ${tapRow("8. The network (is having / having) a problem.", "✅ <strong>is having</strong>")}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise B · Now or in general?</div>
+      <p class="mini-sub">¿Ahora o en general? Piensa: NOW o GENERAL.</p>
+      ${tapRow("1. I'm checking the system.", "✅ <strong>NOW</strong>")}
+      ${tapRow("2. I enjoy checking reports.", "✅ <strong>GENERAL</strong>")}
+      ${tapRow("3. She hates working late.", "✅ <strong>GENERAL</strong>")}
+      ${tapRow("4. They're waiting for IT support.", "✅ <strong>NOW</strong>")}
+      ${tapRow("5. We love brainstorming.", "✅ <strong>GENERAL</strong>")}
+      ${tapRow("6. He's giving a training session at the moment.", "✅ <strong>NOW</strong>")}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise C · Spanish to English</div>
+      <p class="mini-sub">Traduce al inglés.</p>
+      ${tapRow("1. Me gusta dar capacitaciones.", "✅ <strong>I like giving training sessions.</strong>")}
+      ${tapRow("2. No me gusta trabajar horas extra.", "✅ <strong>I don't like working overtime.</strong>")}
+      ${tapRow("3. A ella le encanta trabajar desde casa.", "✅ <strong>She loves working from home.</strong>")}
+      ${tapRow("4. ¿Te gusta hablar en público?", "✅ <strong>Do you like public speaking?</strong> / <strong>Do you like speaking in public?</strong>")}
+      ${tapRow("5. Estoy preparando una presentación.", "✅ <strong>I'm preparing a presentation.</strong>")}
+      ${tapRow("6. A mi jefe no le gusta el papeleo.", "✅ <strong>My manager doesn't like paperwork.</strong>")}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise D · Find and fix the mistake</div>
+      <p class="mini-sub">Encuentra y corrige el error.</p>
+      ${tapRow("1. I am like working in a team.", "✅ <strong>I like working in a team.</strong>", "wrong-line")}
+      ${tapRow("2. He enjoy giving feedback.", "✅ <strong>He enjoys giving feedback.</strong>", "wrong-line")}
+      ${tapRow("3. I no like multitasking.", "✅ <strong>I don't like multitasking.</strong>", "wrong-line")}
+      ${tapRow("4. She doesn't likes public speaking.", "✅ <strong>She doesn't like public speaking.</strong>", "wrong-line")}
+      ${tapRow("5. We enjoy to brainstorm.", "✅ <strong>We enjoy brainstorming.</strong>", "wrong-line")}
+      ${tapRow("6. The system not working.", "✅ <strong>The system isn't working.</strong>", "wrong-line")}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! — You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding — a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    ${secBadge(8, "Quiz", "4 min")}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div class="result-attempts">Attempts so far: ${quizAttempts + 1}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect ? `<button class="btn btn-gold result-btn" onclick="retakeQuiz()">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>` : ''}
+        <button class="btn result-btn result-btn-ghost" onclick="goTo(0)">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+const normalise = s => s.trim().toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g,' ').replace(/[.,!?]$/,'');
+
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q = QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const raw = quizState[qi].inputVal || '';
+  quizState[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  quizState[qi].revealed = true; recalc(); rerender();
+}
+function retakeQuiz() {
+  quizAttempts++;
+  QUIZ.forEach((_,i) => {
+    const s = quizState[i]; if(!s||!s.revealed)return;
+    let ok = false;
+    if(QUIZ[i].type==='mc')         ok = s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok = QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok = s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(() => {
+    const first = QUIZ.findIndex((_,i) => !quizState[i] || !quizState[i].revealed);
+    const el = document.getElementById('qc-' + first);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'center'});
+  }, 100);
+}
+function recalc() {
+  let s = 0;
+  QUIZ.forEach((q,i) => {
+    const st = quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore = s;
+}
+function rerender() {
+  // Calls renderQuiz() directly
+  const qi = STEPS.findIndex(s => s.fn === renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML = renderQuiz();
+}
+
+// ── CONCEPT-CHECK ENGINE (independent state per prefix) ───
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      const isRight = q.type === 'mc' ? s.selected === q.answer : q.answer === (s.selected === 0);
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${isRight ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal || ''}" oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const q = MINI_BANK[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  // Redraws only this concept check's container, so the page (and the audio player) never jumps or resets
+  const wrap = document.getElementById('mini-wrap-' + prefix);
+  if (wrap) wrap.innerHTML = renderMiniQ(prefix, MINI_BANK[prefix]);
+}
+
+// ── AUDIO (Pattern A: single player) ──────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Welcome",          fn: renderWelcome },
+  { label: "2. Vocabulary",       fn: renderVocabulary },
+  { label: "3. Grammar Bridge",   fn: renderBridge },
+  { label: "4. Grammar",          fn: renderGrammar },
+  { label: "5. Model Sentences",  fn: renderModel },
+  { label: "6. Listening",        fn: renderListening },
+  { label: "7. Exercises",        fn: renderExercises },
+  { label: "8. Quiz",             fn: renderQuiz },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 34: Company Events | A1 · Unit 4 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; }
+
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:110px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+.writing-area { width:100%; min-height:100px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; margin-top:14px; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* ── ADDED FOR THIS FILE ── */
+
+.rule-label { font-family:var(--font-body); font-weight:700; color:var(--navy); font-size:14px; margin:16px 0 8px; }
+
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--sky); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:13px; color:var(--slate); }
+.tap-answer.show { display:block; }
+.tap-answer strong { color:var(--green); }
+
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px 22px; margin-bottom:18px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.passage-num { display:inline-flex; align-items:center; gap:8px; background:var(--navy); color:var(--gold); font-family:var(--font-heading); font-size:12px; font-weight:700; padding:4px 12px; border-radius:20px; margin-bottom:10px; }
+.passage-name { font-size:12px; color:var(--grey-blue); font-style:italic; margin-bottom:10px; }
+.passage-text { font-size:14px; color:var(--slate); line-height:1.8; margin-bottom:14px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 4 · Classwork</div>
+    <h1 class="hero-title">Lesson 34: Company Events</h1>
+    <p class="hero-sub">Simple past with regular verbs · Reading Day</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">📖 Reading-heavy</span>
+      <span class="pill accent">✍️ Guided writing</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<!-- ↓↓↓  LESSON CONTENT START ↓↓↓ -->
+<script>
+
+let currentStep = 0;
+let STEPS = [];
+
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">El profesor lee la pregunta en español en voz alta. El estudiante responde en inglés. Toca la tarjeta para ver la respuesta correcta.</div>
+
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">1. ¿Cómo se dice "taller" en inglés?</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer"><strong>workshop</strong></div>
+    </div>
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">2. ¿Cómo se dice "asistente" (persona que va a un evento)?</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer"><strong>attendee</strong></div>
+    </div>
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">3. ¿Cómo se dice "credencial con tu nombre"?</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer"><strong>name badge</strong></div>
+    </div>
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">4. ¿Cómo se dice "conferencista invitado"?</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer"><strong>guest speaker</strong></div>
+    </div>
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">5. Completa: I ___ (attend) the seminar yesterday.</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer"><strong>attended</strong></div>
+    </div>
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">6. Completa: We ___ (organize) the party last month.</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer"><strong>organized</strong></div>
+    </div>
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">7. ¿Cómo se dice "lugar o sede del evento"?</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer"><strong>venue</strong></div>
+    </div>
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">8. Completa: She ___ (enjoy) the conference.</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer"><strong>enjoyed</strong></div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Go student by student, round-robin. Accept close pronunciation; correct gently and move on — this is recall, not a pronunciation drill. Extension: for stronger students, ask them to use the word in a full sentence before moving to the next student.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Reading</div>
+      <div class="sec-badge-time">10 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">Lee tu párrafo en silencio. Después, responde las dos preguntas con una oración completa. Vamos a revisar las respuestas en clase.</div>
+
+    <div class="passage-card">
+      <div class="passage-num">Student 1</div>
+      <div class="passage-name">Carlos Mendes · Sales Rep · São Paulo</div>
+      <div class="passage-text">Carlos Mendes works as a sales rep in São Paulo. Last week, he attended a big conference downtown. He listened to two talks and visited many company stands. He also collected five business cards for new contacts.</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q1: What is Carlos's job?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>He is a sales rep.</strong></div></div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q2: What did Carlos collect at the conference?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>He collected five business cards.</strong></div></div>
+    </div>
+
+    <div class="passage-card">
+      <div class="passage-num">Student 2</div>
+      <div class="passage-name">Fátima Al-Sayed · HR Coordinator · Cairo</div>
+      <div class="passage-text">Fátima Al-Sayed is an HR coordinator in Cairo. Last month, she organized a training workshop for new employees. She prepared the schedule, invited a guest speaker, and printed the name badges. The workshop finished early, so she cleaned the room herself.</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q1: What did Fátima organize?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>She organized a training workshop.</strong></div></div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q2: Why did she clean the room herself?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>Because the workshop finished early.</strong></div></div>
+    </div>
+
+    <div class="passage-card">
+      <div class="passage-num">Student 3</div>
+      <div class="passage-name">Liam O'Connor · IT Manager · Dublin</div>
+      <div class="passage-text">Liam O'Connor manages IT at his company in Dublin. Two weeks ago, he joined a technology seminar in the city center. He asked three questions during the talk and shared his notes with his team afterward. Everyone thanked him for the useful summary.</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q1: Where was the seminar?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>It was in the city center.</strong></div></div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q2: What did Liam share with his team?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>He shared his notes.</strong></div></div>
+    </div>
+
+    <div class="passage-card">
+      <div class="passage-num">Student 4</div>
+      <div class="passage-name">Priya Nair · Marketing Assistant · Bangalore</div>
+      <div class="passage-text">Priya Nair works in marketing in Bangalore. Last Friday, she attended a networking event after work. She talked to people from four different companies and invited two of them to visit her office. She really enjoyed the event.</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q1: How many companies did Priya talk to people from?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>She talked to people from four companies.</strong></div></div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q2: Who did Priya invite?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>She invited two people to visit her office.</strong></div></div>
+    </div>
+
+    <div class="passage-card">
+      <div class="passage-num">Student 5</div>
+      <div class="passage-name">Johan Berg · Finance Analyst · Stockholm</div>
+      <div class="passage-text">Johan Berg is a finance analyst in Stockholm. Last month, his team organized a team-building activity outside the city. They practiced problem-solving games and shared a big lunch together. Johan learned a lot about his coworkers that day.</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q1: What did Johan's team practice?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>They practiced problem-solving games.</strong></div></div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q2: What did Johan learn that day?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>He learned a lot about his coworkers.</strong></div></div>
+    </div>
+
+    <div class="passage-card">
+      <div class="passage-num">Student 6</div>
+      <div class="passage-name">Mei Lin · Operations Manager · Shanghai</div>
+      <div class="passage-text">Mei Lin manages operations in Shanghai. Two months ago, she planned the company's annual party. She booked the venue, ordered the food, and invited every department. More than 100 employees attended, and everyone enjoyed the music.</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q1: What did Mei Lin book for the party?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>She booked the venue.</strong></div></div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q2: How many employees attended the party?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>More than 100 employees attended.</strong></div></div>
+    </div>
+
+    <div class="passage-card">
+      <div class="passage-num">Student 7</div>
+      <div class="passage-name">Diego Fernández · Customer Support Lead · Buenos Aires</div>
+      <div class="passage-text">Diego Fernández leads a customer support team in Buenos Aires. Last week, his company launched a new product, so he attended the launch event. He watched a demonstration and discussed the new features with the sales team. He also tried the product himself.</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q1: Why did Diego attend the event?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>Because his company launched a new product.</strong></div></div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q2: What did Diego discuss with the sales team?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>He discussed the new features.</strong></div></div>
+    </div>
+
+    <div class="passage-card">
+      <div class="passage-num">Student 8</div>
+      <div class="passage-name">Grace Mensah · Project Coordinator · Accra</div>
+      <div class="passage-text">Grace Mensah coordinates projects in Accra. Last night, she attended an awards dinner for her department. Her team won an award for the best project of the year, and she thanked everyone in a short speech. She arrived home late but very happy.</div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q1: What did Grace's team win?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>They won an award for the best project of the year.</strong></div></div>
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')"><div class="tap-row-top"><div class="tap-q">Q2: How did Grace feel when she arrived home?</div><div class="tap-hint-label">Tap to reveal</div></div><div class="tap-answer"><strong>She felt very happy.</strong></div></div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Assign one passage per student before class starts, if possible, so they arrive having read it once. In class, give 3–4 minutes for silent reading and answering, then call on each student to read their two answers aloud. Correct verb-form errors on the spot (e.g. "she attend" → "she attended") but keep the pace moving — this step is about reading fluency, not a grammar deep-dive.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+
+function renderGrammar() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Main Grammar</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">Ya viste los verbos en pasado en las lecturas. Ahora vamos a repasar la forma y tú vas a escribir tus propios ejemplos.</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">SIMPLE PAST — REGULAR VERBS</div>
+      <div class="pattern-row"><div class="pattern-en">Subject + verb-ed (+ rest)</div><div class="pattern-es">Sujeto + verbo-ed</div></div>
+      <div class="pattern-row"><div class="pattern-en">I <strong>attended</strong> the conference.</div><div class="pattern-es">Asistí a la conferencia.</div></div>
+      <div class="pattern-row"><div class="pattern-en">She <strong>organized</strong> the party.</div><div class="pattern-es">Ella organizó la fiesta.</div></div>
+      <div class="pattern-row"><div class="pattern-en">We <strong>didn't attend</strong> the seminar.</div><div class="pattern-es">No asistimos al seminario.</div></div>
+      <div class="pattern-row"><div class="pattern-en"><strong>Did</strong> you <strong>attend</strong> the workshop?</div><div class="pattern-es">¿Asististe al taller?</div></div>
+    </div>
+
+    <div class="rule-label">Ahora escribe tú</div>
+    <div class="ex-box">
+      <div class="ex-label">[EXERCISE] Write 2 sentences of your own</div>
+      <p style="font-size:13px;color:var(--slate);margin-bottom:12px;">Usa verbos regulares en pasado: attended, organized, discussed, visited, joined, learned, practiced, shared, invited, enjoyed. Cuenta un evento real al que asististe.</p>
+      <textarea class="writing-area" placeholder="1. ...&#10;2. ..." style="min-height:90px;"></textarea>
+    </div>
+
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">Need a model? Tap to reveal ▾</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer">I attended my cousin's wedding last month. We danced all night and enjoyed the food.</div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Walk the room while students write their two sentences. Correct spelling errors (-ed rules) directly on their paper. Ask 3–4 volunteers to read their sentences aloud to the group before moving on. Extension: ask a stronger student to add a third sentence using "didn't" or a question with "Did."
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWritingTask() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Writing Task</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+
+    <div class="es-note">Completa la historia con los verbos del banco de palabras. Todos los verbos van en pasado.</div>
+
+    <div class="word-bank">
+      <div class="word-bank-label">Word Bank</div>
+      <div class="word-bank-words">attend · organize · discuss · visit · join · learn · practice · share · invite · enjoy</div>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">[EXERCISE] Complete the story</div>
+      <div class="blank-list">
+        <div class="blank-item">
+          <span class="blank-num">1.</span>
+          <span class="blank-sentence">Last week, our team ___ a company workshop.</span>
+          <input class="blank-input" id="blank-1" type="text" placeholder="verb">
+        </div>
+        <div class="blank-item">
+          <span class="blank-num">2.</span>
+          <span class="blank-sentence">We ___ new ideas about customer service,</span>
+          <input class="blank-input" id="blank-2" type="text" placeholder="verb">
+        </div>
+        <div class="blank-item">
+          <span class="blank-num">3.</span>
+          <span class="blank-sentence">and everyone ___ the activities.</span>
+          <input class="blank-input" id="blank-3" type="text" placeholder="verb">
+        </div>
+      </div>
+      <div style="margin-top:14px;text-align:right;">
+        <button class="check-btn" onclick="checkWriting()">Check</button>
+      </div>
+      <div class="feedback" id="writingFeedback"></div>
+    </div>
+
+    <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+      <div class="tap-row-top"><div class="tap-q">Need the model answer? Tap to reveal ▾</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer">Last week, our team <strong>organized</strong> a company workshop. We <strong>discussed</strong> new ideas about customer service, and everyone <strong>enjoyed</strong> the activities.</div>
+    </div>
+
+    <div class="teacher-box">
+      <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+      Give students 10 minutes to complete the blanks individually. Then go through the sentence together as a class: read the correct version aloud, and ask 2–3 students what verb they chose and why. This is the lesson's only live-corrected writing moment — don't skip it for time, per the standing Classwork writing rule.
+    </div>
+
+    ${navFooter()}
+  </div>`;
+}
+
+function checkWriting() {
+  const answers = ["organized", "discussed", "enjoyed"];
+  let allCorrect = true;
+  answers.forEach((ans, i) => {
+    const inp = document.getElementById('blank-' + (i + 1));
+    if (!inp) return;
+    const val = inp.value.trim().toLowerCase().replace(/[.,]$/, '');
+    const ok = val === ans;
+    inp.classList.remove('correct', 'wrong');
+    inp.classList.add(ok ? 'correct' : 'wrong');
+    if (!ok) allCorrect = false;
+  });
+  const fb = document.getElementById('writingFeedback');
+  if (!fb) return;
+  fb.classList.add('show');
+  fb.classList.toggle('ok', allCorrect);
+  fb.classList.toggle('err', !allCorrect);
+  fb.textContent = allCorrect
+    ? '✅ ¡Perfecto! All three blanks are correct.'
+    : '❌ Not quite — check the highlighted blanks and try again.';
+}
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Warm-up",       fn: renderWarmup },
+  { label: "2. Reading",       fn: renderReading },
+  { label: "3. Main Grammar",  fn: renderGrammar },
+  { label: "4. Writing Task",  fn: renderWritingTask },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

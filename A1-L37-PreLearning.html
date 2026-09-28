@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 37: Talking About Numbers and Data | A1 · Unit 4 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ============================================================
+   LESSON-SPECIFIC ADDITIONS — A1-L37 Pre-Learning
+   (spec blocks from Master Prompt v4.6: tap-to-reveal, audio box,
+   bridge table, concept-check sub-heading, vocab cards)
+   ============================================================ */
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+.step-title-sm { font-family:var(--font-heading); font-size:18px; color:var(--navy); margin:26px 0 12px; }
+.rule-tag { display:inline-block; background:var(--navy); color:var(--gold); border-radius:5px; padding:2px 10px; font-size:11px; font-weight:700; margin-right:8px; letter-spacing:0.5px; }
+.body-p { font-size:14px; line-height:1.7; margin-bottom:12px; }
+.body-list { font-size:14px; line-height:1.8; margin:0 0 16px 20px; }
+
+/* Vocab cards */
+.vcard-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:22px; }
+@media(max-width:640px){ .vcard-grid{ grid-template-columns:1fr; } }
+.vcard { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.vcard-top { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
+.vcard-num { background:var(--navy); color:var(--gold); border-radius:4px; padding:1px 8px; font-size:11px; font-weight:700; }
+.vcard-en { font-family:var(--font-heading); font-size:19px; color:var(--navy); font-weight:700; }
+.vcard-es { font-size:14px; color:var(--grey-blue); font-style:italic; }
+.vcard-def { font-size:13px; color:var(--slate); margin-bottom:8px; line-height:1.5; }
+.vcard-ex { font-size:14px; color:var(--navy); font-style:italic; background:var(--light-grey); border-left:3px solid var(--gold); padding:7px 12px; border-radius:0 6px 6px 0; margin-bottom:8px; }
+.vcard-note { font-size:12.5px; color:#7A5500; background:var(--gold-bg); border-radius:6px; padding:7px 10px; line-height:1.5; }
+.vcard-note.warn { color:var(--red); background:var(--red-bg); }
+
+/* Tap-to-reveal */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:700; }
+.tap-answer.show { display:block; }
+.tap-answer .es { color:var(--grey-blue); font-weight:400; font-style:italic; }
+
+/* Spanish bridge / comparison tables */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); gap:10px; }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); gap:10px; }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-mid { font-size:13px; color:rgba(255,255,255,0.6); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+.three-col { grid-template-columns:1fr 1fr 1.3fr !important; }
+
+/* Bridge callout banner */
+.bridge-callout { background:var(--gold-bg); border:1.5px solid var(--gold); border-radius:10px; padding:16px 20px; margin-bottom:22px; }
+.bridge-callout-label { font-size:12px; font-weight:700; color:var(--navy); letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
+.bridge-callout p { font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* Audio box */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+.attempts-note { font-size:12px; color:rgba(255,255,255,0.45); margin-top:8px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 4 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 37: Talking About Numbers and Data</h1>
+    <p class="hero-sub">Numbers and percentages in context · Grammar Bridge: dates and times · about 45 minutes</p>
+
+    <!-- OPTION A: Outcomes grid — use for Pre-Learning files -->
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Say big numbers, decimals and percentages</div><div class="outcome-note">Decir números grandes, decimales y porcentajes</div></div>
+      <div><div class="outcome-item">Understand simple business data</div><div class="outcome-note">Entender datos simples de negocio</div></div>
+      <div><div class="outcome-item">Use dates and deadlines in a business calendar</div><div class="outcome-note">Usar fechas y plazos en un calendario de trabajo</div></div>
+    </div>
+
+    <!-- OPTION B: Pills — use for Classwork / Homework files (swap with A above)
+    <div class="hero-pills">
+      <span class="pill accent">[Speaking X%]</span>
+      <span class="pill accent">[Writing X%]</span>
+      <span class="pill">[N sections]</span>
+      <span class="pill">[X min]</span>
+    </div>
+    -->
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block — never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly — not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START — replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── AUDIO STATE (Pattern A: single player) ────────────────
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const AUDIO_URL = "https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L37-Audio001.mp3";
+
+
+// ── LESSON DATA: VOCABULARY ───────────────────────────────
+const VOCAB1 = [
+  { en:"sales", es:"ventas", def:"The money from selling products or services.", ex:"Our sales were $80,000 in March.", note:"En reportes casi siempre va en plural: “Sales were good this month.”" },
+  { en:"revenue", es:"ingresos", def:"All the money a company receives.", ex:"Our revenue is $2 million a year.", note:"En español decimos “los ingresos” (plural). En inglés “revenue” es singular: “Revenue was high”, no “Revenues were”." },
+  { en:"profit", es:"ganancia / utilidad", def:"The money you keep after you pay your costs.", ex:"Our profit this quarter is $15,000.", note:"Fórmula fácil: revenue − costs = profit. No lo confundas con “provecho”." },
+  { en:"cost", es:"costo", def:"The money you spend to make or do something.", ex:"Shipping costs are high this month." },
+  { en:"budget", es:"presupuesto", def:"The amount of money you plan to spend.", ex:"The marketing budget for June is $10,000." },
+  { en:"target", es:"meta / objetivo", def:"A number you want to reach.", ex:"Our sales target for Q1 is $50,000.", note:"Falso amigo: “target” no es “tarjeta”. Tarjeta = card.", warn:true },
+  { en:"reach", es:"alcanzar", def:"To get to a number or a goal.", ex:"We reached our target in May!", note:"Combinación muy común: reach a target = alcanzar una meta. El pasado es regular: reach → reached (como en la Lección 34)." },
+  { en:"result", es:"resultado", def:"What happens at the end, for example numbers at the end of a month.", ex:"The results for March are very good." },
+  { en:"total", es:"total", def:"All the numbers together.", ex:"Our total sales were $300,000." }
+];
+
+const VOCAB2 = [
+  { en:"growth", es:"crecimiento", def:"When a number gets bigger over time.", ex:"We have 10% growth this year." },
+  { en:"increase", es:"aumentar / aumento", def:"To go up. (verb and noun)", ex:"Sales increased by 5% in April.", note:"Verbo regular: increase → increased." },
+  { en:"decrease", es:"disminuir / disminución", def:"To go down. (verb and noun)", ex:"Costs decreased by 3% in May.", note:"Truco: increase ⬆ / decrease ⬇. En español “de-” también suele indicar bajar (decrecer)." },
+  { en:"percentage", es:"porcentaje", def:"A number out of 100, used in questions and general talk.", ex:"What percentage of our clients are new?", note:"percentage = porcentaje (la palabra general). percent = por ciento (va con un número: 20 percent)." },
+  { en:"figure", es:"cifra", def:"A number in a report.", ex:"The sales figures for May are ready.", note:"Falso amigo: en reportes “figure” no es “figura”. Significa cifra.", warn:true },
+  { en:"average", es:"promedio", def:"The normal or middle number.", ex:"Our average order is $40." },
+  { en:"chart", es:"gráfico", def:"A picture that shows numbers.", ex:"Look at the chart on page 2.", note:"Falso amigo: “chart” no es “carta”. Carta = letter.", warn:true },
+  { en:"data", es:"datos", def:"Facts and numbers.", ex:"The data is in the report.", note:"Nunca digas “datas”. En el trabajo es normal decir “the data is…”." },
+  { en:"monthly", es:"mensual", def:"Every month.", ex:"We have a monthly sales report.", note:"Familia útil: weekly (semanal), monthly (mensual), quarterly (trimestral), yearly / annual (anual)." }
+];
+
+
+// ── LESSON DATA: CONCEPT CHECKS ───────────────────────────
+const VOC1_CQ = [
+  { type:"mc", q:"What does “target” mean?", opts:["tarjeta","meta / objetivo","presupuesto"], answer:1, hint:"Piensa en el falso amigo.", fb:"“Target” = meta. “Tarjeta” = card. ¡Es un falso amigo muy común!" },
+  { type:"tf", q:"Revenue minus costs = profit.", answer:true, hint:"Recuerda la fórmula fácil.", fb:"Correcto. Los ingresos menos los costos dan la ganancia (profit)." },
+  { type:"input", q:"Write the English word for “presupuesto”.", hint:"Una sola palabra.", answers:["budget","a budget","the budget"], display:"budget", fb:"“Presupuesto” = budget. Example: The budget for June is $10,000." }
+];
+
+const VOC2_CQ = [
+  { type:"mc", q:"What does “chart” mean?", opts:["carta","gráfico","tarjeta"], answer:1, hint:"Otro falso amigo.", fb:"“Chart” = gráfico. “Carta” = letter." },
+  { type:"tf", q:"“Decrease” means the number goes up.", answer:false, hint:"increase ⬆ / decrease ⬇", fb:"“Decrease” = bajar. “Increase” = subir." },
+  { type:"input", q:"Write the English word for “promedio”.", hint:"Una sola palabra.", answers:["average","an average","the average"], display:"average", fb:"“Promedio” = average. Example: Our average order is $40." }
+];
+
+const BRIDGE_CQ = [
+  { type:"mc", q:"The quarterly review is ___ March 31st.", opts:["in","on","at"], answer:1, hint:"Es una fecha.", fb:"Con fechas y días usamos on: on March 31st, on Monday." },
+  { type:"tf", q:"In a US email, 04/03 means April 3rd.", answer:true, hint:"En EE. UU. el mes va primero.", fb:"En EE. UU. el orden es mes/día. Por eso es mejor escribir el mes en palabras." },
+  { type:"mc", q:"“Please send the report by Friday” means…", opts:["Envía el reporte a más tardar el viernes","Envía el reporte cada viernes","Envía el reporte después del viernes"], answer:0, hint:"by + día = fecha límite.", fb:"by + fecha = fecha límite. Tienes que enviarlo el viernes o antes." }
+];
+
+const GRAM_CQ = [
+  { type:"mc", q:"How do you say “2.5%”?", opts:["two point five percent","two comma five percent","two and five percents"], answer:0, hint:"Punto decimal = point.", fb:"El decimal se dice “point”, y “percent” nunca lleva “s”." },
+  { type:"tf", q:"In English, we say “two millions dollars”.", answer:false, hint:"Recuerda: sin “s” después de un número.", fb:"Es “two million dollars”. Sin “s” después de un número." },
+  { type:"input", q:"Complete: Sales increased ___ 10%.", hint:"Una palabra corta.", answers:["by"], display:"by", fb:"increase by / decrease by + porcentaje." }
+];
+
+const MOD_CQ = [
+  { type:"mc", q:"In which quarter did sales decrease?", opts:["Q1","Q2","Q3"], answer:2, hint:"Busca la flecha ⬇ en la tabla.", fb:"In Q3, sales decreased by 5%, from $138,000 to $131,100." },
+  { type:"tf", q:"Blue River Software reached its target in Q2.", answer:true, hint:"Compara Sales y Target en Q2.", fb:"The target was $130,000 and sales were $138,000. They reached it." },
+  { type:"input", q:"How much were sales in Q4? (write the number)", hint:"Mira la fila Q4.", answers:["150,000","$150,000","150000","$150000","150,000 dollars","150000 dollars","150 thousand","one hundred fifty thousand","one hundred and fifty thousand","one hundred fifty thousand dollars","one hundred and fifty thousand dollars"], display:"$150,000", fb:"In Q4, sales were $150,000, exactly the target." }
+];
+
+
+// ── LESSON DATA: LISTENING QUIZ (independent state) ───────
+const LIS_QUIZ = [
+  { type:"mc", q:"What is Leila’s job?", opts:["Finance manager","Sales manager","Marketing assistant"], answer:1, hint:"Escucha el principio del audio.", fb:"“I’m Leila Haddad, the sales manager at Orbit Office Supplies.”" },
+  { type:"mc", q:"What were the total sales in Q1?", opts:["$230,000","$250,000","$270,000"], answer:1, hint:"$230,000 fue la meta. $270,000 es la meta nueva.", fb:"“Our total sales were two hundred and fifty thousand dollars.”" },
+  { type:"tf", q:"The team reached its Q1 target.", answer:true, hint:"Compara las ventas con la meta.", fb:"Sales were $250,000 and the target was $230,000, so they reached it." },
+  { type:"mc", q:"Revenue increased by…", opts:["5%","15%","50%"], answer:1, hint:"¡Escucha el acento! fifTEEN o FIFty.", fb:"“Not fifty percent, fifteen!”" },
+  { type:"mc", q:"What percentage of sales were online?", opts:["About 16%","About 60%","About 8%"], answer:1, hint:"Escucha la frase “online sales”.", fb:"“About sixty percent of our sales were online.”" },
+  { type:"mc", q:"When is the quarterly review?", opts:["On April 3rd at 9:30","On April 10th at 9:30","On Wednesday at 10:00"], answer:1, hint:"April 3rd es la fecha límite para enviar números.", fb:"“The quarterly review is on April 10th at nine thirty.”" },
+  { type:"input", q:"Leila says: “Please send me your numbers by Friday.” Write the Spanish meaning of “by” here.", hint:"Piensa en una fecha límite.", answers:["a más tardar","a mas tardar","antes del","antes de","antes del viernes","a más tardar el viernes","a mas tardar el viernes"], display:"a más tardar", fb:"by + día = fecha límite. Hay que enviar los números el viernes o antes." }
+];
+
+
+// ── LESSON DATA: MAIN QUIZ ────────────────────────────────
+const QUIZ = [
+  { type:"mc", q:"How do you say 1,500,000?", opts:["one million five hundred thousand","fifteen millions","one point five hundred"], answer:0, hint:"💡 million y thousand no llevan “s”.", fb:"1,500,000 = one million five hundred thousand, or “one point five million”." },
+  { type:"mc", q:"___ of our clients are in Mexico.", opts:["The forty percent","Forty percents","Forty percent"], answer:2, hint:"💡 En inglés no hay artículo antes del porcentaje.", fb:"“Forty percent of our clients…”, sin “the” y sin “s”." },
+  { type:"tf", q:"In English, 3,5 means “three and a half”.", answer:false, hint:"💡 Recuerda: la coma y el punto se invierten.", fb:"In English, three and a half is written 3.5. “3,5” looks like a mistake." },
+  { type:"mc", q:"“Mil millones” in English is…", opts:["one million","one billion","one trillion"], answer:1, hint:"💡 Cuidado con el falso amigo “billón”.", fb:"One billion = 1,000,000,000 = mil millones. Un “billón” en español es one trillion." },
+  { type:"input", q:"Complete with the past form of “increase”: Sales ___ by 12% last year.", hint:"💡 Verbo regular, pasado con -ed.", answers:["increased"], display:"increased", fb:"Sales increased by 12% last year." },
+  { type:"mc", q:"We ___ our target in June!", opts:["arrived","reached","made up"], answer:1, hint:"💡 “Alcanzar una meta”.", fb:"reach a target = alcanzar una meta. Past: reached." },
+  { type:"mc", q:"___ was our revenue in May?", opts:["How much","How many","What percentage"], answer:0, hint:"💡 Revenue es dinero, no se cuenta uno por uno.", fb:"How much + money: How much was our revenue?" },
+  { type:"mc", q:"“$75K” means…", opts:["seventy-five dollars","seventy-five thousand dollars","seventy-five million dollars"], answer:1, hint:"💡 K = mil.", fb:"K = thousand, so $75K = seventy-five thousand dollars." },
+  { type:"tf", q:"“Fifteen” and “fifty” have the stress in the same place.", answer:false, hint:"💡 Dilo en voz alta.", fb:"fifTEEN (15) has stress at the end. FIFty (50) has stress at the start." },
+  { type:"mc", q:"Revenue minus costs = ___", opts:["growth","average","profit"], answer:2, hint:"💡 Es el dinero que queda.", fb:"Revenue − costs = profit (ganancia / utilidad)." },
+  { type:"mc", q:"The quarterly review is ___ April 10th ___ 9:30.", opts:["in / on","on / at","at / in"], answer:1, hint:"💡 Fecha → ? · Hora exacta → ?", fb:"on + date, at + time: on April 10th at 9:30." },
+  { type:"mc", q:"Please send your sales figures ___ Friday. (a más tardar)", opts:["by","in","until"], answer:0, hint:"💡 Es una fecha límite.", fb:"by + day = deadline. “Until” means “hasta” and describes something that continues." }
+];
+
+// ── Quiz state ────────────────────────────────────────────
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 0;
+
+// ── Concept-check state (one key per prefix) ──────────────
+const miniState = { voc1: {}, voc2: {}, bridge: {}, gram: {}, mod: {} };
+
+// ── Listening quiz state (independent) ────────────────────
+const lisState = {};
+let lisScore = 0;
+let lisAttempts = 0;
+
+const normalise = s => s.trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,]$/,'');
+
+
+// ── SMALL HTML HELPERS ────────────────────────────────────
+function badge(num, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${num}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+
+function vocabCards(list, start) {
+  return `<div class="vcard-grid">${list.map((v,i) => `
+    <div class="vcard">
+      <div class="vcard-top"><span class="vcard-num">${start+i}</span><span class="vcard-en">${v.en}</span><span class="vcard-es">${v.es}</span></div>
+      <div class="vcard-def">${v.def}</div>
+      <div class="vcard-ex">${v.ex}</div>
+      ${v.note ? `<div class="vcard-note ${v.warn?'warn':''}">${v.warn?'⚠️':'🇪🇸'} ${v.note}</div>` : ''}
+    </div>`).join('')}</div>`;
+}
+
+function examples(label, rows) {
+  return `<div class="examples-wrap">
+    <div class="examples-label">${label}</div>
+    ${rows.map(([en,es]) => `<div class="example-item"><span class="example-en">${en}</span>${es?`<span class="example-arrow">→</span><span class="example-es">${es}</span>`:''}</div>`).join('')}
+  </div>`;
+}
+
+function mistake(wrong, right) {
+  return `<div class="mistake-wrong">❌ ${wrong}</div><div class="mistake-right" style="margin-bottom:10px">✅ ${right}</div>`;
+}
+
+function bridgeTable(heads, rows, three) {
+  const cls = three ? ' three-col' : '';
+  return `<div class="bridge-table-wrap">
+    <div class="bridge-table-head${cls}">${heads.map(h=>`<span>${h}</span>`).join('')}</div>
+    ${rows.map(r => three
+      ? `<div class="bridge-row${cls}"><div class="bridge-en">${r[0]}</div><div class="bridge-mid">${r[1]}</div><div class="bridge-es">${r[2]}</div></div>`
+      : `<div class="bridge-row"><div class="bridge-en">${r[0]}</div><div class="bridge-es">${r[1]}</div></div>`).join('')}
+  </div>`;
+}
+
+function tapRow(q, a) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top"><div class="tap-q">${q}</div><div class="tap-hint-label">Tap to reveal</div></div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+
+function quickCheck(name, sub, prefix, data) {
+  return `<div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check — ${name}</div>
+    <p style="font-size:13px;color:var(--grey-blue);margin-bottom:16px;font-style:italic;">${sub}</p>
+    ${renderMiniQ(prefix, data)}`;
+}
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    ${badge(1, "Welcome", "2 min")}
+    <p class="sec-intro">¡Bienvenido a la Lección 37! En el trabajo hablamos de números todo el tiempo: ventas, ingresos, metas, porcentajes y fechas límite. En español lo haces sin pensar. En inglés hay algunas trampas importantes: la coma y el punto se usan al revés, “billion” no significa “billón” y nunca decimos “the 20%”.</p>
+    <p class="sec-intro">En esta lección vas a aprender a leer y decir cifras de negocio de forma clara y correcta. Primero verás un tema nuevo: <strong>cómo hablar de fechas y plazos en un calendario de negocios</strong> (trimestres, revisiones, fechas límite). Después pasamos al tema principal: <strong>números y porcentajes en contexto</strong>.</p>
+    <div class="info-box">
+      <strong>Tu ruta de hoy:</strong><br>
+      1. Vocabulary 1: dinero y resultados (9 palabras)<br>
+      2. Vocabulary 2: cambios y reportes (9 palabras)<br>
+      3. Grammar Bridge: fechas y horas en el calendario de negocios<br>
+      4. Grammar: números y porcentajes en contexto<br>
+      5. Model Sentences: leer un reporte de ventas<br>
+      6. Listening: una actualización de ventas<br>
+      7. Exercises y Quiz final
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Consejo</div>
+      Ten papel y lápiz a mano. Escribir los números en palabras te ayuda a recordarlos. ⏱ Tiempo estimado: 45 minutos.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocab1() {
+  return `<div class="sc">
+    ${badge(2, "Vocabulary 1: Money and Results", "5 min")}
+    <div class="es-note">Estas palabras aparecen en cualquier reporte de ventas o reunión de resultados. Lee el ejemplo de cada una en voz alta.</div>
+    ${vocabCards(VOCAB1, 1)}
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Aprende las palabras en parejas: <strong>sales</strong> + <strong>target</strong> (<em>sales target</em>), <strong>reach</strong> + <strong>target</strong> (<em>reach a target</em>), <strong>marketing</strong> + <strong>budget</strong> (<em>marketing budget</em>). Así suenan en una reunión real.
+    </div>
+    ${quickCheck("Vocabulary 1", "3 preguntas rápidas para confirmar las palabras antes de seguir.", "voc1", VOC1_CQ)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocab2() {
+  return `<div class="sc">
+    ${badge(3, "Vocabulary 2: Change and Reports", "5 min")}
+    <div class="es-note">Estas palabras sirven para describir si los números suben o bajan y para leer reportes y gráficos.</div>
+    ${vocabCards(VOCAB2, 10)}
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      Tres falsos amigos en esta lección: <strong>target</strong> (meta, no tarjeta), <strong>figure</strong> (cifra, no figura) y <strong>chart</strong> (gráfico, no carta). Si los dominas, ya evitas los errores más comunes.
+    </div>
+    ${quickCheck("Vocabulary 2", "3 preguntas rápidas para confirmar las palabras antes de seguir.", "voc2", VOC2_CQ)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    ${badge(4, "Grammar Bridge: Dates and Times in a Business Calendar", "7 min")}
+    <div class="bridge-callout">
+      <div class="bridge-callout-label">🌉 Grammar Bridge · Tema nuevo</div>
+      <p>Viene de la Lección 28 (Calendar Management). Los datos de negocio casi siempre van con una fecha: “las ventas del primer trimestre”, “la meta para el 30 de junio”, “la revisión es el lunes”. Antes de trabajar con números, aprendamos a ubicarlos en el calendario. En la Unidad 1 ya viste los números ordinales (1st, 2nd, 3rd) y cómo decir fechas. Aquí los usamos en contexto de negocios.</p>
+    </div>
+
+    <h3 class="step-title-sm">Notice / Observa</h3>
+    ${examples("Example sentences", [
+      ["The quarterly review is <strong>on</strong> March 31st.", "La revisión trimestral es el 31 de marzo."],
+      ["Our Q1 results are ready <strong>in</strong> April.", "Nuestros resultados del primer trimestre están listos en abril."],
+      ["The meeting is <strong>at</strong> 10:00 a.m.", "La reunión es a las 10:00 a. m."],
+      ["Please send the report <strong>by</strong> Friday.", "Por favor envía el reporte a más tardar el viernes."]
+    ])}
+    <div class="es-note">¿Ves las palabras en negrita? Cada una tiene un uso fijo. Vamos a verlas.</div>
+
+    <h3 class="step-title-sm">Form Rules / Reglas</h3>
+
+    <p class="body-p"><span class="rule-tag">Rule 1</span><strong>Say dates with ordinal numbers / Las fechas se dicen con ordinales</strong></p>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Written → Said</div>
+      <div class="pattern-row"><div class="pattern-en">March 31st</div><div class="pattern-es">US: “March thirty-first”</div></div>
+      <div class="pattern-row"><div class="pattern-en">March 31st</div><div class="pattern-es">UK: “the thirty-first of March”</div></div>
+      <div class="pattern-row"><div class="pattern-en">June 1st · April 3rd · May 22nd</div><div class="pattern-es">first · third · twenty-second</div></div>
+    </div>
+    <div class="es-note">En español decimos “31 de marzo” (número normal). En inglés usamos el ordinal: 31st = thirty-first, no “thirty-one”.</div>
+
+    <p class="body-p"><span class="rule-tag">Rule 2</span><strong>Careful with number formats / Cuidado con el formato numérico</strong></p>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:1fr 1fr 1fr;"><span>Date</span><span>US (month/day)</span><span>Latin America / UK (day/month)</span></div>
+      <div class="data-table-row" style="grid-template-columns:1fr 1fr 1fr;"><strong style="color:var(--navy)">04/03/2026</strong><span>April 3rd</span><span>4 de marzo</span></div>
+    </div>
+    <div class="tip-box"><div class="tip-label">💡 Tip</div>En correos internacionales escribe el mes en palabras: <em>April 3, 2026</em>. Así nadie se confunde.</div>
+
+    <p class="body-p"><span class="rule-tag">Rule 3</span><strong>at / on / in / by</strong></p>
+    ${bridgeTable(["English","Use","Español"], [
+      ["at 9:30","exact time","a las 9:30"],
+      ["on Monday / on March 31st","day or date","el lunes / el 31 de marzo"],
+      ["in June / in Q1 / in 2026","month, quarter, year","en junio / en el primer trimestre / en 2026"],
+      ["by Friday","deadline","a más tardar el viernes / antes del viernes"]
+    ], true)}
+
+    <p class="body-p"><span class="rule-tag">Rule 4</span><strong>No “the” before days and dates / Sin “the” antes de días y fechas</strong></p>
+    <div class="mistake-wrap">
+      <div class="mistake-label">Common mistake</div>
+      ${mistake("The review is the Monday.", "The review is on Monday.")}
+    </div>
+    <div class="es-note">En español decimos “el lunes”, “el 31 de marzo”. En inglés no ponemos artículo: usamos on.</div>
+
+    <p class="body-p"><span class="rule-tag">Rule 5</span><strong>The business year has four quarters / El año de negocios tiene cuatro trimestres</strong></p>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:0.6fr 1.4fr 1.4fr;"><span>Short</span><span>Said</span><span>Months</span></div>
+      <div class="data-table-row" style="grid-template-columns:0.6fr 1.4fr 1.4fr;"><strong style="color:var(--navy)">Q1</strong><span>the first quarter</span><span>January – March</span></div>
+      <div class="data-table-row" style="grid-template-columns:0.6fr 1.4fr 1.4fr;"><strong style="color:var(--navy)">Q2</strong><span>the second quarter</span><span>April – June</span></div>
+      <div class="data-table-row" style="grid-template-columns:0.6fr 1.4fr 1.4fr;"><strong style="color:var(--navy)">Q3</strong><span>the third quarter</span><span>July – September</span></div>
+      <div class="data-table-row" style="grid-template-columns:0.6fr 1.4fr 1.4fr;"><strong style="color:var(--navy)">Q4</strong><span>the fourth quarter</span><span>October – December</span></div>
+    </div>
+    <div class="es-note">quarter = trimestre. Aquí no significa “cuarto”. Se dice “in Q1”, “in the first quarter”.</div>
+
+    <h3 class="step-title-sm">Business calendar words / Palabras del calendario de negocios</h3>
+    <div class="vocab-table-wrap">
+      <div class="vocab-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="vocab-row"><div class="vocab-en">quarterly review</div><div class="vocab-es">revisión trimestral · <em>The quarterly review is on April 10th.</em></div></div>
+      <div class="vocab-row"><div class="vocab-en">deadline</div><div class="vocab-es">fecha límite · <em>The deadline is Friday, June 30th.</em></div></div>
+      <div class="vocab-row"><div class="vocab-en">reminder</div><div class="vocab-es">recordatorio · <em>I’m going to send a reminder on Wednesday.</em></div></div>
+      <div class="vocab-row"><div class="vocab-en">end of the month / quarter</div><div class="vocab-es">fin de mes / de trimestre · <em>We check our sales at the end of the month.</em></div></div>
+    </div>
+
+    <h3 class="step-title-sm">Use / Uso: confirmar fechas</h3>
+    ${examples("Short exchanges", [
+      ["A: When is the quarterly review? — B: It’s on April 10th at 9:30.", "¿Cuándo es la revisión trimestral? — Es el 10 de abril a las 9:30."],
+      ["A: Is the deadline on Friday? — B: Yes, it is. Please send your numbers by Friday.", "¿La fecha límite es el viernes? — Sí. Envía tus números a más tardar el viernes."],
+      ["A: When are the Q2 results ready? — B: They’re ready at the end of July.", "¿Cuándo están listos los resultados del Q2? — A finales de julio."]
+    ])}
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Pitfall: by vs. until</div>
+      <p class="body-p"><strong>by</strong> Friday = a más tardar el viernes (una sola acción antes de una fecha): <em>Send the report by Friday.</em></p>
+      <p class="body-p" style="margin-bottom:0"><strong>until</strong> Friday = hasta el viernes (algo que continúa): <em>The office is closed until Friday.</em></p>
+    </div>
+
+    ${quickCheck("Grammar Bridge", "3 preguntas rápidas sobre fechas y plazos antes de pasar al tema principal.", "bridge", BRIDGE_CQ)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    ${badge(5, "Grammar: Numbers and Percentages in Context", "10 min")}
+    <p class="sec-intro">Ya conoces los números del 1 al 100.000 (Unidad 1). Ahora vamos a usarlos como en un reporte real, con millones, decimales, porcentajes, dinero y cambios (subir / bajar).</p>
+
+    <h3 class="step-title-sm">Notice / Observa estas frases de un reporte</h3>
+    ${examples("From a sales report", [
+      ["Our sales were <strong>$250,000</strong> in Q1.", "Nuestras ventas fueron de $250.000 en el Q1."],
+      ["Revenue <strong>increased by 15%</strong>.", "Los ingresos aumentaron un 15 %."],
+      ["<strong>Sixty percent of</strong> our clients are in Colombia.", "El 60 % de nuestros clientes están en Colombia."],
+      ["Growth was <strong>2.5%</strong>.", "El crecimiento fue del 2,5 %."],
+      ["The target for next year is <strong>$1.2 million</strong>.", "La meta para el próximo año es de $1,2 millones."]
+    ])}
+
+    <h3 class="step-title-sm">Form Rules / Reglas</h3>
+
+    <p class="body-p"><span class="rule-tag">Rule 1</span><strong>Big numbers / Números grandes</strong></p>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Number → Said</div>
+      <div class="pattern-row"><div class="pattern-en">100</div><div class="pattern-es">one hundred</div></div>
+      <div class="pattern-row"><div class="pattern-en">1,000</div><div class="pattern-es">one thousand</div></div>
+      <div class="pattern-row"><div class="pattern-en">1,000,000</div><div class="pattern-es">one million</div></div>
+      <div class="pattern-row"><div class="pattern-en">1,000,000,000</div><div class="pattern-es">one billion</div></div>
+      <div class="pattern-row"><div class="pattern-en">250,000</div><div class="pattern-es">two hundred (and) fifty thousand</div></div>
+    </div>
+    <div class="es-note">En inglés británico se dice “and” (two hundred and fifty). En inglés americano muchas veces se omite. Las dos formas son correctas.</div>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ No “s” after a number / Sin “s” después de un número</div>
+      ${mistake("two millions dollars · five thousands clients", "two million dollars · five thousand clients")}
+      <p class="body-p" style="margin-bottom:0">En español sí decimos “dos millones”. En inglés, hundred / thousand / million no llevan “s” cuando hay un número antes.</p>
+    </div>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ billion ≠ billón</div>
+      <p class="body-p">English <strong>one billion</strong> = 1,000,000,000 = <em>mil millones</em></p>
+      <p class="body-p">Spanish <em>un billón</em> = 1,000,000,000,000 = English <strong>one trillion</strong></p>
+      <p class="body-p" style="margin-bottom:0">Es un error muy peligroso en un reporte: ¡una diferencia de mil veces!</p>
+    </div>
+
+    <p class="body-p"><span class="rule-tag">Rule 2</span><strong>The comma and the point switch / La coma y el punto se invierten</strong></p>
+    ${bridgeTable(["Español (gran parte de Latinoamérica y España)","English"], [
+      ["1.500.000","1,500,000"],
+      ["2,5 %","2.5%"],
+      ["$45,99","$45.99"]
+    ], false)}
+    <div class="pattern-box">
+      <div class="pattern-box-head">Decimals → Said</div>
+      <div class="pattern-row"><div class="pattern-en">2.5</div><div class="pattern-es">“two point five” (nunca “two comma five”)</div></div>
+      <div class="pattern-row"><div class="pattern-en">0.5</div><div class="pattern-es">“zero point five” o “point five”</div></div>
+    </div>
+    <div class="es-note">En inglés la coma separa miles y el punto separa decimales. Exactamente al revés que en muchos de nuestros países.</div>
+
+    <p class="body-p"><span class="rule-tag">Rule 3</span><strong>Percentages / Porcentajes</strong></p>
+    <ul class="body-list">
+      <li>20% = twenty <strong>percent</strong> (US) / twenty <strong>per cent</strong> (UK)</li>
+      <li>“percent” nunca lleva “s”: ❌ twenty percents</li>
+      <li>En inglés el símbolo va pegado al número: <strong>60%</strong> (sin espacio).</li>
+      <li>Pregunta general: <strong>What percentage</strong> of our sales are online?</li>
+    </ul>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ No “the” in general statements</div>
+      ${mistake("The 60% of our clients are new.", "60% of our clients are new.")}
+      <p class="body-p" style="margin-bottom:0">En español decimos “El 60 % de los clientes”. En inglés no va artículo.</p>
+    </div>
+
+    <p class="body-p"><span class="rule-tag">Rule 4</span><strong>Money / Dinero</strong></p>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Written → Said</div>
+      <div class="pattern-row"><div class="pattern-en">$50 (no 50$)</div><div class="pattern-es">fifty dollars · el símbolo va antes del número</div></div>
+      <div class="pattern-row"><div class="pattern-en">$45.99</div><div class="pattern-es">forty-five dollars and ninety-nine cents</div></div>
+      <div class="pattern-row"><div class="pattern-en">COP 5,000,000</div><div class="pattern-es">five million pesos</div></div>
+      <div class="pattern-row"><div class="pattern-en">$50K</div><div class="pattern-es">fifty thousand dollars (K = mil)</div></div>
+      <div class="pattern-row"><div class="pattern-en">$2M</div><div class="pattern-es">two million dollars (M = millón)</div></div>
+      <div class="pattern-row"><div class="pattern-en">$1.2M</div><div class="pattern-es">one point two million dollars</div></div>
+    </div>
+
+    <p class="body-p"><span class="rule-tag">Rule 5</span><strong>Describing change / Describir cambios</strong></p>
+    ${examples("Patterns", [
+      ["Sales <strong>increased by</strong> 10%.", "Las ventas aumentaron un 10 %."],
+      ["Costs <strong>decreased by</strong> 3%.", "Los costos bajaron un 3 %."],
+      ["Sales increased <strong>from</strong> $20,000 <strong>to</strong> $25,000.", "Las ventas aumentaron de $20.000 a $25.000."],
+      ["Sales <strong>are up</strong> 10% this month.", "Las ventas están arriba un 10 % este mes."],
+      ["Costs <strong>are down</strong> 5%.", "Los costos están abajo un 5 %."],
+      ["We <strong>reached</strong> our target.", "Alcanzamos nuestra meta."]
+    ])}
+    <div class="es-note">En español decimos “aumentaron un 10 %”. En inglés usamos by, no “a” ni “the”. Estas formas combinan lo que ya sabes: was / were (Lección 32) y el pasado regular con -ed (Lección 34).</div>
+
+    <h3 class="step-title-sm">Use / Uso: preguntar y dar cifras aproximadas</h3>
+    ${examples("Questions / Preguntas", [
+      ["<strong>How much</strong> was our revenue in May?", "dinero (no contable, como en la Lección 33)"],
+      ["<strong>How many</strong> new clients do we have?", "cosas que se cuentan"],
+      ["<strong>What percentage</strong> of our sales are online?", "¿Qué porcentaje…?"]
+    ])}
+    ${examples("Approximate numbers / Números aproximados", [
+      ["<strong>about</strong> $50,000", "aproximadamente $50.000"],
+      ["<strong>more than</strong> 20%", "más del 20 %"],
+      ["<strong>less than</strong> $1,000", "menos de $1.000"],
+      ["<strong>almost</strong> $1 million", "casi un millón"]
+    ])}
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Pronunciation pitfall: 15 vs. 50</div>
+      <p class="body-p">fif<strong>TEEN</strong> (15): el acento va al final · <strong>FIF</strong>ty (50): el acento va al principio</p>
+      <p class="body-p" style="margin-bottom:0">En una reunión, confundir 15 % con 50 % es un problema grande. Si no estás seguro, pregunta: <em>“Sorry, fifteen or fifty?”</em> Lo mismo aplica a 13/30, 14/40, 16/60, 17/70, 18/80 y 19/90.</p>
+    </div>
+
+    <h3 class="step-title-sm">Spanish–English comparison / Tabla comparativa</h3>
+    ${bridgeTable(["English","Español"], [
+      ["60% of our clients","el 60 % de nuestros clientes"],
+      ["Sales increased by 10%.","Las ventas aumentaron un 10 %."],
+      ["two million dollars","dos millones de dólares"],
+      ["one billion","mil millones"],
+      ["2.5% (two point five)","2,5 % (dos coma cinco)"],
+      ["$1,500,000","$1.500.000"]
+    ], false)}
+    <div class="es-note">Dónde falla la comparación: la estructura es parecida, pero en inglés (1) no hay artículo antes del porcentaje, (2) se usa by en lugar de “un”, (3) million no lleva “s” y (4) la coma y el punto se invierten.</div>
+
+    ${quickCheck("Grammar", "3 preguntas rápidas para confirmar las reglas de números y porcentajes.", "gram", GRAM_CQ)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  const rows = [
+    ["Q1","$120,000","$125,000","—"],
+    ["Q2","$138,000","$130,000","⬆ 15%"],
+    ["Q3","$131,100","$135,000","⬇ 5%"],
+    ["Q4","$150,000","$150,000","⬆ about 14%"]
+  ];
+  const cols = "grid-template-columns:0.7fr 1fr 1fr 1fr;";
+  const sentences = [
+    ["In 2025, our total sales were $539,100.", "En 2025, nuestras ventas totales fueron de $539.100. (five hundred thirty-nine thousand, one hundred dollars)"],
+    ["In the first quarter, sales were $120,000. That was $5,000 less than our target.", "En el primer trimestre, las ventas fueron de $120.000. Eso fue $5.000 menos que nuestra meta."],
+    ["In Q2, sales increased by 15%, from $120,000 to $138,000.", "En el segundo trimestre, las ventas aumentaron un 15 %, de $120.000 a $138.000."],
+    ["We reached our target in the second quarter.", "Alcanzamos nuestra meta en el segundo trimestre."],
+    ["In Q3, sales decreased by 5%.", "En el tercer trimestre, las ventas bajaron un 5 %."],
+    ["In Q4, sales were $150,000. That was our target!", "En el cuarto trimestre, las ventas fueron de $150.000. ¡Esa era nuestra meta!"],
+    ["Our average sales per quarter were about $135,000.", "Nuestras ventas promedio por trimestre fueron de aproximadamente $135.000."],
+    ["The quarterly review for 2025 is on January 15th at 10 a.m.", "La revisión trimestral de 2025 es el 15 de enero a las 10 a. m."]
+  ];
+  return `<div class="sc">
+    ${badge(6, "Model Sentences: Reading a Simple Sales Report", "4 min")}
+    <div class="es-note">Aquí tienes un reporte real y corto. Primero mira la tabla. Luego lee las frases: cada una describe una parte de la tabla. Toca cada frase para ver la traducción.</div>
+    <div class="h-serif">Blue River Software · Sales Report 2025</div>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="${cols}"><span>Quarter</span><span>Sales</span><span>Target</span><span>Change</span></div>
+      ${rows.map(r => `<div class="data-table-row" style="${cols}"><strong style="color:var(--navy)">${r[0]}</strong><span>${r[1]}</span><span>${r[2]}</span><span>${r[3]}</span></div>`).join('')}
+      <div class="data-table-row" style="${cols}background:var(--light-grey);"><strong style="color:var(--navy)">Total</strong><strong style="color:var(--navy)">$539,100</strong><span></span><span></span></div>
+    </div>
+    ${sentences.map((s,i) => tapRow(`${i+1}. ${s[0]}`, `<span class="es">${s[1]}</span>`)).join('')}
+    <div class="tip-box" style="margin-top:14px">
+      <div class="tip-label">💡 Tip</div>
+      Fíjate en el patrón. Para resultados pasados usamos <strong>was / were</strong> (sales were…) o un verbo con <strong>-ed</strong> (increased, decreased, reached).
+    </div>
+    ${quickCheck("Model Sentences", "3 preguntas rápidas sobre el reporte de Blue River Software.", "mod", MOD_CQ)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    ${badge(7, "Listening: A Quarterly Sales Update", "5 min")}
+    <div class="info-box">
+      <strong>Antes de escuchar:</strong> vas a escuchar a <strong>Leila Haddad</strong>, gerente de ventas, hablando con su equipo sobre los resultados del primer trimestre.<br>
+      1. Lee las preguntas de abajo.<br>
+      2. Presta atención a los números: ¿fifteen o fifty? Escucha dónde va el acento.<br>
+      3. Primero escucha a 0.8×. Después escucha a 1.0×.<br>
+      4. Usa la transcripción solo al final, para comprobar.
+    </div>
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">A Quarterly Sales Update</div>
+          <div class="audio-box-sub">Leila Haddad · Sales Manager, Orbit Office Supplies · about 75 seconds · North American English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload" src="${AUDIO_URL}" onloadedmetadata="this.playbackRate=currentSpeed" onplay="this.playbackRate=currentSpeed">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        ${[0.7,0.8,0.9,1.0,1.1].map(r => `<button class="speed-btn ${r===currentSpeed?'active':''}" data-rate="${r.toFixed(1)}" onclick="setSpeed(${r.toFixed(1)})">${r.toFixed(1)}×</button>`).join('')}
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen?'▲ Hide transcript':'▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen?'block':'none'};">
+        <p>Hi, everyone. I’m Leila Haddad, the sales manager at Orbit Office Supplies in Toronto. Every quarter, I prepare a short sales report for my team. Today, I want to talk about our results for the first quarter, from January to March.</p>
+        <p>Our total sales were two hundred and fifty thousand dollars. Our target was two hundred and thirty thousand dollars, so we reached our target. That’s great news! Our revenue increased by fifteen percent from last year. Not fifty percent, fifteen! Online sales were very strong. About sixty percent of our sales were online. But our costs increased too, by three point five percent.</p>
+        <p>Our new target for the second quarter is two hundred and seventy thousand dollars. That is eight percent growth. The quarterly review is on April 10th at nine thirty. Please send me your numbers by Friday, April 3rd. I’m going to send a reminder on Wednesday. Thank you, team!</p>
+      </div>
+    </div>
+    <div class="sub-heading" style="margin-top:22px;">🎧 Comprehension Questions</div>
+    <div id="lisQuizWrap">${renderLisQuiz()}</div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  const setA = [
+    ["1. $2,500","two thousand five hundred dollars"],
+    ["2. 15%","fifteen percent"],
+    ["3. 3.5%","three point five percent"],
+    ["4. 1,200,000","one million two hundred thousand (or: one point two million)"],
+    ["5. $45.99","forty-five dollars and ninety-nine cents"],
+    ["6. $80K","eighty thousand dollars"],
+    ["7. 0.5%","zero point five percent (or: point five percent)"]
+  ];
+  const setB = [
+    ["1. Sales increased 10 percents.","Sales increased by 10 percent."],
+    ["2. The 30% of our clients are new.","30% of our clients are new."],
+    ["3. Our revenue was two millions dollars.","Our revenue was two million dollars."],
+    ["4. Growth was 2,5%.","Growth was 2.5%."],
+    ["5. Revenue was $1.500.000.","Revenue was $1,500,000."],
+    ["6. The review is in March 31st.","The review is on March 31st."],
+    ["7. Please send the report the Friday.","Please send the report by Friday."]
+  ];
+  const setC = [
+    ["1. Our Q2 results are ready ___ July.","in"],
+    ["2. The quarterly review is ___ Monday ___ 10 a.m.","on / at"],
+    ["3. Please update the chart ___ Thursday. (deadline)","by"],
+    ["4. Sales were $40,000 in May and $44,000 in June. Sales ___ by 10%.","increased"],
+    ["5. Costs were $10,000 in Q1 and $9,000 in Q2. Costs ___ by 10%.","decreased"],
+    ["6. Our target was $50,000 and our sales were $52,000. We ___ our target.","reached"]
+  ];
+  const setD = [
+    ["1. ___ were our sales in March?","How much"],
+    ["2. ___ new clients do we have?","How many"],
+    ["3. ___ of our sales are online?","What percentage"],
+    ["4. ___ is the deadline?","When"]
+  ];
+  const block = (label, intro, rows, bank) => `<div class="ex-box">
+      <div class="ex-label">[Exercise] ${label}</div>
+      <p class="body-p">${intro}</p>
+      ${bank ? `<div class="word-bank"><div class="word-bank-label">Word bank</div><div class="word-bank-words">${bank}</div></div>` : ''}
+      ${rows.map(r => tapRow(r[0], `✓ ${r[1]}`)).join('')}
+    </div>`;
+  return `<div class="sc">
+    ${badge(8, "Exercises", "4 min")}
+    <div class="es-note">Escribe tu respuesta en papel o dila en voz alta. Después toca la tarjeta para ver la respuesta correcta.</div>
+    ${block("A · Numbers in words", "Escribe o di el número en palabras.", setA)}
+    ${block("B · Fix the mistake", "Cada frase tiene un error. Corrígela.", setB)}
+    ${block("C · Complete the sentence", "Completa con una palabra del banco.", setC, "on · in · at · by · increased · decreased · reached")}
+    ${block("D · Ask the question", "Completa la pregunta.", setD, "How much · How many · What percentage · When")}
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! — You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding — a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    ${badge(9, "Quiz", "5 min")}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div class="attempts-note">Attempts so far: ${quizAttempts + 1}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── QUIZ ENGINE (main quiz) ───────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal||''}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const raw=quizState[qi].inputVal||'';
+  quizState[qi].correct=q.answers.some(a=>normalise(raw)===normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  quizAttempts++;
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  // Calls renderQuiz() directly — do not change to STEPS[currentStep].fn()
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+
+// ── MINI ENGINE (concept checks, isolated state per prefix) ─
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${s.inputVal || ''}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix, qi);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix, qi);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const qMap = { voc1: VOC1_CQ, voc2: VOC2_CQ, bridge: BRIDGE_CQ, gram: GRAM_CQ, mod: MOD_CQ };
+  const q = qMap[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix, qi);
+}
+function miniRerender(prefix, qi) {
+  // Map prefix → the renderer that owns it; call that renderer directly
+  const fnMap = { voc1: renderVocab1, voc2: renderVocab2, bridge: renderBridge, gram: renderGrammar, mod: renderModel };
+  const targetFn = fnMap[prefix];
+  const si = STEPS.findIndex(s => s.fn === targetFn);
+  if (currentStep !== si) return;
+  const y = window.scrollY;
+  document.getElementById('mainContent').innerHTML = targetFn();
+  window.scrollTo(0, y);
+}
+
+
+// ── LISTENING ENGINE (independent state, score, attempts) ─
+function renderLisQuiz() {
+  const answered = Object.values(lisState).filter(s => s.revealed).length;
+  const pct = (answered / LIS_QUIZ.length) * 100;
+  const allDone = answered === LIS_QUIZ.length;
+  const wrong = allDone ? LIS_QUIZ.length - lisScore : 0;
+  const letters = ['A','B','C','D'];
+  const cards = LIS_QUIZ.map((q, i) => {
+    const s = lisState[i] || {};
+    const rev = s.revealed;
+    let body = '';
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True','False'];
+      const lets = q.type === 'mc' ? letters : ['T','F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="lisSelect(${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="lisReveal(${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="lis-inp-${i}" type="text" placeholder="Type your answer…" value="${s.inputVal || ''}" oninput="lisSetInp(${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="lisRevealInp(${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+    return `<div class="q-card" id="lis-qc-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div><div class="q-text">${q.q}</div>${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}</div>
+      </div>
+      ${body}
+    </div>`;
+  }).join('');
+  return `<div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${LIS_QUIZ.length}</span>
+    </div>
+    ${cards}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${lisScore} / ${LIS_QUIZ.length}</div>
+      <div class="result-label">${lisScore === LIS_QUIZ.length ? '🎧 ¡Excelente oído!' : 'Listen again and retry.'}</div>
+      <div class="result-msg">${lisScore === LIS_QUIZ.length ? 'You understood every number. Great work!' : 'Escucha otra vez a 0.8× y revisa los números.'}</div>
+      <div class="attempts-note">Attempts so far: ${lisAttempts + 1}</div>
+      ${wrong ? `<div style="margin-top:20px"><button onclick="lisRetry()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrong} Wrong Answer${wrong===1?'':'s'}</button></div>` : ''}
+    </div>` : ''}`;
+}
+
+function lisSelect(qi, j) { if (!lisState[qi]) lisState[qi] = {}; if (lisState[qi].revealed) return; lisState[qi].selected = j; lisRerender(); }
+function lisReveal(qi)    { if (!lisState[qi]) lisState[qi] = {}; lisState[qi].revealed = true; lisRecalc(); lisRerender(); }
+function lisSetInp(qi, v) { if (!lisState[qi]) lisState[qi] = {}; lisState[qi].inputVal = v; }
+function lisRevealInp(qi) {
+  const q = LIS_QUIZ[qi]; if (!lisState[qi]) lisState[qi] = {};
+  const raw = lisState[qi].inputVal || '';
+  lisState[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  lisState[qi].revealed = true; lisRecalc(); lisRerender();
+}
+function lisRecalc() {
+  let s = 0;
+  LIS_QUIZ.forEach((q, i) => {
+    const st = lisState[i]; if (!st || !st.revealed) return;
+    if (q.type === 'mc' && st.selected === q.answer) s++;
+    else if (q.type === 'tf' && q.answer === (st.selected === 0)) s++;
+    else if (q.type === 'input' && st.correct) s++;
+  });
+  lisScore = s;
+}
+function lisRetry() {
+  lisAttempts++;
+  LIS_QUIZ.forEach((q, i) => {
+    const s = lisState[i]; if (!s || !s.revealed) return;
+    let ok = false;
+    if (q.type === 'mc') ok = s.selected === q.answer;
+    else if (q.type === 'tf') ok = q.answer === (s.selected === 0);
+    else if (q.type === 'input') ok = s.correct;
+    if (!ok) delete lisState[i];
+  });
+  lisRecalc(); lisRerender();
+  setTimeout(() => {
+    const first = LIS_QUIZ.findIndex((_, i) => !lisState[i] || !lisState[i].revealed);
+    const el = document.getElementById('lis-qc-' + first);
+    if (el) el.scrollIntoView({ behavior:'smooth', block:'center' });
+  }, 100);
+}
+function lisRerender() {
+  // Redraws only the question area, so the audio keeps playing
+  const wrap = document.getElementById('lisQuizWrap');
+  if (wrap) wrap.innerHTML = renderLisQuiz();
+}
+
+
+// ── AUDIO CONTROLS (Pattern A) ────────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Welcome",          fn: renderWelcome },
+  { label: "2. Vocabulary 1",     fn: renderVocab1 },
+  { label: "3. Vocabulary 2",     fn: renderVocab2 },
+  { label: "4. Grammar Bridge",   fn: renderBridge },
+  { label: "5. Grammar",          fn: renderGrammar },
+  { label: "6. Model Sentences",  fn: renderModel },
+  { label: "7. Listening",        fn: renderListening },
+  { label: "8. Exercises",        fn: renderExercises },
+  { label: "9. Quiz",             fn: renderQuiz },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

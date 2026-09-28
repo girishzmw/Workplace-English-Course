@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 26: Productivity at Work | A2 · Unit 3 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold - Georgia headings, Lato body
+   All colours as CSS variables - never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A - Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B - Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE - full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE - use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX - off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX - off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER - column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── LESSON ADDITIONS (A2-L26) ───────────────────────────── */
+.sub-heading { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.cq-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+.h-serif { margin-top:26px; }
+.sc > .h-serif:first-of-type { margin-top:0; }
+.inline-es { color:var(--grey-blue); font-style:italic; font-size:13px; }
+.check-row { margin-top:12px; text-align:right; }
+.signal { color:var(--sky); font-style:italic; }
+.cell-lead { font-size:14px; font-weight:700; color:var(--navy); }
+.cell { font-size:14px; color:var(--slate); }
+@media(max-width:600px){ .data-table-row, .data-table-head { padding-left:12px; padding-right:12px; } .cell, .cell-lead { font-size:13px; } }
+
+/* Welcome path */
+.map-list { display:flex; flex-direction:column; gap:6px; margin-bottom:10px; }
+.map-item { display:flex; align-items:center; gap:12px; font-size:14px; color:var(--navy); padding:8px 12px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.map-num { width:24px; height:24px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+
+/* Three-column vocabulary */
+.v3-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.v3-head, .v3-row { display:grid; grid-template-columns:1.1fr 1fr 1.7fr; gap:12px; padding:11px 20px; }
+.v3-head { background:var(--navy); }
+.v3-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.v3-group { background:var(--light-grey); padding:8px 20px; font-size:13px; font-weight:700; color:var(--navy); border-top:1px solid var(--border-grey); }
+.v3-group-es { font-weight:400; color:var(--grey-blue); font-style:italic; margin-left:6px; }
+.v3-row { border-top:1px solid var(--light-grey); align-items:start; }
+.v3-row:hover { background:var(--off-white); }
+.v3-en { font-size:15px; font-weight:700; color:var(--navy); }
+.v3-type { font-size:11px; font-weight:400; color:var(--grey-blue); font-style:italic; margin-top:2px; }
+.v3-es { font-size:14px; color:var(--grey-blue); }
+.v3-ex { font-size:14px; color:var(--slate); font-style:italic; }
+.key-tag { display:inline-block; font-size:10px; font-weight:700; color:var(--navy); background:var(--gold-bg); border:1px solid var(--gold); border-radius:10px; padding:0 7px; margin-left:4px; vertical-align:middle; }
+@media(max-width:600px){ .v3-head { display:none; } .v3-row { grid-template-columns:1fr; gap:3px; padding:11px 14px; } .v3-group { padding:8px 14px; } }
+
+/* Spanish Bridge table (Master Prompt pattern) */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+
+/* Tap-to-reveal (Master Prompt pattern) */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.5; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); }
+.tap-answer.show { display:block; }
+.ans { color:var(--green); font-weight:700; font-size:14px; line-height:1.6; }
+.ex-es { font-size:13px; color:var(--grey-blue); font-style:italic; margin-bottom:12px; }
+
+/* Mistake box with tap-to-reveal corrections */
+.mistake-sub { font-size:12px; color:var(--grey-blue); font-style:italic; margin:-6px 0 10px; }
+.mistake-tap { cursor:pointer; margin-bottom:8px; }
+.mistake-tap .mistake-wrong { margin-bottom:0; }
+.mistake-tap .tap-answer { border-top:none; padding-top:6px; margin-top:0; }
+.mistake-why { font-size:13px; color:var(--grey-blue); padding:6px 13px 2px; }
+
+/* Model sentences */
+.model-sent { display:flex; gap:14px; padding:11px 0; border-bottom:1px dashed var(--border-grey); }
+.model-sent:last-child { border-bottom:none; }
+.model-sent-num { width:26px; height:26px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.model-sent-en { font-size:15px; color:var(--navy); line-height:1.5; }
+.model-sent-es { font-size:13px; color:var(--grey-blue); font-style:italic; margin-top:2px; }
+.model-line { grid-template-columns:1fr; }
+
+/* Audio box (Master Prompt pattern) */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* Quiz result extras */
+.result-attempts { font-size:12px; color:rgba(255,255,255,0.45); margin-top:8px; }
+.result-actions { display:flex; gap:12px; justify-content:center; margin-top:24px; flex-wrap:wrap; }
+.result-btn { padding:12px 28px; border-radius:8px; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; }
+.result-btn-gold { background:var(--gold); color:var(--navy); border:none; }
+.result-btn-ghost { background:rgba(255,255,255,0.1); color:var(--white); border:1px solid rgba(255,255,255,0.25); }
+
+/* Keyboard focus */
+button:focus-visible, input:focus-visible, .tap-row:focus-visible { outline:2px solid var(--sky); outline-offset:2px; }
+@media (prefers-reduced-motion: reduce){ .sc { animation:none; } .progress-fill, .score-fill { transition:none; } }
+
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER - do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO - edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 3 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 26: Productivity at Work</h1>
+    <p class="hero-sub">Comparative adjectives · Grammar bridge: Present Perfect · 45 min self-study</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Compare two ways of working</div><div class="outcome-note">Comparar dos formas de trabajar</div></div>
+      <div><div class="outcome-item">Use -er, more, less, than and as...as correctly</div><div class="outcome-note">Usar -er, more, less, than y as...as correctamente</div></div>
+      <div><div class="outcome-item">Talk about methods you have tried</div><div class="outcome-note">Hablar de métodos que has probado</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV - built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT - rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK - all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block - never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly - not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START - replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// Audio state (Pattern A: one audio player in this file)
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const AUDIO_URL = `https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L26-Audio001.mp3`;
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  restoreAudioState();
+}
+
+// ── SMALL HELPERS ─────────────────────────────────────────
+const normalise = s => String(s).trim().toLowerCase()
+  .replace(/[’‘]/g, `'`).replace(/\s+/g,' ').replace(/[.,!?]+$/,'');
+const escAttr = s => String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+
+function badge(num, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${num}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+
+// Generic navy-header table. cols = CSS grid-template-columns value.
+function table(headers, rows, cols) {
+  const style = `grid-template-columns:${cols}`;
+  return `<div class="data-table-wrap">
+    <div class="data-table-head" style="${style}">${headers.map(h => `<span>${h}</span>`).join('')}</div>
+    ${rows.map(r => `<div class="data-table-row" style="${style}">${r.map((c,j) =>
+      `<div class="${j===0?'cell-lead':'cell'}">${c}</div>`).join('')}</div>`).join('')}
+  </div>`;
+}
+
+// Spanish Bridge table (navy). rows = [[english, spanish], ...]
+function bridgeTable(rows) {
+  return `<div class="bridge-table-wrap">
+    <div class="bridge-table-head"><span>English</span><span>Español</span></div>
+    ${rows.map(([en,es]) => `<div class="bridge-row"><div class="bridge-en">${en}</div><div class="bridge-es">${es}</div></div>`).join('')}
+  </div>`;
+}
+
+// Tap-to-reveal rows
+function tapRow(q, a) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top">
+      <div class="tap-q">${q}</div>
+      <div class="tap-hint-label">Tap to reveal</div>
+    </div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+
+// Mistake box with hidden corrections. items = [[wrong, right, why], ...]
+function mistakeBox(label, items) {
+  return `<div class="mistake-wrap">
+    <div class="mistake-label">${label}</div>
+    <p class="mistake-sub">Toca cada error para ver la corrección.</p>
+    ${items.map(([w, r, why]) => `
+      <div class="mistake-tap" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="mistake-wrong">❌ ${w}</div>
+        <div class="tap-answer">
+          <div class="mistake-right">✅ ${r}</div>
+          ${why ? `<div class="mistake-why">${why}</div>` : ''}
+        </div>
+      </div>`).join('')}
+  </div>`;
+}
+
+function examples(label, items) {
+  return `<div class="examples-wrap">
+    ${label ? `<div class="examples-label">${label}</div>` : ''}
+    ${items.map(([en, es]) => `<div class="example-item">
+      <span class="example-en">${en}</span>
+      ${es ? `<span class="example-arrow">→</span><span class="example-es">${es}</span>` : ''}
+    </div>`).join('')}
+  </div>`;
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+// Vocabulary: 15 new words in 3 groups. [english, type, spanish, example, isKeyWord]
+const VOC_GROUPS = [
+  { title: `How you work`, es: `Cómo trabajas`, items: [
+    [`productive`, `adjective`, `productivo`, `I'm more productive in the morning.`, true],
+    [`efficient`, `adjective`, `eficiente`, `The new system is more efficient than the old one.`, true],
+    [`flexible`, `adjective`, `flexible`, `My schedule is more flexible on Fridays.`, true],
+    [`organized`, `adjective`, `organizado`, `Karen's desk is always organized.`, true],
+  ]},
+  { title: `Ways of working`, es: `Formas de trabajar`, items: [
+    [`method`, `noun`, `método`, `Which method do you use to plan your week?`, false],
+    [`approach`, `noun`, `enfoque, forma de hacer algo`, `We need a different approach to this project.`, false],
+    [`habit`, `noun`, `hábito, costumbre`, `Checking email first thing is a bad habit.`, false],
+    [`to-do list`, `noun`, `lista de pendientes`, `I write a to-do list every Monday.`, false],
+    [`template`, `noun`, `plantilla`, `Use the template for the weekly report.`, false],
+  ]},
+  { title: `Focus and time`, es: `Concentración y tiempo`, items: [
+    [`focused`, `adjective`, `concentrado, enfocado`, `I'm more focused when my phone is off.`, false],
+    [`distracted`, `adjective`, `distraído`, `It's easy to get distracted in an open office.`, false],
+    [`interruption`, `noun`, `interrupción`, `I had ten interruptions this morning.`, false],
+    [`time-consuming`, `adjective`, `que toma mucho tiempo`, `Writing reports by hand is time-consuming.`, false],
+    [`save time`, `phrase`, `ahorrar tiempo`, `A good template saves time.`, false],
+    [`waste time`, `phrase`, `perder tiempo`, `Long meetings waste time.`, false],
+  ]},
+];
+
+// ── CONCEPT-CHECK BANKS (one per content segment, isolated engines) ──
+
+const VOC_CQ = [
+  { type:`mc`, q:`A 10-minute meeting that finishes on time and doesn't waste anyone's time is...`,
+    opts:[`effective`, `efficient`, `flexible`], answer:1,
+    fb:`Efficient = rápido y sin desperdiciar tiempo. Effective es sobre el resultado, no sobre la rapidez.` },
+  { type:`tf`, q:`"We lost time in the meeting" is a natural way to say "perdimos tiempo en la reunión".`,
+    answer:false,
+    fb:`Lo natural es <em>We wasted time in the meeting.</em> Perder tiempo = waste time.` },
+  { type:`input`, q:`Complete: "Please use the ______ for the weekly report. It's already formatted."`,
+    hint:`Pista: plantilla`,
+    answers:[`template`, `the template`], display:`template`,
+    fb:`Template = plantilla. Es un documento base que ya tiene el formato listo.` },
+];
+
+const BRIDGE_CQ = [
+  { type:`mc`, q:`Choose the correct sentence.`,
+    opts:[`I have tried a new app last week.`, `I tried a new app last week.`, `I have try a new app last week.`], answer:1,
+    fb:`<em>Last week</em> es un tiempo terminado y específico, así que usamos pasado simple: <em>I tried.</em>` },
+  { type:`input`, q:`Complete: "Have you ______ used a template for your reports?"`,
+    hint:`Pista: ¿alguna vez?`,
+    answers:[`ever`], display:`ever`,
+    fb:`<em>Have you ever...?</em> = ¿Alguna vez has...? <em>Ever</em> va entre el sujeto y el participio.` },
+  { type:`tf`, q:`"I haven't finished my to-do list yet" is correct.`,
+    answer:true,
+    fb:`Correcto. <em>Yet</em> va al final en frases negativas y preguntas.` },
+];
+
+const FORM_CQ = [
+  { type:`mc`, q:`What is the comparative of "easy"?`,
+    opts:[`more easy`, `easyer`, `easier`], answer:2,
+    fb:`Dos sílabas terminadas en -y: cambia la y por ier. <em>easy → easier.</em>` },
+  { type:`input`, q:`Write the comparative of "efficient".`,
+    hint:`Pista: tiene tres sílabas.`,
+    answers:[`more efficient`], display:`more efficient`,
+    fb:`<em>Efficient</em> tiene tres sílabas, así que usamos <em>more</em>: <em>more efficient.</em>` },
+  { type:`tf`, q:`The comparative of "good" is "more good".`,
+    answer:false,
+    fb:`<em>Good</em> es irregular: <em>good → better.</em>` },
+];
+
+const USE_CQ = [
+  { type:`mc`, q:`Choose the correct sentence.`,
+    opts:[`My new laptop is more better than my old one.`, `My new laptop is better than my old one.`, `My new laptop is better that my old one.`], answer:1,
+    fb:`<em>Better</em> ya es comparativo, y comparamos con <em>than</em>.` },
+  { type:`input`, q:`Complete with one word: "Working from home is ______ productive as working in the office."`,
+    hint:`Pista: igual de productivo`,
+    answers:[`as`], display:`as`,
+    fb:`<em>as productive as</em> = igual de productivo.` },
+  { type:`tf`, q:`"This task is very easier than the last one" is correct.`,
+    answer:false,
+    fb:`Con comparativos usamos <em>much</em> o <em>a lot</em>: <em>much easier.</em>` },
+];
+
+const MOD_CQ = [
+  { type:`mc`, q:`In sentence 3, what does "it isn't as flexible" mean?`,
+    opts:[`The paper list is more flexible than the app.`, `The paper list is less flexible than the app.`, `The paper list and the app are equally flexible.`], answer:1,
+    fb:`<em>Not as flexible as</em> = menos flexible. La app es más flexible.` },
+  { type:`input`, q:`Sentence 5 says open offices are "______ than private offices". Write the missing word.`,
+    answers:[`noisier`], display:`noisier`,
+    fb:`<em>Noisy</em> termina en -y: <em>noisy → noisier.</em>` },
+];
+
+const LIS_CQ = [
+  { type:`mc`, q:`How many ways to plan her work has Freya tried this year?`,
+    opts:[`two`, `three`, `four`], answer:1,
+    fb:`Ella dice: <em>I've tried three different ways to plan my work.</em>` },
+  { type:`tf`, q:`The paper to-do list was very flexible.`,
+    answer:false,
+    fb:`Freya dice que era simple, pero <em>it wasn't very flexible.</em>` },
+  { type:`input`, q:`Where is Freya more productive: at home or at the office?`,
+    answers:[`at home`, `home`], display:`at home`,
+    fb:`Su casa es más tranquila (<em>quieter</em>), así que es más productiva ahí.` },
+];
+
+// ── MAIN QUIZ (12: 8 comparatives, 2 bridge, 2 vocabulary) ──
+const QUIZ = [
+  { type:`mc`, q:`What is the comparative of "cheap"?`,
+    opts:[`more cheap`, `cheaper`, `cheapper`], answer:1,
+    hint:`💡 Es un adjetivo de una sílaba.`,
+    fb:`<em>Cheap</em> es corto: agregas -er. No se duplica la p porque tiene dos vocales antes (ea).` },
+  { type:`mc`, q:`Choose the correct sentence.`,
+    opts:[`This method is more flexible than the old one.`, `This method is flexibler than the old one.`, `This method is more flexible that the old one.`], answer:0,
+    hint:`💡 Revisa el tamaño del adjetivo y la palabra que compara.`,
+    fb:`<em>Flexible</em> es largo, así que usamos <em>more</em>. Y comparamos con <em>than</em>.` },
+  { type:`input`, q:`Write the comparative of "bad".`,
+    hint:`💡 Es irregular.`,
+    answers:[`worse`], display:`worse`,
+    fb:`<em>Bad</em> es irregular: <em>bad → worse.</em>` },
+  { type:`mc`, q:`"Home ______ as noisy as the office."`,
+    opts:[`isn't`, `is more`, `is less`], answer:0,
+    hint:`💡 La frase quiere decir que la oficina es más ruidosa.`,
+    fb:`<em>not as...as</em> = menos. <em>Home isn't as noisy as the office</em> = la oficina es más ruidosa.` },
+  { type:`tf`, q:`"My new laptop is more better than my old one" is correct.`,
+    answer:false,
+    fb:`<em>Better</em> ya es comparativo. Lo correcto es <em>My new laptop is better than my old one.</em>` },
+  { type:`input`, q:`Complete: "The new system is ______ faster than the old one."`,
+    hint:`💡 Pista: mucho más rápido`,
+    answers:[`much`, `a lot`, `far`], display:`much (also: a lot / far)`,
+    fb:`Para una diferencia grande: <em>much faster</em> o <em>a lot faster</em>. Nunca <em>very faster</em>.` },
+  { type:`mc`, q:`Which is correct? "Writing reports by hand is ______ than using a template."`,
+    opts:[`time-consuminger`, `more time-consuming`, `much time-consuming`], answer:1,
+    hint:`💡 Es un adjetivo largo.`,
+    fb:`<em>Time-consuming</em> es largo: <em>more time-consuming.</em>` },
+  { type:`input`, q:`Write the comparative of "early".`,
+    hint:`💡 Dos sílabas y termina en -y.`,
+    answers:[`earlier`], display:`earlier`,
+    fb:`Dos sílabas con -y: <em>early → earlier.</em>` },
+  { type:`mc`, q:`Choose the correct sentence.`,
+    opts:[`Have you ever tried the Pomodoro method?`, `Did you ever tried the Pomodoro method?`, `Have you ever try the Pomodoro method?`], answer:0,
+    hint:`💡 Repaso: Present Perfect (Lección 19).`,
+    fb:`<em>Have</em> + sujeto + <em>ever</em> + participio: <em>Have you ever tried...?</em>` },
+  { type:`input`, q:`Correct the verb: "I have started the new approach last Monday." Write only the correct verb.`,
+    hint:`💡 Repaso: ¿hay un tiempo específico en la frase?`,
+    answers:[`started`, `i started`, `i started the new approach last monday`], display:`started (I started the new approach last Monday.)`,
+    fb:`<em>Last Monday</em> es un tiempo terminado, así que usamos pasado simple: <em>I started.</em>` },
+  { type:`mc`, q:`"Long meetings ______ time."`,
+    opts:[`lose`, `waste`, `save`], answer:1,
+    hint:`💡 Pista: pierden tiempo`,
+    fb:`Perder tiempo = <em>waste time</em>.` },
+  { type:`tf`, q:`"I get distracted by notifications" means "Me distraigo con las notificaciones".`,
+    answer:true,
+    fb:`Correcto. <em>Get distracted</em> = distraerse.` },
+];
+
+// ── Quiz state ────────────────────────────────────────────
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 1;
+
+// ── Concept-check state (one key per prefix) ─────────────
+const miniState = { voc:{}, bridge:{}, form:{}, use:{}, mod:{}, lis:{} };
+const MINI_BANK = { voc:VOC_CQ, bridge:BRIDGE_CQ, form:FORM_CQ, use:USE_CQ, mod:MOD_CQ, lis:LIS_CQ };
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function quickCheck(prefix, name, sub) {
+  return `<div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check: ${name}</div>
+    <p class="cq-sub">${sub}</p>
+    ${renderMiniQ(prefix)}`;
+}
+
+function renderWelcome() {
+  return `<div class="sc">
+    ${badge(1, 'Welcome', '2 min')}
+    <p class="sec-intro">Todos tenemos un truco para trabajar mejor: una lista, una alarma, el celular en otro cuarto. Hoy vas a aprender a comparar esos métodos en inglés. ¿Qué es más rápido? ¿Qué es más eficiente? ¿Trabajas mejor en casa o en la oficina?</p>
+    <div class="info-box">
+      <div class="tip-label">Scenario</div>
+      Your team leader asks everyone: <em>"What's your secret? How do you plan your week?"</em> You use a paper list. Your colleague uses an app. Who is more organized? Whose method is faster?
+    </div>
+    <div class="es-note">Al final de esta lección vas a poder explicar tu método, compararlo con otros y decir por qué te funciona.</div>
+    <div class="h-serif">Your path today</div>
+    <div class="map-list">
+      <div class="map-item"><span class="map-num">2</span>Vocabulary: 15 new words</div>
+      <div class="map-item"><span class="map-num">3</span>Grammar Bridge: Present Perfect (review)</div>
+      <div class="map-item"><span class="map-num">4</span>Comparatives: form rules</div>
+      <div class="map-item"><span class="map-num">5</span>Using comparatives: than, as...as, much, a bit</div>
+      <div class="map-item"><span class="map-num">6</span>Model sentences</div>
+      <div class="map-item"><span class="map-num">7</span>Listening: Freya's methods</div>
+      <div class="map-item"><span class="map-num">8</span>Exercises</div>
+      <div class="map-item"><span class="map-num">9</span>Final quiz</div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocab() {
+  return `<div class="sc">
+    ${badge(2, 'Vocabulary', '7 min')}
+    <div class="es-note">Lee cada palabra y su ejemplo en voz alta. Las cuatro primeras son las palabras clave de la lección. Vas a usar casi todas en frases comparativas.</div>
+    <div class="v3-wrap">
+      <div class="v3-head"><span>English</span><span>Español</span><span>Example</span></div>
+      ${VOC_GROUPS.map(g => `
+        <div class="v3-group">${g.title} <span class="v3-group-es">${g.es}</span></div>
+        ${g.items.map(([en, type, es, ex, key]) => `
+          <div class="v3-row">
+            <div class="v3-en">${en}${key ? ' <span class="key-tag">key word</span>' : ''}<div class="v3-type">${type}</div></div>
+            <div class="v3-es">${es}</div>
+            <div class="v3-ex">${ex}</div>
+          </div>`).join('')}`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">⚠️ Cuidado: efficient ≠ effective</div>
+      <em>Efficient</em> = eficiente: haces algo rápido y sin desperdiciar tiempo ni recursos.<br>
+      <em>Effective</em> = eficaz, efectivo: el resultado funciona.<br>
+      Una reunión de 10 minutos puede ser <em>efficient</em>, pero si nadie decide nada, no es <em>effective</em>.
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">⚠️ Cuidado: waste time, no "lose time"</div>
+      En español decimos "perder tiempo", pero en inglés es <strong>waste time</strong>: <em>We wasted an hour in that meeting.</em> "Lose time" existe, pero se usa poco y significa otra cosa (quedarse atrás, por ejemplo por un retraso).
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip: approach ≠ aproximación</div>
+      En el trabajo, <em>approach</em> es la forma de hacer algo: <em>a new approach</em> = un nuevo enfoque. No lo traduzcas como "aproximación".
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip: get distracted</div>
+      Con <em>distracted</em> casi siempre usamos <strong>get</strong>: <em>I get distracted by notifications.</em> = Me distraigo con las notificaciones.
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">🔊 Pronunciación</div>
+      <em>efficient</em>: e-FI-shent (la "c" suena como "sh")<br>
+      <em>organized</em>: OR-ga-naizd (una sola sílaba al final, no "or-ga-ni-zed")<br>
+      <em>method</em>: ME-thod (con "th" suave, como en <em>think</em>)
+    </div>
+
+    ${quickCheck('voc', 'Vocabulary', '2 o 3 preguntas rápidas para confirmar que las palabras clave están claras.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    ${badge(3, 'Grammar Bridge: Present Perfect', '6 min')}
+    <div class="es-note">¿Recuerdas la Lección 19? Usaste el Present Perfect para dar actualizaciones de proyecto: <em>I've finished the report.</em> Hoy lo usamos para otra cosa: hablar de métodos que <strong>has probado</strong>. Primero dices que lo probaste (Present Perfect). Después comparas (comparativos).</div>
+
+    <div class="h-serif">A. Form</div>
+    ${table(['Subject','Affirmative','Negative','Question'], [
+      ['I / You / We / They', "have ('ve) tried", "haven't tried", 'Have you tried...?'],
+      ['He / She / It', "has ('s) tried", "hasn't tried", 'Has she tried...?'],
+    ], '1.3fr 1fr 1fr 1.1fr')}
+    <div class="info-box"><strong>Short answers:</strong> Yes, I have. / No, I haven't. Yes, she has. / No, she hasn't.<br>
+    <span class="inline-es">En la respuesta corta no repites el verbo. Nunca <em>Yes, I have tried.</em></span></div>
+
+    <div class="examples-label">Past participles you need today</div>
+    ${table(['Regular (-ed)','Irregular'], [
+      ['try → tried','do → done'], ['use → used','make → made'], ['work → worked','find → found'],
+      ['change → changed','write → written'], ['plan → planned','give → given'], ['test → tested','be → been'],
+    ], '1fr 1fr')}
+    <div class="es-note">Los regulares son iguales al pasado simple. Los irregulares hay que memorizarlos: <em>I did</em> (pasado) pero <em>I have done</em> (present perfect).</div>
+
+    <div class="h-serif">B. Ever and never</div>
+    ${examples('Experiencias', [
+      ['<strong>Have you ever</strong> used a time-tracking app?', '¿Alguna vez has usado...?'],
+      ["I've <strong>never</strong> worked from home.", 'Nunca he trabajado desde casa.'],
+      ["She's <strong>never</strong> tried the Pomodoro method.", 'Nunca ha probado el método Pomodoro.'],
+    ])}
+    <div class="es-note"><em>Ever</em> va en preguntas, entre el sujeto y el participio. <em>Never</em> ya es negativo, así que no se usa con <em>haven't</em>.</div>
+    ${mistakeBox('⚠️ Common mistake', [
+      ["I haven't never tried it.", "I've never tried it. / I haven't ever tried it.", 'En inglés no se usan dos negativos juntos.'],
+    ])}
+
+    <div class="h-serif">C. Already and yet</div>
+    ${examples('', [
+      ["I've <strong>already</strong> finished my to-do list.", 'ya (antes de lo esperado); va antes del participio'],
+      ["I haven't finished my to-do list <strong>yet</strong>.", 'todavía no; va al final'],
+      ['Have you finished your to-do list <strong>yet</strong>?', '¿ya...? en preguntas; va al final'],
+    ])}
+    <div class="es-note">En Latinoamérica decimos "ya terminé" en pasado simple. En inglés, con <em>already</em> la forma estándar es Present Perfect: <em>I've already finished.</em> En inglés americano informal también se escucha <em>I already finished</em>, pero en este curso usamos la forma estándar.</div>
+
+    <div class="h-serif">D. Present Perfect or Past Simple?</div>
+    ${table(['Present Perfect','Past Simple'], [
+      ['<strong>Experience, no specific time</strong>','<strong>Finished time, specific moment</strong>'],
+      ["I've tried time blocking.", 'I tried it last month.'],
+      ['Have you ever used a template?', 'Did you use it yesterday?'],
+      ['<span class="signal">ever, never, already, yet</span>', '<span class="signal">yesterday, last week, in 2024, two days ago</span>'],
+    ], '1fr 1fr')}
+    <div class="builder-wrap">
+      <div class="builder-label">The pattern for today</div>
+      <div class="builder-ex">Open with Present Perfect: <strong>I've tried two methods.</strong></div>
+      <div class="builder-ex">Then give details in Past Simple: <strong>I used a paper list last year, and I started an app in March.</strong></div>
+    </div>
+    ${mistakeBox('⚠️ Pitfall: si dices cuándo, no uses Present Perfect', [
+      ['I have tried it yesterday.', 'I tried it yesterday.', '<em>Yesterday</em> es un momento terminado: pasado simple.'],
+      ['She has started the new method two weeks ago.', 'She started the new method two weeks ago.', '<em>Ago</em> siempre va con pasado simple.'],
+    ])}
+
+    <div class="examples-label">Spanish Bridge</div>
+    ${bridgeTable([
+      ["I've tried that method.", 'He probado ese método.'],
+      ['Have you ever used...?', '¿Alguna vez has usado...?'],
+      ["I've never worked from home.", 'Nunca he trabajado desde casa.'],
+      ["I've already finished.", 'Ya terminé.'],
+      ["I haven't started yet.", 'Todavía no he empezado.'],
+      ['I tried it yesterday.', 'Lo probé ayer.'],
+    ])}
+    <div class="es-note">Ojo con la última fila: "Lo probé ayer" usa pasado simple en los dos idiomas. <em>Have</em> se parece a "haber", pero en inglés la regla es más estricta: si hay un tiempo terminado (ayer, la semana pasada, hace dos días), el Present Perfect no funciona.</div>
+
+    ${quickCheck('bridge', 'Grammar Bridge', '2 o 3 preguntas rápidas para confirmar que recuerdas el Present Perfect.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderForm() {
+  return `<div class="sc">
+    ${badge(4, 'Comparatives: Form Rules', '6 min')}
+    <div class="h-serif">Notice</div>
+    <div class="es-note">Lee estas frases de un equipo que compara sus métodos. Fíjate en las palabras en negrita.</div>
+    <div class="model-card">
+      <div class="model-body">
+        <div class="model-line"><span class="model-en">Ines: "A paper list is <strong>faster than</strong> an app."</span></div>
+        <div class="model-line"><span class="model-en">Kwame: "Yes, but an app is <strong>more flexible</strong>."</span></div>
+        <div class="model-line"><span class="model-en">Ines: "My old system was <strong>worse</strong>. This one is much <strong>better</strong>."</span></div>
+        <div class="model-line"><span class="model-en">Kwame: "My desk isn't <strong>as organized as</strong> yours."</span></div>
+      </div>
+    </div>
+    <div class="es-note">¿Qué notas? A veces el adjetivo cambia (<em>fast → faster</em>). A veces agregamos <strong>more</strong> antes (<em>more flexible</em>). Y a veces cambia completamente (<em>good → better</em>). Para comparar dos cosas, usamos <strong>than</strong>.</div>
+
+    <div class="h-serif">Rule 1: Short adjectives (one syllable) + -er</div>
+    ${table(['Adjective','Comparative','Adjective','Comparative'], [
+      ['fast','faster','long','longer'], ['quick','quicker','short','shorter'],
+      ['cheap','cheaper','clear','clearer'], ['slow','slower','quiet','quieter'],
+    ], '1fr 1fr 1fr 1fr')}
+
+    <div class="h-serif">Rule 2: Spelling changes</div>
+    ${table(['Rule','Examples'], [
+      ['Ends in -e: add only <strong>-r</strong>','late → later, large → larger, safe → safer'],
+      ['One vowel + one consonant: <strong>double</strong> the consonant','big → bigger, hot → hotter, thin → thinner'],
+      ['Two syllables ending in <strong>-y</strong>: <strong>y → ier</strong>','easy → easier, busy → busier, early → earlier, noisy → noisier, happy → happier'],
+    ], '1fr 1.3fr')}
+    <div class="es-note">No se duplica la consonante si termina en <strong>w</strong> o <strong>y</strong>: <em>slow → slower</em>, <em>new → newer</em>.</div>
+
+    <div class="h-serif">Rule 3: Long adjectives (two or more syllables) use more / less</div>
+    ${table(['Adjective','More','Less'], [
+      ['productive','more productive','less productive'], ['efficient','more efficient','less efficient'],
+      ['flexible','more flexible','less flexible'], ['organized','more organized','less organized'],
+      ['useful','more useful','less useful'], ['time-consuming','more time-consuming','less time-consuming'],
+      ['expensive','more expensive','less expensive'],
+    ], '1fr 1fr 1fr')}
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip: adjectives ending in -ed always take more</div>
+      Aunque tenga una sola sílaba, un adjetivo que termina en -ed usa <em>more</em>: <em>more tired</em>, <em>more bored</em>, <em>more focused</em>, <em>more distracted</em>.
+    </div>
+
+    <div class="h-serif">Rule 4: Irregular forms</div>
+    ${table(['Adjective','Comparative'], [
+      ['good','better'], ['bad','worse'], ['far','further (also farther)'],
+    ], '1fr 1fr')}
+    <div class="es-note">Estos se memorizan. <em>Better</em> ya significa "mejor", así que nunca lleva <em>more</em>. <em>Further</em> también significa "más" en frases como <em>further information</em> (más información). El adverbio <em>well</em> también tiene comparativo <em>better</em>: <em>I work better in the morning.</em></div>
+
+    <div class="info-box"><strong>Not yet:</strong> Quizás has visto <em>the best</em> o <em>the most efficient</em>. Esos son superlativos, y los vemos en la Lección 33. Hoy solo comparamos <strong>dos</strong> cosas.</div>
+
+    ${quickCheck('form', 'Form Rules', '2 o 3 preguntas rápidas para confirmar las reglas de forma.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderUse() {
+  return `<div class="sc">
+    ${badge(5, 'Using Comparatives', '6 min')}
+
+    <div class="h-serif">1. Comparing two things: comparative + than</div>
+    ${examples('', [
+      ['A shared calendar is <strong>more efficient than</strong> email.', ''],
+      ['My commute is <strong>longer than</strong> yours.', ''],
+      ['Friday afternoons are <strong>less productive than</strong> Monday mornings.', ''],
+    ])}
+    <div class="es-note"><em>Than</em> = que (en comparaciones). Se pronuncia débil: /ðən/, casi "dhn".</div>
+
+    <div class="h-serif">2. You can leave out "than" if it's clear</div>
+    ${examples('', [
+      ['The old system was slow. The new one is <strong>faster</strong>.', ''],
+      ["Try the app. It's <strong>easier</strong>.", ''],
+    ])}
+
+    <div class="h-serif">3. Same: as + adjective + as</div>
+    ${examples('', [
+      ['Your method is <strong>as good as</strong> mine.', 'igual de bueno'],
+      ['The app is <strong>as fast as</strong> the paper list.', 'igual de rápida'],
+    ])}
+
+    <div class="h-serif">4. Different: not as + adjective + as</div>
+    ${examples('', [
+      ["The app isn't <strong>as simple as</strong> a paper list.", 'la lista en papel es más simple'],
+      ["Home isn't <strong>as noisy as</strong> the office.", 'la oficina es más ruidosa'],
+    ])}
+    <div class="es-note">Entre <em>as</em> y <em>as</em> va el adjetivo <strong>normal</strong>, nunca el comparativo: <em>as fast as</em>, no <em>as faster as</em>. Además, <em>not as...as</em> suena más amable que <em>less</em>. Con adjetivos cortos, es más natural decir <em>not as busy as</em> que <em>less busy than</em>.</div>
+
+    <div class="h-serif">5. How big is the difference? a bit / much + comparative</div>
+    ${table(['Small difference','Big difference'], [
+      ['a bit faster','much faster'], ['a little more organized','a lot more organized'], ['slightly better','far better'],
+    ], '1fr 1fr')}
+    ${examples('', [
+      ['The new template is <strong>much faster</strong>.', ''],
+      ["I'm <strong>a bit more productive</strong> at home.", ''],
+      ['This week is <strong>a lot busier than</strong> last week.', ''],
+    ])}
+    <div class="es-note">Con comparativos no usamos <em>very</em>. ❌ <em>very faster</em> → ✅ <em>much faster</em>.</div>
+
+    <div class="examples-label">Spanish Bridge</div>
+    ${bridgeTable([
+      ['faster than', 'más rápido que'],
+      ['more efficient than', 'más eficiente que'],
+      ['less organized than / not as organized as', 'menos organizado que'],
+      ['as flexible as', 'tan flexible como'],
+      ['better than / worse than', 'mejor que / peor que'],
+      ['further', 'más lejos'],
+      ['much easier', 'mucho más fácil'],
+      ['a bit slower', 'un poco más lento'],
+    ])}
+
+    ${mistakeBox('⚠️ Common mistakes (Spanish interference)', [
+      ['This method is more better.', 'This method is better.', '<em>Better</em> ya es comparativo ("más mejor" no existe en inglés).'],
+      ['The app is more fast.', 'The app is faster.', '<em>Fast</em> es corto: -er, no <em>more</em>.'],
+      ["It's more easy.", "It's easier.", 'Dos sílabas con -y: <em>easier</em>.'],
+      ['She is more organized that me.', 'She is more organized than me.', 'Comparaciones usan <strong>than</strong>, no <em>that</em>.'],
+      ['My desk is more big than yours.', 'My desk is bigger than yours.', 'Corto con doble consonante: <em>bigger</em>.'],
+      ['This week is very busier.', 'This week is much busier.', 'Con comparativos: <em>much</em>, <em>a bit</em>, no <em>very</em>.'],
+      ["It's as fast than the old one.", "It's as fast as the old one.", '<em>as...as</em> siempre, nunca <em>as...than</em>.'],
+      ["It's as faster as the old one.", "It's as fast as the old one.", 'Adjetivo normal entre <em>as...as</em>.'],
+    ])}
+    <div class="tip-box">
+      <div class="tip-label">💡 Why "that" appears</div>
+      En español solo hay una palabra: "que". En inglés hay dos. <em>That</em> conecta ideas (<em>I think that...</em>). <em>Than</em> compara (<em>faster than</em>). Si estás comparando, siempre es <strong>than</strong>.
+    </div>
+
+    ${quickCheck('use', 'Using Comparatives', '2 o 3 preguntas rápidas para confirmar cómo se usan los comparativos.')}
+    ${navFooter()}
+  </div>`;
+}
+
+const MODELS = [
+  ['Hamid has tried three to-do list apps. His new one is <strong>much faster</strong>.', 'Hamid ha probado tres apps de listas de pendientes. La nueva es mucho más rápida.'],
+  ['Yuki is <strong>more focused</strong> in the morning <strong>than</strong> in the afternoon.', 'Yuki está más concentrada en la mañana que en la tarde.'],
+  ["For me, a paper list is <strong>simpler than</strong> an app, but it isn't <strong>as flexible</strong>.", 'Para mí, una lista en papel es más simple que una app, pero no es tan flexible.'],
+  ["Have you ever used the team template? It saves time, and it's <strong>a lot more organized</strong>.", '¿Alguna vez has usado la plantilla del equipo? Ahorra tiempo y es mucho más organizada.'],
+  ["Open offices are <strong>noisier than</strong> private offices, so it's <strong>easier</strong> to get distracted.", 'Las oficinas abiertas son más ruidosas que las privadas, así que es más fácil distraerse.'],
+  ["Tariq's new approach is <strong>better than</strong> his old one. He wastes <strong>less</strong> time on email.", 'El nuevo enfoque de Tariq es mejor que el anterior. Pierde menos tiempo en el correo.'],
+  ["Video calls are <strong>more efficient than</strong> long email threads, but they're <strong>a bit more time-consuming</strong> to organize.", 'Las videollamadas son más eficientes que las cadenas largas de correos, pero organizarlas toma un poco más de tiempo.'],
+  ["I haven't found a perfect method yet, but my habits are <strong>much better than</strong> last year.", 'Todavía no he encontrado un método perfecto, pero mis hábitos son mucho mejores que el año pasado.'],
+];
+
+function renderModels() {
+  return `<div class="sc">
+    ${badge(6, 'Model Sentences', '3 min')}
+    <div class="es-note">Estas frases combinan todo: comparativos, vocabulario nuevo y un poco de Present Perfect. Léelas en voz alta.</div>
+    <div class="examples-wrap">
+      ${MODELS.map(([en, es], i) => `<div class="model-sent">
+        <div class="model-sent-num">${i+1}</div>
+        <div><div class="model-sent-en">${en}</div><div class="model-sent-es">${es}</div></div>
+      </div>`).join('')}
+    </div>
+    ${quickCheck('mod', 'Model Sentences', '2 preguntas rápidas sobre las frases modelo.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    ${badge(7, 'Listening', '5 min')}
+    <div class="es-note">Escucha a Freya, que trabaja en una empresa de transporte marítimo en Suecia. Habla de los métodos que ha probado para organizar su trabajo. Escucha una vez sin leer. Después abre la transcripción si la necesitas.</div>
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Three ways to plan my work</div>
+          <div class="audio-box-sub">Freya Lindqvist · ~70 sec · Swedish English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload" preload="metadata" src="${AUDIO_URL}">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        ${[0.7,0.8,0.9,1.0,1.1].map(r => `<button class="speed-btn${r===currentSpeed?' active':''}" data-rate="${r}" onclick="setSpeed(${r})">${r.toFixed(1)}×</button>`).join('')}
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        <p>Hi, I'm Freya. I'm an operations coordinator at a shipping company in Gothenburg. This year, I've tried three different ways to plan my work. First, I used a paper to-do list. It was simple, but it wasn't very flexible. When a plan changed, the list got hard to read.</p>
+        <p>Then I tried a new method. I put every task in my calendar, with a time for each one. That was much better. I felt more organized, and I was less distracted by emails. Last month, my manager gave the team a shared template. It's a bit slower on Monday mornings, but it saves time later, because everyone can see the plan.</p>
+        <p>For me, the real difference is interruptions. My desk at home isn't as big as my desk at the office, but home is quieter, so I'm more productive there. Have you ever tried working with your phone in another room? It's harder than it sounds, but it works.</p>
+      </div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">🎧 Mientras escuchas</div>
+      Busca dos cosas: los métodos que Freya <strong>ha probado</strong> (Present Perfect) y las palabras que usa para <strong>comparar</strong> (much better, a bit slower, quieter, as big as).
+    </div>
+    ${quickCheck('lis', 'Listening', '3 preguntas rápidas sobre lo que dice Freya.')}
+    ${navFooter()}
+  </div>`;
+}
+
+const EX_SETS = [
+  { label:'Set A · Write the comparative', es:'Escribe el comparativo. Después toca para ver la respuesta.', items:[
+    ['1. fast','faster'], ['2. late','later'], ['3. big','bigger'], ['4. busy','busier'],
+    ['5. productive','more productive'], ['6. bad','worse'], ['7. organized','more organized'], ['8. far','further'],
+  ]},
+  { label:'Set B · Complete the sentence', es:'Completa con la forma correcta.', items:[
+    ['1. The new template is ______ (quick) than the old one.','quicker'],
+    ['2. Maria is ______ (organized) than her manager.','more organized'],
+    ['3. My internet at home is ______ (good) than at the office.','better'],
+    ['4. Friday is ______ (flexible) than Monday for me.','more flexible'],
+    ['5. The app is as ______ (easy) as the paper list.','easy'],
+    ['6. This week is ______ (a lot / busy) than last week.','a lot busier'],
+  ]},
+  { label:'Set C · Fix the mistake', es:'Cada frase tiene un error. Corrígela.', items:[
+    ['1. My method is more better than yours.','My method is better than yours.'],
+    ['2. The printer is more slow than before.','The printer is slower than before.'],
+    ['3. She is more efficient that her team.','She is more efficient than her team.'],
+    ['4. Email is very slower than chat.','Email is much slower than chat.'],
+    ['5. Our office is as noisy than a café.','Our office is as noisy as a café.'],
+    ['6. I have tried the new app yesterday.','I tried the new app yesterday.'],
+  ]},
+  { label:'Set D · Present Perfect or Past Simple?', es:'Repaso de la Lección 19. Usa el verbo entre paréntesis.', items:[
+    ['1. I ______ (never / use) a time-tracking app.',"have never used / 've never used"],
+    ['2. We ______ (start) the new method two weeks ago.','started'],
+    ['3. ______ you ______ (ever / try) working with your phone off?','Have / ever tried'],
+    ['4. She ______ (not / finish) her to-do list yet.',"hasn't finished"],
+  ]},
+  { label:'Set E · Compare it yourself', es:'Usa las palabras para escribir una comparación. Hay más de una respuesta posible.', items:[
+    ['1. paper list / app / flexible','An app is more flexible than a paper list.<br>A paper list isn\u2019t as flexible as an app.'],
+    ['2. morning / afternoon / productive',"I'm more productive in the morning than in the afternoon."],
+    ['3. office / home / quiet','Home is quieter than the office.<br>The office isn\u2019t as quiet as home.'],
+    ['4. short meetings / long meetings / efficient','Short meetings are much more efficient than long meetings.'],
+  ]},
+];
+
+function renderExercises() {
+  return `<div class="sc">
+    ${badge(8, 'Exercises', '5 min')}
+    <div class="es-note">Escribe o di tu respuesta primero. Después toca para ver la respuesta correcta.</div>
+    ${EX_SETS.map(set => `<div class="ex-box">
+      <div class="ex-label">${set.label}</div>
+      <p class="ex-es">${set.es}</p>
+      ${set.items.map(([q, a]) => tapRow(q, `<span class="ans">✓ ${a}</span>`)).join('')}
+    </div>`).join('')}
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising, ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'A perfect score. See you in class!';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    ${badge(9, 'Quiz', '5 min')}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Comparatives, Present Perfect and vocabulary</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div class="result-attempts">Attempts so far: ${quizAttempts}</div>
+      <div class="result-actions">
+        ${!allCorrect ? `<button class="result-btn result-btn-gold" onclick="retakeQuiz()">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>` : ''}
+        <button class="result-btn result-btn-ghost" onclick="goTo(0)">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── SHARED QUESTION CARD BUILDER (main quiz + concept checks) ──
+// ids: { card, input, sel, rev, inp, revInp } → handler call strings
+function qCardHTML(q, s, num, ids) {
+  const rev = s.revealed;
+  const letters = ['A','B','C','D'];
+  let body = '';
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type === 'mc' ? q.opts : ['True','False'];
+    const lets = q.type === 'mc' ? letters : ['T','F'];
+    const isRight = q.type === 'mc' ? s.selected === q.answer : q.answer === (s.selected === 0);
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+        if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+        else if (s.selected === j) cls += ' selected';
+        return `<button class="${cls}" onclick="${ids.sel(j)}" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div class="check-row"><button class="check-btn" onclick="${ids.rev}" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${isRight?'correct':'wrong'}">${isRight?'✅ Correct. ':'❌ Not quite. '}${q.fb}</div>` : ''}`;
+  }
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="${ids.input}" type="text" autocomplete="off" placeholder="Type your answer…"
+        value="${escAttr(s.inputVal || '')}" oninput="${ids.inp}"
+        onkeydown="if(event.key==='Enter'){${ids.revInp}}" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="${ids.revInp}">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">${s.correct?'✅ Correct.':'❌ Not quite.'} Answer: <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+  return `<div class="q-card" id="${ids.card}">
+    <div class="q-top">
+      <span class="q-num">Q${num}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+// ── MAIN QUIZ ENGINE ──────────────────────────────────────
+function renderQ(q, i) {
+  return qCardHTML(q, quizState[i] || {}, i + 1, {
+    card: `qc-${i}`, input: `inp-${i}`,
+    sel: j => `selectOpt(${i},${j})`, rev: `revealQ(${i})`,
+    inp: `setInp(${i},this.value)`, revInp: `revealInp(${i})`,
+  });
+}
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].selected===undefined)return; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q = QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const raw = quizState[qi].inputVal || '';
+  if (!raw.trim()) return;
+  quizState[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  quizState[qi].revealed = true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((q,i) => {
+    const s = quizState[i]; if(!s || !s.revealed) return;
+    let ok = false;
+    if (q.type === 'mc') ok = s.selected === q.answer;
+    else if (q.type === 'tf') ok = q.answer === (s.selected === 0);
+    else if (q.type === 'input') ok = s.correct;
+    if (!ok) delete quizState[i];
+  });
+  quizAttempts++;
+  recalc(); rerender();
+  setTimeout(() => {
+    const first = QUIZ.findIndex((_,i) => !quizState[i] || !quizState[i].revealed);
+    const el = document.getElementById('qc-' + first);
+    if (el) el.scrollIntoView({ behavior:'smooth', block:'center' });
+  }, 100);
+}
+function recalc() {
+  let s = 0;
+  QUIZ.forEach((q,i) => {
+    const st = quizState[i]; if(!st || !st.revealed) return;
+    if (q.type === 'mc' && st.selected === q.answer) s++;
+    else if (q.type === 'tf' && q.answer === (st.selected === 0)) s++;
+    else if (q.type === 'input' && st.correct) s++;
+  });
+  quizScore = s;
+}
+function rerender() {
+  // Calls renderQuiz() directly, never STEPS[currentStep].fn()
+  const qi = STEPS.findIndex(s => s.fn === renderQuiz);
+  if (currentStep === qi) document.getElementById('mainContent').innerHTML = renderQuiz();
+}
+
+// ── CONCEPT-CHECK ENGINE (isolated per prefix) ────────────
+// Rerenders only the single question card, so the audio on the
+// Listening step keeps playing while students answer.
+function miniCard(prefix, i) {
+  const q = MINI_BANK[prefix][i];
+  return qCardHTML(q, miniState[prefix][i] || {}, i + 1, {
+    card: `mini-qc-${prefix}-${i}`, input: `mini-inp-${prefix}-${i}`,
+    sel: j => `miniSelectOpt('${prefix}',${i},${j})`, rev: `miniRevealQ('${prefix}',${i})`,
+    inp: `miniSetInp('${prefix}',${i},this.value)`, revInp: `miniRevealInp('${prefix}',${i})`,
+  });
+}
+function renderMiniQ(prefix) {
+  return MINI_BANK[prefix].map((_, i) => miniCard(prefix, i)).join('');
+}
+function miniRerender(prefix, qi) {
+  const el = document.getElementById(`mini-qc-${prefix}-${qi}`);
+  if (el) el.outerHTML = miniCard(prefix, qi);
+}
+function miniSelectOpt(prefix, qi, j) {
+  const st = miniState[prefix];
+  if (!st[qi]) st[qi] = {};
+  if (st[qi].revealed) return;
+  st[qi].selected = j;
+  miniRerender(prefix, qi);
+}
+function miniRevealQ(prefix, qi) {
+  const st = miniState[prefix];
+  if (!st[qi] || st[qi].selected === undefined) return;
+  st[qi].revealed = true;
+  miniRerender(prefix, qi);
+}
+function miniSetInp(prefix, qi, v) {
+  const st = miniState[prefix];
+  if (!st[qi]) st[qi] = {};
+  st[qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const st = miniState[prefix];
+  const q = MINI_BANK[prefix][qi];
+  if (!st[qi]) st[qi] = {};
+  const raw = st[qi].inputVal || '';
+  if (!raw.trim()) return;
+  st[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  st[qi].revealed = true;
+  miniRerender(prefix, qi);
+}
+
+// ── AUDIO (Pattern A) ─────────────────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+function restoreAudioState() {
+  const audio = document.getElementById('mainAudio');
+  if (!audio) return;
+  audio.playbackRate = currentSpeed;
+  audio.addEventListener('loadedmetadata', () => { audio.playbackRate = currentSpeed; });
+}
+
+// ── STEPS, defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Welcome",            fn: renderWelcome },
+  { label: "2. Vocabulary",         fn: renderVocab },
+  { label: "3. Grammar Bridge",     fn: renderBridge },
+  { label: "4. Form Rules",         fn: renderForm },
+  { label: "5. Using Comparatives", fn: renderUse },
+  { label: "6. Model Sentences",    fn: renderModels },
+  { label: "7. Listening",          fn: renderListening },
+  { label: "8. Exercises",          fn: renderExercises },
+  { label: "9. Quiz",               fn: renderQuiz },
+];
+
+render(); // always last
+
+</script>
+
+
+<!-- PERMANENT SITE FOOTER - do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

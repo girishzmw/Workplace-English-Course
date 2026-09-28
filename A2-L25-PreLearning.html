@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 25: Reporting Problems to Managers | A2 · Unit 3 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold - Georgia headings, Lato body
+   All colours as CSS variables - never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A - Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B - Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE - full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE - use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX - off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX - off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER - column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── A2-L25 additions (all colours via variables) ── */
+.sub-heading { font-family:var(--font-heading); font-size:18px; color:var(--navy); margin:4px 0 10px; }
+.mini-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+.lt-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow-x:auto; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.lt { width:100%; border-collapse:collapse; font-size:14px; }
+.lt th { background:var(--navy); color:var(--gold); font-size:11px; letter-spacing:1px; text-transform:uppercase; text-align:left; padding:10px 14px; font-weight:700; }
+.lt td { padding:9px 14px; border-bottom:1px solid var(--light-grey); color:var(--slate); vertical-align:top; line-height:1.5; }
+.lt tr:last-child td { border-bottom:none; }
+.lt td:first-child { color:var(--navy); font-weight:700; }
+.lt .pos { font-weight:400; font-size:12px; color:var(--grey-blue); font-style:italic; }
+.lt .ex { font-style:italic; color:var(--navy); font-weight:400; }
+.lt-caption { font-family:var(--font-heading); font-size:16px; color:var(--navy); margin:6px 0 10px; }
+.rule-head { font-family:var(--font-heading); font-size:19px; color:var(--navy); margin:26px 0 10px; padding-bottom:6px; border-bottom:2px solid var(--gold-bg); }
+.notice-text { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.8; padding:16px 20px; background:var(--white); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; margin-bottom:18px; }
+.notice-text strong { color:var(--sky); }
+.recycle-box { background:var(--light-grey); border:1px dashed var(--steel); border-radius:10px; padding:14px 18px; margin-bottom:20px; }
+.recycle-label { font-size:12px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.5; }
+.tap-q .wrong-txt { color:var(--red); font-style:italic; }
+.tap-hint-label { font-size:11px; color:var(--sky); white-space:nowrap; font-weight:700; }
+.tap-answer { display:none; margin-top:8px; padding-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); line-height:1.6; }
+.tap-answer.show { display:block; }
+.tap-answer .why { display:block; color:var(--grey-blue); font-size:13px; font-style:italic; margin-top:2px; }
+.set-head { font-family:var(--font-heading); font-size:17px; color:var(--navy); margin:22px 0 6px; }
+.report-step { display:inline-block; background:var(--navy); color:var(--gold); border-radius:4px; padding:1px 8px; font-size:12px; font-weight:700; margin-right:6px; }
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+.attempts { font-size:12px; color:rgba(255,255,255,0.45); margin-top:10px; }
+@media(max-width:600px){
+  .lt { font-size:13px; }
+  .lt th, .lt td { padding:8px 10px; }
+  .tap-row-top { flex-direction:column; align-items:flex-start; gap:4px; }
+}
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER - do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO - edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 3 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 25: Reporting Problems to Managers</h1>
+    <p class="hero-sub">Past Simple review · Grammar bridge: question forms · About 45 minutes</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Explain what happened at work with the past simple</div><div class="outcome-note">Explicar lo que pasó en el trabajo con el pasado simple</div></div>
+      <div><div class="outcome-item">Ask and answer questions with did</div><div class="outcome-note">Hacer y responder preguntas con did</div></div>
+      <div><div class="outcome-item">Tell your manager about a problem, clearly and politely</div><div class="outcome-note">Informar un problema a tu jefe con claridad y cortesía</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV - built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT - rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK - all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block - never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly - not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START - replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 0;
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const AUDIO_URL = `https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L25-Audio001.mp3`;
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; transcriptOpen = false; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+// ── HTML HELPERS ──────────────────────────────────────────
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+function badge(n, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${n}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function esNote(t) { return `<div class="es-note">${t}</div>`; }
+function tip(label, body) { return `<div class="tip-box"><div class="tip-label">${label}</div>${body}</div>`; }
+function table(headers, rows) {
+  return `<div class="lt-wrap"><table class="lt">
+    <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+    <tbody>${rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>
+  </table></div>`;
+}
+function examples(label, list) {
+  return `<div class="examples-wrap">
+    ${label ? `<div class="examples-label">${label}</div>` : ''}
+    ${list.map(([en, es]) => `<div class="example-item"><span class="example-en">${en}</span>${es ? `<span class="example-arrow">→</span><span class="example-es">${es}</span>` : ''}</div>`).join('')}
+  </div>`;
+}
+function tap(q, a, why) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top">
+      <div class="tap-q">${q}</div>
+      <div class="tap-hint-label">Tap to reveal</div>
+    </div>
+    <div class="tap-answer">✓ ${a}${why ? `<span class="why">${why}</span>` : ''}</div>
+  </div>`;
+}
+function wrongTap(wrong, right, why) {
+  return tap(`<span class="wrong-txt">✗ ${wrong}</span>`, right, why);
+}
+function miniBlock(prefix, name, sub) {
+  return `<div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check: ${name}</div>
+    <p class="mini-sub">${sub}</p>
+    <div id="mini-${prefix}">${renderMiniQ(prefix, MINI_BANK[prefix])}</div>`;
+}
+
+// ── LESSON DATA: VOCABULARY ───────────────────────────────
+// [english, part of speech, spanish, example]
+const VOC_GROUPS = [
+  { title: `When something goes wrong`, items: [
+    [`error`, `noun`, `error`, `There was an error in the invoice.`],
+    [`incident`, `noun`, `incidente`, `We had a small incident in the warehouse yesterday.`],
+    [`happen`, `verb`, `pasar, ocurrir`, `What happened in the meeting?`],
+    [`go wrong`, `phrase`, `salir mal`, `Something went wrong with the order.`],
+    [`crash`, `verb`, `colgarse, caerse (un sistema)`, `The app crashed three times this morning.`],
+    [`by mistake`, `phrase`, `por error, sin querer`, `I deleted the file by mistake.`],
+  ]},
+  { title: `Finding the problem`, items: [
+    [`notice`, `verb`, `notar, darse cuenta`, `I noticed the error on Monday.`],
+    [`find out`, `phrasal verb`, `descubrir, enterarse`, `We found out about the problem this morning.`],
+    [`double-check`, `verb`, `verificar otra vez`, `I double-checked the numbers, and they were correct.`],
+    [`affect`, `verb`, `afectar`, `The delay affected two clients.`],
+    [`delete`, `verb`, `borrar, eliminar`, `Someone deleted the old contracts.`],
+  ]},
+  { title: `Making it right`, items: [
+    [`fix`, `verb`, `arreglar, corregir`, `IT fixed the printer in ten minutes.`],
+    [`apologize`, `verb`, `disculparse, pedir disculpas`, `I apologized to the client for the delay.`],
+    [`let (someone) know`, `phrase`, `avisar, informar`, `Please let me know when the system is back.`],
+    [`prevent`, `verb`, `evitar, prevenir`, `A checklist can prevent small mistakes.`],
+  ]},
+];
+const RECYCLED = [
+  [`mistake`, `error, equivocación`, `I made a mistake in the price list.`],
+  [`delay`, `retraso`, `There was a two-day delay with the delivery.`],
+  [`misunderstanding`, `malentendido`, `It was a misunderstanding about the date.`],
+];
+
+// ── CONCEPT-CHECK BANKS (isolated engines, one per segment) ──
+const VOC_CQ = [
+  { type:`mc`, q:`"I noticed the error" means...`,
+    opts:[`Leí la noticia del error`, `Me di cuenta del error`, `Arreglé el error`], answer:1,
+    hint:`💡 Recuerda: notice no es "noticia".`,
+    fb:`Notice = darse cuenta. No tiene relación con "noticia" (news).` },
+  { type:`tf`, q:`"She deleted the file by mistake" means she wanted to delete it.`, answer:false,
+    hint:`💡 Piensa en "sin querer".`,
+    fb:`By mistake = sin querer. Si lo hizo intencionalmente, decimos <em>on purpose</em>.` },
+  { type:`input`, q:`Complete: I ___ a mistake in the invoice.`,
+    hint:`💡 No es "did".`, answers:[`made`], display:`made`,
+    fb:`En inglés siempre es <em>make a mistake</em>. En pasado: <em>made</em>.` },
+];
+const BRIDGE_CQ = [
+  { type:`mc`, q:`Choose the correct question.`,
+    opts:[`Where you work?`, `Where do you work?`, `Where does you work?`], answer:1,
+    hint:`💡 Wh- word + helper + subject + verb.`,
+    fb:`Wh- word + do + you + verbo base. <em>Does</em> es solo para he, she, it.` },
+  { type:`tf`, q:`"Does she speaks English?" is correct.`, answer:false,
+    hint:`💡 ¿Dónde está la "s"?`,
+    fb:`<em>Does</em> ya lleva la "s". Lo correcto es <em>Does she speak English?</em>` },
+  { type:`input`, q:`Complete: ___ the meeting room free now?`,
+    hint:`💡 Es una pregunta con "be".`, answers:[`is`], display:`Is`,
+    fb:`Con <em>be</em>, el verbo va antes del sujeto: <em>Is the meeting room free?</em>` },
+];
+const GRAMA_CQ = [
+  { type:`mc`, q:`The meeting ___ very long yesterday.`,
+    opts:[`was`, `were`, `did`], answer:0,
+    hint:`💡 "The meeting" es singular.`,
+    fb:`<em>The meeting</em> es singular, como <em>it</em>. Usamos <em>was</em>.` },
+  { type:`input`, q:`Write the past of "find."`,
+    hint:`💡 Es un verbo irregular.`, answers:[`found`], display:`found`,
+    fb:`<em>Find</em> es irregular: find → found.` },
+  { type:`tf`, q:`The past of "copy" is "copyed."`, answer:false,
+    hint:`💡 Consonante + y.`,
+    fb:`Consonante + y: la y cambia a <em>ied</em>. Copy → copied.` },
+];
+const GRAMB_CQ = [
+  { type:`mc`, q:`Choose the correct sentence.`,
+    opts:[`I didn't sent the email.`, `I didn't send the email.`, `I no sent the email.`], answer:1,
+    hint:`💡 didn't + ¿qué forma del verbo?`,
+    fb:`<em>didn't</em> + verbo base. <em>Didn't</em> ya marca el pasado.` },
+  { type:`tf`, q:`"What did happen?" is the correct question.`, answer:false,
+    hint:`💡 ¿Qué es "what" en esta pregunta?`,
+    fb:`<em>What</em> es el sujeto, así que no necesitamos <em>did</em>. Lo correcto es <em>What happened?</em>` },
+  { type:`input`, q:`Complete: ___ you call the client yesterday?`,
+    hint:`💡 Pregunta en pasado.`, answers:[`did`], display:`Did`,
+    fb:`Preguntas en pasado: <em>Did</em> + sujeto + verbo base.` },
+];
+const GRAMC_CQ = [
+  { type:`mc`, q:`I found the error ___.`,
+    opts:[`two days ago`, `ago two days`, `before two days`], answer:0,
+    hint:`💡 "Hace dos días."`,
+    fb:`<em>Hace dos días</em> = <em>two days ago</em>. <em>Ago</em> va después del tiempo.` },
+  { type:`tf`, q:`"I made a mistake the last week" is correct.`, answer:false,
+    hint:`💡 Mira la palabra "the".`,
+    fb:`Con <em>last</em> no usamos <em>the</em>: <em>I made a mistake last week.</em>` },
+  { type:`input`, q:`How do you say "hace una hora" in English?`,
+    hint:`💡 ___ hour ago`, answers:[`an hour ago`, `one hour ago`, `1 hour ago`], display:`an hour ago`,
+    fb:`<em>Hace una hora</em> = <em>an hour ago</em> (o <em>one hour ago</em>).` },
+];
+const MOD_CQ = [
+  { type:`mc`, q:`What usually comes first when you tell your manager about a problem?`,
+    opts:[`What you are going to do next time`, `What happened`, `Who made the mistake`], answer:1,
+    hint:`💡 Los hechos primero.`,
+    fb:`Empieza con los hechos: qué pasó. El plan para la próxima vez va al final.` },
+  { type:`tf`, q:`It's unprofessional to say "I made a mistake" to your manager.`, answer:false,
+    hint:`💡 Piensa en la confianza.`,
+    fb:`Al contrario. Asumir el error muestra responsabilidad y genera confianza.` },
+  { type:`input`, q:`Complete: I let the client ___ and apologized.`,
+    hint:`💡 Let someone ___ = avisar.`, answers:[`know`], display:`know`,
+    fb:`<em>Let someone know</em> = avisarle a alguien.` },
+];
+const LIS_CQ = [
+  { type:`mc`, q:`What time did the system crash?`,
+    opts:[`At about one o'clock`, `At about three o'clock`, `At about five o'clock`], answer:1,
+    hint:`💡 Escucha la segunda parte del mensaje.`,
+    fb:`Anneke dice "at about three o'clock."` },
+  { type:`input`, q:`How long was the system down?`,
+    hint:`💡 Escucha después de "it was down for..."`, answers:[`two hours`, `2 hours`, `for two hours`, `for 2 hours`], display:`two hours`,
+    fb:`El sistema estuvo caído dos horas.` },
+  { type:`tf`, q:`The agent changed the dates on purpose.`, answer:false,
+    hint:`💡 Escucha la expresión con "mistake."`,
+    fb:`Los cambió <em>by mistake</em>, sin querer.` },
+  { type:`mc`, q:`Why did the agent make the mistake?`,
+    opts:[`He was very tired`, `He didn't have the new instructions`, `A customer gave him the wrong date`], answer:1,
+    hint:`💡 Escucha después de "It was a misunderstanding."`,
+    fb:`Fue un malentendido: no tenía las instrucciones nuevas.` },
+  { type:`mc`, q:`What did the team do this morning?`,
+    opts:[`They called every customer and fixed the dates`, `They cancelled forty orders`, `They asked the manager to call the customers`], answer:0,
+    hint:`💡 Escucha después de "This morning."`,
+    fb:`Llamaron a cada cliente, pidieron disculpas y corrigieron las fechas.` },
+];
+const MINI_BANK = { voc: VOC_CQ, bridge: BRIDGE_CQ, grama: GRAMA_CQ, gramb: GRAMB_CQ, gramc: GRAMC_CQ, mod: MOD_CQ, lis: LIS_CQ };
+const miniState = { voc: {}, bridge: {}, grama: {}, gramb: {}, gramc: {}, mod: {}, lis: {} };
+
+// ── MAIN QUIZ (8 grammar, 2 bridge, 2 vocabulary) ─────────
+const QUIZ = [
+  { type:`mc`, q:`The files ___ on the server yesterday.`,
+    opts:[`wasn't`, `weren't`, `didn't be`], answer:1,
+    hint:`💡 "The files" es plural.`,
+    fb:`Plural + negativo de <em>be</em> = <em>weren't</em>. No usamos <em>didn't be</em>.` },
+  { type:`mc`, q:`What is the past of "stop"?`,
+    opts:[`stoped`, `stopped`, `stopt`], answer:1,
+    hint:`💡 Verbo corto: consonante, vocal, consonante.`,
+    fb:`Duplicamos la última letra: stop → stopped.` },
+  { type:`mc`, q:`I ___ the email to the wrong client.`,
+    opts:[`sended`, `send`, `sent`], answer:2,
+    hint:`💡 "Send" es irregular.`,
+    fb:`Send → sent. Nunca <em>sended</em>.` },
+  { type:`mc`, q:`He ___ the new instructions.`,
+    opts:[`didn't had`, `didn't have`, `not had`], answer:1,
+    hint:`💡 didn't + ¿qué forma del verbo?`,
+    fb:`<em>didn't</em> + verbo base: <em>didn't have</em>.` },
+  { type:`input`, q:`___ you tell your manager about the problem?`,
+    hint:`💡 Es una pregunta en pasado.`, answers:[`did`], display:`Did`,
+    fb:`<em>Did</em> + sujeto + verbo base: <em>Did you tell...?</em>` },
+  { type:`input`, q:`"Did the system crash?" "Yes, it ___."`,
+    hint:`💡 Respuesta corta con el mismo auxiliar.`, answers:[`did`], display:`did`,
+    fb:`Respuesta corta: <em>Yes, it did.</em>` },
+  { type:`mc`, q:`Choose the correct question.`,
+    opts:[`What did happen?`, `What did happened?`, `What happened?`], answer:2,
+    hint:`💡 "What" es el sujeto aquí.`,
+    fb:`Cuando <em>what</em> es el sujeto, no usamos <em>did</em>: <em>What happened?</em>` },
+  { type:`input`, q:`The printer broke two days ___.`,
+    hint:`💡 "Hace dos días."`, answers:[`ago`], display:`ago`,
+    fb:`<em>Two days ago</em> = hace dos días.` },
+  { type:`mc`, q:`___ she work on Fridays?`,
+    opts:[`Do`, `Does`, `Is`], answer:1,
+    hint:`💡 Presente, tercera persona.`,
+    fb:`<em>She</em> usa <em>does</em>: <em>Does she work on Fridays?</em>` },
+  { type:`mc`, q:`Choose the correct question.`,
+    opts:[`Where you work?`, `Where do you work?`, `Where you do work?`], answer:1,
+    hint:`💡 Wh- + auxiliar + sujeto + verbo.`,
+    fb:`El orden es <em>Where do you work?</em>` },
+  { type:`input`, q:`I sent the wrong file ___ mistake.`,
+    hint:`💡 Sin querer.`, answers:[`by`], display:`by`,
+    fb:`<em>By mistake</em> = por error, sin querer.` },
+  { type:`mc`, q:`"The delay affected two clients" means...`,
+    opts:[`El retraso afectó a dos clientes`, `El retraso ayudó a dos clientes`, `El retraso fue causado por dos clientes`], answer:0,
+    hint:`💡 "Affect" se parece al español.`,
+    fb:`<em>Affect</em> = afectar.` },
+];
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    ${badge(1, `Welcome`, `2 min`)}
+    <p class="sec-intro">Todos cometemos errores en el trabajo. Lo que importa es cómo lo cuentas. Hoy vas a aprender a explicarle un problema a tu jefe: qué pasó, cuándo pasó, a quién afectó y qué hiciste para arreglarlo.</p>
+    <div class="info-box">
+      <strong>Imagine this:</strong> It's Tuesday morning. Yesterday you sent a price list to a client, but it was the old one. The client noticed the error before you did. Now you need to tell your manager.
+    </div>
+    ${esNote(`Al final de esta lección vas a saber qué decir en ese momento, sin nervios y sin rodeos.`)}
+    <div class="sub-heading">Your path today</div>
+    ${table([`Step`, `What you learn`], [
+      [`Vocabulary`, `15 palabras nuevas para hablar de problemas`],
+      [`Grammar bridge`, `Repaso de preguntas en presente (Lección 7)`],
+      [`Past simple`, `Formas, negativos, preguntas y marcadores de tiempo`],
+      [`Model sentences`, `Frases listas para informar un problema`],
+      [`Listening`, `Un mensaje de voz real a un jefe`],
+      [`Exercises and quiz`, `Práctica y prueba final`],
+    ])}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocab() {
+  return `<div class="sc">
+    ${badge(2, `Vocabulary`, `10 min`)}
+    ${esNote(`Lee cada palabra y su ejemplo en voz alta. Fíjate en que casi todos los ejemplos están en pasado. Así vas a usar estas palabras hoy.`)}
+    ${VOC_GROUPS.map(g => `
+      <div class="lt-caption">${g.title}</div>
+      ${table([`English`, `Español`, `Example`], g.items.map(([en, pos, es, ex]) => [
+        `${en} <span class="pos">(${pos})</span>`, es, `<span class="ex">${ex}</span>`
+      ]))}`).join('')}
+    <div class="recycle-box">
+      <div class="recycle-label">♻️ From Lesson 24 (not new, just a reminder)</div>
+      ${examples('', RECYCLED.map(([en, es, ex]) => [`<strong>${en}</strong> (${es})`, ex]))}
+    </div>
+    ${tip(`💡 Make a mistake, not "do" a mistake`, `En español decimos "hacer un error", pero en inglés siempre es <strong>make</strong>: <em>I made a mistake.</em> Nunca <em>I did a mistake.</em>`)}
+    ${tip(`💡 Mistake or error?`, `Significan casi lo mismo. <strong>Error</strong> suena más formal o técnico: <em>a system error, an error message.</em> En una conversación normal, la gente dice <strong>mistake</strong>: <em>Sorry, my mistake.</em>`)}
+    ${tip(`⚠️ Cuidado: notice ≠ noticia`, `<em>Notice</em> es un verbo: darse cuenta. <em>I noticed the problem</em> = Me di cuenta del problema. "Noticia" en inglés es <strong>news</strong>.`)}
+    ${tip(`💡 By mistake vs on purpose`, `<em>By mistake</em> = sin querer. <em>On purpose</em> = a propósito. <em>I deleted it by mistake</em> le dice a tu jefe que no fue intencional.`)}
+    ${tip(`💡 Apologize to someone for something`, `<em>I apologized <strong>to</strong> the client <strong>for</strong> the delay.</em> Ojo: <em>apologize</em> no significa "hacer apología". Significa pedir disculpas.`)}
+    ${miniBlock('voc', `Vocabulary`, `Tres preguntas rápidas para confirmar las palabras clave.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    ${badge(3, `Grammar Bridge: Question Forms`, `8 min`)}
+    ${esNote(`En la Lección 7 aprendiste a hacer preguntas para pedir aclaraciones. Hoy las repasamos por una razón muy práctica: las preguntas en pasado usan exactamente el mismo orden. Solo cambia una palabra. Si dominas esto, las preguntas con <em>did</em> te van a resultar fáciles.`)}
+
+    <div class="rule-head">Family 1: Questions with be (am / is / are)</div>
+    <p class="sec-intro">Mueve <em>be</em> antes del sujeto.</p>
+    ${examples('', [
+      [`You <strong>are</strong> busy. → <strong>Are</strong> you busy?`, ''],
+      [`The file <strong>is</strong> ready. → <strong>Is</strong> the file ready?`, ''],
+      [`Where <strong>is</strong> the meeting room?`, `¿Dónde está la sala de reuniones?`],
+      [`Why <strong>are</strong> they late?`, `¿Por qué llegan tarde?`],
+    ])}
+    <p class="sec-intro"><strong>Short answers:</strong> Yes, I am. / No, it isn't. / Yes, they are.</p>
+
+    <div class="rule-head">Family 2: Questions with do / does (all other verbs)</div>
+    <p class="sec-intro">Con los demás verbos necesitas un ayudante: <strong>do</strong> o <strong>does</strong>. El verbo principal vuelve a su forma base.</p>
+    ${examples('', [
+      [`You work on Fridays. → <strong>Do</strong> you work on Fridays?`, ''],
+      [`She uses Teams. → <strong>Does</strong> she <strong>use</strong> Teams?`, `no "Does she uses"`],
+      [`What time <strong>does</strong> the meeting <strong>start</strong>?`, `¿A qué hora empieza la reunión?`],
+      [`Where <strong>do</strong> you <strong>keep</strong> the contracts?`, `¿Dónde guardas los contratos?`],
+    ])}
+    <p class="sec-intro"><strong>Short answers:</strong> Yes, I do. / No, she doesn't.</p>
+    ${esNote(`<em>Does</em> ya lleva la "s" de la tercera persona. Por eso el verbo principal no la necesita: <em>Does she use</em>, nunca <em>Does she uses</em>.`)}
+
+    <div class="rule-head">Family 3: Questions with can</div>
+    <p class="sec-intro"><em>Can</em> funciona como <em>be</em>: se mueve antes del sujeto, sin ayudante.</p>
+    ${examples('', [
+      [`You can send it today. → <strong>Can</strong> you send it today?`, ''],
+      [`When <strong>can</strong> you call the client?`, `¿Cuándo puedes llamar al cliente?`],
+    ])}
+    <p class="sec-intro"><strong>Short answers:</strong> Yes, I can. / No, he can't.</p>
+
+    <div class="rule-head">The word order (Wh- questions)</div>
+    ${table([`Question word`, `Helper`, `Subject`, `Verb`, `Rest`], [
+      [`Where`, `do`, `you`, `work`, `?`],
+      [`What time`, `does`, `the meeting`, `start`, `?`],
+      [`When`, `can`, `you`, `send`, `the file?`],
+      [`Where`, `is`, `the meeting room`, ``, `?`],
+    ])}
+
+    <div class="rule-head">A special case: when who or what is the subject</div>
+    <p class="sec-intro">Si la pregunta busca al sujeto, no necesitas <em>do</em> ni <em>does</em>:</p>
+    ${examples('', [
+      [`<strong>Who</strong> works in accounts?`, `no "Who does work"`],
+      [`<strong>What</strong> starts at nine?`, `¿Qué empieza a las nueve?`],
+    ])}
+    ${esNote(`Guarda esta idea. Hoy la vas a usar con una pregunta muy común en el trabajo: <em>What happened?</em>`)}
+
+    <div class="rule-head">⚠️ Cuidado: the Spanish trap</div>
+    <p class="sec-intro">En español hacemos preguntas solo con la entonación: <em>¿Trabajas los viernes?</em> En inglés eso no alcanza. Toca cada error para ver la corrección.</p>
+    ${wrongTap(`You work on Fridays?`, `Do you work on Fridays?`, `Inglés necesita el ayudante do.`)}
+    ${wrongTap(`Where you work?`, `Where do you work?`, `Wh- word + do + sujeto + verbo.`)}
+    ${wrongTap(`What means "deadline"?`, `What does "deadline" mean?`, `El verbo mean también necesita does.`)}
+    ${wrongTap(`Does he works here?`, `Does he work here?`, `Does ya lleva la "s".`)}
+
+    <div class="info-box">
+      <strong>🌉 Bridge to today: Do / Does → Did</strong><br>
+      En pasado, <em>did</em> sirve para todas las personas: I, you, he, she, we, they.<br>
+      <strong>Does</strong> she work on Fridays? → <strong>Did</strong> she work last Friday?<br>
+      Where <strong>do</strong> you keep the file? → Where <strong>did</strong> you put the file?
+    </div>
+    ${miniBlock('bridge', `Grammar Bridge`, `Tres preguntas rápidas para confirmar el orden de las preguntas.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGramA() {
+  return `<div class="sc">
+    ${badge(4, `Past Simple: Positive Forms`, `10 min`)}
+    <div class="rule-head">Notice</div>
+    ${esNote(`Lee este mensaje de un empleado a su jefa. Fíjate en los verbos en color.`)}
+    <div class="notice-text">Hi Sarah, I <strong>made</strong> a mistake yesterday. I <strong>sent</strong> the old price list to a client. She <strong>noticed</strong> the error this morning and <strong>called</strong> me. It <strong>was</strong> my fault. I <strong>didn't check</strong> the date on the file. I <strong>fixed</strong> the list and <strong>apologized</strong> to her. <strong>Did</strong> you <strong>get</strong> my email about it?</div>
+    <p class="sec-intro">¿Qué notas? Algunos verbos terminan en <em>-ed</em> (noticed, called, fixed). Otros cambian completamente (made, sent, was). Y en la negación y la pregunta aparece <em>did</em>, con el verbo en su forma base (didn't check, did you get).</p>
+
+    <div class="rule-head">Rule 1: was / were (the past of be)</div>
+    ${table([`Subject`, `Positive`, `Negative`, `Question`], [
+      [`I / he / she / it`, `was`, `wasn't`, `Was he...?`],
+      [`you / we / they`, `were`, `weren't`, `Were they...?`],
+    ])}
+    ${examples('', [
+      [`The server <strong>was</strong> down for two hours.`, `El servidor estuvo caído dos horas.`],
+      [`The files <strong>weren't</strong> on the shared drive.`, `Los archivos no estaban en la carpeta compartida.`],
+      [`<strong>Was</strong> the client angry? Yes, she <strong>was</strong>. / No, she <strong>wasn't</strong>.`, ''],
+    ])}
+    <p class="sec-intro"><strong>There was / There were</strong> sirve mucho para describir incidentes:</p>
+    ${examples('', [
+      [`<strong>There was</strong> a problem with the printer.`, `Hubo un problema con la impresora.`],
+      [`<strong>There were</strong> two errors in the invoice.`, `Había dos errores en la factura.`],
+    ])}
+    ${esNote(`En español distinguimos <em>fue, era, estuvo, estaba</em>. En inglés todo es <em>was</em> o <em>were</em>. <em>The system was slow</em> = El sistema estaba lento. <em>It was a mistake</em> = Fue un error.`)}
+
+    <div class="rule-head">Rule 2: Regular verbs (+ed)</div>
+    ${table([`Rule`, `Examples`], [
+      [`Most verbs: + ed`, `check → checked, work → worked, call → called`],
+      [`Ends in -e: + d`, `arrive → arrived, delete → deleted, notice → noticed`],
+      [`Consonant + y: y → ied`, `copy → copied, try → tried`],
+      [`Vowel + y: + ed`, `delay → delayed, play → played`],
+      [`Short verb, consonant-vowel-consonant: double the last letter`, `stop → stopped, plan → planned`],
+    ])}
+    <div class="lt-caption">Pronunciation: three sounds for -ed</div>
+    ${table([`Sound`, `When`, `Examples`], [
+      [`/t/`, `after p, k, s, sh, ch, f, x`, `stopped, checked, fixed, crashed`],
+      [`/d/`, `after other sounds`, `called, happened, arrived, delayed`],
+      [`/ɪd/`, `only after t or d (extra syllable)`, `started, deleted, needed, affected`],
+    ])}
+    ${esNote(`Muchos hispanohablantes dicen "work-ed" o "crash-ed" con una sílaba extra. La sílaba extra solo aparece después de <em>t</em> o <em>d</em>: <em>start-ed, delet-ed</em>. En <em>worked</em> y <em>crashed</em> la "-ed" suena como una "t" corta.`)}
+
+    <div class="rule-head">Rule 3: Common irregular verbs</div>
+    <p class="sec-intro">Estos verbos no usan <em>-ed</em>. Hay que aprenderlos de memoria. Aquí tienes los más útiles para hablar de problemas en el trabajo.</p>
+    ${table([`Base`, `Past`, `Español`], [
+      [`be`, `was / were`, `ser, estar`], [`have`, `had`, `tener`], [`do`, `did`, `hacer`],
+      [`make`, `made`, `hacer (un error)`], [`go`, `went`, `ir`], [`get`, `got`, `recibir, obtener`],
+      [`send`, `sent`, `enviar`], [`find`, `found`, `encontrar`], [`forget`, `forgot`, `olvidar`],
+      [`lose`, `lost`, `perder`], [`leave`, `left`, `salir, dejar`], [`tell`, `told`, `decir, contar`],
+      [`say`, `said`, `decir`], [`take`, `took`, `tomar, llevar`], [`see`, `saw`, `ver`],
+      [`come`, `came`, `venir`], [`know`, `knew`, `saber`], [`think`, `thought`, `pensar, creer`],
+      [`write`, `wrote`, `escribir`], [`break`, `broke`, `romper`], [`put`, `put`, `poner`],
+      [`let`, `let`, `dejar, permitir`],
+    ])}
+    ${examples('Examples', [
+      [`Something <strong>went</strong> wrong with the delivery.`, `Algo salió mal con la entrega.`],
+      [`We <strong>found</strong> out about it on Friday.`, `Nos enteramos el viernes.`],
+      [`I <strong>forgot</strong> to attach the file.`, `Olvidé adjuntar el archivo.`],
+      [`The printer <strong>broke</strong> again.`, `La impresora se dañó otra vez.`],
+    ])}
+    ${esNote(`Nota que <em>go wrong</em> y <em>find out</em> también cambian: <em>went wrong, found out.</em>`)}
+    ${miniBlock('grama', `Positive Forms`, `Tres preguntas rápidas sobre was/were y las formas del pasado.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGramB() {
+  return `<div class="sc">
+    ${badge(5, `Past Simple: Negatives and Questions`, `10 min`)}
+    <div class="rule-head">Rule 4: Negatives with didn't</div>
+    <p class="sec-intro"><strong>didn't + verbo base.</strong> Igual para todas las personas.</p>
+    ${table([`Positive`, `Negative`], [
+      [`I sent the file.`, `I <strong>didn't send</strong> the file.`],
+      [`She noticed the error.`, `She <strong>didn't notice</strong> the error.`],
+      [`They went to the meeting.`, `They <strong>didn't go</strong> to the meeting.`],
+    ])}
+    ${esNote(`<em>Didn't</em> ya marca el pasado. Por eso el verbo vuelve a la forma base. <em>I didn't sent</em> está mal, porque marca el pasado dos veces.`)}
+    ${tip(`⚠️ Exception: be`, `Con <em>be</em> no usamos <em>didn't</em>. Usamos <em>wasn't</em> o <em>weren't</em>.<br><em>The client <strong>wasn't</strong> happy.</em> (no <em>didn't be</em>)<br><em>We <strong>weren't</strong> in the office.</em>`)}
+
+    <div class="rule-head">Rule 5: Did-questions and short answers</div>
+    <p class="sec-intro"><strong>Did + sujeto + verbo base?</strong> Es el mismo orden que <em>Do you...?</em>, solo que con <em>did</em>.</p>
+    ${table([`Present (bridge)`, `Past`], [
+      [`Do you check the invoices?`, `<strong>Did</strong> you <strong>check</strong> the invoice?`],
+      [`Does she work on Fridays?`, `<strong>Did</strong> she <strong>work</strong> last Friday?`],
+      [`Where do you keep the file?`, `Where <strong>did</strong> you <strong>put</strong> the file?`],
+    ])}
+    <p class="sec-intro"><strong>Short answers:</strong> Yes, I <strong>did</strong>. / No, she <strong>didn't</strong>. (Nunca <em>Yes, I checked</em> como respuesta corta.)</p>
+    ${examples('Wh- questions', [
+      [`<strong>What did</strong> you <strong>do</strong> after that?`, `¿Qué hiciste después?`],
+      [`<strong>When did</strong> it <strong>happen</strong>?`, `¿Cuándo pasó?`],
+      [`<strong>Why did</strong> the system <strong>crash</strong>?`, `¿Por qué se cayó el sistema?`],
+      [`<strong>Who did</strong> you <strong>tell</strong>?`, `¿A quién le contaste?`],
+    ])}
+    ${examples('Questions with was / were', [
+      [`<strong>Was</strong> the client angry?`, `¿El cliente estaba enojado?`],
+      [`<strong>Where were</strong> the files?`, `¿Dónde estaban los archivos?`],
+    ])}
+
+    <div class="rule-head">Rule 6: What happened? (no did)</div>
+    <p class="sec-intro">Recuerda el caso especial del puente. Si <em>who</em> o <em>what</em> es el sujeto, no usamos <em>did</em>:</p>
+    ${examples('', [
+      [`<strong>What happened?</strong>`, `no "What did happen?"`],
+      [`<strong>Who sent</strong> the email?`, `no "Who did send"`],
+      [`<strong>What went</strong> wrong?`, `¿Qué salió mal?`],
+    ])}
+    ${table([`Question`, `Answer`, `We want to know...`], [
+      [`<strong>Who sent</strong> the email?`, `Alex sent it.`, `quién lo envió`],
+      [`<strong>Who did</strong> you <strong>send</strong> it to?`, `I sent it to the client.`, `a quién`],
+    ])}
+    ${miniBlock('gramb', `Negatives and Questions`, `Tres preguntas rápidas sobre didn't y did.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGramC() {
+  return `<div class="sc">
+    ${badge(6, `Past Simple: Time and Use`, `10 min`)}
+    <div class="rule-head">Rule 7: Past time markers</div>
+    ${table([`English`, `Español`], [
+      [`yesterday / yesterday morning`, `ayer / ayer por la mañana`],
+      [`last night / last week / last Friday`, `anoche / la semana pasada / el viernes pasado`],
+      [`two days ago / an hour ago`, `hace dos días / hace una hora`],
+      [`on Monday / in March / in 2024`, `el lunes / en marzo / en 2024`],
+      [`this morning (when it's already over)`, `esta mañana`],
+    ])}
+    <p class="sec-intro"><strong>Position:</strong> normalmente al final, o al principio para dar énfasis.</p>
+    ${examples('', [
+      [`The system crashed <strong>yesterday afternoon</strong>.`, ''],
+      [`<strong>Two days ago</strong>, we found an error in the payroll.`, ''],
+    ])}
+    ${tip(`⚠️ Cuidado con "ago"`, `Va después del tiempo. <em>Hace dos días</em> = <strong>two days ago</strong>. Nunca <em>ago two days</em> ni <em>before two days</em>.`)}
+    ${tip(`⚠️ Cuidado con "last"`, `Sin <em>the</em>. <em>La semana pasada</em> = <strong>last week</strong>, no <em>the last week</em>.`)}
+
+    <div class="rule-head">When do we use the past simple?</div>
+    <p class="sec-intro"><strong>1. A finished action at a specific time in the past.</strong><br><em>I sent the file yesterday.</em></p>
+    <p class="sec-intro"><strong>2. A series of events, in order.</strong> Esto es lo que haces cuando cuentas un incidente. Usa los conectores de la Lección 24:<br><em>First, I noticed the error. Then I called the client. After that, I fixed the list. Finally, I double-checked everything.</em></p>
+    <p class="sec-intro"><strong>3. With yesterday, last, ago: always past simple.</strong> No uses el presente perfecto (Lección 19) con estas palabras.<br><em>I sent it yesterday</em>, no <em>I have sent it yesterday.</em></p>
+
+    <div class="rule-head">How to tell your manager about a problem</div>
+    ${table([`Step`, `Example`], [
+      [`<span class="report-step">1</span>What happened`, `I sent the wrong price list to a client.`],
+      [`<span class="report-step">2</span>When`, `It happened yesterday afternoon.`],
+      [`<span class="report-step">3</span>The effect`, `The client saw the old prices.`],
+      [`<span class="report-step">4</span>What you did`, `I called her, apologized, and sent the correct list.`],
+      [`<span class="report-step">5</span>Next time`, `Next time, I'm going to double-check the date on the file.`],
+    ])}
+    ${esNote(`Tu jefe quiere los hechos primero, no las excusas. Decir <em>I made a mistake</em> muestra profesionalismo, no debilidad.`)}
+
+    <div class="rule-head">🌉 Spanish Bridge</div>
+    ${table([`English`, `Español`, `Note`], [
+      [`I sent the file.`, `Envié el archivo.`, `Igual que el pretérito`],
+      [`I <strong>didn't</strong> send the file.`, `No envié el archivo.`, `Inglés necesita <em>didn't</em> + base`],
+      [`<strong>Did</strong> you send the file?`, `¿Enviaste el archivo?`, `Español: solo entonación. Inglés: <em>Did</em>`],
+      [`The server <strong>was</strong> down.`, `El servidor estaba caído.`, `<em>was</em> = fue, era, estuvo, estaba`],
+      [`two days <strong>ago</strong>`, `hace dos días`, `El orden cambia`],
+      [`<strong>last</strong> week`, `la semana pasada`, `Sin <em>the</em>`],
+    ])}
+
+    <div class="rule-head">⚠️ Pitfall: the errors we hear most</div>
+    <p class="sec-intro">Toca cada error para ver la corrección y la razón.</p>
+    ${wrongTap(`I didn't went to the meeting.`, `I didn't go to the meeting.`, `didn't + verbo base`)}
+    ${wrongTap(`Did you sent the file?`, `Did you send the file?`, `did + verbo base`)}
+    ${wrongTap(`You sent the file?`, `Did you send the file?`, `Inglés necesita did en la pregunta.`)}
+    ${wrongTap(`Where you went yesterday?`, `Where did you go yesterday?`, `Wh- + did + sujeto + verbo base`)}
+    ${wrongTap(`What did happen?`, `What happened?`, `What es el sujeto, no necesita did.`)}
+    ${wrongTap(`I was forget the meeting.`, `I forgot the meeting.`, `No se usa was + verbo. Forget → forgot.`)}
+    ${wrongTap(`Yesterday the system crash.`, `Yesterday the system crashed.`, `El pasado necesita -ed.`)}
+    ${wrongTap(`The files was on the server.`, `The files were on the server.`, `Plural = were`)}
+    ${wrongTap(`The client didn't be happy.`, `The client wasn't happy.`, `Be usa wasn't / weren't.`)}
+    ${wrongTap(`It happened before two days.`, `It happened two days ago.`, `Hace = ago, al final.`)}
+    ${wrongTap(`I made a mistake the last week.`, `I made a mistake last week.`, `Last sin the.`)}
+    ${wrongTap(`I have sent it yesterday.`, `I sent it yesterday.`, `Yesterday = past simple.`)}
+    ${miniBlock('gramc', `Time and Use`, `Tres preguntas rápidas sobre los marcadores de tiempo.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModels() {
+  const groups = [
+    [`Starting the conversation`, [
+      [`Do you have a minute? I need to tell you about a problem.`, `¿Tienes un minuto? Necesito contarte un problema.`],
+      [`Something went wrong with the Harper order yesterday.`, `Algo salió mal con el pedido de Harper ayer.`],
+    ]],
+    [`What happened and when`, [
+      [`I sent the wrong file to the client by mistake.`, `Le envié el archivo equivocado al cliente sin querer.`],
+      [`The system crashed at about three o'clock.`, `El sistema se cayó a eso de las tres.`],
+    ]],
+    [`The effect`, [
+      [`The delay affected three orders.`, `El retraso afectó a tres pedidos.`],
+      [`The client didn't get the invoice on time.`, `El cliente no recibió la factura a tiempo.`],
+    ]],
+    [`What you did`, [
+      [`I noticed the error this morning and fixed it right away.`, `Noté el error esta mañana y lo arreglé enseguida.`],
+      [`I let the client know and apologized for the mistake.`, `Le avisé al cliente y le pedí disculpas por el error.`],
+    ]],
+    [`Next time`, [
+      [`Next time, I'm going to double-check the numbers before I send them.`, `La próxima vez voy a verificar los números antes de enviarlos.`],
+      [`I think a short checklist can prevent this.`, `Creo que una lista corta puede evitar esto.`],
+    ]],
+  ];
+  return `<div class="sc">
+    ${badge(7, `Model Sentences`, `5 min`)}
+    ${esNote(`Estas frases siguen el orden de un buen reporte. Léelas en voz alta. Puedes usarlas casi palabra por palabra en el trabajo.`)}
+    ${groups.map(([label, list]) => examples(label, list)).join('')}
+    ${tip(`💡 Own it`, `<em>I made a mistake</em> suena profesional. <em>The computer did it</em> o <em>It wasn't me</em> suenan a excusa. Cuenta los hechos, di lo que hiciste y termina con el plan para la próxima vez.`)}
+    ${miniBlock('mod', `Model Sentences`, `Tres preguntas rápidas sobre cómo informar un problema.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    ${badge(8, `Listening`, `8 min`)}
+    ${esNote(`Escucha el mensaje de voz que Anneke le deja a su jefe. Puedes cambiar la velocidad y leer la transcripción si la necesitas. Primero escúchalo una vez sin leer.`)}
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">A voice message to the manager</div>
+          <div class="audio-box-sub">Anneke de Vries, Customer Support Team Lead, Rotterdam · about 1 minute</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload" src="${AUDIO_URL}">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        <p>Hi, it's Anneke from customer support. I'm calling about a problem from yesterday.</p>
+        <p>Yesterday afternoon, our booking system crashed at about three o'clock, and it was down for two hours. During that time, forty customers didn't get their confirmation emails.</p>
+        <p>At first, I thought it was a small error. Then a customer called and said her delivery date was wrong. I double-checked, and she was right. After the system came back, one of my agents changed some dates by mistake. It was a misunderstanding. He didn't have the new instructions.</p>
+        <p>This morning, we found out which orders had the wrong date. We called every customer, apologized, and fixed the dates. For most customers, the delay was only one day.</p>
+        <p>I'm really sorry this happened. Next time, I'm going to share new instructions with the team faster. Can we talk this afternoon? Let me know when you're free.</p>
+      </div>
+    </div>
+    ${tip(`💡 Listen for the report order`, `Anneke sigue los cinco pasos: qué pasó, cuándo, el efecto, qué hizo y qué va a hacer la próxima vez. ¿Puedes encontrar cada paso?`)}
+    <div class="divider"></div>
+    <div class="sub-heading">🎧 Comprehension questions</div>
+    <p class="mini-sub">Cinco preguntas sobre el mensaje. Todas las respuestas se escuchan claramente en el audio.</p>
+    <div id="mini-lis">${renderMiniQ('lis', LIS_CQ)}</div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    ${badge(9, `Exercises`, `10 min`)}
+    ${esNote(`Piensa tu respuesta primero. Después toca cada ejercicio para ver la respuesta correcta.`)}
+
+    <div class="set-head">Set A: Write the past form</div>
+    <p class="mini-sub">Escribe el pasado de cada verbo. Cuidado con la ortografía.</p>
+    ${tap(`1. fix`, `fixed`)}
+    ${tap(`2. try`, `tried`, `Consonante + y → ied`)}
+    ${tap(`3. stop`, `stopped`, `Duplicamos la p.`)}
+    ${tap(`4. arrive`, `arrived`)}
+    ${tap(`5. send`, `sent`, `Irregular`)}
+    ${tap(`6. find`, `found`, `Irregular`)}
+    ${tap(`7. forget`, `forgot`, `Irregular`)}
+    ${tap(`8. go`, `went`, `Irregular`)}
+
+    <div class="set-head">Set B: Make it negative</div>
+    <p class="mini-sub">Cambia la oración a negativa.</p>
+    ${tap(`9. I sent the invoice.`, `I didn't send the invoice.`)}
+    ${tap(`10. The client was happy.`, `The client wasn't happy.`, `Be usa wasn't, no didn't.`)}
+    ${tap(`11. We found the error.`, `We didn't find the error.`)}
+    ${tap(`12. They were in the office.`, `They weren't in the office.`)}
+
+    <div class="set-head">Set C: Write the question</div>
+    <p class="mini-sub">Escribe la pregunta que corresponde a cada respuesta. Usa la palabra entre paréntesis.</p>
+    ${tap(`13. Yes, she called the client. (Did)`, `Did she call the client?`)}
+    ${tap(`14. It happened on Monday. (When)`, `When did it happen?`)}
+    ${tap(`15. The system crashed at 3 p.m. (What time)`, `What time did the system crash?`)}
+    ${tap(`16. My colleague fixed the problem. (Who)`, `Who fixed the problem?`, `Sin did, porque who es el sujeto.`)}
+    ${tap(`17. They were in a meeting. (Where)`, `Where were they?`)}
+
+    <div class="set-head">Set D: Correct the mistake</div>
+    <p class="mini-sub">Cada oración tiene un error. Escríbela bien.</p>
+    ${tap(`18. I didn't sent the file.`, `I didn't send the file.`)}
+    ${tap(`19. Where you went yesterday?`, `Where did you go yesterday?`)}
+    ${tap(`20. What did happen with the order?`, `What happened with the order?`)}
+    ${tap(`21. The problem started before two days.`, `The problem started two days ago.`)}
+    ${tap(`22. Yesterday I was forget the meeting.`, `Yesterday I forgot the meeting.`)}
+
+    <div class="set-head">Set E: Time markers</div>
+    <p class="mini-sub">Completa con la palabra correcta.</p>
+    ${tap(`23. I noticed the error ___ Monday. (last / the last)`, `last`)}
+    ${tap(`24. We fixed it three hours ___. (ago / before)`, `ago`)}
+    ${tap(`25. The office moved ___ 2024. (in / on)`, `in`, `Con años usamos in.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising. ¡Tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding, a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+  return `<div class="sc">
+    ${badge(10, `Quiz`, `10 min`)}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div class="attempts">Attempts so far: ${quizAttempts + 1}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect ? `<button onclick="retakeQuiz()" class="btn btn-gold" style="padding:12px 28px;font-size:13px;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>` : ''}
+        <button onclick="goTo(0)" class="btn btn-ghost" style="padding:12px 28px;font-size:13px;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE (main quiz) ───────────────────────────────
+const normalise = s => String(s).trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,!?]+$/,'');
+
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${esc(s.inputVal||'')}" oninput="setInp(${i},this.value)" onkeydown="if(event.key==='Enter')revealInp(${i})" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].selected===undefined)return; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const raw=quizState[qi].inputVal||'';
+  if(!raw.trim())return;
+  quizState[qi].correct=q.answers.some(a=>normalise(raw)===normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  quizAttempts++;
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc') ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf') ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  // Calls renderQuiz() directly, not STEPS[currentStep].fn()
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── MINI CONCEPT-CHECK ENGINE (isolated state per prefix) ──
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  const letters = ['A','B','C','D'];
+  return questions.map((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    let body = '';
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text" placeholder="Type your answer…" value="${esc(s.inputVal || '')}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" onkeydown="if(event.key==='Enter')miniRevealInp('${prefix}',${i})" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+    return `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  }).join('');
+}
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].selected === undefined) return;
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const q = MINI_BANK[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = miniState[prefix][qi].inputVal || '';
+  if (!raw.trim()) return;
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  // Redraws only this concept check's container, so the audio player
+  // on the Listening step keeps playing while students answer.
+  const el = document.getElementById('mini-' + prefix);
+  if (el) el.innerHTML = renderMiniQ(prefix, MINI_BANK[prefix]);
+}
+
+// ── AUDIO (Pattern A: one player in this file) ────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Welcome",               fn: renderWelcome },
+  { label: "2. Vocabulary",            fn: renderVocab },
+  { label: "3. Grammar Bridge",        fn: renderBridge },
+  { label: "4. Past Forms",            fn: renderGramA },
+  { label: "5. Negatives & Questions", fn: renderGramB },
+  { label: "6. Time & Use",            fn: renderGramC },
+  { label: "7. Model Sentences",       fn: renderModels },
+  { label: "8. Listening",             fn: renderListening },
+  { label: "9. Exercises",             fn: renderExercises },
+  { label: "10. Quiz",                 fn: renderQuiz },
+];
+
+render(); // always last
+
+</script>
+
+
+<!-- PERMANENT SITE FOOTER - do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

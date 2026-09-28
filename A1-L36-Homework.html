@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 36: Describing Products and Services | A1 · Unit 4 · Homework</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── LESSON ADDITIONS: A1-L36 Homework ── */
+.sub-heading { font-family:var(--font-heading); font-size:18px; color:var(--navy); margin:24px 0 8px; }
+.attempts { font-size:12px; color:rgba(255,255,255,0.45); margin-top:8px; }
+.part-note { font-size:13px; color:var(--grey-blue); font-style:italic; margin-bottom:14px; }
+
+/* Unjumble */
+.uj-answer { min-height:48px; background:var(--off-white); border:1.5px dashed var(--border-grey); border-radius:8px; padding:8px; display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; align-items:center; }
+.uj-answer.correct { border-style:solid; border-color:var(--green); background:var(--green-bg); }
+.uj-answer.wrong   { border-style:solid; border-color:var(--red); background:var(--red-bg); }
+.uj-empty { font-size:12px; color:var(--grey-blue); font-style:italic; padding:4px 6px; }
+.uj-bank { display:flex; flex-wrap:wrap; gap:6px; }
+.uj-chip { padding:7px 13px; border:1.5px solid var(--border-grey); border-radius:6px; background:var(--white); font-family:var(--font-body); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; }
+.uj-chip:hover:not(:disabled) { border-color:var(--sky); }
+.uj-chip.placed { background:var(--navy); color:var(--white); border-color:var(--navy); }
+.uj-chip.used { visibility:hidden; }
+.uj-chip:disabled { cursor:default; }
+.uj-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:12px; }
+.b-type { display:inline-block; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky); font-weight:700; margin-bottom:4px; }
+.tr-prompt { font-family:var(--font-heading); font-size:16px; color:var(--navy); font-style:italic; }
+/* Audio box (Pattern A) */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 4 · Homework</div>
+    <h1 class="hero-title">Lesson 36: Describing Products and Services</h1>
+    <p class="hero-sub">Grammar: Adjectives · Listening, Unjumble + Translate, Quiz · ~30 min</p>
+    <div class="hero-pills">
+      <span class="pill accent">🎧 Listening</span>
+      <span class="pill accent">🧩 Unjumble + Translate</span>
+      <span class="pill accent">🎯 Quiz</span>
+      <span class="pill">3 parts</span>
+      <span class="pill">~30 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<div class="main" id="mainContent"></div>
+
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+const qState    = { A: {}, B: {}, C: {} };
+const qScore    = { A: 0, B: 0, C: 0 };
+const qAttempts = { A: 1, B: 1, C: 1 };
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const AUDIO_URL = "https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L36-Audio002.mp3";
+
+// ── NAVIGATION ENGINE (from shell) ────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  if (STEPS[currentStep].fn === renderPartA) {
+    const audio = document.getElementById('mainAudio');
+    if (audio) audio.playbackRate = currentSpeed;
+    setSpeed(currentSpeed);
+  }
+}
+
+// ── HELPERS ───────────────────────────────────────────────
+function badge(n, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${n}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+const normalise = s => s.trim().toLowerCase()
+  .replace(/[’‘]/g, "'")
+  .replace(/[.,!?;:]/g, '')
+  .replace(/\s+/g, ' ');
+
+// ── LESSON DATA ───────────────────────────────────────────
+const QUIZ_A = [
+  { type:"mc", q:"What is Olivia's job?", opts:["She is a sales representative.","She is an office manager.","She is a consultant."], answer:1, hint:"💡 Escucha el principio.", fb:"“I'm the office manager at Greenfield Consulting.”" },
+  { type:"mc", q:"Which sentence about the new coffee machine is true?", opts:["It is small and slow.","It is large and very fast.","It is very cheap."], answer:1, hint:"💡 Es la primera cosa nueva.", fb:"“It is large and very fast.” It also isn't cheap." },
+  { type:"tf", q:"The new chairs are heavy.", answer:false, hint:"💡 Escucha la segunda cosa nueva.", fb:"The chairs are <em>light</em>, the opposite of heavy." },
+  { type:"mc", q:"Why are the chairs easy to move?", opts:["Because they are small.","Because they are light.","Because they are new."], answer:1, hint:"💡 Busca la palabra “so”.", fb:"“They are also light, so they are easy to move.”" },
+  { type:"mc", q:"How much is the booking app?", opts:["$5 a month for the whole team","$5 a month for each person","$15 a month"], answer:0, hint:"💡 Escucha la tercera cosa nueva.", fb:"“It is only five dollars a month for the whole team.”" },
+  { type:"mc", q:"What is the problem in Olivia's office?", opts:["The app is expensive.","The coffee machine is slow.","The printer is old and very slow."], answer:2, hint:"💡 Escucha el final.", fb:"“The printer is old and very slow.” That's why she wants a new, reliable printer." }
+];
+
+const QUIZ_B = [
+  { type:"unjumble", words:["printer","a","It","reliable","is"], answer:["It","is","a","reliable","printer"], hint:"💡 El adjetivo va antes del sustantivo.", fb:"a + adjective + noun → <em>a reliable printer</em>." },
+  { type:"unjumble", words:["use","is","The","very","to","app","easy"], answer:["The","app","is","very","easy","to","use"], hint:"💡 Empieza con “The app”.", fb:"<em>very</em> goes before the adjective: <em>very easy to use</em>." },
+  { type:"unjumble", words:["an","product","is","This","innovative"], answer:["This","is","an","innovative","product"], hint:"💡 “an” + sonido vocal.", fb:"<em>Innovative</em> starts with a vowel sound, so it takes <em>an</em>." },
+  { type:"unjumble", words:["expensive","isn't","It","very"], answer:["It","isn't","very","expensive"], hint:"💡 No es muy caro.", fb:"<em>isn't very</em> + adjective = no es muy…" },
+  { type:"unjumble", words:["are","light","The","and","laptops","small"], answer:["The","laptops","are","small","and","light"], hint:"💡 Usa “and” entre los dos adjetivos.", fb:"Two adjectives after <em>are</em> are joined with <em>and</em>, and there's no -s on the adjectives." },
+  { type:"translate", prompt:"Es un servicio rápido.", answers:["it is a fast service","it's a fast service"], display:"It is a fast service.", hint:"💡 El adjetivo va antes de “service”.", fb:"un servicio rápido → <em>a fast service</em>" },
+  { type:"translate", prompt:"Nuestros productos son nuevos.", answers:["our products are new"], display:"Our products are new.", hint:"💡 “nuevos” no lleva -s en inglés.", fb:"The adjective never takes -s: <em>new</em>, not “news”." },
+  { type:"translate", prompt:"La app es muy útil.", answers:["the app is very useful"], display:"The app is very useful.", hint:"💡 útil = useful", fb:"<em>very</em> + adjective → <em>very useful</em>." },
+  { type:"translate", prompt:"No es caro.", answers:["it isn't expensive","it is not expensive","it's not expensive"], display:"It isn't expensive.", hint:"💡 No olvides “It”.", fb:"English always needs the subject: <em>It isn't expensive.</em>" },
+  { type:"translate", prompt:"Es una impresora pequeña y liviana.", answers:["it is a small light printer","it is a small and light printer","it's a small light printer","it's a small and light printer"], display:"It is a small, light printer.", hint:"💡 Los dos adjetivos van antes de “printer”.", fb:"Both adjectives go before the noun: <em>a small, light printer</em>." }
+];
+
+const QUIZ_C = [
+  { type:"mc", q:"Choose the correct phrase.", opts:["a reliable service","a service reliable","a reliables service"], answer:0, hint:"💡 ¿Dónde va el adjetivo?", fb:"Adjective before the noun, no -s: <em>a reliable service</em>." },
+  { type:"mc", q:"“They have ___ efficient team.”", opts:["a","an"], answer:1, hint:"💡 Mira el primer sonido de “efficient”.", fb:"<em>Efficient</em> starts with a vowel sound → <em>an</em>." },
+  { type:"mc", q:"What is the opposite of “heavy”?", opts:["large","light","slow"], answer:1, hint:"💡 Heavy = pesado.", fb:"<em>Heavy</em> (pesado) ↔ <em>light</em> (liviano)." },
+  { type:"mc", q:"“The chairs are ___.”", opts:["modern","moderns","a modern"], answer:0, hint:"💡 Los adjetivos no cambian.", fb:"Adjectives don't take -s, even with plural nouns." },
+  { type:"mc", q:"Which word is best for a customer when you mean “good price”?", opts:["cheap","economic","affordable"], answer:2, hint:"💡 Positivo y profesional.", fb:"<em>Affordable</em> sounds positive and professional. <em>Cheap</em> can sound low-quality, and <em>economic</em> means “related to the economy”." },
+  { type:"mc", q:"“Is it easy to use?” — “Yes, ___.”", opts:["it's","it is","is"], answer:1, hint:"💡 Respuesta corta positiva.", fb:"Short positive answers don't use contractions: <em>Yes, it is.</em>" },
+  { type:"mc", q:"“Tenemos una bodega grande.” in English is:", opts:["We have a long warehouse.","We have a large warehouse.","We have a warehouse large."], answer:1, hint:"💡 ¡Falso amigo!", fb:"<em>Large</em> = grande (not largo), and it goes before the noun." },
+  { type:"mc", q:"Choose the correct sentence.", opts:["It is very fast.","It is very much fast.","It is fast very."], answer:0, hint:"💡 muy = very", fb:"<em>very</em> + adjective: <em>very fast</em>." },
+  { type:"mc", q:"“It is ___ useful tool.”", opts:["a","an"], answer:0, hint:"💡 Escucha el sonido de “useful”.", fb:"<em>Useful</em> starts with a “yu” sound (a consonant sound), so it takes <em>a</em>." },
+  { type:"mc", q:"“It works every day with no problems.” It is…", opts:["popular","reliable","slow"], answer:1, hint:"💡 Confiable.", fb:"<em>Reliable</em> = confiable." },
+  { type:"mc", q:"You want a description of a new app. What do you ask?", opts:["How is it like?","What it is like?","What is it like?"], answer:2, hint:"💡 ¿Cómo es?", fb:"<em>What is it like?</em> = ¿Cómo es? The verb <em>is</em> goes before <em>it</em>." },
+  { type:"mc", q:"Choose the correct sentence.", opts:["The service is fast and flexible.","The service is fast y flexible.","The service is fasts and flexibles."], answer:0, hint:"💡 “y” en inglés es…", fb:"Use <em>and</em> between the adjectives, and never add -s." }
+];
+
+const BANK = { A: QUIZ_A, B: QUIZ_B, C: QUIZ_C };
+
+// ── ITEM RENDERERS ────────────────────────────────────────
+function isCorrect(part, i) {
+  const q = BANK[part][i], s = qState[part][i];
+  if (!s || !s.revealed) return false;
+  if (q.type === 'mc') return s.selected === q.answer;
+  if (q.type === 'tf') return q.answer === (s.selected === 0);
+  return !!s.correct;
+}
+
+function renderItem(part, q, i) {
+  const s = qState[part][i] || {};
+  const rev = s.revealed;
+  let body = '';
+  let label = '';
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type === 'mc' ? q.opts : ['True','False'];
+    const lets = q.type === 'mc' ? ['A','B','C','D'] : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt, j) => {
+        let cls = 'q-opt';
+        const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+        if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+        else if (s.selected === j) cls += ' selected';
+        return `<button class="${cls}" onclick="selectOpt('${part}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ('${part}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${isCorrect(part, i) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'unjumble') {
+    label = `<div class="b-type">🧩 Unjumble</div>`;
+    const placed = s.placed || [];
+    const ansCls = rev ? (s.correct ? 'uj-answer correct' : 'uj-answer wrong') : 'uj-answer';
+    body = `<div class="${ansCls}">
+      ${placed.length ? placed.map(bi => `<button class="uj-chip placed" onclick="ujTap('${part}',${i},${bi})" ${rev ? 'disabled' : ''}>${q.words[bi]}</button>`).join('') : `<span class="uj-empty">Toca las palabras abajo…</span>`}
+    </div>
+    ${!rev ? `<div class="uj-bank">
+      ${q.words.map((w, bi) => `<button class="uj-chip ${placed.includes(bi) ? 'used' : ''}" onclick="ujTap('${part}',${i},${bi})">${w}</button>`).join('')}
+    </div>` : ''}
+    ${!rev ? `<div class="uj-actions"><button class="btn btn-ghost" onclick="ujClear('${part}',${i})">Clear</button><button class="check-btn" onclick="checkUj('${part}',${i})" ${placed.length !== q.words.length ? 'disabled' : ''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.answer.join(' ')}.</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'translate' || q.type === 'input') {
+    if (q.type === 'translate') label = `<div class="b-type">🔁 Translate</div>`;
+    const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${part}-${i}" type="text" placeholder="Type in English…" value="${esc(s.inputVal || '')}" oninput="setInp('${part}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp('${part}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  const qText = q.type === 'unjumble' ? 'Put the words in order.' : q.type === 'translate' ? `<span class="tr-prompt">${q.prompt}</span>` : q.q;
+  return `<div class="q-card" id="qc-${part}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i + 1}</span>
+      <div>
+        ${label}
+        <div class="q-text">${qText}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function scoreLabel(score, total) {
+  if (score === total) return '🎉 ¡Perfecto! Great work!';
+  if (score >= total * 0.85) return '¡Excelente! Almost perfect.';
+  if (score >= total * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising — ¡tú puedes!';
+}
+function scoreMsg(score, total) {
+  if (score === total) return 'Outstanding — a perfect score!';
+  if (score >= total * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (score >= total * 0.7)  return 'Check the feedback, then retry the wrong answers.';
+  return 'Read the feedback carefully, then retry the wrong answers.';
+}
+
+function partBody(part) {
+  const bank = BANK[part];
+  const answered = Object.values(qState[part]).filter(s => s.revealed).length;
+  const total = bank.length;
+  const pct = (answered / total) * 100;
+  const allDone = answered === total;
+  const score = qScore[part];
+  const wrong = total - score;
+  return `<div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${total}</span>
+    </div>
+    ${bank.map((q, i) => renderItem(part, q, i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${score} / ${total}</div>
+      <div class="result-label">${scoreLabel(score, total)}</div>
+      <div class="result-msg">${scoreMsg(score, total)}</div>
+      <div class="attempts">Attempts so far: ${qAttempts[part]}</div>
+      ${wrong > 0 ? `<div style="display:flex;justify-content:center;margin-top:22px;"><button class="btn btn-gold" style="padding:12px 28px;font-size:13px;border-radius:8px;" onclick="retake('${part}')">↺ Retry ${wrong} Wrong Answer${wrong === 1 ? '' : 's'}</button></div>` : ''}
+    </div>` : ''}`;
+}
+
+// ── STEP RENDERERS ────────────────────────────────────────
+function renderPartA() {
+  return `<div class="sc">
+    ${badge("A", "Part A · Listening", "10 min")}
+    <div class="es-note">Escucha a Olivia, una gerente de oficina en Sídney. Ella describe tres cosas nuevas en su oficina. Escucha dos veces antes de ver la transcripción. Si lo necesitas, usa la velocidad 0.8×.</div>
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">New Things in Our Office</div>
+          <div class="audio-box-sub">Olivia Brooks · Office Manager · ~75 sec · Australian English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload" src="${AUDIO_URL}">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        <p>Hi, I'm Olivia Brooks. I'm the office manager at Greenfield Consulting in Sydney. This month, our office has three new things, and I want to tell you about them.</p>
+        <p>First, we have a new coffee machine. It is large and very fast, and the coffee is great. It isn't cheap, but it is a high-quality machine.</p>
+        <p>Second, we have new chairs for the meeting room. They are modern and comfortable. They are also light, so they are easy to move.</p>
+        <p>Third, we have a new booking app for the meeting rooms. It is a simple, useful app, and it is very easy to use. It is also affordable. It is only five dollars a month for the whole team.</p>
+        <p>My team is very happy. Our office is modern and efficient now. But there is one problem. The printer is old and very slow. So next month, I want a new, reliable printer!</p>
+      </div>
+    </div>
+    <div class="sub-heading">Comprehension Questions</div>
+    <p class="part-note">6 questions about Olivia's office. Todas las respuestas están en el audio.</p>
+    <div id="body-A">${partBody('A')}</div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartB() {
+  return `<div class="sc">
+    ${badge("B", "Part B · Unjumble + Translate", "10 min")}
+    <div class="es-note"><strong>Unjumble (Q1–Q5):</strong> Toca las palabras en el orden correcto para formar una oración. Si te equivocas, toca la palabra otra vez para quitarla.<br><strong>Translate (Q6–Q10):</strong> Traduce al inglés. Escribe la oración completa.</div>
+    <div id="body-B">${partBody('B')}</div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderPartC() {
+  return `<div class="sc">
+    ${badge("C", "Part C · Grammar & Vocabulary Quiz", "10 min")}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ_C.length} questions · Puedes reintentar las preguntas incorrectas.</p>
+      </div>
+    </div>
+    <div id="body-C">${partBody('C')}</div>
+    ${navFooter()}
+  </div>`;
+}
+
+// ── ENGINE (independent state per part) ───────────────────
+function ensure(part, i) { if (!qState[part][i]) qState[part][i] = {}; return qState[part][i]; }
+function selectOpt(part, i, j) { const s = ensure(part, i); if (s.revealed) return; s.selected = j; rerenderPart(part); }
+function revealQ(part, i) { ensure(part, i).revealed = true; recalc(part); rerenderPart(part); }
+function setInp(part, i, v) { ensure(part, i).inputVal = v; }
+function revealInp(part, i) {
+  const q = BANK[part][i], s = ensure(part, i);
+  s.correct = q.answers.some(a => normalise(s.inputVal || '') === normalise(a));
+  s.revealed = true; recalc(part); rerenderPart(part);
+}
+function ujTap(part, i, bi) {
+  const s = ensure(part, i); if (s.revealed) return;
+  if (!s.placed) s.placed = [];
+  const at = s.placed.indexOf(bi);
+  if (at > -1) s.placed.splice(at, 1);  // remove; remaining words stay contiguous, word returns to its bank slot
+  else s.placed.push(bi);
+  rerenderPart(part);
+}
+function ujClear(part, i) { const s = ensure(part, i); if (s.revealed) return; s.placed = []; rerenderPart(part); }
+function checkUj(part, i) {
+  const q = BANK[part][i], s = ensure(part, i);
+  const built = (s.placed || []).map(bi => q.words[bi]).join(' ');
+  s.correct = built === q.answer.join(' ');
+  s.revealed = true; recalc(part); rerenderPart(part);
+}
+function recalc(part) {
+  qScore[part] = BANK[part].reduce((n, _, i) => n + (isCorrect(part, i) ? 1 : 0), 0);
+}
+function retake(part) {
+  BANK[part].forEach((_, i) => { if (qState[part][i] && qState[part][i].revealed && !isCorrect(part, i)) delete qState[part][i]; });
+  qAttempts[part]++;
+  recalc(part); rerenderPart(part);
+  setTimeout(() => {
+    const first = BANK[part].findIndex((_, i) => !qState[part][i] || !qState[part][i].revealed);
+    const el = document.getElementById('qc-' + part + '-' + first);
+    if (el) el.scrollIntoView({ behavior:'smooth', block:'center' });
+  }, 100);
+}
+function rerenderPart(part) {
+  // Redraws only this part's question area, so the audio player and scroll position are untouched
+  const wrap = document.getElementById('body-' + part);
+  if (wrap) wrap.innerHTML = partBody(part);
+}
+
+// ── AUDIO (Pattern A) ─────────────────────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Part A · Listening", fn: renderPartA },
+  { label: "2. Part B · Unjumble + Translate", fn: renderPartB },
+  { label: "3. Part C · Quiz", fn: renderPartC },
+];
+
+render(); // always last
+</script>
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 38: Workplace Culture and Etiquette | A1 · Unit 4 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+<style>
+/* ── Lesson-specific CSS: A1-L38 Classwork ── */
+.sub-heading { font-family:var(--font-heading); font-size:18px; color:var(--navy); margin:22px 0 12px; }
+.soft { color:var(--grey-blue); font-weight:400; font-style:italic; }
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+.teacher-box ul { margin:6px 0 6px 20px; }
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:12px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; line-height:1.7; color:var(--green); font-weight:500; }
+.tap-answer.show { display:block; }
+/* warm-up */
+.warm-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-bottom:10px; }
+@media(max-width:600px){ .warm-grid{ grid-template-columns:1fr; } }
+.warm-card { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--gold); border-radius:8px; padding:14px 16px; cursor:pointer; position:relative; transition:border-color 0.12s; }
+.warm-card:hover { border-color:var(--sky); border-left-color:var(--gold); }
+.warm-num { position:absolute; top:12px; right:14px; font-family:var(--font-heading); color:var(--steel); font-size:18px; }
+.warm-q { font-size:14px; color:var(--navy); padding-right:26px; line-height:1.5; }
+.warm-a { display:none; margin-top:10px; padding-top:8px; border-top:1px dashed var(--border-grey); color:var(--green); font-weight:700; font-size:15px; }
+.warm-hint { margin-top:8px; font-size:11px; color:var(--grey-blue); }
+.warm-card.open .warm-a { display:block; }
+.warm-card.open .warm-hint { display:none; }
+/* passages */
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.passage-head { background:var(--navy); padding:12px 18px; display:flex; gap:14px; align-items:center; }
+.passage-num { font-family:var(--font-heading); font-size:22px; color:var(--gold); min-width:22px; text-align:center; }
+.passage-name { font-family:var(--font-heading); font-size:16px; color:var(--white); }
+.passage-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.passage-body { padding:18px; }
+.passage-text { font-family:var(--font-heading); font-size:16px; line-height:1.85; color:var(--slate); background:var(--off-white); border-left:4px solid var(--gold); padding:14px 18px; border-radius:0 8px 8px 0; margin-bottom:14px; }
+/* grammar */
+.pattern-row { align-items:center; }
+.reminder-strip { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:8px; padding:12px 16px; margin-bottom:20px; }
+.rem-item { font-size:13px; color:#7A5500; line-height:1.9; }
+.write-prompt { font-size:14px; color:var(--navy); line-height:1.6; margin-bottom:10px; }
+.line-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.line-num { font-family:var(--font-heading); color:var(--gold); font-size:16px; min-width:18px; text-align:center; }
+.line-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--white); outline:none; color:var(--navy); transition:border-color 0.12s; min-width:0; }
+.line-input:focus { border-color:var(--gold); }
+/* writing */
+.fill-text { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:12px; font-size:15px; line-height:2.3; color:var(--slate); }
+.fill-text p { margin-bottom:8px; }
+.fill-note { font-family:var(--font-heading); font-style:italic; color:var(--navy); }
+.blank-wrap { display:inline-flex; align-items:center; gap:3px; }
+.blank-n { font-family:var(--font-body); font-style:normal; font-size:10px; font-weight:700; background:var(--navy); color:var(--gold); border-radius:3px; padding:0 5px; line-height:16px; }
+.blank-input { width:100px; font-style:normal; }
+.blank-input:disabled { background:transparent; }
+.fill-actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+.fill-score { font-size:13px; font-weight:700; color:var(--red); }
+.fill-score.ok { color:var(--green); }
+.frame-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; font-size:14px; color:var(--navy); }
+.frame-pre, .frame-post { white-space:nowrap; }
+.frame-input { min-width:180px; }
+@media(max-width:600px){ .frame-pre, .frame-post{ white-space:normal; } .frame-input{ min-width:100%; } }
+</style>
+
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 4 · Classwork</div>
+    <h1 class="hero-title">Lesson 38: Workplace Culture and Etiquette</h1>
+    <p class="hero-sub">Reading Day · Grammar: should / shouldn't · 60 min live class</p>
+    <div class="hero-pills">
+      <span class="pill accent">📖 Reading</span>
+      <span class="pill accent">✍️ Writing</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block — never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly — not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START — replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+const WARMUP = [
+  [`¿Cómo se dice “puntualidad” en inglés?`, `punctuality`],
+  [`¿Cómo se dice “código de vestimenta”?`, `dress code`],
+  [`¿Cómo se dice “trabajo en equipo”?`, `teamwork`],
+  [`¿Cómo se dice “compañero de equipo”?`, `teammate`],
+  [`¿Cómo se dice “avisar a alguien”?`, `let someone know <span class="soft">(not “advise”)</span>`],
+  [`¿Cómo se dice “educado, cortés”?`, `polite <span class="soft">(not “educated”)</span>`],
+  [`¿Cómo se dice “maleducado”?`, `rude <span class="soft">(not “rudo”)</span>`],
+  [`¿Cómo se dice “Deberías llegar a tiempo”?`, `You should arrive on time.`],
+];
+
+const PASSAGES = [
+  { emoji:`⏰`, name:`Lukas Becker`, role:`Project Manager, engineering company, Munich`,
+    text:`In Lukas's office, meetings start exactly on time. If a meeting is at 9:00, people are in the room at 8:58. For Lukas, punctuality is a way to show respect for your colleagues. New employees should arrive a few minutes early, and they shouldn't leave before the meeting ends. If you are late, you should send a short message to the organizer.`,
+    qs:[[`What time are people in the room for a 9:00 meeting?`, `They are in the room at 8:58.`],
+        [`What should you do if you are late?`, `You should send a short message to the organizer.`]] },
+  { emoji:`👔`, name:`Nadia Rahman`, role:`HR Assistant, bank, Dubai`,
+    text:`Nadia's bank has a clear dress code. From Monday to Thursday, men should wear a suit and tie, and women should wear business clothes. On Fridays, the dress code is business casual. Nadia says employees should always look neat. They shouldn't wear sports clothes to the office, even on Fridays.`,
+    qs:[[`What should men wear from Monday to Thursday?`, `They should wear a suit and tie.`],
+        [`What is the dress code on Fridays?`, `It is business casual.`]] },
+  { emoji:`🤝`, name:`Tomás Herrera`, role:`Software Developer, tech startup, Santiago`,
+    text:`Tomás works in a team of six developers. Every morning at 9:30, the team has a short meeting, and each person shares their plan for the day. For Tomás, good teamwork is simple. You should listen to your teammates, and you shouldn't interrupt them. You should also say “thank you” when someone helps you.`,
+    qs:[[`How many developers are on Tomás's team?`, `There are six developers on his team.`],
+        [`What shouldn't you do when your teammates are speaking?`, `You shouldn't interrupt them.`]] },
+  { emoji:`🍽️`, name:`Chloe Martin`, role:`Office Manager, marketing agency, Montreal`,
+    text:`Chloe's office has one big kitchen for forty employees, and it is always busy at lunchtime. There is a sign on the kitchen wall with three tips. “You should clean up after lunch. You should wash your coffee cup. You shouldn't leave food in the fridge on Friday.” Now the kitchen is clean, and everyone is happy.`,
+    qs:[[`How many employees use the kitchen?`, `Forty employees use the kitchen.`],
+        [`What shouldn't you leave in the fridge on Friday?`, `You shouldn't leave food in the fridge on Friday.`]] },
+  { emoji:`💼`, name:`Kenji Watanabe`, role:`Sales Representative, electronics company, Osaka`,
+    text:`In Kenji's company, business cards are very important. When Kenji meets a new client, he gives his card with two hands. When a client gives you a card, you should look at it for a few seconds. You shouldn't write on it, and you shouldn't put it in your back pocket. For Kenji, these small details show respect.`,
+    qs:[[`How does Kenji give his business card?`, `He gives it with two hands.`],
+        [`Where shouldn't you put a client's business card?`, `You shouldn't put it in your back pocket.`]] },
+  { emoji:`📞`, name:`Zanele Dlamini`, role:`Customer Service Team Leader, telecom company, Johannesburg`,
+    text:`Zanele's team answers customer calls all day in an open office, so the office is often noisy. Zanele has two tips for her team. First, you should put your personal phone on silent at your desk. Second, you shouldn't take personal calls in the open office. If you need to make a personal call, you should go to the break room.`,
+    qs:[[`Why is Zanele's office often noisy?`, `It is noisy because her team answers customer calls all day.`],
+        [`Where should you go to make a personal call?`, `You should go to the break room.`]] },
+  { emoji:`💻`, name:`Arjun Mehta`, role:`Finance Analyst, consulting firm, Pune`,
+    text:`Arjun works with teammates in London, Toronto and Singapore, so he has a lot of video calls. For Arjun, video calls have their own etiquette. You should join one or two minutes early and check your camera. You shouldn't eat or check your email during the call. When you aren't speaking, you should mute your microphone.`,
+    qs:[[`Where are Arjun's teammates?`, `They are in London, Toronto and Singapore.`],
+        [`What should you do when you aren't speaking?`, `You should mute your microphone.`]] },
+  { emoji:`🙋`, name:`Ana Petrović`, role:`New Employee, logistics company, Belgrade`,
+    text:`Today is Ana's first day at a logistics company, and she has a lot of questions. What should I wear? Should I bring my laptop? Who should I ask for help? Her manager has a simple answer: “Ask your teammates. They are always happy to help.” Ana thinks the workplace culture here is very friendly.`,
+    qs:[[`What is one of Ana's questions?`, `One of her questions is “What should I wear?” <span class="soft">(Also correct: “Should I bring my laptop?” or “Who should I ask for help?”)</span>`],
+        [`What does Ana think about the workplace culture?`, `She thinks it is very friendly.`]] },
+];
+
+// Writing Task Part A: text split around 4 blanks
+const FILL_BANK = [`should`, `shouldn't`, `neat`, `punctual`, `rude`];
+const FILL_ANS  = [[`punctual`], [`should`], [`neat`], [`shouldn't`, `should not`]];
+const FILL_PARTS = [
+  `“Welcome to the team! In our office, we are very `,
+  `, so our meetings always start on time. From Monday to Thursday, you `,
+  ` wear business casual clothes. Your clothes should always be clean and `,
+  `. In meetings, you `,
+  ` be shy. Share your ideas with your teammates. We want to hear them!”`,
+];
+
+// Typed text survives step changes
+const typed = { g1:``, g2:``, g3:``, b0:``, b1:``, b2:``, b3:``, b4:`` };
+const fillState = { vals:[``,``,``,``], checked:false, result:[] };
+
+
+// ── HELPERS ───────────────────────────────────────────────
+function badge(n, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${n}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function teacher(html) {
+  return `<div class="teacher-box"><div class="teacher-box-label">👩‍🏫 Teacher Note</div>${html}</div>`;
+}
+function tapRow(q, a, hint) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top"><div class="tap-q">${q}</div><div class="tap-hint-label">${hint || 'Tap to reveal'}</div></div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+function esc(s) { return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+function norm(s) { return (s || '').replace(/[\u2018\u2019\u00B4`]/g, "'").trim().toLowerCase().replace(/\s+/g,' '); }
+function saveTyped(k, v) { typed[k] = v; }
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    ${badge(1, `Warm-up: Vocabulary Recall`, `5 min`)}
+    <div class="es-note">Tu profesor te va a hacer una pregunta. Responde en inglés, en voz alta. Después, toca la tarjeta para comprobar.</div>
+    <div class="warm-grid">
+      ${WARMUP.map(([q, a], i) => `<div class="warm-card" onclick="this.classList.toggle('open')">
+        <div class="warm-num">${i+1}</div>
+        <div class="warm-q">${q}</div>
+        <div class="warm-a">✓ ${a}</div>
+        <div class="warm-hint">Tap to reveal</div>
+      </div>`).join('')}
+    </div>
+    ${teacher(`Go round-robin, one card per student.
+      <ul>
+        <li><strong>Cards 1 to 4</strong> are vocabulary recall.</li>
+        <li><strong>Cards 5 to 7</strong> are the three false friends from the Pre-Learning. Expect <em>advise</em>, <em>educated</em> and <em>rudo</em>, and correct them quickly.</li>
+        <li><strong>Card 8</strong> is the first <em>should</em> sentence of the day. Listen for “You should to arrive” and “You must arrive.”</li>
+      </ul>
+      Extension for stronger students: after card 8, ask for the negative, <em>You shouldn't be late.</em>`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    ${badge(2, `Reading: 8 Short Passages`, `10 min`)}
+    <div class="es-note">Lee tu párrafo en silencio. Después, responde las dos preguntas con una oración completa. Vamos a revisar las respuestas en clase, en voz alta.</div>
+    ${PASSAGES.map((p, i) => `<div class="passage-card">
+      <div class="passage-head">
+        <span class="passage-num">${i+1}</span>
+        <div><div class="passage-name">${p.emoji} ${p.name}</div><div class="passage-role">${p.role}</div></div>
+      </div>
+      <div class="passage-body">
+        <div class="passage-text">${p.text}</div>
+        ${p.qs.map((q, j) => tapRow(`<strong>Q${j+1}:</strong> ${q[0]}`, `✓ ${q[1]}`)).join('')}
+      </div>
+    </div>`).join('')}
+    ${teacher(`If you can, assign one passage per student before class. In class, give 3 to 4 minutes for silent reading and answering. Then call on each student to read their passage title and their two answers aloud.
+      <br><br>Listen for these errors:
+      <ul>
+        <li><em>“You should to...”</em> or <em>“he shoulds”</em></li>
+        <li><em>“You don't should...”</em> instead of <em>shouldn't</em></li>
+        <li>Short answers with <em>do</em>: <em>“Yes, you do”</em></li>
+        <li>Dropping the subject in answers, for example <em>“Should go to the break room”</em></li>
+      </ul>
+      Correct on the spot and keep the pace moving. Passage 8 is the best one for question word order, so ask that student to read Ana's three questions aloud.
+      <br><br>Extension: after each answer, ask a stronger student a quick follow-up about the same passage, such as “Should you eat during a video call?”`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  const rows = [
+    [`You <strong>should</strong> arrive on time.`, `<strong>Deberías</strong> llegar a tiempo.`],
+    [`You <strong>shouldn't</strong> interrupt your teammates.`, `<strong>No deberías</strong> interrumpir a tus compañeros.`],
+    [`<strong>Should I</strong> wear a suit? Yes, you <strong>should</strong>. / No, you <strong>shouldn't</strong>.`, `¿<strong>Debería</strong> usar traje? Sí. / No.`],
+    [`What <strong>should I</strong> wear on Friday?`, `¿Qué <strong>debería</strong> ponerme el viernes?`],
+    [`<strong>I think</strong> you <strong>should</strong> ask your manager.`, `<strong>Creo que deberías</strong> preguntarle a tu jefe.`],
+  ];
+  const reminders = [
+    `<em>Should</em> is the same for everyone: <em>he should</em>, never <em>he shoulds</em>.`,
+    `There's no <em>to</em> after <em>should</em>: <em>should arrive</em>, not <em>should to arrive</em>.`,
+    `Use the base verb: <em>should share</em>, not <em>should shares</em> or <em>should sharing</em>.`,
+    `For the negative, say <em>shouldn't</em>, not <em>don't should</em>.`,
+    `In questions, <em>should</em> comes first, with no <em>do</em>: <em>Should I...?</em>`,
+  ];
+  return `<div class="sc">
+    ${badge(3, `Main Grammar: should / shouldn't`, `15 min`)}
+    <div class="es-note">En las lecturas viste muchas frases con <em>should</em> y <em>shouldn't</em>. Ahora vamos a repasar la forma y tú vas a escribir tus propios ejemplos sobre la cultura de tu empresa.</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Pattern · English | Español</div>
+      ${rows.map(([en, es]) => `<div class="pattern-row"><div class="pattern-en">${en}</div><div class="pattern-es">${es}</div></div>`).join('')}
+    </div>
+    <div class="reminder-strip">
+      ${reminders.map(r => `<div class="rem-item">✔ ${r}</div>`).join('')}
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Your turn</div>
+      <div class="write-prompt">Write 2 sentences about the workplace culture at your company. Sentence 1 uses <strong>should</strong>. Sentence 2 uses <strong>shouldn't</strong>.</div>
+      <div class="line-row"><span class="line-num">1</span><input class="line-input" type="text" placeholder="At my company, you should..." value="${esc(typed.g1)}" oninput="saveTyped('g1',this.value)"></div>
+      <div class="line-row"><span class="line-num">2</span><input class="line-input" type="text" placeholder="You shouldn't..." value="${esc(typed.g2)}" oninput="saveTyped('g2',this.value)"></div>
+      <div class="write-prompt" style="margin-top:14px">Challenge (optional): Write one question for a new employee with <strong>Should I...?</strong> or <strong>What should I...?</strong></div>
+      <div class="line-row"><span class="line-num">★</span><input class="line-input" type="text" placeholder="What should I...?" value="${esc(typed.g3)}" oninput="saveTyped('g3',this.value)"></div>
+      ${tapRow(`💡 Need a model?`, `At my company, you should arrive five minutes early for meetings. You shouldn't eat lunch at your desk.<br><span class="soft">Challenge: What should I wear on Friday?</span>`)}
+    </div>
+    ${teacher(`Invented examples are fine. Students who work from home can write about video calls, and self-employed students can write about client meetings.
+      <br><br>Walk the room (or read the chat) while students write. Check for:
+      <ul>
+        <li><em>to</em> after <em>should</em></li>
+        <li><em>don't should</em></li>
+        <li><em>must</em> where the student means advice. If a student writes “You must arrive early,” ask: “Is that a company rule, or a good idea?”</li>
+      </ul>
+      Ask 3 or 4 volunteers to read their sentences aloud. Extension: stronger students answer a classmate's challenge question with a short answer, <em>Yes, you should</em> or <em>No, you shouldn't</em>.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderFill() {
+  const st = fillState;
+  let html = ``;
+  FILL_PARTS.forEach((part, i) => {
+    html += part;
+    if (i < 4) {
+      let cls = `blank-input`;
+      if (st.checked) cls += st.result[i] ? ` correct` : ` wrong`;
+      html += `<span class="blank-wrap"><span class="blank-n">${i+1}</span><input class="${cls}" id="fill-${i}" type="text" value="${esc(st.vals[i])}" oninput="fillSet(${i},this.value)" ${st.checked && st.result[i] ? 'disabled' : ''}></span>`;
+    }
+  });
+  const score = st.result.filter(Boolean).length;
+  const allRight = st.checked && score === 4;
+  return `<div class="fill-text">
+      <p>Andrés Molina is a team leader at an insurance company in Lima. Every January, he writes a short welcome note for new employees:</p>
+      <p class="fill-note">${html}</p>
+    </div>
+    <div class="fill-actions">
+      ${!allRight ? `<button class="check-btn" onclick="fillCheck()">Check</button>` : ''}
+      ${st.checked && !allRight ? `<button class="btn btn-ghost" onclick="fillRetry()">↺ Try again</button>` : ''}
+      ${st.checked ? `<span class="fill-score ${allRight ? 'ok' : ''}">${score} / 4 correct${allRight ? ' 🎉' : ''}</span>` : ''}
+    </div>
+    ${st.checked && !allRight ? `<div class="q-feedback wrong">💡 Look at the words around each blank. Is it a good idea or a bad idea? Is it an adjective or a verb? Only the wrong blanks are cleared when you try again.</div>` : ''}
+    ${allRight ? `<div class="q-feedback correct">💡 ¡Muy bien! <em>Rude</em> is the extra word. Andrés wants a polite team!</div>` : ''}`;
+}
+function fillSet(i, v) { fillState.vals[i] = v; }
+function fillCheck() {
+  for (let i = 0; i < 4; i++) {
+    const el = document.getElementById('fill-' + i);
+    if (el && !el.disabled) fillState.vals[i] = el.value;
+  }
+  fillState.result = fillState.vals.map((v, i) => FILL_ANS[i].some(a => norm(v) === norm(a)));
+  fillState.checked = true;
+  fillRerender();
+}
+function fillRetry() {
+  fillState.vals = fillState.vals.map((v, i) => fillState.result[i] ? v : ``);
+  fillState.checked = false;
+  fillRerender();
+  const first = fillState.vals.findIndex(v => !v);
+  const el = document.getElementById('fill-' + first);
+  if (el) el.focus();
+}
+function fillRerender() {
+  // Redraws only Part A, so Part B typing is never lost
+  const wrap = document.getElementById('fill-wrap');
+  if (wrap) wrap.innerHTML = renderFill();
+}
+
+function renderWriting() {
+  const frame = [
+    [`b0`, `Welcome to`, `(company)! Here are some tips about our workplace culture.`],
+    [`b1`, `<strong>Punctuality:</strong> You should`, ``],
+    [`b2`, `<strong>Dress code:</strong> You should / shouldn't`, ``],
+    [`b3`, `<strong>Teamwork:</strong> You should`, ``],
+    [`b4`, `<strong>One more thing:</strong> You shouldn't`, ``],
+  ];
+  const full = `Andrés Molina is a team leader at an insurance company in Lima. Every January, he writes a short welcome note for new employees:<br>“Welcome to the team! In our office, we are very <strong>punctual</strong>, so our meetings always start on time. From Monday to Thursday, you <strong>should</strong> wear business casual clothes. Your clothes should always be clean and <strong>neat</strong>. In meetings, you <strong>shouldn't</strong> be shy. Share your ideas with your teammates. We want to hear them!”`;
+  return `<div class="sc">
+    ${badge(4, `Writing Task: A Welcome Note`, `20 min`)}
+    <div class="sub-heading">Part A · Complete the welcome note</div>
+    <div class="es-note">Completa el texto con las palabras del banco. Hay una palabra extra.</div>
+    <div class="word-bank">
+      <div class="word-bank-label">Word bank</div>
+      <div class="word-bank-words">${FILL_BANK.join(' · ')} <span class="soft">(one word is extra)</span></div>
+    </div>
+    <div id="fill-wrap">${renderFill()}</div>
+    ${tapRow(`📄 Model answer: the full text`, full)}
+
+    <div class="divider"></div>
+    <div class="sub-heading">Part B · Your turn: a welcome note for your company</div>
+    <div class="es-note">Ahora escribe una nota de bienvenida para un empleado nuevo en TU empresa. Usa el mismo modelo. Puedes inventar los detalles.</div>
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Guided writing</div>
+      ${frame.map(([k, pre, post]) => `<div class="frame-row"><span class="frame-pre">${pre}</span><input class="line-input frame-input" type="text" value="${esc(typed[k])}" oninput="saveTyped('${k}',this.value)">${post ? `<span class="frame-post">${post}</span>` : ''}</div>`).join('')}
+      ${tapRow(`💡 Need a model?`, `Welcome to Andes Logistics! Here are some tips about our workplace culture.<br><strong>Punctuality:</strong> You should arrive at the office before 8:00.<br><strong>Dress code:</strong> You shouldn't wear shorts or sandals.<br><strong>Teamwork:</strong> You should share information with your teammates.<br><strong>One more thing:</strong> You shouldn't take personal calls in the open office.`)}
+    </div>
+    ${teacher(`Give students 10 minutes to write both parts.
+      <ul>
+        <li><strong>Part A:</strong> Go through the text together and read the correct version aloud. Ask 2 or 3 students why <em>rude</em> is the extra word. It's the opposite of what Andrés wants from his team.</li>
+        <li><strong>Part B:</strong> Have each student read their note aloud, and correct them live. This is the lesson's main live-corrected writing moment, so don't skip it for time. Watch for <em>should to</em>, <em>don't should</em>, and <em>must</em> used for friendly advice.</li>
+      </ul>
+      Quick listening add-on: after a student reads, ask a different student one question about it, such as “What's the dress code at her company?” This keeps everyone listening, and it's still a teacher-led question, not a roleplay.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Warm-up",      fn: renderWarmup },
+  { label: "2. Reading",      fn: renderReading },
+  { label: "3. Main Grammar", fn: renderGrammar },
+  { label: "4. Writing Task", fn: renderWriting },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

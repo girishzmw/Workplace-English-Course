@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1 Lesson 40: Review + Professional Interaction Simulation | Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── L40 Classwork additions ───────────────────────────── */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); font-weight:500; line-height:1.6; display:flex; flex-wrap:wrap; align-items:center; gap:6px; }
+.tap-hint-label { font-size:11px; color:var(--sky); font-style:italic; white-space:nowrap; flex-shrink:0; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); line-height:1.6; }
+.tap-answer.show { display:block; }
+.es-inline { color:var(--grey-blue); font-style:italic; font-weight:400; }
+.lesson-chip { display:inline-block; background:var(--gold-bg); border:1px solid rgba(201,151,44,0.35); color:#7A5500; border-radius:12px; padding:2px 9px; font-size:11px; font-weight:700; white-space:nowrap; }
+.card-num { display:inline-flex; width:24px; height:24px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:12px; font-weight:700; align-items:center; justify-content:center; flex-shrink:0; }
+.cue-chip { display:inline-block; background:var(--light-grey); border:1px solid var(--border-grey); border-radius:14px; padding:3px 10px; font-size:13px; color:var(--navy); }
+.ladder-stage { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:20px; margin-bottom:24px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.ladder-stage-head { display:flex; gap:14px; align-items:center; margin-bottom:16px; }
+.ladder-stage-num { width:40px; height:40px; border-radius:50%; background:var(--navy); color:var(--gold); font-family:var(--font-heading); font-size:19px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.ladder-stage-title { font-family:var(--font-heading); font-size:18px; color:var(--navy); }
+.ladder-stage-sub { font-size:12px; color:var(--grey-blue); font-style:italic; margin-top:2px; }
+.chorus-line { display:flex; gap:12px; align-items:center; background:var(--off-white); border-left:4px solid var(--gold); padding:11px 16px; margin-bottom:8px; font-family:var(--font-heading); font-size:16px; color:var(--navy); font-style:italic; }
+.chorus-num { font-family:var(--font-body); font-style:normal; font-size:12px; font-weight:700; color:var(--gold); }
+.frame-box { background:var(--navy); border-radius:10px; padding:18px 20px; margin-bottom:16px; }
+.frame-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:10px; }
+.frame-line { display:flex; gap:12px; align-items:baseline; font-size:16px; color:var(--white); margin-bottom:8px; line-height:1.6; }
+.frame-line strong { color:var(--gold); }
+.frame-who { background:var(--gold); color:var(--navy); font-weight:700; font-size:12px; border-radius:4px; padding:1px 8px; flex-shrink:0; }
+.blank { color:var(--gold-light); letter-spacing:1px; }
+.cue-card { display:flex; flex-wrap:wrap; gap:10px; background:var(--gold-bg); border:1px solid rgba(201,151,44,0.35); border-radius:10px; padding:16px; margin-bottom:18px; }
+.cue-item { background:var(--white); border:1px solid rgba(201,151,44,0.35); border-radius:20px; padding:7px 14px; font-size:14px; color:var(--navy); font-weight:700; display:flex; gap:8px; align-items:center; }
+.cue-icon { font-size:16px; }
+.plan-label { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.qbank { background:var(--off-white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-top:6px; }
+.qbank-label { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.qbank-item { font-size:14px; color:var(--navy); font-style:italic; padding:6px 0; border-bottom:1px dashed var(--border-grey); }
+.qbank-item:last-child { border-bottom:none; }
+.err-wrong { color:var(--red); font-style:italic; }
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.passage-head { background:var(--navy); padding:12px 18px; display:flex; gap:12px; align-items:center; }
+.passage-emoji { font-size:24px; }
+.passage-name { font-family:var(--font-heading); font-size:16px; color:var(--white); }
+.passage-role { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.passage-body { padding:16px 18px 6px; }
+.passage-text { font-size:15px; line-height:1.8; color:var(--navy); margin-bottom:14px; }
+.tpl-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:10px 18px; margin-bottom:18px; }
+.tpl-line { display:flex; gap:12px; padding:10px 0; border-bottom:1px dashed var(--border-grey); }
+.tpl-line:last-child { border-bottom:none; }
+.tpl-num { font-size:12px; font-weight:700; color:var(--gold); min-width:18px; padding-top:6px; }
+.tpl-text { font-size:15px; color:var(--navy); line-height:2.2; }
+.tpl-input { border:none; border-bottom:2px solid var(--border-grey); background:var(--off-white); font-family:var(--font-body); font-size:14px; color:var(--navy); padding:3px 6px; margin:0 3px; outline:none; max-width:100%; }
+.tpl-input:focus { border-bottom-color:var(--gold); }
+.tpl-input::placeholder { color:var(--steel); font-style:italic; font-size:12px; }
+.word-bank-words { margin-bottom:4px; }
+.err-right { color:var(--green); font-style:italic; font-weight:700; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 4 · Classwork</div>
+    <h1 class="hero-title">Lesson 40: Review + Professional Interaction Simulation</h1>
+    <p class="hero-sub">Speaking Day · Unit 4 review · Small talk, opinions and your department</p>
+
+    <div class="hero-pills">
+      <span class="pill accent">Speaking Day</span>
+      <span class="pill accent">Unit 4 Review</span>
+      <span class="pill">5 sections</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block — never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly — not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START — replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+const WARMUP = [
+  ["What do you call a short pause for coffee at work?", "coffee break", "pausa para el café"],
+  ["What is the word for “being on time”?", "punctuality", "puntualidad"],
+  ["What do you call a trip for work?", "business trip", "viaje de negocios"],
+  ["What word describes a system that works well and fast?", "efficient", "eficiente"],
+  ["What do you call the rules about what to wear at work?", "dress code", "código de vestimenta"],
+  ["What is a big event with many talks and many people?", "conference", "congreso"],
+  ["What is the number or result a team wants to reach?", "target", "meta / objetivo"],
+  ["What word means the traditions of a country or culture?", "customs", "costumbres"],
+];
+
+const PATTERNS = [
+  ["<strong>Small talk:</strong> How was your…? → It was…, thank you.", "Para conversar: pregunta con How was…? y responde con It was…"],
+  ["<strong>Opinion:</strong> I like + verb-ing.", "Para dar tu opinión: I like working…"],
+  ["<strong>Advice:</strong> You should + verb.", "Para dar consejos: should + verbo base, sin “to”."],
+  ["<strong>Polite:</strong> Would you like…? / Could you…, please?", "Para ofrecer o pedir algo de forma amable."],
+];
+
+const PASSAGES = [
+  { emoji:"☕", name:"Nikos Papadakis", role:"Office Manager, shipping company, Athens", tags:"L31 + L32",
+    text:"Every Monday morning, Nikos makes coffee for his team and starts a short conversation. He usually asks, “How was your weekend?” or “What do you think about the new office?” Last week, his colleague Eleni was in Crete with her family, so Nikos asked about her trip. She answered, “It was wonderful, but the ferry was very slow!” Nikos thinks these small conversations are important because they make the team friendly.",
+    qs:[["What does Nikos usually ask on Monday morning?","He asks, “How was your weekend?” or “What do you think about the new office?”"],
+        ["Where was Eleni last week?","She was in Crete with her family."]] },
+  { emoji:"✈️", name:"Amaru Quispe", role:"Travel Coordinator, mining company, Lima", tags:"L32 + L36",
+    text:"Amaru organizes business trips for the managers at his company. Last month, the sales managers were in Toronto for a big conference. The flights were long, but the hotel was modern and comfortable, and it was near the conference centre. There was one problem: the weather was very cold, so Amaru booked a taxi for every meeting. The managers were happy with the trip, and they thanked Amaru for his excellent planning.",
+    qs:[["Where were the sales managers last month?","They were in Toronto for a big conference."],
+        ["What was the problem in Toronto?","The weather was very cold."]] },
+  { emoji:"🥗", name:"Ji-woo Han", role:"HR Assistant, electronics company, Busan", tags:"L33",
+    text:"Every Friday, Ji-woo orders lunch for a team meeting. She usually orders some sandwiches, a big salad and some fruit. For drinks, she orders some water and some juice, because the team prefers tea in the afternoon. Before she orders, she always asks two questions: “How many people are at the meeting?” and “How much food do we need?” Her colleagues say the Friday lunch is the best part of the week.",
+    qs:[["What food does Ji-woo usually order?","She orders some sandwiches, a big salad and some fruit."],
+        ["What two questions does she always ask?","“How many people are at the meeting?” and “How much food do we need?”"]] },
+  { emoji:"🎤", name:"Oluwaseun Bello", role:"Events Coordinator, bank, Abuja", tags:"L34 + L37",
+    text:"Last month, Oluwaseun organized a networking event for 150 clients at a hotel in Abuja. She planned the event for three months, and she invited speakers from four countries. On the day of the event, she arrived at the hotel at 6 a.m. and checked the room, the microphones and the menu. The event finished at 9 p.m., and the clients enjoyed the evening. After the event, she emailed a thank-you message to every speaker.",
+    qs:[["How many clients were at the networking event?","There were 150 (one hundred and fifty) clients."],
+        ["Name two things Oluwaseun checked on the day of the event.","She checked the room, the microphones and the menu. (any two)"]] },
+  { emoji:"📚", name:"Saoirse Byrne", role:"Training Manager, software company, Dublin", tags:"L35",
+    text:"Saoirse plans training for new employees, so she often asks them about their preferences. Most new employees like working in small groups, and many of them love using online tools. However, some people don't like speaking in front of a big group, so Saoirse gives them short presentations first. Saoirse really likes meeting new people every month. Her favourite part of the job is reading the feedback after each training.",
+    qs:[["What do most new employees like?","They like working in small groups."],
+        ["Why does Saoirse give some people short presentations first?","Because some people don't like speaking in front of a big group."]] },
+  { emoji:"📱", name:"Tariq Mahmood", role:"Product Manager, phone company, Karachi", tags:"L36",
+    text:"Tariq and his team design phones for young professionals. Their new phone is a light, modern phone with a large screen and a fast camera. It is also affordable, so many students and new employees can buy it. Tariq is proud of his small, creative team, because they always have innovative ideas. He says, “Our customers want simple, efficient products, and that is our goal.”",
+    qs:[["What is the new phone like?","It is a light, modern phone with a large screen and a fast camera."],
+        ["Why can many students buy the phone?","Because it is affordable."]] },
+  { emoji:"📊", name:"Kalani Akana", role:"Sales Analyst, hotel group, Honolulu", tags:"L37 + L35",
+    text:"Every Friday, Kalani checks the numbers for his hotel group and sends a short report to his manager. This month, the hotels have 2,400 guests, and 65 percent of them are from Asia. Revenue was $1.2 million last month, and growth was 4.5 percent. The target for this year is 30,000 guests, so the team needs a strong summer. Kalani likes working with numbers because they tell a clear story.",
+    qs:[["What percent of the guests are from Asia?","Sixty-five percent of the guests are from Asia."],
+        ["What was the growth last month?","It was 4.5 (four point five) percent."]] },
+  { emoji:"🌍", name:"Bogdan Ionescu", role:"IT Team Lead, logistics company, Bucharest", tags:"L38 + L39",
+    text:"Bogdan's IT team works with colleagues in Germany, Japan and Brazil, so he gives every new employee some simple advice. “You should always be on time for video calls, and you should use a title like Mr. or Ms. in your first email,” he says. “With Japanese clients, you should be formal, but in Brazil, people are often more informal.” When he needs help, Bogdan says, “Excuse me, could you help me with this, please?” His colleagues like his polite and respectful style.",
+    qs:[["What should new employees use in their first email?","They should use a title like Mr. or Ms."],
+        ["What does Bogdan say when he needs help?","He says, “Excuse me, could you help me with this, please?”"]] },
+];
+
+// Writing template: each line is text segments with blanks (objects carry a placeholder hint)
+const TEMPLATE = [
+  ["Nice to meet you. My name is ", {h:"name"}, ", and I work in the ", {h:"department"}, " department at ", {h:"company / city"}, "."],
+  ["We are a team of ", {h:"number", w:"70px"}, " people."],
+  ["Every day, we ", {h:"task 1"}, " and ", {h:"task 2"}, "."],
+  ["We have a team meeting every ", {h:"day"}, " at ", {h:"time", w:"90px"}, "."],
+  ["Last month, we ", {h:"verb + -ed"}, " ", {h:"result"}, "."],
+  ["I really like ", {h:"verb + -ing"}, " because ", {h:"reason"}, "."],
+  ["In our department, you should ", {h:"tip"}, "."],
+];
+const WORD_BANK = [
+  ["Tasks", "answer emails · prepare reports · check invoices · help clients · organize events · manage projects"],
+  ["Past (-ed)", "finished · completed · organized · answered · visited · launched"],
+  ["Like + -ing", "working · helping · talking · learning · planning"],
+  ["Should", "arrive on time · answer emails quickly · share your ideas · be respectful"],
+];
+const WRITING_MODEL = "Nice to meet you. My name is Anika Bose, and I work in the Marketing department at a travel company in Bangalore. We are a team of eight people. Every day, we write social media posts and answer messages from clients. We have a team meeting every Tuesday at 10 a.m. Last month, we finished a new campaign, and 40 percent more people visited our website. I really like working with this team because they are creative and friendly. In our department, you should always share your ideas.";
+const writeVals = {};
+function setW(k, v) { writeVals[k] = v; }
+
+const CHORUS = [
+  "Nice to meet you. Would you like some coffee?",
+  "How was your weekend? It was great, thank you.",
+  "I really like working in a team.",
+  "In our office, you should arrive on time.",
+];
+
+// [topic, overall, detail, adjective, model]
+const CHAIN = [
+  ["business trip", "great", "hotel", "comfortable", "It was great, thank you. The hotel was very comfortable."],
+  ["weekend", "relaxing", "weather", "nice", "It was relaxing, thank you. The weather was very nice."],
+  ["flight", "long", "seats", "comfortable", "It was long, thank you. The seats were very comfortable."],
+  ["conference", "busy", "presentations", "interesting", "It was busy, thank you. The presentations were very interesting."],
+  ["training", "good", "trainer", "friendly", "It was good, thank you. The trainer was very friendly."],
+  ["networking event", "fun", "people", "friendly", "It was fun, thank you. The people were very friendly."],
+  ["team lunch", "nice", "food", "good", "It was nice, thank you. The food was very good."],
+  ["workshop", "short", "ideas", "innovative", "It was short, thank you. The ideas were very innovative."],
+];
+
+const CUES = [
+  ["👋", "greeting"],
+  ["🏢", "department / people"],
+  ["✅", "task / every day"],
+  ["📅", "meeting / time"],
+  ["📊", "last month / result"],
+  ["👍", "like / -ing"],
+  ["💡", "tip / should"],
+];
+
+const QUESTION_BANK = [
+  "How many people are in your team?",
+  "What time is your team meeting?",
+  "What do you like about your job?",
+  "What is your target this month?",
+];
+
+// [wrong, right, source]
+const ERRORS = [
+  ["How is your name?", "What is your name?", "L31"],
+  ["The people was friendly.", "The people were friendly.", "L32"],
+  ["The email has a lot of informations.", "The email has a lot of information.", "L33"],
+  ["I like work in a team.", "I like working in a team.", "L35"],
+  ["We have two news offices.", "We have two new offices.", "L36"],
+  ["Twenty percents of our clients are in Peru.", "Twenty percent of our clients are in Peru.", "L37"],
+  ["You should to arrive on time.", "You should arrive on time.", "L38"],
+  ["Omar manage the phone team.", "Omar manages the phone team.", "Department"],
+];
+
+function escAttr(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+function tapRow(q, a, label) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top">
+      <div class="tap-q">${q}</div>
+      <div class="tap-hint-label">${label || 'Tap to reveal'}</div>
+    </div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+
+function teacherBox(label, html) {
+  return `<div class="teacher-box">
+    <div class="teacher-box-label">👩‍🏫 Teacher Note${label ? ': ' + label : ''}</div>
+    ${html}
+  </div>`;
+}
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">1</div>
+      <div class="sec-badge-title">Warm-up: Vocabulary Recall</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Responde en voz alta. Toca la tarjeta para ver la respuesta.</div>
+    ${WARMUP.map(([q,a,es],i) => tapRow(`${i+1}. ${q}`, `<strong>${a}</strong> <span class="es-inline">(${es})</span>`)).join('')}
+    ${teacherBox('', `One card per student, in round-robin order. The student reads the question aloud and answers. If a student is stuck, give the Spanish word as a hint before revealing the answer. Keep the pace quick, because this step is only a warm-up.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">2</div>
+      <div class="sec-badge-title">Reading: 8 Short Passages</div>
+      <div class="sec-badge-time">20 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="pattern-box">
+      <div class="pattern-box-head">Grammar Reminder · Unit 4</div>
+      ${PATTERNS.map(([en,es]) => `<div class="pattern-row"><div class="pattern-en">${en}</div><div class="pattern-es">${es}</div></div>`).join('')}
+    </div>
+    <div class="es-note">Lee tu párrafo en silencio. Después, responde las dos preguntas con una oración completa. Vamos a revisar las respuestas en clase, en voz alta.</div>
+    ${PASSAGES.map((p,i) => `
+      <div class="passage-card">
+        <div class="passage-head">
+          <div class="passage-emoji">${p.emoji}</div>
+          <div style="flex:1">
+            <div class="passage-name">${i+1}. ${p.name}</div>
+            <div class="passage-role">${p.role}</div>
+          </div>
+          <span class="lesson-chip">${p.tags}</span>
+        </div>
+        <div class="passage-body">
+          <p class="passage-text">${p.text}</p>
+          ${p.qs.map(([q,a],j) => tapRow(`Q${j+1}. ${q}`, a)).join('')}
+        </div>
+      </div>`).join('')}
+    ${teacherBox('', `Give each student one passage to read silently for about 2 minutes. Then go round-robin: the student reads their passage aloud and answers both questions in full sentences.<br><br>
+    Every passage practises two Unit 4 points (labelled on each card). After each one, point out its grammar in a few seconds, for example <strong>were</strong> in Passage 2 or <strong>65 percent</strong> in Passage 7.<br><br>
+    Watch for these problems:<br>
+    • Passages 4 and 7 have numbers students must read aloud: 150, 6 a.m., 2,400, $1.2 million, 4.5 and 30,000. Listen for “percents” and Spanish-style decimals, such as “four comma five.”<br>
+    • In Passage 4, listen for the regular -ed sounds: organized /d/, planned /d/, invited /ɪd/, checked /t/.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWriting() {
+  let k = 0;
+  const lines = TEMPLATE.map((parts, li) => `<div class="tpl-line"><span class="tpl-num">${li+1}</span><div class="tpl-text">${parts.map(p => {
+    if (typeof p === 'string') return p;
+    const key = 'w' + (k++);
+    return `<input class="tpl-input" style="width:${p.w || '150px'}" placeholder="${p.h}" value="${escAttr(writeVals[key] || '')}" oninput="setW('${key}', this.value)">`;
+  }).join('')}</div></div>`).join('');
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">3</div>
+      <div class="sec-badge-title">Writing: My Department</div>
+      <div class="sec-badge-time">15 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Escribe un párrafo corto sobre tu departamento. Completa la plantilla con tus propias ideas. Usa el banco de palabras si lo necesitas. Después vas a presentar tu párrafo en la clase.</div>
+    <div class="word-bank">
+      <div class="word-bank-label">Word bank</div>
+      ${WORD_BANK.map(([l,w]) => `<div class="word-bank-words"><strong>${l}:</strong> ${w}</div>`).join('')}
+    </div>
+    <div class="tpl-wrap">${lines}</div>
+    ${tapRow('Model answer · Anika Bose, Marketing, Bangalore', `<em>${WRITING_MODEL}</em>`, 'Need a model? Tap ▾')}
+    ${teacherBox('', `Allow about 8 to 10 minutes of writing, then about 5 minutes of live correction. Ask 2 or 3 students to read their paragraph aloud, and correct it on screen.<br><br>
+    Check these points first: third-person -s (if a student writes about a colleague), -ed after “Last month,” -ing after “like,” no “to” after “should,” and “percent” with no -s.<br><br>
+    Students who don't work in a department (freelancers, students) can write about their job or an imaginary team.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderLadder() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">4</div>
+      <div class="sec-badge-title">Speaking Ladder</div>
+      <div class="sec-badge-time">25 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Hoy practicamos una conversación profesional completa: saludar, hacer small talk, dar tu opinión y presentar tu departamento. Todos hablan en cada etapa, uno por uno.</div>
+
+    <div class="ladder-stage">
+      <div class="ladder-stage-head">
+        <div class="ladder-stage-num">1</div>
+        <div><div class="ladder-stage-title">Model &amp; Chorus</div>
+        <div class="ladder-stage-sub">Whole class together · ~2 min</div></div>
+      </div>
+      ${CHORUS.map((s,i) => `<div class="chorus-line"><span class="chorus-num">${i+1}</span>${s}</div>`).join('')}
+      ${teacherBox('Stage 1', `Model each line twice, and the whole class repeats it twice. Don't call on individuals yet. Work on stress and rhythm: “NICE to MEET you,” the rising tone on “Would you LIKE…?”, and the “-ing” in “working.”`)}
+    </div>
+
+    <div class="ladder-stage">
+      <div class="ladder-stage-head">
+        <div class="ladder-stage-num">2</div>
+        <div><div class="ladder-stage-title">Chain Drill: Small Talk Chain</div>
+        <div class="ladder-stage-sub">Round-robin, fixed frame · ~8 min</div></div>
+      </div>
+      <div class="frame-box">
+        <div class="frame-label">Frame</div>
+        <div class="frame-line"><span class="frame-who">A</span><span>How was your <span class="blank">___</span>?</span></div>
+        <div class="frame-line"><span class="frame-who">B</span><span>It was <span class="blank">___</span>, thank you. The <span class="blank">___</span> <strong>was / were</strong> very <span class="blank">___</span>.</span></div>
+      </div>
+      <div class="es-note">El estudiante 1 le pregunta al estudiante 2 con la tarjeta 1. El estudiante 2 responde y le pregunta al estudiante 3 con la tarjeta 2, y así sucesivamente. El estudiante 8 le pregunta al estudiante 1.</div>
+      ${CHAIN.map(([t,o,d,a,m],i) => `
+        <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+          <div class="tap-row-top">
+            <div class="tap-q"><span class="card-num">${i+1}</span>
+              <span class="cue-chip">${t}</span><span class="cue-chip">${o}</span><span class="cue-chip">${d}</span><span class="cue-chip">${a}</span>
+            </div>
+            <div class="tap-hint-label">Need a model? Tap ▾</div>
+          </div>
+          <div class="tap-answer"><strong>A:</strong> How was your ${t}?<br><strong>B:</strong> ${m}</div>
+        </div>`).join('')}
+      ${teacherBox('Stage 2', `Four cards have plural details (3, 4, 6 and 8). These test <strong>was vs were</strong> on purpose, so listen closely for “The people was…” and correct it straight away. An error here means the student went off the frame: correct it gently and move on. If a student answers well, you can add one quick follow-up with “Why?”, but keep the chain moving.`)}
+    </div>
+
+    <div class="ladder-stage">
+      <div class="ladder-stage-head">
+        <div class="ladder-stage-num">3</div>
+        <div><div class="ladder-stage-title">Cue-Only Mini-Presentation: My Department</div>
+        <div class="ladder-stage-sub">From your paragraph to speaking · round-robin, ~1 min each</div></div>
+      </div>
+      <div class="es-note">Ahora presenta tu departamento a la clase, pero sin leer tu párrafo. Míralo una vez y después habla usando solo las palabras clave.</div>
+      <div class="cue-card">
+        ${CUES.map(([ic,k]) => `<div class="cue-item"><span class="cue-icon">${ic}</span>${k}</div>`).join('')}
+      </div>
+      <div class="qbank">
+        <div class="qbank-label">Question bank: one classmate asks one question</div>
+        ${QUESTION_BANK.map(q => `<div class="qbank-item">${q}</div>`).join('')}
+      </div>
+      ${teacherBox('Stage 3', `Students may look at their paragraph from the Writing step for 30 seconds, then put it away. They present from the cue card only, about 1 minute each, round-robin. After each presentation, name one classmate to ask one question from the bank, and the presenter answers in one sentence.<br><br>
+      Mistakes here are real production gaps. Note them for the Wrap-up rather than interrupting, unless meaning breaks down. The aim is moving from written to spoken, so it's fine if their version is shorter than what they wrote.`)}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    <div class="sec-badge">
+      <div class="sec-badge-num">5</div>
+      <div class="sec-badge-title">Wrap-up: Error Clinic</div>
+      <div class="sec-badge-time">5 min</div>
+    </div>
+    <hr class="gold-rule">
+    <div class="es-note">Estos son errores comunes de la Unidad 4. Lee la oración incorrecta, corrígela en voz alta y toca para ver la respuesta.</div>
+    ${ERRORS.map(([w,r,src],i) => `
+      <div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+        <div class="tap-row-top">
+          <div class="tap-q"><span class="card-num">${i+1}</span><span class="err-wrong">✗ ${w}</span> <span class="lesson-chip">${src}</span></div>
+          <div class="tap-hint-label">Tap to reveal</div>
+        </div>
+        <div class="tap-answer"><span class="err-right">✓ ${r}</span></div>
+      </div>`).join('')}
+    ${teacherBox('', `One card per student. The student reads the wrong sentence and says the correct version, then the whole class repeats the correct sentence chorally. If you noted different errors in Stage 3, swap one or two cards for those live examples. End by telling students that Unit 5 starts next lesson.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Warm-up",         fn: renderWarmup },
+  { label: "2. Reading",         fn: renderReading },
+  { label: "3. Writing",         fn: renderWriting },
+  { label: "4. Speaking Ladder", fn: renderLadder },
+  { label: "5. Wrap-up",         fn: renderWrapup },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

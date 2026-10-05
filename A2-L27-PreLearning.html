@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 27: Working Under Pressure | A2 · Unit 3 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold: Georgia headings, Lato body
+   All colours as CSS variables: never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A: Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B: Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE: full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE: use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX: off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX: off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER: column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── L27 ADDITIONS ─────────────────────────────────────── */
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+.cq-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+.group-title { font-family:var(--font-heading); font-size:17px; color:var(--navy); margin:22px 0 4px; }
+.group-es { font-size:12px; color:var(--grey-blue); font-style:italic; margin-bottom:10px; }
+
+/* Vocab grid: word, Spanish, example */
+.vgrid-head, .vgrid-row { display:grid; grid-template-columns:1.1fr 1fr 1.7fr; gap:12px; padding:11px 20px; }
+.vgrid-head { background:var(--navy); }
+.vgrid-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vgrid-row { border-bottom:1px solid var(--light-grey); align-items:baseline; }
+.vgrid-row:last-child { border-bottom:none; }
+.vgrid-row:hover { background:var(--light-grey); }
+.v-word { font-size:15px; font-weight:700; color:var(--navy); }
+.v-type { display:block; font-size:11px; color:var(--grey-blue); font-weight:400; font-style:italic; margin-top:2px; }
+.v-key { display:inline-block; margin-left:6px; font-size:10px; font-weight:700; color:var(--navy); background:var(--gold-bg); border:1px solid var(--gold); border-radius:10px; padding:1px 7px; vertical-align:middle; }
+.v-es { font-size:14px; color:var(--grey-blue); }
+.v-ex { font-size:14px; color:var(--slate); font-style:italic; }
+.vocab-table-wrap.recycled .vgrid-head { background:var(--steel); }
+.vocab-table-wrap.recycled .vgrid-head span { color:var(--navy); }
+@media(max-width:620px){
+  .vgrid-head { display:none; }
+  .vgrid-row { grid-template-columns:1fr; gap:3px; }
+}
+
+/* Generic grid tables */
+.data-table-head.c2, .data-table-row.c2 { grid-template-columns:1fr 1fr; }
+.data-table-head.c3, .data-table-row.c3 { grid-template-columns:1fr 1fr 1.3fr; }
+.data-table-head.c3e, .data-table-row.c3e { grid-template-columns:0.8fr 1fr 1.6fr; }
+.data-table-row { font-size:14px; color:var(--slate); }
+.data-table-row strong { color:var(--navy); }
+.cell-strike { color:var(--red); text-decoration:line-through; font-size:13px; }
+@media(max-width:620px){
+  .data-table-head.c2, .data-table-row.c2,
+  .data-table-head.c3, .data-table-row.c3,
+  .data-table-head.c3e, .data-table-row.c3e { grid-template-columns:1fr; gap:2px; }
+  .data-table-head span + span { display:none; }
+}
+
+/* Frequency scale */
+.freq-row { display:grid; grid-template-columns:90px 1fr 110px; gap:12px; align-items:center; padding:6px 0; }
+.freq-word { font-weight:700; color:var(--navy); font-size:14px; }
+.freq-track { height:10px; background:var(--white); border:1px solid var(--border-grey); border-radius:5px; overflow:hidden; }
+.freq-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); }
+.freq-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* Rule cards */
+.rule-card { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--sky); border-radius:8px; padding:14px 18px; margin-bottom:14px; }
+.rule-title { font-weight:700; color:var(--navy); font-size:15px; margin-bottom:6px; }
+.rule-card ul { padding-left:18px; }
+.rule-card li { font-size:14px; line-height:1.8; color:var(--slate); }
+.rule-card em, .ex-en { color:var(--navy); }
+.hl { color:var(--sky); font-weight:700; }
+.ok { color:var(--green); font-weight:700; }
+.no { color:var(--red); }
+
+/* Mistake rows: wrong shown, fix hidden */
+.mistake-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:11px 15px; margin-bottom:8px; cursor:pointer; }
+.mistake-top { display:flex; justify-content:space-between; gap:10px; align-items:baseline; }
+.mistake-bad { color:var(--red); font-style:italic; font-size:14px; }
+.mistake-fix { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; }
+.mistake-fix.show { display:block; }
+.mistake-good { color:var(--green); font-weight:700; }
+.mistake-why { font-size:13px; color:var(--grey-blue); margin-top:3px; font-style:italic; }
+
+/* Tap to reveal */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:6px; margin-top:6px; border-top:1px dashed var(--border-grey); font-size:14px; }
+.tap-answer.show { display:block; }
+.ans { color:var(--green); font-weight:700; }
+.ex-es { font-size:13px; color:var(--grey-blue); font-style:italic; margin-bottom:10px; }
+
+/* Strength dots */
+.dots { color:var(--gold); letter-spacing:2px; font-size:13px; }
+
+/* Lesson map */
+.map-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.map-chip { background:var(--white); border:1px solid var(--border-grey); border-radius:16px; padding:5px 12px; font-size:12px; color:var(--navy); }
+
+/* Audio box (Master Prompt pattern) */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER: do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO: edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 3 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 27: Working Under Pressure</h1>
+    <p class="hero-sub">Adverbs and intensifiers · Grammar Bridge: frequency adverbs (Lesson 4)</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Describe a stressful day at work</div><div class="outcome-note">Describir un día estresante en el trabajo</div></div>
+      <div><div class="outcome-item">Say how you do things with adverbs (calmly, fast, well)</div><div class="outcome-note">Decir cómo haces las cosas con adverbios</div></div>
+      <div><div class="outcome-item">Make your sentences stronger or softer with very, really, a bit and too</div><div class="outcome-note">Hacer tus frases más fuertes o más suaves</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV: built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT: rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK: all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block: never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly: not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START: replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const AUDIO_URL = `https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L27-Audio001.mp3`;
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) { audio.playbackRate = currentSpeed; setSpeed(currentSpeed); }
+}
+
+// ── HELPERS ───────────────────────────────────────────────
+function badge(n, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${n}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function esNote(t) { return `<div class="es-note">${t}</div>`; }
+function tip(label, body) { return `<div class="tip-box"><div class="tip-label">${label}</div>${body}</div>`; }
+function tapRow(q, a) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top"><div class="tap-q">${q}</div><div class="tap-hint-label">Tap to reveal</div></div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+function mistakes(label, rows) {
+  return `<div class="mistake-wrap">
+    <div class="mistake-label">${label}</div>
+    ${rows.map(([bad, good, why]) => `<div class="mistake-row" onclick="this.querySelector('.mistake-fix').classList.toggle('show')">
+      <div class="mistake-top"><span class="mistake-bad">❌ ${bad}</span><span class="tap-hint-label">Tap for the fix</span></div>
+      <div class="mistake-fix"><span class="mistake-good">✅ ${good}</span>${why ? `<div class="mistake-why">${why}</div>` : ''}</div>
+    </div>`).join('')}
+  </div>`;
+}
+function dataTable(cls, heads, rows) {
+  return `<div class="data-table-wrap">
+    <div class="data-table-head ${cls}">${heads.map(h => `<span>${h}</span>`).join('')}</div>
+    ${rows.map(r => `<div class="data-table-row ${cls}">${r.map(c => `<div>${c}</div>`).join('')}</div>`).join('')}
+  </div>`;
+}
+function rule(title, items) {
+  return `<div class="rule-card"><div class="rule-title">${title}</div><ul>${items.map(x => `<li>${x}</li>`).join('')}</ul></div>`;
+}
+function examples(label, items) {
+  return `<div class="examples-wrap">
+    ${label ? `<div class="examples-label">${label}</div>` : ''}
+    ${items.map(([en, es]) => `<div class="example-item">
+      <span class="example-en">${en}</span>
+      ${es ? `<span class="example-arrow">→</span><span class="example-es">${es}</span>` : ''}
+    </div>`).join('')}
+  </div>`;
+}
+function quickCheck(prefix, title, sub) {
+  return `<div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check: ${title}</div>
+    <p class="cq-sub">${sub}</p>
+    <div id="mini-wrap-${prefix}">${renderMiniQ(prefix, CQ[prefix])}</div>`;
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+// Vocabulary: 15 new words in 3 groups. [english, type, spanish, example, isKeyWord]
+const VOC_GROUPS = [
+  { title: `Feeling the pressure`, es: `Sentir la presión`, items: [
+    [`pressure`, `noun`, `presión`, `There's a lot of pressure at the end of the month.`, true],
+    [`stressful`, `adjective`, `estresante`, `Moving to a new system is really stressful.`, false],
+    [`stressed`, `adjective`, `estresado`, `I always feel stressed before a big presentation.`, false],
+    [`overwhelmed`, `adjective`, `agobiado, abrumado`, `I was overwhelmed with emails after my holiday.`, false],
+    [`exhausted`, `adjective`, `agotado`, `After the audit, the whole team was exhausted.`, false],
+    [`calm`, `adjective`, `tranquilo, calmado`, `Our manager stays calm when things go wrong.`, false],
+  ]},
+  { title: `Busy days`, es: `Días con mucho trabajo`, items: [
+    [`multitasking`, `noun`, `hacer varias cosas a la vez`, `Multitasking looks efficient, but it often isn't.`, true],
+    [`rush`, `verb`, `apurarse, hacer algo con prisa`, `Don't rush the report. Check the numbers first.`, false],
+    [`last-minute`, `adjective`, `de último momento`, `We got a last-minute request from the client.`, false],
+    [`overtime`, `noun`, `horas extra`, `I worked overtime three times last week.`, false],
+    [`peak season`, `noun`, `temporada alta`, `December is our peak season.`, false],
+    [`nonstop`, `adjective / adverb`, `sin parar`, `The phones rang nonstop on Monday.`, false],
+  ]},
+  { title: `Getting through it`, es: `Salir adelante`, items: [
+    [`cope (with)`, `verb`, `sobrellevar, poder con algo`, `How do you cope with so much pressure?`, false],
+    [`keep up (with)`, `phrasal verb`, `ir al día, mantener el ritmo`, `I can't keep up with all these messages.`, false],
+    [`take a break`, `phrase`, `tomar un descanso`, `Take a break. You've been at your desk for four hours.`, false],
+  ]},
+];
+const RECYCLED = [
+  [`urgent`, `Lesson 22`, `urgente`, `Urgent requests are always my first priority.`],
+  [`priority`, `Lesson 21`, `prioridad`, `Today my priority is the client report.`],
+  [`workload`, `Lesson 23`, `carga de trabajo`, `My workload is extremely heavy this week.`],
+];
+
+// ── CONCEPT-CHECK BANKS (one per content segment, isolated engines) ──
+const VOC_CQ = [
+  { type:`mc`, q:`The week before a big launch is very ______.`,
+    opts:[`stressed`, `stressful`, `stress`], answer:1,
+    fb:`Hablamos de la semana (la situación), así que usamos <em>stressful</em>. <em>Stressed</em> es para personas.` },
+  { type:`mc`, q:`"I'm overwhelmed" means...`,
+    opts:[`Tengo demasiado y no puedo con todo`, `Estoy aburrido`, `Estoy tranquilo`], answer:0,
+    fb:`<em>Overwhelmed</em> = agobiado, con más cosas de las que puedes manejar.` },
+  { type:`tf`, q:`"I can't keep up with my emails" means you answer all your emails on time.`,
+    answer:false,
+    fb:`Significa lo contrario: llegan más correos de los que puedes contestar. No vas al ritmo.` },
+  { type:`input`, q:`Complete: "In December we work extra hours. We work ______."`,
+    answers:[`overtime`], display:`overtime`,
+    fb:`Horas extra = <em>overtime</em>. Decimos <em>work overtime</em>.` },
+];
+
+const BRIDGE_CQ = [
+  { type:`mc`, q:`Which sentence is correct?`,
+    opts:[`I am always busy on Mondays.`, `I always am busy on Mondays.`, `Always I am busy on Mondays.`], answer:0,
+    fb:`Con <em>be</em>, el adverbio va después: <em>I am always busy.</em>` },
+  { type:`input`, q:`Add "often" to this sentence: "She works late in December."`,
+    answers:[`she often works late in december`], display:`She often works late in December.`,
+    fb:`<em>Work</em> es el verbo principal, así que <em>often</em> va antes: <em>She often works late.</em>` },
+  { type:`mc`, q:`"How often do you work overtime?" Choose the correct answer.`,
+    opts:[`Yes, I do.`, `Twice a month.`, `For two hours.`], answer:1,
+    fb:`<em>How often</em> pregunta por la frecuencia. <em>For two hours</em> responde a <em>How long</em>.` },
+];
+
+const MAN_CQ = [
+  { type:`mc`, q:`She answered the angry client ______.`,
+    opts:[`polite`, `politely`, `politly`], answer:1,
+    fb:`Describe cómo contestó, así que necesitamos el adverbio: polite + ly = <em>politely</em>.` },
+  { type:`tf`, q:`"I work very hardly" means "Trabajo muy duro."`,
+    answer:false,
+    fb:`<em>Hardly</em> significa "casi no". "Trabajo muy duro" = <em>I work very hard.</em>` },
+  { type:`mc`, q:`Which sentence is correct?`,
+    opts:[`He explained clearly the problem.`, `He explained the problem clearly.`, `He explained the problem clear.`], answer:1,
+    fb:`El adverbio va después del objeto (<em>the problem</em>), no entre el verbo y el objeto.` },
+  { type:`input`, q:`"Tomás is a good speaker. He speaks very ______."`,
+    answers:[`well`], display:`well`,
+    fb:`Describe cómo habla, así que usamos el adverbio de <em>good</em>: <em>well</em>.` },
+];
+
+const INT_CQ = [
+  { type:`mc`, q:`I'm ______ busy to take a break today.`,
+    opts:[`very`, `too`, `a bit`], answer:1,
+    fb:`El patrón <em>too + adjetivo + to + verbo</em> expresa que algo no es posible: no puedo tomar un descanso.` },
+  { type:`tf`, q:`"Your presentation was too good! Congratulations!" is a correct compliment.`,
+    answer:false,
+    fb:`<em>Too</em> significa "demasiado" y suena negativo. Di <em>It was really good!</em>` },
+  { type:`mc`, q:`Which one is stronger than "very tired"?`,
+    opts:[`quite tired`, `a bit tired`, `extremely tired`], answer:2,
+    fb:`Orden: a bit &lt; quite &lt; very / really &lt; extremely. Solo <em>extremely</em> es más fuerte que <em>very</em>.` },
+  { type:`input`, q:`Correct the sentence: "This week I'm very much busy."`,
+    answers:[`this week i'm very busy`, `this week i am very busy`, `i'm very busy this week`, `i am very busy this week`],
+    display:`This week I'm very busy.`,
+    fb:`Con adjetivos usamos <em>very</em>, no <em>very much</em>. <em>Very much</em> va al final: <em>Thank you very much.</em>` },
+];
+
+const CQ = { voc: VOC_CQ, bridge: BRIDGE_CQ, man: MAN_CQ, int: INT_CQ };
+const miniState = { voc: {}, bridge: {}, man: {}, int: {} };
+
+// ── MAIN QUIZ (12 questions; Q11 and Q12 are the bridged frequency-adverb items) ──
+const QUIZ = [
+  { type:`input`, q:`"The new software is simple. I use it ______." (easy)`,
+    answers:[`easily`], display:`easily`,
+    fb:`<em>Easy</em> termina en consonante + y, así que cambia a <em>-ily</em>: <em>easily</em>.` },
+  { type:`mc`, q:`Marta is a hard worker. She works very ______.`,
+    opts:[`hardly`, `hard`, `hardy`], answer:1,
+    fb:`<em>Hard</em> no cambia como adverbio. <em>Hardly</em> significa "casi no".` },
+  { type:`mc`, q:`I ______ have time for lunch on Fridays. Maybe ten minutes.`,
+    opts:[`hard`, `hardly`, `hardly don't`], answer:1,
+    fb:`"Casi no tengo tiempo" = <em>I hardly have time.</em> <em>Hardly</em> ya es casi negativo, así que no lleva <em>don't</em>.` },
+  { type:`mc`, q:`Which sentence is correct?`,
+    opts:[`He finished quickly the report.`, `He finished the report quickly.`, `He finished the report quick.`], answer:1,
+    fb:`Verbo + objeto + adverbio. Nada entre <em>finished</em> y <em>the report</em>.` },
+  { type:`mc`, q:`You did a ______ job. You presented really ______.`,
+    opts:[`good / good`, `well / good`, `good / well`], answer:2,
+    fb:`<em>A good job</em> (adjetivo + nombre). <em>Presented well</em> (cómo lo hiciste).` },
+  { type:`input`, q:`"The week before the audit was very ______." (estresante)`,
+    answers:[`stressful`], display:`stressful`,
+    fb:`Describe la situación, así que es <em>stressful</em>. <em>Stressed</em> es para personas.` },
+  { type:`mc`, q:`It was ______ stressful week.`,
+    opts:[`a so`, `so a`, `a very`], answer:2,
+    fb:`Con un nombre (<em>week</em>), usamos <em>a very</em> o <em>a really</em>. <em>So</em> va mejor sin nombre: <em>The week was so stressful!</em>` },
+  { type:`mc`, q:`I'm ______ busy to answer your call right now. Can I call you later?`,
+    opts:[`very`, `too`, `so much`], answer:1,
+    fb:`<em>Too + adjetivo + to + verbo</em>: no es posible contestar ahora.` },
+  { type:`mc`, q:`"Estoy un poco cansado, nada grave." I'm ______ tired.`,
+    opts:[`a bit`, `extremely`, `too`], answer:0,
+    fb:`<em>A bit</em> = un poco. Suena suave, perfecto para problemas pequeños.` },
+  { type:`mc`, q:`I'm answering emails, talking on the phone and writing a report at the same time. I'm ______.`,
+    opts:[`overtime`, `multitasking`, `peak season`], answer:1,
+    fb:`Hacer varias cosas a la vez = <em>multitasking</em>.` },
+  { type:`mc`, q:`I ______ late on Fridays.`,
+    opts:[`work never`, `never work`, `don't work never`], answer:1,
+    fb:`<em>Never</em> va antes del verbo principal y ya es negativo. No necesita <em>don't</em>.` },
+  { type:`input`, q:`"How ______ do you feel under pressure?" "About twice a week."`,
+    answers:[`often`], display:`often`,
+    fb:`Para preguntar por la frecuencia usamos <em>How often</em>.` },
+];
+
+// ── Quiz state (do not edit) ──────────────────────────────
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 0;
+const normalise = s => (s || '').replace(/[\u2018\u2019]/g, "'").trim().toLowerCase().replace(/\s+/g,' ').replace(/[.,!?]+$/,'');
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    ${badge(1, 'Welcome', '2 min')}
+    <p class="sec-intro">Todos tenemos semanas difíciles: cien correos, tres reuniones seguidas y un cliente que necesita todo para ayer. Hoy vas a aprender a explicar esa presión en inglés. No solo vas a decir <strong>qué</strong> pasa, también vas a decir <strong>cómo</strong> trabajas (rápido, con calma, con cuidado) y <strong>qué tan</strong> difícil es (un poco, muy, demasiado).</p>
+    <div class="info-box">
+      <strong>Scenario</strong><br>
+      It's Thursday afternoon. Your manager stops by your desk and asks, <em>"How are things? You look a bit stressed."</em> You have two urgent reports, a full inbox and a client call at five. What do you say?
+    </div>
+    ${esNote('Al final de esta lección vas a poder explicar tu carga de trabajo con claridad y sin exagerar ni quedarte corto.')}
+    <div class="sub-heading">Lesson map</div>
+    <div class="map-row">
+      ${['Vocabulary (15 words)', 'Grammar Bridge: frequency adverbs', 'Adverbs of manner', 'Intensifiers and too vs very', 'Model sentences', 'Listening', 'Exercises', 'Quiz']
+        .map(x => `<span class="map-chip">${x}</span>`).join('')}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function vocabTable(items) {
+  return `<div class="vocab-table-wrap">
+    <div class="vgrid-head"><span>English</span><span>Español</span><span>Example</span></div>
+    ${items.map(([en, type, es, ex, key]) => `<div class="vgrid-row">
+      <div class="v-word">${en}${key ? '<span class="v-key">Key word</span>' : ''}<span class="v-type">${type}</span></div>
+      <div class="v-es">${es}</div>
+      <div class="v-ex">${ex}</div>
+    </div>`).join('')}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    ${badge(2, 'Vocabulary', '10 min')}
+    ${esNote('Lee cada palabra y su ejemplo en voz alta. Las dos primeras son las palabras clave de la lección. Fíjate en las palabras que describen cómo te sientes: las vas a usar mucho con <em>very</em>, <em>really</em> y <em>a bit</em>.')}
+    ${VOC_GROUPS.map(g => `<div class="group-title">${g.title}</div><div class="group-es">${g.es}</div>${vocabTable(g.items)}`).join('')}
+
+    <div class="group-title">Recycled from earlier lessons</div>
+    <div class="group-es">No son nuevas, solo un recordatorio</div>
+    <div class="vocab-table-wrap recycled">
+      <div class="vgrid-head"><span>English</span><span>Español</span><span>Example</span></div>
+      ${RECYCLED.map(([en, from, es, ex]) => `<div class="vgrid-row">
+        <div class="v-word">${en}<span class="v-type">${from}</span></div>
+        <div class="v-es">${es}</div>
+        <div class="v-ex">${ex}</div>
+      </div>`).join('')}
+    </div>
+
+    ${tip('💡 Tip: stressed or stressful?', '<em>Stressed</em> describe a la persona: <em>I\'m stressed.</em> <em>Stressful</em> describe la situación: <em>It\'s a stressful week.</em> Nunca digas <em>I\'m stressful</em>, porque significa "yo causo estrés".')}
+    ${tip('💡 Tip: overtime, no "extra hours"', 'En inglés lo natural es <em>work overtime</em>: <em>I worked overtime on Friday.</em> Sin <em>the</em> y sin <em>s</em>.')}
+    ${tip('💡 Tip: cope with vs deal with', '<em>Deal with</em> (Lesson 22) es ocuparse de algo: <em>I\'ll deal with the client.</em> <em>Cope with</em> es aguantar algo difícil sin rendirte: <em>She copes well with pressure.</em>')}
+    ${tip('⚠️ Cuidado: exhausted ya es muy fuerte', '<em>Exhausted</em> ya significa "muy cansado". Lo natural es <em>really exhausted</em> o simplemente <em>exhausted</em>, no <em>very exhausted</em>.')}
+
+    ${quickCheck('voc', 'Vocabulary', 'Unas preguntas rápidas para confirmar que las palabras nuevas están claras.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  const scale = [[`always`, 100, `siempre`], [`usually`, 90, `normalmente`], [`often`, 70, `a menudo, seguido`],
+                 [`sometimes`, 50, `a veces`], [`rarely`, 10, `rara vez, casi nunca`], [`never`, 0, `nunca`]];
+  return `<div class="sc">
+    ${badge(3, 'Grammar Bridge: Frequency Adverbs', '8 min')}
+    ${esNote('Repaso de la Lección 4. Usaste estos adverbios para hablar de tu rutina. Hoy los usamos para hablar de la presión: ¿con qué frecuencia te pasa? ¿Siempre trabajas tarde? ¿A veces te sientes agobiado? Repasa bien esto, porque después vamos a comparar estos adverbios con un tipo nuevo.')}
+
+    <div class="sub-heading">The frequency scale</div>
+    <div class="diagram-wrap">
+      ${scale.map(([w, p, es]) => `<div class="freq-row">
+        <span class="freq-word">${w}</span>
+        <div class="freq-track"><div class="freq-fill" style="width:${p}%"></div></div>
+        <span class="freq-es">${es} (${p === 100 || p === 0 ? '' : 'about '}${p}%)</span>
+      </div>`).join('')}
+    </div>
+
+    ${rule('Rule 1: Before the main verb', [
+      `I <span class="hl">often</span> work late in December.`,
+      `She <span class="hl">rarely</span> takes a break before two o'clock.`,
+      `We <span class="hl">usually</span> answer urgent emails first.`])}
+    ${rule('Rule 2: After be', [
+      `I'm <span class="hl">always</span> busy on Mondays.`,
+      `The phones are <span class="hl">never</span> quiet in peak season.`,
+      `He's <span class="hl">usually</span> calm under pressure.`])}
+    ${rule('Rule 3: In negatives and questions', [
+      `I <strong>don't</strong> <span class="hl">usually</span> work overtime. <em>(después de don't / doesn't)</em>`,
+      `<strong>Do</strong> you <span class="hl">often</span> feel stressed? <em>(después del sujeto)</em>`,
+      `<strong>Is</strong> she <span class="hl">always</span> this busy?`])}
+    ${rule('Rule 4: Sometimes can also go at the start', [
+      `<span class="hl">Sometimes</span> I feel overwhelmed. = I <span class="hl">sometimes</span> feel overwhelmed.`])}
+    ${esNote('Solo <em>sometimes</em> se mueve con libertad. No pongas <em>always</em> o <em>never</em> al principio.')}
+
+    <div class="sub-heading">Asking "How often...?"</div>
+    ${dataTable('c2', ['Question', 'Possible answers'], [
+      [`How often <strong>do</strong> you work overtime?`, `I <strong>rarely</strong> work overtime. / About <strong>once a month</strong>.`],
+      [`How often <strong>does</strong> your team have urgent requests?`, `<strong>Every day.</strong> / They <strong>often</strong> have urgent requests.`],
+      [`How often <strong>are</strong> you under pressure?`, `I'm <strong>sometimes</strong> under pressure. / <strong>Twice a week</strong>, more or less.`]])}
+    ${esNote('Las expresiones como <em>every day, once a week, twice a month</em> y <em>three times a year</em> van al final de la frase: <em>I take a break twice a day.</em>')}
+
+    ${mistakes('⚠️ Cuidado: errores frecuentes', [
+      [`I work always late.`, `I always work late.`, `En español va después del verbo (trabajo siempre). En inglés, antes.`],
+      [`Always I am busy.`, `I am always busy.`, `Con be, el adverbio va después.`],
+      [`I don't work never on Sundays.`, `I never work on Sundays.`, `Never ya es negativo. No uses don't con never.`],
+      [`How many times you work overtime?`, `How often do you work overtime?`, `Para rutinas, lo natural es How often + do/does.`]])}
+
+    ${quickCheck('bridge', 'Grammar Bridge', 'Tres preguntas para confirmar que recuerdas la posición de los adverbios de frecuencia.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderManner() {
+  return `<div class="sc">
+    ${badge(4, 'Adverbs of Manner', '10 min')}
+    <div class="sub-heading">Notice</div>
+    ${esNote('Lee estas frases. Fíjate en la diferencia entre la primera y la segunda frase de cada par.')}
+    ${dataTable('c2', ['Adjective (a person or thing)', 'Adverb (how you do it)'], [
+      [`She's a <strong>calm</strong> manager.`, `She speaks <strong>calmly</strong>.`],
+      [`He's a <strong>careful</strong> worker.`, `He checks the numbers <strong>carefully</strong>.`],
+      [`It's an <strong>easy</strong> system.`, `I use it <strong>easily</strong>.`],
+      [`She's a <strong>good</strong> presenter.`, `She presents <strong>well</strong>.`]])}
+    <p class="sec-intro"><em>Calm, careful, easy</em> y <em>good</em> son adjetivos: describen a una persona o una cosa. <em>Calmly, carefully, easily</em> y <em>well</em> son adverbios: describen <strong>cómo</strong> alguien hace algo. Muchos terminan en <em>-ly</em>, igual que en español muchos terminan en <em>-mente</em> (tranquilamente, cuidadosamente).</p>
+
+    <div class="divider"></div>
+    <div class="sub-heading">Form rules</div>
+    ${rule('Rule 1: Most adjectives + -ly', [
+      `quick → quick<span class="hl">ly</span> · slow → slow<span class="hl">ly</span> · calm → calm<span class="hl">ly</span>`,
+      `clear → clear<span class="hl">ly</span> · polite → polite<span class="hl">ly</span> · quiet → quiet<span class="hl">ly</span>`])}
+    <div class="sub-heading" style="font-size:15px;">Rule 2: Spelling changes</div>
+    ${dataTable('c3', ['Adjective ends in...', 'Change', 'Examples'], [
+      [`consonant + <strong>-y</strong>`, `y → <strong>-ily</strong>`, `easy → easily, busy → busily, angry → angrily`],
+      [`<strong>-le</strong>`, `e → <strong>-y</strong>`, `gentle → gently, simple → simply, terrible → terribly`],
+      [`<strong>-ful</strong>`, `+ <strong>-ly</strong> (double l)`, `careful → carefully, successful → successfully`],
+      [`<strong>-ic</strong>`, `+ <strong>-ally</strong>`, `automatic → automatically, basic → basically`]])}
+    <div class="sub-heading" style="font-size:15px;">Rule 3: Irregular adverbs (no -ly)</div>
+    ${dataTable('c3', ['Adjective', 'Adverb', 'Not'], [
+      [`fast`, `<strong>fast</strong>`, `<span class="cell-strike">fastly</span>`],
+      [`hard`, `<strong>hard</strong>`, `<span class="cell-strike">hardly</span> (different meaning)`],
+      [`late`, `<strong>late</strong>`, `<span class="cell-strike">lately</span> (different meaning)`],
+      [`early`, `<strong>early</strong>`, `<span class="cell-strike">early-ly</span>`],
+      [`good`, `<strong>well</strong>`, `<span class="cell-strike">goodly</span>`]])}
+    ${examples('', [[`She types really fast.`, ''], [`We worked hard all week.`, ''], [`The client arrived late.`, ''], [`I start early in peak season.`, '']])}
+    ${rule('Rule 4: Position. After the verb, or after the object', [
+      `Verb + adverb: She speaks <span class="hl">calmly</span>.`,
+      `Verb + object + adverb: She answered <strong>the email</strong> <span class="hl">quickly</span>.`,
+      `<span class="no">❌ She answered quickly the email.</span>`])}
+    ${esNote('En español puedes decir <em>Contestó rápidamente el correo</em>. En inglés no: el adverbio nunca va entre el verbo y su objeto. Primero el objeto (<em>the email</em>), después el adverbio.')}
+
+    <div class="divider"></div>
+    <div class="sub-heading">Use</div>
+    ${tip('Good vs well', '<em>Good</em> es adjetivo: va antes de un nombre o después de <em>be</em>. <em>She\'s a good manager. The report is good.</em><br><em>Well</em> es adverbio: describe cómo haces algo. <em>She manages the team well. You did that well.</em><br>Después de <em>be, feel, look, sound</em> usamos adjetivos: <em>You look tired. That sounds good. I feel calm now.</em>')}
+    ${tip('Hard vs hardly: ¡significan cosas opuestas!', '<em>Hard</em> = con mucho esfuerzo. <em>I work hard.</em> (Trabajo duro.)<br><em>Hardly</em> = casi no. <em>I hardly work.</em> (Casi no trabajo.)<br><em>Hardly</em> va antes del verbo principal, como un adverbio de frecuencia: <em>I hardly had time for lunch yesterday. I can hardly keep up with my emails.</em>')}
+    ${tip('Late vs lately', '<em>Late</em> = tarde. <em>I finished late.</em><br><em>Lately</em> = últimamente. <em>I\'ve been very busy lately.</em>')}
+
+    <div class="sub-heading">Frequency adverbs vs adverbs of manner</div>
+    ${dataTable('c3e', ['', 'Frequency (the bridge)', 'Manner (new today)'], [
+      [`<strong>Question</strong>`, `How often?`, `How?`],
+      [`<strong>Examples</strong>`, `always, usually, often, sometimes, rarely, never`, `calmly, carefully, quickly, fast, hard, well`],
+      [`<strong>Position</strong>`, `<strong>Before</strong> the main verb, <strong>after</strong> be`, `<strong>After</strong> the verb or the object`],
+      [`<strong>Example</strong>`, `I <span class="hl">always</span> answer the phone.`, `I answer the phone <span class="hl">politely</span>.`]])}
+    ${examples('Together', [
+      [`I <strong>always</strong> answer the phone <strong>politely</strong>.`, 'Siempre contesto el teléfono con educación.'],
+      [`She <strong>usually</strong> explains the tasks <strong>clearly</strong>.`, 'Normalmente explica las tareas con claridad.'],
+      [`We <strong>sometimes</strong> finish the reports <strong>late</strong>.`, 'A veces terminamos los informes tarde.']])}
+
+    ${quickCheck('man', 'Adverbs of Manner', 'Preguntas rápidas sobre la forma y la posición de los adverbios.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderIntensifiers() {
+  return `<div class="sc">
+    ${badge(5, 'Intensifiers, and Too vs Very', '8 min')}
+    <div class="sub-heading">Notice</div>
+    ${esNote('Compara estas frases. Todas hablan de cansancio, pero no con la misma fuerza.')}
+    ${examples('', [[`I'm <strong>a bit</strong> tired.`, ''], [`I'm <strong>quite</strong> tired.`, ''], [`I'm <strong>very</strong> tired. / I'm <strong>really</strong> tired.`, ''], [`I'm <strong>extremely</strong> tired.`, ''], [`I'm <strong>too</strong> tired <strong>to</strong> drive.`, '']])}
+    <p class="sec-intro">Estas palabras se llaman <em>intensifiers</em>. Hacen más fuerte o más suave un adjetivo o un adverbio. Pero <em>too</em> es diferente: no solo dice "mucho", dice "demasiado", y eso es un problema.</p>
+
+    <div class="divider"></div>
+    <div class="sub-heading">Form rules: intensifier + adjective</div>
+    ${dataTable('c3e', ['Intensifier', 'Español · strength', 'Example'], [
+      [`<strong>a bit</strong>`, `un poco <span class="dots">●</span>`, `I'm a bit stressed today.`],
+      [`<strong>quite</strong>`, `bastante <span class="dots">●●</span>`, `The new system is quite easy.`],
+      [`<strong>very</strong>`, `muy <span class="dots">●●●</span>`, `My workload is very heavy.`],
+      [`<strong>really</strong>`, `muy, realmente <span class="dots">●●●</span>`, `It was a really stressful week.`],
+      [`<strong>extremely</strong>`, `extremadamente <span class="dots">●●●●</span>`, `November is extremely busy.`],
+      [`<strong>so</strong>`, `tan, muy (con emoción) <span class="dots">●●●●</span>`, `I'm so tired!`]])}
+    ${examples('Intensifier + adverb (the same words work with adverbs)', [[`She works <strong>very carefully</strong>.`, ''], [`You presented <strong>really well</strong>.`, ''], [`We finished <strong>quite quickly</strong>.`, '']])}
+
+    <div class="divider"></div>
+    <div class="sub-heading">Use</div>
+    ${tip('A bit', 'Casi siempre con cosas negativas o problemas: <em>a bit late, a bit tired, a bit difficult.</em> Suena suave y educado, muy útil con tu jefe: <em>I\'m a bit behind with the report.</em>')}
+    ${tip('Quite', 'Bastante. Más fuerte que <em>a bit</em>, menos que <em>very</em>: <em>The meeting was quite long.</em>')}
+    ${tip('Very vs really', 'Casi iguales. <em>Really</em> es un poco más informal y muy común al hablar.')}
+    ${tip('So', 'Suena emocional. Normalmente va sin nombre después: <em>I\'m so busy!</em> Con un nombre, usa <em>very</em> o <em>really</em>: <em>It\'s a very busy week.</em> <span class="no">❌ It\'s a so busy week.</span>')}
+
+    <div class="sub-heading">Too vs very</div>
+    ${rule('Very = muy. Es mucho, pero es posible.', [`The task is <span class="hl">very</span> difficult, but I can do it.`])}
+    ${rule('Too = demasiado. Es un problema; algo no es posible.', [`The task is <span class="hl">too</span> difficult. I can't do it alone.`])}
+    ${rule('Pattern: too + adjective + to + verb', [`I'm <span class="hl">too</span> busy <span class="hl">to</span> take a break.`, `She was <span class="hl">too</span> tired <span class="hl">to</span> think clearly.`])}
+    ${esNote('Nunca uses <em>too</em> para elogiar. <em>The presentation was too good</em> suena como "fue demasiado buena", como si fuera un problema. Para felicitar: <em>It was really good!</em>')}
+    ${tip('Very much: al final, nunca antes del adjetivo', '<em>Thank you very much. I like my job very much.</em><br><span class="no">❌ I like very much my job.</span> (Recuerda la regla: nada entre el verbo y el objeto.)<br><span class="no">❌ I\'m very much busy.</span> → <span class="ok">✅ I\'m very busy.</span>')}
+
+    <div class="sub-heading">Spanish bridge</div>
+    ${dataTable('c3', ['Español', 'English', 'Avoid'], [
+      [`rápida<strong>mente</strong>`, `quick<strong>ly</strong>`, ``],
+      [`bien`, `well`, `<span class="cell-strike">good</span> (as adverb)`],
+      [`bueno`, `good`, ``],
+      [`duro (trabajar)`, `hard`, `<span class="cell-strike">hardly</span>`],
+      [`casi no`, `hardly`, ``],
+      [`muy`, `very / really`, `<span class="cell-strike">very much</span> + adjective`],
+      [`demasiado`, `too`, `<span class="cell-strike">too</span> = very`],
+      [`un poco`, `a bit`, ``],
+      [`bastante`, `quite`, ``],
+      [`tan`, `so`, ``],
+      [`Contestó <strong>rápidamente</strong> el correo.`, `She answered the email <strong>quickly</strong>.`, `<span class="cell-strike">answered quickly the email</span>`]])}
+
+    ${mistakes('⚠️ Pitfall: the five classic mistakes', [
+      [`I'm very much busy.`, `I'm very busy.`, ''],
+      [`I work very hardly.`, `I work very hard.`, ''],
+      [`I speak English very good.`, `I speak English very well.`, ''],
+      [`The meeting was too good!`, `The meeting was really good!`, ''],
+      [`She sent quickly the report.`, `She sent the report quickly.`, '']])}
+
+    ${quickCheck('int', 'Intensifiers', 'Preguntas rápidas sobre very, really, a bit, so y too.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModels() {
+  return `<div class="sc">
+    ${badge(6, 'Model Sentences', '3 min')}
+    ${esNote('Lee cada frase en voz alta. Fíjate en dónde va cada adverbio.')}
+    ${examples('', [
+      [`Urgent emails are always my first priority.`, 'Los correos urgentes siempre son mi primera prioridad.'],
+      [`I usually work calmly, but in November the pressure is really high.`, 'Normalmente trabajo con calma, pero en noviembre la presión es muy alta.'],
+      [`She answered the angry client politely.`, 'Ella le contestó con educación al cliente enojado.'],
+      [`We worked hard and finished the project on time.`, 'Trabajamos duro y terminamos el proyecto a tiempo.'],
+      [`I hardly had time for lunch yesterday.`, 'Ayer casi no tuve tiempo para almorzar.'],
+      [`My workload is a bit heavy this week, but I can cope.`, 'Mi carga de trabajo está un poco pesada esta semana, pero puedo con ella.'],
+      [`After ten hours at my desk, I'm too tired to think clearly.`, 'Después de diez horas en mi escritorio, estoy demasiado cansado para pensar con claridad.'],
+      [`Multitasking doesn't always work well. When I rush, I make mistakes.`, 'Hacer varias cosas a la vez no siempre funciona bien. Cuando me apuro, cometo errores.']])}
+    ${navFooter()}
+  </div>`;
+}
+
+const TRANSCRIPT = [
+  `Hi, I'm Siobhán Gallagher. I lead the customer support team at an online electronics shop here in Dublin. For eleven months of the year, my job is quite calm. I usually start at nine, I answer emails carefully, and I rarely work overtime.`,
+  `Then November comes. November is our peak season, and it's extremely busy. Everyone wants a last-minute gift, and the phones ring nonstop. Last year, we got four thousand messages on Black Friday. Four thousand! My workload doubles, and it's really hard to keep up.`,
+  `On days like that, the pressure is very real. Customers often write angrily because their order is late. A few of them are a bit rude, but most of them are just stressed. So I always tell my team two things. First, read each message slowly, and then answer it calmly and politely. Urgent problems are always our first priority. Second, don't try to do everything at once. Multitasking sounds good, but it doesn't work well for us. When people rush, they make mistakes.`,
+  `I also feel overwhelmed sometimes. At nine at night, I'm often too tired to think clearly. When that happens, I take a short break and walk around the building. Ten minutes outside helps a lot.`,
+  `Some people think a good team works fast. I think a good team works carefully. It's hard work, but my team copes really well. By December we're all exhausted, but we're very proud.`,
+];
+
+const LIS_QS = [
+  [`1. How is Siobhán's job for eleven months of the year?`, `It's quite calm.`],
+  [`2. Why is November so busy?`, `It's peak season. Everyone wants a last-minute gift.`],
+  [`3. How do some customers write in November?`, `They write angrily, because their order is late.`],
+  [`4. What are Siobhán's two rules for her team?`, `Read each message slowly and answer it calmly and politely. Don't try to do everything at once.`],
+  [`5. What does she do when she feels overwhelmed?`, `She takes a short break and walks around the building.`],
+  [`6. What makes a good team, in Siobhán's opinion?`, `A team that works carefully, not just fast.`],
+];
+
+function renderListening() {
+  return `<div class="sc">
+    ${badge(7, 'Listening', '8 min')}
+    ${esNote('Escucha a Siobhán. Ella explica cómo es su trabajo en temporada alta. Primero escucha sin leer. Después abre la transcripción y busca los adverbios.')}
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Peak season at the support desk</div>
+          <div class="audio-box-sub">Siobhán Gallagher, Customer Support Team Lead, Dublin · about 1 min 40 s · Irish English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload" src="${AUDIO_URL}">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        ${TRANSCRIPT.map(p => `<p>${p}</p>`).join('')}
+      </div>
+    </div>
+    <div class="sub-heading">Comprehension questions</div>
+    <p class="cq-sub">Responde en voz alta o por escrito. Después toca para ver la respuesta.</p>
+    ${LIS_QS.map(([q, a]) => tapRow(q, `<span class="ans">✓ ${a}</span>`)).join('')}
+    ${navFooter()}
+  </div>`;
+}
+
+const EX_SETS = [
+  { label:`Set A · Adjective or adverb?`, es:`Escribe la forma correcta de la palabra entre paréntesis.`, items:[
+    [`1. Please read the contract ______. (careful)`, `carefully`],
+    [`2. Our new system works really ______. (good)`, `well`],
+    [`3. Diego types very ______. (fast)`, `fast`],
+    [`4. She solved the problem ______. (easy)`, `easily`],
+  ]},
+  { label:`Set B · Correct the mistake`, es:`Cada frase tiene un error típico. Corrígela.`, items:[
+    [`1. I'm very much busy this week.`, `I'm very busy this week.`],
+    [`2. I speak English very good.`, `I speak English very well.`],
+    [`3. She answered quickly the email.`, `She answered the email quickly.`],
+    [`4. This report is too good, great job!`, `This report is really good. Great job!`],
+    [`5. I work very hardly in December.`, `I work very hard in December.`],
+  ]},
+  { label:`Set C · How often and how`, es:`Pon los dos adverbios en el lugar correcto.`, items:[
+    [`1. I answer the phone. (always / politely)`, `I always answer the phone politely.`],
+    [`2. He explains the tasks. (usually / clearly)`, `He usually explains the tasks clearly.`],
+    [`3. We finish the reports. (sometimes / late)`, `We sometimes finish the reports late.`],
+  ]},
+  { label:`Set D · Too or very?`, es:`Elige too o very.`, items:[
+    [`1. The task is ______ difficult, but I can finish it today.`, `very`],
+    [`2. The task is ______ difficult. I can't finish it alone.`, `too`],
+    [`3. I'm ______ tired ______ think clearly.`, `too / to`],
+  ]},
+];
+
+function renderExercises() {
+  return `<div class="sc">
+    ${badge(8, 'Exercises', '6 min')}
+    ${esNote('Escribe o di tu respuesta primero. Después toca para ver la respuesta correcta.')}
+    ${EX_SETS.map(set => `<div class="ex-box">
+      <div class="ex-label">${set.label}</div>
+      <p class="ex-es">${set.es}</p>
+      ${set.items.map(([q, a]) => tapRow(q, `<span class="ans">✓ ${a}</span>`)).join('')}
+    </div>`).join('')}
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising, ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'A perfect score. See you in class!';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    ${badge(9, 'Quiz', '8 min')}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Adverbs, intensifiers, frequency adverbs and vocabulary</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      ${quizAttempts > 0 ? `<div class="result-msg" style="margin-top:6px;">Attempts so far: ${quizAttempts + 1}</div>` : ''}
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE (do not edit) ─────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${(s.inputVal||'').replace(/"/g,'&quot;')}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=normalise(quizState[qi].inputVal);
+  quizState[qi].correct=q.answers.some(a=>val===normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  quizAttempts++;
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  // Calls renderQuiz() directly, not STEPS[currentStep].fn()
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── CONCEPT-CHECK ENGINE (isolated state per prefix) ──────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0)) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${(s.inputVal || '').replace(/"/g,'&quot;')}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const q = CQ[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  // Redraws only this concept check's own container, so the rest of the step is untouched
+  const wrap = document.getElementById('mini-wrap-' + prefix);
+  if (wrap) wrap.innerHTML = renderMiniQ(prefix, CQ[prefix]);
+}
+
+// ── AUDIO (Pattern A: one player in this file) ────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Welcome",          fn: renderWelcome },
+  { label: "2. Vocabulary",       fn: renderVocabulary },
+  { label: "3. Grammar Bridge",   fn: renderBridge },
+  { label: "4. Adverbs of Manner", fn: renderManner },
+  { label: "5. Intensifiers",     fn: renderIntensifiers },
+  { label: "6. Model Sentences",  fn: renderModels },
+  { label: "7. Listening",        fn: renderListening },
+  { label: "8. Exercises",        fn: renderExercises },
+  { label: "9. Quiz",             fn: renderQuiz },
+];
+
+render(); // always last
+</script>
+
+
+
+<!-- PERMANENT SITE FOOTER: do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 28: Company Policies | A2 · Unit 3 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold, Georgia headings, Lato body
+   All colours as CSS variables, never hardcoded inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --sky-bg:      #EEF6FB;
+  --amber-text:  #7A5500;
+  --amber-dark:  #92400E;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+  text-align: center;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+@media(max-width:600px){ .hero-inner{ padding:36px 16px 32px; } .site-header-inner{ padding:12px 16px; } .site-header-brand{ font-size:18px; } }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+@media(max-width:600px){ .step-nav-inner{ padding:0 8px; } }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+@media(max-width:600px){ .sec-badge-title{ padding:14px 12px; font-size:15px; } .sec-badge-time{ padding:14px 12px; } }
+
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-box { background:var(--white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:16px; font-size:14px; line-height:1.7; color:var(--slate); border-radius:0 6px 6px 0; }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.tip-box ul { padding-left:18px; }
+.tip-box li { margin-bottom:4px; }
+.warn-box { background:var(--red-bg); border-left:4px solid var(--red); padding:12px 16px; margin-bottom:16px; font-size:14px; line-height:1.7; color:var(--slate); border-radius:0 6px 6px 0; }
+.warn-box .tip-label { color:var(--red); }
+.warn-box ul { padding-left:18px; }
+
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:var(--amber-text); font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* RESPONSIVE TABLE */
+.tbl { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.tbl-cap { background:var(--sky); padding:10px 18px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.tbl-head, .tbl-row { display:grid; grid-template-columns:var(--cols); gap:12px; padding:11px 18px; }
+.tbl-head { background:var(--navy); }
+.tbl-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.tbl-row { border-bottom:1px solid var(--light-grey); font-size:14px; line-height:1.55; align-items:start; transition:background 0.12s; }
+.tbl-row:last-child { border-bottom:none; }
+.tbl-row:hover { background:var(--light-grey); }
+.tbl-cell { min-width:0; overflow-wrap:anywhere; }
+.tbl-cell.k { font-weight:700; color:var(--navy); }
+.tbl-cell.ex { color:var(--navy); font-style:italic; }
+.tbl-cell.es { color:var(--grey-blue); }
+.tbl-cell.bad { color:var(--red); font-style:italic; }
+.tbl-cell.good { color:var(--green); font-style:italic; font-weight:700; }
+.pos { font-size:11px; color:var(--grey-blue); font-weight:400; font-style:italic; }
+@media(max-width:600px){
+  .tbl-head { display:none; }
+  .tbl-row { grid-template-columns:1fr; gap:3px; padding:12px 16px; }
+  .tbl-cell[data-label]::before { content:attr(data-label); display:block; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; font-style:normal; margin-bottom:1px; }
+  .tbl-cell[data-label=""]::before { display:none; }
+}
+
+/* SPANISH BRIDGE TABLE */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-avoid { font-size:13px; color:rgba(255,255,255,0.45); text-decoration:line-through; }
+@media(max-width:600px){ .bridge-table-head{ display:none; } .bridge-row{ grid-template-columns:1fr; gap:2px; } }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:22px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+.example-tag { font-size:11px; color:var(--sky); font-weight:700; letter-spacing:0.5px; }
+
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin:8px 0 12px; }
+.sub-heading { font-family:var(--font-heading); font-size:17px; color:var(--navy); margin:18px 0 10px; }
+.rule-head { font-size:13px; font-weight:700; color:var(--sky); letter-spacing:0.5px; margin:14px 0 6px; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.lesson-map { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.map-chip { background:var(--white); border:1px solid var(--border-grey); border-radius:16px; padding:5px 12px; font-size:12px; color:var(--navy); }
+.map-chip b { color:var(--gold); margin-right:4px; }
+
+/* MEANING SCALE */
+.meaning-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px; }
+@media(max-width:700px){ .meaning-grid{ grid-template-columns:1fr 1fr; } }
+@media(max-width:400px){ .meaning-grid{ grid-template-columns:1fr; } }
+.meaning-card { background:var(--white); border:1px solid var(--border-grey); border-top:4px solid var(--navy); border-radius:8px; padding:12px 14px; }
+.meaning-card.req { border-top-color:var(--navy); }
+.meaning-card.pro { border-top-color:var(--red); }
+.meaning-card.per { border-top-color:var(--green); }
+.meaning-card.opt { border-top-color:var(--sky); }
+.meaning-title { font-size:13px; font-weight:700; color:var(--navy); }
+.meaning-es { font-size:12px; color:var(--grey-blue); font-style:italic; margin-bottom:6px; }
+.meaning-forms { font-size:14px; color:var(--navy); line-height:1.6; }
+
+/* CONCEPT CHECKS */
+.cq-head { font-family:var(--font-heading); font-size:17px; color:var(--navy); margin-bottom:4px; }
+.cq-sub { font-size:13px; color:var(--grey-blue); font-style:italic; margin-bottom:16px; }
+
+/* QUIZ CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+@media(max-width:600px){ .q-card{ padding:16px; } }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:var(--sky-bg); }
+.q-opt.selected { border-color:var(--sky); background:var(--sky-bg); }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:var(--white); }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:var(--white); }
+.q-opt.selected .opt-letter { background:var(--sky);  color:var(--white); }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+@media(max-width:500px){ .q-input-row{ flex-direction:column; } }
+.q-input { flex:1; min-width:0; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.result-actions { display:flex; gap:12px; justify-content:center; margin-top:24px; flex-wrap:wrap; }
+.result-btn { padding:12px 28px; border-radius:8px; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; }
+.result-btn.retry { background:var(--gold); color:var(--navy); border:none; }
+.result-btn.back { background:rgba(255,255,255,0.1); color:var(--white); border:1px solid rgba(255,255,255,0.25); }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* TAP TO REVEAL */
+.reveal-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 16px; margin-bottom:10px; }
+.reveal-top { display:flex; gap:10px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; }
+.reveal-q { font-size:14px; color:var(--navy); line-height:1.55; flex:1; min-width:200px; }
+.reveal-q b { color:var(--gold); margin-right:4px; }
+.reveal-btn { padding:7px 14px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; white-space:nowrap; transition:background 0.15s; }
+.reveal-btn:hover { background:var(--sky); }
+.reveal-btn.open { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.reveal-ans { display:none; margin-top:10px; padding:9px 13px; background:var(--green-bg); color:var(--green); border-radius:7px; font-size:14px; font-weight:700; }
+.reveal-ans.show { display:block; }
+.ex-set { margin-bottom:26px; }
+.ex-set-head { display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+.ex-label { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.ex-instr { font-size:13px; color:var(--grey-blue); font-style:italic; margin-bottom:12px; }
+.btn-ghost { padding:6px 12px; background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); border-radius:6px; font-family:var(--font-body); font-size:11px; font-weight:700; cursor:pointer; }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+
+/* MODEL SENTENCES */
+.model-list { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+.model-row { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:12px 16px; }
+.model-en { font-size:15px; color:var(--navy); font-weight:700; margin-bottom:3px; }
+.model-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+.model-tag { display:inline-block; font-size:10px; letter-spacing:1px; text-transform:uppercase; font-weight:700; border-radius:10px; padding:2px 8px; margin-top:6px; }
+.model-tag.req { background:var(--light-grey); color:var(--navy); }
+.model-tag.pro { background:var(--red-bg); color:var(--red); }
+.model-tag.per { background:var(--green-bg); color:var(--green); }
+.model-tag.opt { background:var(--sky-bg); color:var(--sky); }
+.model-tag.q { background:var(--gold-bg); color:var(--amber-text); }
+
+/* CHECK BUTTON */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+@media(max-width:600px){ .nav-btn{ padding:10px 12px; font-size:12px; } }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); white-space:nowrap; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+@media(max-width:600px){ .site-footer-inner{ padding:20px 16px; } }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── CLASSWORK ADDITIONS ── */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1.6fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+@media(max-width:500px){ .pattern-row{ grid-template-columns:1fr; gap:2px; } }
+
+.teacher-box { border:2px dashed var(--steel); background:var(--light-grey); border-radius:10px; padding:14px 18px; margin:24px 0 8px; font-size:13px; line-height:1.7; color:var(--slate); }
+.teacher-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+.check-list { display:flex; flex-direction:column; gap:8px; margin-bottom:22px; }
+.check-item { display:flex; gap:12px; align-items:flex-start; background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:10px 14px; font-size:14px; color:var(--navy); line-height:1.5; }
+.check-num { background:var(--gold); color:var(--navy); font-weight:700; font-size:12px; border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+
+.mistake-line { font-size:14px; color:var(--red); flex:1; min-width:200px; line-height:1.5; }
+.reveal-ans.fix { background:var(--green-bg); }
+.fix-right { color:var(--green); font-weight:700; font-style:italic; margin-bottom:4px; }
+.fix-why { color:var(--slate); font-weight:400; font-size:13px; }
+.reveal-ans.hint { background:var(--gold-bg); color:var(--amber-text); font-weight:400; font-style:italic; }
+.reveal-ans.sample { background:var(--sky-bg); color:var(--navy); font-weight:400; font-style:italic; }
+.reveal-ans.follow { background:var(--gold-bg); color:var(--navy); font-weight:700; }
+
+.warm-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px; margin-bottom:12px; }
+.warm-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:12px; }
+.warm-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:12px; font-weight:700; flex-shrink:0; }
+.warm-def { font-size:15px; color:var(--navy); line-height:1.55; }
+.warm-actions { display:flex; gap:8px; flex-wrap:wrap; }
+
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.passage-head { background:var(--navy); padding:14px 18px; display:flex; gap:12px; align-items:center; }
+.passage-icon { font-size:24px; flex-shrink:0; }
+.passage-name { font-family:var(--font-heading); font-size:16px; color:var(--white); }
+.passage-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.passage-tag { margin-left:auto; background:rgba(201,151,44,0.2); border:1px solid rgba(201,151,44,0.4); color:var(--gold); font-size:10px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; border-radius:12px; padding:3px 10px; }
+.passage-text { padding:16px 18px; font-family:var(--font-heading); font-size:16px; line-height:1.75; color:var(--navy); border-bottom:1px solid var(--light-grey); }
+.passage-text strong { background:var(--gold-bg); color:var(--amber-text); padding:0 3px; border-radius:3px; }
+.pq { padding:12px 18px; border-bottom:1px solid var(--light-grey); }
+.pq:last-child { border-bottom:none; }
+.pq-top { display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; }
+.pq-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:2px 8px; font-size:11px; font-weight:700; flex-shrink:0; margin-top:2px; }
+.pq-num.you { background:var(--sky); color:var(--white); }
+.pq-text { flex:1; min-width:180px; font-size:14px; color:var(--navy); line-height:1.55; }
+
+.spot-card { border:2px solid var(--gold); border-radius:12px; overflow:hidden; margin:-4px 0 22px; background:var(--white); }
+.spot-head { background:var(--gold-bg); padding:14px 18px; display:flex; flex-direction:column; gap:2px; border-bottom:1px solid rgba(201,151,44,0.3); }
+.spot-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--amber-text); font-weight:700; }
+.spot-title { font-family:var(--font-heading); font-size:21px; color:var(--navy); font-style:italic; }
+.spot-body { padding:16px 18px; }
+.spot-meaning { font-size:14px; color:var(--navy); line-height:1.6; margin-bottom:14px; }
+.spot-body .q-card { margin-bottom:0; }
+
+.useful-box { background:var(--navy); border-radius:10px; padding:16px 20px; margin-bottom:20px; }
+.useful-head { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.useful-row { display:grid; grid-template-columns:110px 1fr; gap:10px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:14px; }
+.useful-row:last-child { border-bottom:none; }
+.useful-k { color:var(--gold-light); font-weight:700; }
+.useful-v { color:var(--white); font-style:italic; }
+@media(max-width:500px){ .useful-row{ grid-template-columns:1fr; gap:2px; } }
+
+.speak-card { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--sky); border-radius:0 10px 10px 0; padding:16px 18px; margin-bottom:14px; }
+.speak-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:12px; }
+.speak-num { background:var(--sky); color:var(--white); border-radius:50%; width:28px; height:28px; display:flex; align-items:center; justify-content:center; font-weight:700; flex-shrink:0; }
+.speak-q { font-size:16px; color:var(--navy); line-height:1.55; font-weight:500; }
+
+.conf-row { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 16px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+.conf-text { font-size:14px; color:var(--navy); flex:1; min-width:200px; }
+.conf-scale { display:flex; gap:6px; }
+.conf-btn { width:36px; height:36px; border-radius:50%; border:1.5px solid var(--border-grey); background:var(--off-white); color:var(--navy); font-family:var(--font-body); font-weight:700; cursor:pointer; transition:all 0.12s; }
+.conf-btn:hover { border-color:var(--sky); }
+.conf-btn.on { background:var(--gold); border-color:var(--gold); color:var(--navy); }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 3 · Classwork</div>
+    <h1 class="hero-title">Lesson 28: Company Policies</h1>
+    <p class="hero-sub">Speaking Day · Explaining workplace rules with must, mustn't and be allowed to</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking</span>
+      <span class="pill accent">📖 Reading</span>
+      <span class="pill">5 steps</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<!-- SINGLE SCRIPT BLOCK. STEPS populated at the bottom, render() called last. -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+const openMap = {};   // tap-to-reveal panels, keyed by id
+const conf = {};      // wrap-up confidence ratings
+const miniState = { idiom: {}, expr: {} };
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── LAYOUT HELPERS ────────────────────────────────────────
+function badge(n, title, time) {
+  return `<div class="sec-badge">
+    <div class="sec-badge-num">${n}</div>
+    <div class="sec-badge-title">${title}</div>
+    <div class="sec-badge-time">${time}</div>
+  </div>
+  <hr class="gold-rule">`;
+}
+function esNote(t) { return `<div class="es-note">${t}</div>`; }
+function teacherBox(t) {
+  return `<div class="teacher-box"><div class="teacher-label">👩‍🏫 Teacher instructions</div>${t}</div>`;
+}
+// A hidden panel with its own toggle button. Redraws only itself.
+function revealBtn(id, label, openLabel) {
+  const open = !!openMap[id];
+  return `<button class="reveal-btn ${open ? 'open' : ''}" id="rb-${id}" data-l="${label}" data-o="${openLabel || 'Hide'}" onclick="toggleOpen('${id}')">${open ? (openLabel || 'Hide') : label}</button>`;
+}
+function revealPanel(id, html, cls) {
+  return `<div class="reveal-ans ${cls || ''} ${openMap[id] ? 'show' : ''}" id="rp-${id}">${html}</div>`;
+}
+function toggleOpen(id) {
+  openMap[id] = !openMap[id];
+  const b = document.getElementById('rb-' + id);
+  const p = document.getElementById('rp-' + id);
+  if (b) { b.classList.toggle('open', openMap[id]); b.textContent = openMap[id] ? b.dataset.o : b.dataset.l; }
+  if (p) p.classList.toggle('show', openMap[id]);
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const HW_CHECKLIST = [
+  'What happened, and how you felt',
+  'How you worked (calmly, fast, carefully...)',
+  'How often this kind of pressure happens',
+  'What you did, or what you do, to cope',
+  'At least two adverbs of manner and two intensifiers (a bit, quite, really, too...)',
+];
+
+// [wrong, right, why]
+const HW_MISTAKES = [
+  ['I worked very hardly all week.', 'I worked very hard all week.', '<em>Hard</em> no cambia como adverbio. <em>Hardly</em> significa "casi no".'],
+  ['I was very much busy.', 'I was very busy.', 'Con adjetivos usamos <em>very</em>, no <em>very much</em>.'],
+  ['I answered quickly the emails.', 'I answered the emails quickly.', 'Nada entre el verbo y el objeto. El adverbio va al final.'],
+  ['I felt very stressful.', 'I felt very stressed.', '<em>Stressed</em> es para personas. <em>Stressful</em> es para situaciones.'],
+  ['My team worked very good.', 'My team worked very well.', 'Para decir <em>cómo</em> trabajan, usamos el adverbio <em>well</em>.'],
+  ['I work always late in December.', 'I always work late in December.', 'Los adverbios de frecuencia van antes del verbo principal.'],
+  ['The presentation was too good!', 'The presentation was really good!', '<em>Too</em> = demasiado, suena negativo. Para elogiar, usa <em>really</em>.'],
+];
+
+// [definition, spanish hint, answer]
+const WARMUP = [
+  ['Following the laws and the company’s rules. Many big companies have a whole team for it.', 'Cumplir con las leyes y las normas de la empresa.', 'compliance'],
+  ['Keeping private information secret and not sharing it with the wrong people.', 'Mantener en secreto la información privada.', 'confidentiality'],
+  ['Being present at work, at a meeting or in a class. Some companies check it every day.', 'Estar presente en el trabajo, en una reunión o en una clase.', 'attendance'],
+  ['A small card with your photo and your name. You wear it to enter the building.', 'Una tarjeta pequeña con tu foto y tu nombre para entrar al edificio.', 'ID badge'],
+  ['The company’s rules about the clothes you can wear at work.', 'Las normas de la empresa sobre la ropa que puedes usar.', 'dress code'],
+  ['Days away from work because you are ill. You often need a note from a doctor.', 'Días sin trabajar porque estás enfermo. En Colombia decimos "incapacidad".', 'sick leave'],
+  ['When someone in charge says "Yes, you can do it." You often ask your manager for it.', 'Cuando alguien con autoridad te dice "sí, puedes hacerlo".', 'permission'],
+  ['An adjective for a person who always arrives on time.', 'Una persona que siempre llega a tiempo.', 'punctual'],
+];
+const WARMUP_EXTRA = [
+  ['Describes information you must protect, like salaries or client data.', 'Información delicada o confidencial.', 'sensitive'],
+  ['What your manager gives you when you break a rule. It means "Don’t do it again."', 'Un llamado de atención.', 'warning'],
+];
+
+// [english, spanish]
+const REMINDER = [
+  ['We <b>have to</b> / You <b>must</b> wear a badge.', 'Obligatorio'],
+  ['You <b>mustn’t</b> / <b>aren’t allowed to</b> share client data.', 'Prohibido'],
+  ['We<b>’re allowed to</b> work from home on Fridays.', 'Permitido'],
+  ['You <b>don’t have to</b> wear a suit.', 'No es necesario'],
+];
+
+const PASSAGES = [
+  { name: 'Efua Boateng', role: 'Bank Teller', city: 'Accra', icon: '🏦',
+    text: 'Efua works at the front desk of a bank in Accra. Employees aren’t allowed to use their personal phones at the counter, so she keeps hers in a locker. She also has to lock her computer every time she leaves her desk, even for one minute. “It’s a simple rule, but it protects our clients,” she says.',
+    q1: 'What does Efua have to do every time she leaves her desk?', a1: 'She has to lock her computer.',
+    q2: 'Are you allowed to use your phone at your desk? Do you think it’s a good rule?', s2: 'Yes, we’re allowed to use it, but we mustn’t use it in client meetings. I think that’s fair.' },
+  { name: 'Mireille Dubois', role: 'Hotel Receptionist', city: 'Montreal', icon: '🏨',
+    text: 'Mireille works at the reception desk of a hotel in Montreal. The dress code is strict: she must wear a uniform and her name badge every day. Last year, the hotel changed its policy, so she doesn’t have to wear a hat anymore. She’s very happy about that!',
+    q1: 'What doesn’t Mireille have to wear anymore?', a1: 'She doesn’t have to wear a hat anymore.',
+    q2: 'Does your company have a dress code? What do you have to wear, and what don’t you have to wear?', s2: 'Not really. We don’t have to wear a suit, but we have to look professional when we meet clients.' },
+  { name: 'Hamza Qureshi', role: 'Software Developer', city: 'Karachi', icon: '💻',
+    text: 'Hamza is a developer at a software company in Karachi. He’s allowed to work from home three days a week, but he has to be online from ten to four. When he works from a café, he mustn’t use the public wifi without the company VPN. “Security comes first,” his manager always says.',
+    q1: 'What mustn’t Hamza do when he works from a café?', a1: 'He mustn’t use the public wifi without the company VPN.',
+    q2: 'Are you allowed to work from home? What rules do you have to follow?', s2: 'Yes, two days a week. I have to answer messages quickly, and I have to turn my camera on in team meetings.' },
+  { name: 'Paulo Teixeira', role: 'Warehouse Supervisor', city: 'Lisbon', icon: '📦',
+    text: 'Paulo supervises a warehouse near Lisbon. Everyone must wear safety boots and a helmet, and visitors aren’t allowed to walk around without a supervisor. Last month, a new worker didn’t wear his helmet, so Paulo gave him a warning. “I don’t like warnings, but safety rules aren’t optional,” he explains.',
+    q1: 'Why did Paulo give the new worker a warning?', a1: 'Because he didn’t wear his helmet.',
+    q2: 'What safety rules do you have at your workplace?', s2: 'We mustn’t block the emergency exits, and we have to do a fire drill twice a year.' },
+  { name: 'Daichi Mori', role: 'Engineer', city: 'Osaka', icon: '⚙️',
+    text: 'Daichi is an engineer at a car parts company in Osaka. In his office, people are very punctual. Meetings start exactly on time, and you aren’t allowed to come in after the door closes. But employees don’t have to stay late, because the lights go off at seven every evening.',
+    q1: 'Why don’t Daichi’s colleagues have to stay late?', a1: 'Because the lights go off at seven every evening.',
+    q2: 'Are people punctual at your company? What happens when someone arrives late to a meeting?', s2: 'Not always. Some meetings start ten minutes late, and nobody says anything.' },
+  { name: 'Ximena Paredes', role: 'Accountant', city: 'Lima', icon: '🧾', tag: 'idiom',
+    text: 'Ximena is an accountant at a mining company in Lima. Her new manager does everything <strong>by the book</strong>. Every expense needs approval, and employees must keep all their receipts. Nobody is allowed to approve their own expenses, not even the manager.',
+    q1: 'What must employees keep?', a1: 'They must keep all their receipts.',
+    q2: 'Do you know someone who does everything by the book? Is that good or bad at work?', s2: 'My manager does. Sometimes it’s slow, but we never have problems with the auditors.' },
+  { name: 'Devika Rao', role: 'HR Manager', city: 'Bengaluru', icon: '🔒', tag: 'expr',
+    text: 'Devika is an HR manager at a tech company in Bengaluru. At her company, salary information is shared <strong>on a need-to-know basis</strong>. Only HR and each employee’s manager are allowed to see it. Employees mustn’t discuss other people’s salaries in the team chat.',
+    q1: 'Who is allowed to see salary information?', a1: 'Only HR and each employee’s manager.',
+    q2: 'What information at your company is shared on a need-to-know basis?', s2: 'Information about new clients. Only the sales team and the directors know the details.' },
+  { name: 'Lerato Mokoena', role: 'Marketing Coordinator', city: 'Johannesburg', icon: '📱',
+    text: 'Lerato works for a marketing agency in Johannesburg. The agency has a clear social media policy. Employees are allowed to post photos of company events, but they mustn’t share client names or new campaigns before the launch. If someone breaks this rule, the client can cancel the contract.',
+    q1: 'What aren’t employees allowed to share?', a1: 'Client names, and new campaigns before the launch.',
+    q2: 'Does your company have a social media policy? What are you allowed to post about your work?', s2: 'Yes. We’re allowed to share job ads, but we mustn’t post photos inside the factory.' },
+];
+
+const SPOTLIGHT = {
+  idiom: { label: '💡 Idiom spotlight', title: 'by the book',
+    meaning: 'Doing something exactly the way the rules say, with no exceptions.',
+    es: 'Es como decir "al pie de la letra" o "según el reglamento". Una persona que hace todo <em>by the book</em> sigue cada norma, incluso las pequeñas, y no hace excepciones.',
+    ex: ['Our HR team does everything by the book.', 'Let’s do this by the book. We don’t want problems with the auditors.'],
+    tip: 'Puede ser positivo (correcto, seguro) o un poco negativo (lento, sin flexibilidad). Fíjate en el tono: <em>She’s very by-the-book</em> a veces es una pequeña queja. Ojo: es <em>by the book</em>, no <em>by the letter</em>.' },
+  expr: { label: '💼 Corporate expression', title: 'on a need-to-know basis',
+    meaning: 'Information is given only to the people who really need it for their job.',
+    es: 'Significa "solo se informa a quien necesita saberlo". Se usa mucho con información sensible: salarios, nuevos proyectos, cambios en la empresa. Está muy conectado con <em>confidentiality</em>.',
+    ex: ['The new project is on a need-to-know basis for now.', 'Sorry, I can’t tell you. It’s need-to-know.'],
+    tip: 'Es una forma educada y profesional de decir "no te lo puedo contar" sin sonar grosero. Si alguien te pregunta algo confidencial, puedes responder con una sonrisa: <em>Sorry, that’s on a need-to-know basis.</em>' },
+};
+
+const MINI = {
+  idiom: [
+    { q: 'Saskia follows every company rule exactly, even the small ones, and she never makes exceptions. She does things ______.',
+      opts: ['by the book', 'on a break', 'at the last minute'], answer: 0,
+      fb: 'Sigue cada norma al pie de la letra, sin excepciones: <em>she does things by the book</em>.' },
+  ],
+  expr: [
+    { q: 'Tariq asks his manager about the plans for the new office. She says, "Sorry, only the directors know for now. It’s ______."',
+      opts: ['on a need-to-know basis', 'by mistake', 'open to everyone'], answer: 0,
+      fb: 'Solo las personas que lo necesitan saben la información: <em>it’s on a need-to-know basis</em>.' },
+  ],
+};
+
+const USEFUL = [
+  ['Required', 'We have to... / Everyone has to... / The policy says we must...'],
+  ['Prohibited', 'We aren’t allowed to... / You mustn’t...'],
+  ['Permitted', 'We’re allowed to... / You can...'],
+  ['Optional', 'We don’t have to... / You don’t need to...'],
+  ['Asking', 'Am I allowed to...? / Do we have to...?'],
+];
+
+const SPEAKING = [
+  { q: 'Choose two or three rules at your company and explain them. Why do you think the company has these rules?',
+    f: 'Is there a rule that you don’t agree with? Why?' },
+  { q: 'A new colleague starts in your team on Monday. What does she have to do in her first week? What isn’t she allowed to do? And what doesn’t she have to worry about?',
+    f: 'What did nobody explain to you on your first day?' },
+  { q: 'Are the rules at your company strict or flexible? Do you prefer working for a company with a lot of rules or only a few? Why?',
+    f: 'Is your company more "by the book" than your last company, or more relaxed?' },
+  { q: 'What information is confidential in your job? What happens if someone breaks a confidentiality rule?',
+    f: 'Have you ever received an email by mistake with sensitive information? What did you do?' },
+];
+
+const CONF_ITEMS = [
+  'I can explain the rules at my company.',
+  'I know the difference between <em>mustn’t</em> and <em>don’t have to</em>.',
+  'I can ask about rules with "Am I allowed to...?" and "Do I have to...?"',
+];
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderReview() {
+  return `<div class="sc">
+    ${badge(1, 'Homework Review: Lesson 27', '15 to 20 min')}
+    ${esNote('Saca el párrafo que escribiste para la tarea de la Lección 27, donde describiste un día o una semana muy estresante en el trabajo. Vamos a leer algunos en voz alta y a corregirlos juntos.')}
+    <div class="sub-heading">Did your paragraph include...?</div>
+    <div class="check-list">
+      ${HW_CHECKLIST.map((c, i) => `<div class="check-item"><span class="check-num">${i+1}</span><span>${c}</span></div>`).join('')}
+    </div>
+    <div class="sub-heading">Common adverb and intensifier mistakes</div>
+    <p class="cq-sub">Toca cada error para ver la corrección.</p>
+    ${HW_MISTAKES.map(([w, r, why], i) => `<div class="reveal-card">
+      <div class="reveal-top">
+        <div class="mistake-line">❌ <em>${w}</em></div>
+        ${revealBtn('hw' + i, 'Show fix')}
+      </div>
+      ${revealPanel('hw' + i, `<div class="fix-right">✅ ${r}</div><div class="fix-why">${why}</div>`, 'fix')}
+    </div>`).join('')}
+    ${teacherBox('Ask 3 or 4 students to read their paragraph aloud. After each one, pick one or two errors only, ideally from the table above, and rewrite the sentence together on screen. Don’t correct everything, or the student stops listening. Open a mistake card when the same error shows up for a second time. If someone didn’t do the homework, ask them to say two sentences aloud about a stressful day instead, so they still take part. Use any time left to praise one strong sentence from each reader.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function warmCard(item, key, num) {
+  const [def, hint, ans] = item;
+  return `<div class="warm-card">
+    <div class="warm-top"><span class="warm-num">${num}</span><div class="warm-def">${def}</div></div>
+    <div class="warm-actions">
+      ${revealBtn(key + 'h', '💡 Pista en español', 'Ocultar pista')}
+      ${revealBtn(key + 'a', 'Show answer')}
+    </div>
+    ${revealPanel(key + 'h', hint, 'hint')}
+    ${revealPanel(key + 'a', '✓ ' + ans)}
+  </div>`;
+}
+
+function renderWarmup() {
+  return `<div class="sc">
+    ${badge(2, 'Warm-up: Guess the Word', '5 min')}
+    ${esNote('Escucha la definición en inglés y adivina la palabra. Si necesitas ayuda, toca "Pista en español".')}
+    ${WARMUP.map((w, i) => warmCard(w, 'w' + i, i + 1)).join('')}
+    <div class="sub-heading">Extra cards</div>
+    <p class="cq-sub">Si alguien termina rápido o queda tiempo.</p>
+    ${WARMUP_EXTRA.map((w, i) => warmCard(w, 'x' + i, '+')).join('')}
+    ${teacherBox('One card per student, round-robin. Read the definition aloud yourself, then give the student 5 to 10 seconds before offering the Spanish hint. If they get the word, ask them for one quick sentence with it, using <em>have to</em>, <em>must</em> or <em>allowed to</em> (for example: "We have to wear an ID badge"). Watch card 6: some students will say <em>incapacity</em>, so model <em>sick leave</em> clearly.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function spotlight(key) {
+  const s = SPOTLIGHT[key];
+  return `<div class="spot-card">
+    <div class="spot-head"><span class="spot-label">${s.label}</span><span class="spot-title">${s.title}</span></div>
+    <div class="spot-body">
+      <div class="spot-meaning"><b>Meaning:</b> ${s.meaning}</div>
+      ${esNote(s.es)}
+      <div class="examples-label">Examples</div>
+      ${s.ex.map(e => `<div class="example-item"><span class="example-en">${e}</span></div>`).join('')}
+      <div class="tip-box" style="margin-top:14px"><div class="tip-label">💡 Tip</div>${s.tip}</div>
+      <div class="cq-head">✅ Quick check</div>
+      <div id="mini-${key}">${renderMiniQ(key)}</div>
+    </div>
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    ${badge(3, 'Reading', '20 min')}
+    <div class="pattern-box">
+      <div class="pattern-box-head">Grammar reminder: rules at work</div>
+      ${REMINDER.map(([en, es]) => `<div class="pattern-row"><span class="pattern-en">${en}</span><span class="pattern-es">${es}</span></div>`).join('')}
+    </div>
+    ${esNote('Cada estudiante lee un texto en voz alta y responde dos preguntas. La primera es sobre el texto: responde con una oración completa. La segunda es sobre ti: no hay respuesta correcta, pero intenta usar <em>have to, must, mustn’t, allowed to</em> o <em>don’t have to</em>.')}
+    ${PASSAGES.map((p, i) => `<div class="passage-card">
+      <div class="passage-head">
+        <span class="passage-icon">${p.icon}</span>
+        <div><div class="passage-name">Passage ${i+1}: ${p.name}</div><div class="passage-role">${p.role} · ${p.city}</div></div>
+        ${p.tag ? `<span class="passage-tag">${p.tag === 'idiom' ? 'Idiom' : 'Expression'}</span>` : ''}
+      </div>
+      <div class="passage-text">${p.text}</div>
+      <div class="pq">
+        <div class="pq-top"><span class="pq-num">Q1</span><span class="pq-text">${p.q1}</span>${revealBtn('p' + i + 'a', 'Show answer')}</div>
+        ${revealPanel('p' + i + 'a', '✓ ' + p.a1)}
+      </div>
+      <div class="pq">
+        <div class="pq-top"><span class="pq-num you">Q2</span><span class="pq-text">${p.q2}</span>${revealBtn('p' + i + 's', 'Sample answer')}</div>
+        ${revealPanel('p' + i + 's', '💬 ' + p.s2, 'sample')}
+      </div>
+    </div>
+    ${p.tag ? spotlight(p.tag) : ''}`).join('')}
+    ${teacherBox('One passage per student. The student reads aloud, and you fix pronunciation only on the key words (<em>mustn’t</em> = MAS-ent, <em>allowed</em> = a-LAUD, <em>receipts</em>: the "p" is silent). Ask Q1 to the reader, then open Q2 to the reader first and one other student. Listen for the two big errors from the Pre-Learning: <em>mustn’t</em> used to mean "no es necesario", and <em>must to</em>. Note them and repeat the correct form once, but don’t stop the flow. For the idiom and the expression, ask the whole class the quick check before you reveal it. Stronger students can answer Q2 with two rules, one with <em>mustn’t</em> and one with <em>don’t have to</em>.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  return `<div class="sc">
+    ${badge(4, 'Speaking', 'Open time')}
+    ${esNote('Responde con tus propias ideas. No hay respuestas correctas o incorrectas. Intenta hablar al menos 3 o 4 oraciones. Si te quedas en blanco, mira el cuadro de frases útiles.')}
+    <div class="useful-box">
+      <div class="useful-head">Useful language</div>
+      ${USEFUL.map(([k, v]) => `<div class="useful-row"><span class="useful-k">${k}</span><span class="useful-v">${v}</span></div>`).join('')}
+    </div>
+    ${SPEAKING.map((s, i) => `<div class="speak-card">
+      <div class="speak-top"><span class="speak-num">${i+1}</span><div class="speak-q">${s.q}</div></div>
+      <div class="speak-actions">${revealBtn('f' + i, 'Follow-up question')}</div>
+      ${revealPanel('f' + i, '➜ ' + s.f, 'follow')}
+    </div>`).join('')}
+    ${teacherBox('Ask each question to 2 or 3 students, then open the follow-up to someone who hasn’t spoken yet. This is free production, so note errors quietly rather than stopping students mid-answer. Save 3 or 4 typical mistakes for a 2-minute error clinic at the end of the step. Question 2 tests the <em>mustn’t</em> vs <em>don’t have to</em> contrast, so push for all three parts. Question 3 recycles comparatives from L26 (<em>stricter, more flexible</em>). If a student says <em>more strict</em>, accept it: both forms are common.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderConf(i) {
+  return `<div class="conf-row">
+    <div class="conf-text">${CONF_ITEMS[i]}</div>
+    <div class="conf-scale">${[1,2,3,4,5].map(n => `<button class="conf-btn ${conf[i] === n ? 'on' : ''}" onclick="setConf(${i},${n})">${n}</button>`).join('')}</div>
+  </div>`;
+}
+function setConf(i, n) {
+  conf[i] = n;
+  const el = document.getElementById('conf-' + i);
+  if (el) el.innerHTML = renderConf(i);
+}
+
+function renderWrap() {
+  return `<div class="sc">
+    ${badge(5, 'Wrap-up', '5 min')}
+    <div class="info-box">
+      <div class="tip-label">🎯 Today you...</div>
+      explained company rules: what you <b>have to</b> do, what you<b>’re allowed to</b> do, what you <b>mustn’t</b> do and what you <b>don’t have to</b> do.
+    </div>
+    <div class="sub-heading">Exit round</div>
+    ${esNote('Cada estudiante dice una norma de su empresa en una sola oración, usando una forma diferente a la del compañero anterior.')}
+    <div class="sub-heading">How confident do you feel?</div>
+    <p class="cq-sub">1 = nada seguro · 5 = muy seguro</p>
+    ${CONF_ITEMS.map((_, i) => `<div id="conf-${i}">${renderConf(i)}</div>`).join('')}
+    ${teacherBox('Keep the exit round fast, one sentence each. If two students in a row use the same form, ask the next one for a different form. Any statement rated 1 or 2 by several students is worth a two-minute recap at the start of L29. Remind the class about the L28 Homework, whose writing task you’ll review at the start of L29.')}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── MINI CHECK ENGINE (isolated state per prefix, redraws only itself) ──
+function renderMiniQ(prefix) {
+  const st = miniState[prefix];
+  return MINI[prefix].map((q, i) => {
+    const s = st[i] || {};
+    const rev = s.revealed;
+    return `<div class="q-card">
+      <div class="q-top"><div class="q-text">${q.q}</div></div>
+      <div class="q-options">
+        ${q.opts.map((opt, j) => {
+          let cls = 'q-opt';
+          if (rev) { if (j === q.answer) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelect('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${'ABCD'[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniReveal('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${s.selected === q.answer ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+function redrawMini(p) { const el = document.getElementById('mini-' + p); if (el) el.innerHTML = renderMiniQ(p); }
+function miniSelect(p, i, j) { const st = miniState[p]; if (!st[i]) st[i] = {}; if (st[i].revealed) return; st[i].selected = j; redrawMini(p); }
+function miniReveal(p, i) { const st = miniState[p]; if (!st[i] || st[i].selected === undefined) return; st[i].revealed = true; redrawMini(p); }
+
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: '1. Homework Review', fn: renderReview },
+  { label: '2. Warm-up',         fn: renderWarmup },
+  { label: '3. Reading',         fn: renderReading },
+  { label: '4. Speaking',        fn: renderSpeaking },
+  { label: '5. Wrap-up',         fn: renderWrap },
+];
+
+render(); // always last
+
+</script>
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

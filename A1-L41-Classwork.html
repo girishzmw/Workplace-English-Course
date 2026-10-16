@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 41: Teamwork | A1 · Unit 5 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* MODEL CARD */
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+
+/* FILL IN THE BLANKS */
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── LESSON ADDITIONS (A1-L41 Classwork) ──────────────────── */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+.teacher-box ul { padding-left:18px; margin:4px 0 8px; }
+.teacher-box p { margin-bottom:6px; }
+
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-num { display:inline-block; min-width:24px; font-weight:700; color:var(--gold); }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:700; line-height:1.6; }
+.tap-answer.show { display:block; }
+.tap-why { display:block; font-weight:400; font-size:13px; color:var(--grey-blue); font-style:italic; margin-top:2px; }
+
+.passage-body { padding:18px 20px 8px; }
+.passage-body .model-quote { font-size:15px; margin-bottom:14px; }
+.passage-tag { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+
+.reminder-list { padding-left:18px; }
+.reminder-list li { margin-bottom:4px; }
+
+.write-row { margin-bottom:14px; }
+.write-label { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+.write-row .q-input { width:100%; }
+
+.fill-text { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; font-size:15px; line-height:2.3; color:var(--slate); margin-bottom:14px; }
+.fill-text .blank-input { width:84px; font-weight:700; }
+.blank-tag { font-size:11px; color:var(--gold); font-weight:700; vertical-align:super; margin-right:2px; }
+.fill-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }
+.fill-result { font-size:14px; font-weight:700; }
+.fill-result.ok { color:var(--green); }
+.fill-result.err { color:var(--red); }
+
+.frame-line { display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; font-size:15px; color:var(--slate); line-height:2; padding:8px 0; border-bottom:1px dashed var(--border-grey); }
+.frame-line:last-child { border-bottom:none; }
+.frame-tag { font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--gold); font-weight:700; min-width:110px; }
+.frame-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:15px; color:var(--navy); min-width:120px; flex:0 1 180px; outline:none; padding:2px 4px; }
+.frame-input.wide { flex:1 1 220px; }
+.frame-input:focus { border-bottom-color:var(--sky); }
+@media(max-width:600px){ .frame-tag{ min-width:100%; } }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 5 · Classwork</div>
+    <h1 class="hero-title">Lesson 41: Teamwork</h1>
+    <p class="hero-sub">Reading Day · Object pronouns · 60 min</p>
+
+    <!-- OPTION B: Pills — Classwork -->
+    <div class="hero-pills">
+      <span class="pill accent">📖 Reading</span>
+      <span class="pill accent">✍️ Writing</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block — never add a second script tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. Targeted rerenders only (fillRerender) — never STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START — replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// Typed text persists across step navigation
+const typed = {};
+// Writing Part A (fill-in) state
+const fill = { vals:{}, checked:false, results:{}, attempts:0 };
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+const WARMUP = [
+  ["¿Cómo se dice “colaborar con”?", "collaborate with"],
+  ["¿Cómo se dice “apoyar”?", "support", "No “put up with”: eso es aguantar."],
+  ["¿Cómo se dice “asignar”?", "assign"],
+  ["¿Cómo se dice “confiar en”?", "trust", "Sin “in”: I trust her."],
+  ["¿Cómo se dice “depender de”?", "depend on", "No “depend of”."],
+  ["¿Cómo se dice “devolver la llamada”?", "call back", "El pronombre va en el medio: I call you back."],
+  ["¿Cómo se dice “¿Me puedes ayudar?”?", "Can you help me?"],
+  ["¿Cómo se dice “Trabajo con ella.”?", "I work with her."],
+];
+
+const PASSAGES = [
+  { emoji:"⚓", name:"Sione Taufa", role:"Port Operations Supervisor · Shipping company · Nuku'alofa",
+    text:"Sione works at the port in Nuku'alofa, and he coordinates a team of ten people. Every morning at 6:30, he checks the ships and assigns the work to his team. His colleague Mele drives the big crane, and Sione trusts her completely. When a ship is late, the captain calls Sione, and he updates the team in a group chat. For Sione, a good team is like a family.",
+    qs:[["What does Sione do every morning at 6:30?", "He checks the ships and assigns the work to his team."],
+        ["In “Sione trusts her completely,” who is “her”?", "“Her” is Mele, the crane driver."]] },
+  { emoji:"🎨", name:"Mirela Kovač", role:"Graphic Designer · Design agency · Zagreb",
+    text:"Mirela is a graphic designer at a design agency in Zagreb. She collaborates with the Marketing team, and she designs posters and website images for them. Her team leader, Luka, gives her clear instructions every Monday. On Wednesday, Mirela shares her first ideas with him, and he sends her his comments. On Friday, the designs are ready, and the client receives them.",
+    qs:[["Who does Mirela collaborate with?", "She collaborates with the Marketing team."],
+        ["What does Mirela do on Wednesday?", "She shares her first ideas with Luka."]] },
+  { emoji:"💻", name:"Kwabena Asante", role:"IT Support Technician · Telecom company · Accra",
+    text:"Kwabena works on the IT help desk at a telecom company in Accra. Colleagues contact him by phone or email when they have a problem with a laptop or a password. He answers them quickly, and he always explains the solution in simple words. On busy days, his colleague Abena helps him with the calls. Last month, the Sales team thanked him with a big cake because he helped them a lot.",
+    qs:[["How do colleagues contact Kwabena?", "They contact him by phone or email."],
+        ["Who helps Kwabena on busy days?", "Abena helps him with the calls."]] },
+  { emoji:"🏭", name:"Hana Novotná", role:"Production Team Leader · Car parts factory · Brno",
+    text:"Hana is a team leader at a car parts factory in Brno. Her team has twelve members, and they work in two shifts. At the start of each shift, Hana has a short meeting with them and divides the tasks. She depends on her two senior technicians, Pavel and Jana, and she asks them for advice every day. When the team reaches its weekly target, Hana thanks everyone and buys them coffee.",
+    qs:[["How many members does Hana's team have?", "It has twelve members."],
+        ["Who does Hana ask for advice every day?", "She asks Pavel and Jana, her senior technicians."]] },
+  { emoji:"📊", name:"Aigerim Bekova", role:"Accountant · Bank · Almaty",
+    text:"Aigerim is an accountant at a bank in Almaty. Every month, she prepares the financial reports with her colleague Timur. Aigerim checks the numbers first, and then Timur checks them again. They work together very well because they trust each other. When the reports are ready, Aigerim sends them to the Finance director.",
+    qs:[["Who does Aigerim prepare the reports with?", "She prepares them with her colleague Timur."],
+        ["In “Timur checks them again,” what does “them” mean?", "“Them” means the numbers."]] },
+  { emoji:"🌎", name:"Lucía Ferreyra", role:"Software Developer · Technology company · Córdoba (Argentina)",
+    text:"Lucía is a software developer in Córdoba, but her team is international. Her colleagues are in India, Poland and Canada, so she works with them online. Every morning at 9:00, they have a short video call, and each person shares an update. Lucía likes it because it is fast and useful. When she needs help with the code, she sends a message to Vikram in Bangalore, and he calls her back after lunch.",
+    qs:[["Where are Lucía's colleagues?", "They are in India, Poland and Canada."],
+        ["What does Vikram do after lunch?", "He calls Lucía back. (He calls her back.)"]] },
+  { emoji:"🤝", name:"Rashid Al-Amri", role:"HR Coordinator · Energy company · Muscat",
+    text:"Rashid is an HR coordinator at an energy company in Muscat. This week, two new interns join his department, and Rashid supports them in their first days. He shows them the office, introduces them to the team and explains their roles. One intern, Salma, is very shy, so Rashid asks a friendly colleague to have lunch with her. On Friday, the two interns tell him, “We really like it here!”",
+    qs:[["Who joins Rashid's department this week?", "Two new interns join his department."],
+        ["What does Rashid do for Salma?", "He asks a friendly colleague to have lunch with her."]] },
+  { emoji:"🌱", name:"Wanjiru Kamau", role:"Field Officer · Agriculture organization · Nairobi",
+    text:"Wanjiru is a field officer for an agriculture organization in Nairobi. She visits farmers in small villages, and she listens to their problems. After each visit, she writes a short report and shares it with her team leader, Otieno. Otieno reads it and contacts the farmers with a solution. Wanjiru says, “I can't help every farmer alone, but together we can help them.”",
+    qs:[["What does Wanjiru do after each visit?", "She writes a short report and shares it with Otieno."],
+        ["In “Otieno reads it,” what is “it”?", "“It” is Wanjiru's report."]] },
+];
+
+const PATTERN = [
+  ["My team leader supports <strong>me</strong>.", "Mi líder de equipo <strong>me</strong> apoya."],
+  ["I work with <strong>him</strong> / <strong>her</strong> every day.", "Trabajo con <strong>él</strong> / <strong>ella</strong> todos los días."],
+  ["The report is ready. I send <strong>it</strong> today.", "El informe está listo. <strong>Lo</strong> envío hoy."],
+  ["Our manager helps <strong>us</strong>.", "Nuestro jefe <strong>nos</strong> ayuda."],
+  ["The clients call, and we answer <strong>them</strong>.", "Los clientes llaman y <strong>les</strong> respondemos."],
+];
+
+const GRAM_PROMPTS = [
+  { key:"g1", label:"1. Your team leader or a colleague, with <em>him</em> or <em>her</em>", ph:"My team leader is … I … him / her …" },
+  { key:"g2", label:"2. Your clients or colleagues, with <em>them</em>", ph:"Our clients are in … and I … them …" },
+  { key:"g3", label:"3. A tool or app you use at work, with <em>it</em>", ph:"We use … and I … it." },
+  { key:"g4", label:"Challenge (optional): one sentence with <em>us</em>", ph:"Our manager … us." },
+];
+
+// Writing Part A: text pieces with blank indices
+const FILL_TEXT = [
+  "Hi, I'm Anaïs Moreau. I work in the Customer Service team at a travel company in Lyon. My team leader is Marc. He supports ", 0,
+  " every day, and we really trust ", 1,
+  ". My colleague Inès is new, so I often help ", 2,
+  " in the morning. When I have a difficult question, Marc helps ", 3,
+  ". Our clients are in many countries, and we call ", 4,
+  " every day. We have a new booking system, and I really like ", 5, "!"
+];
+const FILL_ANS = ["us","him","her","me","them","it"];
+
+const FRAME = [
+  { tag:"Introduction", parts:["Hi, I'm ", {k:"f1"}, ". I work in the ", {k:"f2"}, " team at ", {k:"f3", ph:"company"}, "."] },
+  { tag:"Team leader",  parts:["My team leader is ", {k:"f4"}, ". I ", {k:"f5", ph:"talk to / call / trust"}, " him / her every day."] },
+  { tag:"Colleague",    parts:["My colleague ", {k:"f6"}, " helps me with ", {k:"f7", wide:true}, "."] },
+  { tag:"Collaboration",parts:["We collaborate with the ", {k:"f8"}, " team, and we share ", {k:"f9"}, " with them."] },
+  { tag:"Opinion",      parts:["I like working with my team because ", {k:"f10", wide:true}, "."] },
+];
+
+
+// ── HELPERS ───────────────────────────────────────────────
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+function badge(n, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${n}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function tapRow(q, a, why, label) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top">
+      <div class="tap-q">${q}</div>
+      <div class="tap-hint-label">${label || 'Tap to reveal'}</div>
+    </div>
+    <div class="tap-answer">✓ ${a}${why ? `<span class="tap-why">${why}</span>` : ''}</div>
+  </div>`;
+}
+function teacherBox(html) {
+  return `<div class="teacher-box"><div class="teacher-box-label">👩‍🏫 Teacher Note</div>${html}</div>`;
+}
+function setTyped(k, v) { typed[k] = v; }
+const normalise = s => String(s||'').trim().toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g,' ').replace(/[.,!]$/,'');
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    ${badge(1, 'Warm-up: Vocabulary Recall', '5 min')}
+    <div class="es-note">El profesor lee una pregunta. Tú respondes en inglés, en voz alta. Toca la tarjeta para ver la respuesta.</div>
+    ${WARMUP.map((w,i) => tapRow(`<span class="tap-num">${i+1}</span>${w[0]}`, w[1], w[2])).join('')}
+    ${teacherBox(`<p>Go round-robin, one card per student.</p>
+      <ul>
+        <li><strong>Cards 1 to 6</strong> are vocabulary recall. Cards 4 and 5 test the preposition traps from Pre-Learning. Expect <em>trust in</em> and <em>depend of</em>, and correct them quickly.</li>
+        <li><strong>Card 6:</strong> check that the pronoun goes in the middle: <em>call you back</em>, not <em>call back you</em>.</li>
+        <li><strong>Cards 7 and 8</strong> are the first object-pronoun sentences of the day. Listen for <em>with she</em> and <em>Can you me help?</em></li>
+      </ul>
+      <p><strong>Extension:</strong> after card 8, ask a stronger student to change the person: <em>I work with him / them / you.</em></p>`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    ${badge(2, 'Reading: 8 Short Passages', '15 min')}
+    <div class="es-note">Lee tu párrafo en silencio. Después, responde las dos preguntas con una oración completa. Fíjate en las palabras <strong>me, him, her, it, us, them</strong>: ¿a quién se refieren? Vamos a revisar las respuestas en clase, en voz alta.</div>
+    ${PASSAGES.map((p,i) => `<div class="profile-card">
+      <div class="profile-card-head">
+        <div class="profile-emoji">${p.emoji}</div>
+        <div>
+          <div class="profile-name">Passage ${i+1} · ${p.name}</div>
+          <div class="profile-role">${p.role}</div>
+        </div>
+      </div>
+      <div class="passage-body">
+        <div class="model-quote">${p.text}</div>
+        ${p.qs.map((q,j) => tapRow(`<span class="tap-num">Q${j+1}</span>${q[0]}`, q[1])).join('')}
+      </div>
+    </div>`).join('')}
+    ${teacherBox(`<p>If you can, assign one passage per student before class. In class, give 3 to 4 minutes for silent reading and answering. Then call on each student to read the passage title and both answers aloud.</p>
+      <p><strong>Listen for these errors:</strong></p>
+      <ul>
+        <li>The pronoun before the verb: <em>“She him trusts”</em></li>
+        <li>A subject pronoun after a preposition: <em>“with they,” “for he”</em></li>
+        <li>The wrong gender for the pronoun, especially with unfamiliar names. Ask: “Is Mele a man or a woman? How do you know?” (Sione trusts <em>her</em>.)</li>
+        <li><em>“Depend of”</em> or <em>“trust in”</em> in Passages 4 and 5</li>
+        <li>Dropping the subject in answers, such as <em>“Checks the ships”</em></li>
+      </ul>
+      <p>Correct on the spot and keep the pace moving. Passage 6 has the separable verb <em>call her back</em>, so ask that student to say it once more with a different pronoun (<em>call me back, call them back</em>).</p>
+      <p><strong>Extension:</strong> after each answer, ask a stronger student a quick follow-up about their own work: “Who do you call every day? Who helps you?”</p>`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    ${badge(3, 'Main Grammar: Object Pronouns', '15 min')}
+    <div class="es-note">En las lecturas viste muchos pronombres de objeto: <em>trusts her, helps him, shares it, buys them coffee</em>. Ahora vamos a repasar la forma, y tú vas a escribir tus propias oraciones sobre tu equipo de trabajo.</div>
+
+    <div class="pattern-box">
+      <div class="pattern-box-head">Object pronouns · Pronombres de objeto</div>
+      ${PATTERN.map(([en,es]) => `<div class="pattern-row"><div class="pattern-en">${en}</div><div class="pattern-es">${es}</div></div>`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Remember</div>
+      <ul class="reminder-list">
+        <li>The pronoun goes <strong>after</strong> the verb: <em>I help him</em>, not <em>I him help</em>.</li>
+        <li>After <em>with, for, to, from</em> and <em>next to</em>, use <strong>me, him, her, us, them</strong>: <em>with her</em>, not <em>with she</em>.</li>
+        <li>Spanish <em>le</em> can mean a man or a woman. In English, choose: <strong>him</strong> for a man, <strong>her</strong> for a woman.</li>
+        <li>Don't drop <em>it</em>: <em>I like it</em>, not <em>I like</em>.</li>
+      </ul>
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Your turn · Write 3 sentences about your team</div>
+      <p style="font-size:13px;color:var(--grey-blue);margin-bottom:14px;font-style:italic;">Escribe 3 oraciones sobre tu equipo. Puedes inventar los detalles. El profesor las corrige en clase.</p>
+      ${GRAM_PROMPTS.map(p => `<div class="write-row">
+        <div class="write-label">${p.label}</div>
+        <input class="q-input" type="text" placeholder="${esc(p.ph)}" value="${esc(typed[p.key])}" oninput="setTyped('${p.key}', this.value)"/>
+      </div>`).join('')}
+    </div>
+
+    ${tapRow('<strong>Need a model?</strong>', 'My team leader is Sergio. I talk to him every morning. Our clients are in Chile, and I email them every day. We use Microsoft Teams, and I like it.', 'Challenge: Our manager supports us.', 'Tap to reveal ▾')}
+
+    ${teacherBox(`<p>Invented details are fine. Students who work alone or are self-employed can write about clients, suppliers or an accountant.</p>
+      <p>While students write, walk the room (or read the chat) and check for:</p>
+      <ul>
+        <li>The pronoun before the verb</li>
+        <li><em>with he / for she</em></li>
+        <li><em>I like</em> with no <em>it</em></li>
+        <li><em>him</em> used for a woman, or <em>her</em> for a man</li>
+      </ul>
+      <p>Ask 3 or 4 volunteers to read their sentences aloud. <strong>Extension:</strong> ask a stronger student to change one sentence to a question, such as <em>Do you talk to him every morning?</em> Keep this light, because questions with <em>do</em> are not the focus today.</p>`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderFill() {
+  const total = FILL_ANS.length;
+  const correctCount = Object.values(fill.results).filter(Boolean).length;
+  const allRight = fill.checked && correctCount === total;
+  let html = '';
+  FILL_TEXT.forEach(part => {
+    if (typeof part === 'number') {
+      const i = part;
+      let cls = 'blank-input';
+      if (fill.results[i] === true) cls += ' correct';
+      else if (fill.checked && fill.results[i] === false) cls += ' wrong';
+      const locked = fill.results[i] === true;
+      html += `<span class="blank-tag">${i+1}</span><input class="${cls}" id="fill-${i}" type="text" value="${esc(fill.vals[i])}" oninput="setFill(${i}, this.value)" ${locked ? 'disabled' : ''}/>`;
+    } else {
+      html += part;
+    }
+  });
+  return `<div class="fill-text">${html}</div>
+    <div class="fill-actions">
+      ${allRight ? '' : `<button class="check-btn" onclick="checkFill()">Check</button>`}
+      ${fill.checked && !allRight ? `<button class="btn btn-gold" onclick="retryFill()">↺ Retry wrong blanks</button>` : ''}
+      ${fill.checked ? `<span class="fill-result ${allRight ? 'ok' : 'err'}">${allRight ? '🎉 ¡Perfecto! 6 / 6' : correctCount + ' / ' + total + ' correct. Revisa las palabras en rojo.'}</span>` : ''}
+    </div>
+    ${fill.checked && !allRight ? `<div class="es-note">Pista: cada palabra va <strong>después</strong> de un verbo. Usa cada palabra una sola vez.</div>` : ''}
+    ${allRight ? `<div class="es-note">¿Por qué <strong>she</strong> es la palabra extra? Es un pronombre de sujeto, y todos los espacios van después de un verbo.</div>` : ''}`;
+}
+function setFill(i, v) { fill.vals[i] = v; }
+function checkFill() {
+  FILL_ANS.forEach((a,i) => { fill.results[i] = normalise(fill.vals[i]) === a; });
+  fill.checked = true;
+  fill.attempts++;
+  fillRerender();
+}
+function retryFill() {
+  FILL_ANS.forEach((a,i) => { if (!fill.results[i]) { fill.vals[i] = ''; delete fill.results[i]; } });
+  fill.checked = false;
+  fillRerender();
+  const el = document.getElementById('fill-0'); if (el) el.focus();
+}
+function fillRerender() {
+  // Redraws only Part A, so Part B typing is never lost
+  const el = document.getElementById('fillWrap');
+  if (el) el.innerHTML = renderFill();
+}
+
+function renderWriting() {
+  return `<div class="sc">
+    ${badge(4, 'Writing Task: My Team', '20 min')}
+
+    <h3 class="h-serif">Part A · Complete the text</h3>
+    <div class="es-note">Completa el texto con los pronombres del banco. Usa cada palabra una sola vez. Hay una palabra extra.</div>
+    <div class="word-bank">
+      <div class="word-bank-label">Word bank · one word is extra</div>
+      <div class="word-bank-words">me · him · her · it · us · them · she</div>
+    </div>
+    <div id="fillWrap">${renderFill()}</div>
+    ${tapRow('<strong>Model answer</strong>', 'Hi, I’m Anaïs Moreau. I work in the Customer Service team at a travel company in Lyon. My team leader is Marc. He supports <u>us</u> every day, and we really trust <u>him</u>. My colleague Inès is new, so I often help <u>her</u> in the morning. When I have a difficult question, Marc helps <u>me</u>. Our clients are in many countries, and we call <u>them</u> every day. We have a new booking system, and I really like <u>it</u>!', '', 'Tap to reveal ▾')}
+
+    <div class="divider"></div>
+
+    <h3 class="h-serif">Part B · Your turn</h3>
+    <div class="es-note">Ahora escribe sobre TU equipo. Usa el mismo modelo. Puedes inventar los detalles. El profesor corrige tu texto en clase.</div>
+    <div class="ex-box" style="background:var(--white);">
+      ${FRAME.map(line => `<div class="frame-line">
+        <span class="frame-tag">${line.tag}</span>
+        ${line.parts.map(p => typeof p === 'string' ? `<span>${p}</span>` :
+          `<input class="frame-input ${p.wide ? 'wide' : ''}" type="text" placeholder="${esc(p.ph || '')}" value="${esc(typed[p.k])}" oninput="setTyped('${p.k}', this.value)"/>`).join('')}
+      </div>`).join('')}
+    </div>
+    ${tapRow('<strong>Model answer</strong>', 'Hi, I’m Paula. I work in the Finance team at Northwind Foods. My team leader is Andrés. I talk to him every day. My colleague Rosa helps me with the monthly reports. We collaborate with the Sales team, and we share our numbers with them. I like working with my team because they are friendly and organized.', '', 'Tap to reveal ▾')}
+
+    ${teacherBox(`<p>Give students about 10 minutes for both parts.</p>
+      <p><strong>Part A:</strong> go through the text together and read the correct version aloud. Ask 2 or 3 students why <em>she</em> is the extra word. It's a subject pronoun, and every blank comes after a verb. Then point out that blank 1 could be several pronouns on its own. Because each word is used only once, it has to be <em>us</em>. This also makes students read the whole text, not one sentence at a time.</p>
+      <p><strong>Part B:</strong> have each student read their paragraph aloud, and correct them live. This is the lesson's main live-corrected writing moment, so don't skip it for time.</p>
+      <ul>
+        <li>Watch for <em>with she</em>, <em>I him call</em>, and <em>share with they</em>.</li>
+        <li>Watch for missing prepositions: <em>collaborate the Sales team</em>, or <em>help me the reports</em> instead of <em>help me with the reports</em>.</li>
+      </ul>
+      <p><strong>Quick listening add-on:</strong> after a student reads, ask a different student one question about it, such as “Who helps Paula with the reports?” This keeps everyone listening, and it stays a teacher-led question, not a roleplay.</p>`)}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── STEPS — defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Warm-up",       fn: renderWarmup },
+  { label: "2. Reading",       fn: renderReading },
+  { label: "3. Main Grammar",  fn: renderGrammar },
+  { label: "4. Writing Task",  fn: renderWriting },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

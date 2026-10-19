@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 30: Review + Project Discussion | A2 · Unit 3 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold, Georgia headings, Lato body
+   All colours as CSS variables, never hardcoded inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --gold-dark:   #7A5500;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --sky-bg:      #EEF6FB;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body { font-family: var(--font-body); background: var(--off-white); color: var(--slate); min-height: 100vh; overflow-x: hidden; }
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner { max-width: 900px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; justify-content: center; }
+.site-header-brand { font-family: var(--font-heading); font-size: 22px; font-style: italic; color: var(--white); letter-spacing: 0.02em; opacity: 0.95; text-align:center; }
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+@media(max-width:600px){ .hero-inner{ padding:36px 16px 30px; } .site-header-inner{ padding:12px 16px; } .site-header-brand{ font-size:18px; } }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+@media(max-width:600px){ .step-nav-inner{ padding:0 8px; } }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+@media(max-width:600px){ .sec-badge-title{ padding:14px 12px; font-size:15px; } .sec-badge-time{ padding:14px 12px; } }
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* BOXES */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.info-box ul { padding-left:20px; margin-top:6px; }
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:var(--gold-dark); font-style:italic; margin-bottom:18px; line-height:1.6; }
+.scenario-box { background:var(--navy); border-radius:10px; padding:20px 22px; margin-bottom:20px; }
+.scenario-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.scenario-text { font-family:var(--font-heading); font-size:16px; color:var(--white); line-height:1.7; font-style:italic; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; gap:4px 10px; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+.vocab-ex { grid-column:1 / -1; font-size:13px; color:var(--slate); font-style:italic; }
+.lesson-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:1px; background:var(--light-grey); color:var(--grey-blue); border:1px solid var(--border-grey); border-radius:10px; padding:1px 7px; margin-left:6px; vertical-align:middle; font-style:normal; }
+@media(max-width:600px){ .vocab-row, .vocab-table-head{ padding-left:14px; padding-right:14px; } }
+
+/* DATA TABLE */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; font-size:14px; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+.cols-4 { grid-template-columns:0.9fr 1fr 1.1fr 1fr; }
+.cols-2 { grid-template-columns:1fr 1fr; }
+.cols-2b { grid-template-columns:1.1fr 1fr; }
+.cell-strong { font-weight:700; color:var(--navy); }
+.cell-muted { color:var(--grey-blue); font-size:13px; }
+@media(max-width:600px){
+  .data-table-head, .data-table-row { padding-left:10px; padding-right:10px; gap:6px; }
+  .data-table-row { font-size:12px; }
+  .data-table-head span { font-size:9px; letter-spacing:1px; }
+}
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-en strong { color:var(--sky); font-style:normal; }
+
+/* TIME WORDS */
+.chip-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.chip { background:var(--sky-bg); border:1px solid var(--border-grey); color:var(--navy); border-radius:16px; padding:4px 12px; font-size:13px; font-weight:700; }
+
+/* TAP TO REVEAL (mistakes) */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.tap-q { font-size:14px; color:var(--red); font-style:italic; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; line-height:1.6; }
+.tap-answer.show { display:block; }
+.tap-fix { color:var(--green); font-weight:700; font-style:italic; }
+.tap-why { color:var(--grey-blue); font-size:13px; margin-top:3px; }
+
+/* REVIEW GROUPS AND CARDS */
+.group-head { display:flex; align-items:center; gap:12px; background:var(--gold-bg); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:14px 18px; margin:30px 0 18px; }
+.group-icon { font-size:26px; flex-shrink:0; }
+.group-title { font-family:var(--font-heading); font-size:19px; color:var(--navy); }
+.group-sub { font-size:13px; color:var(--gold-dark); font-style:italic; margin-top:2px; }
+.rev-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:22px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.rev-card-head { background:var(--navy); padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.rev-card-name { font-family:var(--font-heading); font-size:16px; color:var(--white); }
+.rev-card-num { font-size:11px; letter-spacing:1px; color:var(--gold); font-weight:700; white-space:nowrap; }
+.rev-card-body { padding:16px 18px 6px; }
+.rev-line { display:grid; grid-template-columns:90px 1fr; gap:10px; padding:7px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; line-height:1.6; }
+.rev-line:last-child { border-bottom:none; }
+.rev-key { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; padding-top:3px; }
+.rev-val { color:var(--slate); }
+.rev-val.ex { color:var(--navy); font-style:italic; font-weight:500; }
+.rev-cq { padding:4px 18px 10px; background:var(--off-white); border-top:1px solid var(--light-grey); }
+.rev-cq-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); font-weight:700; margin:12px 0 10px; }
+@media(max-width:600px){ .rev-line{ grid-template-columns:1fr; gap:2px; } .rev-card-body{ padding:14px 14px 6px; } .rev-cq{ padding:4px 12px 10px; } }
+
+/* MODEL SENTENCES */
+.ms-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:12px 16px; margin-bottom:10px; display:grid; grid-template-columns:96px 1fr; gap:12px; align-items:start; }
+.ms-stage { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; border-radius:12px; padding:4px 8px; text-align:center; background:var(--light-grey); color:var(--navy); }
+.ms-en { font-size:15px; font-weight:500; color:var(--navy); }
+.ms-es { font-size:13px; color:var(--grey-blue); font-style:italic; margin-top:3px; }
+@media(max-width:600px){ .ms-row{ grid-template-columns:1fr; gap:6px; } .ms-stage{ justify-self:start; } }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+@media(max-width:600px){ .audio-box{ padding:16px; } }
+
+/* QUIZ */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+@media(max-width:600px){ .q-card{ padding:16px; } }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:var(--sky-bg); }
+.q-opt.selected { border-color:var(--sky); background:var(--sky-bg); }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:var(--white); }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:var(--white); }
+.q-opt.selected .opt-letter { background:var(--sky);  color:var(--white); }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.result-attempts { font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px; }
+.result-btn-gold { padding:12px 28px; background:var(--gold); color:var(--navy); border:none; border-radius:8px; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; }
+.result-btn-ghost { padding:12px 28px; background:rgba(255,255,255,0.1); color:var(--white); border:1px solid rgba(255,255,255,0.25); border-radius:8px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+@media(max-width:600px){ .nav-btn{ padding:10px 12px; font-size:12px; } }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); white-space:nowrap; }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+.cq-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── CLASSWORK ADDITIONS ─────────────────────────────── */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+.check-list { list-style:none; counter-reset:ck; margin:4px 0 0; padding:0; }
+.check-list li { counter-increment:ck; padding:6px 0 6px 34px; position:relative; font-size:14px; border-bottom:1px dashed var(--border-grey); }
+.check-list li:last-child { border-bottom:none; }
+.check-list li::before { content:counter(ck); position:absolute; left:0; top:5px; width:22px; height:22px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+
+.reveal-btn { display:inline-flex; align-items:center; gap:6px; background:var(--white); border:1.5px solid var(--border-grey); border-radius:6px; padding:6px 12px; font-family:var(--font-body); font-size:12px; font-weight:700; color:var(--navy); cursor:pointer; transition:all 0.12s; }
+.reveal-btn:hover { border-color:var(--sky); color:var(--sky); }
+.reveal-btn.open { background:var(--light-grey); }
+.reveal-body { display:none; margin-top:8px; padding:9px 13px; border-radius:7px; font-size:14px; line-height:1.6; }
+.reveal-body.show { display:block; }
+.reveal-body.hint { background:var(--gold-bg); color:var(--gold-dark); font-style:italic; }
+.reveal-body.ans { background:var(--green-bg); color:var(--green); font-weight:700; }
+.reveal-body.sample { background:var(--sky-bg); color:var(--navy); font-style:italic; }
+.btn-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+
+.wu-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:12px; box-shadow:0 2px 8px rgba(0,0,0,0.03); }
+.wu-top { display:flex; gap:12px; align-items:flex-start; }
+.wu-def { font-size:15px; color:var(--navy); line-height:1.5; font-weight:500; }
+.bonus-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin:24px 0 10px; }
+
+.reminder-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:24px; }
+.reminder-head { background:var(--sky); padding:10px 18px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.reminder-row { display:grid; grid-template-columns:110px 1fr 1fr; gap:10px; padding:11px 18px; border-bottom:1px solid var(--light-grey); align-items:start; }
+.reminder-row:last-child { border-bottom:none; }
+.reminder-key { font-size:12px; font-weight:700; color:var(--navy); }
+.reminder-key span { display:block; font-size:11px; color:var(--grey-blue); font-weight:400; font-style:italic; }
+.reminder-en { font-size:14px; color:var(--navy); font-style:italic; }
+.reminder-es { font-size:13px; color:var(--grey-blue); }
+@media(max-width:600px){ .reminder-row{ grid-template-columns:1fr; gap:4px; padding:10px 14px; } }
+
+.p-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.p-head { background:var(--navy); padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+.p-name { font-family:var(--font-heading); font-size:16px; color:var(--white); }
+.p-name small { font-family:var(--font-body); font-size:12px; color:rgba(255,255,255,0.55); margin-left:6px; }
+.p-tag { font-size:11px; font-weight:700; color:var(--gold); background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:12px; padding:3px 10px; }
+.p-text { padding:16px 18px; font-family:var(--font-heading); font-size:16px; line-height:1.8; color:var(--navy); border-bottom:1px solid var(--light-grey); }
+.p-text mark { background:var(--gold-bg); color:var(--navy); padding:1px 4px; border-radius:3px; border-bottom:2px solid var(--gold); }
+.p-q { padding:12px 18px; border-bottom:1px dashed var(--border-grey); }
+.p-q:last-child { border-bottom:none; }
+.p-q-label { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:4px; }
+.p-q-text { font-size:14px; color:var(--slate); font-weight:700; }
+@media(max-width:600px){ .p-text{ padding:14px; font-size:15px; } .p-q{ padding:12px 14px; } }
+
+.callout { background:var(--off-white); border:1px solid var(--border-grey); border-top:4px solid var(--gold); border-radius:10px; padding:18px 20px; margin:-6px 0 26px; }
+.callout-kicker { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:4px; }
+.callout-title { font-family:var(--font-heading); font-size:21px; color:var(--navy); font-style:italic; margin-bottom:10px; }
+.callout p { font-size:14px; line-height:1.7; margin-bottom:10px; }
+.callout ul { padding-left:20px; margin-bottom:12px; }
+.callout li { font-size:14px; line-height:1.7; }
+.callout li em, .callout p em { color:var(--navy); }
+.callout-sub { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin:14px 0 6px; }
+@media(max-width:600px){ .callout{ padding:16px 14px; } }
+
+.useful-box { background:var(--navy); border-radius:10px; padding:18px 20px; margin-bottom:22px; }
+.useful-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.useful-row { display:grid; grid-template-columns:130px 1fr; gap:10px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:14px; }
+.useful-row:last-child { border-bottom:none; }
+.useful-key { color:var(--gold-light); font-weight:700; font-size:13px; }
+.useful-val { color:rgba(255,255,255,0.85); font-style:italic; }
+@media(max-width:600px){ .useful-row{ grid-template-columns:1fr; gap:2px; } }
+
+.sp-card { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--gold); border-radius:8px; padding:16px 18px; margin-bottom:14px; }
+.sp-q { font-size:15px; color:var(--navy); font-weight:700; line-height:1.5; }
+
+.outcome-banner { background:var(--navy); border-radius:10px; padding:18px 20px; margin-bottom:20px; text-align:center; }
+.outcome-banner-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px; }
+.outcome-banner-text { font-family:var(--font-heading); font-size:18px; color:var(--white); line-height:1.5; }
+.conf-row { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-bottom:12px; }
+.conf-btn { background:var(--white); border:1.5px solid var(--border-grey); border-radius:8px; padding:12px 6px; cursor:pointer; font-family:var(--font-body); text-align:center; transition:all 0.12s; }
+.conf-btn:hover { border-color:var(--sky); }
+.conf-btn.active { border-color:var(--gold); background:var(--gold-bg); }
+.conf-num { font-family:var(--font-heading); font-size:22px; color:var(--navy); }
+.conf-txt { font-size:11px; color:var(--grey-blue); margin-top:2px; line-height:1.3; }
+.conf-msg { font-size:14px; color:var(--navy); text-align:center; font-style:italic; min-height:20px; }
+@media(max-width:600px){ .conf-row{ gap:4px; } .conf-btn{ padding:10px 2px; } .conf-num{ font-size:18px; } .conf-txt{ font-size:9px; } }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 3 · Classwork</div>
+    <h1 class="hero-title">Lesson 30: Review + Project Discussion</h1>
+    <p class="hero-sub">Speaking Day · Unit 3 review · Plans, problems and solutions</p>
+    <div class="hero-pills">
+      <span class="pill accent">🔁 Unit 3 review</span>
+      <span class="pill accent">📖 Reading</span>
+      <span class="pill accent">🗣 Speaking</span>
+      <span class="pill">5 steps</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<!-- SINGLE SCRIPT BLOCK. STEPS populated at the bottom, render() called last. -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+const openState = {};   // tap-to-reveal state, survives navigation
+let confidence = 0;
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+const HW_CHECKLIST = [
+  "Three or four steps with <em>first, then, after that</em> and <em>finally</em>",
+  "One rule with <em>Always</em> or <em>Never</em>",
+  "One thing not to do, with <em>Don't</em>",
+  "One friendly instruction with <em>make sure you, remember to</em> or <em>don't forget to</em>",
+  "One polite request with <em>Could you...?</em>"
+];
+
+const HW_ERRORS = [
+  ["No forget to bring your ID badge.", "Don't forget to bring your ID badge.", "La instrucción negativa empieza con <em>Don't</em>, no con <em>No</em>."],
+  ["Don't never share your password.", "Never share your password.", "<em>Never</em> ya es negativo. No lo uses con <em>don't</em>."],
+  ["Could you to send me your phone number?", "Could you send me your phone number?", "Después de <em>could you</em>, el verbo va en forma base, sin <em>to</em>."],
+  ["Please to go to reception first.", "Please go to reception first.", "<em>Please</em> + verbo base."],
+  ["Make sure to you change your password.", "Make sure you change your password.", "La estructura es <em>make sure you</em> + verbo."],
+  ["Not use the old template.", "Don't use the old template.", "<em>Not</em> solo no sirve para una instrucción. Usa <em>Don't</em>."]
+];
+
+// [definition, Spanish hint, answer]
+const WARMUP = [
+  ["An important stage or goal in a project. It shows that you are making progress.", "Una etapa o meta importante en un proyecto. Muestra que vas avanzando.", "milestone"],
+  ["The last day or time to finish something.", "El último día o la última hora para terminar algo.", "deadline"],
+  ["To change the date or time of a meeting or event.", "Cambiar la fecha o la hora de una reunión o un evento.", "reschedule"],
+  ["The amount of work that one person or team has to do.", "La cantidad de trabajo que una persona o un equipo tiene que hacer.", "workload"],
+  ["When something happens later than planned.", "Cuando algo pasa más tarde de lo planeado.", "delay"],
+  ["Doing something well, without wasting time or money.", "Hacer algo bien, sin perder tiempo ni dinero.", "efficient"],
+  ["The most important thing, the thing you do first.", "Lo más importante, lo que haces primero.", "priority"],
+  ["The official steps you follow to do a task correctly.", "Los pasos oficiales que sigues para hacer una tarea correctamente.", "procedure"]
+];
+const WARMUP_BONUS = [
+  ["A problem that you need to discuss or fix.", "Un problema que hay que hablar o resolver.", "issue"],
+  ["Something you must give or send at the end of a project or stage.", "Algo que debes entregar al final de un proyecto o una etapa.", "deliverable"],
+  ["Following the rules and laws of the company or the government.", "Seguir las normas y leyes de la empresa o del gobierno.", "compliance"],
+  ["It needs attention right now.", "Necesita atención ya mismo.", "urgent"]
+];
+
+const REMINDER = [
+  ["Plans", "Planes", "We're going to launch it in May. · I have to finish it by Friday.", "<em>going to</em>, <em>have to / need to</em>, <em>by / until / before / after</em>"],
+  ["Problems", "Problemas", "The supplier sent the wrong file. · It's slower than the old one.", "Pasado simple, comparativos, adverbios"],
+  ["Solutions", "Soluciones", "We should call the client. · Don't wait. · You mustn't share it.", "<em>should</em>, imperativos, <em>must / mustn't / allowed to</em>"]
+];
+
+const PASSAGES = [
+  { name:"Akosua Mensah", city:"Accra",
+    text:"Akosua is a project manager at a marketing agency in Accra. Her team is redesigning a client's website, and they're going to launch it on the first of December. Last week the client changed the homepage design twice, so the designers lost three days. Akosua thinks they should agree on a final design by Friday.",
+    q1:"Why did the designers lose three days?", a1:"Because the client changed the homepage design twice.",
+    q2:"What should a team do when a client changes their mind many times?", s2:"I think they should agree on a final version and write it in an email." },
+  { name:"Tomasz Wróbel", city:"Kraków",
+    text:"Tomasz works in quality control at a software company in Kraków. This week he's testing a new mobile banking app with two colleagues. They aren't testing the payment screen yet, because the developers are still fixing a bug. Tomasz has to send his report to his manager before Thursday.",
+    q1:"Why aren't they testing the payment screen?", a1:"Because the developers are still fixing a bug.",
+    q2:"What are you working on this week? Is anything slowing you down?", s2:"This week I'm preparing a budget, but I'm waiting for numbers from the sales team." },
+  { name:"Sigrún Jónsdóttir", city:"Reykjavík",
+    text:"Sigrún coordinates the renovation of a hotel in Reykjavík. The new supplier is cheaper than the old one, but it's also slower. The workers are working very carefully, because the hotel is open to guests during the project. Sigrún is a little worried, because they are already two weeks late.",
+    q1:"What is good and what is bad about the new supplier?", a1:"It's cheaper, but it's slower.",
+    q2:"In a project, what is more important for you: a cheaper option or a faster one? Why?", s2:"For me, faster is more important, because delays are very expensive too." },
+  { name:"Rustam Karimov", city:"Tashkent",
+    text:"Rustam leads an IT project at a bank in Tashkent. His team is moving customer data to a new system. They mustn't use real customer data in their tests, and they aren't allowed to take their laptops home. Rustam says the rules make the work slower, but they're very important for compliance.",
+    q1:"What two things can't the team do?", a1:"They can't use real customer data in tests, and they can't take their laptops home.",
+    q2:"Does your company have strict rules like these? Do they make your work slower or safer?", s2:"Yes, we aren't allowed to use USB drives. It's a little slower, but it's safer." },
+  { name:"Inês Carvalho", city:"Porto", tag:"🗣️ Idiom passage", callout:"idiom",
+    text:"Inês manages product design at a furniture company in Porto. In September her team designed a new office chair, but the first tests went badly. The chair was too heavy, and it broke after two weeks. So it was <mark>back to the drawing board</mark>, and now the team is designing a lighter model.",
+    q1:"What were the two problems with the chair?", a1:"It was too heavy, and it broke after two weeks.",
+    q2:"Tell us about a time a plan didn't work. Did you go back to the drawing board?", s2:"Yes. Our first training plan was too long, so we went back to the drawing board and made it shorter." },
+  { name:"Dong-hyun Park", city:"Busan",
+    text:"Dong-hyun is a team leader at a shipping company in Busan. A new analyst joined his project team yesterday, so he wrote a short list of instructions for her. First, read the project plan. Then update the task tracker every evening, and don't change any deadlines without asking him.",
+    q1:"What mustn't the new analyst do?", a1:"She mustn't change any deadlines without asking him.",
+    q2:"What is one instruction you would give a new person on your team?", s2:"Always save your files in the shared folder, not on your laptop." },
+  { name:"Saoirse Brennan", city:"Cork",
+    text:"Saoirse is an accountant in Cork, and it's the end of the year. Her workload is very heavy: she has to close the accounts by the fifteenth of December, and she's also helping with an audit. She's working late every day until the audit finishes. Her manager thinks they should hire a temporary assistant.",
+    q1:"What two things is Saoirse doing at the moment?", a1:"She's closing the accounts and helping with an audit.",
+    q2:"What do you do when your workload is too heavy? Who do you ask for help?", s2:"I make a list of priorities and talk to my manager about the deadlines." },
+  { name:"Tariq Al-Mansour", city:"Muscat", tag:"💼 Corporate expression passage", callout:"expr",
+    text:"Tariq is coordinating the opening of a new office in Muscat. Last month the furniture arrived late, and nobody told the IT team, so they couldn't install the computers. Now Tariq sends a short update every Friday to <mark>keep everyone in the loop</mark>. The office is going to open in January.",
+    q1:"Why couldn't the IT team install the computers?", a1:"Because the furniture arrived late and nobody told them.",
+    q2:"How does your team keep everyone in the loop? Does it work well?", s2:"We have a short meeting every Monday, and we use a group chat. It works quite well." }
+];
+
+const MINI = {
+  idiom: [
+    { q:"Your team needs to change one small date in the plan. Is it \"back to the drawing board\"?",
+      opts:["Yes","No"], answer:1,
+      fb:"No. Es solo un cambio pequeño. La expresión es para cuando el plan completo falla." },
+    { q:"Complete: \"The new design didn't work, so it's back to the ___ board.\"",
+      opts:["drawing","planning","meeting"], answer:0,
+      fb:"La expresión es fija: <em>back to the drawing board</em>." }
+  ],
+  expr: [
+    { q:"Your manager says, \"Keep me in the loop.\" What does she want?",
+      opts:["Regular updates about the project","A new meeting every day","A copy of the budget"], answer:0,
+      fb:"Quiere que la mantengas informada." },
+    { q:"Nobody told Pablo about the new deadline. Pablo was...",
+      opts:["in the loop","out of the loop"], answer:1,
+      fb:"<em>Out of the loop</em> = no estaba informado." }
+  ]
+};
+const miniState = { idiom:{}, expr:{} };
+
+const USEFUL = [
+  ["Now", "This week we're working on... · At the moment I'm..."],
+  ["Problems", "Last week... went wrong. · It was slower than... · The supplier didn't..."],
+  ["Plans", "We're going to... · We have to... by..."],
+  ["Solutions", "I think we should... · Don't... · We mustn't..."],
+  ["Today's language", "It was back to the drawing board. · Please keep me in the loop."]
+];
+
+const SPEAKING = [
+  { q:"Tell us about a project you're working on now. What are you doing this week, and what are you going to do next?",
+    f:"Who are you working with? What is the next deadline?" },
+  { q:"Think of a project or task that had a problem. What went wrong, and what did the team do?",
+    f:"Did you go back to the drawing board? Who did you keep in the loop?" },
+  { q:"Your project is two weeks late and the client isn't happy. What should the team do? Give two suggestions.",
+    f:"What should the team not do? Who has to talk to the client?" },
+  { q:"Compare two ways your team communicates about a project: meetings, emails or chat. Which one is more efficient? What rules should everyone follow?",
+    f:"Are you allowed to use WhatsApp for work? What mustn't people do in a group chat?" }
+];
+
+const CONF = [
+  ["1", "Todavía no"], ["2", "Con mucha ayuda"], ["3", "Con un poco de ayuda"], ["4", "Casi solo"], ["5", "¡Sí, con confianza!"]
+];
+const CONF_MSG = [
+  "",
+  "Está bien. Repasa el Pre-Learning y pregúntale al profesor lo que no entiendas.",
+  "Vas bien. Practica en voz alta un problema, un plan y una solución de tu trabajo.",
+  "¡Muy bien! Con un poco más de práctica lo vas a hacer solo.",
+  "¡Excelente! Ya casi puedes hablar de un proyecto sin ayuda.",
+  "¡Fantástico! Estás listo para la Unidad 4."
+];
+
+
+// ── SHARED HELPERS ────────────────────────────────────────
+function badge(num, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${num}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function teacher(text) {
+  return `<div class="teacher-box"><div class="teacher-box-label">👩‍🏫 Teacher Note</div>${text}</div>`;
+}
+// A reveal button plus its hidden body; state kept in openState
+function reveal(id, label, openLabel, body, kind) {
+  const open = !!openState[id];
+  return `<button class="reveal-btn${open ? ' open' : ''}" id="rb-${id}" data-label="${label}" data-open="${openLabel}" onclick="toggleReveal('${id}')">${open ? openLabel : label}</button>
+    <div class="reveal-body ${kind}${open ? ' show' : ''}" id="rv-${id}">${body}</div>`;
+}
+function toggleReveal(id) {
+  openState[id] = !openState[id];
+  const b = document.getElementById('rb-' + id);
+  const v = document.getElementById('rv-' + id);
+  if (v) v.classList.toggle('show', openState[id]);
+  if (b) { b.classList.toggle('open', openState[id]); b.textContent = openState[id] ? b.dataset.open : b.dataset.label; }
+}
+function tapRow(id, wrong, right, why) {
+  const open = !!openState[id];
+  return `<div class="tap-row" onclick="toggleTap('${id}')">
+    <div class="tap-row-top">
+      <div class="tap-q">❌ ${wrong}</div>
+      <div class="tap-hint-label" id="tl-${id}">${open ? 'Hide' : 'Tap to see the fix'}</div>
+    </div>
+    <div class="tap-answer${open ? ' show' : ''}" id="ta-${id}">
+      <div class="tap-fix">✅ ${right}</div>
+      <div class="tap-why">${why}</div>
+    </div>
+  </div>`;
+}
+function toggleTap(id) {
+  openState[id] = !openState[id];
+  const a = document.getElementById('ta-' + id);
+  const l = document.getElementById('tl-' + id);
+  if (a) a.classList.toggle('show', openState[id]);
+  if (l) l.textContent = openState[id] ? 'Hide' : 'Tap to see the fix';
+}
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderHomework() {
+  return `<div class="sc">
+    ${badge(1, 'Homework Review: Lesson 29', '15 to 20 min')}
+    <div class="es-note">Saca el mensaje que escribiste para la tarea de la Lección 29, donde le diste instrucciones a una persona nueva para su primer día. Vamos a leer algunos en voz alta y a corregirlos juntos.</div>
+    <div class="info-box">
+      <strong>Did your message include...?</strong>
+      <ol class="check-list">${HW_CHECKLIST.map(c => `<li>${c}</li>`).join('')}</ol>
+    </div>
+    <div class="h-serif">Common imperative mistakes</div>
+    <p class="cq-sub">Toca cada error para ver la corrección.</p>
+    ${HW_ERRORS.map((e, i) => tapRow('hw' + i, e[0], e[1], e[2])).join('')}
+    ${teacher("Ask 3 or 4 students to read their message aloud. After each one, pick one or two errors and rewrite the sentence together on screen. Open a mistake card only when the same error comes up a second time. Since this is the unit review, praise any good use of other Unit 3 grammar too, such as <em>should</em>, <em>by Friday</em> or <em>going to</em>. If a student didn't do the homework, ask them to give two first-day instructions aloud instead.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function warmCard(prefix, i, item, num) {
+  const [def, hint, ans] = item;
+  return `<div class="wu-card">
+    <div class="wu-top">
+      <span class="q-num">${num}</span>
+      <div class="wu-def">${def}</div>
+    </div>
+    <div class="btn-row">
+      <div style="flex:1;min-width:200px;">${reveal(prefix + 'h' + i, '💡 Pista en español', '💡 Ocultar pista', hint, 'hint')}</div>
+      <div style="flex:1;min-width:200px;">${reveal(prefix + 'a' + i, '👁 Show answer', '👁 Hide answer', ans, 'ans')}</div>
+    </div>
+  </div>`;
+}
+
+function renderWarmup() {
+  return `<div class="sc">
+    ${badge(2, 'Warm-up: Guess the Word', '5 to 8 min')}
+    <div class="es-note">Lee la definición en inglés y adivina la palabra. Todas son palabras de la Unidad 3. Si necesitas ayuda, toca "Pista en español".</div>
+    ${WARMUP.map((w, i) => warmCard('w', i, w, i + 1)).join('')}
+    <div class="bonus-label">Bonus cards</div>
+    ${WARMUP_BONUS.map((w, i) => warmCard('wb', i, w, i + 9)).join('')}
+    ${teacher("One card per student, round-robin. Read the definition aloud yourself, then give the student about 10 seconds before offering the Spanish hint. If someone gets it fast, ask them to use the word in a sentence about a project. Use the bonus cards if you have time, or if a student gets theirs instantly.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderMiniBlock(prefix) {
+  return `<div id="mini-${prefix}">${renderMiniQ(prefix, MINI[prefix])}</div>`;
+}
+
+function idiomCallout() {
+  return `<div class="callout">
+    <div class="callout-kicker">🗣️ Idiom</div>
+    <div class="callout-title">back to the drawing board</div>
+    <p><strong>Meaning:</strong> to start a plan again from the beginning because the first plan failed.</p>
+    <div class="es-note">Volver a empezar desde cero porque el primer plan no funcionó. Es parecido a "volver a la casilla de salida". La imagen viene de los arquitectos e ingenieros, que vuelven a la mesa de dibujo para hacer el plano otra vez.</div>
+    <div class="callout-sub">Examples</div>
+    <ul>
+      <li><em>The client didn't like our proposal, so it's back to the drawing board.</em></li>
+      <li><em>The test failed. We need to go back to the drawing board.</em></li>
+      <li><em>Our first idea was too expensive, so we went back to the drawing board.</em></li>
+    </ul>
+    <div class="tip-box"><div class="tip-label">⚠️ Ojo</div>Se usa cuando el plan falla de verdad y hay que rehacerlo. Para un cambio pequeño, solo di <em>We need to change a few things.</em></div>
+    <div class="callout-sub">Mini check</div>
+    ${renderMiniBlock('idiom')}
+  </div>`;
+}
+
+function exprCallout() {
+  return `<div class="callout">
+    <div class="callout-kicker">💼 Corporate expression</div>
+    <div class="callout-title">keep someone in the loop</div>
+    <p><strong>Meaning:</strong> to keep someone informed about what is happening in a project or situation.</p>
+    <div class="es-note">Mantener a alguien informado. En los proyectos, es muy común pedirlo al final de un correo o una reunión: <em>Please keep me in the loop.</em></div>
+    <div class="callout-sub">Related forms</div>
+    <ul>
+      <li><strong>loop someone in:</strong> incluir a alguien en un correo o una conversación. <em>Can you loop in the finance team?</em></li>
+      <li><strong>out of the loop:</strong> no estar informado. <em>Sorry, I was out of the loop. Nobody told me about the change.</em></li>
+    </ul>
+    <div class="callout-sub">Examples</div>
+    <ul>
+      <li><em>Thanks for the update. Please keep me in the loop.</em></li>
+      <li><em>I'm going to loop in Maria, because she manages the budget.</em></li>
+      <li><em>The client was out of the loop, so they were surprised by the delay.</em></li>
+    </ul>
+    <div class="tip-box"><div class="tip-label">⚠️ Ojo</div>Siempre es <em>in the loop</em>, con <em>the</em>. ❌ <em>keep me in a loop</em> ✅ <em>keep me in the loop</em>.</div>
+    <div class="callout-sub">Mini check</div>
+    ${renderMiniBlock('expr')}
+  </div>`;
+}
+
+function passageCard(p, i) {
+  return `<div class="p-card">
+    <div class="p-head">
+      <div class="p-name">${i + 1}. ${p.name}<small>${p.city}</small></div>
+      ${p.tag ? `<div class="p-tag">${p.tag}</div>` : ''}
+    </div>
+    <div class="p-text">${p.text}</div>
+    <div class="p-q">
+      <div class="p-q-label">Q1 · About the text</div>
+      <div class="p-q-text">${p.q1}</div>
+      <div style="margin-top:8px;">${reveal('p' + i + 'a', '👁 Show answer', '👁 Hide answer', p.a1, 'ans')}</div>
+    </div>
+    <div class="p-q">
+      <div class="p-q-label">Q2 · Think and respond</div>
+      <div class="p-q-text">${p.q2}</div>
+      <div style="margin-top:8px;">${reveal('p' + i + 's', '💬 Sample answer', '💬 Hide sample', p.s2, 'sample')}</div>
+    </div>
+  </div>
+  ${p.callout === 'idiom' ? idiomCallout() : ''}
+  ${p.callout === 'expr' ? exprCallout() : ''}`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    ${badge(3, 'Reading', '20 min')}
+    <div class="es-note">Cada estudiante lee un texto en voz alta. Después responde las dos preguntas: la primera es sobre el texto y la segunda es sobre ti. Para la segunda no hay respuesta correcta.</div>
+    <div class="reminder-box">
+      <div class="reminder-head">Unit 3 reminder</div>
+      ${REMINDER.map(r => `<div class="reminder-row">
+        <div class="reminder-key">${r[0]}<span>${r[1]}</span></div>
+        <div class="reminder-en">${r[2]}</div>
+        <div class="reminder-es">${r[3]}</div>
+      </div>`).join('')}
+    </div>
+    ${PASSAGES.map(passageCard).join('')}
+    ${teacher("One passage per student. Let them read aloud first and correct pronunciation only at the end, not mid-sentence. For Q1, accept short answers. For Q2, push for a full sentence and one follow-up. If time is short, skip the mini checks and just do the examples aloud. When a Q2 answer is good, ask the student which Unit 3 grammar they used. It's a quick way to make the review visible.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  return `<div class="sc">
+    ${badge(4, 'Speaking', '15 to 20 min')}
+    <div class="es-note">Ahora tú hablas de tus proyectos. No hay una frase modelo para copiar. Usa la gramática de la Unidad 3 y el idioma y la expresión de hoy. Piensa unos segundos antes de hablar.</div>
+    <div class="useful-box">
+      <div class="useful-label">Useful language</div>
+      ${USEFUL.map(u => `<div class="useful-row"><div class="useful-key">${u[0]}</div><div class="useful-val">${u[1]}</div></div>`).join('')}
+    </div>
+    ${SPEAKING.map((s, i) => `<div class="sp-card">
+      <div class="wu-top"><span class="q-num">Q${i + 1}</span><div class="sp-q">${s.q}</div></div>
+      <div style="margin-top:10px;">${reveal('sp' + i, '➕ Follow-up', '➖ Hide follow-up', s.f, 'sample')}</div>
+    </div>`).join('')}
+    ${teacher("Ask each question to 2 students, so all 8 speak at least once. Give 15 to 20 seconds of thinking time before each answer. Note errors quietly and correct them in a short block after each question, not in the middle of an answer. Listen especially for the Pre-Learning bridge errors: <em>I work on it now</em>, <em>I am agree</em> and a missing <em>am / is / are</em>. Stronger students can answer the follow-up as well.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    ${badge(5, 'Wrap-up', '5 min')}
+    <div class="h-serif">Exit round</div>
+    <div class="es-note">Cada estudiante dice tres oraciones sobre un proyecto real o inventado: un problema, lo que el equipo está haciendo ahora y una solución o un plan.</div>
+    <div style="margin-bottom:24px;">${reveal('exit', '💬 Show model', '💬 Hide model', "Last week the client changed the design. This week we're working on a new version. We should send it by Thursday and keep the client in the loop.", 'sample')}</div>
+    <div class="outcome-banner">
+      <div class="outcome-banner-label">Unit 3 outcome</div>
+      <div class="outcome-banner-text">I can take part in a project conversation and talk about plans, problems and solutions.</div>
+    </div>
+    <div class="h-serif">Confidence check</div>
+    <p class="cq-sub">¿Qué tan seguro te sientes? Toca un número.</p>
+    <div class="conf-row">
+      ${CONF.map((c, i) => `<button class="conf-btn${confidence === i + 1 ? ' active' : ''}" id="conf-${i + 1}" onclick="setConfidence(${i + 1})"><div class="conf-num">${c[0]}</div><div class="conf-txt">${c[1]}</div></button>`).join('')}
+    </div>
+    <div class="conf-msg" id="confMsg">${CONF_MSG[confidence]}</div>
+    ${teacher("Keep the exit round quick: three sentences each, with no corrections unless an error blocks meaning. Note any student who rates 1 or 2. Unit 4 starts with customer needs and open questions, so it's worth a short check-in with them before L31.")}
+    ${navFooter()}
+  </div>`;
+}
+
+function setConfidence(n) {
+  confidence = n;
+  for (let i = 1; i <= 5; i++) {
+    const b = document.getElementById('conf-' + i);
+    if (b) b.classList.toggle('active', i === n);
+  }
+  const m = document.getElementById('confMsg');
+  if (m) m.textContent = CONF_MSG[n];
+}
+
+
+// ── MINI-CHECK ENGINE (isolated state, redraws only its own block) ──
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  const letters = ['A','B','C','D'];
+  return questions.map((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const opts = q.opts.map((opt, j) => {
+      let cls = 'q-opt';
+      if (rev) { if (j === q.answer) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+      else if (s.selected === j) cls += ' selected';
+      return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${letters[j]}</span>${opt}</button>`;
+    }).join('');
+    return `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top"><span class="q-num">Q${i + 1}</span><div class="q-text">${q.q}</div></div>
+      <div class="q-options">${opts}</div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${s.selected === q.answer ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  const box = document.getElementById('mini-' + prefix);
+  if (box) box.innerHTML = renderMiniQ(prefix, MINI[prefix]);
+}
+
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Homework Review", fn: renderHomework },
+  { label: "2. Warm-up",         fn: renderWarmup },
+  { label: "3. Reading",         fn: renderReading },
+  { label: "4. Speaking",        fn: renderSpeaking },
+  { label: "5. Wrap-up",         fn: renderWrapup }
+];
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

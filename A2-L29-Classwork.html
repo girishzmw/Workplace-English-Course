@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 29: Giving Instructions to New Employees | A2 · Unit 3 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold: Georgia headings, Lato body
+   All colours as CSS variables: never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A: Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B: Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE: full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE: use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX: off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX: off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER: column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── L27 CLASSWORK ADDITIONS ───────────────────────────── */
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+.cq-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+.check-list { padding-left:20px; margin-bottom:20px; }
+.check-list li { font-size:14px; line-height:1.9; color:var(--slate); }
+
+/* Tap to reveal */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row-top { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:6px; margin-top:6px; border-top:1px dashed var(--border-grey); font-size:14px; }
+.tap-answer.show { display:block; }
+.ans { color:var(--green); font-weight:700; }
+.why { display:block; font-size:13px; color:var(--grey-blue); font-style:italic; margin-top:3px; font-weight:400; }
+
+/* Mistake rows */
+.mistake-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:11px 15px; margin-bottom:8px; cursor:pointer; }
+.mistake-top { display:flex; justify-content:space-between; gap:10px; align-items:baseline; }
+.mistake-bad { color:var(--red); font-style:italic; font-size:14px; }
+.mistake-fix { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; }
+.mistake-fix.show { display:block; }
+.mistake-good { color:var(--green); font-weight:700; }
+
+/* Warm-up cards */
+.wu-card { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--gold); border-radius:8px; padding:16px 18px; margin-bottom:12px; }
+.wu-top { display:flex; gap:12px; align-items:flex-start; }
+.wu-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; flex-shrink:0; margin-top:2px; }
+.wu-def { font-size:15px; color:var(--navy); line-height:1.6; }
+.wu-btns { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.wu-btn { padding:6px 12px; border-radius:6px; border:1.5px solid var(--border-grey); background:var(--off-white); font-family:var(--font-body); font-size:12px; font-weight:700; color:var(--navy); cursor:pointer; }
+.wu-btn:hover { border-color:var(--sky); color:var(--sky); }
+.wu-hint, .wu-ans { display:none; margin-top:10px; padding:9px 13px; border-radius:7px; font-size:14px; }
+.wu-hint { background:var(--gold-bg); color:#7A5500; font-style:italic; }
+.wu-ans { background:var(--green-bg); color:var(--green); }
+.wu-hint.show, .wu-ans.show { display:block; }
+.wu-follow { display:block; margin-top:4px; font-size:13px; color:var(--slate); }
+
+/* Passages */
+.passage { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.passage-head { background:var(--navy); padding:14px 20px; display:flex; gap:14px; align-items:center; }
+.passage-emoji { font-size:26px; }
+.passage-name { font-family:var(--font-heading); font-size:16px; color:var(--white); }
+.passage-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.passage-body { padding:18px 20px 8px; }
+.passage-text { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.8; padding:12px 16px; background:var(--off-white); border-left:4px solid var(--gold); margin-bottom:14px; }
+.q-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-right:6px; }
+.open-q { background:var(--white); border:1px dashed var(--steel); border-radius:8px; padding:13px 16px; margin-bottom:10px; font-size:14px; color:var(--navy); }
+
+/* Spotlights */
+.spotlight { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.4); border-radius:12px; padding:20px; margin:4px 0 22px; }
+.spot-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:6px; }
+.spot-title { font-family:var(--font-heading); font-size:22px; color:var(--navy); margin-bottom:12px; }
+.spot-row { font-size:14px; line-height:1.7; color:var(--slate); margin-bottom:10px; }
+.spot-row strong { color:var(--navy); }
+.spot-ex { font-style:italic; color:var(--navy); }
+
+/* Speaking */
+.speak-q { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:12px; }
+.speak-q-text { font-size:15px; font-weight:700; color:var(--navy); line-height:1.6; margin-bottom:8px; }
+
+/* Confidence */
+.conf-row { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:10px; }
+.conf-text { font-size:14px; color:var(--navy); font-weight:700; margin-bottom:10px; }
+.conf-btns { display:flex; gap:8px; flex-wrap:wrap; }
+.conf-btn { width:40px; height:40px; border-radius:50%; border:1.5px solid var(--border-grey); background:var(--off-white); font-family:var(--font-body); font-size:14px; font-weight:700; color:var(--navy); cursor:pointer; }
+.conf-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); }
+.conf-scale { font-size:11px; color:var(--grey-blue); margin-top:6px; }
+.useful-box { background:var(--navy); border-radius:10px; padding:16px 20px; margin-bottom:20px; }
+.useful-head { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.useful-row { display:grid; grid-template-columns:110px 1fr; gap:10px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.08); font-size:14px; }
+.useful-row:last-child { border-bottom:none; }
+.useful-k { color:var(--gold-light); font-weight:700; }
+.useful-v { color:var(--white); font-style:italic; }
+@media(max-width:500px){ .useful-row{ grid-template-columns:1fr; gap:2px; } }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER: do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO: edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 3 · Classwork</div>
+    <h1 class="hero-title">Lesson 29: Giving Instructions to New Employees</h1>
+    <p class="hero-sub">Reading Day · Imperatives in action</p>
+    <div class="hero-pills">
+      <span class="pill accent">📖 Reading</span>
+      <span class="pill accent">🗣 Open speaking</span>
+      <span class="pill">5 steps</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV: built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT: rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK: all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block: never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly: not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START: replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// Confidence check state (wrap-up), survives navigation
+const confState = {};
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── HELPERS ───────────────────────────────────────────────
+function badge(n, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${n}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function esNote(t) { return `<div class="es-note">${t}</div>`; }
+function teacher(t) { return `<div class="teacher-box"><div class="teacher-box-label">👩‍🏫 Teacher Note</div>${t}</div>`; }
+function tapRow(q, a) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top"><div class="tap-q">${q}</div><div class="tap-hint-label">Tap to reveal</div></div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+function toggleIn(el, sel) { el.closest('.wu-card').querySelector(sel).classList.toggle('show'); }
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const HW_CHECK = [
+  `Something they <b>have to</b> or <b>must</b> do`,
+  `Something they <b>mustn’t</b> do, or <b>aren’t allowed to</b> do`,
+  `Something they <b>are allowed to</b> do`,
+  `Something they <b>don’t have to</b> do`,
+  `One rule about confidentiality, attendance or the dress code`,
+];
+const HW_ERRORS = [
+  [`You must to wear your ID badge.`, `You must wear your ID badge.`, `Nunca <em>to</em> después de <em>must</em>.`],
+  [`We are not allow to work from home.`, `We aren’t allowed to work from home.`, `Siempre <em>allowed</em>, con <em>-ed</em>.`],
+  [`Is allowed to wear jeans on Fridays.`, `Jeans are allowed on Fridays. / You’re allowed to wear jeans on Fridays.`, `En inglés la frase necesita sujeto. "Se permite" no se traduce palabra por palabra.`],
+  [`You mustn’t come to the Friday lunch. It’s optional.`, `You don’t have to come to the Friday lunch.`, `<em>Mustn’t</em> = prohibido. Opcional = <em>don’t have to</em>.`],
+  [`She have to call the manager before nine.`, `She has to call the manager before nine.`, `Con <em>he / she</em>, <em>have to</em> cambia a <em>has to</em>.`],
+  [`You should wear your badge. (es una norma)`, `You must / have to wear your badge.`, `<em>Should</em> es un consejo. Para una norma, usa <em>must</em> o <em>have to</em>.`],
+  [`You don’t must share client data.`, `You mustn’t share client data.`, `El negativo de <em>must</em> es <em>mustn’t</em>. No uses <em>don’t</em> con <em>must</em>.`],
+];
+
+// Warm-up: [definition EN, hint ES, answer]
+const WARMUP = [
+  [`The first session for new employees, where they learn about the company, the building and the team.`, `La primera sesión para los empleados nuevos. En Colombia decimos "inducción".`, `orientation`],
+  [`Classes or practice that teach you the skills you need for your job.`, `Clases o práctica para aprender las habilidades de tu trabajo.`, `training`],
+  [`A book or document with the company’s rules, policies and benefits. Every new employee gets one.`, `El documento con las normas y beneficios de la empresa.`, `handbook`],
+  [`The official way to do something at work, step by step.`, `La forma oficial de hacer algo, paso a paso.`, `procedure`],
+  [`The whole process of helping a new employee start a job, from the first day to the first weeks.`, `Todo el proceso de incorporación de un empleado nuevo.`, `onboarding`],
+  [`A person who just started working at a company.`, `Una persona recién contratada.`, `new hire`],
+  [`A list of things to do. You tick each item when you finish it.`, `Una lista de verificación.`, `checklist`],
+  [`An experienced colleague who guides you and answers your questions.`, `Un compañero con experiencia que te guía.`, `mentor`],
+];
+const WARMUP_EXTRA = [
+  [`To follow a colleague during the day and watch how they work, so you can learn.`, `Acompañar a alguien para aprender, observando su trabajo.`, `shadow`],
+  [`The first months in a new job, when the company checks if you’re the right person for it.`, `El periodo de prueba.`, `probation period`],
+];
+
+// Passages: { name, role, emoji, text, q1, a1, q2, s2, after }
+const PASSAGES = [
+  { name:`Soraya Benali`, role:`Logistics Coordinator · Casablanca`, emoji:`🚚`,
+    text:`Soraya trains every new hire in her logistics team in Casablanca. On the first morning, she gives them a short checklist with five steps. Her first instruction is always the same: "Don’t try to remember everything. Write it down." She says new people learn faster when they aren’t afraid of mistakes.`,
+    q1:`What’s Soraya’s first instruction to new hires?`, a1:`"Don’t try to remember everything. Write it down."`,
+    q2:`What’s the most useful instruction anyone gave you on your first day at work?`,
+    s2:`"Ask questions. Nobody expects you to know everything." My first manager told me that.` },
+  { name:`Bojan Ilić`, role:`IT Support Lead · Belgrade`, emoji:`💻`,
+    text:`Bojan sets up the laptops for all new employees at a bank in Belgrade. Before they log in for the first time, he tells them, "Always lock your screen when you leave your desk, and never write your password on a sticky note." Last month, a new hire left his password under his keyboard. Bojan just laughed and changed it for him.`,
+    q1:`Where did the new hire leave his password?`, a1:`Under his keyboard.`,
+    q2:`What security instructions do new employees get at your company?`,
+    s2:`We have to change our password every three months, and we must never share it.` },
+  { name:`Hiwot Tadesse`, role:`Clinic Manager · Addis Ababa`, emoji:`🏥`,
+    text:`Hiwot manages a busy medical clinic in Addis Ababa. New nurses spend their first week in training, and they don’t see patients alone yet. "Watch, ask, and then try it yourself," she tells them. After the first week, each nurse gets a mentor for three months.`,
+    q1:`What happens after the first week?`, a1:`Each nurse gets a mentor for three months.`,
+    q2:`Is a mentor a good idea for new employees? Why or why not?`,
+    s2:`Yes, I think so. A mentor can answer small questions, so you don’t have to ask your manager every time.` },
+  { name:`Nattapong Srisuk`, role:`Hotel Training Manager · Chiang Mai`, emoji:`🏨`,
+    text:`Nattapong prepares the orientation for new staff at a hotel in Chiang Mai. He starts with a tour, because he wants everyone to know the building before they meet guests. "First, find the emergency exits. Then learn the names of your team," he says. The handbook can wait until the second day.`,
+    q1:`Why does Nattapong start with a tour?`, a1:`Because he wants everyone to know the building before they meet guests.`,
+    q2:`What do new employees do first at your company?`,
+    s2:`They go to HR first and fill in some forms. Then they meet their team and get their laptop.` },
+  { name:`Réka Fekete`, role:`Lab Supervisor · Budapest`, emoji:`🔬`,
+    text:`Réka supervises a food safety lab in Budapest. Every test has a strict procedure, and new technicians must follow it step by step. She often tells them, "Don’t skip a step, even when you’re in a hurry." One small mistake can change the result of a test.`,
+    q1:`What does Réka often tell new technicians?`, a1:`"Don’t skip a step, even when you’re in a hurry."`,
+    q2:`Is there a procedure in your job that you follow step by step? Explain the first two steps.`,
+    s2:`Yes, for refunds. First, I check the receipt. Then I ask my supervisor for approval.` },
+  { name:`Dilan Perera`, role:`Bank Branch Manager · Colombo`, emoji:`🏦`, after:`idiom`,
+    text:`Dilan manages a bank branch in Colombo. When new employees join, he doesn’t give them important clients in the first month. "Take your time and <strong>learn the ropes</strong>," he tells them. Most new hires feel confident after about six weeks.`,
+    q1:`What doesn’t Dilan give new employees in their first month?`, a1:`Important clients.`,
+    q2:`How long did it take you to learn the ropes in your current job?`,
+    s2:`About two months. The systems were easy, but I needed time to learn how the team works.` },
+  { name:`Florencia Acosta`, role:`Call Centre Team Leader · Montevideo`, emoji:`🎧`, after:`expr`,
+    text:`Florencia leads a team of twelve agents at a call centre in Montevideo. When an agent comes back from a long holiday, she spends thirty minutes with them to <strong>get them up to speed</strong> on new products and changes. "Read the update email first, and then ask me anything," she says. That way, nobody starts the day lost.`,
+    q1:`What does Florencia do when an agent comes back from a long holiday?`, a1:`She spends thirty minutes with them to get them up to speed on new products and changes.`,
+    q2:`When you come back from a holiday, how do you get up to speed at work?`,
+    s2:`I read my emails first, and then I ask a colleague what changed.` },
+  { name:`Garrett Bell`, role:`Restaurant Manager · Chicago`, emoji:`🍽️`,
+    text:`Garrett manages a restaurant in Chicago. With new waiters, he gives clear, short instructions: "Clean the tables, then check the menus." But when he needs a favour from the chef, he always asks, "Could you help me with the new menu?" He says the kitchen is a happier place that way.`,
+    q1:`How does Garrett ask the chef for a favour?`, a1:`He asks, "Could you help me with the new menu?"`,
+    q2:`At work, who do you give instructions to, and who do you make polite requests to?`,
+    s2:`I give instructions to the interns. With my manager and with clients, I always say "Could you...?"` },
+];
+
+const SPOTLIGHTS = {
+  idiom: { label:`💡 Idiom spotlight`, title:`learn the ropes`,
+    meaning:`To learn how to do a new job, or how things work in a new place.`,
+    es:`Es como decir "aprender cómo funcionan las cosas" o "agarrarle el ritmo". Viene de los barcos antiguos: los marineros nuevos tenían que aprender a usar todas las cuerdas (<em>ropes</em>) del barco.`,
+    ex:[`It’s your first week. Don’t worry, you’re still learning the ropes.`, `Marta can show you the ropes. She knows everything about this office.`],
+    tip:`Hay dos formas: <em>learn the ropes</em> (tú aprendes) y <em>show someone the ropes</em> (tú le enseñas a otra persona). Fíjate: siempre es <em>the ropes</em>, en plural.` },
+  expr: { label:`💼 Corporate expression`, title:`get someone up to speed`,
+    meaning:`To give someone all the latest information, so they know as much as the rest of the team.`,
+    es:`Significa "poner a alguien al día". Se usa mucho con empleados nuevos, con alguien que vuelve de vacaciones o con un compañero que se une tarde a un proyecto.`,
+    ex:[`Can you get Tomás up to speed before the meeting?`, `I was on holiday last week. I need a few hours to get up to speed.`],
+    tip:`Hay tres formas muy comunes: <em>get someone up to speed</em> (poner a alguien al día), <em>get up to speed</em> (ponerte al día tú) y <em>be up to speed</em> (estar al día): <em>Are you up to speed on the new project?</em> También se dice <em>bring someone up to speed</em>.` },
+};
+
+const IDIOM_CQ = [
+  { type:`mc`, q:`Kenta is new in the sales team. His colleague Ines says, "Don’t worry, I can ______. I know all the systems."`,
+    opts:[`show you the ropes`, `learn you the ropes`, `give you a rope`], answer:0,
+    fb:`Ines le va a enseñar a Kenta cómo funcionan las cosas: <em>show you the ropes</em>. Tú aprendes = <em>learn the ropes</em>. Le enseñas a otro = <em>show someone the ropes</em>.` },
+];
+const EXPR_CQ = [
+  { type:`mc`, q:`Amira joins a project in the middle. Her manager says, "Let’s have a quick call this afternoon. I want to ______ before Monday."`,
+    opts:[`get you up to speed`, `speed you up`, `get you the speed`], answer:0,
+    fb:`La jefa quiere darle toda la información reciente: <em>get you up to speed</em>. <em>Speed someone up</em> significa hacer que alguien vaya más rápido, no es lo mismo.` },
+];
+const CQ = { idiom: IDIOM_CQ, expr: EXPR_CQ };
+const miniState = { idiom: {}, expr: {} };
+
+const USEFUL = [
+  [`Steps in order`, `First, ... / Then ... / After that, ... / Finally, ...`],
+  [`Friendly`, `Make sure you... / Remember to... / Don’t forget to... / Just...`],
+  [`Strong`, `Always... / Never... / Don’t...`],
+  [`Shared tasks`, `Let’s...`],
+  [`Requests`, `Could you...? / Would you...?`],
+  [`Your first day`, `On my first day, my manager said, "..." / Nobody explained...`],
+];
+
+const SPEAKING = [
+  [`Think about your first day at your current job. What happened? Who helped you, and what did they tell you to do?`, `Was there something nobody explained to you on your first day?`],
+  [`A new hire joins your team tomorrow. Give them three or four instructions for their first week. Use <em>first, then, after that</em> and <em>finally</em>.`, `What’s one thing they must never do in your team?`],
+  [`At work, when do you use an instruction, and when do you say "Could you...?" Is it different in Spanish?`, `Do you think people in Colombia give instructions more directly or less directly than people in English-speaking companies? Give an example.`],
+  [`What makes a good onboarding? What’s one thing you want to change about onboarding at your company?`, `Which is the best way to learn the ropes: reading the handbook, a training session, or shadowing a colleague? Why?`],
+];
+
+const CONF = [
+  `I can give clear instructions to a new colleague.`,
+  `I can make an instruction friendlier with <em>please, just, make sure you</em> or <em>don’t forget to</em>.`,
+  `I know when to use an imperative and when to say <em>Could you...?</em>`,
+];
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderReview() {
+  return `<div class="sc">
+    ${badge(1, 'Homework Review (Lesson 28)', '15 to 20 min')}
+    ${esNote('Saca el mensaje que escribiste para la tarea de la Lección 28, donde le explicaste las normas de tu empresa a un compañero nuevo. Vamos a leer algunos en voz alta y a corregirlos juntos.')}
+    <div class="sub-heading">Did your message include...?</div>
+    <ol class="check-list">${HW_CHECK.map(c => `<li>${c}</li>`).join('')}</ol>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Common must / allowed to mistakes · tap each one for the fix</div>
+      ${HW_ERRORS.map(([bad, good, why]) => `<div class="mistake-row" onclick="this.querySelector('.mistake-fix').classList.toggle('show')">
+        <div class="mistake-top"><span class="mistake-bad">❌ ${bad}</span><span class="tap-hint-label">Tap for the fix</span></div>
+        <div class="mistake-fix"><span class="mistake-good">✅ ${good}</span><span class="why">${why}</span></div>
+      </div>`).join('')}
+    </div>
+    ${teacher('Ask 3 or 4 students to read their message aloud. After each one, pick one or two errors only, ideally from the list above, and rewrite the sentence together on screen. Open a mistake card when the same error appears a second time. If someone didn’t do the homework, ask them to say two rules from their company aloud instead, so they still take part. This review also sets up today’s lesson: their L28 messages were full of <em>must</em> and <em>have to</em>, and today they learn to say many of the same things as friendlier instructions (<em>Always wear your badge. Don’t share client data.</em>). If there’s time, take one rule a student wrote and ask the class to turn it into an imperative.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function wuCard([def, hint, ans], num) {
+  return `<div class="wu-card">
+    <div class="wu-top"><span class="wu-num">${num}</span><div class="wu-def">${def}</div></div>
+    <div class="wu-btns">
+      <button class="wu-btn" onclick="toggleIn(this,'.wu-hint')">🇪🇸 Pista en español</button>
+      <button class="wu-btn" onclick="toggleIn(this,'.wu-ans')">👁 Show answer</button>
+    </div>
+    <div class="wu-hint">${hint}</div>
+    <div class="wu-ans"><strong>${ans}</strong></div>
+  </div>`;
+}
+
+function renderWarmup() {
+  return `<div class="sc">
+    ${badge(2, 'Warm-up: Guess the Word', '5 min')}
+    ${esNote('Escucha la definición en inglés y adivina la palabra. Si necesitas ayuda, toca "Pista en español". Después toca para ver la respuesta.')}
+    ${WARMUP.map((w, i) => wuCard(w, i + 1)).join('')}
+    <div class="sub-heading">Extra cards</div>
+    ${WARMUP_EXTRA.map((w, i) => wuCard(w, WARMUP.length + i + 1)).join('')}
+    ${teacher('Read each definition aloud once, then call on one student by name. Give them about five seconds before suggesting the Spanish hint. Accept <em>induction</em> for card 1, but point out that <em>orientation</em> is more common in international companies. Use the extra cards if the group is fast, or to give a second turn to a student who struggled. Don’t stop to correct here. If a student says the word with a strong Spanish stress (<em>orien-ta-CIÓN</em>), just repeat it naturally and move on.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpotlight(key) {
+  const s = SPOTLIGHTS[key];
+  return `<div class="spotlight">
+    <div class="spot-label">${s.label}</div>
+    <div class="spot-title">${s.title}</div>
+    <div class="spot-row"><strong>Meaning:</strong> ${s.meaning}</div>
+    <div class="spot-row"><strong>Explicación:</strong> ${s.es}</div>
+    <div class="spot-row"><strong>Examples:</strong><br>${s.ex.map(e => `<span class="spot-ex">${e}</span>`).join('<br>')}</div>
+    <div class="tip-box"><div class="tip-label">💡 Tip</div>${s.tip}</div>
+    <div class="sub-heading" style="font-size:14px;">✅ Mini check</div>
+    <div id="mini-wrap-${key}">${renderMiniQ(key, CQ[key])}</div>
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    ${badge(3, 'Reading: Eight Short Stories', '20 min')}
+    ${esNote('Cada estudiante lee un texto en voz alta. Después responde las dos preguntas: la primera es sobre el texto, la segunda es sobre ti y tu trabajo. Toca para ver una respuesta posible.')}
+    ${PASSAGES.map((p, i) => `<div class="passage">
+      <div class="passage-head"><div class="passage-emoji">${p.emoji}</div>
+        <div><div class="passage-name">Passage ${i+1}: ${p.name}</div><div class="passage-role">${p.role}</div></div>
+      </div>
+      <div class="passage-body">
+        <div class="passage-text">${p.text}</div>
+        ${tapRow(`<span class="q-tag">Q1</span>${p.q1}`, `<span class="ans">✓ ${p.a1}</span>`)}
+        <div class="open-q"><span class="q-tag">Q2 · Your turn</span>${p.q2}</div>
+        ${tapRow('Sample answer', `<span class="ans">${p.s2}</span>`)}
+      </div>
+    </div>
+    ${p.after ? renderSpotlight(p.after) : ''}`).join('')}
+    ${teacher('One passage per student, in order. The student reads aloud, answers Q1, then answers Q2. Q1 answers are in the text, so if a student is stuck, ask them to read the relevant sentence again rather than giving the answer. Q2 is open: push for two sentences, not one word, and listen for imperatives and <em>Could you...?</em> in their answers. Open the sample answer only if a student really can’t start. Stop after Passages 6 and 7 for the spotlight boxes (about two minutes each) and do the mini check with the whole class. Passage 8 closes the reading on purpose: it’s the instruction-or-request contrast from the Pre-Learning, so it leads straight into the speaking questions. For a stronger student, ask a follow-up such as "How would you say that to your manager?"')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  return `<div class="sc">
+    ${badge(4, 'Speaking: Open Questions', '15 min')}
+    ${esNote('Responde con tus propias ideas. No hay respuestas incorrectas. Intenta hablar al menos 30 segundos y usar el vocabulario y los imperativos de hoy. Si te quedas en blanco, mira el cuadro de frases útiles.')}
+    <div class="useful-box">
+      <div class="useful-head">Useful language</div>
+      ${USEFUL.map(([k, v]) => `<div class="useful-row"><span class="useful-k">${k}</span><span class="useful-v">${v}</span></div>`).join('')}
+    </div>
+    ${SPEAKING.map(([q, fu], i) => `<div class="speak-q">
+      <div class="speak-q-text">${i+1}. ${q}</div>
+      ${tapRow('Follow-up question (teacher)', `<span class="ans">${fu}</span>`)}
+    </div>`).join('')}
+    ${teacher('Ask each question to two students, so everyone speaks at least once. Let each student talk for 30 to 60 seconds before you correct anything, then give one quick correction only. In Question 2, listen for the Spanish-speaker errors from the Pre-Learning: <em>No touch...</em>, <em>You don’t forget...</em>, <em>Don’t to...</em> and a missing <em>be</em> in <em>Don’t late</em>. Question 3 is the most interesting one for this group. Let it become a short discussion if the energy is good. Use the follow-up questions for students who answer quickly.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function setConf(i, v) {
+  confState[i] = v;
+  const row = document.getElementById('conf-' + i);
+  if (row) row.querySelectorAll('.conf-btn').forEach(b => b.classList.toggle('active', parseInt(b.dataset.v, 10) === v));
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    ${badge(5, 'Wrap-up', '5 min')}
+    <div class="info-box"><strong>🎯 Today</strong> you gave clear instructions to a new employee, made them friendlier with <em>make sure you, remember to</em> and <em>just</em>, and chose between an instruction and a polite request.</div>
+    <div class="sub-heading">Exit round</div>
+    ${esNote('Cada estudiante le da una instrucción a un empleado nuevo, en una sola oración. Usa una forma diferente a la del compañero anterior: <em>Don’t..., Always / Never..., Make sure you..., Let’s..., Could you...?</em>')}
+    <div class="sub-heading">How confident do you feel?</div>
+    ${esNote('Elige un número del 1 al 5 para cada frase.')}
+    ${CONF.map((c, i) => `<div class="conf-row" id="conf-${i}">
+      <div class="conf-text">${c}</div>
+      <div class="conf-btns">${[1,2,3,4,5].map(v => `<button class="conf-btn ${confState[i]===v?'active':''}" data-v="${v}" onclick="setConf(${i},${v})">${v}</button>`).join('')}</div>
+      <div class="conf-scale">1 = not yet · 5 = very confident</div>
+    </div>`).join('')}
+    ${teacher('Keep the exit round fast, one sentence each. If two students in a row use the same form, ask the next one for a different one. Any statement rated 1 or 2 by several students is worth a short recap in L30, the Unit 3 review. Remind the class about the L29 Homework. Its writing task gets reviewed at the start of L30.')}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── MINI-CHECK ENGINE (isolated state per prefix) ─────────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    const body = `<div class="q-options">
+        ${q.opts.map((opt, j) => {
+          let cls = 'q-opt';
+          if (rev) { if (j === q.answer) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${letters[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${s.selected === q.answer ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top"><span class="q-num">Q${i+1}</span><div><div class="q-text">${q.q}</div></div></div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  // Redraws only this check's own container, so revealed answers elsewhere stay open
+  const wrap = document.getElementById('mini-wrap-' + prefix);
+  if (wrap) wrap.innerHTML = renderMiniQ(prefix, CQ[prefix]);
+}
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Homework Review", fn: renderReview },
+  { label: "2. Warm-up",         fn: renderWarmup },
+  { label: "3. Reading",         fn: renderReading },
+  { label: "4. Speaking",        fn: renderSpeaking },
+  { label: "5. Wrap-up",         fn: renderWrapup },
+];
+
+render(); // always last
+</script>
+
+
+
+<!-- PERMANENT SITE FOOTER: do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

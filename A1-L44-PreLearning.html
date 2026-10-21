@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 44: Customer Requests | A1 · Unit 5 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold, Georgia headings, Lato body
+   All colours as CSS variables, never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A: Outcomes grid, used for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } .step-nav-inner{ padding:0 12px; } .hero-inner{ padding:36px 20px 30px; } .site-header-inner{ padding:12px 16px; } .site-header-brand{ font-size:17px; text-align:center; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+@media(max-width:600px){ .sec-badge-title{ padding:14px 12px; font-size:15px; } .sec-badge-time{ padding:14px 12px; } }
+
+/* GOLD RULE */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* DATA TABLE */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; font-size:14px; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+@media(max-width:600px){ .data-table-head, .data-table-row{ padding:10px 12px; } .data-table-row{ font-size:13px; } }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+@media(max-width:600px){ .pattern-row{ padding:10px 12px; } }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* SENTENCE BUILDER */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:18px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+.ex-title { font-size:15px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.ex-inst { font-size:13px; color:var(--grey-blue); font-style:italic; margin-bottom:12px; }
+
+/* QUIZ CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+@media(max-width:600px){ .q-card{ padding:16px; } }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+.q-input-row { display:flex; gap:10px; flex-wrap:wrap; }
+.q-input { flex:1; min-width:0; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:14px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); line-height:1.8; }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.result-attempts { font-size:12px; color:rgba(255,255,255,0.4); margin-top:8px; }
+.result-btn-gold { padding:12px 28px; background:var(--gold); color:var(--navy); border:none; border-radius:8px; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; }
+.result-btn-ghost { padding:12px 28px; background:rgba(255,255,255,0.1); color:var(--white); border:1px solid rgba(255,255,255,0.25); border-radius:8px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* BUTTONS */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); white-space:nowrap; }
+@media(max-width:600px){ .nav-btn{ padding:10px 12px; font-size:12px; } }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin:6px 0 12px; }
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+.cq-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+.list-plain { margin:0 0 18px 20px; font-size:14px; line-height:1.8; color:var(--slate); }
+
+/* LESSON ADDITIONS: vocab cards */
+.voc-list { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.voc-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.voc-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.voc-item { padding:11px 20px; border-bottom:1px solid var(--light-grey); }
+.voc-item:last-child { border-bottom:none; }
+.voc-item:hover { background:var(--light-grey); }
+.voc-top { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.voc-en { font-size:14px; font-weight:700; color:var(--navy); }
+.voc-en small { font-weight:400; color:var(--grey-blue); font-size:12px; }
+.voc-es { font-size:14px; color:var(--grey-blue); }
+.voc-ex { font-size:13px; color:var(--slate); font-style:italic; margin-top:3px; }
+@media(max-width:600px){ .voc-head, .voc-item{ padding:10px 12px; } }
+.known-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; align-items:center; }
+.known-label { font-size:12px; color:var(--grey-blue); font-weight:700; }
+.chip { background:var(--white); border:1px solid var(--steel); border-radius:16px; padding:4px 12px; font-size:13px; color:var(--navy); }
+
+/* Notice dialogue */
+.notice-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:18px; }
+.notice-line { padding:7px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; line-height:1.6; color:var(--slate); }
+.notice-line:last-child { border-bottom:none; }
+.notice-line strong.spk { color:var(--navy); }
+.hl { background:var(--gold-bg); color:var(--navy); font-weight:700; padding:0 3px; border-radius:3px; }
+
+/* Rule cards */
+.rule-card { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--sky); border-radius:8px; padding:14px 18px; margin-bottom:16px; }
+.rule-title { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.rule-card ul { margin-left:18px; font-size:14px; line-height:1.8; color:var(--slate); }
+
+/* Tap to reveal */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:12px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; flex:1; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; font-style:italic; padding-top:3px; }
+.tap-row.open .tap-hint-label { display:none; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); line-height:1.6; }
+.tap-row.open .tap-answer { display:block; }
+.tap-row.wrong-line .tap-q { color:var(--red); font-style:italic; }
+
+/* Spanish Bridge table */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+@media(max-width:600px){ .bridge-table-head, .bridge-row{ padding:10px 12px; } .bridge-en, .bridge-es{ font-size:13px; } }
+
+/* Grammar Bridge callout */
+.gb-callout { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.35); border-radius:10px; padding:16px 18px; margin-bottom:20px; }
+.gb-label { display:inline-block; background:var(--navy); color:var(--gold); font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; padding:4px 10px; border-radius:4px; margin-bottom:10px; }
+.gb-callout p { font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* Audio box */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* Model sentence pairs */
+.pair-list { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pair-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; gap:12px; }
+.pair-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.pair-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:11px 20px; border-bottom:1px solid var(--light-grey); font-size:14px; line-height:1.55; }
+.pair-row:last-child { border-bottom:none; }
+.pair-c { color:var(--navy); font-weight:500; }
+.pair-y { color:var(--green); }
+@media(max-width:600px){ .pair-head, .pair-row{ padding:10px 12px; } .pair-row{ font-size:13px; } }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+@media(max-width:600px){ .site-footer-inner{ padding:18px 16px; } }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 5 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 44: Customer Requests</h1>
+    <p class="hero-sub">Working with Clients and Teams · Would like · ~45 min</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Make polite requests with I'd like</div><div class="outcome-note">Hacer pedidos educados con I'd like</div></div>
+      <div><div class="outcome-item">Offer help with Would you like...?</div><div class="outcome-note">Ofrecer ayuda con Would you like...?</div></div>
+      <div><div class="outcome-item">Respond to basic customer requests</div><div class="outcome-note">Responder a solicitudes básicas de clientes</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<!-- LESSON CONTENT START -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const tapOpen = {};
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = currentSpeed;
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+const VOCAB = [
+  ["request", "n. / v.", "solicitud / solicitar", "The customer has a request."],
+  ["quotation", "n.", "cotización", "I'd like a quotation for 20 laptops, please."],
+  ["invoice", "n.", "factura", "Could you send me the invoice, please?"],
+  ["order", "n. / v.", "pedido / pedir", "I'd like to change my order."],
+  ["delivery", "n.", "entrega, envío", "The delivery is on Monday."],
+  ["sample", "n.", "muestra", "Would you like a free sample?"],
+  ["catalog", "n.", "catálogo", "Would you like our new catalog?"],
+  ["price list", "n.", "lista de precios", "I'd like the new price list, please."],
+  ["discount", "n.", "descuento", "We have a discount for big orders."],
+  ["payment", "n.", "pago", "We received your payment. Thank you."],
+  ["receipt", "n.", "recibo", "Here is your receipt."],
+  ["quantity", "n.", "cantidad", "What quantity would you like?"],
+  ["available", "adj.", "disponible", "The blue model is available."],
+  ["in stock", "phrase", "en inventario, en existencia", "Sorry, the printer isn't in stock."],
+  ["urgent", "adj.", "urgente", "This order is urgent."],
+  ["confirm", "v.", "confirmar", "Could you confirm the delivery date?"],
+  ["deadline", "n.", "fecha límite", "The deadline is Thursday."],
+  ["customer service", "n.", "servicio al cliente", "I work in customer service."]
+];
+
+const VOC_CQ = [
+  { type:"mc", q:"A customer pays, and you give them a paper as proof. What is it?",
+    opts:["an invoice", "a receipt", "a quotation"], answer:1,
+    hint:"Piensa: ¿antes o después de pagar?",
+    fb:"A receipt (recibo) comes after the payment. An invoice (factura) comes before." },
+  { type:"tf", q:"In a business email, “quotation” means “cita”.", answer:false,
+    hint:"Recuerda el falso amigo.",
+    fb:"In business, a quotation is a cotización: a document with the price of a product or service." },
+  { type:"input", q:"¿Cómo se dice “fecha límite” en inglés?",
+    hint:"Una palabra.", answers:["deadline", "a deadline", "the deadline"], display:"deadline",
+    fb:"Deadline = fecha límite. The deadline is Friday." }
+];
+
+const BRIDGE_CQ = [
+  { type:"mc", q:"___ you receive the invoice yesterday?",
+    opts:["Do", "Did", "Were"], answer:1,
+    hint:"Yesterday = pasado.",
+    fb:"Yesterday = past. Past questions start with Did: Did you receive the invoice?" },
+  { type:"input", q:"Corrige la frase: “I didn't sent the quotation.”",
+    hint:"Después de didn't, verbo en forma base.",
+    answers:["i didn't send the quotation", "i did not send the quotation"],
+    display:"I didn't send the quotation.",
+    fb:"After didn't, the verb goes back to the base form: send, not sent." },
+  { type:"mc", q:"“Did Mr. Ito confirm the delivery?” “Yes, ___.”",
+    opts:["he did", "he confirmed", "he does"], answer:0,
+    hint:"El auxiliar de la pregunta vuelve en la respuesta.",
+    fb:"The short answer uses the auxiliary: Yes, he did." }
+];
+
+const GRAM_CQ = [
+  { type:"mc", q:"I'd like ___ my order.",
+    opts:["change", "to change", "changing"], answer:1,
+    hint:"Es una acción: ¿qué va antes del verbo?",
+    fb:"For an action, use I'd like to + base verb: I'd like to change my order." },
+  { type:"tf", q:"In a café, “I like a coffee, please” is a correct polite request.", answer:false,
+    hint:"¿I like o I'd like?",
+    fb:"I like coffee = me gusta el café (en general). For a request now, say: I'd like a coffee, please." },
+  { type:"input", q:"Hazlo más educado: “I want the price list.”",
+    hint:"Empieza con I'd like...",
+    answers:["i'd like the price list please", "i'd like the price list", "i would like the price list please", "i would like the price list"],
+    display:"I'd like the price list, please.",
+    fb:"I'd like is the polite workplace form. Adding please makes it even better." }
+];
+
+const MOD_CQ = [
+  { type:"mc", q:"A customer says: “I'd like a quotation, please.” What is the best response?",
+    opts:["Yes, I would.", "Of course. I can send it today.", "I like quotations."], answer:1,
+    hint:"Responde con una acción útil.",
+    fb:"Respond with a helpful action: Of course. I can send it today." },
+  { type:"tf", q:"“Would you like a sample?” is an offer.", answer:true,
+    hint:"Would you like...? = ¿Le gustaría...?",
+    fb:"Would you like...? = ¿Le gustaría...? You use it to offer something to a customer." },
+  { type:"input", q:"Completa: “Would you like a receipt?” “Yes, ______.”",
+    hint:"Una o dos palabras.",
+    answers:["please", "i would", "yes please", "yes i would"],
+    display:"Yes, please. (or Yes, I would.)",
+    fb:"Yes, please is the most natural answer to an offer." }
+];
+
+const LIS_CQ = [
+  { type:"mc", q:"What would the hotel manager like?",
+    opts:["a discount on chairs", "a quotation for forty chairs", "a new invoice"], answer:1,
+    hint:"Escucha la primera llamada.",
+    fb:"She said: “I'd like a quotation for forty chairs, please.”" },
+  { type:"tf", q:"The man from the bank received his invoice last week.", answer:false,
+    hint:"Escucha con atención: received o didn't receive?",
+    fb:"He didn't receive his invoice, so he'd like a new copy." },
+  { type:"mc", q:"What would the school like to do?",
+    opts:["cancel their order", "change their order", "pay their invoice"], answer:1,
+    hint:"Escucha la llamada de la tarde.",
+    fb:"They'd like to change their order. They'd like ten more desks." }
+];
+
+const QUIZ = [
+  { type:"mc", q:"I'd like ___ quotation for 20 chairs, please.",
+    opts:["a", "to", "an"], answer:0,
+    hint:"Quotation es una cosa (sustantivo).",
+    fb:"Quotation is a thing (noun): I'd like a quotation." },
+  { type:"mc", q:"Would you like to ___ the new model?",
+    opts:["seeing", "see", "saw"], answer:1,
+    hint:"Después de to: verbo base.",
+    fb:"After to, use the base verb: to see." },
+  { type:"mc", q:"“Would you like a receipt?” “______”",
+    opts:["Yes, I like.", "Yes, I'd.", "Yes, please."], answer:2,
+    hint:"Es un ofrecimiento.",
+    fb:"Yes, please is the natural answer. Yes, I would is also correct, but never Yes, I'd." },
+  { type:"tf", q:"“She'd likes a sample” is correct.", answer:false,
+    hint:"¿Cambia like con she?",
+    fb:"The form is the same for everyone: She'd like a sample." },
+  { type:"input", q:"Hazlo educado: “I want a discount.”",
+    hint:"Empieza con I'd like...",
+    answers:["i'd like a discount please", "i'd like a discount", "i would like a discount please", "i would like a discount"],
+    display:"I'd like a discount, please.",
+    fb:"I want sounds direct. I'd like is the polite workplace form." },
+  { type:"mc", q:"Which sentence is a request for right now?",
+    opts:["I like coffee.", "I'd like a coffee, please.", "I liked coffee."], answer:1,
+    hint:"Ahora, no en general.",
+    fb:"I'd like = quisiera (ahora). I like = me gusta (en general)." },
+  { type:"mc", q:"“Quisiera que me envíe la factura.” What is the best English?",
+    opts:["I would like that you send me the invoice.", "Could you send me the invoice, please?", "I like you send me the invoice."], answer:1,
+    hint:"Cuidado con quisiera que...",
+    fb:"English doesn't use would like that... Ask with Could you..., please?" },
+  { type:"mc", q:"The customer gets this document before paying. It says how much to pay.",
+    opts:["a receipt", "an invoice", "a sample"], answer:1,
+    hint:"Antes de pagar.",
+    fb:"Invoice = factura (before payment). Receipt = recibo (after payment)." },
+  { type:"mc", q:"“Sorry, the printer isn't ______. We have zero right now.”",
+    opts:["in stock", "urgent", "a deadline"], answer:0,
+    hint:"En inventario.",
+    fb:"In stock = en inventario. Zero printers = not in stock." },
+  { type:"input", q:"¿Cómo se dice “cotización” en inglés?",
+    hint:"Una palabra.",
+    answers:["quotation", "a quotation", "quote", "a quote"],
+    display:"quotation",
+    fb:"Quotation (or informally quote) = cotización. Not cita!" },
+  { type:"mc", q:"“___ you receive the invoice?” “No, I ___.”",
+    opts:["Do / don't", "Did / didn't", "Did / did"], answer:1,
+    hint:"Repaso de la Lección 43.",
+    fb:"Past question with Did, short answer with didn't: No, I didn't." },
+  { type:"input", q:"Corrige la frase: “The customer didn't received the catalog.”",
+    hint:"Repaso de la Lección 43: verbo después de didn't.",
+    answers:["the customer didn't receive the catalog", "the customer did not receive the catalog", "the customer didn't receive the catalogue", "the customer did not receive the catalogue"],
+    display:"The customer didn't receive the catalog.",
+    fb:"After didn't, use the base verb: receive, not received." }
+];
+
+// ── Quiz and concept-check state ──────────────────────────
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 0;
+const miniState = { voc:{}, bridge:{}, gram:{}, mod:{}, lis:{} };
+const MINI_BANK = { voc:VOC_CQ, bridge:BRIDGE_CQ, gram:GRAM_CQ, mod:MOD_CQ, lis:LIS_CQ };
+
+
+// ── SMALL HTML HELPERS ────────────────────────────────────
+function badge(num, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${num}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function tip(label, body) {
+  return `<div class="tip-box"><div class="tip-label">${label}</div>${body}</div>`;
+}
+function esNote(text) { return `<div class="es-note">${text}</div>`; }
+function tapRow(id, q, a, extraCls) {
+  return `<div class="tap-row ${extraCls||''} ${tapOpen[id]?'open':''}" id="tap-${id}" onclick="toggleTap('${id}')">
+    <div class="tap-row-top"><div class="tap-q">${q}</div><div class="tap-hint-label">Tap to reveal</div></div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+function toggleTap(id) {
+  tapOpen[id] = !tapOpen[id];
+  const el = document.getElementById('tap-' + id);
+  if (el) el.classList.toggle('open', !!tapOpen[id]);
+}
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function cqBlock(prefix, name, sub) {
+  return `<div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check: ${name}</div>
+    <p class="cq-sub">${sub}</p>
+    <div id="mini-${prefix}">${renderMiniQ(prefix)}</div>`;
+}
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    ${badge(1, 'Welcome', '2 min')}
+    <p class="sec-intro">En tu trabajo, los clientes piden cosas todo el tiempo: una cotización, una factura, un cambio en su pedido. En inglés, la forma más educada de pedir algo es <strong>I'd like</strong> (me gustaría / quisiera). Y para ofrecer algo, usamos <strong>Would you like...?</strong> (¿Le gustaría...?).</p>
+    <div class="info-box">
+      <strong>Hoy vas a aprender:</strong>
+      <ul class="list-plain" style="margin-top:6px;margin-bottom:0;">
+        <li>vocabulario práctico para atender solicitudes de clientes</li>
+        <li><em>I'd like</em> + sustantivo y <em>I'd like to</em> + verbo</li>
+        <li>cómo ofrecer algo con <em>Would you like...?</em> y cómo responder</li>
+        <li>la diferencia entre <em>I want</em>, <em>I like</em> y <em>I'd like</em></li>
+      </ul>
+    </div>
+    ${esNote('Antes de empezar con la gramática nueva, hay un repaso rápido de la Lección 43: <strong>didn\'t</strong> y <strong>Did...?</strong>')}
+    ${tip('💡 ¿Cómo estudiar esta lección?', 'Lee cada sección con calma. Al final de cada una hay un <strong>Quick Check</strong> con 2 o 3 preguntas. Si fallas una, vuelve a leer antes de continuar.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocab() {
+  return `<div class="sc">
+    ${badge(2, 'Vocabulary', '7 min')}
+    ${esNote('Estas palabras aparecen mucho cuando un cliente te pide algo por teléfono, por correo o en persona.')}
+    <div class="known-chips">
+      <span class="known-label">Palabras que ya conoces (L43):</span>
+      <span class="chip">customer</span><span class="chip">supplier</span><span class="chip">price</span><span class="chip">option</span>
+    </div>
+    <div class="voc-list">
+      <div class="voc-head"><span>English</span><span>Spanish</span></div>
+      ${VOCAB.map(([en,pos,es,ex]) => `
+        <div class="voc-item">
+          <div class="voc-top"><div class="voc-en">${en} <small>${pos}</small></div><div class="voc-es">${es}</div></div>
+          <div class="voc-ex">${ex}</div>
+        </div>`).join('')}
+    </div>
+    ${tip('⚠️ Invoice vs. receipt', '<strong>Invoice</strong> = factura. El cliente la recibe <strong>antes</strong> de pagar. Dice cuánto tiene que pagar.<br><strong>Receipt</strong> = recibo. El cliente lo recibe <strong>después</strong> de pagar. Es la prueba del pago.<br>Pronunciación: <em>receipt</em> suena “ri-SIIT”. ¡La <strong>p</strong> no se pronuncia! Y no lo confundas con <em>recipe</em> (receta de cocina).')}
+    ${tip('⚠️ Falso amigo: quotation', 'En un correo de negocios, <strong>quotation</strong> = cotización, no cita. Mucha gente también dice <strong>quote</strong> en conversaciones informales: <em>Can I get a quote?</em>')}
+    ${tip('💡 Order', '<strong>Order</strong> puede ser <em>pedido</em> (I\'d like to change my order) o el verbo <em>pedir</em> (I\'d like to order 50 boxes). En el trabajo con clientes, casi nunca significa “orden” como mandato.')}
+    ${tip('💡 Available vs. in stock', '<strong>In stock</strong> se usa para productos físicos: <em>The chairs are in stock.</em><br><strong>Available</strong> es más general: productos, personas, fechas. <em>The manager is available on Monday.</em>')}
+    ${cqBlock('voc', 'Vocabulary', '3 preguntas rápidas para confirmar las palabras clave antes de continuar.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    ${badge(3, 'Grammar Bridge', '4 min')}
+    <div class="gb-callout">
+      <div class="gb-label">🔁 Grammar Bridge · Repaso de la Lección 43</div>
+      <p>¿Recuerdas esto? En la Lección 43 aprendiste a hacer negativas y preguntas en pasado con <strong>didn't</strong> y <strong>Did...?</strong> Hoy lo usamos con clientes: una factura que no llegó, un catálogo que no enviaste...</p>
+    </div>
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:0.8fr 1.2fr 1.4fr;"><span>Type</span><span>Form</span><span>Example</span></div>
+      <div class="data-table-row" style="grid-template-columns:0.8fr 1.2fr 1.4fr;"><div>✅ Affirmative</div><div>subject + past verb</div><div>The customer <strong>received</strong> the invoice.</div></div>
+      <div class="data-table-row" style="grid-template-columns:0.8fr 1.2fr 1.4fr;"><div>❌ Negative</div><div>subject + <strong>didn't</strong> + base verb</div><div>The customer <strong>didn't receive</strong> the invoice.</div></div>
+      <div class="data-table-row" style="grid-template-columns:0.8fr 1.2fr 1.4fr;"><div>❓ Question</div><div><strong>Did</strong> + subject + base verb?</div><div><strong>Did</strong> the customer <strong>receive</strong> the invoice?</div></div>
+      <div class="data-table-row" style="grid-template-columns:0.8fr 1.2fr 1.4fr;"><div>💬 Short answers</div><div>Yes, + subject + <strong>did</strong>. / No, + subject + <strong>didn't</strong>.</div><div>Yes, she did. / No, she didn't.</div></div>
+    </div>
+    ${esNote('Después de <strong>didn\'t</strong> y <strong>Did</strong>, el verbo regresa a su forma base. El pasado ya está en <em>did</em>, así que no lo repites en el verbo.')}
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Error común · Toca para ver la corrección</div>
+      ${tapRow('br1', '❌ Did you received the invoice?', '✅ Did you <strong>receive</strong> the invoice?', 'wrong-line')}
+      ${tapRow('br2', '❌ I didn\'t sent the quotation.', '✅ I didn\'t <strong>send</strong> the quotation.', 'wrong-line')}
+    </div>
+    ${tip('🔗 El auxiliar vuelve en la respuesta corta', 'En la Lección 43: <strong>Did</strong> you send it? → Yes, I <strong>did</strong>.<br>Hoy: <strong>Would</strong> you like a sample? → Yes, I <strong>would</strong>.<br>La regla es la misma: la palabra auxiliar de la pregunta regresa en la respuesta corta.')}
+    <div class="examples-wrap">
+      <div class="examples-label">Together with today's grammar</div>
+      <div class="example-item"><span class="example-en">The customer <strong>didn't receive</strong> the quotation. She<strong>'d like</strong> a new copy, please.</span></div>
+      <div class="example-item"><span class="example-en"><strong>Did</strong> you <strong>send</strong> the catalog? No, I <strong>didn't</strong>. <strong>Would</strong> you <strong>like</strong> it today? Yes, please.</span></div>
+    </div>
+    ${cqBlock('bridge', 'Grammar Bridge', '3 preguntas rápidas para refrescar didn\'t y Did...?')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  const tRow = (cols, cells) => `<div class="data-table-row" style="grid-template-columns:${cols};">${cells.map(c => `<div>${c}</div>`).join('')}</div>`;
+  const tHead = (cols, cells) => `<div class="data-table-head" style="grid-template-columns:${cols};">${cells.map(c => `<span>${c}</span>`).join('')}</div>`;
+  return `<div class="sc">
+    ${badge(4, 'Would like', '10 min')}
+
+    <div class="h-serif">A) Notice</div>
+    ${esNote('Lee esta llamada entre un cliente y una agente de servicio al cliente. Fíjate en las palabras resaltadas.')}
+    <div class="notice-box">
+      <div class="notice-line"><strong class="spk">Mr. Lindqvist:</strong> Hello. <span class="hl">I'd like</span> a quotation for 200 notebooks, please.</div>
+      <div class="notice-line"><strong class="spk">Priya (customer service):</strong> Of course. <span class="hl">Would you like</span> the blue notebooks or the black notebooks?</div>
+      <div class="notice-line"><strong class="spk">Mr. Lindqvist:</strong> The blue ones, please. And <span class="hl">I'd like to</span> receive them before Friday.</div>
+      <div class="notice-line"><strong class="spk">Priya:</strong> No problem. <span class="hl">Would you like</span> a free sample?</div>
+      <div class="notice-line"><strong class="spk">Mr. Lindqvist:</strong> <span class="hl">Yes, please.</span></div>
+    </div>
+    <div class="info-box">
+      <strong>Fíjate:</strong>
+      <ol class="list-plain" style="margin-top:6px;margin-bottom:0;">
+        <li>Después de <em>I'd like</em> a veces viene una <strong>cosa</strong> (<em>a quotation</em>) y a veces <strong>to + verbo</strong> (<em>to receive</em>).</li>
+        <li>Priya usa <strong>Would you like...?</strong> para <strong>ofrecer</strong> algo.</li>
+        <li>El cliente nunca dice <em>I want</em>. Siempre usa <em>I'd like</em>. Suena más educado.</li>
+      </ol>
+    </div>
+
+    <div class="divider"></div>
+    <div class="h-serif">B) Form Rules</div>
+
+    <div class="rule-card">
+      <div class="rule-title">Regla 1: would like + sustantivo (una cosa)</div>
+      <ul><li>I'd like <strong>a quotation</strong>, please.</li><li>She'd like <strong>the new catalog</strong>.</li><li>We'd like <strong>a discount</strong> for this order.</li></ul>
+    </div>
+    <div class="rule-card">
+      <div class="rule-title">Regla 2: would like + to + verbo base (una acción)</div>
+      <ul><li>I'd like <strong>to change</strong> my order.</li><li>He'd like <strong>to confirm</strong> the delivery date.</li><li>They'd like <strong>to pay</strong> by card.</li></ul>
+    </div>
+
+    <div class="builder-wrap">
+      <div class="builder-label">Sentence builder</div>
+      <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:22px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:100px;flex:1;gap:4px;text-align:center;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Subject</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">I / You / He / She / We / They</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic">quién pide</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);border-right:2px solid rgba(255,255,255,0.1);min-width:100px;flex:1;gap:4px;text-align:center;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">Would like</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">'d like</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic">(would like)</div>
+        </div>
+        <div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);min-width:100px;flex:1;gap:4px;text-align:center;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">What?</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gold)">noun / to + verb</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic">a sample / to see the catalog</div>
+        </div>
+      </div>
+      <div class="builder-ex"><strong>“I'd like to see the new model, please.”</strong></div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-title">Regla 3: misma forma para todas las personas</div>
+    </div>
+    <div class="data-table-wrap">
+      ${tHead('1fr 1fr 1.2fr', ['Full form', 'Short form', 'Spanish'])}
+      ${tRow('1fr 1fr 1.2fr', ['I would like', '<strong>I\'d like</strong>', 'me gustaría / quisiera'])}
+      ${tRow('1fr 1fr 1.2fr', ['You would like', '<strong>You\'d like</strong>', 'te / le gustaría'])}
+      ${tRow('1fr 1fr 1.2fr', ['He would like', '<strong>He\'d like</strong>', 'a él le gustaría'])}
+      ${tRow('1fr 1fr 1.2fr', ['She would like', '<strong>She\'d like</strong>', 'a ella le gustaría'])}
+      ${tRow('1fr 1fr 1.2fr', ['We would like', '<strong>We\'d like</strong>', 'nos gustaría'])}
+      ${tRow('1fr 1fr 1.2fr', ['They would like', '<strong>They\'d like</strong>', 'les gustaría'])}
+    </div>
+    ${esNote('<strong>\'d</strong> = would. Nunca agregues <strong>-s</strong> a like: <em>She\'d like</em> (✅), <em>She\'d likes</em> (❌). En emails formales puedes escribir la forma completa (<em>I would like</em>). Al hablar, casi siempre decimos <em>I\'d like</em>.')}
+
+    <div class="rule-card">
+      <div class="rule-title">Regla 4: preguntas y ofrecimientos con Would you like...?</div>
+      <ul>
+        <li><strong>Would + subject + like + noun / to + verb?</strong></li>
+        <li><strong>Would you like</strong> a catalog? <em style="color:var(--grey-blue)">(¿Le gustaría un catálogo?)</em></li>
+        <li><strong>Would you like to</strong> see the new model? <em style="color:var(--grey-blue)">(¿Le gustaría ver el nuevo modelo?)</em></li>
+        <li>What <strong>would you like</strong>? <em style="color:var(--grey-blue)">(¿Qué le gustaría?)</em></li>
+        <li>What quantity <strong>would you like</strong>? <em style="color:var(--grey-blue)">(¿Qué cantidad le gustaría?)</em></li>
+      </ul>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-title">Regla 5: respuestas cortas</div>
+    </div>
+    <div class="data-table-wrap">
+      ${tHead('1.2fr 1fr 1fr', ['Question', '✅ Yes', '❌ No'])}
+      ${tRow('1.2fr 1fr 1fr', ['Would you like a sample?', 'Yes, please.<br>Yes, I would.', 'No, thank you.<br>No, thanks.'])}
+    </div>
+    ${esNote('<strong>Yes, please</strong> es la respuesta más natural cuando te ofrecen algo. <strong>Yes, I would</strong> también es correcto, un poco más formal. En la respuesta corta <strong>no</strong> se usa la contracción: <em>Yes, I would</em> (✅), <em>Yes, I\'d</em> (❌).')}
+
+    <div class="divider"></div>
+    <div class="h-serif">Spanish Bridge</div>
+    <div class="bridge-table-wrap">
+      <div class="bridge-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="bridge-row"><div class="bridge-en">I'd like a quotation.</div><div class="bridge-es">Quisiera / Me gustaría una cotización.</div></div>
+      <div class="bridge-row"><div class="bridge-en">I'd like to change my order.</div><div class="bridge-es">Quisiera / Me gustaría cambiar mi pedido.</div></div>
+      <div class="bridge-row"><div class="bridge-en">Would you like a sample?</div><div class="bridge-es">¿Le gustaría / Desea una muestra?</div></div>
+      <div class="bridge-row"><div class="bridge-en">Yes, please.</div><div class="bridge-es">Sí, por favor.</div></div>
+      <div class="bridge-row"><div class="bridge-en">No, thank you.</div><div class="bridge-es">No, gracias.</div></div>
+    </div>
+    ${esNote('¡Buena noticia! <em>I\'d like</em> funciona casi igual que <strong>quisiera</strong> o <strong>me gustaría</strong>. Pero cuidado: en español decimos “Quisiera <strong>que</strong> me envíe la factura”. En inglés <strong>no</strong> se puede decir <em>I would like that you send...</em> Para pedirle algo a otra persona, usa <strong>Could you...?</strong>')}
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-es">Quisiera que me envíe la factura.</span><span class="example-arrow">→</span><span class="example-en">Could you send me the invoice, please?</span></div>
+      <div class="example-item"><span class="example-es">Quisiera que confirme la fecha.</span><span class="example-arrow">→</span><span class="example-en">Could you confirm the date, please?</span></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="h-serif">C) Use</div>
+    <div class="sub-heading">1. I want vs. I'd like</div>
+    <div class="data-table-wrap">
+      ${tHead('1fr 1fr', ['😐 Directo', '🙂 Educado (trabajo)'])}
+      ${tRow('1fr 1fr', ['I want a discount.', '<strong>I\'d like</strong> a discount, please.'])}
+      ${tRow('1fr 1fr', ['I want to speak to the manager.', '<strong>I\'d like</strong> to speak to the manager, please.'])}
+    </div>
+    ${esNote('<em>I want</em> no es un error de gramática, pero con clientes, jefes o proveedores suena muy directo, casi exigente. En el trabajo, usa <strong>I\'d like</strong>.')}
+    <div class="sub-heading">2. I like vs. I'd like</div>
+    <div class="data-table-wrap">
+      ${tHead('1fr 1fr', ['I like (Lesson 35)', 'I\'d like (hoy)'])}
+      ${tRow('1fr 1fr', ['<strong>I like</strong> coffee.<br><em style="color:var(--grey-blue)">Me gusta el café. (siempre, en general)</em>', '<strong>I\'d like</strong> a coffee, please.<br><em style="color:var(--grey-blue)">Quisiera un café. (ahora, un pedido)</em>'])}
+      ${tRow('1fr 1fr', ['<strong>I like</strong> working with customers.', '<strong>I\'d like</strong> to speak to a customer.'])}
+    </div>
+    ${esNote('<em>I like</em> = lo que te gusta en general. <em>I\'d like</em> = lo que quieres ahora. ¡Esa pequeña <strong>\'d</strong> cambia todo!')}
+
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Errores comunes · Toca para ver la corrección</div>
+      ${tapRow('gp1', '❌ I would like that you send me the invoice.', '✅ <strong>Could you send me the invoice, please?</strong>', 'wrong-line')}
+      ${tapRow('gp2', '❌ I like a quotation, please.', '✅ <strong>I\'d like</strong> a quotation, please.', 'wrong-line')}
+      ${tapRow('gp3', '❌ I\'d like to sending / to sent the samples.', '✅ I\'d like <strong>to send</strong> the samples.', 'wrong-line')}
+      ${tapRow('gp4', '❌ Would you like a sample? Yes, I like.', '✅ <strong>Yes, I would.</strong> / <strong>Yes, please.</strong>', 'wrong-line')}
+      ${tapRow('gp5', '❌ I\'d like change the date.', '✅ I\'d like <strong>to change</strong> the date.', 'wrong-line')}
+      ${tapRow('gp6', '❌ She\'d likes a catalog.', '✅ She\'d <strong>like</strong> a catalog.', 'wrong-line')}
+      ${tapRow('gp7', '❌ Would you like a receipt? Yes, I\'d.', '✅ <strong>Yes, I would.</strong> / <strong>Yes, please.</strong>', 'wrong-line')}
+    </div>
+
+    ${cqBlock('gram', 'Would like', '3 preguntas rápidas para confirmar la gramática antes de continuar.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModels() {
+  const pairs = [
+    ["I'd like a quotation for 30 desks, please.", "Of course. I can send it today."],
+    ["I'd like to change my order.", "No problem. What would you like to change?"],
+    ["I'd like the invoice by email, please.", "Sure. What is your email address?"],
+    ["I'd like to order 50 boxes.", "Thank you. Let me check... Yes, they're in stock."],
+    ["I'd like a discount, please.", "For big orders, we have a 10% discount."],
+    ["This order is urgent. I'd like the delivery on Monday.", "Let me check... Yes, Monday is possible."],
+    ["I'd like a receipt, please.", "Here you are."],
+    ["I didn't receive the catalog.", "I'm sorry. Would you like a new copy?"]
+  ];
+  return `<div class="sc">
+    ${badge(5, 'Model Sentences', '5 min')}
+    ${esNote('Así suena una buena conversación con un cliente. El cliente pide algo con <em>I\'d like</em>, y tú respondes de forma amable y clara.')}
+    <div class="sub-heading">A) The customer asks, you respond</div>
+    <div class="pair-list">
+      <div class="pair-head"><span>Customer</span><span>You</span></div>
+      ${pairs.map(([c,y]) => `<div class="pair-row"><div class="pair-c">${c}</div><div class="pair-y">${y}</div></div>`).join('')}
+    </div>
+    <div class="sub-heading">B) You offer something</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en"><strong>Would you like</strong> a free sample?</span></div>
+      <div class="example-item"><span class="example-en"><strong>Would you like</strong> our new price list?</span></div>
+      <div class="example-item"><span class="example-en"><strong>Would you like to</strong> see the new model?</span></div>
+      <div class="example-item"><span class="example-en"><strong>Would you like</strong> a receipt?</span></div>
+      <div class="example-item"><span class="example-en">What quantity <strong>would you like</strong>?</span></div>
+    </div>
+    ${tip('💬 Frases útiles para responder', 'Of course. <em>(Claro.)</em> · Sure. <em>(Claro / Por supuesto.)</em> · No problem. <em>(No hay problema.)</em> · Let me check. <em>(Déjeme revisar.)</em> · I can send it today. <em>(Puedo enviarlo hoy.)</em> · I\'m sorry, it isn\'t available. <em>(Lo siento, no está disponible.)</em> · Here you are. <em>(Aquí tiene.)</em>')}
+    ${cqBlock('mod', 'Model Sentences', '3 preguntas rápidas sobre cómo pedir, ofrecer y responder.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  const rates = [0.7, 0.8, 0.9, 1.0, 1.1];
+  return `<div class="sc">
+    ${badge(6, 'Listening', '5 min')}
+    ${esNote('Vas a escuchar a Farah Siddiqui. Ella trabaja en servicio al cliente y habla de las solicitudes de sus clientes ayer. Escucha una vez sin leer. Luego puedes usar la transcripción y cambiar la velocidad.')}
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">A Busy Day in Customer Service</div>
+          <div class="audio-box-sub">Farah Siddiqui · Customer Service Coordinator, Brightdesk Office Furniture, Dubai · ~70 seconds</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L44-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        ${rates.map(r => `<button class="speed-btn ${r===currentSpeed?'active':''}" data-rate="${r.toFixed(1)}" onclick="setSpeed(${r.toFixed(1)})">${r.toFixed(1)}×</button>`).join('')}
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        <p>Hello, my name is Farah Siddiqui. I'm a customer service coordinator at Brightdesk, an office furniture company in Dubai. Every day, customers call us with requests.</p>
+        <p>Yesterday was a busy day. In the morning, a hotel manager called. She said, “I'd like a quotation for forty chairs, please.” I asked her, “Would you like to see our new catalog?” She said, “Yes, please.” So I sent it by email.</p>
+        <p>Then a man from a bank called. He didn't receive his invoice last week, and he wasn't very happy. He said, “I'd like a new copy today, please.” I checked, and I sent it again in five minutes.</p>
+        <p>In the afternoon, a school called. They'd like to change their order. They'd like ten more desks, and the deadline is Friday. The desks are in stock, so it's no problem.</p>
+        <p>My job is simple. I listen, I check, and I help.</p>
+      </div>
+    </div>
+    ${tip('🎧 Cómo escuchar', '1. Escucha una vez sin leer. 2. Responde las preguntas. 3. Si tienes dudas, baja la velocidad a 0.8× o abre la transcripción.')}
+    ${cqBlock('lis', 'Listening', '3 preguntas sobre el audio. Todas las respuestas se escuchan claramente.')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  const exA = [
+    ["I like a glass of water, please.", "<strong>I'd like</strong> a glass of water, please."],
+    ["She'd likes to see the catalog.", "She'd <strong>like</strong> to see the catalog."],
+    ["I'd like confirm my order.", "I'd like <strong>to confirm</strong> my order."],
+    ["Would you like a sample? Yes, I like.", "<strong>Yes, please.</strong> / <strong>Yes, I would.</strong>"],
+    ["We'd like to paid by card.", "We'd like <strong>to pay</strong> by card."],
+    ["I would like that you send me the price list.", "<strong>Could you send me the price list, please?</strong>"]
+  ];
+  const exB = [
+    ["______ my job. It's interesting.", "I like"],
+    ["______ a copy of the receipt, please.", "I'd like"],
+    ["______ working with customers.", "I like"],
+    ["______ to speak to the manager, please.", "I'd like"],
+    ["______ a quotation for 100 pens.", "I'd like"]
+  ];
+  const exC = [
+    ["I'd like ___ a free sample.", "– (nada)"],
+    ["He'd like ___ confirm the delivery date.", "to"],
+    ["Would you like ___ see the new model?", "to"],
+    ["Would you like ___ the new price list?", "– (nada)"],
+    ["She'd like ___ pay the invoice today.", "to"],
+    ["They'd like ___ a discount for big orders.", "– (nada)"]
+  ];
+  const exD = [
+    ["1. I'd like a receipt, please.", "c) Here you are."],
+    ["2. I'd like to order 20 chairs.", "e) Let me check... Yes, they're in stock."],
+    ["3. I didn't receive the invoice.", "a) I'm sorry. Would you like a new copy?"],
+    ["4. I'd like to change the delivery date.", "b) No problem. What date would you like?"],
+    ["5. Would you like a sample?", "d) Yes, please."]
+  ];
+  const exE = [
+    ["I want the invoice.", "I'd like the invoice, please."],
+    ["I want to change the delivery date.", "I'd like to change the delivery date, please."],
+    ["Give me a catalog.", "I'd like a catalog, please."],
+    ["I want that you send me a sample.", "Could you send me a sample, please?"]
+  ];
+  const exF = [
+    ["Un cliente mira un producto nuevo con interés.", "Would you like to see the new model?"],
+    ["Un cliente acaba de pagar.", "Would you like a receipt?"],
+    ["Un cliente pregunta los precios.", "Would you like our price list?"]
+  ];
+  const list = (key, arr, wrong) => arr.map((r,i) => tapRow(key + i, (wrong ? '❌ ' : '') + r[0], '✅ ' + r[1], wrong ? 'wrong-line' : '')).join('');
+  return `<div class="sc">
+    ${badge(7, 'Exercises', '6 min')}
+    ${esNote('Primero piensa tu respuesta. Luego toca cada línea para ver la respuesta correcta.')}
+    <div class="ex-box">
+      <div class="ex-label">Exercise A</div>
+      <div class="ex-title">Corrige el error</div>
+      <div class="ex-inst">Cada frase tiene un error. ¿Cuál es?</div>
+      ${list('exa', exA, true)}
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">Exercise B</div>
+      <div class="ex-title">I like o I'd like?</div>
+      <div class="ex-inst">¿Gusto general o pedido de ahora?</div>
+      ${list('exb', exB, false)}
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">Exercise C</div>
+      <div class="ex-title">¿“to” o nada (–)?</div>
+      <div class="ex-inst">Cosa = nada. Acción = to.</div>
+      ${list('exc', exC, false)}
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">Exercise D</div>
+      <div class="ex-title">Relaciona la solicitud con la respuesta</div>
+      <div class="word-bank">
+        <div class="word-bank-label">Respuestas</div>
+        <div class="word-bank-words">a) I'm sorry. Would you like a new copy? · b) No problem. What date would you like? · c) Here you are. · d) Yes, please. · e) Let me check... Yes, they're in stock.</div>
+      </div>
+      ${list('exd', exD, false)}
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">Exercise E</div>
+      <div class="ex-title">Hazlo educado</div>
+      <div class="ex-inst">Cambia estas frases directas por frases educadas para el trabajo.</div>
+      ${list('exe', exE, false)}
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">Exercise F</div>
+      <div class="ex-title">Ofrece algo con Would you like...?</div>
+      <div class="ex-inst">Lee la situación y escribe un ofrecimiento.</div>
+      ${list('exf', exF, false)}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    ${badge(8, 'Quiz', '6 min')}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => qCard(q, i, 'main')).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div class="result-attempts">Attempts so far: ${quizAttempts + 1}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect ? `<button class="result-btn-gold" onclick="retakeQuiz()">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>` : ''}
+        <button class="result-btn-ghost" onclick="goTo(0)">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── SHARED QUESTION ENGINE (main quiz + concept checks) ───
+function bankOf(key)  { return key === 'main' ? QUIZ : MINI_BANK[key]; }
+function stateOf(key) { return key === 'main' ? quizState : miniState[key]; }
+function normalise(s) {
+  return String(s).replace(/[\u2018\u2019\u00B4`]/g, "'").toLowerCase()
+    .replace(/[.,!?;:\u201C\u201D"]/g, '').replace(/\s+/g, ' ').trim();
+}
+function isRight(q, s) {
+  if (!s || !s.revealed) return false;
+  if (q.type === 'mc') return s.selected === q.answer;
+  if (q.type === 'tf') return q.answer === (s.selected === 0);
+  if (q.type === 'input') return !!s.correct;
+  return false;
+}
+
+function qCard(q, i, key) {
+  const s = stateOf(key)[i] || {};
+  const rev = s.revealed;
+  const letters = ['A','B','C','D'];
+  let body = '';
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+    const lets = q.type === 'mc' ? letters : ['T', 'F'];
+    body = `<div class="q-options">
+      ${opts.map((opt, j) => {
+        let cls = 'q-opt';
+        const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+        if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+        else if (s.selected === j) cls += ' selected';
+        return `<button class="${cls}" onclick="pickOpt('${key}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="checkOpt('${key}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+    ${rev ? `<div class="q-feedback ${isRight(q, s) ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${key}-${i}" type="text" placeholder="Type your answer…" value="${esc(s.inputVal || '')}"
+        oninput="typeInp('${key}',${i},this.value)" onkeydown="if(event.key==='Enter'){checkInp('${key}',${i});}" ${rev ? 'disabled' : ''}/>
+      ${!rev ? `<button class="check-btn" onclick="checkInp('${key}',${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${key}-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function pickOpt(key, qi, j) {
+  const st = stateOf(key);
+  if (!st[qi]) st[qi] = {};
+  if (st[qi].revealed) return;
+  st[qi].selected = j;
+  refresh(key);
+}
+function checkOpt(key, qi) {
+  const st = stateOf(key);
+  if (!st[qi] || st[qi].selected === undefined) return;
+  st[qi].revealed = true;
+  refresh(key);
+}
+function typeInp(key, qi, v) {
+  const st = stateOf(key);
+  if (!st[qi]) st[qi] = {};
+  st[qi].inputVal = v;
+}
+function checkInp(key, qi) {
+  const st = stateOf(key);
+  const q = bankOf(key)[qi];
+  if (!st[qi]) st[qi] = {};
+  if (st[qi].revealed) return;
+  const raw = st[qi].inputVal || '';
+  if (!raw.trim()) return;
+  st[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  st[qi].revealed = true;
+  refresh(key);
+}
+function refresh(key) {
+  if (key === 'main') { recalc(); rerender(); }
+  else miniRerender(key);
+}
+
+// Concept checks: redraw only their own container, so audio, transcript and taps on the page are untouched
+function renderMiniQ(prefix) {
+  return MINI_BANK[prefix].map((q, i) => qCard(q, i, prefix)).join('');
+}
+function miniRerender(prefix) {
+  const box = document.getElementById('mini-' + prefix);
+  if (box) box.innerHTML = renderMiniQ(prefix);
+}
+
+// Main quiz
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising, ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding, a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+function retakeQuiz() {
+  QUIZ.forEach((q, i) => {
+    const s = quizState[i];
+    if (!s || !s.revealed) return;
+    if (!isRight(q, s)) delete quizState[i];
+  });
+  quizAttempts++;
+  recalc(); rerender();
+  setTimeout(() => {
+    const first = QUIZ.findIndex((_, i) => !quizState[i] || !quizState[i].revealed);
+    const el = document.getElementById('qc-main-' + first);
+    if (el) el.scrollIntoView({ behavior:'smooth', block:'center' });
+  }, 100);
+}
+function recalc() {
+  let s = 0;
+  QUIZ.forEach((q, i) => { if (isRight(q, quizState[i])) s++; });
+  quizScore = s;
+}
+function rerender() {
+  // Calls renderQuiz() directly, never STEPS[currentStep].fn()
+  const qi = STEPS.findIndex(s => s.fn === renderQuiz);
+  if (currentStep === qi) document.getElementById('mainContent').innerHTML = renderQuiz();
+}
+
+
+// ── AUDIO (Pattern A: single player) ──────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Welcome",         fn: renderWelcome },
+  { label: "2. Vocabulary",      fn: renderVocab },
+  { label: "3. Grammar Bridge",  fn: renderBridge },
+  { label: "4. Would like",      fn: renderGrammar },
+  { label: "5. Model Sentences", fn: renderModels },
+  { label: "6. Listening",       fn: renderListening },
+  { label: "7. Exercises",       fn: renderExercises },
+  { label: "8. Quiz",            fn: renderQuiz }
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

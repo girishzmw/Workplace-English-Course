@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 31: Understanding Customer Needs | A2 · Unit 4 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold, Georgia headings, Lato body
+   All colours as CSS variables, never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --sky-bg:      #EEF6FB;
+  --amber-text:  #7A5500;
+  --amber-dark:  #92400E;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+  text-align: center;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+@media(max-width:600px){ .hero-inner{ padding:32px 16px 28px; } .site-header-inner{ padding:12px 16px; } .site-header-brand{ font-size:18px; } }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A: Outcomes grid, used for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+@media(max-width:600px){ .step-nav-inner{ padding:0 8px; } }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; font-weight:700; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+@media(max-width:600px){ .sec-badge-title{ padding:14px 12px; font-size:15px; } .sec-badge-time{ padding:14px 12px; } }
+
+/* GOLD RULE */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:var(--amber-text); font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* DATA TABLE */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:12px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:12px; align-items:center; transition:background 0.12s; font-size:14px; line-height:1.5; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+.dt-en { font-weight:700; color:var(--navy); }
+.dt-es { color:var(--grey-blue); }
+.dt-ex { color:var(--slate); font-style:italic; }
+.dt-pos { font-weight:400; font-size:12px; color:var(--grey-blue); font-style:italic; }
+.star { color:var(--gold); }
+@media(max-width:600px){
+  .data-table-head{ display:none; }
+  .data-table-row{ grid-template-columns:1fr !important; gap:3px; padding:12px 16px; }
+}
+.table-caption { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin:22px 0 8px; }
+
+/* SUB HEADINGS */
+.sub-heading { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin:26px 0 12px; }
+.rule-title { font-size:15px; font-weight:700; color:var(--navy); margin:22px 0 8px; }
+.rule-title span { color:var(--gold); }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:20px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* COMPARE CARDS (Notice) */
+.compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+@media(max-width:600px){ .compare-grid{ grid-template-columns:1fr; } }
+.compare-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; }
+.compare-head { background:var(--navy); color:var(--gold); font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:700; padding:10px 16px; }
+.compare-line { padding:10px 16px; border-bottom:1px solid var(--light-grey); font-size:14px; line-height:1.55; }
+.compare-line:last-child { border-bottom:none; }
+.compare-q { color:var(--navy); font-weight:700; font-style:italic; }
+.compare-a { color:var(--grey-blue); }
+
+/* SPANISH BRIDGE TABLE */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); gap:12px; }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); gap:12px; }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-en b { color:var(--gold); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+@media(max-width:600px){ .bridge-table-head, .bridge-row{ padding:10px 14px; } }
+
+/* MISTAKE BOX + TAP TO REVEAL */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--amber-dark); font-weight:700; margin-bottom:12px; }
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:12px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.5; }
+.tap-q.wrong-line { color:var(--red); font-style:italic; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; font-style:italic; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); line-height:1.6; }
+.tap-answer .tap-note { display:block; color:var(--grey-blue); font-size:13px; font-style:italic; margin-top:3px; }
+.tap-row.open .tap-answer { display:block; }
+.tap-row.open .tap-hint-label { visibility:hidden; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:16px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:6px; }
+.ex-instr { font-size:13px; color:var(--grey-blue); font-style:italic; margin-bottom:12px; }
+
+/* FUNNEL */
+.funnel { display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:20px; }
+.funnel-step { background:var(--navy); color:var(--white); border-radius:8px; padding:11px 16px; font-size:14px; text-align:center; line-height:1.5; }
+.funnel-step b { color:var(--gold); display:block; font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-bottom:2px; }
+.funnel-step:nth-child(1){ width:100%; }
+.funnel-step:nth-child(2){ width:90%; }
+.funnel-step:nth-child(3){ width:80%; }
+.funnel-step:nth-child(4){ width:70%; background:var(--sky); }
+@media(max-width:600px){ .funnel-step{ width:100% !important; } }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+@media(max-width:600px){ .q-card{ padding:16px; } }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:var(--sky-bg); }
+.q-opt.selected { border-color:var(--sky); background:var(--sky-bg); }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:var(--white); }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:var(--white); }
+.q-opt.selected .opt-letter { background:var(--sky);  color:var(--white); }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+@media(max-width:600px){ .q-input-row{ flex-direction:column; } }
+.q-input { flex:1; min-width:0; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.result-attempts { font-size:12px; color:rgba(255,255,255,0.45); margin-top:10px; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+.retry-btn { padding:12px 28px; background:var(--gold); color:var(--navy); border:none; border-radius:8px; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; }
+.review-btn { padding:12px 28px; background:rgba(255,255,255,0.1); color:var(--white); border:1px solid rgba(255,255,255,0.25); border-radius:8px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; }
+
+/* BUTTONS */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+@media(max-width:600px){ .nav-btn{ padding:10px 12px; font-size:12px; } }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); white-space:nowrap; }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.cc-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+.scenario { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--sky); border-radius:0 8px 8px 0; padding:14px 18px; margin-bottom:18px; font-size:15px; line-height:1.7; color:var(--navy); }
+.map-line { font-size:13px; color:var(--grey-blue); line-height:1.8; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER: do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 4 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 31: Understanding Customer Needs</h1>
+    <p class="hero-sub">Open-ended questions · Grammar bridge: there is / there are · about 45 min</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Ask open questions to understand a customer</div><div class="outcome-note">Hacer preguntas abiertas para entender a un cliente</div></div>
+      <div><div class="outcome-item">Ask follow-up questions to get more detail</div><div class="outcome-note">Hacer preguntas de seguimiento para obtener más detalles</div></div>
+      <div><div class="outcome-item">Check information with closed questions</div><div class="outcome-note">Confirmar información con preguntas cerradas</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- SINGLE SCRIPT BLOCK: all JavaScript lives here. STEPS populated last, render() called last.
+     LESSON CONTENT START -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+
+const AUDIO_URL = 'https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L31-Audio001.mp3';
+
+// Vocabulary: [english, partOfSpeech, spanish, example, isKeyWord]
+const VOCAB_GROUPS = [
+  { title: 'What the customer needs', rows: [
+    ['requirement', 'noun', 'requisito, algo necesario', 'One requirement is simple: it must work on phones.', true],
+    ['expectation', 'noun', 'expectativa', 'What are your expectations for the first month?', true],
+    ['preference', 'noun', 'preferencia', 'Do you have a preference for email or phone calls?', false],
+    ['must-have', 'noun', 'algo indispensable', 'Fast delivery is a must-have for us.', false],
+    ['nice-to-have', 'noun', 'algo deseable, pero no indispensable', 'A mobile app is a nice-to-have, not a must-have.', false],
+    ['pain point', 'noun', 'el problema que más le molesta al cliente', 'Their main pain point is slow delivery.', false],
+  ]},
+  { title: 'People and the business', rows: [
+    ['service', 'noun', 'servicio', 'What kind of service do you need?', true],
+    ['potential customer', 'noun', 'cliente potencial', 'I have a meeting with a potential customer at ten.', false],
+    ['decision-maker', 'noun', 'persona que toma la decisión', 'Who is the decision-maker for this project?', false],
+    ['end user', 'noun', 'usuario final', 'The end users are the people in the warehouse.', false],
+    ['account manager', 'noun', 'ejecutivo de cuenta, gerente de cuenta', 'Your account manager answers all your questions.', false],
+    ['purchase', 'noun / verb', 'compra / comprar', 'When do you want to make the purchase?', false],
+  ]},
+  { title: 'Asking and understanding', rows: [
+    ['find out', 'phrasal verb', 'averiguar, descubrir', 'In the first meeting, I find out what the customer needs.', false],
+    ['specific', 'adjective', 'específico, concreto', 'Can you give me a specific example?', false],
+    ['current', 'adjective', 'actual', 'What is your current system?', false],
+  ]},
+];
+
+// ── CONCEPT CHECKS ────────────────────────────────────────
+const VOC_CQ = [
+  { type:'mc', q:'The warehouse staff use the system every day. They are the ___.',
+    opts:['decision-makers','end users','account managers'], answer:1,
+    fb:'Los <em>end users</em> son las personas que usan el producto o servicio todos los días. No siempre son las mismas personas que lo compran.' },
+  { type:'tf', q:'"What is your actual system?" means "¿Cuál es su sistema actual?"', answer:false,
+    fb:'<em>Actual</em> en inglés significa "real". Para "actual" usa <em>current</em>: <em>What is your current system?</em>' },
+  { type:'input', q:'Fast delivery is essential for this customer. It\'s a ________.',
+    hint:'Una palabra con guiones: algo indispensable.',
+    answers:['must-have','a must-have','must have','a must have'], display:'must-have',
+    fb:'Algo indispensable es un <em>must-have</em>. Algo deseable pero no esencial es un <em>nice-to-have</em>.' },
+];
+
+const BRIDGE_CQ = [
+  { type:'mc', q:'___ any special requirements?',
+    opts:['Is there','Are there','Have'], answer:1,
+    fb:'<em>Requirements</em> es plural, así que usamos <em>Are there any...?</em> <em>Have</em> es "tener", no "haber".' },
+  { type:'input', q:'Correct the sentence: "In our company have 300 employees."',
+    hint:'Empieza con There...',
+    answers:['there are 300 employees in our company','in our company there are 300 employees','there are three hundred employees in our company'],
+    display:'There are 300 employees in our company.',
+    fb:'"Hay" = <em>there is / there are</em>. Con un número plural usamos <em>there are</em>.' },
+  { type:'tf', q:'"Yes, there\'s." is a correct short answer.', answer:false,
+    fb:'En la respuesta corta afirmativa no usamos contracción: <em>Yes, there is.</em> En la negativa sí: <em>No, there isn\'t.</em>' },
+];
+
+const GRAM_CQ = [
+  { type:'mc', q:'Choose the correct question.',
+    opts:['How many users you have?','How many users do you have?','How many users have you do?'], answer:1,
+    fb:'Después de <em>How many users</em> necesitas el ayudante <em>do</em> y luego el sujeto: <em>do you have</em>.' },
+  { type:'input', q:'Put in the missing word: "What ___ this word mean?"',
+    answers:['does'], display:'What does this word mean?',
+    fb:'<em>This word</em> es tercera persona singular, así que usamos <em>does</em>. El verbo <em>mean</em> queda sin <em>-s</em>.' },
+  { type:'tf', q:'With the verb <em>be</em>, we don\'t use <em>do</em>: "Where are your offices?"', answer:true,
+    fb:'Correcto. Con <em>be</em> solo cambiamos el orden: <em>your offices are</em> → <em>are your offices</em>.' },
+];
+
+const USE_CQ = [
+  { type:'mc', q:'You want the customer to talk a lot. Which question is best?',
+    opts:['Do you like your current system?','What problems do you have with your current system?','Is your system old?'], answer:1,
+    fb:'La opción B es abierta: el cliente tiene que explicar. Las otras se responden con <em>yes</em> o <em>no</em>.' },
+  { type:'tf', q:'"Tell me more about your team" needs a question mark.', answer:false,
+    fb:'<em>Tell me more about...</em> es una instrucción amable, no una pregunta. Termina con punto.' },
+  { type:'mc', q:'It\'s the end of the meeting. You want to confirm a detail. What do you say?',
+    opts:['What do you need?','So you need it for 50 users. Is that right?','Tell me more about your company.'], answer:1,
+    fb:'Para confirmar al final usamos una pregunta cerrada. Las preguntas abiertas son para el comienzo.' },
+];
+
+const MOD_CQ = [
+  { type:'mc', q:'Which question asks about the past?',
+    opts:['How often do you need technical support?','Why did you change supplier last year?','What are your expectations?'], answer:1,
+    fb:'<em>Did</em> nos dice que la pregunta es sobre el pasado. <em>Last year</em> lo confirma.' },
+  { type:'input', q:'Complete the closing question: "What ___ is important for you?"',
+    answers:['else'], display:'What else is important for you?',
+    fb:'<em>What else...?</em> significa "¿qué más...?". Es una excelente pregunta para cerrar una reunión.' },
+];
+
+const LIS_CQ = [
+  { type:'mc', q:'What does Mariam do in a first meeting?',
+    opts:['She shows the product.','She mostly listens and asks questions.','She sends a price.'], answer:1,
+    fb:'Mariam dice que la primera reunión no es una presentación: <em>I don\'t show the product. I listen.</em>' },
+  { type:'tf', q:'Mariam asks about the budget at the start of the meeting.', answer:false,
+    fb:'El presupuesto es un tema delicado, así que Mariam espera y pregunta cerca del final.' },
+  { type:'input', q:'How many questions does Mariam usually prepare?',
+    hint:'Escribe el número en palabras o en cifras.',
+    answers:['ten','10','about ten','about 10','ten questions','10 questions','about ten questions','about 10 questions'],
+    display:'About ten.',
+    fb:'Mariam prepara unas diez preguntas, y la mayoría son abiertas.' },
+];
+
+const MINI = { voc: VOC_CQ, bridge: BRIDGE_CQ, gram: GRAM_CQ, use: USE_CQ, mod: MOD_CQ, lis: LIS_CQ };
+const miniState = { voc:{}, bridge:{}, gram:{}, use:{}, mod:{}, lis:{} };
+
+// ── MAIN QUIZ (bridge items at Q5 and Q10) ────────────────
+const QUIZ = [
+  { type:'mc', q:'The system must work on mobile phones. For the customer, this is a ___.',
+    opts:['requirement','preference','purchase'], answer:0,
+    fb:'Un <em>requirement</em> es algo necesario, un requisito. Una <em>preference</em> es algo que el cliente prefiere, pero no es obligatorio.' },
+  { type:'mc', q:'___ does your team need the reports? "Every Monday."',
+    opts:['How often','How many','What kind of'], answer:0,
+    fb:'La respuesta es una frecuencia (<em>every Monday</em>), así que la pregunta usa <em>How often</em>.' },
+  { type:'input', q:'Complete: "What kind of service ___ you need?"',
+    answers:['do'], display:'What kind of service do you need?',
+    fb:'Después de <em>What kind of service</em> necesitas el ayudante <em>do</em> antes de <em>you</em>.' },
+  { type:'mc', q:'Which one is an open question?',
+    opts:['Is the price OK?','What do you think about the price?','Do you like the price?'], answer:1,
+    fb:'La opción B pide una opinión, no un simple <em>yes</em> o <em>no</em>.' },
+  { type:'mc', q:'___ any other requirements?',
+    opts:['Is there','Are there','Have'], answer:1,
+    fb:'<em>Requirements</em> es plural, así que usamos <em>Are there any...?</em> Recuerda: "¿hay...?" no es <em>have</em>.' },
+  { type:'mc', q:'Choose the correct question.',
+    opts:['How many offices you have?','How many offices do you have?','How many offices have you?'], answer:1,
+    fb:'El orden correcto es <em>How many + sustantivo + do + you + have</em>. En inglés el ayudante <em>do</em> no puede faltar.' },
+  { type:'input', q:'Complete: "Why ___ you change your supplier last year?"',
+    answers:['did'], display:'Why did you change your supplier last year?',
+    fb:'<em>Last year</em> indica pasado, así que usamos <em>did</em>. El verbo <em>change</em> queda en forma base.' },
+  { type:'mc', q:'Who signs the contract and says yes or no to the purchase?',
+    opts:['The end user','The decision-maker','The account manager'], answer:1,
+    fb:'El <em>decision-maker</em> es la persona que decide. El <em>end user</em> usa el producto, y el <em>account manager</em> trabaja para el proveedor.' },
+  { type:'mc', q:'The customer says, "We have a lot of problems with deliveries." What is the best follow-up?',
+    opts:['Tell me more about that.','Do you have problems?','Is that a problem?'], answer:0,
+    fb:'<em>Tell me more about that</em> invita al cliente a explicar. Las otras opciones repiten lo que ya dijo.' },
+  { type:'input', q:'Correct the sentence. "In my company have 200 employees." → "___ 200 employees in my company."',
+    hint:'Dos palabras.',
+    answers:['there are'], display:'There are 200 employees in my company.',
+    fb:'"Hay" = <em>there are</em> con plural. <em>Have</em> significa "tener", no "haber".' },
+  { type:'mc', q:'How do you say "¿Qué significa \'pain point\'?" in English?',
+    opts:['What means "pain point"?','What does "pain point" mean?','What "pain point" means?'], answer:1,
+    fb:'En inglés necesitas <em>does</em> antes del sujeto, y el verbo <em>mean</em> queda sin <em>-s</em>.' },
+  { type:'mc', q:'"Slow delivery is our biggest problem." Slow delivery is the customer\'s main ___.',
+    opts:['pain point','nice-to-have','purchase'], answer:0,
+    fb:'El <em>pain point</em> es el problema que más le molesta al cliente. Descubrirlo es el objetivo de la primera reunión.' },
+];
+
+// Quiz state
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 1;
+
+
+// ── HELPERS ───────────────────────────────────────────────
+const normalise = s => (s || '').replace(/[‘’]/g, "'").replace(/[“”]/g, '"')
+  .trim().toLowerCase().replace(/\s+/g, ' ').replace(/[.,!?]+$/, '');
+
+function escAttr(s) { return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+function badge(num, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${num}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+
+// Generic table: headers array, rows array of arrays (HTML allowed), grid columns string
+function table(headers, rows, cols, cellClasses) {
+  return `<div class="data-table-wrap">
+    <div class="data-table-head" style="grid-template-columns:${cols}">${headers.map(h => `<span>${h}</span>`).join('')}</div>
+    ${rows.map(r => `<div class="data-table-row" style="grid-template-columns:${cols}">${r.map((c, j) => `<div class="${(cellClasses && cellClasses[j]) || ''}">${c}</div>`).join('')}</div>`).join('')}
+  </div>`;
+}
+
+function bridgeTable(headL, headR, rows) {
+  return `<div class="bridge-table-wrap">
+    <div class="bridge-table-head"><span>${headL}</span><span>${headR}</span></div>
+    ${rows.map(([l, r]) => `<div class="bridge-row"><div class="bridge-en">${l}</div><div class="bridge-es">${r}</div></div>`).join('')}
+  </div>`;
+}
+
+// Tap-to-reveal row: question line, hidden answer, optional note
+function tapRow(qHtml, answerHtml, note, wrongStyle) {
+  return `<div class="tap-row" onclick="this.classList.toggle('open')">
+    <div class="tap-row-top">
+      <div class="tap-q${wrongStyle ? ' wrong-line' : ''}">${qHtml}</div>
+      <div class="tap-hint-label">Tap to reveal</div>
+    </div>
+    <div class="tap-answer">${answerHtml}${note ? `<span class="tap-note">${note}</span>` : ''}</div>
+  </div>`;
+}
+
+function mistakeBox(items) {
+  return `<div class="mistake-wrap">
+    <div class="mistake-label">⚠️ Errores comunes · Toca cada error para ver la corrección</div>
+    ${items.map(([wrong, right, note]) => tapRow('❌ ' + wrong, '✅ ' + right, note, true)).join('')}
+  </div>`;
+}
+
+function miniBlock(prefix, name, subject) {
+  return `<div class="divider"></div>
+    <div class="sub-heading" style="margin-top:0;margin-bottom:4px;">✅ Quick Check: ${name}</div>
+    <p class="cc-sub">${MINI[prefix].length} preguntas rápidas para confirmar que ${subject} está claro antes de seguir.</p>
+    <div id="mini-${prefix}">${renderMiniQ(prefix)}</div>`;
+}
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    ${badge(1, 'Welcome', '2 min')}
+    <p class="sec-intro">Antes de vender algo, necesitas saber qué quiere el cliente. Parece obvio, pero muchas reuniones fallan porque el vendedor habla demasiado y pregunta muy poco. Hoy vas a aprender a hacer las preguntas correctas en inglés: preguntas que hacen hablar al cliente, no preguntas que solo reciben un "yes" o un "no".</p>
+    <div class="scenario">
+      <strong>Scenario:</strong> You have a first meeting with a potential customer on Thursday. You have 30 minutes. What do you want to find out? What questions are you going to ask?
+    </div>
+    <div class="es-note">Al final de esta lección vas a poder dirigir la primera parte de una reunión con un cliente nuevo usando preguntas claras y naturales.</div>
+    <div class="info-box">
+      <div class="tip-label">🗺️ Lesson map</div>
+      <div class="map-line">Vocabulary (15 words) → Grammar Bridge: there is / there are → Open questions: form → Open questions: using them well → Model sentences → Listening → Exercises → Quiz</div>
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    ${badge(2, 'Vocabulary', '7 min')}
+    <div class="es-note">Lee cada palabra y su ejemplo en voz alta. Las palabras clave de la lección están marcadas con <span class="star">★</span>.</div>
+    ${VOCAB_GROUPS.map(g => `<div class="table-caption">${g.title}</div>
+      ${table(['English', 'Español', 'Example'],
+        g.rows.map(([en, pos, es, ex, key]) => [
+          `${en}${key ? ' <span class="star">★</span>' : ''}<br><span class="dt-pos">${pos}</span>`, es, ex]),
+        '1fr 1.1fr 1.6fr', ['dt-en', 'dt-es', 'dt-ex'])}`).join('')}
+
+    <div class="info-box">
+      <div class="tip-label">🔁 Recuerda de la Lección 21</div>
+      <em>budget</em> = presupuesto. Hoy lo vas a usar mucho: <em>What budget do you have for this?</em>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">⚠️ Cuidado: falsos amigos</div>
+      <p style="margin-bottom:8px"><strong>Actual</strong> en inglés NO significa "actual". Significa "real, verdadero". Para decir "actual" usa <strong>current</strong>: ✅ <em>our current supplier</em>, ❌ <em>our actual supplier</em>.</p>
+      <p style="margin-bottom:8px"><strong>Requirement</strong> es "requisito", algo necesario. En Colombia "requerimiento" a veces significa "solicitud". Para una solicitud, en inglés se dice <em>request</em>.</p>
+      <p style="margin-bottom:8px"><strong>Pain point</strong> no es "punto de dolor". Es el problema principal del cliente, lo que más le molesta.</p>
+      <p><strong>Purchase</strong> es un poco más formal que <em>buy</em>. Lo vas a ver en correos, contratos y reuniones.</p>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip: must-have / nice-to-have</div>
+      Estas dos expresiones van juntas en muchas reuniones. Una buena pregunta para un cliente: <em>What are your must-haves?</em> (¿Qué es indispensable para usted?)
+    </div>
+
+    ${miniBlock('voc', 'Vocabulary', 'el vocabulario')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    ${badge(3, 'Grammar Bridge: There is / There are', '5 min')}
+    <div class="es-note">¿Recuerdas la Lección 2? Usaste <em>there is / there are</em> para describir tu empresa. Hoy lo usamos con clientes: para preguntar qué hay en su empresa, cuántas personas hay y si hay algún problema. Es un repaso, pero vamos un poco más a fondo, porque hay errores muy comunes con esta estructura.</div>
+
+    <div class="rule-title"><span>A.</span> Statements (afirmaciones y negaciones)</div>
+    ${table(['', 'Singular', 'Plural'], [
+      ['✅ Affirmative', 'There is (There\'s) a problem with the invoice.', 'There are 40 people in our Lima office.'],
+      ['❌ Negative', 'There isn\'t a meeting room on this floor.', 'There aren\'t any problems with the delivery.'],
+    ], '0.8fr 1.5fr 1.5fr', ['dt-en', 'dt-ex', 'dt-ex'])}
+
+    <div class="rule-title"><span>B.</span> Questions (preguntas)</div>
+    ${table(['Pattern', 'Example'], [
+      ['Is there a / an + singular noun?', 'Is there a deadline for this project?'],
+      ['Are there any + plural noun?', 'Are there any other requirements?'],
+      ['How many + plural noun + are there?', 'How many end users are there?'],
+    ], '1.2fr 1.4fr', ['dt-en', 'dt-ex'])}
+
+    <div class="rule-title"><span>C.</span> Short answers (respuestas cortas)</div>
+    ${table(['Question', 'Yes', 'No'], [
+      ['Is there...?', 'Yes, there is.', 'No, there isn\'t.'],
+      ['Are there...?', 'Yes, there are.', 'No, there aren\'t.'],
+    ], '1fr 1fr 1fr', ['dt-en', 'dt-ex', 'dt-ex'])}
+    <div class="es-note">En la respuesta corta afirmativa no se usa contracción: ✅ <em>Yes, there is.</em> ❌ <em>Yes, there's.</em></div>
+
+    <div class="sub-heading">🌉 Spanish Bridge</div>
+    ${bridgeTable('English', 'Español', [
+      ['There is a problem.', 'Hay un problema.'],
+      ['There are twenty people.', 'Hay veinte personas.'],
+      ['Is there a deadline?', '¿Hay una fecha límite?'],
+      ['Are there any questions?', '¿Hay alguna pregunta?'],
+      ['How many offices are there?', '¿Cuántas oficinas hay?'],
+    ])}
+    <div class="es-note">En español, <em>hay</em> sirve para todo: singular, plural, afirmación y pregunta. En inglés cambian dos cosas:<br>
+      <strong>1. Singular o plural:</strong> <em>is</em> para una cosa, <em>are</em> para varias.<br>
+      <strong>2. El orden en la pregunta:</strong> <em>there is</em> se convierte en <em>is there</em>. En español basta con la entonación; en inglés hay que cambiar el orden.<br><br>
+      Fíjate también: en español decimos "¿Hay <strong>alguna pregunta</strong>?" en singular, pero en inglés lo normal es el plural: <em>Are there any questions?</em></div>
+
+    ${mistakeBox([
+      ['Have any problem?', 'Is there a problem? / Are there any problems?', '<em>Have</em> es "tener", no "haber". Para "¿hay...?" usa <em>Is there / Are there</em>.'],
+      ['In the office have 20 people.', 'There are 20 people in the office.', ''],
+      ['There are many problems?', 'Are there many problems?', 'La entonación no es suficiente. Cambia el orden.'],
+      ['Is there any questions?', 'Are there any questions?', '<em>Questions</em> es plural, entonces necesitas <em>are</em>.'],
+    ])}
+
+    <div class="info-box">
+      <div class="tip-label">➡️ Puente al tema de hoy</div>
+      <em>Is there...?</em> y <em>Are there...?</em> son preguntas cerradas: el cliente responde <em>yes</em> o <em>no</em>. Pero <em>How many... are there?</em> es una pregunta abierta: el cliente te da información. En la próxima sección vas a ver la diferencia.
+    </div>
+
+    ${miniBlock('bridge', 'Grammar Bridge', 'there is / there are')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderForm() {
+  return `<div class="sc">
+    ${badge(4, 'Open Questions: Form', '7 min')}
+
+    <div class="sub-heading" style="margin-top:0">👀 Notice</div>
+    <div class="es-note">Lee estas dos reuniones con el mismo cliente. ¿Cuál vendedor aprende más?</div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-head">Meeting 1</div>
+        <div class="compare-line"><span class="compare-q">Do you need a new system?</span><br><span class="compare-a">"Yes."</span></div>
+        <div class="compare-line"><span class="compare-q">Is it urgent?</span><br><span class="compare-a">"Yes."</span></div>
+        <div class="compare-line"><span class="compare-q">Do you have a budget?</span><br><span class="compare-a">"Yes."</span></div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-head">Meeting 2</div>
+        <div class="compare-line"><span class="compare-q">What problems do you have with your current system?</span><br><span class="compare-a">"Our staff can't find free meeting rooms, and people book the same room twice."</span></div>
+        <div class="compare-line"><span class="compare-q">Why is it urgent?</span><br><span class="compare-a">"We open a new office in March."</span></div>
+        <div class="compare-line"><span class="compare-q">What budget do you have for this?</span><br><span class="compare-a">"About 20,000 dollars."</span></div>
+      </div>
+    </div>
+    <div class="es-note">El mismo cliente, la misma información disponible. En la primera reunión el vendedor recibe tres "yes". En la segunda aprende cuál es el problema, la fecha y el dinero. La diferencia está en el tipo de pregunta.</div>
+    <div class="info-box">
+      <strong>Closed question (pregunta cerrada):</strong> la respuesta es <em>yes</em> o <em>no</em>.<br>
+      <strong>Open question (pregunta abierta):</strong> la respuesta es información. El cliente tiene que explicar.
+    </div>
+
+    <div class="sub-heading">📐 Form Rules</div>
+
+    <div class="rule-title"><span>Rule 1.</span> Closed questions start with an auxiliary or <em>be</em></div>
+    <div class="es-note" style="font-style:normal">Do / Does / Did / Is / Are / Can + subject...?</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">Do you work with a supplier now?</span></div>
+      <div class="example-item"><span class="example-en">Is the deadline in June?</span></div>
+      <div class="example-item"><span class="example-en">Can you send me the requirements?</span></div>
+    </div>
+
+    <div class="rule-title"><span>Rule 2.</span> Wh- word + do / does + subject + base verb (present)</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">What do you need?</span></div>
+      <div class="example-item"><span class="example-en">Where does your team work?</span></div>
+      <div class="example-item"><span class="example-en">When do you usually make purchases?</span></div>
+    </div>
+    <div class="es-note">Con <em>does</em>, el verbo principal va sin <em>-s</em>: ✅ <em>What does your manager need?</em> ❌ <em>What does your manager needs?</em></div>
+
+    <div class="rule-title"><span>Rule 3.</span> Wh- word + did + subject + base verb (past)</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">Why did you change supplier?</span></div>
+      <div class="example-item"><span class="example-en">What did you like about your old service?</span></div>
+      <div class="example-item"><span class="example-en">When did the problem start?</span></div>
+    </div>
+    <div class="es-note">Con <em>did</em>, el verbo va en forma base: ✅ <em>Why did you change...?</em> ❌ <em>Why did you changed...?</em></div>
+
+    <div class="rule-title"><span>Rule 4.</span> Wh- word + is / are + subject (with <em>be</em>, no <em>do</em>)</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">What is your main pain point?</span></div>
+      <div class="example-item"><span class="example-en">Who is the decision-maker?</span></div>
+      <div class="example-item"><span class="example-en">What are your expectations?</span></div>
+      <div class="example-item"><span class="example-en">Where are your end users?</span></div>
+    </div>
+
+    <div class="rule-title"><span>Rule 5.</span> Question phrases for customer meetings</div>
+    ${table(['Phrase', 'Asks about', 'Example'], [
+      ['What kind of + noun...?', 'tipo', 'What kind of service do you need?'],
+      ['How often...?', 'frecuencia', 'How often do you need deliveries?'],
+      ['How many + plural noun...?', 'número', 'How many users do you have?'],
+      ['How long...?', 'duración, tiempo', 'How long is the contract? / How long does the installation take?'],
+      ['Why...?', 'razón', 'Why do you want to change your system?'],
+    ], '1.2fr 0.8fr 1.6fr', ['dt-en', 'dt-es', 'dt-ex'])}
+    <div class="es-note">La respuesta a <em>Why...?</em> normalmente empieza con <em>Because...</em>: <em>Because our current system is very slow.</em></div>
+
+    <div class="sub-heading">🌉 Spanish Bridge: where the helper goes</div>
+    ${bridgeTable('Español', 'English', [
+      ['¿Qué necesita?', 'What <b>do</b> you need?'],
+      ['¿Dónde trabaja su equipo?', 'Where <b>does</b> your team work?'],
+      ['¿Cuántos usuarios tienen?', 'How many users <b>do</b> you have?'],
+      ['¿Qué significa esto?', 'What <b>does</b> this mean?'],
+      ['¿Por qué cambiaron de proveedor?', 'Why <b>did</b> you change supplier?'],
+      ['¿Cuál es su presupuesto?', 'What <b>is</b> your budget?'],
+    ].map(([es, en]) => [`<span style="font-weight:400;font-style:italic;color:var(--gold-light)">${es}</span>`, `<span style="font-style:normal;font-weight:700;color:var(--white)">${en}</span>`]))}
+    <div class="es-note">En español, la pregunta se parece mucho a la afirmación: "¿Qué necesita?" En inglés necesitas un "ayudante" antes del sujeto: <em>do, does</em> o <em>did</em>. Ese ayudante no se traduce, pero no puede faltar. Con el verbo <em>be</em> no hay ayudante: solo cambias el orden (<em>your budget is</em> → <em>is your budget</em>).<br><br>
+      Ojo con "¿Cuál es...?": para pedir información general se dice <em>What is...?</em>, no <em>Which is...?</em> ✅ <em>What is your budget?</em> ❌ <em>Which is your budget?</em></div>
+
+    ${mistakeBox([
+      ['What you need?', 'What do you need?', ''],
+      ['What means this?', 'What does this mean?', ''],
+      ['Where you work?', 'Where do you work?', ''],
+      ['How many users you have?', 'How many users do you have?', ''],
+      ['What does your team needs?', 'What does your team need?', 'Después de <em>does</em>, el verbo va sin <em>-s</em>.'],
+      ['Which is your budget?', 'What is your budget?', '"¿Cuál es...?" para información general = <em>What is...?</em>'],
+    ])}
+
+    ${miniBlock('gram', 'Form', 'la forma de las preguntas')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderUse() {
+  return `<div class="sc">
+    ${badge(5, 'Open Questions: Using Them Well', '5 min')}
+
+    <div class="sub-heading" style="margin-top:0">🎯 When to use open questions and when to use closed questions</div>
+    ${table(['Open questions', 'Closed questions'], [
+      ['At the start of the meeting', 'At the end of the meeting'],
+      ['To understand the problem', 'To confirm a detail'],
+      ['The customer talks more', 'You check that you understood'],
+      ['<em>What problems do you have with deliveries?</em>', '<em>So the deadline is June 30. Is that right?</em>'],
+    ], '1fr 1fr', ['dt-ex', 'dt-ex'])}
+    <div class="es-note">En una primera reunión, el cliente debe hablar más que tú. Si haces cinco preguntas cerradas seguidas, la reunión suena como un interrogatorio y aprendes muy poco. Usa preguntas abiertas para entender y preguntas cerradas para confirmar.</div>
+
+    <div class="sub-heading">🔎 Follow-up prompts (para pedir más detalles)</div>
+    <div class="es-note">Cuando el cliente dice algo importante, no cambies de tema. Pide más.</div>
+    ${table(['Prompt', 'Example'], [
+      ['Tell me more about...', 'Tell me more about your current system.'],
+      ['Can you describe...?', 'Can you describe a normal day for your team?'],
+      ['What else...?', 'What else do you need? / What else is important for you?'],
+      ['Could you tell me more about...?', 'Could you tell me more about the new office?'],
+    ], '1fr 1.5fr', ['dt-en', 'dt-ex'])}
+    <div class="tip-box">
+      <div class="tip-label">💡 Tres detalles importantes</div>
+      <p style="margin-bottom:8px"><em>Tell me more about...</em> no es una pregunta: es una instrucción amable. No lleva <em>do</em> ni signo de interrogación. ✅ <em>Tell me more about that.</em></p>
+      <p style="margin-bottom:8px"><em>Could you tell me more about...?</em> es muy cortés. Apréndela como una frase fija, un bloque completo. Por ahora no construyas otras preguntas con esta forma; eso lo verás en B1.</p>
+      <p><em>What else...?</em> es perfecta para el final de una reunión. Muchas veces el cliente dice lo más importante justo ahí.</p>
+    </div>
+
+    <div class="sub-heading">🔻 The funnel: a simple order for a first meeting</div>
+    <div class="funnel">
+      <div class="funnel-step"><b>1. Open</b>What problems do you have with your current service?</div>
+      <div class="funnel-step"><b>2. Follow-up</b>Tell me more about the delivery problems.</div>
+      <div class="funnel-step"><b>3. Specific</b>How often are the deliveries late?</div>
+      <div class="funnel-step"><b>4. Confirm (closed)</b>So it happens every week. Is that right?</div>
+    </div>
+    <div class="es-note">Como un embudo: empiezas amplio, después pides detalles, y al final confirmas con una pregunta cerrada.</div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip: "Why" puede sonar directo</div>
+      Una pregunta con <em>Why</em> sola puede sonar un poco fuerte, como si el cliente tuviera que justificarse. Pon una frase amable antes: <em>That's interesting. Why did you change supplier?</em>
+    </div>
+
+    ${miniBlock('use', 'Using Open Questions', 'el uso de las preguntas')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  return `<div class="sc">
+    ${badge(6, 'Model Sentences', '3 min')}
+    <div class="es-note">Estas son preguntas reales de una primera reunión, en un orden lógico. Léelas en voz alta.</div>
+    ${table(['Step', 'English', 'Español'], [
+      ['Start', 'What does your company do?', '¿A qué se dedica su empresa?'],
+      ['Size', 'How many people are there in your team?', '¿Cuántas personas hay en su equipo?'],
+      ['Problem', 'What problems do you have with your current service?', '¿Qué problemas tienen con su servicio actual?'],
+      ['Frequency', 'How often do you need technical support?', '¿Con qué frecuencia necesitan soporte técnico?'],
+      ['Past', 'Why did you change supplier last year?', '¿Por qué cambiaron de proveedor el año pasado?'],
+      ['Follow-up', 'Can you describe a typical problem?', '¿Puede describir un problema típico?'],
+      ['People', 'Who is the decision-maker for this purchase?', '¿Quién toma la decisión de esta compra?'],
+      ['Expectations', 'What are your expectations for the first three months?', '¿Qué expectativas tienen para los primeros tres meses?'],
+      ['Money', 'What budget do you have for this project?', '¿Qué presupuesto tienen para este proyecto?'],
+      ['Closing', 'What else is important for you?', '¿Qué más es importante para ustedes?'],
+      ['Confirm', 'So you need it for 50 users. Is that right?', 'Entonces lo necesitan para 50 usuarios. ¿Es correcto?'],
+    ], '0.7fr 1.6fr 1.5fr', ['dt-es', 'dt-en', 'dt-ex'])}
+
+    ${miniBlock('mod', 'Model Sentences', 'el orden de las preguntas')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  const speeds = [0.7, 0.8, 0.9, 1.0, 1.1];
+  return `<div class="sc">
+    ${badge(7, 'Listening', '5 min')}
+    <div class="es-note">Escucha a Mariam, una ejecutiva de cuenta. Explica cómo prepara la primera reunión con un cliente nuevo. Fíjate en las preguntas que hace y por qué las hace.</div>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">How I Run a First Meeting</div>
+          <div class="audio-box-sub">Mariam Kassab · Account Manager, Amman · about 1 min</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload" preload="metadata"
+        onplay="this.playbackRate=currentSpeed" src="${AUDIO_URL}">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        ${speeds.map(r => `<button class="speed-btn${r === currentSpeed ? ' active' : ''}" data-rate="${r}" onclick="setSpeed(${r})">${r.toFixed(1)}×</button>`).join('')}
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        <p>Hi, I'm Mariam. I'm an account manager at a software company in Amman. We sell a booking system for offices: meeting rooms, desks, even parking.</p>
+        <p>My first meeting with a new customer is not a presentation. I don't show the product. I listen. I usually prepare about ten questions, and most of them are open questions.</p>
+        <p>I start with something easy, like "What does your company do?" or "How many people are there in your office?" Then I ask about the problem. "What happens when someone needs a meeting room?" "How often do people book rooms?"</p>
+        <p>Next, I ask about people. "Who are the end users?" "Who is the decision-maker?" Sometimes they're different people, and that's important for me.</p>
+        <p>Budget is a sensitive topic, so I wait. I ask about it near the end.</p>
+        <p>When a customer says something interesting, I just say, "Tell me more about that." And my last question is always the same: "What else do you need from us?" Very often, the best information comes at that moment.</p>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🎧 Cómo escuchar</div>
+      Escucha una vez sin leer. Después responde las preguntas. Si necesitas, baja la velocidad a 0.8× o abre la transcripción.
+    </div>
+
+    ${miniBlock('lis', 'Listening', 'el audio')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    ${badge(8, 'Exercises', '5 min')}
+    <div class="es-note">Primero piensa o escribe tu respuesta. Después toca cada línea para ver la respuesta correcta.</div>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Set A · Make it open</div>
+      <div class="ex-instr">Cambia la pregunta cerrada por una pregunta abierta. Usa las palabras entre paréntesis.</div>
+      ${tapRow('1. Do you need training? <strong>(What kind)</strong>', '✓ What kind of training do you need?')}
+      ${tapRow('2. Do you order supplies every week? <strong>(How often)</strong>', '✓ How often do you order supplies?')}
+      ${tapRow('3. Do you have 50 users? <strong>(How many)</strong>', '✓ How many users do you have?')}
+      ${tapRow('4. Did you change supplier because of the price? <strong>(Why)</strong>', '✓ Why did you change supplier?')}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Set B · Fix the question</div>
+      <div class="ex-instr">Encuentra el error y corrígelo.</div>
+      ${tapRow('5. What you need from us?', '✓ What do you need from us?', 'Falta el ayudante <em>do</em>.')}
+      ${tapRow('6. What means "nice-to-have"?', '✓ What does "nice-to-have" mean?', 'Necesitas <em>does</em>, y <em>mean</em> va sin <em>-s</em>.')}
+      ${tapRow('7. Where your end users work?', '✓ Where do your end users work?', 'Falta el ayudante <em>do</em>.')}
+      ${tapRow('8. Is there any questions?', '✓ Are there any questions?', '<em>Questions</em> es plural: <em>are</em>.')}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] Set C · Choose the right word</div>
+      <div class="ex-instr">Elige la palabra correcta.</div>
+      ${tapRow('9. The manager pays for the system, but the warehouse team uses it. The warehouse team are the ___. <strong>(decision-makers / end users)</strong>', '✓ end users')}
+      ${tapRow('10. "We want it, but it\'s not essential." It\'s a ___. <strong>(must-have / nice-to-have)</strong>', '✓ nice-to-have')}
+      ${tapRow('11. In the first meeting, I want to ___ what the customer really needs. <strong>(find out / purchase)</strong>', '✓ find out')}
+      ${tapRow('12. What is your ___ system? <strong>(actual / current)</strong>', '✓ current', '<em>Actual</em> en inglés significa "real".')}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    ${badge(9, 'Quiz', '8 min')}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div class="result-attempts">Attempts so far: ${quizAttempts}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect ? `<button class="retry-btn" onclick="retakeQuiz()">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>` : ''}
+        <button class="review-btn" onclick="goTo(0)">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising, ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding, a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${escAttr(s.inputVal)}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q = QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const raw = quizState[qi].inputVal || '';
+  quizState[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  quizState[qi].revealed = true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s = quizState[i]; if(!s||!s.revealed) return;
+    let ok = false;
+    if (QUIZ[i].type==='mc')         ok = s.selected===QUIZ[i].answer;
+    else if (QUIZ[i].type==='tf')    ok = QUIZ[i].answer===(s.selected===0);
+    else if (QUIZ[i].type==='input') ok = s.correct;
+    if (!ok) { delete quizState[i]; }
+  });
+  quizAttempts++;
+  recalc(); rerender();
+  setTimeout(() => {
+    const first = QUIZ.findIndex((_,i) => !quizState[i] || !quizState[i].revealed);
+    const el = document.getElementById('qc-' + first);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
+  }, 100);
+}
+function recalc() {
+  let s = 0;
+  QUIZ.forEach((q,i) => {
+    const st = quizState[i]; if(!st||!st.revealed) return;
+    if (q.type==='mc' && st.selected===q.answer) s++;
+    else if (q.type==='tf' && q.answer===(st.selected===0)) s++;
+    else if (q.type==='input' && st.correct) s++;
+  });
+  quizScore = s;
+}
+function rerender() {
+  // Calls renderQuiz() directly, never STEPS[currentStep].fn()
+  const qi = STEPS.findIndex(s => s.fn === renderQuiz);
+  if (currentStep === qi) document.getElementById('mainContent').innerHTML = renderQuiz();
+}
+
+
+// ── CONCEPT-CHECK ENGINE (independent state per prefix) ───
+function renderMiniQ(prefix) {
+  const questions = MINI[prefix];
+  const state = miniState[prefix];
+  const letters = ['A','B','C','D'];
+  return questions.map((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    let body = '';
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      const correct = q.type === 'mc' ? s.selected === q.answer : q.answer === (s.selected === 0);
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${correct ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text" placeholder="Type your answer…"
+          value="${escAttr(s.inputVal)}" oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+    return `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i + 1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  }).join('');
+}
+
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const q = MINI[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+// Redraws only this concept check's container, so audio and scroll position are not interrupted
+function miniRerender(prefix) {
+  const el = document.getElementById('mini-' + prefix);
+  if (el) el.innerHTML = renderMiniQ(prefix);
+}
+
+
+// ── AUDIO (Pattern A: single player) ──────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+
+// ── STEPS: defined last, after all renderers above ───────
+STEPS = [
+  { label: '1. Welcome',        fn: renderWelcome },
+  { label: '2. Vocabulary',     fn: renderVocabulary },
+  { label: '3. Grammar Bridge', fn: renderBridge },
+  { label: '4. Form',           fn: renderForm },
+  { label: '5. Using Them Well',fn: renderUse },
+  { label: '6. Model Sentences',fn: renderModel },
+  { label: '7. Listening',      fn: renderListening },
+  { label: '8. Exercises',      fn: renderExercises },
+  { label: '9. Quiz',           fn: renderQuiz },
+];
+
+// LESSON CONTENT END
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER: do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

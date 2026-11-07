@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 46: Human Resources Basics | A1 · Unit 5 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* ── LESSON ADDITIONS (Master Prompt v4.6 components) ── */
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin:6px 0 12px; }
+.mini-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+.part-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin:26px 0 10px; }
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--gold); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.5; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; letter-spacing:0.5px; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); line-height:1.6; }
+.tap-answer.show { display:block; }
+.tap-answer .es { color:var(--grey-blue); font-style:italic; font-size:13px; }
+.tap-wrong { color:var(--red); font-style:italic; }
+.email-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.email-head { background:var(--light-grey); padding:12px 18px; border-bottom:1px solid var(--border-grey); font-size:13px; color:var(--grey-blue); line-height:1.7; }
+.email-head strong { color:var(--navy); }
+.email-body { padding:18px; font-size:14px; color:var(--slate); line-height:1.85; }
+.email-body mark { background:var(--gold-bg); color:var(--navy); font-weight:700; padding:0 3px; border-radius:3px; }
+.rule-card { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--gold); border-radius:8px; padding:16px 18px; margin-bottom:18px; }
+.rule-title { font-family:var(--font-heading); font-size:16px; color:var(--navy); margin-bottom:10px; }
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); gap:10px; }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+.remember-badge { display:inline-block; background:var(--gold-bg); border:1px solid rgba(201,151,44,0.4); color:#7A5500; border-radius:20px; padding:4px 12px; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:14px; }
+.step-list { list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-bottom:20px; }
+@media(max-width:600px){ .step-list{ grid-template-columns:1fr; } }
+.step-list li { background:var(--white); border:1px solid var(--border-grey); border-radius:7px; padding:9px 14px; font-size:13px; color:var(--navy); }
+.step-list li span { color:var(--gold); font-weight:700; margin-right:6px; }
+.group-label { font-size:13px; font-weight:700; color:var(--navy); margin:18px 0 8px; }
+.vocab-ex { font-size:13px; color:var(--slate); font-style:italic; }
+.recycle { font-size:10px; color:var(--gold); font-weight:700; letter-spacing:1px; margin-left:4px; }
+@media(max-width:600px){ .data-table-row, .data-table-head { grid-template-columns:1fr !important; } .data-table-head span:not(:first-child){ display:none; } }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 5 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 46: Human Resources Basics</h1>
+    <p class="hero-sub">Present Continuous for future arrangements · 45 min self-study</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Talk about HR processes</div><div class="outcome-note">Hablar de procesos de Recursos Humanos</div></div>
+      <div><div class="outcome-item">Talk about plans in your calendar</div><div class="outcome-note">Hablar de planes ya organizados</div></div>
+      <div><div class="outcome-item">Ask and answer about next week</div><div class="outcome-note">Preguntar y responder sobre la próxima semana</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<!-- ↓↓↓  LESSON CONTENT START -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+
+// ── NAVIGATION ENGINE ────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── HTML HELPERS ──────────────────────────────────────────
+function badge(num, title, time) {
+  return `<div class="sec-badge">
+    <div class="sec-badge-num">${num}</div>
+    <div class="sec-badge-title">${title}</div>
+    <div class="sec-badge-time">${time}</div>
+  </div>
+  <hr class="gold-rule">`;
+}
+function dataTable(cols, head, rows) {
+  return `<div class="data-table-wrap">
+    <div class="data-table-head" style="grid-template-columns:${cols}">${head.map(h => `<span>${h}</span>`).join('')}</div>
+    ${rows.map(r => `<div class="data-table-row" style="grid-template-columns:${cols}">${r.map((c,j) => `<div style="font-size:14px;${j===0?'font-weight:700;color:var(--navy);':'color:var(--slate);'}">${c}</div>`).join('')}</div>`).join('')}
+  </div>`;
+}
+function tap(q, a) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top">
+      <div class="tap-q">${q}</div>
+      <div class="tap-hint-label">Tap to reveal ▾</div>
+    </div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+function examples(label, items) {
+  return `<div class="examples-wrap">
+    <div class="examples-label">${label}</div>
+    ${items.map(([en,es]) => `<div class="example-item"><span class="example-en">${en}</span><span class="example-arrow">→</span><span class="example-es">${es}</span></div>`).join('')}
+  </div>`;
+}
+function builder(label, cols, example) {
+  const colHtml = cols.map(([lab, main, det], i) => {
+    const last = i === cols.length - 1;
+    const col = `<div style="display:flex;flex-direction:column;align-items:center;padding:14px 18px;background:rgba(201,151,44,0.22);${last?'':'border-right:2px solid rgba(255,255,255,0.1);'}min-width:100px;flex:1;gap:4px;">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">${lab}</div>
+        <div style="font-size:15px;font-weight:700;color:var(--gold)">${main}</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic">${det}</div>
+      </div>`;
+    const pipe = last ? '' : `<div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>`;
+    return col + pipe;
+  }).join('');
+  return `<div class="builder-wrap">
+    <div class="builder-label">${label}</div>
+    <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:22px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">${colHtml}</div>
+    <div class="builder-ex"><strong>${example}</strong></div>
+  </div>`;
+}
+function quickCheck(title, sub, prefix) {
+  return `<div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check: ${title}</div>
+    <p class="mini-sub">${sub}</p>
+    ${renderMiniQ(prefix)}`;
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const VOCAB_GROUPS = [
+  { label: "👥 People and places / Personas y lugares", rows: [
+    ["HR department", "departamento de Recursos Humanos", "The HR department is on the third floor.", ""],
+    ["recruiter", "reclutador/a", "The recruiter calls the candidates.", ""],
+    ["candidate", "candidato/a", "We have five candidates for the job.", ""],
+    ["new hire", "nuevo/a empleado/a", "Our new hire is very friendly.", ""]
+  ]},
+  { label: "📝 Getting a job / Conseguir un trabajo", rows: [
+    ["interview", "entrevista", "My interview is at 10 a.m.", ""],
+    ["job offer", "oferta de trabajo", "She got a job offer from a bank.", ""],
+    ["contract", "contrato", "Please read the contract carefully.", ""],
+    ["salary", "salario, sueldo", "The salary is paid every month.", ""],
+    ["start date", "fecha de inicio", "What is your start date?", ""],
+    ["onboarding", "proceso de incorporación, inducción", "Onboarding takes two days.", ""],
+    ["training", "capacitación, formación", "The training is in Room 4.", ""]
+  ]},
+  { label: "🏖️ Benefits and time off / Beneficios y tiempo libre", rows: [
+    ["benefits", "beneficios, prestaciones", "The benefits include health insurance.", ""],
+    ["health insurance", "seguro médico", "Health insurance is free for employees.", ""],
+    ["vacation days", "días de vacaciones", "I have 15 vacation days a year.", ""],
+    ["sick leave", "incapacidad, licencia por enfermedad", "Tomás is on sick leave this week.", ""],
+    ["day off", "día libre", "Friday is my day off.", ""]
+  ]},
+  { label: "📂 Paperwork / Trámites", rows: [
+    ["request", "solicitud; solicitar", "Send your request to HR.", "L44"],
+    ["form", "formulario", "Please fill in this form.", ""],
+    ["payroll", "nómina", "The payroll team pays the salaries.", ""],
+    ["appointment", "cita", "I have an appointment with HR at 3.", "L18"]
+  ]}
+];
+
+// Concept checks
+const VOC_CQ = [
+  { type:"mc", q:"What is 'payroll' in Spanish?", opts:["nómina","formulario","contrato"], answer:0,
+    fb:"<em>Payroll</em> = nómina, el sistema que paga los salarios de todos los empleados." },
+  { type:"tf", q:"A candidate is the person in HR who finds new employees.", answer:false,
+    fb:"La persona de HR que busca empleados es el <strong>recruiter</strong>. El <strong>candidate</strong> es la persona que busca el trabajo." },
+  { type:"input", q:"How do you say 'día libre' in English?", hint:"Two words.",
+    answers:["day off","a day off"], display:"day off",
+    fb:"<em>Día libre</em> = <strong>day off</strong>. I'm taking a day off on Friday." }
+];
+const BRIDGE_CQ = [
+  { type:"mc", q:"Right now, Laura ___ the payroll.", opts:["updates","is updating","updating"], answer:1,
+    fb:"Para una acción que pasa ahora: <strong>is + updating</strong>." },
+  { type:"tf", q:"'She working now' is correct.", answer:false,
+    fb:"Falta el verbo <em>be</em>: <strong>She's working now.</strong>" },
+  { type:"mc", q:"'I'm reading the contract at the moment.' Which words tell you it's NOW?", opts:["I'm reading","the contract","at the moment"], answer:2,
+    fb:"<strong>At the moment</strong> = en este momento. La expresión de tiempo nos dice cuándo pasa la acción." }
+];
+const GRAM_CQ = [
+  { type:"mc", q:"'We're meeting the candidate on Friday.' How do you know it's the future?", opts:["the -ing","'on Friday'","'We're'"], answer:1,
+    fb:"La forma es igual para el presente y el futuro. <strong>On Friday</strong> nos dice que es un plan futuro." },
+  { type:"input", q:"Write a sentence: she / start / on Monday", hint:"is + verb-ing + time",
+    answers:["she's starting on monday","she is starting on monday"], display:"She's starting on Monday.",
+    fb:"is + starting + la expresión de tiempo." },
+  { type:"tf", q:"'Are you taking a day off next week?' 'Yes, I'm.' is correct.", answer:false,
+    fb:"En la respuesta corta afirmativa no hay contracción: <strong>Yes, I am.</strong>" }
+];
+const MOD_CQ = [
+  { type:"mc", q:"Which sentence is about a plan in the calendar?", opts:["I'm signing the contract tomorrow afternoon.","I sign a lot of contracts.","I'm signing the contract right now."], answer:0,
+    fb:"<strong>Tomorrow afternoon</strong> marca un plan futuro organizado." },
+  { type:"input", q:"Complete the question: 'When ___ the new hire starting?'", hint:"One word.",
+    answers:["is"], display:"When is the new hire starting?",
+    fb:"Usamos <em>is</em> porque <em>the new hire</em> es una persona (he/she)." },
+  { type:"tf", q:"'What are you doing next week?' asks about your plans.", answer:true,
+    fb:"¡Correcto! <em>What do you do?</em> pregunta por tu trabajo. <em>What are you doing next week?</em> pregunta por tus planes." }
+];
+const LIS_CQ = [
+  { type:"mc", q:"When is Kofi meeting two candidates?", opts:["On Monday morning","On Tuesday afternoon","On Thursday"], answer:0,
+    fb:"'On Monday morning, I'm meeting two candidates.'" },
+  { type:"tf", q:"Kofi is working on Friday.", answer:false,
+    fb:"'I'm not working on Friday. I'm taking a day off!'" },
+  { type:"input", q:"What is Kofi doing right now?", hint:"He's ___ing an email.",
+    answers:["writing an email","he's writing an email","he is writing an email","writing an email to hana","he's writing an email to hana","he is writing an email to hana","writing","he's writing","he is writing"], display:"He's writing an email to Hana.",
+    fb:"'Right now, I'm writing an email to Hana.' Es una acción en este momento: Present Continuous para <strong>ahora</strong>." }
+];
+const MINI = { voc: VOC_CQ, bridge: BRIDGE_CQ, gram: GRAM_CQ, mod: MOD_CQ, lis: LIS_CQ };
+const miniState = { voc: {}, bridge: {}, gram: {}, mod: {}, lis: {} };
+
+// Main quiz: 12 questions, Q5 and Q10 are bridge items
+const QUIZ = [
+  { type:"mc", q:"I ___ the recruiter tomorrow.", opts:["meet","am meeting","meeting"], answer:1,
+    hint:"Plan en el calendario + tomorrow.",
+    fb:"<strong>I'm meeting the recruiter tomorrow.</strong> am + meeting." },
+  { type:"mc", q:"Which sentence is about the FUTURE?", opts:["She's interviewing a candidate now.","She's interviewing a candidate on Friday.","She interviews candidates every week."], answer:1,
+    hint:"Busca la expresión de tiempo.",
+    fb:"<strong>On Friday</strong> convierte la frase en un plan futuro." },
+  { type:"input", q:"They ___ (start) the training next week.", hint:"are + verb-ing",
+    answers:["are starting","'re starting","they are starting","they're starting","they are starting the training next week","they're starting the training next week"], display:"They're starting the training next week.",
+    fb:"are + starting + next week." },
+  { type:"mc", q:"Which sentence is correct?", opts:["I having an interview on Thursday.","I'm have an interview on Thursday.","I'm having an interview on Thursday."], answer:2,
+    hint:"am + verb-ing.",
+    fb:"am + <strong>having</strong> + la expresión de tiempo." },
+  { type:"mc", q:"Look! Laura ___ the payroll right now.", opts:["updates","is updating","update"], answer:1,
+    hint:"Repaso: acción que pasa ahora.",
+    fb:"<em>Right now</em> = una acción en este momento. <strong>Laura is updating the payroll.</strong>" },
+  { type:"mc", q:"The ___ is the money you get every month for your job.", opts:["contract","form","salary"], answer:2,
+    hint:"Vocabulario de HR.",
+    fb:"<strong>Salary</strong> = salario o sueldo." },
+  { type:"input", q:"Write a negative sentence: I / not / work / on Friday", hint:"I'm not + verb-ing",
+    answers:["i'm not working on friday","i am not working on friday"], display:"I'm not working on Friday.",
+    fb:"am not + working + on Friday." },
+  { type:"mc", q:"Choose the correct spelling.", opts:["takeing","takking","taking"], answer:2,
+    hint:"El verbo termina en -e.",
+    fb:"Si el verbo termina en -e, quita la -e: take → <strong>taking</strong>." },
+  { type:"mc", q:"'___ next week?' 'I'm doing a training course.'", opts:["What do you do","What are you doing","What you are doing"], answer:1,
+    hint:"Pregunta por planes.",
+    fb:"<strong>What are you doing next week?</strong> pregunta por tus planes." },
+  { type:"tf", q:"'I am work now' is correct.", answer:false,
+    hint:"Repaso: Present Continuous para ahora.",
+    fb:"Falta el -ing: <strong>I'm working now.</strong>" },
+  { type:"mc", q:"Carlos is sick. He's on ___ this week.", opts:["sick leave","job offer","onboarding"], answer:0,
+    hint:"Vocabulario de HR.",
+    fb:"<strong>Sick leave</strong> = incapacidad o licencia por enfermedad." },
+  { type:"mc", q:"'Is Hana starting on Tuesday?' 'Yes, ___.'", opts:["she's","she is","she starting"], answer:1,
+    hint:"Respuesta corta afirmativa.",
+    fb:"Sin contracción en la respuesta corta afirmativa: <strong>Yes, she is.</strong>" }
+];
+
+// ── Quiz state ────────────────────────────────────────────
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 1;
+
+const normalise = s => (s || '').trim().toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').replace(/[.,!?]+$/, '');
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    ${badge(1, 'Welcome', '2 min')}
+    <p class="sec-intro">¡Bienvenido/a a la <strong>Lección 46</strong>! Hoy entramos al departamento de Recursos Humanos (HR): entrevistas, contratos, vacaciones, nómina y días libres.</p>
+    <p class="sec-intro">También aprendes algo muy útil: usar el <strong>Present Continuous</strong> (am / is / are + -ing) para hablar del <strong>futuro</strong>. En inglés, cuando algo ya está organizado en el calendario, como una entrevista el lunes o una capacitación el jueves, normalmente usamos esta forma.</p>
+    ${examples('Example', [["I'm meeting the recruiter on Monday.", "Me reúno con el reclutador el lunes."]])}
+    <div class="info-box"><strong>💡 Ya conoces esta forma.</strong> En la Lección 35 usaste el Present Continuous para acciones que pasan <strong>ahora</strong>. Hoy es la misma forma, pero con otro significado: el <strong>futuro planeado</strong>. La diferencia está en la expresión de tiempo.</div>
+    <div class="sub-heading">Tu ruta de hoy · 45 minutos</div>
+    <ul class="step-list">
+      <li><span>1</span>Welcome</li>
+      <li><span>2</span>Vocabulary: 20 palabras de HR</li>
+      <li><span>3</span>Grammar Bridge: Present Continuous para ahora</li>
+      <li><span>4</span>Grammar: Present Continuous para el futuro</li>
+      <li><span>5</span>Model Sentences: HR in Action</li>
+      <li><span>6</span>Listening: Kofi's Busy Week</li>
+      <li><span>7</span>Exercises</li>
+      <li><span>8</span>Quiz: 12 preguntas</li>
+    </ul>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  return `<div class="sc">
+    ${badge(2, 'Vocabulary: The World of HR', '8 min')}
+    <div class="es-note">Estas son las palabras clave del mundo de Recursos Humanos. Lee cada palabra, su traducción y el ejemplo. Repite las palabras en voz alta.</div>
+    ${VOCAB_GROUPS.map(g => `
+      <div class="group-label">${g.label}</div>
+      ${dataTable('1fr 1.1fr 1.6fr', ['English','Español','Example'],
+        g.rows.map(([en, es, ex, rec]) => [en + (rec ? `<span class="recycle">${rec}</span>` : ''), es, `<span class="vocab-ex">${ex}</span>`]))}
+    `).join('')}
+    <div class="tip-box">
+      <div class="tip-label">⚠️ Falsos amigos y trampas</div>
+      <strong>form</strong> = formulario. No es "forma" (shape). <em>Fill in the form.</em><br>
+      <strong>benefits</strong> en HR = prestaciones (seguro, vacaciones). No es la "ganancia" de una empresa (<em>profit</em>).<br>
+      <strong>salary</strong> vs <strong>payroll</strong>: <em>salary</em> es el dinero que <strong>tú</strong> recibes. <em>Payroll</em> es la nómina de toda la empresa.<br>
+      <strong>vacation days</strong>: en inglés de EE. UU. decimos <em>vacation</em>. En inglés británico se dice <em>holiday</em>. Las dos formas son correctas.<br>
+      <strong>appointment</strong> = cita (con el médico, con HR). No es "apuntamiento".<br>
+      <strong>sick leave</strong> = incapacidad. Decimos <em>I'm on sick leave</em>, no <em>I'm in incapacity</em>.
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">🔊 Pronunciación</div>
+      <em>recruiter</em> /rɪˈkruːtər/ · <em>payroll</em> /ˈpeɪroʊl/ · <em>candidate</em>: el acento va en la primera sílaba, <strong>CAN</strong>-di-date.
+    </div>
+    ${quickCheck('Vocabulary', '3 preguntas rápidas para confirmar que las palabras clave están claras.', 'voc')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    ${badge(3, 'Grammar Bridge: Present Continuous for NOW', '4 min')}
+    <div class="remember-badge">🔁 Remember this? · Lesson 35</div>
+    <p class="sec-intro">Antes de aprender el uso nuevo, repasemos el Present Continuous que ya conoces: acciones que pasan <strong>en este momento</strong>.</p>
+    ${builder('Present Continuous · now', [
+      ['Subject', 'Laura', 'sujeto'],
+      ['Be', 'is', 'am / is / are'],
+      ['Verb + -ing', 'updating', 'verbo + -ing'],
+      ['Time', 'right now', 'ahora']
+    ], '"Right now, Laura is updating the payroll."')}
+    ${dataTable('1fr 1.5fr', ['Subject','Form'], [
+      ['I', 'am working'],
+      ['He / She / It', 'is working'],
+      ['You / We / They', 'are working']
+    ])}
+    <div class="info-box"><strong>Misma forma, otro tiempo.</strong><br>
+      Con <strong>now, right now, at the moment</strong>: la acción pasa <strong>ahora</strong>. <em>She's interviewing a candidate now.</em><br>
+      Con <strong>tomorrow, next week, on Friday</strong>: es un <strong>plan futuro</strong> ya organizado. <em>She's interviewing a candidate tomorrow.</em><br>
+      La forma no cambia. La palabra de tiempo te dice si es ahora o futuro.</div>
+    <div class="part-label">⚠️ Error común: toca para ver la corrección</div>
+    ${tap('<span class="tap-wrong">❌ I am work now.</span>', '✅ <strong>I\'m working now.</strong> <span class="es">Falta el -ing.</span>')}
+    ${tap('<span class="tap-wrong">❌ She working now.</span>', '✅ <strong>She\'s working now.</strong> <span class="es">Falta is.</span>')}
+    <div class="es-note"><strong>Conexión con el español:</strong> <em>Estoy trabajando (ahora)</em> = <strong>I'm working now.</strong> Aquí el español y el inglés funcionan igual. Pero <em>Me reúno con HR el lunes</em> (futuro planeado) = <strong>I'm meeting HR on Monday.</strong> El español usa el presente simple, pero el inglés usa el Present Continuous. ¡Esto es lo nuevo de hoy!</div>
+    ${quickCheck('Grammar Bridge', '3 preguntas rápidas para confirmar el repaso.', 'bridge')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    ${badge(4, 'Grammar: Present Continuous for Future Arrangements', '12 min')}
+
+    <div class="part-label">4A · Notice</div>
+    <p class="sec-intro">Lee el correo de Yuki, de Recursos Humanos. ¿Estas acciones pasan ahora o en el futuro?</p>
+    <div class="email-box">
+      <div class="email-head"><strong>From:</strong> Yuki Tanaka, HR Department<br><strong>Subject:</strong> Next week</div>
+      <div class="email-body">
+        Hi team,<br><br>
+        Next week is busy! On Monday, <mark>I'm interviewing</mark> two candidates. On Tuesday at 9 a.m., our new hire <mark>is starting</mark>. The IT team <mark>is giving</mark> her a laptop and a visitor badge. On Wednesday, <mark>we're not doing</mark> interviews. <mark>We're preparing</mark> the payroll. And on Thursday afternoon, <mark>you're all doing</mark> a first aid training. <mark>Are you coming?</mark> Please reply by Friday.<br><br>
+        Yuki
+      </div>
+    </div>
+    ${tap('Are these actions happening now?', '<strong>No.</strong> <span class="es">Pasan la próxima semana.</span>')}
+    ${tap('Are they planned?', '<strong>Yes.</strong> <span class="es">Ya están en el calendario: día, hora, personas.</span>')}
+    ${tap('What form does Yuki use?', '<strong>am / is / are + -ing</strong> <span class="es">+ una expresión de tiempo futuro.</span>')}
+
+    <div class="divider"></div>
+    <div class="part-label">4B · Form Rules</div>
+
+    <div class="rule-card">
+      <div class="rule-title">Rule 1 · Affirmative / Afirmativa</div>
+      ${builder('Present Continuous · future', [
+        ['Subject', 'I', 'sujeto'],
+        ['Be', "'m", 'am / is / are'],
+        ['Verb + -ing', 'meeting', 'verbo + -ing'],
+        ['Future time', 'on Monday', 'expresión de futuro']
+      ], '"I\'m meeting the recruiter on Monday."')}
+      ${dataTable('1fr 1fr 2fr', ['Full form','Contraction','Example'], [
+        ['I am', "I'm", "I'm starting my new job next week."],
+        ['He / She is', "He's / She's", "She's signing the contract tomorrow."],
+        ['You / We / They are', "You're / We're / They're", "We're interviewing a candidate at 3 p.m."]
+      ])}
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-title">Rule 2 · The time expression shows the future</div>
+      <div class="es-note">La expresión de tiempo es obligatoria. Sin ella, el oyente piensa que es AHORA.</div>
+      ${dataTable('1fr 1fr', ['English','Español'], [
+        ['tomorrow', 'mañana'],
+        ['this afternoon / this evening', 'esta tarde / esta noche'],
+        ['tonight', 'esta noche'],
+        ['next week / next month', 'la próxima semana / el próximo mes'],
+        ['on Friday / on 3 March', 'el viernes / el 3 de marzo'],
+        ['at 3 p.m.', 'a las 3 p. m.'],
+        ['in June', 'en junio']
+      ])}
+      ${examples('Contrast', [
+        ["She's interviewing a candidate <strong>now</strong>.", "ahora"],
+        ["She's interviewing a candidate <strong>tomorrow</strong>.", "futuro planeado"]
+      ])}
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-title">Rule 3 · Negative / Negativa</div>
+      ${builder('Negative', [
+        ['Subject', 'I', 'sujeto'],
+        ['Be + not', "'m not", "am not / isn't / aren't"],
+        ['Verb + -ing', 'working', 'verbo + -ing'],
+        ['Time', 'on Friday', 'cuándo']
+      ], '"I\'m not working on Friday. I\'m taking a day off."')}
+      ${examples('More examples', [
+        ["She isn't coming to the training tomorrow.", "Ella no viene a la capacitación mañana."],
+        ["We aren't interviewing anyone next week.", "No entrevistamos a nadie la próxima semana."]
+      ])}
+      <div class="es-note">Con "I" no existe "amn't". Dices <strong>I'm not</strong>.</div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-title">Rule 4 · Questions and short answers / Preguntas y respuestas cortas</div>
+      <p class="sec-intro" style="font-size:14px;">Yes/No questions: <strong>Am / Is / Are</strong> + subject + verb-ing + time?</p>
+      ${dataTable('1.6fr 1fr 1fr', ['Question','Yes','No'], [
+        ['Are you starting on Monday?', 'Yes, I am.', "No, I'm not."],
+        ['Is she coming tomorrow?', 'Yes, she is.', "No, she isn't."],
+        ['Are they signing the contract today?', 'Yes, they are.', "No, they aren't."]
+      ])}
+      <div class="es-note">Importante: en la respuesta corta afirmativa, no uses contracción. ✅ Yes, I am. ❌ Yes, I'm.</div>
+      <p class="sec-intro" style="font-size:14px;">Wh- questions: <strong>Wh-</strong> + am / is / are + subject + verb-ing?</p>
+      ${examples('Wh- questions', [
+        ["<strong>When</strong> is she starting?", "On Monday."],
+        ["<strong>What</strong> are you doing next week?", "I'm doing a training course."],
+        ["<strong>Where</strong> are we meeting the candidate?", "In Room 2."],
+        ["<strong>What time</strong> is the interview starting?", "At 10 a.m."]
+      ])}
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-title">Rule 5 · Spelling -ing / Ortografía</div>
+      ${dataTable('1.4fr 1.6fr', ['Rule','Examples'], [
+        ['Most verbs: + -ing', 'start → starting, meet → meeting, sign → signing'],
+        ['Verb ends in -e: quita la -e', 'take → taking, come → coming, have → having, prepare → preparing'],
+        ['Consonante-vocal-consonante (verbo corto): dobla la última consonante', 'sit → sitting, get → getting, plan → planning, stop → stopping']
+      ])}
+    </div>
+
+    <div class="divider"></div>
+    <div class="part-label">4C · Use</div>
+    <div class="info-box"><strong>¿Cuándo usamos el Present Continuous para el futuro?</strong><br>
+      Para <strong>arreglos</strong>: planes ya decididos y organizados, normalmente con día, hora u otra persona. Si está en tu calendario, ¡usa esta forma!<br><br>
+      <strong>Prueba rápida:</strong> ¿Ya está en el calendario? Si la respuesta es sí, usa el Present Continuous.</div>
+    ${examples('✅ Típico en HR', [
+      ["an interview: I'm interviewing a candidate on Thursday.", "una entrevista"],
+      ["a meeting or appointment: I'm meeting HR at 2 p.m.", "una reunión o cita"],
+      ["a start date: Ana is starting on 1 June.", "una fecha de inicio"],
+      ["a training day: We're doing a training next Monday.", "un día de capacitación"],
+      ["a day off or vacation: He's taking three vacation days in July.", "un día libre o vacaciones"]
+    ])}
+    <div class="es-note">Para predicciones o ideas que no están planeadas hay otras formas del futuro. Las veremos más adelante, en la Lección 57.</div>
+
+    <div class="sub-heading">🌉 Spanish Bridge</div>
+    <div class="bridge-table-wrap">
+      <div class="bridge-table-head"><span>English (Present Continuous)</span><span>Spanish (presente)</span></div>
+      <div class="bridge-row"><div class="bridge-en">I'm starting on Monday.</div><div class="bridge-es">Empiezo el lunes.</div></div>
+      <div class="bridge-row"><div class="bridge-en">She's interviewing a candidate tomorrow.</div><div class="bridge-es">Mañana entrevista a un candidato.</div></div>
+      <div class="bridge-row"><div class="bridge-en">We're meeting the recruiter at 3.</div><div class="bridge-es">Nos reunimos con el reclutador a las 3.</div></div>
+      <div class="bridge-row"><div class="bridge-en">They aren't working on Friday.</div><div class="bridge-es">No trabajan el viernes.</div></div>
+      <div class="bridge-row"><div class="bridge-en">Are you taking a day off next week?</div><div class="bridge-es">¿Te tomas un día libre la próxima semana?</div></div>
+    </div>
+    <div class="es-note">En español, para planes futuros usamos mucho el <strong>presente simple</strong> (<em>mañana empiezo, el lunes me reúno</em>). En inglés, para tus planes personales, lo natural es el <strong>Present Continuous</strong>.</div>
+    <div class="tip-box">
+      <div class="tip-label">🚧 Donde el paralelo se rompe</div>
+      El español también tiene <em>estoy + gerundio</em>, pero casi nunca lo usa para el futuro ("Estoy empezando el lunes" suena raro). En inglés es al revés: <strong>I'm starting on Monday</strong> es la forma más natural. No traduzcas palabra por palabra.
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">⭐ Bonus</div>
+      "¿Qué haces la próxima semana?" = <strong>What are you doing next week?</strong> No digas "What do you do next week?", porque <em>What do you do?</em> pregunta por tu profesión o tu rutina.
+    </div>
+
+    <div class="part-label">⚠️ Errores comunes: toca cada uno para ver la corrección</div>
+    <div class="mistake-wrap">
+      <div class="mistake-label">Common mistakes</div>
+      ${tap('<span class="tap-wrong">❌ I meeting the recruiter tomorrow.</span>', '✅ <strong>I\'m meeting the recruiter tomorrow.</strong> <span class="es">Falta el verbo be (am).</span>')}
+      ${tap('<span class="tap-wrong">❌ She is start on Monday.</span>', '✅ <strong>She is starting on Monday.</strong> <span class="es">Después de is va el verbo con -ing.</span>')}
+      ${tap('<span class="tap-wrong">❌ On Friday I take a day off.</span>', '✅ <strong>I\'m taking a day off on Friday.</strong> <span class="es">En español decimos "El viernes me tomo un día libre", pero en inglés, para un plan personal, usamos am/is/are + -ing.</span>')}
+      ${tap('<span class="tap-wrong">❌ comeing / takeing / siting</span>', '✅ <strong>coming / taking / sitting</strong> <span class="es">Revisa la Regla 5.</span>')}
+      ${tap('<span class="tap-wrong">❌ I\'m having an interview.</span> (if you mean Thursday)', '✅ <strong>I\'m having an interview on Thursday.</strong> <span class="es">Sin expresión de tiempo, suena a que la entrevista pasa ahora mismo.</span>')}
+    </div>
+
+    ${quickCheck('Grammar', '3 preguntas rápidas para confirmar la gramática nueva.', 'gram')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  return `<div class="sc">
+    ${badge(5, 'Model Sentences: HR in Action', '4 min')}
+    <p class="sec-intro">Frases reales de una semana en Recursos Humanos. Léelas en voz alta.</p>
+    ${examples('🧑‍💼 The candidate / El candidato', [
+      ["I'm having an interview with the recruiter on Tuesday at 10.", "Tengo una entrevista con el reclutador el martes a las 10."],
+      ["I'm signing the contract tomorrow afternoon.", "Firmo el contrato mañana por la tarde."],
+      ["I'm starting my new job on 1 March.", "Empiezo mi nuevo trabajo el 1 de marzo."]
+    ])}
+    ${examples('🏢 The HR team / El equipo de HR', [
+      ["We're interviewing three candidates this week.", "Entrevistamos a tres candidatos esta semana."],
+      ["The new hires are doing their onboarding on Monday.", "Los nuevos empleados hacen su inducción el lunes."],
+      ["Laura isn't working on the payroll tomorrow. She's giving a training.", "Laura no trabaja en la nómina mañana. Da una capacitación."]
+    ])}
+    ${examples('👩‍💻 The employee / El empleado', [
+      ["I'm taking two vacation days in December.", "Me tomo dos días de vacaciones en diciembre."],
+      ["I'm not coming to the office on Friday. I have a doctor's appointment.", "No vengo a la oficina el viernes. Tengo una cita médica."],
+      ["Are you sending your request today? Yes, I am.", "¿Envías tu solicitud hoy? Sí."]
+    ])}
+    ${examples('❓ Asking about plans / Preguntar por planes', [
+      ["When is the new hire starting?", "¿Cuándo empieza el nuevo empleado?"],
+      ["What time are we meeting HR?", "¿A qué hora nos reunimos con HR?"],
+      ["What are you doing next week?", "¿Qué haces la próxima semana?"]
+    ])}
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip</div>
+      <em>I have an appointment</em> (tengo una cita) también es correcto. <em>Have</em> aquí significa "tener". Las dos formas funcionan: <strong>I have an interview on Tuesday / I'm having an interview on Tuesday.</strong>
+    </div>
+    ${quickCheck('Model Sentences', '3 preguntas rápidas sobre las frases modelo.', 'mod')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  const speeds = [0.7, 0.8, 0.9, 1.0, 1.1];
+  return `<div class="sc">
+    ${badge(6, "Listening: Kofi's Busy Week", '5 min')}
+    <p class="sec-intro">Escucha a Kofi, coordinador de Recursos Humanos. Habla de su semana. Primero escucha sin la transcripción y después responde las preguntas.</p>
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Kofi's Busy Week</div>
+          <div class="audio-box-sub">Kofi Mensah, HR Coordinator · about 70 sec · Ghanaian English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        onloadedmetadata="this.playbackRate=currentSpeed"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L46-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        ${speeds.map(r => `<button class="speed-btn ${r===currentSpeed?'active':''}" data-rate="${r}" onclick="setSpeed(${r})">${r.toFixed(1)}×</button>`).join('')}
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        <p>Hi, I'm Kofi Mensah. I'm an HR coordinator at Brightline Logistics in Accra. Next week is very busy for our HR department.</p>
+        <p>On Monday morning, I'm meeting two candidates for the sales team. The first interview is at nine, and the second is at eleven. On Tuesday, our new hire, Hana, is starting. She's doing her onboarding all day, and in the afternoon, she's signing her contract.</p>
+        <p>On Wednesday, I'm not interviewing anyone. I'm preparing the payroll, because we pay the salaries on Friday. On Thursday, the whole team is doing a first aid training in the big meeting room.</p>
+        <p>And on Friday? I'm not working on Friday. I'm taking a day off! My manager approved my request last week.</p>
+        <p>Oh, and right now, I'm writing an email to Hana. She's starting on Tuesday at half past eight, and she must bring her ID.</p>
+      </div>
+    </div>
+    <div class="es-note">Consejo: si es difícil, usa la velocidad 0.8× y escucha dos veces.</div>
+    ${quickCheck('Listening', '3 preguntas sobre el audio de Kofi.', 'lis')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    ${badge(7, 'Exercises', '5 min')}
+    <p class="sec-intro">Piensa tu respuesta primero y después toca cada frase para ver la solución.</p>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] A · Now or future? / ¿Ahora o futuro?</div>
+      <div class="es-note">Lee la frase. ¿Pasa ahora o es un plan futuro?</div>
+      ${tap('1. Laura is updating the payroll at the moment.', '<strong>Now</strong> <span class="es">(at the moment)</span>')}
+      ${tap("2. We're interviewing a candidate on Thursday.", '<strong>Future</strong> <span class="es">(on Thursday)</span>')}
+      ${tap("3. I'm reading the contract right now.", '<strong>Now</strong> <span class="es">(right now)</span>')}
+      ${tap('4. Omar is starting his new job next month.', '<strong>Future</strong> <span class="es">(next month)</span>')}
+      ${tap("5. They're doing the onboarding this afternoon.", '<strong>Future</strong> <span class="es">(this afternoon)</span>')}
+      ${tap('6. Look! The recruiter is calling a candidate.', '<strong>Now</strong> <span class="es">(Look!)</span>')}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] B · Complete with the Present Continuous / Completa</div>
+      ${tap('1. I ______ (meet) the recruiter tomorrow.', "<strong>'m meeting</strong>")}
+      ${tap('2. She ______ (take) three vacation days in June.', "<strong>'s taking</strong> <span class=\"es\">(take → taking)</span>")}
+      ${tap('3. We ______ (have) a training on Friday.', "<strong>'re having</strong> <span class=\"es\">(have → having)</span>")}
+      ${tap('4. The new hires ______ (come) to the office on Monday.', '<strong>are coming</strong> <span class="es">(come → coming)</span>')}
+      ${tap('5. Marco ______ (sit) with the HR team next week.', '<strong>is sitting</strong> <span class="es">(sit → sitting)</span>')}
+      ${tap('6. They ______ (sign) the contract at 4 p.m.', "<strong>'re signing</strong>")}
+      ${tap('7. I ______ (not / work) on Monday.', "<strong>'m not working</strong>")}
+      ${tap('8. Inés ______ (not / come) to the interview tomorrow.', "<strong>isn't coming</strong>")}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] C · Find and fix the mistake / Corrige el error</div>
+      ${tap('<span class="tap-wrong">1. I meeting the candidate on Tuesday.</span>', "<strong>I'm meeting the candidate on Tuesday.</strong>")}
+      ${tap('<span class="tap-wrong">2. She is start her onboarding tomorrow.</span>', '<strong>She is starting her onboarding tomorrow.</strong>')}
+      ${tap('<span class="tap-wrong">3. We are takeing a day off on Friday.</span>', '<strong>We are taking a day off on Friday.</strong>')}
+      ${tap('<span class="tap-wrong">4. On Monday I sign the contract.</span>', "<strong>I'm signing the contract on Monday.</strong>")}
+      ${tap("<span class=\"tap-wrong\">5. Are you coming to the training? Yes, I'm.</span>", '<strong>Yes, I am.</strong> <span class="es">Sin contracción en la respuesta corta.</span>')}
+      ${tap('<span class="tap-wrong">6. What do you do next week?</span>', '<strong>What are you doing next week?</strong>')}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">[Exercise] D · Questions and short answers / Preguntas y respuestas</div>
+      ${tap('1. you / start / on Monday? (✓)', '<strong>Are you starting on Monday? Yes, I am.</strong>')}
+      ${tap('2. she / come / to the interview tomorrow? (✗)', "<strong>Is she coming to the interview tomorrow? No, she isn't.</strong>")}
+      ${tap('3. When / the new hire / start?', '<strong>When is the new hire starting?</strong>')}
+      ${tap('4. What time / we / meet / HR?', '<strong>What time are we meeting HR?</strong>')}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising, ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding, a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    ${badge(8, 'Quiz', '5 min')}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div class="result-msg" style="margin-top:6px;">Attempts so far: ${quizAttempts}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${(s.inputVal||'').replace(/"/g,'&quot;')}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const val=normalise(quizState[qi].inputVal);
+  quizState[qi].correct=q.answers.some(a=>val===normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  quizAttempts++;
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  // Calls renderQuiz() directly, not STEPS[currentStep].fn()
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── CONCEPT-CHECK ENGINE (independent state per prefix) ───
+function renderMiniQ(prefix) {
+  const questions = MINI[prefix];
+  const state = miniState[prefix];
+  const letters = ['A','B','C','D'];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    let body = '';
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True','False'];
+      const lets = q.type === 'mc' ? letters : ['T','F'];
+      const ok = q.type === 'mc' ? s.selected === q.answer : q.answer === (s.selected === 0);
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${ok ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text" placeholder="Type your answer…" value="${(s.inputVal || '').replace(/"/g,'&quot;')}" oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return `<div id="mini-${prefix}">${html}</div>`;
+}
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const q = MINI[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = normalise(miniState[prefix][qi].inputVal);
+  miniState[prefix][qi].correct = q.answers.some(a => raw === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  // Redraws only this concept check, so audio playback and scroll position are kept
+  const box = document.getElementById('mini-' + prefix);
+  if (box) box.outerHTML = renderMiniQ(prefix);
+}
+
+// ── AUDIO (Pattern A: single player) ──────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Welcome",          fn: renderWelcome },
+  { label: "2. Vocabulary",       fn: renderVocabulary },
+  { label: "3. Grammar Bridge",   fn: renderBridge },
+  { label: "4. Grammar",          fn: renderGrammar },
+  { label: "5. Model Sentences",  fn: renderModel },
+  { label: "6. Listening",        fn: renderListening },
+  { label: "7. Exercises",        fn: renderExercises },
+  { label: "8. Quiz",             fn: renderQuiz },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

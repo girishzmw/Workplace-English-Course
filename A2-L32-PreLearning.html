@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 32: Product Demonstrations | A2 · Unit 4 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold, Georgia headings, Lato body
+   All colours as CSS variables, never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  --es-text:     #7A5500;
+  --amber-text:  #92400E;
+  --sky-bg:      #EEF6FB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A: Outcomes grid, use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B: Pills, use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE, full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE, use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX: off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX: off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:var(--es-text); font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER, column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--amber-text); font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:var(--sky-bg); }
+.q-opt.selected { border-color:var(--sky); background:var(--sky-bg); }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:var(--white); }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:var(--white); }
+.q-opt.selected .opt-letter { background:var(--sky);  color:var(--white); }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; min-width:0; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.result-attempts { font-size:12px; color:rgba(255,255,255,0.45); margin-top:8px; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+.result-btn { padding:12px 28px; border-radius:8px; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; }
+.result-btn.retry { background:var(--gold); color:var(--navy); border:none; }
+.result-btn.review { background:rgba(255,255,255,0.1); color:var(--white); border:1px solid rgba(255,255,255,0.25); }
+
+/* BUTTONS */
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+@media(max-width:600px){ .nav-btn{ padding:10px 12px; font-size:12px; } }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* ── LESSON ADDITIONS (A2 L32) ───────────────────────────── */
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin:22px 0 10px; }
+.cc-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+.dt-en { font-size:14px; font-weight:700; color:var(--navy); }
+.dt-cell { font-size:14px; color:var(--slate); line-height:1.5; }
+.dt-cell em, .dt-en em { color:var(--navy); }
+@media(max-width:600px){
+  .data-table-head { display:none; }
+  .data-table-row { grid-template-columns:1fr !important; gap:3px; }
+}
+.rule-list { margin:0 0 18px 20px; font-size:14px; line-height:1.8; color:var(--slate); }
+.rule-list li { margin-bottom:4px; }
+.notice-box { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--gold); border-radius:0 8px 8px 0; padding:16px 20px; margin-bottom:18px; font-family:var(--font-heading); font-size:16px; line-height:1.8; color:var(--navy); font-style:italic; }
+.notice-box strong { color:var(--sky); font-style:normal; }
+.rule-title { font-size:15px; font-weight:700; color:var(--navy); margin:22px 0 10px; padding-left:10px; border-left:3px solid var(--gold); }
+.map-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+.map-chip { background:var(--white); border:1px solid var(--border-grey); border-radius:16px; padding:5px 12px; font-size:12px; color:var(--navy); }
+.recall-list { margin:6px 0 0 18px; }
+.recall-list li { margin-bottom:3px; }
+.steps-list { counter-reset:dstep; list-style:none; margin-bottom:18px; }
+.steps-list li { counter-increment:dstep; position:relative; padding:10px 14px 10px 48px; background:var(--white); border:1px solid var(--border-grey); border-radius:8px; margin-bottom:8px; font-size:14px; line-height:1.6; color:var(--slate); }
+.steps-list li::before { content:counter(dstep); position:absolute; left:12px; top:10px; width:24px; height:24px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+
+/* TAP TO REVEAL */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-q.wrong-q { color:var(--red); font-style:italic; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; flex-shrink:0; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; line-height:1.6; }
+.tap-row.open .tap-answer { display:block; }
+.tap-row.open .tap-hint-label { visibility:hidden; }
+.tap-right { color:var(--green); font-weight:700; }
+.tap-note { color:var(--es-text); font-style:italic; font-size:13px; margin-top:4px; }
+
+/* SPANISH BRIDGE TABLE */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); gap:10px; }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); gap:10px; }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-en strong { color:var(--gold); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER, do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 4 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 32: Product Demonstrations</h1>
+    <p class="hero-sub">Present Simple for features · Grammar bridge: can / can't · About 45 minutes</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Describe what a product does</div><div class="outcome-note">Describir lo que hace un producto</div></div>
+      <div><div class="outcome-item">Explain what a feature means for the customer</div><div class="outcome-note">Explicar qué significa una función para el cliente</div></div>
+      <div><div class="outcome-item">Answer simple questions about a product</div><div class="outcome-note">Responder preguntas sencillas sobre un producto</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV, built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT, rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ===================================================================
+     SINGLE SCRIPT BLOCK: all JavaScript lives here.
+     1. All JS is in this one block, never add a second script tag.
+     2. STEPS is declared empty at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderers.
+     4. render() is called last.
+     5. rerender() calls renderQuiz() directly.
+     LESSON CONTENT START
+     =================================================================== -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 0;
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const miniState = { voc:{}, bridge:{}, gram:{}, fb:{}, mod:{}, lis:{} };
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+const AUDIO_URL = 'https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L32-Audio001.mp3';
+
+const VOCAB_GROUPS = [
+  { title:`The product`, rows:[
+    [`feature ★ <span class="dt-cell">(noun)</span>`, `función, característica`, `The app has a great feature: it reads receipts from a photo.`],
+    [`benefit ★ <span class="dt-cell">(noun)</span>`, `beneficio`, `The main benefit is simple: your team saves time.`],
+    [`dashboard <span class="dt-cell">(noun)</span>`, `panel de control, tablero`, `The dashboard shows all your sales on one screen.`],
+    [`demo <span class="dt-cell">(noun)</span>`, `demostración`, `I have a demo with a new customer at three o'clock.`],
+    [`secure <span class="dt-cell">(adjective)</span>`, `seguro, protegido`, `Your data is secure. Nobody outside your company can see it.`],
+    [`in real time <span class="dt-cell">(expression)</span>`, `en tiempo real`, `The dashboard updates in real time.`]
+  ]},
+  { title:`What the product does`, rows:[
+    [`integrate with <span class="dt-cell">(verb)</span>`, `integrarse con, conectarse con`, `The platform integrates with your email and calendar.`],
+    [`customize <span class="dt-cell">(verb)</span>`, `personalizar`, `You can customize the dashboard for each department.`],
+    [`set up <span class="dt-cell">(phrasal verb)</span>`, `configurar, instalar`, `Our team sets up the system for you in one day.`],
+    [`automatically <span class="dt-cell">(adverb)</span>`, `automáticamente`, `The app sends invoices automatically every month.`]
+  ]},
+  { title:`Paying for it`, rows:[
+    [`subscription ★ <span class="dt-cell">(noun)</span>`, `suscripción`, `The subscription costs 15 dollars per user per month.`],
+    [`pricing plan <span class="dt-cell">(noun)</span>`, `plan de precios`, `We have three pricing plans: Basic, Team and Business.`],
+    [`free trial <span class="dt-cell">(noun)</span>`, `prueba gratuita`, `Every plan comes with a 30-day free trial.`],
+    [`upgrade <span class="dt-cell">(verb / noun)</span>`, `cambiar a un plan superior`, `You can upgrade to the Business plan at any time.`],
+    [`renew <span class="dt-cell">(verb)</span>`, `renovar`, `The subscription renews automatically every year.`]
+  ]}
+];
+
+const CQ = {
+  voc: [
+    { type:'mc', q:`What does <em>feature</em> mean in Spanish?`,
+      opts:[`factura`, `función, característica`, `futuro`], answer:1,
+      fb:`<em>Feature</em> = función o característica de un producto. "Factura" es <em>invoice</em>.` },
+    { type:'tf', q:`<em>Update</em> and <em>upgrade</em> mean the same thing.`, answer:false,
+      fb:`<em>Update</em> = nueva versión del software. <em>Upgrade</em> = cambiar a un plan superior. No son lo mismo.` },
+    { type:'input', q:`Use the platform for 30 days and pay nothing. It's a free ________.`, hint:`Una palabra`,
+      answers:['trial','free trial','a free trial'], display:`free trial`,
+      fb:`<em>Free trial</em> = prueba gratuita. El cliente prueba el producto antes de pagar.` }
+  ],
+  bridge: [
+    { type:'mc', q:`The platform can ___ invoices automatically.`,
+      opts:[`send`, `sends`, `to send`], answer:0,
+      fb:`Después de <em>can</em> va el verbo base: <em>can send</em>. Sin <em>-s</em> y sin <em>to</em>.` },
+    { type:'tf', q:`"Can it work on my phone?" "Yes, it can." This answer is correct.`, answer:true,
+      fb:`Correcto. En la respuesta corta usamos <em>Yes, it can</em> o <em>No, it can't</em>, sin repetir el verbo.` },
+    { type:'input', q:`Correct the sentence: "The app cans create reports."`, hint:`Escribe la frase completa`,
+      answers:['the app can create reports'], display:`The app can create reports.`,
+      fb:`<em>Can</em> nunca cambia. Es <em>can</em> con todos los sujetos, también con <em>it</em>.` }
+  ],
+  gram: [
+    { type:'mc', q:`The subscription ___ 24/7 support.`,
+      opts:[`include`, `includes`, `including`], answer:1,
+      fb:`<em>The subscription</em> = <em>it</em>, tercera persona singular. El verbo lleva <em>-s</em>: <em>includes</em>.` },
+    { type:'input', q:`Complete: "The app doesn't ___ (need) a password on your phone."`, hint:`Una palabra`,
+      answers:['need'], display:`The app doesn't need a password on your phone.`,
+      fb:`Después de <em>doesn't</em> el verbo va en forma base, sin <em>-s</em>.` },
+    { type:'tf', q:`"It lets you to export your data" is correct.`, answer:false,
+      fb:`Con <em>lets you</em> no usamos <em>to</em>: <em>It lets you export your data.</em> Con <em>allows you</em> sí: <em>It allows you to export your data.</em>` }
+  ],
+  fb: [
+    { type:'mc', q:`Which sentence is a benefit?`,
+      opts:[`The platform integrates with Outlook.`, `Your team saves two hours every week.`, `The app has a dashboard.`], answer:1,
+      fb:`La opción B dice lo que el cliente gana: tiempo. Las otras describen el producto, son <em>features</em>.` },
+    { type:'tf', q:`A feature is what the product means for the customer.`, answer:false,
+      fb:`Al revés. La <em>feature</em> es lo que el producto hace o tiene. El <em>benefit</em> es lo que significa para el cliente.` },
+    { type:'mc', q:`It sends automatic reminders, ___ your team never forgets a payment.`,
+      opts:[`so`, `because`, `but`], answer:0,
+      fb:`<em>So</em> conecta la función con su resultado: la función primero, el beneficio después.` }
+  ],
+  mod: [
+    { type:'mc', q:`Which sentence uses <em>can</em> to describe something the customer can do?`,
+      opts:[`It integrates with Google Calendar.`, `You can customize the dashboard for each department.`, `The app sends a reminder automatically.`], answer:1,
+      fb:`<em>You can customize...</em> habla de una opción del cliente. Las otras usan Present Simple para lo que el producto hace solo.` },
+    { type:'input', q:`Complete the short answer: "Does it work on phones?" "Yes, it ___."`, hint:`Una palabra`,
+      answers:['does'], display:`Yes, it does.`,
+      fb:`La pregunta usa <em>Does</em>, así que la respuesta corta también: <em>Yes, it does</em> / <em>No, it doesn't</em>.` }
+  ],
+  lis: [
+    { type:'mc', q:`What does the receipt scanner do?`,
+      opts:[`It sends the receipt to the bank.`, `It reads a photo of the receipt automatically.`, `It prints the receipt.`], answer:1,
+      fb:`Hyun-woo dice: <em>An employee takes a photo of a receipt, and the app reads it automatically.</em>` },
+    { type:'tf', q:`The app works offline.`, answer:true,
+      fb:`Sí. Sin internet no puede enviar el recibo, pero lo guarda y lo envía después.` },
+    { type:'input', q:`How much does the subscription cost per user per month?`, hint:`Escribe el número`,
+      answers:['12','twelve','12 dollars','twelve dollars','$12','12 usd','usd 12','12 dollars per user per month','twelve dollars per user per month'], display:`Twelve dollars`,
+      fb:`<em>The subscription costs twelve dollars per user per month.</em>` }
+  ]
+};
+
+const QUIZ = [
+  { type:'mc', q:`The platform ___ with Google Calendar.`,
+    opts:[`work`, `works`, `working`], answer:1,
+    fb:`<em>The platform</em> = <em>it</em>. En Present Simple, tercera persona singular lleva <em>-s</em>: <em>works</em>.` },
+  { type:'mc', q:`Use the platform for 30 days and pay nothing. This is a ___.`,
+    opts:[`subscription`, `free trial`, `pricing plan`], answer:1,
+    fb:`<em>Free trial</em> = prueba gratuita. La <em>subscription</em> es lo que pagas cada mes o cada año.` },
+  { type:'input', q:`Complete: "The Basic plan ___ (not / include) reports."`, hint:`Dos palabras`,
+    answers:["doesn't include","does not include"], display:`The Basic plan doesn't include reports.`,
+    fb:`Negativo en tercera persona: <em>doesn't</em> + verbo base. <em>Include</em> va sin <em>-s</em>.` },
+  { type:'mc', q:`Can the app ___ reports in Excel?`,
+    opts:[`create`, `creates`, `to create`], answer:0,
+    fb:`Después de <em>can</em>, verbo base: <em>Can it create...?</em> Sin <em>-s</em> y sin <em>to</em>.` },
+  { type:'mc', q:`Choose the correct sentence.`,
+    opts:[`It lets you send invoices from your phone.`, `It lets you to send invoices from your phone.`, `It lets you sending invoices from your phone.`], answer:0,
+    fb:`<em>Let you</em> + verbo base, sin <em>to</em>. Si usas <em>allows you</em>, entonces sí: <em>allows you to send</em>.` },
+  { type:'mc', q:`"Your team saves two hours every week." This sentence describes a ___.`,
+    opts:[`feature`, `benefit`, `subscription`], answer:1,
+    fb:`Es un <em>benefit</em>: dice lo que el cliente gana. Una <em>feature</em> describe lo que el producto hace.` },
+  { type:'input', q:`Complete: "___ the subscription include training?" "Yes, it does."`, hint:`Una palabra`,
+    answers:['does'], display:`Does the subscription include training?`,
+    fb:`Pregunta en tercera persona singular: <em>Does</em> + sujeto + verbo base.` },
+  { type:'mc', q:`How do you say "La plataforma sirve para controlar gastos" in English?`,
+    opts:[`The platform serves for controlling costs.`, `The platform helps you control costs.`, `The platform serves to controlling costs.`], answer:1,
+    fb:`"Sirve para" no es <em>serves for</em>. Usa <em>helps you</em> + verbo, o <em>is for</em> + verbo-ing.` },
+  { type:'input', q:`"Can it work without internet?" "No, it ___."`, hint:`Una palabra`,
+    answers:["can't","cannot","can not"], display:`No, it can't.`,
+    fb:`La respuesta corta usa el mismo verbo de la pregunta: <em>Can it...?</em> → <em>No, it can't.</em>` },
+  { type:'mc', q:`Your subscription ends in December. You want to continue next year. You ___ it.`,
+    opts:[`renew`, `upgrade`, `set up`], answer:0,
+    fb:`<em>Renew</em> = renovar, continuar con la misma suscripción. <em>Upgrade</em> = cambiar a un plan superior.` },
+  { type:'mc', q:`Choose the correct question.`,
+    opts:[`Does it works with Excel?`, `Does it work with Excel?`, `It works with Excel?`], answer:1,
+    fb:`Con <em>Does</em>, el verbo va en forma base: <em>work</em>. La <em>-s</em> ya está en <em>does</em>.` },
+  { type:'mc', q:`Nobody outside your company can see your information. Your data is ___.`,
+    opts:[`sure`, `secure`, `insurance`], answer:1,
+    fb:`Para datos y sistemas protegidos usamos <em>secure</em>. <em>Sure</em> es "estoy seguro" y <em>insurance</em> es "un seguro" (de carro, de salud).` }
+];
+
+
+// ── HTML HELPERS ──────────────────────────────────────────
+function tbl(heads, rows, cols) {
+  const g = `grid-template-columns:${cols}`;
+  return `<div class="data-table-wrap">
+    <div class="data-table-head" style="${g}">${heads.map(h => `<span>${h}</span>`).join('')}</div>
+    ${rows.map(r => `<div class="data-table-row" style="${g}">${r.map((c,k) => `<div class="${k===0?'dt-en':'dt-cell'}">${c}</div>`).join('')}</div>`).join('')}
+  </div>`;
+}
+function bridgeTable(headL, headR, rows) {
+  return `<div class="bridge-table-wrap">
+    <div class="bridge-table-head"><span>${headL}</span><span>${headR}</span></div>
+    ${rows.map(r => `<div class="bridge-row"><div class="bridge-en">${r[0]}</div><div class="bridge-es">${r[1]}</div></div>`).join('')}
+  </div>`;
+}
+function mistakeBox(list) {
+  return `<div class="mistake-wrap">
+    <div class="mistake-label">⚠️ Errores comunes · Toca para ver la corrección</div>
+    ${list.map(m => `<div class="tap-row" onclick="this.classList.toggle('open')">
+      <div class="tap-row-top"><div class="tap-q wrong-q">❌ ${m[0]}</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer"><div class="tap-right">✅ ${m[1]}</div>${m[2] ? `<div class="tap-note">${m[2]}</div>` : ''}</div>
+    </div>`).join('')}
+  </div>`;
+}
+function exerciseSet(label, instr, items, startNum) {
+  return `<div class="ex-box">
+    <div class="ex-label">[EXERCISE] ${label}</div>
+    <p style="font-size:14px;color:var(--slate);margin-bottom:12px;">${instr}</p>
+    ${items.map((it,i) => `<div class="tap-row" onclick="this.classList.toggle('open')">
+      <div class="tap-row-top"><div class="tap-q"><strong>${startNum+i}.</strong> ${it[0]}</div><div class="tap-hint-label">Tap to reveal</div></div>
+      <div class="tap-answer"><div class="tap-right">✅ ${it[1]}</div></div>
+    </div>`).join('')}
+  </div>`;
+}
+function ccBlock(prefix, name) {
+  return `<div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check: ${name}</div>
+    <p class="cc-sub">Dos o tres preguntas rápidas para confirmar que todo está claro antes de continuar.</p>
+    <div id="mini-${prefix}">${renderMiniQ(prefix)}</div>`;
+}
+function badge(title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${currentStep+1}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+function renderWelcome() {
+  return `<div class="sc">
+    ${badge('Welcome', '3 min')}
+    <div class="es-note">En la Lección 31 aprendiste a escuchar al cliente. Ahora es tu turno de hablar. En una demostración de producto no basta con decir lo que hace el producto: el cliente quiere saber qué gana él con eso. Hoy vas a aprender a describir funciones en inglés con el Present Simple y a conectar cada función con un beneficio real.</div>
+    <div class="info-box">
+      <strong style="color:var(--navy);">Scenario</strong><br>
+      Your company sells a project management app. Tomorrow you have a 15-minute demo with a potential customer. What does the app do? Why does the customer need it?
+    </div>
+    <div class="es-note">Al final de esta lección vas a poder presentar un producto o servicio de forma simple y clara, función por función.</div>
+    <div class="sub-heading">Lesson map</div>
+    <div class="map-row">
+      <span class="map-chip">Vocabulary (15 words)</span>
+      <span class="map-chip">Grammar Bridge: can / can't</span>
+      <span class="map-chip">Present Simple for features</span>
+      <span class="map-chip">Features and benefits</span>
+      <span class="map-chip">Model sentences</span>
+      <span class="map-chip">Listening</span>
+      <span class="map-chip">Exercises</span>
+      <span class="map-chip">Quiz</span>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">💡 Cómo usar esta lección</div>
+      Avanza en orden. Al final de cada sección hay un Quick Check corto. En la sección de Listening, escucha el audio al menos dos veces antes de leer la transcripción.
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocab() {
+  return `<div class="sc">
+    ${badge('Vocabulary', '8 min')}
+    <div class="es-note">Lee cada palabra y su ejemplo en voz alta. Las palabras clave de la lección están marcadas con ★.</div>
+    ${VOCAB_GROUPS.map(g => `<div class="sub-heading">${g.title}</div>${tbl(['English','Español','Example'], g.rows.map(r => [r[0], r[1], `<em>${r[2]}</em>`]), '1.1fr 1fr 1.7fr')}`).join('')}
+
+    <div class="tip-box">
+      <div class="tip-label">🔁 Recuerda (palabras de lecciones anteriores)</div>
+      <ul class="recall-list">
+        <li><strong>platform</strong> (L17) = plataforma: <em>The platform works on phones and laptops.</em></li>
+        <li><strong>update</strong> (L17) = actualización / actualizar</li>
+        <li><strong>notification</strong> (L6) = notificación</li>
+        <li><strong>track</strong> (L4) = hacer seguimiento: <em>It helps you track every order.</em></li>
+        <li><strong>budget</strong> (L21), <strong>end user</strong>, <strong>decision-maker</strong> (L31)</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <strong style="color:var(--navy);">Cuidado: falsos amigos y trampas</strong>
+      <ul class="recall-list">
+        <li><em>Feature</em> no es "factura". Suenan parecido, pero <em>feature</em> = función o característica. "Factura" en inglés es <em>invoice</em>.</li>
+        <li><em>Update</em> y <em>upgrade</em> son diferentes. <em>Update</em> = una nueva versión del software (normalmente gratis). <em>Upgrade</em> = cambiar a un plan superior (normalmente pagas).</li>
+        <li>"Seguro" tiene tres traducciones: <em>secure</em> (datos protegidos), <em>safe</em> (sin peligro), <em>sure</em> (estoy seguro). Para datos y sistemas usa <em>secure</em>.</li>
+        <li><em>Demo</em> es muy común en ventas. Es la forma corta de <em>demonstration</em>.</li>
+      </ul>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip: free trial</div>
+      Muchos clientes preguntan: <em>Is there a free trial?</em> Es una de las preguntas más comunes en una demo. Prepara siempre la respuesta.
+    </div>
+
+    ${ccBlock('voc', 'Vocabulary')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    ${badge('Grammar Bridge: Can / Can’t', '6 min')}
+    <div class="es-note">¿Recuerdas la Lección 5? Usaste <strong>can</strong> para hablar de tus habilidades: <em>I can speak English.</em> Hoy lo usamos para hablar de lo que un producto puede hacer. Es un repaso, pero vamos con calma, porque <em>can</em> tiene reglas especiales que causan muchos errores.</div>
+
+    <div class="rule-title">A. Statements</div>
+    ${tbl(['', 'Example'], [
+      ['✅ Affirmative', `The app <strong>can send</strong> reminders.`],
+      ['❌ Negative', `It <strong>can't work</strong> offline. / It <strong>cannot work</strong> offline.`]
+    ], '0.8fr 2fr')}
+
+    <div class="sub-heading">Three rules for <em>can</em></div>
+    <ol class="rule-list">
+      <li><em>Can</em> es igual para todos: <em>I can, you can, it can, they can.</em> Nunca <em>cans</em>.</li>
+      <li>Después de <em>can</em> va el verbo base, sin <em>to</em>: <em>can send</em>, no <em>can to send</em>.</li>
+      <li>El verbo después de <em>can</em> no lleva <em>-s</em>: <em>it can send</em>, no <em>it can sends</em>.</li>
+    </ol>
+
+    <div class="rule-title">B. Questions and short answers</div>
+    ${tbl(['Pattern', 'Example', 'Short answer'], [
+      ['Can + it + base verb?', `<em>Can it create reports?</em>`, `Yes, it can. / No, it can't.`],
+      ['Can + I + base verb?', `<em>Can I use it on my phone?</em>`, `Yes, you can. / No, you can't.`],
+      ['What + can + it + base verb?', `<em>What can the platform do?</em>`, `It can track orders and send invoices.`]
+    ], '1.2fr 1.3fr 1.3fr')}
+    <div class="es-note">En la respuesta corta no repites el verbo: ✅ <em>Yes, it can.</em> ❌ <em>Yes, it can create.</em></div>
+
+    <div class="rule-title">Spanish Bridge</div>
+    ${bridgeTable('English', 'Español', [
+      ['It can send reminders.', 'Puede enviar recordatorios.'],
+      ["It can't work offline.", 'No puede funcionar sin internet.'],
+      ['Can it create reports?', '¿Puede crear informes?'],
+      ['What can it do?', '¿Qué puede hacer?']
+    ])}
+    <div class="es-note">En español, "poder" cambia con cada persona: puedo, puedes, puede, pueden. En inglés <em>can</em> nunca cambia. Y en español decimos "puede enviar" sin preposición. En inglés es igual, sin <em>to</em>. Si piensas en español, aquí no hay trampa. El error viene de mezclar <em>can</em> con otros verbos como <em>want to</em> o <em>need to</em>.</div>
+
+    ${mistakeBox([
+      ['It can to send invoices.', 'It can send invoices.', 'Después de <em>can</em>, nunca <em>to</em>.'],
+      ['The app cans create reports.', 'The app can create reports.', '<em>Can</em> no lleva <em>-s</em>, ni siquiera con <em>it</em>.'],
+      ['It can sends reminders.', 'It can send reminders.', 'El verbo después de <em>can</em> va en forma base.'],
+      ['Can it to work with Excel?', 'Can it work with Excel?', '']
+    ])}
+
+    <div class="rule-title">Puente al tema de hoy: <em>can</em> vs Present Simple</div>
+    ${tbl(['Can', 'Present Simple'], [
+      [`<em>It can send reminders.</em>`, `<em>It sends reminders.</em>`],
+      [`<span class="dt-cell">Es posible. El producto tiene esa capacidad.</span>`, `Lo hace siempre, normalmente de forma automática.`]
+    ], '1fr 1fr')}
+    <div class="es-note">En una demo vas a usar los dos. <em>Can</em> para decir lo que el cliente puede hacer con el producto (<em>You can customize the dashboard</em>). Present Simple para decir lo que el producto hace solo (<em>It sends a reminder every Friday</em>). La siguiente sección trata del Present Simple.</div>
+
+    ${ccBlock('bridge', 'Grammar Bridge')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    ${badge('Present Simple for Features: Form', '10 min')}
+
+    <div class="rule-title">Notice</div>
+    <div class="es-note">Lee esta parte de una demo. Fíjate en los verbos marcados.</div>
+    <div class="notice-box">This is our project app. It <strong>includes</strong> a shared calendar, and it <strong>works with</strong> Google and Outlook. The dashboard <strong>shows</strong> every task in real time. The Basic plan <strong>doesn't include</strong> reports. "<strong>Does</strong> it <strong>work</strong> on phones?" "Yes, it <strong>does</strong>."</div>
+    <div class="es-note">El sujeto es <em>it, the dashboard, the plan</em>: siempre una cosa, tercera persona singular. Por eso el verbo lleva <em>-s</em>: <em>includes, works, shows</em>. En negativo y en pregunta, la <em>-s</em> pasa a <em>does / doesn't</em>, y el verbo principal vuelve a su forma base.</div>
+
+    <div class="rule-title">Rule 1: It / the platform / the subscription + verb-s</div>
+    ${tbl(['Subject', 'Verb', 'Example'], [
+      ['It', 'include<strong>s</strong>', `<em>It includes a mobile app.</em>`],
+      ['The platform', 'offer<strong>s</strong>', `<em>The platform offers 24/7 support.</em>`],
+      ['The subscription', 'cover<strong>s</strong>', `<em>The subscription covers ten users.</em>`],
+      ['The app', '<strong>has</strong>', `<em>The app has a simple dashboard.</em>`]
+    ], '1fr 0.7fr 1.8fr')}
+    <div class="es-note"><em>Have</em> es irregular: ✅ <em>it has</em>, ❌ <em>it have</em>. Lo mismo con <em>do</em> → <em>does</em> y <em>go</em> → <em>goes</em>.</div>
+
+    <div class="tip-box">
+      <div class="tip-label">🔊 Pronunciación del -s</div>
+      <strong>/s/</strong>: helps, lets, works, tracks<br>
+      <strong>/z/</strong>: offers, comes, includes, allows, shows<br>
+      <strong>/ɪz/</strong>: fixes, manages, customizes
+    </div>
+    <div class="es-note">Con <em>we, you, they</em> no hay <em>-s</em>: <em>We offer a free trial.</em> Pero con <em>the company</em> sí: <em>The company offers a free trial.</em></div>
+
+    <div class="rule-title">Rule 2: Common feature verbs</div>
+    ${tbl(['Verb pattern', 'Example'], [
+      ['include + noun', `<em>The Team plan includes five users.</em>`],
+      ['offer + noun', `<em>We offer training for new users.</em>`],
+      ['work with + noun', `<em>It works with Excel and Google Sheets.</em>`],
+      ['come with + noun', `<em>Every plan comes with a free trial.</em>`],
+      ['help you + base verb', `<em>It helps you control costs.</em>`],
+      ['let you + base verb', `<em>It lets you approve expenses on your phone.</em>`],
+      ['allow you to + base verb', `<em>It allows you to export reports.</em>`]
+    ], '1fr 1.8fr')}
+    <div class="info-box">
+      <strong style="color:var(--navy);">¡Atención a estas tres!</strong>
+      <ul class="recall-list">
+        <li><em>lets you</em> + verbo <strong>sin</strong> <em>to</em>: ✅ <em>It lets you send.</em> ❌ <em>It lets you to send.</em></li>
+        <li><em>allows you to</em> + verbo <strong>con</strong> <em>to</em>: ✅ <em>It allows you to send.</em> ❌ <em>It allows you send.</em></li>
+        <li><em>helps you</em> + verbo base: ✅ <em>It helps you save time.</em></li>
+      </ul>
+      <div style="margin-top:8px;"><em>Lets you</em> es natural y común en una demo hablada. <em>Allows you to</em> es un poco más formal y aparece mucho en textos escritos y presentaciones.</div>
+    </div>
+
+    <div class="rule-title">Rule 3: Negatives with doesn't + base verb</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">The app doesn't need installation.</span></div>
+      <div class="example-item"><span class="example-en">The Basic plan doesn't include reports.</span></div>
+      <div class="example-item"><span class="example-en">It doesn't work offline.</span></div>
+    </div>
+    <div class="es-note">Con <em>doesn't</em>, el verbo pierde la <em>-s</em>: ✅ <em>doesn't work</em>, ❌ <em>doesn't works</em>. La <em>-s</em> ya está en <em>does</em>.</div>
+
+    <div class="rule-title">Rule 4: Questions with Does it...? and short answers</div>
+    ${tbl(['Question', 'Short answer'], [
+      [`<em>Does it work with Outlook?</em>`, `Yes, it does. / No, it doesn't.`],
+      [`<em>Does the subscription include training?</em>`, `Yes, it does. / No, it doesn't.`],
+      [`<em>What does the Team plan include?</em>`, `It includes five users and a dashboard.`],
+      [`<em>How much does it cost?</em>`, `It costs 20 dollars per user per month.`]
+    ], '1.4fr 1.2fr')}
+
+    <div class="rule-title">Spanish Bridge: cómo decirlo en inglés</div>
+    ${bridgeTable('Español', 'English', [
+      ['Incluye una aplicación móvil.', 'It <strong>includes</strong> a mobile app.'],
+      ['Tiene un panel muy simple.', 'It <strong>has</strong> a very simple dashboard.'],
+      ['Viene con soporte 24/7.', 'It <strong>comes with</strong> 24/7 support.'],
+      ['Funciona con Excel.', 'It <strong>works with</strong> Excel.'],
+      ['Te permite aprobar gastos.', 'It <strong>lets you approve</strong> expenses. / It <strong>allows you to approve</strong> expenses.'],
+      ['Sirve para controlar gastos.', "It <strong>helps you control</strong> costs. / It<strong>'s for controlling</strong> costs."],
+      ['No necesita instalación.', "It <strong>doesn't need</strong> installation."],
+      ['¿Funciona sin internet?', '<strong>Does</strong> it <strong>work</strong> offline?']
+    ])}
+    <div class="es-note">Dos traducciones directas que debes evitar:<br>
+      • "Permite" no es <em>permits</em>. <em>Permit</em> en inglés se usa para leyes y reglas (<em>Smoking is not permitted</em>). Para un producto usa <em>lets you</em> o <em>allows you to</em>.<br>
+      • "Sirve para" no es <em>serves for</em>. Esa frase no existe en inglés. Usa <em>helps you</em> + verbo, <em>is for</em> + verbo-ing, o <em>you use it to</em> + verbo.</div>
+
+    ${mistakeBox([
+      ['It have a mobile app.', 'It has a mobile app.', ''],
+      ['The app allow you to export data.', 'The app allows you to export data.', ''],
+      ["It doesn't works offline.", "It doesn't work offline.", ''],
+      ['Does it works with Outlook?', 'Does it work with Outlook?', ''],
+      ['It permits you to approve expenses.', 'It lets you approve expenses.', ''],
+      ['It serves for tracking orders.', "It helps you track orders. / It's for tracking orders.", ''],
+      ['It lets you to send invoices.', 'It lets you send invoices.', '']
+    ])}
+
+    ${ccBlock('gram', 'Form')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderFeatures() {
+  return `<div class="sc">
+    ${badge('Features and Benefits', '6 min')}
+
+    <div class="rule-title">What's the difference?</div>
+    ${tbl(['', 'Feature', 'Benefit'], [
+      ['Meaning', `What the product <strong>does</strong> or <strong>has</strong>`, `What it <strong>means for the customer</strong>`],
+      ['Type', `A fact about the product`, `A result for the customer`],
+      ['Subject', `Usually <em>it / the app / the platform</em>`, `Usually <em>you / your team</em>`],
+      ['Example', `<em>The app reads receipts from a photo.</em>`, `<em>Your team doesn't type anything.</em>`]
+    ], '0.7fr 1.3fr 1.3fr')}
+    <div class="es-note">Una <em>feature</em> es una función del producto. Un <em>benefit</em> es lo que el cliente gana con esa función: tiempo, dinero, tranquilidad. Muchos vendedores solo hablan de funciones, y el cliente piensa: "¿Y eso qué tiene que ver conmigo?" Un buen presentador siempre conecta las dos.</div>
+
+    <div class="rule-title">How to connect a feature to a benefit</div>
+    ${tbl(['Linker', 'Example'], [
+      ['so...', `<em>The dashboard updates in real time, <strong>so</strong> you always know your numbers.</em>`],
+      ['This means you...', `<em>The app sends reminders automatically. <strong>This means you</strong> never miss a payment.</em>`],
+      ['That way, you...', `<em>It integrates with your CRM. <strong>That way, you</strong> don't type the same data twice.</em>`]
+    ], '0.8fr 2fr')}
+
+    <div class="rule-title">Feature + benefit pairs</div>
+    ${tbl(['Feature', 'Benefit'], [
+      [`<span class="dt-cell"><em>It works on phones and laptops.</em></span>`, `<em>Your sales team uses it on the road.</em>`],
+      [`<span class="dt-cell"><em>It comes with a 30-day free trial.</em></span>`, `<em>You test everything before you pay.</em>`],
+      [`<span class="dt-cell"><em>It lets you customize the dashboard.</em></span>`, `<em>Each manager sees only their own numbers.</em>`],
+      [`<span class="dt-cell"><em>The data is secure.</em></span>`, `<em>You don't worry about your customer information.</em>`],
+      [`<span class="dt-cell"><em>Our team sets it up for you.</em></span>`, `<em>You start on day one, with no IT work.</em>`]
+    ], '1fr 1fr')}
+
+    <div class="rule-title">The demo pattern: Feature → Benefit → Show</div>
+    <ol class="steps-list">
+      <li><strong>Feature:</strong> <em>This is the dashboard. It shows all your orders in real time.</em></li>
+      <li><strong>Benefit:</strong> <em>So you always know which orders are late.</em></li>
+      <li><strong>Show:</strong> <em>Let me show you. Here, in red, you see two late orders.</em></li>
+    </ol>
+    <div class="es-note">Repite este patrón para cada función. Dos o tres funciones bien explicadas son suficientes. Una demo con diez funciones cansa al cliente.</div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Tip: habla del cliente, no del producto</div>
+      Usa mucho <em>you</em> y <em>your team</em>: <em>You see... Your team saves... You don't need...</em> Así el cliente se imagina usando el producto.
+    </div>
+
+    ${ccBlock('fb', 'Features and Benefits')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  return `<div class="sc">
+    ${badge('Model Sentences: A Short Demo', '4 min')}
+    <div class="es-note">Estas frases siguen el orden de una demo real. Léelas en voz alta, como si estuvieras presentando.</div>
+    ${tbl(['Step', 'English', 'Español'], [
+      ['Open', `<em>Thanks for your time. Let me show you how the platform works.</em>`, `Gracias por su tiempo. Déjeme mostrarle cómo funciona la plataforma.`],
+      ['Overview', `<em>This is the dashboard. It shows all your projects on one screen.</em>`, `Este es el panel. Muestra todos sus proyectos en una pantalla.`],
+      ['Feature 1', `<em>The app sends a reminder automatically before every deadline.</em>`, `La aplicación envía un recordatorio automáticamente antes de cada fecha límite.`],
+      ['Benefit 1', `<em>This means your team never misses a deadline.</em>`, `Esto significa que su equipo nunca pierde una fecha límite.`],
+      ['Feature 2', `<em>It integrates with Google Calendar and Outlook.</em>`, `Se integra con Google Calendar y Outlook.`],
+      ['Benefit 2', `<em>So you don't copy dates from one system to another.</em>`, `Así no copian fechas de un sistema a otro.`],
+      ['Can', `<em>You can customize the dashboard for each department.</em>`, `Puede personalizar el panel para cada departamento.`],
+      ['Question', `<em>Does it work on phones? Yes, it does.</em>`, `¿Funciona en teléfonos? Sí, funciona.`],
+      ['Price', `<em>The subscription costs 12 dollars per user per month.</em>`, `La suscripción cuesta 12 dólares por usuario al mes.`],
+      ['Trial', `<em>Every pricing plan comes with a 30-day free trial.</em>`, `Cada plan de precios viene con una prueba gratuita de 30 días.`],
+      ['Close', `<em>What questions do you have?</em>`, `¿Qué preguntas tienen?`]
+    ], '0.6fr 1.6fr 1.6fr')}
+    <div class="es-note">Fíjate en el cierre: <em>What questions do you have?</em> invita a preguntar. <em>Do you have any questions?</em> también es correcto, pero muchas veces la respuesta es solo "No". Esto conecta con las preguntas abiertas de la Lección 31.</div>
+
+    ${ccBlock('mod', 'Model Sentences')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  const speeds = [0.7, 0.8, 0.9, 1.0, 1.1];
+  return `<div class="sc">
+    ${badge('Listening: A Quick Product Demo', '5 min')}
+    <div class="es-note">Escucha a Hyun-woo, un ingeniero de ventas. Presenta una plataforma de gastos a un cliente nuevo. Fíjate en cada función y en lo que significa para el cliente. Escucha dos veces antes de abrir la transcripción.</div>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">A Quick Product Demo</div>
+          <div class="audio-box-sub">Hyun-woo Choi, Sales Engineer, Ledgerbird, Seoul · about 70 seconds</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload" src="${AUDIO_URL}" onloadedmetadata="this.playbackRate=currentSpeed" onplay="this.playbackRate=currentSpeed">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        ${speeds.map(r => `<button class="speed-btn ${r===currentSpeed?'active':''}" data-rate="${r}" onclick="setSpeed(${r})">${r.toFixed(1)}×</button>`).join('')}
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        <p>Hello, everyone. I'm Hyun-woo Choi, and I'm a sales engineer at Ledgerbird, here in Seoul. Thanks for your time today. Let me share my screen and show you how the platform works.</p>
+        <p>OK, this is the dashboard. It lets you see all your team's expenses in one place, in real time. So you always know where the money goes.</p>
+        <p>The first feature is the receipt scanner. An employee takes a photo of a receipt, and the app reads it automatically. Nobody types anything, and that saves a lot of time every week.</p>
+        <p>Next, Ledgerbird works with the accounting software you already use. Our team sets it up for you on the first day. Your finance team doesn't copy numbers by hand, so there are no typing errors.</p>
+        <p>People often ask me, "Does it work offline?" Yes, it does. The app can't send a receipt without internet, but it saves it and sends it later.</p>
+        <p>The subscription costs twelve dollars per user per month, and every plan comes with a thirty-day free trial. So, what questions do you have?</p>
+      </div>
+    </div>
+
+    ${ccBlock('lis', 'Listening')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    ${badge('Exercises', '5 min')}
+    <div class="es-note">Piensa en tu respuesta primero. Después toca cada frase para ver la respuesta correcta.</div>
+    ${exerciseSet('Set A', 'Complete with the Present Simple.', [
+      ['The platform ___ (send) a report every Friday.', 'sends'],
+      ['The Team plan ___ (have) ten users.', 'has'],
+      ['The app ___ (not / work) on old phones.', "doesn't work"],
+      ['___ the subscription ___ (include) training?', 'Does / include'],
+    ], 1)}
+    ${exerciseSet('Set B', 'Fix the sentence.', [
+      ['The app allow you to export reports.', 'The app allows you to export reports.'],
+      ['It permits you to approve expenses.', 'It lets you approve expenses. / It allows you to approve expenses.'],
+      ['This tool serves for tracking orders.', 'This tool helps you track orders. / This tool is for tracking orders.'],
+      ['It can to send automatic reminders.', 'It can send automatic reminders.'],
+    ], 5)}
+    ${exerciseSet('Set C', 'Feature, benefit or vocabulary.', [
+      ['"The platform integrates with your CRM." Feature or benefit?', 'Feature'],
+      ['"You don’t type the same data twice." Feature or benefit?', 'Benefit'],
+      ['Your team now has 30 people, and the Basic plan is for 10 users. You need to ___ your plan. (renew / upgrade)', 'upgrade'],
+      ['Nobody outside your company can see your customer data. Your data is ___. (sure / secure)', 'secure'],
+    ], 9)}
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising, ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding, a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    ${badge('Quiz', '8 min')}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div class="result-attempts">Attempts so far: ${quizAttempts + 1}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect ? `<button class="result-btn retry" onclick="retakeQuiz()">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>` : ''}
+        <button class="result-btn review" onclick="goTo(0)">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+const normalise = s => s.trim().toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g,' ').replace(/[.,!?]$/,'');
+
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${(s.inputVal||'').replace(/"/g,'&quot;')}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const raw = quizState[qi].inputVal || '';
+  quizState[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  quizAttempts++;
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')         ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  // Calls renderQuiz() directly, not STEPS[currentStep].fn()
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+
+// ── CONCEPT-CHECK ENGINE (independent state per prefix) ───
+function renderMiniQ(prefix) {
+  const questions = CQ[prefix];
+  const state = miniState[prefix];
+  const letters = ['A','B','C','D'];
+  return questions.map((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    let body = '';
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      const ok = q.type === 'mc' ? s.selected === q.answer : q.answer === (s.selected === 0);
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${ok ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text" placeholder="Type your answer…" value="${(s.inputVal || '').replace(/"/g,'&quot;')}" oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+    return `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  }).join('');
+}
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const q = CQ[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  // Redraws only this concept check's container, so the audio keeps playing
+  const box = document.getElementById('mini-' + prefix);
+  if (box) box.innerHTML = renderMiniQ(prefix);
+}
+
+
+// ── AUDIO (Pattern A, single player) ──────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: '1. Welcome',              fn: renderWelcome },
+  { label: '2. Vocabulary',           fn: renderVocab },
+  { label: '3. Bridge: Can / Can’t', fn: renderBridge },
+  { label: '4. Grammar: Form',        fn: renderGrammar },
+  { label: '5. Features & Benefits',  fn: renderFeatures },
+  { label: '6. Model Sentences',      fn: renderModel },
+  { label: '7. Listening',            fn: renderListening },
+  { label: '8. Exercises',            fn: renderExercises },
+  { label: '9. Quiz',                 fn: renderQuiz },
+];
+
+// LESSON CONTENT END
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER, do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

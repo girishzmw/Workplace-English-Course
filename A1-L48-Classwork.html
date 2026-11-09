@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 48: Describing Your Skills | A1 · Unit 5 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── LESSON ADDITIONS (A1-L48) ───────────────────────────── */
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin:22px 0 10px; }
+.cc-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+.rule-tag { display:inline-block; background:var(--navy); color:var(--gold); font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; border-radius:4px; padding:3px 9px; margin-bottom:8px; }
+.notice-box { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--sky); border-radius:0 8px 8px 0; padding:16px 18px; margin-bottom:16px; font-size:15px; line-height:1.8; color:var(--navy); }
+.notice-box strong { color:var(--gold); }
+
+/* Vocabulary 4-column table */
+.vgrid { grid-template-columns:28px 1.1fr 1fr 2fr; }
+@media(max-width:640px){ .vgrid{ grid-template-columns:24px 1fr 1fr; } .vgrid .vex{ grid-column:2 / span 2; } }
+.vnum { font-size:12px; font-weight:700; color:var(--gold); }
+.vword { font-size:14px; font-weight:700; color:var(--navy); }
+.vtype { font-size:11px; color:var(--grey-blue); font-weight:400; font-style:italic; }
+.vrec { font-size:10px; color:var(--sky); font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+.ves { font-size:13px; color:var(--grey-blue); }
+.vex { font-size:13px; color:var(--slate); font-style:italic; }
+
+/* Column-and-pipe builder pieces */
+.bp-row { display:flex; align-items:stretch; flex-wrap:wrap; gap:0; margin-bottom:18px; border-radius:9px; overflow:hidden; border:1px solid rgba(255,255,255,0.12); }
+.bp-col { display:flex; flex-direction:column; align-items:center; padding:14px 18px; background:rgba(201,151,44,0.22); min-width:100px; flex:1; gap:4px; text-align:center; }
+.bp-step { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:2px; }
+.bp-main { font-size:15px; font-weight:700; color:var(--gold); }
+.bp-detail { font-size:13px; color:rgba(255,255,255,0.6); font-style:italic; }
+.bp-pipe { display:flex; align-items:center; padding:0 10px; font-size:22px; color:rgba(255,255,255,0.2); font-weight:300; }
+
+/* Spanish Bridge table */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+
+/* Grammar Bridge callout */
+.gb-callout { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.35); border-radius:10px; padding:18px 20px; margin-bottom:20px; }
+.gb-callout-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:6px; }
+.gb-callout p { font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* Tap-to-reveal */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.5; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; font-style:italic; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:700; line-height:1.5; }
+.tap-answer.show { display:block; }
+.tap-answer .tap-note { display:block; font-weight:400; font-style:italic; color:var(--grey-blue); font-size:13px; margin-top:3px; }
+
+/* Audio box */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* Classwork additions */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.passage-head { background:var(--navy); padding:12px 18px; display:flex; gap:12px; align-items:center; }
+.passage-num { background:var(--gold); color:var(--navy); font-weight:700; font-size:12px; border-radius:5px; padding:3px 9px; }
+.passage-name { font-family:var(--font-heading); color:var(--white); font-size:15px; }
+.passage-role { font-size:12px; color:rgba(255,255,255,0.5); }
+.passage-body { padding:16px 18px 6px; }
+.passage-text { font-size:15px; line-height:1.8; color:var(--navy); margin-bottom:14px; }
+.q-tag { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--sky); font-weight:700; margin-right:6px; }
+.plan-input { width:100%; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); color:var(--navy); outline:none; margin-bottom:10px; }
+.plan-input:focus { border-color:var(--gold); }
+.template-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; margin-bottom:18px; font-size:15px; line-height:2.4; color:var(--navy); }
+.template-box .blank-input { width:130px; }
+.frame-list { margin:0 0 12px 18px; font-size:14px; color:var(--navy); line-height:1.9; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 5 · Classwork</div>
+    <h1 class="hero-title">Lesson 48: Describing Your Skills</h1>
+    <p class="hero-sub">Reading Day · Can / can't + adjectives · Live class, 60 min</p>
+    <div class="hero-pills">
+      <span class="pill accent">📖 Reading-heavy</span>
+      <span class="pill accent">✍️ Writing</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     ↓↓↓  LESSON CONTENT START
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+const inputs = {}; // unscored student lines, kept across step changes
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+const WARMUP = [
+  ["¿Cómo se dice “puntual” en inglés?", "punctual"],
+  ["¿Cómo se dice “confiable”?", "reliable"],
+  ["A person who can speak two languages is…", "bilingual"],
+  ["¿Cómo se dice “simpático” en inglés? (Cuidado: no es <em>sympathetic</em>.)", "friendly / nice"],
+  ["¿Cómo se dice “fortaleza” y “debilidad”?", "strength / weakness"],
+  ["A person who works very well with the team is a…", "team player"],
+  ["¿Cómo se dice “educado” (con buenos modales)?", "polite"],
+  ["He always checks his work. He is very…", "careful"]
+];
+
+// [name, role, text, q1, a1, q2, a2]
+const PASSAGES = [
+  ["Hannah Becker", "HR Assistant · Munich",
+   "Hannah works in the HR department of a car company. She is bilingual, so she can speak German and English with candidates from other countries. She is also very organized. Every Monday, she plans all the interviews for the week in a shared calendar. Hannah can't speak French, but she wants to learn it next year.",
+   "What can Hannah do every Monday?", "She plans all the interviews for the week.",
+   "Are you organized? Give one example.", "Yes, I'm organized. I make a list every morning."],
+  ["Daniel Osei", "IT Support Technician · London",
+   "Daniel is a technician in a big bank. He is very technical, so he can fix laptops, printers and small network problems. His colleagues like him because he is patient. He never gets angry when people ask the same question two times. But Daniel is not very punctual, and sometimes he is late for team meetings.",
+   "What is Daniel's weakness?", "He is not very punctual. Sometimes he is late for meetings.",
+   "Can you fix computer problems?", "No, I can't. I'm not very technical."],
+  ["Mei Lin Tan", "Accountant · Singapore",
+   "Mei Lin is an accountant in a logistics company. She is careful with numbers, and she checks every invoice two times. Her manager says she is very reliable. She always finishes her reports on time. Mei Lin can use Excel and SAP very well, but she doesn't like speaking in public, so presentations are difficult for her.",
+   "Why does her manager say she is reliable?", "Because she always finishes her reports on time.",
+   "What software can you use at work?", "I can use Excel and Outlook."],
+  ["Rafael Duarte", "Sales Representative · Lisbon",
+   "Rafael sells office furniture to companies in Portugal and Spain. He is friendly and polite, and he has excellent communication skills. He can speak Portuguese, Spanish and English. He has six years of experience in sales. Rafael can't use Power BI yet, so his manager prepares the sales charts for him.",
+   "What languages can Rafael speak?", "He can speak Portuguese, Spanish and English.",
+   "How many years of experience do you have in your job?", "I have four years of experience in customer service."],
+  ["Yasmin Farouk", "Graphic Designer · Cairo",
+   "Yasmin works for a marketing agency. She is very creative, and she can design posters, logos and social media posts. She can use Canva and Photoshop. Her clients love her ideas. Her weakness is time: she is not very fast, so she starts big projects early.",
+   "What can Yasmin design?", "She can design posters, logos and social media posts.",
+   "Are you creative? What can you create at work?", "Yes, I'm creative. I can make good presentations."],
+  ["Pavel Novák", "Project Coordinator · Prague",
+   "Pavel coordinates projects for an engineering company. He is calm, even when there is a big problem. He is also flexible. He can work in the morning or in the evening, and he can travel to other offices. Pavel is a team player. He shares information with everyone and helps new colleagues.",
+   "When can Pavel work?", "He can work in the morning or in the evening.",
+   "Are you calm when there is a problem at work?", "Yes, I'm calm. I think first, then I act."],
+  ["Grace Mwangi", "Receptionist · Nairobi",
+   "Grace is the receptionist at an international hotel. She is very polite with guests, and she is always friendly on the phone. She is bilingual. She can speak Swahili and English, and she can understand a little Arabic. There is a new phone system at the hotel, and Grace can't use it yet. She needs to take a short training course.",
+   "What can't Grace do yet?", "She can't use the new phone system.",
+   "What do you need to learn for your job?", "I need to learn Power BI."],
+  ["Olivia Hart", "Customer Service Manager · Toronto",
+   "Olivia manages a team of five people. Her team is very hard-working, and they are always punctual. She has two reliable colleagues, Ben and Priya, who can answer difficult customer questions. Olivia is not very technical, but she is a very organized manager. Every Friday, she sends a short report to the director.",
+   "Who are Olivia's reliable colleagues?", "Her reliable colleagues are Ben and Priya.",
+   "Describe your team or a colleague with two adjectives.", "My team is friendly and hard-working."]
+];
+
+const PATTERN = [
+  ["I'm <strong>organized</strong>. She's <strong>very reliable</strong>.", "Adjetivo después de <em>be</em>. No cambia en plural ni con el género."],
+  ["He's a <strong>technical person</strong>.", "Adjetivo <strong>antes</strong> del sustantivo (en español va después)."],
+  ["I <strong>can speak</strong> English. I <strong>can't drive</strong>.", "can / can't + verbo base: sin <em>to</em> y sin <em>-s</em>."],
+  ["<strong>Can</strong> you <strong>use</strong> Excel? Yes, I <strong>can</strong>.", "Preguntas: Can + sujeto + verbo. Sin <em>do</em>."],
+  ["I'm bilingual, <strong>so</strong> I <strong>can</strong> speak to clients.", "Combina: cómo eres + lo que puedes hacer."]
+];
+
+const MISTAKES = [
+  ["She can to use SAP.", "She can use SAP."],
+  ["They are reliables.", "They are reliable."],
+  ["Do you can speak English?", "Can you speak English?"],
+  ["He is a manager very calm.", "He is a very calm manager."]
+];
+
+
+// ── HELPERS ───────────────────────────────────────────────
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+function setVal(k, v) { inputs[k] = v; }
+function field(k, placeholder) {
+  return `<input class="plan-input" type="text" placeholder="${placeholder}" value="${esc(inputs[k]||'')}" oninput="setVal('${k}',this.value)">`;
+}
+function blank(k, w) {
+  return `<input class="blank-input" type="text" style="width:${w||130}px" value="${esc(inputs[k]||'')}" oninput="setVal('${k}',this.value)">`;
+}
+function badge(num, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${num}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function tap(q, a, note) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top">
+      <div class="tap-q">${q}</div>
+      <div class="tap-hint-label">Tap to reveal</div>
+    </div>
+    <div class="tap-answer">✅ ${a}${note ? `<span class="tap-note">${note}</span>` : ''}</div>
+  </div>`;
+}
+function teacher(html) {
+  return `<div class="teacher-box"><div class="teacher-box-label">👩‍🏫 Teacher Note</div>${html}</div>`;
+}
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    ${badge(1, 'Warm-up: Vocabulary Recall', '5 min')}
+    <div class="es-note">Tu profesor te va a hacer una pregunta. Responde en inglés. Toca la tarjeta para ver la respuesta.</div>
+    ${WARMUP.map(([q, a], i) => tap(`<strong>${i+1}.</strong> ${q}`, a)).join('')}
+    ${teacher(`Ask one card per student, round-robin (5 min). Cards 4 and 7 are false-friend traps. If a student says “sympathetic” or “educated”, stop for 10 seconds and contrast the two words. <strong>Extension:</strong> after a student answers, ask them to add “I'm…” or “I'm not very…” with the word.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    ${badge(2, 'Reading: Eight Professionals', '15 min')}
+    <div class="es-note">Cada estudiante lee un texto en voz alta y responde las dos preguntas. Responde con una <strong>oración completa</strong>. Toca para ver una respuesta modelo.</div>
+    ${PASSAGES.map(([name, role, text, q1, a1, q2, a2], i) => `
+      <div class="passage-card">
+        <div class="passage-head">
+          <span class="passage-num">${i+1}</span>
+          <div><div class="passage-name">${name}</div><div class="passage-role">${role}</div></div>
+        </div>
+        <div class="passage-body">
+          <div class="passage-text">${text}</div>
+          ${tap(`<span class="q-tag">Q1 · Reading</span>${q1}`, a1)}
+          ${tap(`<span class="q-tag">Q2 · About you</span>${q2}`, a2, 'Model answer. Your answer can be different.')}
+        </div>
+      </div>`).join('')}
+    ${teacher(`One passage per student, read aloud, then both questions (about 10 to 12 min). <strong>Q1</strong> checks comprehension. Insist on a full sentence, not one word. <strong>Q2</strong> is personal. Push for “I'm + adjective” plus “I can / can't” in the answer. Listen for “I can to”, “I no can” and “a person very organized”, and recast quickly without stopping the flow. <strong>Extension:</strong> ask a stronger student a follow-up such as “Can you speak French?” and expect a short answer, “No, I can't.”`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  return `<div class="sc">
+    ${badge(3, "Main Grammar: I'm + adjective / I can + verb", '15 min')}
+    <div class="pattern-box">
+      <div class="pattern-box-head">Pattern · English | Español</div>
+      ${PATTERN.map(([en, es]) => `<div class="pattern-row"><div class="pattern-en">${en}</div><div class="pattern-es">${es}</div></div>`).join('')}
+    </div>
+
+    <div class="mistake-label">⚠️ Fix the mistake · tap to reveal</div>
+    ${MISTAKES.map(([w, r]) => tap('❌ ' + w, r)).join('')}
+
+    <div class="sub-heading">✏️ Your turn</div>
+    <div class="es-note">Escribe dos oraciones sobre ti.</div>
+    <div class="cc-sub">1. Write one sentence about you with <strong>I'm + adjective</strong>.</div>
+    ${field('g1', "I'm…")}
+    <div class="cc-sub">2. Write one sentence with <strong>I can</strong> or <strong>I can't</strong> about a skill at work.</div>
+    ${field('g2', 'I can… / I can’t…')}
+    ${tap('Need an example?', "I'm very punctual. / I can use Canva, but I can't use Photoshop.")}
+
+    ${teacher(`Re-explain the pattern in 3 to 4 minutes. Contrast the adjective position with Spanish, since this is the most frequent error. Students write both sentences, then 3 or 4 students read theirs aloud. Correct the form, and accept any reasonable content. <strong>Extension:</strong> ask a student to join both sentences into one with “so”.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWriting() {
+  return `<div class="sc">
+    ${badge(4, 'Writing Task: My Professional Profile', '20 min')}
+
+    <div class="sub-heading" style="margin-top:0">Part A · Complete your introduction</div>
+    <div class="es-note">Imagina que tienes un nuevo jefe. Completa tu presentación con palabras del banco o con tus propias palabras.</div>
+    <div class="word-bank">
+      <div class="word-bank-label">Word bank</div>
+      <div class="word-bank-words">organized · punctual · bilingual · technical · reliable · friendly · patient · creative · calm · team player · can · can't · speak · use · experience</div>
+    </div>
+    <div class="template-box">
+      Hi, my name is ${blank('a1',150)}. I'm a ${blank('a2')} (job) at ${blank('a3',150)} (company).<br>
+      I'm very ${blank('a4')}, and I'm also ${blank('a5')}.<br>
+      I'm bilingual. I can ${blank('a6',90)} Spanish and English.<br>
+      I can ${blank('a7',90)} Excel and ${blank('a8')} (software).<br>
+      I have ${blank('a9',60)} years of ${blank('a10')} in ${blank('a11')}.<br>
+      My weakness? I'm not very ${blank('a12')}, but I want to learn.<br>
+      I'm a ${blank('a13')}, and I like helping my colleagues.
+    </div>
+    ${tap('Model answer', 'Hi, my name is Laura Gómez. I’m an analyst at Banco Andino. I’m very organized, and I’m also punctual. I’m bilingual. I can speak Spanish and English. I can use Excel and Power BI. I have three years of experience in finance. My weakness? I’m not very creative, but I want to learn. I’m a team player, and I like helping my colleagues.')}
+
+    <div class="divider"></div>
+    <div class="sub-heading" style="margin-top:0">Part B · Your strengths (3 sentences)</div>
+    <div class="es-note">Escribe 3 oraciones nuevas sobre ti. Usa estos marcos:</div>
+    <ol class="frame-list">
+      <li>I'm ________, so I can ________.</li>
+      <li>I can't ________ yet, but I need to / want to ________.</li>
+      <li>My strength is ________.</li>
+    </ol>
+    ${field('b1', "1. I'm…, so I can…")}
+    ${field('b2', "2. I can't… yet, but…")}
+    ${field('b3', '3. My strength is…')}
+    ${tap('Model answer', 'I’m technical, so I can fix small problems with the printer. I can’t use SAP yet, but I need to take a course. My strength is communication.')}
+
+    ${teacher(`Students write Part A first, then Part B (about 10 min). Then go to <strong>live correction (10 min, do not skip)</strong>. Ask each student to read their Part B aloud, and correct one error per student so they don't feel overloaded. The usual errors are “to” after can, plural adjectives, “I have 3 years of experiences”, and missing “a” in “I'm a team player”. Write common errors on the screen at the end and fix them together. <strong>Extension:</strong> stronger students add a fourth sentence that describes a colleague: “My colleague ___ is very ___. She can ___.”`)}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Warm-up",      fn: renderWarmup },
+  { label: "2. Reading",      fn: renderReading },
+  { label: "3. Main Grammar", fn: renderGrammar },
+  { label: "4. Writing",      fn: renderWriting },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

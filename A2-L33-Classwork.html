@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 33: Comparing Products and Services | A2 · Unit 4 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold, Georgia headings, Lato body
+   All colours as CSS variables, never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A: Outcomes grid, use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B: Pills, use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE, full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE, use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+/* CLASSWORK ADDITIONS */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-q.wrong-line { color:var(--red); font-style:italic; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; letter-spacing:0.5px; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); line-height:1.6; }
+.tap-answer.show { display:block; }
+.tap-answer strong { font-weight:700; }
+.tap-why { display:block; font-style:italic; color:#7A5500; font-size:13px; margin-top:4px; }
+
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin:18px 0 8px; }
+.cc-sub { font-size:13px; color:var(--grey-blue); margin-bottom:12px; font-style:italic; }
+.check-list { margin:0 0 18px 0; padding-left:22px; font-size:14px; line-height:1.9; color:var(--slate); }
+.ex-list { margin:0 0 14px 0; padding-left:20px; font-size:14px; line-height:1.9; color:var(--navy); }
+
+.model-answer-box { background:var(--off-white); border-left:4px solid var(--gold); padding:14px 18px; font-size:14px; line-height:1.8; color:var(--navy); font-style:italic; }
+
+/* WARM-UP CARDS */
+.wu-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:12px; }
+.wu-top { display:flex; gap:12px; align-items:flex-start; }
+.wu-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; flex-shrink:0; margin-top:2px; }
+.wu-def { font-size:15px; color:var(--navy); line-height:1.55; }
+.wu-def em { color:var(--grey-blue); font-size:13px; }
+.wu-btns { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.wu-btn { padding:6px 12px; border-radius:6px; border:1.5px solid var(--border-grey); background:var(--off-white); font-family:var(--font-body); font-size:12px; font-weight:700; color:var(--navy); cursor:pointer; }
+.wu-btn:hover { border-color:var(--sky); }
+.wu-btn.on { border-color:var(--gold); background:var(--gold-bg); }
+.wu-reveal { display:none; margin-top:10px; padding:9px 13px; border-radius:7px; font-size:14px; }
+.wu-reveal.show { display:block; }
+.wu-reveal.hint { background:var(--gold-bg); color:#7A5500; font-style:italic; }
+.wu-reveal.ans { background:var(--green-bg); color:var(--green); font-weight:700; }
+
+/* PASSAGES */
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.passage-head { background:var(--navy); padding:14px 18px; display:flex; gap:12px; align-items:center; }
+.passage-icon { font-size:24px; }
+.passage-name { font-family:var(--font-heading); font-size:16px; color:var(--white); }
+.passage-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.passage-num { margin-left:auto; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; white-space:nowrap; }
+.passage-body { padding:18px; }
+.passage-text { font-family:var(--font-heading); font-size:16px; line-height:1.8; color:var(--navy); background:var(--off-white); border-left:4px solid var(--gold); padding:14px 18px; margin-bottom:14px; }
+.q-label { display:inline-block; background:var(--sky); color:var(--white); border-radius:4px; padding:1px 7px; font-size:11px; font-weight:700; margin-right:6px; }
+
+/* SPOTLIGHTS */
+.spotlight { border-radius:12px; padding:20px 22px; margin:6px 0 22px; border:2px solid var(--gold); background:var(--gold-bg); }
+.spotlight.expr { border-color:var(--sky); background:var(--off-white); }
+.spotlight-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:6px; }
+.spotlight.expr .spotlight-label { color:var(--sky); }
+.spotlight-title { font-family:var(--font-heading); font-size:22px; color:var(--navy); margin-bottom:10px; font-style:italic; }
+.spotlight p { font-size:14px; line-height:1.7; color:var(--slate); margin-bottom:10px; }
+
+/* SPEAKING */
+.lang-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:20px; }
+.lang-row { font-size:14px; line-height:1.7; color:var(--slate); padding:5px 0; border-bottom:1px dashed var(--border-grey); }
+.lang-row:last-child { border-bottom:none; }
+.lang-row strong { color:var(--navy); }
+.sq-card { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--gold); border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+.sq-text { font-size:16px; font-weight:700; color:var(--navy); line-height:1.5; margin-bottom:10px; }
+
+/* CONFIDENCE */
+.conf-row { display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 6px; }
+.conf-btn { flex:1; min-width:96px; padding:10px 8px; border:1.5px solid var(--border-grey); border-radius:8px; background:var(--white); font-family:var(--font-body); cursor:pointer; text-align:center; color:var(--navy); }
+.conf-btn .n { display:block; font-family:var(--font-heading); font-size:20px; color:var(--gold); }
+.conf-btn .l { display:block; font-size:11px; color:var(--grey-blue); margin-top:2px; }
+.conf-btn:hover { border-color:var(--sky); }
+.conf-btn.on { border-color:var(--gold); background:var(--gold-bg); }
+.conf-msg { font-size:13px; color:var(--green); font-style:italic; min-height:20px; }
+.outcome-box { background:var(--navy); color:var(--white); border-radius:10px; padding:16px 20px; margin:18px 0; font-size:15px; line-height:1.6; }
+.outcome-box span { color:var(--gold); font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:700; display:block; margin-bottom:4px; }
+
+@media(max-width:600px){
+  .tap-row-top { flex-direction:column; gap:4px; }
+  .passage-num { display:none; }
+  .passage-text { font-size:15px; padding:12px 14px; }
+  .sec-badge-time { padding:16px 12px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER, do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 4 · Classwork</div>
+    <h1 class="hero-title">Lesson 33: Comparing Products and Services</h1>
+    <p class="hero-sub">Reading Day · Compare options and recommend the best one</p>
+    <div class="hero-pills">
+      <span class="pill accent">📖 Reading</span>
+      <span class="pill accent">🗣 Speaking</span>
+      <span class="pill accent">🔁 Homework review</span>
+      <span class="pill">5 steps</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT, rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+<!-- SINGLE SCRIPT BLOCK. All JavaScript lives here. STEPS populated last, render() called last. -->
+<script>
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+const openIds = {};      // tap-to-reveal state, kept when students switch steps
+let confidence = null;   // 1 to 5
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── SMALL HTML HELPERS ────────────────────────────────────
+function badge(n, title, time) {
+  return `<div class="sec-badge">
+    <div class="sec-badge-num">${n}</div>
+    <div class="sec-badge-title">${title}</div>
+    <div class="sec-badge-time">${time}</div>
+  </div>
+  <hr class="gold-rule">`;
+}
+function es(text) { return `<div class="es-note">${text}</div>`; }
+function teacher(text) { return `<div class="teacher-box"><div class="teacher-box-label">👩‍🏫 Teacher Note</div>${text}</div>`; }
+function isOpen(id) { return openIds[id] ? 'show' : ''; }
+function tog(id) {
+  openIds[id] = !openIds[id];
+  const el = document.getElementById('rv-' + id);
+  if (el) el.classList.toggle('show', !!openIds[id]);
+  const btn = document.getElementById('bt-' + id);
+  if (btn) btn.classList.toggle('on', !!openIds[id]);
+}
+function tapRow(id, q, a, wrongLine) {
+  return `<div class="tap-row" onclick="tog('${id}')">
+    <div class="tap-row-top">
+      <div class="tap-q ${wrongLine ? 'wrong-line' : ''}">${q}</div>
+      <div class="tap-hint-label">Tap to reveal ▾</div>
+    </div>
+    <div class="tap-answer ${isOpen(id)}" id="rv-${id}">${a}</div>
+  </div>`;
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const HW_CHECK = [
+  `What the product is and who it is for`,
+  `At least three features in the Present Simple (<em>includes / lets you / works with / comes with</em>)`,
+  `A benefit for at least two features (<em>so / This means / That way</em>)`,
+  `One thing it can or can't do (<em>can / can't</em>)`,
+  `The price or the plan (<em>subscription, free trial, pricing plan</em>)`,
+];
+
+// [wrong, right, why]
+const HW_ERRORS = [
+  [`It have a mobile app.`, `It has a mobile app.`, `Con <em>it</em>, <em>have</em> cambia a <em>has</em>.`],
+  [`The app allow you to export reports.`, `The app allows you to export reports.`, `<em>The app</em> = <em>it</em>, entonces el verbo lleva <em>-s</em>.`],
+  [`It lets you to send invoices.`, `It lets you send invoices.`, `<em>Lets you</em> + verbo sin <em>to</em>. <em>Allows you to</em> sí lleva <em>to</em>.`],
+  [`It doesn't works offline.`, `It doesn't work offline.`, `Después de <em>doesn't</em>, el verbo va sin <em>-s</em>.`],
+  [`It permits you to approve expenses.`, `It lets you approve expenses.`, `Para productos no usamos <em>permit</em>. Usa <em>lets you</em> o <em>allows you to</em>.`],
+  [`The platform serves for tracking orders.`, `The platform helps you track orders.`, `"Sirve para" no es <em>serves for</em>.`],
+  [`It can to send reminders.`, `It can send reminders.`, `Después de <em>can</em>, nunca <em>to</em>.`],
+];
+
+const HW_MODEL = `Hi Ms. Walsh, thank you for your interest in TimeNest. TimeNest is a scheduling app for small clinics. It lets your patients book appointments online, so your receptionists answer fewer phone calls. It also sends a reminder automatically the day before, which means patients don't forget. It works with Google Calendar and Outlook, and it can send messages by SMS, but it can't take payments yet. The subscription costs 30 dollars a month, and every plan comes with a 14-day free trial. Can I walk you through it next week? Best regards, Daniel`;
+
+// [definition, spanish hint, answer]
+const WARMUP = [
+  [`It works well every time, and it doesn't break down. You can trust it.`, `Confiable, que no falla.`, `reliable`],
+  [`It has a good price. Most companies or people can pay for it.`, `Asequible, de buen precio.`, `affordable`],
+  [`It's easy to use, even on the first day and with no training.`, `Fácil de usar.`, `user-friendly`],
+  [`A weak point or a problem with a product or an option.`, `Una desventaja, un punto débil.`, `drawback`],
+  [`Another company that sells the same kind of product to the same customers.`, `Un competidor.`, `competitor`],
+  [`You get a lot for the money you pay. The price and the quality are a good match. <em>(three words)</em>`, `Buena relación calidad-precio.`, `value for money`],
+  [`It costs a lot, or it takes a lot of time, but the result is good. You don't regret it. <em>(two words)</em>`, `Que vale la pena.`, `worth it`],
+  [`It gives a good result for the money you spend on it.`, `Rentable.`, `cost-effective`],
+];
+const WARMUP_BONUS = [
+  [`A good point of a product or an option. The opposite of a drawback.`, `Una ventaja.`, `advantage`],
+  [`Right or correct for a person, a job or a situation.`, `Adecuado, apropiado.`, `suitable`],
+  [`The good points and the bad points of something. <em>(three words)</em>`, `Pros y contras.`, `pros and cons`],
+  [`To tell someone that a product or an idea is good for them. <em>(verb)</em>`, `Recomendar.`, `recommend`],
+];
+
+const PASSAGES = [
+  { icon:`🖨️`, name:`Sven Eriksson`, role:`Office Manager, engineering firm, Gothenburg`,
+    text:`Sven needs a new printer for an office of 40 people, and he compares three models. The Brix is the cheapest, but it's also the slowest. The Kora is the most expensive of the three, but it's the fastest and the most reliable. Sven chooses the Kora, because a broken printer is the worst problem on a busy Monday morning.`,
+    q1:`Which printer is the cheapest?`, a1:`The Brix.`,
+    q2:`Do you agree with Sven? Which printer would you choose for your office, and why?`,
+    a2:`Sample: Yes, I agree. The Kora is more expensive, but it's the most reliable, and a broken printer wastes a lot of time.` },
+  { icon:`🔐`, name:`Olumide Bakare`, role:`IT Manager, private bank, Lagos`,
+    text:`Olumide's bank wants to store its files in the cloud, and he has two options. SkyVault is cheaper than DataNest, and its app is a bit more user-friendly. But DataNest is much more secure, and for a bank that's the most important thing.`,
+    q1:`Which provider is more secure?`, a1:`DataNest.`,
+    q2:`For your company, what's more important when you choose software: the price or the security? Why?`,
+    a2:`Sample: Security is more important, because we have a lot of private information about our clients.` },
+  { icon:`🛏️`, name:`Marta Novak`, role:`Procurement Specialist, hotel group, Ljubljana`,
+    text:`Marta buys towels for twelve hotels. Last year she chose the most affordable supplier, but the towels were the lowest quality she has ever seen, and many lasted only six months. This year she tells her manager, "The cheapest option isn't always the best value for money."`,
+    q1:`What was the problem with the cheapest towels?`, a1:`They were very low quality, and many lasted only six months.`,
+    q2:`Do you agree with Marta? Give an example from your work or your life.`,
+    a2:`Sample: Yes. I bought the cheapest headphones on the market, and they broke after two months. The more expensive ones were better value for money.` },
+  { icon:`🎓`, name:`Camille Laurent`, role:`HR Manager, logistics company, Lyon`,
+    text:`Camille compares three online English courses for her team. Lingoboost has the most user-friendly app, and Fluentia has the best teachers, but it's the most expensive. Talkly is the most flexible, with classes 24 hours a day. Camille recommends Talkly, because many of her employees work night shifts.`,
+    q1:`Why does Camille recommend Talkly?`, a1:`Because it has classes 24 hours a day, and many employees work night shifts.`,
+    q2:`Which of the three courses is the best fit for you? Why?`,
+    a2:`Sample: Fluentia, because good teachers are the most important thing for me, and my company pays for it.` },
+  { icon:`⚙️`, name:`Emre Kaya`, role:`Sales Representative, industrial machines, Izmir`,
+    text:`A customer tells Emre, "Your competitor is 15% cheaper." Emre doesn't say anything bad about the other company. He answers calmly, "Yes, their price is lower. But our machines are the most reliable on the market, and our service team is the fastest in Turkey."`,
+    q1:`What does Emre say about his service team?`, a1:`It's the fastest in Turkey.`,
+    q2:`Is it a good idea to say bad things about a competitor? Why or why not?`,
+    a2:`Sample: No, it isn't. The customer can think you aren't professional. It's better to talk about your own advantages.` },
+  { icon:`🚆`, name:`Anjali Krishnan`, role:`Training Coordinator, IT services company, Kochi`,
+    text:`Anjali's manager asks her, "Which is better for the team: the online course or the two-day workshop in Bangalore?" Anjali explains that the online course is much cheaper and more flexible. But the workshop is the best way to bring the whole team together. "It depends on the goal," she says. "They're very different things."`,
+    q1:`What is the advantage of the online course?`, a1:`It's much cheaper and more flexible.`,
+    q2:`Which one do you prefer, online training or a workshop in person? Why?`,
+    a2:`Sample: I prefer a workshop in person, because I learn more when I talk with my colleagues face to face.` },
+  { icon:`📱`, name:`Lindiwe Khumalo`, role:`Product Manager, mobile network company, Durban`,
+    text:`Lindiwe's CEO wants the company's app to be best-in-class. So Lindiwe compares it with the apps of their three biggest competitors. Their app is the fastest of the four, but it isn't as user-friendly as the others. Her plan for next year is simple: keep the speed and make it the easiest app to use.`,
+    q1:`What is the problem with Lindiwe's app?`, a1:`It isn't as user-friendly as the others.`,
+    q2:`Think of an app you use every day. What's the best thing about it, and what's the worst?`,
+    a2:`Sample: WhatsApp is the easiest app to use, but the worst thing is that I get too many messages.` },
+  { icon:`📊`, name:`Kenta Fujii`, role:`Sales Consultant, CRM software, Osaka`,
+    text:`A small travel agency asks Kenta which CRM plan to buy. The Enterprise plan has the most features, but the agency has only five salespeople. Kenta recommends the Starter plan: it's the most affordable, and it has everything they need. "The most expensive plan isn't always the best fit," he says.`,
+    q1:`Which plan does Kenta recommend?`, a1:`The Starter plan.`,
+    q2:`Did you ever pay for something with a lot of features that you never used? Was it worth it?`,
+    a2:`Sample: Yes. I bought the most expensive phone plan, but I never used all the data. It wasn't worth it.` },
+];
+
+const SPEAK_LANG = [
+  [`Two things`, `...is cheaper than... · ...is more reliable than... · ...isn't as ... as...`],
+  [`Three or more`, `the cheapest · the most user-friendly · the best · the worst · the least expensive`],
+  [`Recommending`, `I recommend... · I think you should... · It's a good fit for... · It's worth it.`],
+  [`Reasons`, `because... · The main advantage is... · The only drawback is...`],
+  [`Today's language`, `That's comparing apples and oranges. · It's best-in-class.`],
+];
+
+const SPEAK_Q = [
+  [`Think about two tools, apps or suppliers you use at work. Compare them. Which one is better, and why?`,
+   `What's the biggest drawback of the other one? Is it a fair comparison, or is it apples and oranges?`],
+  [`What's the most useful tool, app or machine in your job? Why is it the best for you?`,
+   `Is it the most expensive one on the market? Is it worth the money?`],
+  [`A new colleague asks you, "Which laptop, phone or app should I buy for work?" What do you recommend, and why?`,
+   `What's the main advantage? Is there a cheaper option that's also good value for money?`],
+  [`When you buy something for your company or for yourself, what's the most important thing: the price, the quality or the service? Why?`,
+   `Can you think of a company with best-in-class service? What makes it the best?`],
+];
+
+const CONF = [
+  [1, `Todavía no`], [2, `Con mucha ayuda`], [3, `Con un poco de ayuda`], [4, `Casi solo`], [5, `¡Sí, con confianza!`],
+];
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderHomework() {
+  return `<div class="sc">
+    ${badge(1, `Homework Review: Lesson 32`, `15 to 20 min`)}
+    ${es(`Saca el correo que escribiste para la tarea de la Lección 32: la presentación de un producto o servicio para un cliente potencial. Vamos a leer algunos en voz alta y a corregirlos juntos.`)}
+
+    <div class="sub-heading">Did your email include...?</div>
+    <ol class="check-list">${HW_CHECK.map(c => `<li>${c}</li>`).join('')}</ol>
+
+    <div class="sub-heading">Common mistakes</div>
+    <p class="cc-sub">Toca cada error para ver la corrección.</p>
+    ${HW_ERRORS.map(([w, r, why], i) => tapRow(`hw${i}`, `❌ ${w}`, `✅ <strong>${r}</strong><span class="tap-why">${why}</span>`, true)).join('')}
+
+    <div class="sub-heading">Model answer</div>
+    ${tapRow(`hwmodel`, `📝 Toca para ver un ejemplo de correo (about 90 words).`, `<div class="model-answer-box">${HW_MODEL}</div>`)}
+
+    ${teacher(`Ask 3 or 4 students to read their email aloud, starting with students who didn't read in L32. Let each one finish before you correct anything, then go through the checklist together. Put two or three of their feature sentences on screen and fix the verb forms as a class. To link it to today, ask: <em>"Your customer is also looking at a competitor. How is your product different?"</em> That's exactly what L33 is about. If a student didn't do the homework, ask them to give one feature and one benefit of any app they use.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function wuCard(card, i, prefix) {
+  const [def, hint, ans] = card;
+  const h = `${prefix}h${i}`, a = `${prefix}a${i}`;
+  return `<div class="wu-card">
+    <div class="wu-top"><span class="wu-num">${prefix === 'wb' ? i + 9 : i + 1}</span><div class="wu-def">${def}</div></div>
+    <div class="wu-btns">
+      <button class="wu-btn ${openIds[h] ? 'on' : ''}" id="bt-${h}" onclick="tog('${h}')">💡 Pista en español</button>
+      <button class="wu-btn ${openIds[a] ? 'on' : ''}" id="bt-${a}" onclick="tog('${a}')">✅ Answer</button>
+    </div>
+    <div class="wu-reveal hint ${isOpen(h)}" id="rv-${h}">${hint}</div>
+    <div class="wu-reveal ans ${isOpen(a)}" id="rv-${a}">${ans}</div>
+  </div>`;
+}
+
+function renderWarmup() {
+  return `<div class="sc">
+    ${badge(2, `Warm-up: Guess the Word`, `5 min`)}
+    ${es(`Lee la definición en inglés y adivina la palabra de la Pre-Learning. Si lo necesitas, toca "Pista en español". La respuesta está escondida.`)}
+    ${WARMUP.map((c, i) => wuCard(c, i, 'wu')).join('')}
+    <div class="sub-heading">Bonus cards</div>
+    <p class="cc-sub">Para una segunda ronda o para quien termina primero.</p>
+    ${WARMUP_BONUS.map((c, i) => wuCard(c, i, 'wb')).join('')}
+    ${teacher(`Read each definition aloud and give it to one student. Wait 5 seconds before you offer the Spanish hint. On card 2, ask the class how <em>affordable</em> is different from <em>cheap</em> (from the Pre-Learning trap). On card 12, listen for <em>I recommend you to...</em> and fix it to <em>I recommend the...</em> or <em>You should...</em>. Extension: after each answer, ask the student to use the word in a sentence with a comparative or a superlative (<em>It's the most reliable printer in the office.</em>).`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function passageCard(p, i) {
+  return `<div class="passage-card">
+    <div class="passage-head">
+      <div class="passage-icon">${p.icon}</div>
+      <div><div class="passage-name">${p.name}</div><div class="passage-role">${p.role}</div></div>
+      <div class="passage-num">Passage ${i + 1}</div>
+    </div>
+    <div class="passage-body">
+      <div class="passage-text">${p.text}</div>
+      ${tapRow(`p${i}q1`, `<span class="q-label">Q1</span>${p.q1}`, p.a1)}
+      ${tapRow(`p${i}q2`, `<span class="q-label">Q2</span>${p.q2}`, p.a2)}
+    </div>
+  </div>`;
+}
+
+function renderIdiom() {
+  return `<div class="spotlight">
+    <div class="spotlight-label">💬 Idiom Spotlight</div>
+    <div class="spotlight-title">comparing apples and oranges</div>
+    <p><strong>Meaning:</strong> comparing two things that are too different to compare in a fair way.</p>
+    ${es(`Comparar dos cosas tan diferentes que la comparación no tiene sentido. En español decimos algo parecido: "comparar peras con manzanas". ¡Ojo! En inglés son <em>apples and oranges</em> (manzanas y naranjas), no peras.`)}
+    <div class="sub-heading">At work</div>
+    <ul class="ex-list">
+      <li><em>An online course and a two-day workshop? That's comparing apples and oranges. They have different goals.</em></li>
+      <li><em>You can't compare our premium service with their basic plan. It's apples and oranges.</em></li>
+    </ul>
+    <p><strong>Why it matters today:</strong> in a comparison, the options have to be similar enough. Before you say <em>X is better than Y</em>, check that X and Y really do the same job. Customers trust a fair comparison more.</p>
+    <div class="sub-heading">Quick check</div>
+    ${tapRow(`id1`, `1. Your manager compares the price of a taxi with the price of a flight to another country. What can you say?`, `Sample: That's comparing apples and oranges. They're very different.`)}
+    ${tapRow(`id2`, `2. How do you say "comparar peras con manzanas" in English?`, `comparing apples and oranges`)}
+  </div>`;
+}
+
+function renderExpression() {
+  return `<div class="spotlight expr">
+    <div class="spotlight-label">💼 Corporate Expression</div>
+    <div class="spotlight-title">best-in-class</div>
+    <p><strong>Meaning:</strong> the best of all the products or companies of the same type. It's the top standard in the industry.</p>
+    ${es(`Lo mejor de su categoría. Es el producto o la empresa que todos usan como referencia. Lo vas a escuchar mucho en presentaciones, informes y reuniones de estrategia.`)}
+    <div class="sub-heading">How people use it</div>
+    <ul class="ex-list">
+      <li><em>We want best-in-class customer service.</em></li>
+      <li><em>Their security is best-in-class.</em></li>
+      <li><em>This laptop has a best-in-class battery: 20 hours.</em></li>
+    </ul>
+    <div class="tip-box"><div class="tip-label">💡 Tip</div>Fíjate en los guiones. Antes de un sustantivo se escribe con guiones: <em>a best-in-class product</em>. Ya es un superlativo, así que nunca digas <em>the most best-in-class</em>.</div>
+    <div class="sub-heading">Quick check</div>
+    ${tapRow(`ex1`, `1. Your company's delivery is the fastest in the country. Say it with today's expression.`, `Sample: Our delivery is best-in-class.`)}
+    ${tapRow(`ex2`, `2. Correct the sentence: "It's the most best-in-class app on the market."`, `It's a best-in-class app. / It's the best app on the market.`)}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    ${badge(3, `Reading`, `20 min`)}
+    ${es(`Cada estudiante lee un texto en voz alta y responde dos preguntas. La primera es sobre el texto. La segunda te pide pensar y dar tu opinión. Las respuestas modelo están escondidas.`)}
+    ${PASSAGES.slice(0, 6).map((p, i) => passageCard(p, i)).join('')}
+    ${renderIdiom()}
+    ${passageCard(PASSAGES[6], 6)}
+    ${renderExpression()}
+    ${passageCard(PASSAGES[7], 7)}
+    ${teacher(`Give each student one passage. Allow 2 minutes of silent reading, then have them read it aloud and answer both questions. For Q1, accept a short answer. For Q2, push for a full sentence with a comparative or superlative and a reason with <em>because</em>. Do the idiom right after Passage 6 and the expression right after Passage 7, while the context is fresh. Listen especially for the Pre-Learning errors: <em>the more expensive of all</em>, <em>the most cheapest</em>, <em>more better</em>, <em>that</em> instead of <em>than</em>, <em>the best of the market</em>, <em>one of the best product</em>. Passages 2 and 7 compare two things, so they're a good moment to check comparative vs superlative. Extension: after a good answer, ask another student to say which option in the passage is the worst and why.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  return `<div class="sc">
+    ${badge(4, `Speaking`, `15 to 20 min`)}
+    ${es(`Ahora tú hablas. No hay una frase modelo para copiar. Compara, di cuál es la mejor opción y da una razón. Usa el idioma y la expresión de hoy si puedes. Piensa unos segundos antes de hablar.`)}
+    <div class="lang-box">
+      <div class="examples-label">Useful language</div>
+      ${SPEAK_LANG.map(([k, v]) => `<div class="lang-row"><strong>${k}:</strong> ${v}</div>`).join('')}
+    </div>
+    ${SPEAK_Q.map(([q, f], i) => `<div class="sq-card">
+      <div class="sq-text">${i + 1}. ${q}</div>
+      ${tapRow(`sq${i}`, `Follow-up question`, f)}
+    </div>`).join('')}
+    ${teacher(`Ask each question to 2 students, so all 8 speak at least once. Give 15 to 20 seconds of thinking time before each answer. Note errors quietly and correct them in a short block after each question, not in the middle of an answer. For Q1, check that students use a comparative (two things), and for Q2 a superlative. If a student only names a product, ask "Why? What's the reason?" until they give one. For Q3, if you hear <em>I recommend you to buy</em>, correct it to <em>I recommend...</em> or <em>You should buy...</em>. Stronger students can answer the follow-up as well.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function setConf(n) {
+  confidence = n;
+  document.querySelectorAll('.conf-btn').forEach(b => b.classList.toggle('on', parseInt(b.dataset.n, 10) === n));
+  const msg = document.getElementById('confMsg');
+  if (msg) msg.textContent = n >= 4 ? '¡Excelente! Nos vemos en la próxima clase.' : 'Gracias. Repasa la Pre-Learning y pregunta en la próxima clase.';
+}
+
+function renderWrap() {
+  return `<div class="sc">
+    ${badge(5, `Wrap-up`, `5 min`)}
+    <div class="sub-heading">Exit round</div>
+    ${es(`Cada estudiante completa esta frase en voz alta con un producto, una app o un servicio que conoce: <strong>"The best ___ I know is ___, because ___."</strong>`)}
+    ${tapRow(`wrapmodel`, `Need a model? Tap to reveal`, `The best delivery app I know is Rappi, because it's the fastest in my city.<br>The best laptop I know is my old ThinkPad, because it's the most reliable computer I've ever had.`)}
+    <div class="outcome-box"><span>Lesson outcome</span>I can compare two or three products and recommend the best one with a clear reason.</div>
+    <div class="sub-heading">Confidence check</div>
+    <p class="cc-sub">¿Qué tan seguro te sientes con el objetivo de hoy?</p>
+    <div class="conf-row">
+      ${CONF.map(([n, l]) => `<button class="conf-btn ${confidence === n ? 'on' : ''}" data-n="${n}" onclick="setConf(${n})"><span class="n">${n}</span><span class="l">${l}</span></button>`).join('')}
+    </div>
+    <div class="conf-msg" id="confMsg"></div>
+    ${teacher(`Keep the exit round quick, one sentence each. Only correct an error if it blocks the meaning. The most common slip today will be <em>the more</em> + adjective, so listen for that. Make a note of any student who rates 1 or 2.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Homework Review", fn: renderHomework },
+  { label: "2. Warm-up",         fn: renderWarmup },
+  { label: "3. Reading",         fn: renderReading },
+  { label: "4. Speaking",        fn: renderSpeaking },
+  { label: "5. Wrap-up",         fn: renderWrap },
+];
+
+render(); // always last
+
+</script>
+
+<!-- PERMANENT SITE FOOTER, do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

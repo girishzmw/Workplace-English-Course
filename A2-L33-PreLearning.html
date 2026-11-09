@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 33: Comparing Products and Services | A2 · Unit 4 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold, Georgia headings, Lato body
+   All colours as CSS variables, never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A: Outcomes grid, use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B: Pills, use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE, full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE, use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+/* LESSON ADDITIONS: tap-to-reveal, audio box, Spanish bridge, data cells */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-q.wrong-line { color:var(--red); font-style:italic; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; letter-spacing:0.5px; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:700; line-height:1.6; }
+.tap-answer.show { display:block; }
+.tap-why { display:block; font-weight:400; font-style:italic; color:#7A5500; font-size:13px; margin-top:4px; }
+
+.cell { font-size:14px; color:var(--slate); line-height:1.5; }
+.cell.en { color:var(--navy); font-weight:700; }
+.cell.es { color:var(--grey-blue); font-style:italic; font-size:13px; }
+.key-star { color:var(--gold); }
+.vtype { font-size:11px; color:var(--grey-blue); font-weight:400; font-style:italic; }
+.group-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin:22px 0 10px; }
+.group-label span { color:var(--grey-blue); text-transform:none; letter-spacing:0; font-style:italic; font-weight:400; }
+.notice-box { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--sky); border-radius:8px; padding:16px 18px; margin-bottom:18px; font-size:15px; color:var(--navy); line-height:1.8; font-style:italic; }
+.notice-box strong { color:var(--gold); font-style:normal; }
+.rule-list { margin:0 0 18px 0; padding-left:20px; font-size:14px; line-height:1.8; color:var(--slate); }
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin:4px 0 6px; }
+.cc-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* SPANISH BRIDGE TABLE */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); gap:12px; }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+.bridge-en strong, .bridge-es strong { color:var(--gold); }
+
+@media(max-width:600px){
+  .data-table-head, .data-table-row { padding:10px 12px; }
+  .cell { font-size:13px; }
+  .bridge-row, .bridge-table-head { padding:10px 12px; }
+  .tap-row-top { flex-direction:column; gap:4px; }
+  .sec-badge-time { padding:16px 12px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER, do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 4 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 33: Comparing Products and Services</h1>
+    <p class="hero-sub">Comparatives and superlatives · Recommending with should · About 45 minutes</p>
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Compare two or three products</div><div class="outcome-note">Comparar dos o tres productos</div></div>
+      <div><div class="outcome-item">Say which option is the best and why</div><div class="outcome-note">Decir cuál opción es la mejor y por qué</div></div>
+      <div><div class="outcome-item">Recommend a product to a customer or colleague</div><div class="outcome-note">Recomendar un producto a un cliente o colega</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT, rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+<!-- SINGLE SCRIPT BLOCK. All JavaScript lives here. STEPS populated last, render() called last. -->
+<script>
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 1;
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const miniState = { voc:{}, bridge:{}, comp:{}, sup:{}, use:{}, mod:{}, lis:{} };
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+  if (STEPS[currentStep].fn === renderListening) restoreAudio();
+}
+
+// ── SMALL HTML HELPERS ────────────────────────────────────
+function badge(n, title, time) {
+  return `<div class="sec-badge">
+    <div class="sec-badge-num">${n}</div>
+    <div class="sec-badge-title">${title}</div>
+    <div class="sec-badge-time">${time}</div>
+  </div>
+  <hr class="gold-rule">`;
+}
+function es(text) { return `<div class="es-note">${text}</div>`; }
+function tip(label, body) { return `<div class="tip-box"><div class="tip-label">💡 ${label}</div>${body}</div>`; }
+function table(headers, rows, cols, classes) {
+  const cls = classes || [];
+  return `<div class="data-table-wrap">
+    <div class="data-table-head" style="grid-template-columns:${cols}">${headers.map(h => `<span>${h}</span>`).join('')}</div>
+    ${rows.map(r => `<div class="data-table-row" style="grid-template-columns:${cols}">${r.map((c,j) => `<div class="cell ${cls[j]||''}">${c}</div>`).join('')}</div>`).join('')}
+  </div>`;
+}
+function bridgeTable(left, right, rows) {
+  return `<div class="bridge-table-wrap">
+    <div class="bridge-table-head"><span>${left}</span><span>${right}</span></div>
+    ${rows.map(([a,b]) => `<div class="bridge-row"><div class="bridge-en">${a}</div><div class="bridge-es">${b}</div></div>`).join('')}
+  </div>`;
+}
+function tapRow(q, a, why, wrongLine) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top">
+      <div class="tap-q ${wrongLine?'wrong-line':''}">${q}</div>
+      <div class="tap-hint-label">Tap to reveal ▾</div>
+    </div>
+    <div class="tap-answer">${a}${why ? `<span class="tap-why">${why}</span>` : ''}</div>
+  </div>`;
+}
+function mistakes(label, items) {
+  return `<div class="mistake-wrap">
+    <div class="mistake-label">⚠️ ${label}</div>
+    ${items.map(([w, r, why]) => tapRow('❌ ' + w, '✅ ' + r, why, true)).join('')}
+  </div>`;
+}
+function quickCheck(prefix, name, sub) {
+  return `<div class="divider"></div>
+    <div class="sub-heading">✅ Quick Check: ${name}</div>
+    <p class="cc-sub">${sub}</p>
+    <div id="mini-wrap-${prefix}">${renderMiniQ(prefix, CQ[prefix])}</div>`;
+}
+
+// ── LESSON DATA: VOCABULARY ───────────────────────────────
+// [english, type, spanish, example, isKeyWord]
+const VOC_GROUPS = [
+  { title:`Describing a product or service`, es:`Describir un producto o servicio`, rows:[
+    [`reliable`, `adjective`, `confiable, que no falla`, `Our printer is very reliable. It never breaks down.`, true],
+    [`affordable`, `adjective`, `asequible, de buen precio`, `The Basic plan is affordable for small companies.`, true],
+    [`user-friendly`, `adjective`, `fácil de usar`, `The new app is user-friendly. Nobody needs training.`, true],
+    [`cost-effective`, `adjective`, `rentable, que da buen resultado por lo que cuesta`, `Video calls are more cost-effective than business trips.`, false],
+    [`high-quality`, `adjective`, `de alta calidad`, `They make high-quality office chairs.`, false],
+    [`suitable`, `adjective`, `adecuado, apropiado`, `This laptop isn't suitable for designers. The screen is too small.`, false],
+  ]},
+  { title:`Comparing options`, es:`Comparar opciones`, rows:[
+    [`option`, `noun`, `opción`, `We have three options. Let's look at each one.`, false],
+    [`advantage`, `noun`, `ventaja`, `The main advantage of this supplier is fast delivery.`, false],
+    [`drawback`, `noun`, `desventaja, punto débil`, `The only drawback is the price.`, false],
+    [`pros and cons`, `phrase`, `pros y contras, ventajas y desventajas`, `Let's look at the pros and cons of each plan.`, false],
+    [`competitor`, `noun`, `competidor`, `Our competitor is cheaper, but it isn't as reliable.`, false],
+    [`value for money`, `phrase`, `buena relación calidad-precio`, `The Team plan is good value for money.`, false],
+  ]},
+  { title:`Recommending`, es:`Recomendar`, rows:[
+    [`recommend`, `verb`, `recomendar`, `I recommend the Team plan for your company.`, false],
+    [`a good fit`, `phrase`, `una buena opción para alguien, que le encaja bien`, `The Basic plan is a good fit for small teams.`, false],
+    [`worth it`, `phrase`, `que vale la pena`, `The Pro plan is expensive, but it's worth it.`, false],
+  ]},
+];
+
+// ── CONCEPT CHECK BANKS (one per content segment) ─────────
+const VOC_CQ = [
+  { type:'mc', q:`The software is easy for everyone, even on the first day. It's very ___.`,
+    opts:[`reliable`, `user-friendly`, `affordable`], answer:1,
+    fb:`<em>User-friendly</em> = fácil de usar. <em>Reliable</em> = confiable, que no falla. <em>Affordable</em> = de buen precio.` },
+  { type:'tf', q:`<em>Cheap</em> and <em>affordable</em> always mean the same thing.`, answer:false,
+    fb:`<em>Cheap</em> a veces suena a mala calidad. <em>Affordable</em> es positivo: buen precio. Con clientes, usa <em>affordable</em>.` },
+  { type:'input', q:`The supplier is great. The only ________ is the slow delivery.`,
+    hint:`One word: desventaja.`,
+    answers:[`drawback`, `a drawback`], display:`drawback`,
+    fb:`<em>Drawback</em> = desventaja, punto débil. Lo contrario es <em>advantage</em>.` },
+];
+
+const BRIDGE_CQ = [
+  { type:'mc', q:`I think you should ___ the free trial first.`,
+    opts:[`to start`, `start`, `starts`], answer:1,
+    fb:`Después de <em>should</em> va el verbo base: <em>should start</em>. Sin <em>to</em> y sin <em>-s</em>.` },
+  { type:'tf', q:`"You must buy this plan" is a polite way to recommend a product to a customer.`, answer:false,
+    fb:`<em>Must</em> suena a orden u obligación. Para recomendar: <em>You should buy this plan</em> o <em>I think you should buy this plan.</em>` },
+  { type:'input', q:`"Should we change suppliers?" "No, we ___."`,
+    hint:`Short answer, negative.`,
+    answers:[`shouldn't`, `should not`], display:`No, we shouldn't.`,
+    fb:`Respuesta corta con el mismo verbo de la pregunta: <em>Should we...?</em> → <em>No, we shouldn't.</em>` },
+];
+
+const COMP_CQ = [
+  { type:'mc', q:`The Pro plan is ___ the Basic plan.`,
+    opts:[`more better than`, `better than`, `better that`], answer:1,
+    fb:`<em>Good → better.</em> No lleva <em>more</em>. Y para comparar usamos <em>than</em>, no <em>that</em>.` },
+  { type:'input', q:`Complete: "Our competitor isn't as reliable ___ we are."`,
+    hint:`One word.`,
+    answers:[`as`], display:`Our competitor isn't as reliable as we are.`,
+    fb:`El patrón es <em>not as + adjective + as</em>.` },
+];
+
+const SUP_CQ = [
+  { type:'mc', q:`Of the three suppliers, Northline is ___.`,
+    opts:[`the most reliable`, `the more reliable`, `the reliablest`], answer:0,
+    fb:`<em>Reliable</em> es un adjetivo largo, entonces usamos <em>the most reliable</em>.` },
+  { type:'input', q:`Write the superlative of <em>big</em>: "This is ___ order of the year."`,
+    hint:`Two words.`,
+    answers:[`the biggest`], display:`This is the biggest order of the year.`,
+    fb:`Una vocal + una consonante: duplicamos la <em>g</em>: <em>the biggest</em>.` },
+  { type:'tf', q:`"The most good option" is correct English.`, answer:false,
+    fb:`<em>Good</em> es irregular: <em>good → better → the best</em>. Lo correcto es <em>the best option</em>.` },
+];
+
+const USE_CQ = [
+  { type:'mc', q:`We have only two options. The Orbis is ___ the Kanto.`,
+    opts:[`the cheapest`, `cheaper than`, `the most cheap`], answer:1,
+    fb:`Con dos cosas usamos el comparativo: <em>cheaper than</em>.` },
+  { type:'mc', q:`It's the cheapest option ___ the three.`,
+    opts:[`in`, `of`, `than`], answer:1,
+    fb:`Con un número usamos <em>of</em>: <em>of the three</em>. Con un lugar o un grupo, <em>in</em>: <em>in the city</em>.` },
+  { type:'input', q:`Correct the sentence: "It's one of the best product on the market."`,
+    hint:`Write the full sentence.`,
+    answers:[`it's one of the best products on the market`, `it is one of the best products on the market`],
+    display:`It's one of the best products on the market.`,
+    fb:`Después de <em>one of the best</em> el sustantivo va en plural: <em>products</em>.` },
+];
+
+const MOD_CQ = [
+  { type:'mc', q:`Which sentence is a recommendation?`,
+    opts:[`The Vexa is the cheapest of the three.`, `I think you should choose the Orbis.`, `The Kanto is as fast as the Orbis.`], answer:1,
+    fb:`<em>I think you should...</em> recomienda una opción. Las otras frases comparan, pero no recomiendan.` },
+  { type:'input', q:`Complete: "The Orbis is one of the most reliable laptops ___ the market."`,
+    hint:`One word.`,
+    answers:[`on`], display:`on the market`,
+    fb:`<em>On the market</em> es una frase fija para productos que puedes comprar hoy.` },
+];
+
+const LIS_CQ = [
+  { type:'mc', q:`Which company is the cheapest?`,
+    opts:[`QuickParcel`, `Bluepost`, `Northline`], answer:0,
+    fb:`Tamsin dice: <em>The first one, QuickParcel, is the cheapest.</em> Pero también es la menos confiable.` },
+  { type:'tf', q:`Bluepost has the most user-friendly app.`, answer:true,
+    fb:`Sí: <em>its app is the most user-friendly. Customers can track every box on their phone.</em>` },
+  { type:'input', q:`Which company does Tamsin recommend?`,
+    hint:`One word.`,
+    answers:[`northline`], display:`Northline`,
+    fb:`<em>I think they should choose Northline.</em> No es la más barata, pero es la más confiable.` },
+];
+
+const CQ = { voc:VOC_CQ, bridge:BRIDGE_CQ, comp:COMP_CQ, sup:SUP_CQ, use:USE_CQ, mod:MOD_CQ, lis:LIS_CQ };
+
+// ── MAIN QUIZ (12 questions, bridge items at Q4 and Q10) ──
+const QUIZ = [
+  { type:'mc', q:`Of the three suppliers, Northline is ___.`,
+    opts:[`the more reliable`, `the most reliable`, `most reliable`], answer:1,
+    fb:`Tres opciones → superlativo. Adjetivo largo → <em>the most reliable</em>. No olvides <em>the</em>.` },
+  { type:'mc', q:`Everyone can use the app on the first day, with no training. It's very ___.`,
+    opts:[`user-friendly`, `cost-effective`, `suitable`], answer:0,
+    fb:`<em>User-friendly</em> = fácil de usar.` },
+  { type:'input', q:`Write the superlative of <em>easy</em>: "This is ___ option for new users."`,
+    hint:`Two words.`,
+    answers:[`the easiest`], display:`This is the easiest option for new users.`,
+    fb:`Dos sílabas terminadas en <em>-y</em>: <em>y → iest</em>. <em>Easy → the easiest.</em>` },
+  { type:'mc', q:`Which plan should I ___?`,
+    opts:[`choose`, `to choose`, `chooses`], answer:0,
+    fb:`Después de <em>should</em> va el verbo base, sin <em>to</em> y sin <em>-s</em>: <em>should I choose</em>.` },
+  { type:'mc', q:`It's one of the best ___ on the market.`,
+    opts:[`product`, `products`, `product's`], answer:1,
+    fb:`<em>One of the best</em> + sustantivo en plural: <em>products</em>.` },
+  { type:'mc', q:`We compared two printers. The Canon is ___ the HP.`,
+    opts:[`quieter than`, `the quietest`, `more quiet than`], answer:0,
+    fb:`Dos cosas → comparativo. <em>Quiet</em> es corto: <em>quieter than</em>.` },
+  { type:'input', q:`Complete: "It's the cheapest option ___ the three."`,
+    hint:`One word.`,
+    answers:[`of`], display:`It's the cheapest option of the three.`,
+    fb:`Con un número usamos <em>of</em>: <em>of the three, of all</em>.` },
+  { type:'mc', q:`Choose the correct sentence.`,
+    opts:[`It's the most cheapest plan.`, `It's the cheapest plan.`, `It's the more cheap plan.`], answer:1,
+    fb:`<em>Cheap</em> es corto: <em>the cheapest</em>. Nunca <em>most</em> + <em>-est</em> juntos.` },
+  { type:'mc', q:`The service is great. The only ___ is the price.`,
+    opts:[`advantage`, `drawback`, `competitor`], answer:1,
+    fb:`<em>Drawback</em> = desventaja. El precio es el punto débil aquí.` },
+  { type:'input', q:`"Should I upgrade now?" "No, you ___. Wait for the new pricing plan."`,
+    hint:`Short answer, negative.`,
+    answers:[`shouldn't`, `should not`], display:`No, you shouldn't.`,
+    fb:`<em>Should I...?</em> → <em>Yes, you should.</em> / <em>No, you shouldn't.</em>` },
+  { type:'mc', q:`How do you say "Es el peor proveedor de la ciudad" in English?`,
+    opts:[`It's the worst supplier of the city.`, `It's the worst supplier in the city.`, `It's the most bad supplier in the city.`], answer:1,
+    fb:`<em>Bad → worse → the worst.</em> Con un lugar usamos <em>in</em>: <em>in the city</em>.` },
+  { type:'mc', q:`The Pro plan is expensive, but it saves our team ten hours a week. It's ___.`,
+    opts:[`worth it`, `a drawback`, `a competitor`], answer:0,
+    fb:`<em>Worth it</em> = vale la pena. Cuesta más, pero el beneficio es mayor.` },
+];
+
+// ── EXERCISES DATA ────────────────────────────────────────
+const EX_SETS = [
+  { label:`Set A · Write the superlative`, es:`Escribe el superlativo. Después toca para ver la respuesta.`, items:[
+    [`1. cheap`, `the cheapest`], [`2. safe`, `the safest`], [`3. big`, `the biggest`], [`4. easy`, `the easiest`],
+    [`5. reliable`, `the most reliable`], [`6. good`, `the best`], [`7. bad`, `the worst`], [`8. user-friendly`, `the most user-friendly`],
+  ]},
+  { label:`Set B · in or of?`, es:`¿Lugar o grupo (in) o número o periodo (of)?`, items:[
+    [`1. It's the fastest delivery company ___ Colombia.`, `in`],
+    [`2. The Orbis is the most expensive ___ the three.`, `of`],
+    [`3. Karen is the best salesperson ___ our team.`, `in`],
+    [`4. December is the busiest month ___ the year.`, `of`],
+    [`5. This is the most affordable plan ___ all.`, `of`],
+  ]},
+  { label:`Set C · Comparative or superlative?`, es:`Usa el adjetivo entre paréntesis. ¿Comparas dos cosas o tres o más?`, items:[
+    [`1. We have two printers. The new one is ___ (quiet) the old one.`, `quieter than`],
+    [`2. Of all our suppliers, Andex is ___ (reliable).`, `the most reliable`],
+    [`3. The Team plan is ___ (good) value for money of the three.`, `the best`],
+    [`4. Bluepost is ___ (expensive) QuickParcel.`, `more expensive than`],
+    [`5. This is one of ___ (bad) laptops on the market.`, `the worst`],
+  ]},
+  { label:`Set D · Fix the mistake`, es:`Cada frase tiene un error. Corrígela.`, items:[
+    [`1. It's the more expensive of all.`, `It's the most expensive of all.`],
+    [`2. This is the most cheapest option.`, `This is the cheapest option.`],
+    [`3. It's the best supplier of the market.`, `It's the best supplier on the market.`],
+    [`4. Our app is more better than theirs.`, `Our app is better than theirs.`],
+    [`5. It's one of the best product in Mexico.`, `It's one of the best products in Mexico.`],
+    [`6. You should to choose the Pro plan.`, `You should choose the Pro plan.`],
+  ]},
+  { label:`Set E · Recommend it`, es:`Usa las pistas para escribir una recomendación con <em>should</em> y un superlativo. Hay más de una respuesta posible.`, items:[
+    [`1. Team plan / good value for money`, `I think you should choose the Team plan. It's the best value for money.`],
+    [`2. Northline / reliable / three`, `You should choose Northline. It's the most reliable of the three.`],
+    [`3. not / cheapest laptop / drawbacks`, `I don't think you should buy the cheapest laptop. It has the biggest drawbacks.`],
+  ]},
+];
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    ${badge(1, `Welcome`, `2 min`)}
+    ${es(`En la Lección 32 presentaste un producto. Pero los clientes casi nunca miran solo un producto. Miran dos, tres o cuatro opciones y preguntan: "¿Cuál es mejor para nosotros?" Hoy vas a aprender a comparar opciones y a recomendar una con una razón clara.`)}
+    <div class="info-box">
+      <strong>Scenario:</strong> Your team needs 20 new laptops. You have three options from three suppliers. Your manager asks you: <em>"Which one should we buy?"</em>
+    </div>
+    ${es(`Al final de esta lección vas a poder comparar tres opciones, decir cuál es la mejor para tu cliente o tu empresa, y recomendarla con <strong>should</strong>.`)}
+    <div class="examples-label">Lesson map</div>
+    ${table([`Step`, `What you learn`], [
+      [`2. Vocabulary`, `15 new words for comparing and recommending`],
+      [`3. Grammar Bridge`, `Should / shouldn't for recommendations (review of Lesson 24)`],
+      [`4. Comparatives`, `Quick review of Lesson 26`],
+      [`5. Superlatives: Form`, `the cheapest, the most reliable, the best`],
+      [`6. Superlatives: Use`, `in / of, one of the..., two things or three?`],
+      [`7. Model Sentences`, `Compare and recommend, step by step`],
+      [`8. Listening`, `Three delivery companies, one recommendation`],
+      [`9. Exercises`, `Practice with tap-to-reveal answers`],
+      [`10. Quiz`, `12 questions`],
+    ], `1fr 2fr`, [`en`, ``])}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocab() {
+  return `<div class="sc">
+    ${badge(2, `Vocabulary`, `6 min`)}
+    ${es(`Lee cada palabra y su ejemplo en voz alta. Las palabras clave de la lección están marcadas con ★.`)}
+    ${VOC_GROUPS.map(g => `
+      <div class="group-label">${g.title} <span>· ${g.es}</span></div>
+      ${table([`English`, `Español`, `Example`],
+        g.rows.map(([en, type, sp, ex, key]) => [
+          `${en}${key ? ' <span class="key-star">★</span>' : ''}<br><span class="vtype">${type}</span>`, sp, `<em>${ex}</em>`]),
+        `1fr 1.1fr 1.7fr`, [`en`, `es`, ``])}
+    `).join('')}
+
+    <div class="sub-heading">Recuerda: palabras de lecciones anteriores</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">efficient, flexible, time-consuming</span><span class="example-arrow">→</span><span class="example-es">Lección 26: <em>The new system is more efficient than the old one.</em></span></div>
+      <div class="example-item"><span class="example-en">save time / waste time</span><span class="example-arrow">→</span><span class="example-es">Lección 26</span></div>
+      <div class="example-item"><span class="example-en">requirement, must-have, decision-maker</span><span class="example-arrow">→</span><span class="example-es">Lección 31</span></div>
+      <div class="example-item"><span class="example-en">feature, benefit, pricing plan, free trial, upgrade, secure</span><span class="example-arrow">→</span><span class="example-es">Lección 32</span></div>
+      <div class="example-item"><span class="example-en">budget, supplier</span><span class="example-arrow">→</span><span class="example-es">Lecciones 21 y 2</span></div>
+    </div>
+
+    <div class="sub-heading">Cuidado: falsos amigos y trampas</div>
+    ${tapRow(`<em>Cheap</em> vs <em>affordable</em>`, `No son iguales.`, `<em>Cheap</em> puede sonar a "barato y de mala calidad". <em>Affordable</em> es positivo: buen precio, accesible. Con un cliente, <em>affordable</em> suena mucho mejor.`)}
+    ${tapRow(`<em>Reliable</em> vs <em>confident</em>`, `Reliable = confiable.`, `<em>Reliable</em> es "confiable" para productos, servicios y personas. No lo confundas con <em>confident</em> (seguro de sí mismo).`)}
+    ${tapRow(`"La competencia" en inglés`, `the competition / our competitors`, `<em>Competitor</em> es una empresa que compite contigo. <em>Competence</em> es otra cosa: la capacidad de hacer algo bien.`)}
+    ${tapRow(`❌ <em>I recommend you to buy the Team plan.</em>`, `✅ I recommend the Team plan. / You should buy the Team plan.`, `<em>Recommend</em> no lleva <em>you to</em>. Para recomendar una acción, usa <em>should</em>.`, true)}
+
+    ${tip(`Tip: pros and cons`, `Antes de una recomendación, los clientes quieren ver los pros y los contras. Una frase muy útil: <em>Let's look at the pros and cons of each option.</em>`)}
+
+    ${quickCheck('voc', `Vocabulary`, `3 preguntas rápidas para confirmar las palabras clave antes de continuar.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    ${badge(3, `Grammar Bridge: Should / Shouldn't`, `6 min`)}
+    ${es(`En la Lección 24 usaste <strong>should</strong> para dar sugerencias y soluciones a problemas. Hoy lo usamos para recomendar un producto o una opción. Es un repaso, pero <em>should</em> es la herramienta principal para cumplir el objetivo de esta lección: <strong>recomendar</strong>.`)}
+
+    <div class="sub-heading">A. Statements</div>
+    ${table([``, `Example`], [
+      [`✅ Affirmative`, `You <strong>should choose</strong> the Team plan.`],
+      [`❌ Negative`, `You <strong>shouldn't buy</strong> the Basic plan. / You <strong>should not buy</strong> the Basic plan.`],
+    ], `1fr 3fr`, [`en`, ``])}
+    <div class="info-box">
+      <strong>Three rules for <em>should</em>:</strong>
+      <ol class="rule-list" style="margin-top:6px;margin-bottom:0">
+        <li><em>Should</em> es igual para todos: <em>I should, you should, she should, they should.</em> Nunca <em>shoulds</em>.</li>
+        <li>Después de <em>should</em> va el verbo base, sin <em>to</em>: <em>should choose</em>, no <em>should to choose</em>.</li>
+        <li>El verbo después de <em>should</em> no lleva <em>-s</em>: <em>she should choose</em>, no <em>she should chooses</em>.</li>
+      </ol>
+    </div>
+
+    <div class="sub-heading">B. I think you should... / I don't think you should...</div>
+    ${table([`Pattern`, `Example`], [
+      [`I think + you / we / they + should`, `I think you should choose Northline.`],
+      [`I don't think + you / we / they + should`, `I don't think we should buy the cheapest laptop.`],
+    ], `1.2fr 1.5fr`, [`en`, ``])}
+    ${es(`<em>I think you should...</em> suena más suave y profesional que solo <em>You should...</em>. Es perfecto para un cliente. Para el negativo, lo natural es <em>I don't think you should...</em>. La frase <em>I think you shouldn't...</em> existe, pero suena un poco más directa y menos común.`)}
+
+    <div class="sub-heading">C. Should I...? questions and short answers</div>
+    ${table([`Question`, `Short answer`], [
+      [`Should I upgrade to the Pro plan?`, `Yes, you should. / No, you shouldn't.`],
+      [`Should we change suppliers?`, `Yes, you should. / No, you shouldn't.`],
+      [`Which plan should I choose?`, `You should choose the Team plan.`],
+      [`What should we do?`, `I think you should start with the free trial.`],
+    ], `1fr 1fr`, [`en`, ``])}
+    ${es(`En la respuesta corta no repites el verbo: ✅ <em>Yes, you should.</em> ❌ <em>Yes, you should upgrade.</em> (Es correcto, pero no es una respuesta corta.)`)}
+
+    <div class="sub-heading">Spanish Bridge</div>
+    ${bridgeTable(`Español`, `English`, [
+      [`Deberías elegir el plan Team.`, `You <strong>should choose</strong> the Team plan.`],
+      [`No deberías comprar el plan Basic.`, `You <strong>shouldn't buy</strong> the Basic plan.`],
+      [`Creo que deberías esperar.`, `I <strong>think</strong> you <strong>should</strong> wait.`],
+      [`No creo que debas cambiar.`, `I <strong>don't think</strong> you <strong>should</strong> change.`],
+      [`¿Debería actualizar mi plan?`, `<strong>Should</strong> I upgrade my plan?`],
+    ])}
+    ${es(`"Deberías" = <em>should</em>. Es un consejo, no una obligación. El problema es "debes": muchos estudiantes traducen "debes" como <em>must</em>. Pero en inglés <em>must</em> es una regla u obligación fuerte (lo viste en la Lección 28: <em>You must wear your ID card</em>). Si le dices a un cliente <em>You must buy this plan</em>, suena como una orden. Para recomendar, usa siempre <em>should</em>.`)}
+
+    ${mistakes(`Errores comunes · toca para ver la corrección`, [
+      [`You should to choose the Team plan.`, `You should choose the Team plan.`, `Después de should, nunca to.`],
+      [`He shoulds buy a new laptop.`, `He should buy a new laptop.`, `Should no lleva -s, ni siquiera con he / she / it.`],
+      [`You should chooses Northline.`, `You should choose Northline.`, `El verbo después de should va en forma base.`],
+      [`You must try our new plan. It's great!`, `You should try our new plan. It's great!`, `Must es obligación. Para un consejo o una recomendación, should.`],
+    ])}
+
+    ${quickCheck('bridge', `Grammar Bridge`, `3 preguntas rápidas sobre should / shouldn't.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderComp() {
+  return `<div class="sc">
+    ${badge(4, `Comparatives: Quick Review`, `3 min`)}
+    ${es(`En la Lección 26 aprendiste a comparar <strong>dos</strong> cosas. Aquí tienes un repaso rápido antes de los superlativos.`)}
+    ${table([`Rule`, `Example`], [
+      [`Short adjective + <strong>-er</strong> + than`, `Option A is <strong>cheaper than</strong> Option B.`],
+      [`<strong>more / less</strong> + long adjective + than`, `This laptop is <strong>more reliable than</strong> that one. Delivery is <strong>less expensive</strong> with Bluepost.`],
+      [`Irregular: good → <strong>better</strong>, bad → <strong>worse</strong>`, `The new app is <strong>better than</strong> the old one.`],
+      [`<strong>as</strong> + adjective + <strong>as</strong> (igual)`, `The Team plan is <strong>as user-friendly as</strong> the Pro plan.`],
+      [`<strong>not as</strong> + adjective + <strong>as</strong>`, `Our competitor <strong>isn't as reliable as</strong> we are.`],
+      [`<strong>much / a bit</strong> + comparative`, `This printer is <strong>much faster</strong>. That one is <strong>a bit cheaper</strong>.`],
+    ], `1fr 1.5fr`, [``, ``])}
+    ${mistakes(`Recuerda los errores de siempre`, [
+      [`more better`, `better`, `Better ya significa "mejor". No lleva more.`],
+      [`cheaper that`, `cheaper than`, `"Que" en una comparación es than, no that.`],
+    ])}
+    ${quickCheck('comp', `Comparatives`, `2 preguntas rápidas de repaso.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSupForm() {
+  return `<div class="sc">
+    ${badge(5, `Superlatives: Form`, `6 min`)}
+    <div class="sub-heading">Notice</div>
+    ${es(`Lee esta comparación de tres laptops. Fíjate en las palabras marcadas.`)}
+    <div class="notice-box">We looked at three laptops. The Vexa is <strong>the cheapest</strong>. The Orbis is <strong>the most reliable</strong>, and it has <strong>the best</strong> battery. The Kanto is <strong>the biggest</strong> and <strong>the heaviest</strong>, so it's <strong>the least</strong> practical for travel.</div>
+    ${es(`Cuando comparamos <strong>tres o más</strong> cosas y una es "la más..." o "la menos...", usamos el <strong>superlativo</strong>. Siempre va con <strong>the</strong> antes.`)}
+
+    <div class="h-serif">Rule 1: Short adjectives: the + adjective + -est</div>
+    ${table([`Adjective`, `Comparative`, `Superlative`], [
+      [`cheap`, `cheaper`, `<strong>the cheapest</strong>`],
+      [`fast`, `faster`, `<strong>the fastest</strong>`],
+      [`new`, `newer`, `<strong>the newest</strong>`],
+      [`small`, `smaller`, `<strong>the smallest</strong>`],
+      [`long`, `longer`, `<strong>the longest</strong>`],
+    ], `1fr 1fr 1fr`, [`en`, ``, ``])}
+
+    <div class="h-serif">Rule 2: Spelling changes</div>
+    ${table([`Rule`, `Examples`], [
+      [`Ends in <strong>-e</strong>: add only <strong>-st</strong>`, `safe → the safe<strong>st</strong>, large → the large<strong>st</strong>, late → the late<strong>st</strong>`],
+      [`One vowel + one consonant: <strong>double</strong> the consonant`, `big → the bi<strong>gg</strong>est, hot → the ho<strong>tt</strong>est, thin → the thi<strong>nn</strong>est`],
+      [`Two syllables ending in <strong>-y</strong>: <strong>y → iest</strong>`, `easy → the eas<strong>iest</strong>, busy → the bus<strong>iest</strong>, early → the earl<strong>iest</strong>`],
+    ], `1fr 1.4fr`, [``, ``])}
+    ${es(`Igual que con el comparativo: no se duplica la consonante si termina en <em>w</em> o <em>y</em>: <em>new → the newest</em>, <em>slow → the slowest</em>.`)}
+
+    <div class="h-serif">Rule 3: Long adjectives: the most / the least + adjective</div>
+    ${table([`Adjective`, `The most`, `The least`], [
+      [`reliable`, `the most reliable`, `the least reliable`],
+      [`affordable`, `the most affordable`, `the least affordable`],
+      [`expensive`, `the most expensive`, `the least expensive`],
+      [`cost-effective`, `the most cost-effective`, `the least cost-effective`],
+      [`efficient`, `the most efficient`, `the least efficient`],
+      [`organized`, `the most organized`, `the least organized`],
+    ], `1fr 1.2fr 1.2fr`, [`en`, ``, ``])}
+    ${tip(`¡Atención!`, `<ul class="rule-list" style="margin-bottom:0">
+      <li>Los adjetivos compuestos con guion usan <em>the most</em>: ✅ <em>the most user-friendly</em>, ❌ <em>the user-friendliest</em>.</li>
+      <li>Los adjetivos que terminan en <em>-ed</em> usan <em>the most</em>, aunque sean cortos: <em>the most tired</em>, <em>the most focused</em>.</li>
+      <li><em>The least</em> = "el menos". Es muy útil y suena diplomático: <em>the least expensive</em> suena mejor que <em>the cheapest</em> cuando hablas con un cliente.</li>
+    </ul>`)}
+
+    <div class="h-serif">Rule 4: Irregular forms</div>
+    ${table([`Adjective`, `Comparative`, `Superlative`], [
+      [`good`, `better`, `<strong>the best</strong>`],
+      [`bad`, `worse`, `<strong>the worst</strong>`],
+      [`far`, `further`, `<strong>the furthest</strong>`],
+    ], `1fr 1fr 1fr`, [`en`, ``, ``])}
+    ${es(`Se memorizan. <em>The best</em> ya significa "el mejor", así que nunca lleva <em>most</em>: ❌ <em>the most good</em>, ❌ <em>the more good</em>.`)}
+
+    <div class="h-serif">Rule 5: <em>the</em> or a possessive, never nothing</div>
+    ${table([`✅ Correct`, `❌ Wrong`], [
+      [`It's <strong>the</strong> cheapest option.`, `It's cheapest option.`],
+      [`This is <strong>our</strong> most popular plan.`, `This is our the most popular plan.`],
+    ], `1fr 1fr`, [``, ``])}
+    ${es(`Con un posesivo (<em>our, your, their</em>) no usamos <em>the</em>: <em>our best supplier</em>, <em>their newest model</em>.`)}
+
+    ${quickCheck('sup', `Superlatives: Form`, `3 preguntas rápidas sobre cómo se forma el superlativo.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSupUse() {
+  return `<div class="sc">
+    ${badge(6, `Superlatives: Use`, `6 min`)}
+
+    <div class="h-serif">A. Comparative or superlative?</div>
+    ${table([`Two things: comparative + than`, `Three or more: superlative with the`], [
+      [`The Orbis is <strong>cheaper than</strong> the Kanto.`, `The Vexa is <strong>the cheapest</strong> of the three.`],
+      [`Bluepost is <strong>more user-friendly than</strong> QuickParcel.`, `Bluepost is <strong>the most user-friendly</strong> option.`],
+      [`This plan is <strong>better than</strong> that one.`, `This plan is <strong>the best</strong> for your team.`],
+    ], `1fr 1fr`, [``, ``])}
+    ${es(`¿Cuántas cosas comparas? Dos → comparativo. Tres o más → superlativo. Si solo hay dos opciones, en inglés no usamos <em>the most</em>: ✅ <em>Of the two, the Orbis is cheaper.</em>`)}
+
+    <div class="h-serif">B. <em>in</em> or <em>of</em> after a superlative</div>
+    ${table([`Use`, `When`, `Examples`], [
+      [`<strong>in</strong> + place or group`, `a city, a country, a company, a team, a department`, `the cheapest supplier <strong>in</strong> Bogotá, the best salesperson <strong>in</strong> our team, the biggest company <strong>in</strong> Colombia`],
+      [`<strong>of</strong> + a number or a time`, `of the three, of all, of the year`, `the cheapest <strong>of the three</strong>, the best <strong>of all</strong>, the busiest month <strong>of the year</strong>`],
+      [`<strong>on the market</strong> (fixed phrase)`, `products you can buy right now`, `one of the best laptops <strong>on the market</strong>`],
+    ], `1fr 1fr 1.5fr`, [`en`, ``, ``])}
+    ${es(`En español usamos "de" para todo: "el más barato <strong>de</strong> la ciudad", "el más barato <strong>de</strong> los tres". En inglés, para un lugar o un grupo usamos <strong>in</strong>, y para un número o un periodo usamos <strong>of</strong>. Para productos, la frase natural es <strong>on the market</strong>.`)}
+
+    <div class="h-serif">C. one of the + superlative + plural noun</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">Northline is one of the most reliable <strong>companies</strong> in the UK.</span></div>
+      <div class="example-item"><span class="example-en">This is one of the best <strong>laptops</strong> on the market.</span></div>
+      <div class="example-item"><span class="example-en">Price is one of the biggest <strong>drawbacks</strong>.</span></div>
+    </div>
+    ${es(`"Uno de los mejores <strong>productos</strong>". Igual que en español, el sustantivo va en plural, pero en inglés muchos estudiantes olvidan la <em>-s</em>: ❌ <em>one of the best product</em>.`)}
+
+    <div class="sub-heading">Spanish Bridge</div>
+    ${bridgeTable(`Español`, `English`, [
+      [`Es el <strong>más barato</strong>.`, `It's <strong>the cheapest</strong>.`],
+      [`Es el <strong>más confiable de</strong> los tres.`, `It's <strong>the most reliable of</strong> the three.`],
+      [`Es el <strong>mejor</strong> proveedor <strong>de</strong> la ciudad.`, `It's <strong>the best</strong> supplier <strong>in</strong> the city.`],
+      [`Es el <strong>menos caro</strong>.`, `It's <strong>the least expensive</strong>.`],
+      [`Es <strong>uno de los mejores productos</strong> del mercado.`, `It's <strong>one of the best products on</strong> the market.`],
+    ])}
+    ${es(`El español usa "más" para el comparativo y el superlativo ("más barato que" / "el más barato"). El inglés los separa: <em>cheaper than</em> / <em>the cheapest</em>, <em>more reliable than</em> / <em>the most reliable</em>. Si traduces "el más" palabra por palabra, sale <em>the more</em>, y eso está mal.`)}
+
+    ${mistakes(`Errores comunes · toca para ver la corrección`, [
+      [`It's the more expensive of all.`, `It's the most expensive of all.`, `"El más caro" es the most expensive, no the more.`],
+      [`This is the most cheapest plan.`, `This is the cheapest plan.`, `O -est o most, nunca los dos.`],
+      [`It's the more good option.`, `It's the best option.`, `Good → better → the best.`],
+      [`It's the best of the market.`, `It's the best on the market.`, `Para productos, la frase fija es on the market.`],
+      [`This laptop is more better.`, `This laptop is better.`, `Better ya es comparativo. No lleva more.`],
+      [`Bluepost is more expensive that QuickParcel.`, `Bluepost is more expensive than QuickParcel.`, `"Que" en una comparación es than.`],
+      [`It's one of the best product in Colombia.`, `It's one of the best products in Colombia.`, `One of the + superlativo + sustantivo en plural.`],
+    ])}
+
+    ${quickCheck('use', `Superlatives: Use`, `3 preguntas rápidas sobre cuándo y cómo usar el superlativo.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  return `<div class="sc">
+    ${badge(7, `Model Sentences: Compare and Recommend`, `3 min`)}
+    ${es(`Estas frases siguen el orden de una recomendación real: presentas las opciones, comparas, dices cuál es la mejor y la recomiendas con una razón. Léelas en voz alta.`)}
+    ${table([`Step`, `English`, `Español`], [
+      [`Options`, `We looked at three options: the Vexa, the Orbis and the Kanto.`, `Revisamos tres opciones: la Vexa, la Orbis y la Kanto.`],
+      [`Pros and cons`, `Let's look at the pros and cons of each one.`, `Veamos los pros y los contras de cada una.`],
+      [`Compare two`, `The Orbis is more expensive than the Vexa.`, `La Orbis es más cara que la Vexa.`],
+      [`Equal`, `The Kanto is as fast as the Orbis.`, `La Kanto es tan rápida como la Orbis.`],
+      [`Cheapest`, `The Vexa is the cheapest of the three.`, `La Vexa es la más barata de las tres.`],
+      [`Drawback`, `But it's the least reliable, and that's a big drawback.`, `Pero es la menos confiable, y esa es una gran desventaja.`],
+      [`One of the`, `The Orbis is one of the most reliable laptops on the market.`, `La Orbis es una de las laptops más confiables del mercado.`],
+      [`Recommend`, `I think you should choose the Orbis.`, `Creo que deberían elegir la Orbis.`],
+      [`Reason`, `It isn't the cheapest, but it's the best value for money.`, `No es la más barata, pero es la de mejor relación calidad-precio.`],
+      [`Shouldn't`, `You shouldn't choose a laptop only because it's cheap.`, `No deberían elegir una laptop solo porque es barata.`],
+      [`Close`, `Which option is the best fit for your team?`, `¿Qué opción le encaja mejor a su equipo?`],
+    ], `0.8fr 1.6fr 1.6fr`, [`en`, ``, `es`])}
+    ${es(`Una buena recomendación tiene tres partes: <strong>la opción</strong> (<em>You should choose...</em>), <strong>la razón</strong> (<em>because it's the most reliable...</em>) y, si quieres, <strong>la advertencia</strong> (<em>You shouldn't...</em>). Sin razón, una recomendación no convence.`)}
+    ${quickCheck('mod', `Model Sentences`, `2 preguntas rápidas sobre las frases modelo.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  return `<div class="sc">
+    ${badge(8, `Listening`, `5 min`)}
+    ${es(`Escucha a Tamsin, una consultora de compras. Una tienda online le pidió ayuda para elegir una empresa de envíos. Fíjate en cómo compara las tres opciones y cuál recomienda. Puedes bajar la velocidad si lo necesitas.`)}
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">Three Delivery Companies, One Recommendation</div>
+          <div class="audio-box-sub">Tamsin Pryce · Procurement Consultant, Cardiff · about 75 seconds · British English</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload"
+        src="https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A2-L33-Audio001.mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        <button class="speed-btn" data-rate="0.7" onclick="setSpeed(0.7)">0.7×</button>
+        <button class="speed-btn" data-rate="0.8" onclick="setSpeed(0.8)">0.8×</button>
+        <button class="speed-btn" data-rate="0.9" onclick="setSpeed(0.9)">0.9×</button>
+        <button class="speed-btn active" data-rate="1.0" onclick="setSpeed(1.0)">1.0×</button>
+        <button class="speed-btn" data-rate="1.1" onclick="setSpeed(1.1)">1.1×</button>
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        <p>Hi, I'm Tamsin Pryce, a procurement consultant in Cardiff. Last month, a small online furniture shop asked me a simple question: which delivery company should we use? So I compared three options for them.</p>
+        <p>The first one, QuickParcel, is the cheapest. It costs about eight pounds a box. But it's also the least reliable of the three. Around one in ten boxes arrives late.</p>
+        <p>Bluepost is more expensive than QuickParcel, but its app is the most user-friendly. Customers can track every box on their phone.</p>
+        <p>The third option is Northline. It isn't the cheapest, and its app isn't as simple as Bluepost's. But Northline is one of the most reliable companies in the UK. Almost every box arrives on time.</p>
+        <p>So, what's my recommendation? I think they should choose Northline. For a furniture shop, late deliveries are the worst problem, because customers get angry fast. You shouldn't choose a supplier only because it's cheap.</p>
+      </div>
+    </div>
+    ${tip(`Tip`, `Escucha una vez sin leer. Después abre el transcript y escucha otra vez. Marca cada superlativo que oyes: <em>the cheapest, the least reliable, the most user-friendly...</em>`)}
+    ${quickCheck('lis', `Listening`, `3 preguntas rápidas sobre lo que dice Tamsin.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    ${badge(9, `Exercises`, `4 min`)}
+    ${es(`Escribe o di tu respuesta primero. Después toca cada frase para ver la respuesta correcta.`)}
+    ${EX_SETS.map(set => `
+      <div class="ex-box">
+        <div class="ex-label">[Exercise] ${set.label}</div>
+        ${es(set.es)}
+        ${set.items.map(([q, a]) => tapRow(q, a)).join('')}
+      </div>`).join('')}
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising. ¡Tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding, a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    ${badge(10, `Quiz`, `5 min`)}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div class="result-msg" style="margin-top:6px">Attempts so far: ${quizAttempts}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button class="btn btn-gold" style="padding:12px 28px;font-size:13px;" onclick="retakeQuiz()">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button class="btn btn-ghost" style="padding:12px 28px;font-size:13px;" onclick="goTo(0)">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+const normalise = s => s.trim().toLowerCase().replace(/[‘’]/g, "'").replace(/\s+/g,' ').replace(/[.,!?]$/,'');
+
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts = q.type==='mc' ? q.opts : ['True','False'];
+    const lets = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${(s.inputVal||'').replace(/"/g,'&quot;')}" oninput="setInp(${i},this.value)" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const raw=quizState[qi].inputVal||'';
+  quizState[qi].correct=q.answers.some(a=>normalise(raw)===normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')         ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  quizAttempts++;
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  // Calls renderQuiz() directly, never STEPS[currentStep].fn()
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+// ── CONCEPT CHECK ENGINE (isolated state per prefix) ──────
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      const ok = q.type==='mc' ? s.selected===q.answer : q.answer===(s.selected===0);
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${ok ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text"
+          placeholder="Type your answer…" value="${(s.inputVal || '').replace(/"/g,'&quot;')}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const q = CQ[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = miniState[prefix][qi].inputVal || '';
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  // Redraws only this concept check, so the page (and the audio player) stays in place
+  const wrap = document.getElementById('mini-wrap-' + prefix);
+  if (wrap) wrap.innerHTML = renderMiniQ(prefix, CQ[prefix]);
+}
+
+// ── AUDIO (Pattern A: single player) ──────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+function restoreAudio() {
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = currentSpeed;
+  setSpeed(currentSpeed);
+}
+
+// ── STEPS: defined last, after all renderers above ────────
+STEPS = [
+  { label: "1. Welcome",             fn: renderWelcome },
+  { label: "2. Vocabulary",          fn: renderVocab },
+  { label: "3. Bridge: Should",      fn: renderBridge },
+  { label: "4. Comparatives",        fn: renderComp },
+  { label: "5. Superlatives: Form",  fn: renderSupForm },
+  { label: "6. Superlatives: Use",   fn: renderSupUse },
+  { label: "7. Model Sentences",     fn: renderModel },
+  { label: "8. Listening",           fn: renderListening },
+  { label: "9. Exercises",           fn: renderExercises },
+  { label: "10. Quiz",               fn: renderQuiz },
+];
+
+render(); // always last
+
+</script>
+
+<!-- PERMANENT SITE FOOTER, do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

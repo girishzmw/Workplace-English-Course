@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 49: Solving Customer Problems | A1 · Unit 5 · Pre-Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── LESSON-SPECIFIC ADDITIONS (Master Prompt v4.6 patterns) ── */
+.sub-heading { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin:6px 0 12px; }
+.mini-sub { font-size:13px; color:var(--grey-blue); margin-bottom:16px; font-style:italic; }
+.phase-label { display:inline-block; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); background:var(--sky); border-radius:4px; padding:4px 10px; font-weight:700; margin:8px 0 14px; }
+.cell-en { font-size:14px; font-weight:700; color:var(--navy); }
+.cell-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+.cell-ex { font-size:13px; color:var(--slate); font-style:italic; }
+.group-head { background:var(--light-grey); padding:9px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--navy); font-weight:700; border-bottom:1px solid var(--border-grey); }
+.rec-tag { font-size:10px; color:var(--gold); font-weight:700; letter-spacing:1px; margin-left:4px; }
+@media(max-width:640px){ .data-table-head, .data-table-row { grid-template-columns:1fr !important; } .data-table-head span:not(:first-child){ display:none; } }
+
+/* Tap-to-reveal */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-q.wrong-q { color:var(--red); font-style:italic; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; flex-shrink:0; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); line-height:1.6; }
+.tap-row.open .tap-answer { display:block; }
+.tap-row.open .tap-hint-label { visibility:hidden; }
+.tap-note { font-size:12px; color:var(--grey-blue); font-style:italic; margin-top:3px; }
+.tap-opts { font-size:13px; color:var(--slate); margin-top:6px; line-height:1.8; }
+
+/* Spanish Bridge table */
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); gap:10px; }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+
+/* Polite vs rude */
+.contrast-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+@media(max-width:600px){ .contrast-grid{ grid-template-columns:1fr; } }
+.contrast-card { border-radius:9px; padding:14px 16px; font-size:14px; line-height:1.7; }
+.contrast-card.bad { background:var(--red-bg); color:var(--red); }
+.contrast-card.good { background:var(--green-bg); color:var(--green); }
+.contrast-title { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:700; margin-bottom:6px; }
+
+/* Intonation */
+.into-row { display:flex; align-items:center; gap:12px; padding:10px 14px; background:var(--white); border:1px solid var(--border-grey); border-radius:8px; margin-bottom:8px; font-size:14px; color:var(--navy); flex-wrap:wrap; }
+.into-arrow { font-size:20px; font-weight:700; }
+.into-arrow.up { color:var(--green); }
+.into-arrow.flat { color:var(--red); }
+
+/* Chat */
+.chat-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:12px; padding:18px; margin-bottom:20px; }
+.chat-head { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--grey-blue); font-weight:700; margin-bottom:12px; }
+.chat-msg { max-width:82%; padding:10px 14px; border-radius:12px; margin-bottom:10px; font-size:14px; line-height:1.6; }
+.chat-msg.cust { background:var(--white); color:var(--slate); border:1px solid var(--border-grey); border-bottom-left-radius:3px; }
+.chat-msg.agent { background:var(--navy); color:var(--white); margin-left:auto; border-bottom-right-radius:3px; }
+.chat-who { font-size:11px; font-weight:700; margin-bottom:3px; opacity:0.75; }
+.chat-msg.agent .chat-who { color:var(--gold-light); opacity:1; }
+
+/* Audio box (Pattern A) */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO — edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 5 · Pre-Learning</div>
+    <h1 class="hero-title">Lesson 49: Solving Customer Problems</h1>
+    <p class="hero-sub">Polite requests and responses · Handling complaints · About 45 minutes</p>
+
+    <div class="hero-outcomes">
+      <div><div class="outcome-item">Make polite requests with Can you…? and Could you…?</div><div class="outcome-note">Hacer peticiones amables con Can you…? y Could you…?</div></div>
+      <div><div class="outcome-item">Say yes and no politely to a customer</div><div class="outcome-note">Decir sí y no con cortesía a un cliente</div></div>
+      <div><div class="outcome-item">Apologize and offer a solution</div><div class="outcome-note">Pedir disculpas y ofrecer una solución</div></div>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV — built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT — rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SINGLE SCRIPT BLOCK — all JavaScript lives here.
+     Do not split into two script blocks. See architecture notes below.
+     ═══════════════════════════════════════════════════════════════════
+
+     ARCHITECTURE RULES (do not break these):
+     1. All JS is in this one block — never add a second <script> tag.
+     2. STEPS is declared empty (let STEPS = []) at the top.
+     3. STEPS is populated at the VERY BOTTOM, after all renderer
+        functions are defined. This prevents "undefined function" errors.
+     4. render() is called last, after STEPS is populated.
+     5. rerender() calls renderQuiz() directly — not STEPS[i].fn().
+
+     ↓↓↓  LESSON CONTENT START — replace everything inside per lesson
+     ═══════════════════════════════════════════════════════════════════ -->
+<script>
+
+// ── STATE (do not edit) ───────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── NAVIGATION ENGINE (do not edit) ──────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+
+// ── LESSON STATE ──────────────────────────────────────────
+const quizState = {};
+let quizScore = 0;
+let quizAttempts = 0;
+let currentSpeed = 1.0;
+let transcriptOpen = false;
+const miniState = { voc:{}, bridge:{}, gram1:{}, gram2:{}, mod:{}, lis:{} };
+
+const AUDIO_URL = "https://cdn.jsdelivr.net/gh/girishzmw/WP-Eng-Audio@main/A1-L49-Audio001.mp3";
+
+
+// ── HELPERS ───────────────────────────────────────────────
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function normalise(s) {
+  return String(s).toLowerCase()
+    .replace(/[‘’ʼ]/g, "'")
+    .replace(/[.,!?¿¡;:"]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+function badge(num, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${num}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function builder(label, cols, examples) {
+  const colHtml = cols.map((c, i) => {
+    const last = i === cols.length - 1;
+    const col = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px 18px;background:rgba(201,151,44,0.22);${last ? '' : 'border-right:2px solid rgba(255,255,255,0.1);'}min-width:100px;flex:1;gap:4px;">
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:2px">${c[0]}</div>
+        <div style="font-size:15px;font-weight:700;color:var(--gold)">${c[1]}</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);font-style:italic">${c[2]}</div>
+      </div>`;
+    const pipe = last ? '' : `<div style="display:flex;align-items:center;padding:0 10px;font-size:22px;color:rgba(255,255,255,0.2);font-weight:300">|</div>`;
+    return col + pipe;
+  }).join('');
+  return `<div class="builder-wrap">
+    <div class="builder-label">${label}</div>
+    <div style="display:flex;align-items:stretch;flex-wrap:wrap;gap:0;margin-bottom:22px;border-radius:9px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);">${colHtml}</div>
+    ${examples.map(e => `<div class="builder-ex"><strong>${e}</strong></div>`).join('')}
+  </div>`;
+}
+function dtable(cols, heads, rows) {
+  return `<div class="data-table-wrap">
+    <div class="data-table-head" style="grid-template-columns:${cols}">${heads.map(h => `<span>${h}</span>`).join('')}</div>
+    ${rows.map(r => `<div class="data-table-row" style="grid-template-columns:${cols}">${r.map(c => `<div>${c}</div>`).join('')}</div>`).join('')}
+  </div>`;
+}
+function fixRow(wrong, right, note) {
+  return `<div class="tap-row" onclick="this.classList.toggle('open')">
+    <div class="tap-row-top"><div class="tap-q wrong-q">✗ ${wrong}</div><div class="tap-hint-label">Tap to reveal</div></div>
+    <div class="tap-answer">✓ <strong>${right}</strong>${note ? `<div class="tap-note">${note}</div>` : ''}</div>
+  </div>`;
+}
+function tapRow(q, a, extra) {
+  return `<div class="tap-row" onclick="this.classList.toggle('open')">
+    <div class="tap-row-top"><div class="tap-q">${q}${extra ? `<div class="tap-opts">${extra}</div>` : ''}</div><div class="tap-hint-label">Tap to reveal</div></div>
+    <div class="tap-answer">✓ ${a}</div>
+  </div>`;
+}
+function checkBlock(prefix, name, what) {
+  return `<div class="divider"></div>
+    <div class="sub-heading" style="margin-bottom:4px;">✅ Quick Check · ${name}</div>
+    <p class="mini-sub">2 or 3 quick questions to confirm ${what} before you move on.</p>
+    <div id="mini-${prefix}">${renderMiniQ(prefix, MINI[prefix])}</div>`;
+}
+
+
+// ── LESSON DATA ───────────────────────────────────────────
+const VOCAB_GROUPS = [
+  { head: "Group A · The problem", items: [
+    ["complaint", "queja, reclamo", "The customer has a complaint about the delivery.", false],
+    ["issue", "problema, inconveniente", "We have an issue with your order.", "L14"],
+    ["order", "pedido", "My order is late.", "L19"],
+    ["order number", "número de pedido", "Could you give me your order number, please?", false],
+    ["delivery", "entrega", "The delivery was on Monday.", false],
+    ["package", "paquete", "The package is at the reception.", false],
+    ["item", "artículo, producto", "One item is missing from the box.", false],
+    ["damaged", "dañado", "The box was damaged.", false],
+    ["broken", "roto, que no funciona", "The printer is broken.", false],
+    ["missing", "que falta, perdido", "Two chairs are missing.", false],
+    ["wrong", "equivocado, incorrecto", "This is the wrong size.", false]
+  ]},
+  { head: "Group B · The solution", items: [
+    ["refund", "reembolso (devolución del dinero)", "We can give you a refund.", false],
+    ["replacement", "reemplazo, cambio por uno nuevo", "I can send you a replacement.", false],
+    ["return", "devolver (el producto), devolución", "You can return the item in 30 days.", false],
+    ["receipt", "recibo, comprobante", "Could you send me the receipt, please?", false],
+    ["warranty", "garantía", "The laptop has a one-year warranty.", false],
+    ["support", "soporte, apoyo", "Call our support team for help.", "L19 / L41"],
+    ["solve", "resolver, solucionar", "We can solve the problem today.", false],
+    ["apologize", "pedir disculpas", "We apologize for the delay.", false],
+    ["inconvenience", "molestia, inconveniente", "We apologize for the inconvenience.", false]
+  ]}
+];
+
+// Concept checks
+const VOC_CQ = [
+  { type:"mc", q:"Your new phone arrived, but the screen doesn't work. The phone is…",
+    opts:["missing", "broken", "wrong"], answer:1,
+    fb:"<em>Broken</em> = roto, no funciona. <em>Missing</em> means it is not in the box at all." },
+  { type:"tf", q:"A <em>refund</em> means the company sends you a new product.", answer:false,
+    fb:"A <em>refund</em> is your money back. A new product is a <em>replacement</em>." },
+  { type:"input", q:"How do you say <em>recibo / comprobante</em> in English?",
+    answers:["receipt", "a receipt"], display:"receipt",
+    fb:"<em>Receipt</em> = recibo. Remember, the \"p\" is silent." }
+];
+const BRIDGE_CQ = [
+  { type:"mc", q:"Choose the correct question.",
+    opts:["When you received the package?", "When did you receive the package?", "When did you received the package?"], answer:1,
+    fb:"Wh- word + <strong>did</strong> + subject + <strong>base verb</strong>: <em>When did you receive…?</em>" },
+  { type:"tf", q:"<em>What is the problem?</em> needs \"do\": <em>What does the problem is?</em>", answer:false,
+    fb:"With <em>be</em> (is, are, was, were), we don't use do / does / did. <em>What is the problem?</em> is correct." },
+  { type:"input", q:"Complete the question: \"______ is the package now? It's at the reception.\"",
+    answers:["where"], display:"Where",
+    fb:"The answer is a place (at the reception), so the question word is <strong>Where</strong>." }
+];
+const GRAM1_CQ = [
+  { type:"mc", q:"Choose the correct request.",
+    opts:["Could you to check the order?", "Could you check the order, please?", "You could check the order, please?"], answer:1,
+    fb:"Could + you + <strong>base verb</strong>, no \"to\": <em>Could you check…?</em>" },
+  { type:"tf", q:"With a customer, \"Send me the invoice.\" is a polite request.", answer:false,
+    fb:"That's a direct order, and it can sound rude. Say: <em>Could you send me the invoice, please?</em>" },
+  { type:"input", q:"Put the words in order: <em>you / me / help / could / please</em>",
+    hint:"Add the question mark at the end.",
+    answers:["could you help me please", "could you please help me"], display:"Could you help me, please?",
+    fb:"Could + you + verb + me. <em>Please</em> goes at the end or after <em>you</em>." }
+];
+const GRAM2_CQ = [
+  { type:"mc", q:"A customer asks for something you can't do. What do you say?",
+    opts:["No.", "I'm sorry, but I can't do that.", "I don't."], answer:1,
+    fb:"Always start with <em>I'm sorry</em>, then <em>but I can't…</em>" },
+  { type:"tf", q:"<em>We apologize for the molest</em> is the correct phrase.", answer:false,
+    fb:"<em>Molestia</em> = <strong>inconvenience</strong>. The fixed phrase is <em>We apologize for the inconvenience.</em>" },
+  { type:"input", q:"Complete: \"Would you like a refund ___ a replacement?\"",
+    answers:["or"], display:"or",
+    fb:"<em>Would you like A <strong>or</strong> B?</em> gives the customer a choice." }
+];
+const MOD_CQ = [
+  { type:"mc", q:"What is Step 1 when a customer has a problem?",
+    opts:["Offer a refund", "Apologize", "Ask for the receipt"], answer:1,
+    fb:"First, say sorry: <em>I'm sorry about the problem.</em>" },
+  { type:"tf", q:"In the model chat, the customer wants a refund.", answer:false,
+    fb:"She says <em>I'd like a replacement, please.</em>" },
+  { type:"input", q:"Complete the closing question: \"Can I help you with anything ______?\"",
+    answers:["else"], display:"else",
+    fb:"<em>Can I help you with anything else?</em> is a friendly way to close." }
+];
+const LIS_CQ = [
+  { type:"mc", q:"What was the problem with the coffee machine?",
+    opts:["It was late.", "It was broken.", "It was the wrong color."], answer:1,
+    fb:"Lucas says: <em>her coffee machine was broken.</em>" },
+  { type:"tf", q:"The customer with the coffee machine wanted a refund.", answer:false,
+    fb:"She wanted a <strong>replacement</strong>. Lucas sent her a new machine." },
+  { type:"input", q:"What did the man need for a refund? (one word)",
+    answers:["receipt", "a receipt", "the receipt"], display:"A receipt.",
+    fb:"Lucas says: <em>I can't give you a refund without a receipt.</em>" }
+];
+const MINI = { voc:VOC_CQ, bridge:BRIDGE_CQ, gram1:GRAM1_CQ, gram2:GRAM2_CQ, mod:MOD_CQ, lis:LIS_CQ };
+
+// Main quiz (Q11 and Q12 are Grammar Bridge items)
+const QUIZ = [
+  { type:"mc", q:"Choose the correct request.",
+    opts:["Could you to send me the invoice?", "Could you send me the invoice?", "Could you sends me the invoice?"], answer:1,
+    hint:"No \"to\" and no \"-s\" after could.",
+    fb:"Could + you + base verb: <em>Could you send me the invoice?</em>" },
+  { type:"mc", q:"Which is the most polite request for a customer?",
+    opts:["Give me your order number.", "You give me your order number?", "Could you give me your order number, please?"], answer:2,
+    hint:"Think about Could you + please.",
+    fb:"<em>Could you…, please?</em> is polite and professional." },
+  { type:"tf", q:"<em>Can you…?</em> and <em>Could you…?</em> are both correct, but <em>Could you…?</em> sounds more polite.", answer:true,
+    fb:"Both are correct. With customers, <em>Could you…?</em> is the safest choice." },
+  { type:"mc", q:"A customer asks for a refund, but it's not possible. You say:",
+    opts:["No.", "I'm sorry, but I can't give you a refund.", "I not give refund."], answer:1,
+    fb:"Start with <em>I'm sorry</em>, then <em>but I can't…</em>" },
+  { type:"input", q:"Complete the fixed phrase: \"We apologize for the ______.\"",
+    hint:"molestia",
+    answers:["inconvenience"], display:"We apologize for the inconvenience.",
+    fb:"Learn it as one block. Never use \"molest\" for <em>molestia</em>." },
+  { type:"mc", q:"<em>Devolución del dinero</em> in English is…",
+    opts:["devolution", "return", "refund"], answer:2,
+    fb:"<em>Refund</em> = money back. <em>Return</em> = you give the product back." },
+  { type:"mc", q:"Choose the correct offer.",
+    opts:["I'll send you a replacement.", "I can send you a replacement.", "I send a replacement you."], answer:1,
+    hint:"Use the structure from today's lesson.",
+    fb:"<em>I can send you a replacement.</em> You'll learn <em>I'll</em> in Lesson 57." },
+  { type:"input", q:"Complete: \"Would you like a refund or a ______?\"",
+    hint:"un producto nuevo",
+    answers:["replacement"], display:"replacement",
+    fb:"A <em>replacement</em> is a new product to replace the broken one." },
+  { type:"tf", q:"In a polite request, your voice goes down at the end.", answer:false,
+    fb:"It goes <strong>up</strong> ↗. A flat voice can sound like an order." },
+  { type:"mc", q:"Where can <em>please</em> go in this request? <em>Could you check the order?</em>",
+    opts:["Only at the beginning", "After \"you\" or at the end", "Only after \"check\""], answer:1,
+    fb:"<em>Could you please check the order?</em> or <em>Could you check the order, please?</em>" },
+  { type:"mc", q:"Choose the correct question.",
+    opts:["When you received the package?", "When did you receive the package?", "When did you received the package?"], answer:1,
+    hint:"Grammar Bridge · Lesson 19",
+    fb:"Wh- word + did + subject + base verb: <em>When did you receive…?</em>" },
+  { type:"input", q:"Complete: \"______ is your order number?\"",
+    hint:"Grammar Bridge · Lesson 19",
+    answers:["what"], display:"What is your order number?",
+    fb:"The answer is a number (information), so we ask with <strong>What</strong>." }
+];
+
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWelcome() {
+  return `<div class="sc">
+    ${badge(1, "Welcome", "2 min")}
+    <p class="sec-intro">¡Bienvenido/a a la Lección 49! Todos los días, en cualquier empresa, hay clientes con problemas: un paquete que no llega, un producto roto, una factura equivocada. Hoy vas a aprender a manejar estas situaciones en inglés, con calma y con cortesía.</p>
+    <p class="sec-intro">Ya conoces <strong>Can you…?</strong> de la Lección 14 (Asking for Help). Hoy sumamos <strong>Could you…?</strong>, una forma todavía más amable, ideal para hablar con clientes. También vas a aprender a decir "sí", a decir "no" sin sonar grosero/a, a pedir disculpas y a ofrecer una solución.</p>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 Why this matters</div>
+      In English, <em>how</em> you ask is as important as <em>what</em> you ask. A short order like "Send me the receipt." can sound rude to a customer, even if you don't mean it.
+    </div>
+    <div class="es-note">En inglés, la forma de pedir algo importa mucho. Una orden directa puede sonar brusca con un cliente, aunque no sea tu intención.</div>
+
+    <div class="info-box">
+      <strong>Your plan for today · Tu plan de hoy</strong><br>
+      Vocabulary (20 words) → Grammar Bridge (Wh- questions) → Polite requests → Responses and solutions → Model sentences → Listening → Exercises → Quiz
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function renderVocabulary() {
+  const cols = "1fr 1.1fr 1.7fr";
+  return `<div class="sc">
+    ${badge(2, "Vocabulary", "7 min")}
+    <div class="es-note">Estas 20 palabras te ayudan a hablar de un problema y de su solución. Las palabras con <strong>(R)</strong> ya las viste en lecciones anteriores. Lee cada ejemplo en voz alta.</div>
+
+    <div class="data-table-wrap">
+      <div class="data-table-head" style="grid-template-columns:${cols}"><span>English</span><span>Spanish</span><span>Example</span></div>
+      ${VOCAB_GROUPS.map(g => `<div class="group-head">${g.head}</div>
+        ${g.items.map(([en, es, ex, rec]) => `<div class="data-table-row" style="grid-template-columns:${cols}">
+          <div class="cell-en">${en}${rec ? `<span class="rec-tag">(R) ${rec}</span>` : ''}</div>
+          <div class="cell-es">${es}</div>
+          <div class="cell-ex">${ex}</div>
+        </div>`).join('')}`).join('')}
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-label">🔊 Pronunciation</div>
+      <strong>receipt</strong> has a silent <strong>p</strong>: /rɪˈsiːt/. <strong>warranty</strong> has the stress on the first syllable: <strong>WAR</strong>-ran-ty.
+    </div>
+    <div class="es-note">La "p" de <strong>receipt</strong> no se pronuncia. Suena como "ri-SIT".</div>
+
+    <div class="tip-box">
+      <div class="tip-label">💡 return vs refund</div>
+      <strong>return</strong> = you give the <strong>product</strong> back.<br>
+      <strong>refund</strong> = the company gives the <strong>money</strong> back.<br>
+      <em>First you return the item. Then we give you a refund.</em>
+    </div>
+    <div class="es-note"><strong>Return:</strong> devuelves el producto. <strong>Refund:</strong> te devuelven el dinero.</div>
+
+    ${checkBlock('voc', 'Vocabulary', 'the key words are clear')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderBridge() {
+  return `<div class="sc">
+    ${badge(3, "Grammar Bridge · Wh- Questions", "4 min")}
+    <div class="info-box"><strong>🔁 Remember this from Lesson 19?</strong><br>
+      In Lesson 19 (Customer Service Basics) you learned questions with <strong>what, where, when</strong> and <strong>who</strong>. You need them again today: when a customer has a problem, first you ask questions to understand what happened.</div>
+    <div class="es-note">En la Lección 19 aprendiste las preguntas con what, where, when y who. Hoy las necesitas otra vez: cuando un cliente tiene un problema, primero tienes que hacer preguntas para entender qué pasó.</div>
+
+    ${dtable("0.8fr 1fr 2fr", ["English", "Spanish", "Example"], [
+      ['<span class="cell-en">What</span>', '<span class="cell-es">¿Qué? / ¿Cuál?</span>', '<span class="cell-ex">What is your order number?</span>'],
+      ['<span class="cell-en">Where</span>', '<span class="cell-es">¿Dónde?</span>', '<span class="cell-ex">Where is the package now?</span>'],
+      ['<span class="cell-en">When</span>', '<span class="cell-es">¿Cuándo?</span>', '<span class="cell-ex">When did you order it?</span>'],
+      ['<span class="cell-en">Who</span>', '<span class="cell-es">¿Quién?</span>', '<span class="cell-ex">Who is your contact at the company?</span>']
+    ])}
+
+    ${builder("Pattern A · with be", [
+      ["Question word", "What / Where / When", "qué, dónde, cuándo"],
+      ["be", "is / are / was / were", "verbo ser / estar"],
+      ["Subject", "the problem / the boxes", "sujeto"]
+    ], ["What is the problem?", "Where are the boxes?", "When was the delivery?"])}
+
+    ${builder("Pattern B · with other verbs", [
+      ["Question word", "What / When / Where", "qué, cuándo, dónde"],
+      ["Helper", "do / does / did", "auxiliar"],
+      ["Subject", "you / she", "sujeto"],
+      ["Base verb", "need / order / work", "verbo base"]
+    ], ["What do you need?", "When did you order it?", "Where does she work?"])}
+
+    <div class="es-note">Con <strong>be</strong> no necesitas do / does / did. Con los demás verbos, sí: <strong>do / does</strong> (presente) o <strong>did</strong> (pasado), y el verbo vuelve a su forma base.</div>
+
+    <div class="mistake-label">⚠️ Common mistakes · Tap each one to see the fix</div>
+    ${fixRow("When you ordered it?", "When did you order it?", "")}
+    ${fixRow("Where you live?", "Where do you live?", "")}
+    ${fixRow("What means \"refund\"?", "What does \"refund\" mean?", "")}
+    ${fixRow("When did it arrived?", "When did it arrive?", "Después de did, el verbo va en forma base.")}
+
+    <div class="tip-box">
+      <div class="tip-label">🔗 Bridge to today's lesson</div>
+      <em>What is your order number?</em> is correct, but with a customer it can sound a little direct. Today you'll learn a softer version: <strong>Could you give me your order number, please?</strong> Both work. The second one sounds more professional.
+    </div>
+    <div class="es-note">Las dos son correctas. La segunda suena más amable con un cliente.</div>
+
+    ${checkBlock('bridge', 'Grammar Bridge', 'Wh- questions are clear')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar1() {
+  return `<div class="sc">
+    ${badge(4, "Grammar 1 · Polite Requests", "8 min")}
+
+    <div class="phase-label">Notice</div>
+    <p class="sec-intro">Read these messages from a support chat. Which ones sound friendly? Which one sounds rude?</p>
+    <div class="contrast-grid">
+      <div class="contrast-card good"><div class="contrast-title">✓ Polite</div>
+        1. Can you help me, please?<br>2. Could you check your order number, please?<br>3. Could you please send me a photo of the item?</div>
+      <div class="contrast-card bad"><div class="contrast-title">✗ Rude with a customer</div>
+        4. Send me a photo.</div>
+    </div>
+    <div class="es-note">Las frases 1, 2 y 3 son peticiones amables. La frase 4 es una orden directa (un imperativo). Entre compañeros de confianza puede estar bien, pero con un cliente suena brusca.</div>
+
+    <div class="divider"></div>
+    <div class="phase-label">Form Rules</div>
+
+    <div class="sub-heading">Rule 1 · Can / Could + you + base verb</div>
+    ${builder("Polite request", [
+      ["Request word", "Can / Could", "¿Puede / Podría…?"],
+      ["Person", "you", "usted / tú"],
+      ["Base verb", "send / help / check", "sin to, sin -s"],
+      ["Rest", "me the invoice, please?", "el resto de la frase"]
+    ], ["Could you send me the invoice?", "Can you help me, please?"])}
+    <div class="tip-box">
+      <div class="tip-label">📌 Remember</div>
+      No <strong>to</strong> after can or could: ✗ <em>Could you to send…?</em><br>
+      No <strong>-s</strong> on the verb: ✗ <em>Could you sends…?</em><br>
+      Same form with every subject: <em>Could you call me? · Could your manager call me? · Can your team help us?</em>
+    </div>
+    <div class="es-note">Después de can y could, el verbo va en forma base: sin "to" y sin "-s".</div>
+
+    <div class="sub-heading">Rule 2 · Where does <em>please</em> go?</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">At the end: Could you check the order, <strong>please</strong>?</span></div>
+      <div class="example-item"><span class="example-en">After you: Could you <strong>please</strong> check the order?</span></div>
+    </div>
+    <div class="es-note">"Please" va al final o después de "you". Las dos opciones son correctas.</div>
+
+    <div class="sub-heading">Rule 3 · The object pronoun goes after the verb (Lesson 41)</div>
+    <div class="mistake-wrap">
+      <div class="mistake-right">✓ Could you send <strong>&nbsp;me&nbsp;</strong> the receipt?</div>
+      <div style="height:7px"></div>
+      <div class="mistake-wrong">✗ Could you me send the receipt?</div>
+    </div>
+    <div class="es-note">En español decimos "¿<strong>Me</strong> podría enviar…?", con "me" antes del verbo. En inglés, "me" va después: send me, give me, help me.</div>
+
+    <div class="divider"></div>
+    <div class="phase-label">Use</div>
+
+    <div class="sub-heading">Can you…? vs Could you…?</div>
+    ${dtable("0.8fr 1.2fr 1.2fr", ["", "Can you…?", "Could you…?"], [
+      ['<span class="cell-en">Feeling</span>', 'friendly, everyday', 'more polite, more formal'],
+      ['<span class="cell-en">Best with</span>', 'colleagues, friends', 'customers, managers, people you don\'t know'],
+      ['<span class="cell-en">Example</span>', '<span class="cell-ex">Can you check this report?</span>', '<span class="cell-ex">Could you check your email, please?</span>']
+    ])}
+    <div class="es-note">Las dos son correctas. Con clientes, <strong>Could you…?</strong> es la opción más segura.</div>
+
+    <div class="info-box"><strong>Important:</strong> Today, <em>could</em> is only a <strong>polite request</strong> word. It is not the past of <em>can</em>, and it doesn't mean "maybe." You'll see those meanings in later levels.</div>
+    <div class="es-note">Hoy "could" solo sirve para pedir algo con cortesía. No es el pasado de "can" ni significa "quizás".</div>
+
+    <div class="sub-heading">The customer side: asking for help</div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">Can you help me, please?</span><span class="example-arrow">→</span><span class="example-es">¿Me puede ayudar, por favor?</span></div>
+      <div class="example-item"><span class="example-en">Could you give me a refund, please?</span><span class="example-arrow">→</span><span class="example-es">¿Me podría dar un reembolso, por favor?</span></div>
+      <div class="example-item"><span class="example-en">Could you check my order, please?</span><span class="example-arrow">→</span><span class="example-es">¿Podría revisar mi pedido, por favor?</span></div>
+    </div>
+
+    <div class="sub-heading">🌉 Spanish Bridge</div>
+    <div class="bridge-table-wrap">
+      <div class="bridge-table-head"><span>English</span><span>Spanish</span></div>
+      <div class="bridge-row"><div class="bridge-en">Can you help me?</div><div class="bridge-es">¿Puedes / Puede ayudarme?</div></div>
+      <div class="bridge-row"><div class="bridge-en">Could you help me?</div><div class="bridge-es">¿Podrías / Podría ayudarme?</div></div>
+      <div class="bridge-row"><div class="bridge-en">Could you send me the receipt?</div><div class="bridge-es">¿Me podría enviar el recibo?</div></div>
+      <div class="bridge-row"><div class="bridge-en">Could you check your order, please?</div><div class="bridge-es">¿Podría revisar su pedido, por favor?</div></div>
+    </div>
+    <div class="es-note"><strong>Could ≈ podría.</strong> Es una conexión muy útil: las dos palabras suavizan la petición. Pero el puente no es perfecto:<br>
+      1. En español, <em>me / le</em> van <strong>antes</strong> del verbo (¿Me podría enviar…?). En inglés, van <strong>después</strong>: Could you send <strong>me</strong>…?<br>
+      2. En español pedimos con una pregunta simple: <em>¿Me envías el recibo?</em> En inglés eso no funciona: ✗ <em>You send me the receipt?</em> Necesitas <strong>Can you / Could you</strong>.<br>
+      3. En español, <em>podría</em> también significa "quizás" (podría llover). Hoy, en inglés, <em>could</em> es solo para pedir.</div>
+
+    <div class="sub-heading">🔊 Pronunciation · Polite intonation</div>
+    <p class="sec-intro">With <em>Can you…?</em> and <em>Could you…?</em>, your voice goes <strong>up</strong> at the end.</p>
+    <div class="into-row"><span class="into-arrow up">↗</span><span>Could you send me the receipt, please?</span><span class="cell-es">Polite · Amable</span></div>
+    <div class="into-row"><span class="into-arrow flat">→</span><span>Could you send me the receipt, please.</span><span class="cell-es">Flat, sounds like an order · Suena como una orden</span></div>
+    <div class="es-note">Si tu voz se queda plana, la petición suena como una orden. Practica en voz alta: sube la voz al final.</div>
+
+    <div class="divider"></div>
+    <div class="mistake-label">⚠️ Common mistakes · Tap each one to see the fix</div>
+    ${fixRow("Could you to send me the invoice?", "Could you send me the invoice?", "Sin \"to\" después de could.")}
+    ${fixRow("Can you to help me?", "Can you help me?", "Sin \"to\" después de can.")}
+    ${fixRow("You can send me the receipt?", "Can you send me the receipt?", "En una pregunta, can va primero.")}
+    ${fixRow("Give me your order number.", "Could you give me your order number, please?", "Con un cliente, evita la orden directa.")}
+    ${fixRow("Could you sends me a photo?", "Could you send me a photo?", "Sin \"-s\" después de could.")}
+    ${fixRow("Could you me send the receipt?", "Could you send me the receipt?", "\"Me\" va después del verbo.")}
+
+    ${checkBlock('gram1', 'Polite Requests', 'polite requests are clear')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar2() {
+  return `<div class="sc">
+    ${badge(5, "Grammar 2 · Responses and Solutions", "7 min")}
+
+    <div class="phase-label">Notice</div>
+    <p class="sec-intro">A customer writes: <strong>Could you give me a refund, please?</strong> Here are three answers from the support team:</p>
+    <div class="contrast-grid">
+      <div class="contrast-card good"><div class="contrast-title">✓ Professional</div>
+        1. Sure. I can do that.<br>2. I'm sorry, but I can't give you a refund without a receipt.</div>
+      <div class="contrast-card bad"><div class="contrast-title">✗ Too direct</div>
+        3. No.</div>
+    </div>
+    <div class="es-note">Las respuestas 1 y 2 son profesionales. La 3 es correcta en gramática, pero con un cliente suena muy brusca.</div>
+
+    <div class="divider"></div>
+    <div class="phase-label">Form Rules and Use</div>
+
+    <div class="sub-heading">A · Saying yes</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Positive responses</div>
+      <div class="pattern-row"><div class="pattern-en">Sure.</div><div class="pattern-es">Claro.</div></div>
+      <div class="pattern-row"><div class="pattern-en">Of course.</div><div class="pattern-es">Por supuesto.</div></div>
+      <div class="pattern-row"><div class="pattern-en">No problem.</div><div class="pattern-es">No hay problema.</div></div>
+      <div class="pattern-row"><div class="pattern-en">Yes, I can do that.</div><div class="pattern-es">Sí, puedo hacerlo.</div></div>
+    </div>
+    <div class="examples-wrap"><div class="example-item"><span class="example-en">Customer: Could you check my order? · Agent: <strong>Of course.</strong></span></div></div>
+
+    <div class="sub-heading">B · Saying no, politely</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Polite negative responses</div>
+      <div class="pattern-row"><div class="pattern-en">I'm sorry, but I can't + base verb…</div><div class="pattern-es">Lo siento, pero no puedo…</div></div>
+      <div class="pattern-row"><div class="pattern-en">I'm sorry, that's not possible.</div><div class="pattern-es">Lo siento, eso no es posible.</div></div>
+    </div>
+    <div class="examples-wrap">
+      <div class="example-item"><span class="example-en">I'm sorry, but I can't change the address now.</span></div>
+      <div class="example-item"><span class="example-en">I'm sorry, that's not possible.</span></div>
+    </div>
+    <div class="es-note">Nunca respondas solo "No." a un cliente. Primero <strong>I'm sorry</strong>, después la explicación.</div>
+
+    <div class="sub-heading">C · Apologizing</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Apologies</div>
+      <div class="pattern-row"><div class="pattern-en">I'm sorry about the problem.</div><div class="pattern-es">Lamento el problema.</div></div>
+      <div class="pattern-row"><div class="pattern-en">I'm sorry for the delay.</div><div class="pattern-es">Disculpe la demora.</div></div>
+      <div class="pattern-row"><div class="pattern-en">We apologize for the inconvenience.</div><div class="pattern-es">Disculpe la molestia. (frase fija)</div></div>
+    </div>
+    <div class="es-note">"We apologize for the inconvenience" es una frase fija, muy común en correos y llamadas. Apréndela completa, como un bloque.</div>
+
+    <div class="sub-heading">D · Offering a solution: can + would like (Lesson 44)</div>
+    ${builder("Offer a solution", [
+      ["Person", "I / We", "yo / nosotros"],
+      ["can", "can", "puedo / podemos"],
+      ["Verb", "send / give", "enviar / dar"],
+      ["Who", "you", "le / te"],
+      ["What", "a refund / a replacement", "qué cosa"]
+    ], ["I can send you a replacement.", "We can give you a refund."])}
+    <div class="tip-box">
+      <div class="tip-label">💡 Give the customer a choice</div>
+      <strong>Would you like a refund or a replacement?</strong><br>
+      Customer: <em>I'd like a replacement, please.</em>
+    </div>
+    <div class="es-note">Con <strong>Would you like A or B?</strong> el cliente elige. Es amable y profesional.</div>
+
+    <div class="divider"></div>
+    <div class="mistake-label">⚠️ Common mistakes · Tap each one to see the fix</div>
+    ${fixRow("I send you a replacement.", "I can send you a replacement.", "Viene de \"le envío\". En inglés, usa I can…")}
+    ${fixRow("I'll send you a replacement.", "I can send you a replacement.", "\"I'll\" es correcto en inglés, pero lo aprenderás en la Lección 57. Hoy usa \"I can…\".")}
+    ${fixRow("No.", "I'm sorry, but I can't… / I'm sorry, that's not possible.", "Nunca un \"No\" solo.")}
+    ${fixRow("I can give a refund you.", "I can give you a refund.", "Primero la persona (you), después la cosa (a refund).")}
+
+    <div class="sub-heading" style="margin-top:20px;">🚩 False friends · ¡Cuidado!</div>
+    ${dtable("1fr 1fr 1fr", ["Spanish", "✗ Not this", "✓ Use this"], [
+      ['reclamo / queja', '<span style="color:var(--red)">reclaim</span>', '<span class="cell-en">complaint</span>'],
+      ['devolución (del dinero)', '<span style="color:var(--red)">devolution</span>', '<span class="cell-en">refund</span>'],
+      ['devolver (el producto)', '<span style="color:var(--red)">devolve</span>', '<span class="cell-en">return</span>'],
+      ['molestia', '<span style="color:var(--red)">molest</span>', '<span class="cell-en">inconvenience</span>'],
+      ['arreglar / solucionar', '<span style="color:var(--red)">arrange</span>', '<span class="cell-en">fix / solve</span>']
+    ])}
+    <div class="es-note">⚠️ "Molest" es una palabra muy grave en inglés (significa abuso). Nunca la uses para decir "molestia". Di: <strong>We apologize for the inconvenience.</strong></div>
+
+    ${checkBlock('gram2', 'Responses and Solutions', 'responses and solutions are clear')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderModel() {
+  return `<div class="sc">
+    ${badge(6, "Model Sentences · Handling a Complaint", "4 min")}
+    <div class="es-note">Cuando un cliente tiene un problema, sigue estos 4 pasos. Son simples y funcionan en una llamada, un chat o un correo.</div>
+
+    ${dtable("0.8fr 1fr 2fr", ["Step", "What you do", "Model sentences"], [
+      ['<span class="cell-en">1. Apologize</span>', 'Say sorry first<div class="cell-es">Pide disculpas</div>', '<span class="cell-ex">I\'m sorry about the problem.<br>We apologize for the inconvenience.</span>'],
+      ['<span class="cell-en">2. Ask</span>', 'Get the information, politely<div class="cell-es">Pide los datos</div>', '<span class="cell-ex">Could you give me your order number, please?<br>Could you send me a photo of the item?</span>'],
+      ['<span class="cell-en">3. Offer</span>', 'Give a solution or a choice<div class="cell-es">Ofrece una solución</div>', '<span class="cell-ex">I can send you a replacement.<br>Would you like a refund or a replacement?</span>'],
+      ['<span class="cell-en">4. Close</span>', 'Finish in a friendly way<div class="cell-es">Cierra con amabilidad</div>', '<span class="cell-ex">Can I help you with anything else?<br>Thank you for your patience.</span>']
+    ])}
+
+    <div class="chat-wrap">
+      <div class="chat-head">💬 Model chat · Brightway Home support</div>
+      <div class="chat-msg cust"><div class="chat-who">Mei Tanaka (customer)</div>Hello. My order arrived today, but one chair is broken. Can you help me, please?</div>
+      <div class="chat-msg agent"><div class="chat-who">Daniel Osei (support)</div>Of course. I'm sorry about the problem. Could you give me your order number, please?</div>
+      <div class="chat-msg cust"><div class="chat-who">Mei Tanaka</div>Sure. It's 48217.</div>
+      <div class="chat-msg agent"><div class="chat-who">Daniel Osei</div>Thank you. Could you please send me a photo of the chair?</div>
+      <div class="chat-msg cust"><div class="chat-who">Mei Tanaka</div>Here it is.</div>
+      <div class="chat-msg agent"><div class="chat-who">Daniel Osei</div>Thank you. We apologize for the inconvenience. Would you like a refund or a replacement?</div>
+      <div class="chat-msg cust"><div class="chat-who">Mei Tanaka</div>I'd like a replacement, please.</div>
+      <div class="chat-msg agent"><div class="chat-who">Daniel Osei</div>No problem. I can send you a new chair on Thursday. Can I help you with anything else?</div>
+      <div class="chat-msg cust"><div class="chat-who">Mei Tanaka</div>No, that's all. Thank you!</div>
+    </div>
+    <div class="es-note">Fíjate: el agente nunca da una orden directa. Siempre usa <strong>Could you…?</strong>, <strong>please</strong> y <strong>I can…</strong></div>
+
+    <div class="tip-box">
+      <div class="tip-label">🙋 Customer-side phrases</div>
+      Can you help me, please? · Could you check my order, please? · Could you give me a refund, please? · I'd like a replacement, please.
+    </div>
+
+    ${checkBlock('mod', 'Model Sentences', 'the 4 steps are clear')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderListening() {
+  const speeds = [0.7, 0.8, 0.9, 1.0, 1.1];
+  return `<div class="sc">
+    ${badge(7, "Listening · How We Handle Complaints", "4 min")}
+    <div class="es-note">Escucha a Lucas, líder de un equipo de soporte. Primero escucha sin leer. Después, si lo necesitas, abre la transcripción. Puedes bajar la velocidad a 0.8× o 0.7×.</div>
+
+    <div class="audio-box">
+      <div class="audio-box-head">
+        <div class="audio-box-icon">🎙️</div>
+        <div>
+          <div class="audio-box-title">How We Handle Complaints</div>
+          <div class="audio-box-sub">Lucas Moreau · Customer Support Team Lead, Lyon · about 75 sec</div>
+        </div>
+      </div>
+      <audio id="mainAudio" class="audio-player" controls controlsList="nodownload" preload="metadata"
+        onplay="this.playbackRate=currentSpeed" src="${AUDIO_URL}">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="speed-row">
+        <span class="speed-label">Speed</span>
+        ${speeds.map(r => `<button class="speed-btn ${r === currentSpeed ? 'active' : ''}" data-rate="${r}" onclick="setSpeed(${r})">${r.toFixed(1)}×</button>`).join('')}
+      </div>
+      <button class="transcript-toggle" id="transcriptBtn" onclick="toggleTranscript()">${transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript'}</button>
+      <div id="transcriptBox" class="transcript-box" style="display:${transcriptOpen ? 'block' : 'none'};">
+        <p>Hi, I'm Lucas Moreau. I'm a customer support team lead at Brightway Home, an online shop in Lyon. We sell kitchen products, and we get complaints every day.</p>
+        <p>Yesterday, a customer called because her coffee machine was broken. First, I said, "I'm sorry about the problem." Then I asked, "Could you give me your order number, please?" She gave me the number, and I checked her order. The machine was only two weeks old, so it was still under warranty. I asked, "Would you like a refund or a replacement?" She wanted a replacement. I said, "No problem. I can send you a new machine today."</p>
+        <p>Sometimes the answer is no. Last week, a man wanted a refund, but he didn't have a receipt. I said, "I'm sorry, but I can't give you a refund without a receipt. Could you check your email, please?" He found it, and we solved the issue.</p>
+        <p>In my team, we never just say "No." We always say it politely.</p>
+      </div>
+    </div>
+
+    ${checkBlock('lis', 'Listening', 'you understood the audio')}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderExercises() {
+  return `<div class="sc">
+    ${badge(8, "Exercises", "4 min")}
+    <div class="es-note">Primero piensa tu respuesta (o dila en voz alta). Después toca la tarjeta para ver la respuesta correcta.</div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise A · Make it polite</div>
+      <p class="mini-sub">Cambia la orden directa por una petición amable con Could you…?</p>
+      ${tapRow("1. Send me the receipt.", "Could you send me the receipt, please?")}
+      ${tapRow("2. Give me your order number.", "Could you give me your order number, please?")}
+      ${tapRow("3. Check your email.", "Could you check your email, please?")}
+      ${tapRow("4. Send me a photo of the item.", "Could you send me a photo of the item, please?")}
+      ${tapRow("5. Call me tomorrow.", "Could you call me tomorrow, please?")}
+      ${tapRow("6. Return the item.", "Could you return the item, please?")}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise B · Find the mistake</div>
+      <p class="mini-sub">Cada frase tiene un error. ¿Puedes corregirla?</p>
+      ${fixRow("1. Could you to help me?", "Could you help me?", "")}
+      ${fixRow("2. You can send me the invoice?", "Can you send me the invoice?", "")}
+      ${fixRow("3. Could you checks the delivery date?", "Could you check the delivery date?", "")}
+      ${fixRow("4. I send you a replacement tomorrow.", "I can send you a replacement tomorrow.", "")}
+      ${fixRow("5. We apologize for the molest.", "We apologize for the inconvenience.", "")}
+      ${fixRow("6. Could you me give a refund?", "Could you give me a refund?", "")}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise C · Choose the best answer</div>
+      <p class="mini-sub">Elige la respuesta más profesional.</p>
+      ${tapRow("1. Customer: <em>Could you check my order, please?</em>", "<strong>(b) Of course.</strong>", "(a) Check it yourself. · (b) Of course. · (c) No.")}
+      ${tapRow("2. Customer: <em>Can I change the delivery address?</em> (The package is already on the way.)", "<strong>(b) I'm sorry, that's not possible.</strong>", "(a) No. · (b) I'm sorry, that's not possible. · (c) I don't change.")}
+      ${tapRow("3. Customer: <em>My package is late.</em>", "<strong>(a) I'm sorry for the delay.</strong>", "(a) I'm sorry for the delay. · (b) Wait. · (c) Is not my problem.")}
+      ${tapRow("4. Customer: <em>The screen is broken.</em>", "<strong>(b) I'm sorry about the problem. Would you like a refund or a replacement?</strong>", "(a) Send it. · (b) I'm sorry about the problem. Would you like a refund or a replacement? · (c) You broke it?")}
+      ${tapRow("5. Customer: <em>I'd like a refund, please.</em>", "<strong>(a) Sure. Could you send me the receipt, please?</strong>", "(a) Sure. Could you send me the receipt, please? · (b) Give me the receipt. · (c) I give you.")}
+    </div>
+
+    <div class="ex-box">
+      <div class="ex-label">Exercise D · False friends</div>
+      <p class="mini-sub">¿Cómo se dice en inglés?</p>
+      ${tapRow("1. Tengo un reclamo.", "I have a complaint.")}
+      ${tapRow("2. Quiero la devolución de mi dinero.", "I'd like a refund.")}
+      ${tapRow("3. Disculpe la molestia.", "We apologize for the inconvenience. / I'm sorry for the inconvenience.")}
+      ${tapRow("4. Podemos solucionar el problema hoy.", "We can solve the problem today.")}
+    </div>
+    ${navFooter()}
+  </div>`;
+}
+
+function scoreLabel() {
+  if (quizScore === QUIZ.length) return '🎉 ¡Perfecto! You are ready for class!';
+  if (quizScore >= QUIZ.length * 0.85) return '¡Excelente! Almost perfect.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Good work! Retry the wrong answers.';
+  return 'Keep practising, ¡tú puedes!';
+}
+function scoreMsg() {
+  if (quizScore === QUIZ.length) return 'Outstanding, a perfect score! See you in class.';
+  if (quizScore >= QUIZ.length * 0.85) return 'Retry the wrong answers to finish strong.';
+  if (quizScore >= QUIZ.length * 0.7)  return 'Go back and check the sections where you made mistakes.';
+  return 'Retry the wrong answers and review the lesson again.';
+}
+
+function renderQuiz() {
+  const answered = Object.values(quizState).filter(s => s.revealed).length;
+  const pct = QUIZ.length ? (answered / QUIZ.length) * 100 : 0;
+  const allDone = answered === QUIZ.length && QUIZ.length > 0;
+  const allCorrect = allDone && quizScore === QUIZ.length;
+  const wrongCount = allDone ? QUIZ.length - quizScore : 0;
+
+  return `<div class="sc">
+    ${badge(9, "Quiz", "5 min")}
+    <div class="quiz-intro">
+      <div class="quiz-intro-icon">🎯</div>
+      <div>
+        <h3>¡Pon a prueba lo que aprendiste!</h3>
+        <p>${QUIZ.length} questions · Take your time</p>
+      </div>
+    </div>
+    <div class="score-bar">
+      <span class="score-label">Progress</span>
+      <div class="score-track"><div class="score-fill" style="width:${pct}%"></div></div>
+      <span class="score-count">${answered} / ${QUIZ.length}</span>
+    </div>
+    ${QUIZ.map((q,i) => renderQ(q,i)).join('')}
+    ${allDone ? `<div class="quiz-result">
+      <div class="result-score">${quizScore} / ${QUIZ.length}</div>
+      <div class="result-label">${scoreLabel()}</div>
+      <div class="result-msg">${scoreMsg()}</div>
+      <div class="result-msg" style="margin-top:6px;">Attempts so far: ${quizAttempts + 1}</div>
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap">
+        ${!allCorrect?`<button onclick="retakeQuiz()" style="padding:12px 28px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;">↺ Retry ${wrongCount} Wrong Answer${wrongCount===1?'':'s'}</button>`:''}
+        <button onclick="goTo(0)" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.25);border-radius:8px;font-family:var(--font-body);font-size:13px;font-weight:600;cursor:pointer;">← Review Lesson</button>
+      </div>
+    </div>` : ''}
+    ${navFooter()}
+  </div>`;
+}
+
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+function renderQ(q, i) {
+  const s = quizState[i] || {};
+  const rev = s.revealed;
+  let body = '';
+  const letters = ['A','B','C','D'];
+
+  if (q.type === 'mc' || q.type === 'tf') {
+    const opts    = q.type==='mc' ? q.opts : ['True','False'];
+    const lets    = q.type==='mc' ? letters : ['T','F'];
+    body = `<div class="q-options">
+      ${opts.map((opt,j) => {
+        let cls = 'q-opt';
+        const isAns = q.type==='mc' ? j===q.answer : q.answer===(j===0);
+        if (rev) { if(isAns) cls+=' correct'; else if(s.selected===j) cls+=' wrong'; }
+        else if (s.selected===j) cls+=' selected';
+        return `<button class="${cls}" onclick="selectOpt(${i},${j})" ${rev?'disabled':''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+      }).join('')}
+    </div>
+    ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="revealQ(${i})" ${s.selected===undefined?'disabled':''}>Check</button></div>` : ''}
+    ${rev  ? `<div class="q-feedback ${(q.type==='mc'?s.selected===q.answer:q.answer===(s.selected===0))?'correct':'wrong'}">💡 ${q.fb}</div>` : ''}`;
+  }
+
+  if (q.type === 'input') {
+    const cls = rev ? (s.correct?'q-input correct':'q-input wrong') : 'q-input';
+    body = `<div class="q-input-row">
+      <input class="${cls}" id="inp-${i}" type="text" placeholder="Type your answer…" value="${esc(s.inputVal||'')}" oninput="setInp(${i},this.value)" onkeydown="if(event.key==='Enter')revealInp(${i})" ${rev?'disabled':''}/>
+      ${!rev ? `<button class="check-btn" onclick="revealInp(${i})">Check</button>` : ''}
+    </div>
+    ${rev ? `<div class="q-feedback ${s.correct?'correct':'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+  }
+
+  return `<div class="q-card" id="qc-${i}">
+    <div class="q-top">
+      <span class="q-num">Q${i+1}</span>
+      <div>
+        <div class="q-text">${q.q}</div>
+        ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      </div>
+    </div>
+    ${body}
+  </div>`;
+}
+
+function selectOpt(qi,j) { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].revealed)return; quizState[qi].selected=j; rerender(); }
+function revealQ(qi)      { if(!quizState[qi])quizState[qi]={}; if(quizState[qi].selected===undefined)return; quizState[qi].revealed=true; recalc(); rerender(); }
+function setInp(qi,v)     { if(!quizState[qi])quizState[qi]={}; quizState[qi].inputVal=v; }
+function revealInp(qi) {
+  const q=QUIZ[qi]; if(!quizState[qi])quizState[qi]={};
+  const raw = quizState[qi].inputVal || '';
+  if (!raw.trim()) return;
+  quizState[qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  quizState[qi].revealed=true; recalc(); rerender();
+}
+function retakeQuiz() {
+  QUIZ.forEach((_,i) => {
+    const s=quizState[i]; if(!s||!s.revealed)return;
+    let ok=false;
+    if(QUIZ[i].type==='mc')    ok=s.selected===QUIZ[i].answer;
+    else if(QUIZ[i].type==='tf')    ok=QUIZ[i].answer===(s.selected===0);
+    else if(QUIZ[i].type==='input') ok=s.correct;
+    if(!ok){ delete quizState[i]; }
+  });
+  quizAttempts++;
+  recalc(); rerender();
+  setTimeout(()=>{
+    const first=QUIZ.findIndex((_,i)=>!quizState[i]||!quizState[i].revealed);
+    const el=document.getElementById('qc-'+first);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  },100);
+}
+function recalc() {
+  let s=0;
+  QUIZ.forEach((q,i)=>{
+    const st=quizState[i]; if(!st||!st.revealed)return;
+    if(q.type==='mc'&&st.selected===q.answer)s++;
+    else if(q.type==='tf'&&q.answer===(st.selected===0))s++;
+    else if(q.type==='input'&&st.correct)s++;
+  });
+  quizScore=s;
+}
+function rerender() {
+  // Calls renderQuiz() directly, never STEPS[currentStep].fn()
+  const qi=STEPS.findIndex(s=>s.fn===renderQuiz);
+  if(currentStep===qi) document.getElementById('mainContent').innerHTML=renderQuiz();
+}
+
+
+// ── CONCEPT-CHECK ENGINE (independent state per prefix) ───
+function renderMiniQ(prefix, questions) {
+  const state = miniState[prefix];
+  let html = '';
+  questions.forEach((q, i) => {
+    const s = state[i] || {};
+    const rev = s.revealed;
+    const letters = ['A','B','C','D'];
+    let body = '';
+
+    if (q.type === 'mc' || q.type === 'tf') {
+      const opts = q.type === 'mc' ? q.opts : ['True', 'False'];
+      const lets = q.type === 'mc' ? letters : ['T', 'F'];
+      const isRight = q.type === 'mc' ? s.selected === q.answer : q.answer === (s.selected === 0);
+      body = `<div class="q-options">
+        ${opts.map((opt, j) => {
+          let cls = 'q-opt';
+          const isAns = q.type === 'mc' ? j === q.answer : q.answer === (j === 0);
+          if (rev) { if (isAns) cls += ' correct'; else if (s.selected === j) cls += ' wrong'; }
+          else if (s.selected === j) cls += ' selected';
+          return `<button class="${cls}" onclick="miniSelectOpt('${prefix}',${i},${j})" ${rev ? 'disabled' : ''}><span class="opt-letter">${lets[j]}</span>${opt}</button>`;
+        }).join('')}
+      </div>
+      ${!rev ? `<div style="margin-top:12px;text-align:right"><button class="check-btn" onclick="miniRevealQ('${prefix}',${i})" ${s.selected === undefined ? 'disabled' : ''}>Check</button></div>` : ''}
+      ${rev ? `<div class="q-feedback ${isRight ? 'correct' : 'wrong'}">💡 ${q.fb}</div>` : ''}`;
+    }
+
+    if (q.type === 'input') {
+      const cls = rev ? (s.correct ? 'q-input correct' : 'q-input wrong') : 'q-input';
+      body = `<div class="q-input-row">
+        <input class="${cls}" id="mini-inp-${prefix}-${i}" type="text" placeholder="Type your answer…" value="${esc(s.inputVal || '')}"
+          oninput="miniSetInp('${prefix}',${i},this.value)" onkeydown="if(event.key==='Enter')miniRevealInp('${prefix}',${i})" ${rev ? 'disabled' : ''}/>
+        ${!rev ? `<button class="check-btn" onclick="miniRevealInp('${prefix}',${i})">Check</button>` : ''}
+      </div>
+      ${rev ? `<div class="q-feedback ${s.correct ? 'correct' : 'wrong'}">✅ <strong>${q.display}</strong><br>💡 ${q.fb}</div>` : ''}`;
+    }
+
+    html += `<div class="q-card" id="mini-qc-${prefix}-${i}">
+      <div class="q-top">
+        <span class="q-num">Q${i+1}</span>
+        <div>
+          <div class="q-text">${q.q}</div>
+          ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+        </div>
+      </div>
+      ${body}
+    </div>`;
+  });
+  return html;
+}
+function miniSelectOpt(prefix, qi, j) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].revealed) return;
+  miniState[prefix][qi].selected = j;
+  miniRerender(prefix);
+}
+function miniRevealQ(prefix, qi) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  if (miniState[prefix][qi].selected === undefined) return;
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniSetInp(prefix, qi, v) {
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  miniState[prefix][qi].inputVal = v;
+}
+function miniRevealInp(prefix, qi) {
+  const q = MINI[prefix][qi];
+  if (!miniState[prefix][qi]) miniState[prefix][qi] = {};
+  const raw = miniState[prefix][qi].inputVal || '';
+  if (!raw.trim()) return;
+  miniState[prefix][qi].correct = q.answers.some(a => normalise(raw) === normalise(a));
+  miniState[prefix][qi].revealed = true;
+  miniRerender(prefix);
+}
+function miniRerender(prefix) {
+  // Updates only this concept check's container, so audio and the rest of the step are untouched
+  const el = document.getElementById('mini-' + prefix);
+  if (el) el.innerHTML = renderMiniQ(prefix, MINI[prefix]);
+}
+
+
+// ── AUDIO (Pattern A · single player) ─────────────────────
+function setSpeed(rate) {
+  currentSpeed = rate;
+  const audio = document.getElementById('mainAudio');
+  if (audio) audio.playbackRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    b.classList.toggle('active', parseFloat(b.dataset.rate) === rate);
+  });
+}
+function toggleTranscript() {
+  transcriptOpen = !transcriptOpen;
+  const box = document.getElementById('transcriptBox');
+  const btn = document.getElementById('transcriptBtn');
+  if (box) box.style.display = transcriptOpen ? 'block' : 'none';
+  if (btn) btn.textContent = transcriptOpen ? '▲ Hide transcript' : '▼ Show transcript';
+}
+
+
+// ── STEPS · defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Welcome",           fn: renderWelcome },
+  { label: "2. Vocabulary",        fn: renderVocabulary },
+  { label: "3. Grammar Bridge",    fn: renderBridge },
+  { label: "4. Polite Requests",   fn: renderGrammar1 },
+  { label: "5. Responses",         fn: renderGrammar2 },
+  { label: "6. Model Sentences",   fn: renderModel },
+  { label: "7. Listening",         fn: renderListening },
+  { label: "8. Exercises",         fn: renderExercises },
+  { label: "9. Quiz",              fn: renderQuiz },
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

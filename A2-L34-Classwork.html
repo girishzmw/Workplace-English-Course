@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 34: Handling Complaints | A2 · Unit 4 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold - Georgia headings, Lato body
+   All colours as CSS variables - never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A - Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B - Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE - full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE - use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX - off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX - off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER - column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* LESSON-SPECIFIC ADDITIONS: A2 L34 CLASSWORK */
+.sub-heading { font-family:var(--font-body); font-size:16px; font-weight:700; color:var(--navy); margin:8px 0 12px; }
+.rule-list { margin:0 0 18px 0; padding-left:20px; font-size:14px; line-height:1.8; color:var(--slate); }
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+
+/* Tap-to-reveal (state kept across steps) */
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:12px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-q.wrong { color:var(--red); font-style:italic; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); line-height:1.6; }
+.tap-row.open .tap-answer { display:block; }
+.tap-row.open .tap-hint-label { visibility:hidden; }
+.tap-es { font-size:13px; color:var(--grey-blue); font-style:italic; margin-top:4px; }
+
+/* Checklist */
+.check-list { counter-reset:ck; list-style:none; padding:0; margin:0 0 18px; }
+.check-list li { counter-increment:ck; position:relative; padding:9px 14px 9px 44px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; margin-bottom:7px; font-size:14px; color:var(--slate); }
+.check-list li::before { content:counter(ck); position:absolute; left:12px; top:9px; width:22px; height:22px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+
+/* Model answer */
+.model-text { font-family:var(--font-heading); font-size:15px; color:var(--navy); line-height:1.8; font-style:italic; }
+
+/* Warm-up cards */
+.wu-card { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:16px 18px; margin-bottom:12px; }
+.wu-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:12px; }
+.wu-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; flex-shrink:0; margin-top:2px; }
+.wu-def { font-size:15px; color:var(--navy); line-height:1.6; }
+.wu-btns { display:flex; gap:8px; flex-wrap:wrap; }
+.wu-btn { padding:7px 14px; border-radius:6px; border:1.5px solid var(--border-grey); background:var(--off-white); font-family:var(--font-body); font-size:12px; font-weight:700; color:var(--navy); cursor:pointer; transition:all 0.12s; }
+.wu-btn:hover { border-color:var(--sky); }
+.wu-reveal { display:none; margin-top:10px; padding:9px 13px; border-radius:7px; font-size:14px; }
+.wu-reveal.open { display:block; }
+.wu-reveal.hint { background:var(--gold-bg); color:var(--slate); font-style:italic; }
+.wu-reveal.ans { background:var(--green-bg); color:var(--green); font-weight:700; }
+
+/* Grammar reminder */
+.pattern-en strong { color:var(--sky); }
+
+/* Passage cards */
+.passage { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.passage-head { background:var(--navy); padding:13px 18px; display:flex; gap:12px; align-items:center; }
+.passage-icon { font-size:24px; }
+.passage-name { font-family:var(--font-heading); font-size:15px; color:var(--white); }
+.passage-role { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.passage-num { margin-left:auto; font-size:11px; letter-spacing:1.5px; color:var(--gold); font-weight:700; text-transform:uppercase; }
+.passage-body { padding:16px 18px 8px; }
+.passage-text { font-size:15px; line-height:1.8; color:var(--slate); background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:14px; }
+.q-tag { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-right:6px; }
+
+/* Spotlights */
+.spotlight { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.35); border-radius:12px; padding:20px 22px; margin:6px 0 22px; font-size:14px; line-height:1.7; color:var(--slate); }
+.spotlight.expr { background:var(--light-grey); border-color:var(--border-grey); }
+.spotlight-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:4px; }
+.spotlight-title { font-family:var(--font-heading); font-size:22px; color:var(--navy); margin-bottom:10px; font-style:italic; }
+.spotlight p { margin-bottom:12px; }
+.ex-list { margin:0 0 14px 20px; font-size:14px; line-height:1.8; }
+
+/* Speaking */
+.lang-box { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:20px; }
+@media(max-width:640px){ .lang-box { grid-template-columns:1fr; } }
+.lang-item { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:10px 14px; font-size:13px; line-height:1.6; }
+.lang-item strong { color:var(--navy); display:block; font-size:11px; letter-spacing:1px; text-transform:uppercase; margin-bottom:2px; }
+.sp-card { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--sky); border-radius:10px; padding:16px 18px; margin-bottom:14px; }
+.sp-q { font-size:15px; font-weight:700; color:var(--navy); line-height:1.6; margin-bottom:10px; }
+.sp-num { color:var(--gold); margin-right:6px; }
+
+/* Wrap-up */
+.complaint { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--red); border-radius:8px; padding:14px 18px; margin-bottom:14px; font-size:15px; color:var(--navy); font-style:italic; }
+.outcome-box { background:var(--navy); border-radius:10px; padding:18px 22px; margin:18px 0; color:var(--white); font-size:15px; }
+.outcome-box span { display:block; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px; }
+.conf-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.conf-btn { flex:1; min-width:110px; padding:10px 8px; border:1.5px solid var(--border-grey); border-radius:8px; background:var(--white); font-family:var(--font-body); font-size:12px; color:var(--navy); cursor:pointer; text-align:center; transition:all 0.12s; }
+.conf-btn b { display:block; font-size:18px; color:var(--gold); }
+.conf-btn:hover { border-color:var(--sky); }
+.conf-btn.active { background:var(--navy); color:var(--white); border-color:var(--navy); }
+.conf-msg { font-size:13px; color:var(--grey-blue); font-style:italic; min-height:20px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER - do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO - edit badge, title, subtitle, and outcomes/pills -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A2 · Unit 4 · Classwork</div>
+    <h1 class="hero-title">Lesson 34: Handling Complaints</h1>
+    <p class="hero-sub">Speaking Day · Empathy, apologies and solutions · 60 minutes</p>
+    <div class="hero-pills">
+      <span class="pill accent">🗣 Speaking</span>
+      <span class="pill accent">📖 Reading</span>
+      <span class="pill accent">🔁 Homework review</span>
+      <span class="pill">5 steps</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV - built automatically from STEPS array -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT - rendered by JS -->
+<div class="main" id="mainContent"></div>
+
+
+<!-- SINGLE SCRIPT BLOCK - all JavaScript lives here. LESSON CONTENT START -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+const openSet = new Set();   // tap-to-reveal items the class has opened
+let confidence = null;
+
+// ── NAVIGATION ENGINE (from Shell Template v3.0) ─────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── HTML HELPERS ──────────────────────────────────────────
+function badge(n, title, time) {
+  return `<div class="sec-badge">
+      <div class="sec-badge-num">${n}</div>
+      <div class="sec-badge-title">${title}</div>
+      <div class="sec-badge-time">${time}</div>
+    </div>
+    <hr class="gold-rule">`;
+}
+function es(text) { return `<div class="es-note">${text}</div>`; }
+function teacher(text) {
+  return `<div class="teacher-box"><div class="teacher-box-label">👩‍🏫 Teacher Note</div>${text}</div>`;
+}
+function toggleTap(id) {
+  const el = document.getElementById('t-' + id);
+  if (openSet.has(id)) openSet.delete(id); else openSet.add(id);
+  if (el) el.classList.toggle('open', openSet.has(id));
+}
+function tapRow(id, q, a, wrong) {
+  return `<div class="tap-row ${openSet.has(id)?'open':''}" id="t-${id}" onclick="toggleTap('${id}')">
+    <div class="tap-row-top"><div class="tap-q ${wrong?'wrong':''}">${q}</div><div class="tap-hint-label">Tap to reveal</div></div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+function wuBtn(id, label) {
+  return `<button class="wu-btn" onclick="toggleTap('${id}')">${label}</button>`;
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const HW_CHECK = [
+  `Three options, each with a short description`,
+  `At least two superlatives with <em>the</em> (<em>the cheapest, the most reliable, the best</em>)`,
+  `At least one comparative with <em>than</em> (<em>more expensive than, cheaper than</em>)`,
+  `A clear recommendation with <em>should</em> (<em>I think we should choose...</em>)`,
+  `A reason for your recommendation (<em>because... / It's the best value for money.</em>)`
+];
+
+const HW_MISTAKES = [
+  [`It's the more expensive of all.`, `It's the most expensive of all.`, `“El más caro” es <em>the most</em>, no <em>the more</em>.`],
+  [`It's the most cheapest option.`, `It's the cheapest option.`, `O <em>-est</em> o <em>most</em>, nunca los dos.`],
+  [`The Costa is cheaper that the Grand.`, `The Costa is cheaper than the Grand.`, `“Que” en una comparación es <em>than</em>.`],
+  [`It's the best hotel of the city.`, `It's the best hotel in the city.`, `Lugar o grupo → <em>in</em>. Número → <em>of</em> (<em>of the three</em>).`],
+  [`It's one of the best supplier in Lima.`, `It's one of the best suppliers in Lima.`, `<em>One of the best</em> + plural.`],
+  [`This plan is more better.`, `This plan is better.`, `<em>Better</em> ya es comparativo.`],
+  [`We should to book the Costa.`, `We should book the Costa.`, `Después de <em>should</em>, nunca <em>to</em>.`]
+];
+
+const HW_MODEL = `Hi Laura, I compared three hotels for our team trip to Lima in March. The Miraflores Inn is the cheapest, but it's also the furthest from the client's office. The Grand Pacific is the most comfortable of the three, but it's much more expensive than the others. The Costa Hotel is a bit more expensive than the Miraflores Inn, but it's the closest to the office, and it has the most reliable Wi-Fi. I think we should book the Costa. It's the best value for money, and we shouldn't waste time in taxis. Best, Andrés`;
+
+// [definition, Spanish hint, answer]
+const WARMUP = [
+  [`The trouble or extra problems a mistake causes for a customer. Companies often say, “We apologize for the ___.”`, `La molestia que un problema le causa al cliente.`, `inconvenience`],
+  [`A new product that you send to a customer because the first one had a problem.`, `Un reemplazo, un producto nuevo en lugar del que falló.`, `replacement`],
+  [`Money that a company gives back to a customer.`, `Un reembolso, la devolución del dinero.`, `refund`],
+  [`Broken or hurt, often during delivery. <em>(adjective)</em>`, `Dañado, roto en el envío.`, `damaged`],
+  [`It doesn't work correctly because there was a problem when the company made it. <em>(adjective)</em>`, `Defectuoso, salió mal de fábrica.`, `faulty`],
+  [`It isn't there. It should be in the box, but it isn't. <em>(adjective)</em>`, `Que falta.`, `missing`],
+  [`A small piece of paper or an email that shows you paid for something.`, `Un recibo, un comprobante de pago. ¡No es “receta”!`, `receipt`],
+  [`A promise from a company: if the product breaks in a certain time, they fix it or change it for free.`, `Una garantía.`, `warranty`]
+];
+const WARMUP_BONUS = [
+  [`To send or take a product back to the store or the company. <em>(verb)</em>`, `Devolver un producto.`, `return`],
+  [`Unhappy and a little angry because something went wrong. <em>(adjective)</em>`, `Molesto, disgustado.`, `upset`],
+  [`To try to find out the cause of a problem. <em>(two words)</em>`, `Investigar, revisar un problema.`, `look into`],
+  [`To organize something for someone. “Let me ___ a refund for you.”`, `Organizar, gestionar.`, `arrange`]
+];
+
+const REMINDER = [
+  [`<strong>I'm sorry to hear that.</strong> / <strong>I'm sorry for</strong> the delay.`, `Lamento escuchar eso. / Disculpe la demora.`],
+  [`<strong>I apologize for</strong> the inconvenience.`, `Disculpe las molestias. (<em>for</em> + el problema, nunca <em>apologize you</em>)`],
+  [`<strong>Did</strong> it <strong>arrive</strong> on time? / <strong>When did</strong> you <strong>order</strong> it?`, `Preguntas en pasado: <em>did</em> + verbo base.`],
+  [`<strong>Let me</strong> check your order. / <strong>I can</strong> send a replacement.`, `Permítame + verbo / Puedo + verbo (verbo base, sin <em>to</em>).`]
+];
+
+const PASSAGES = [
+  { icon:`✈️`, name:`Hana Novotná`, role:`Customer Care Agent, airline, Prague`,
+    text:`A passenger arrived in Prague, but his suitcase didn't. He was very upset at the desk. Hana listened, then said, “I'm sorry to hear that. I can see why you're upset.” She checked the system and found the suitcase in Vienna, and she arranged a delivery to his hotel that evening.`,
+    q1:`Where was the passenger's suitcase?`, a1:`In Vienna.`,
+    q2:`Hana didn't give the solution first. Why is it a good idea to listen and show empathy before you solve the problem?`,
+    a2:`Sample: Because the customer feels that you understand him. Then he is calmer and he listens to the solution.` },
+  { icon:`📺`, name:`Rafael Ortega`, role:`Store Manager, electronics shop, Madrid`,
+    text:`A customer bought a TV on Saturday. On Monday she came back and said, “It doesn't turn on.” She didn't have the receipt, but Rafael found the purchase in the system with her phone number. The TV was still under warranty, so he gave her a replacement the same day.`,
+    q1:`Why didn't the customer need the receipt?`, a1:`Because Rafael found the purchase in the system with her phone number.`,
+    q2:`Do you usually keep receipts and warranties? Where do you keep them?`,
+    a2:`Sample: Yes, I keep them. I take a photo of the receipt and I save it in a folder on my phone.` },
+  { icon:`📦`, name:`Aisha Bello`, role:`Account Manager, office supplies company, Abuja`,
+    text:`A client ordered 200 boxes of paper for her offices, but only 150 arrived. Three boxes were also damaged. Aisha called the client the same morning: “I apologize for the mistake. Let me check the order.” She sent the missing boxes and three replacements the next day.`,
+    q1:`What two problems did the order have?`, a1:`Fifty boxes were missing, and three boxes were damaged.`,
+    q2:`Aisha called the client. She didn't just send an email. Is a call better than an email for a complaint? Why or why not?`,
+    a2:`Sample: Yes, I think a call is better. The client can hear that you're sorry, and you can solve the problem faster.` },
+  { icon:`🌐`, name:`Callum Reid`, role:`Support Agent, internet provider, Glasgow`,
+    text:`A customer called Callum: “My internet didn't work for three days, and nobody called me back!” Callum didn't say “Calm down.” He said, “I understand. That must be frustrating. I'm sorry for the delay.” Then he looked into the problem and found a faulty router.`,
+    q1:`What was the cause of the problem?`, a1:`A faulty router.`,
+    q2:`Why is “Calm down” a bad thing to say to an angry customer?`,
+    a2:`Sample: Because it sounds like their problem isn't important. It usually makes the customer angrier.` },
+  { icon:`🏨`, name:`Mei Lin Wong`, role:`Front Desk Manager, hotel, Singapore`,
+    text:`A guest booked a room with a sea view, but the hotel gave him a room with a view of the car park. He was dissatisfied and came to the front desk. Mei Lin apologized for the inconvenience and moved him to a sea-view room on a higher floor. The next day, he thanked her.`,
+    q1:`Why was the guest dissatisfied?`, a1:`Because he booked a room with a sea view, but he got a room with a view of the car park.`,
+    q2:`Think about a hotel, a restaurant or a shop. Did they ever solve a problem for you in a good way? What did they do?`,
+    a2:`Sample: Yes. A restaurant brought me the wrong dish. The waiter apologized and brought the right one in five minutes, and the dessert was free.` },
+  { icon:`🍽️`, name:`Karim Nasser`, role:`Restaurant Manager, Beirut`,
+    text:`A company booked Karim's restaurant for a team dinner of 30 people, but the kitchen made a mistake and the food was an hour late. Karim really bent over backwards for them. He apologized to every table, he served free drinks, and the next morning he called the organizer to say sorry again.`,
+    q1:`What did Karim do the next morning?`, a1:`He called the organizer to say sorry again.`,
+    q2:`Do you think Karim did too much, or the right amount? Why?`,
+    a2:`Sample: I think he did the right amount. It was a big group from a company, and they can book the restaurant again.` },
+  { icon:`💻`, name:`Johanna Berg`, role:`Customer Success Manager, software company, Malmö`,
+    text:`A client's monthly report had the wrong numbers, and the client was very upset. The error came from another team, but Johanna didn't blame anyone. She took ownership: “This is my client, so this is my problem. Let me fix it.” She sent the correct report the same afternoon and explained what went wrong.`,
+    q1:`Where did the error come from?`, a1:`From another team.`,
+    q2:`The error wasn't Johanna's. Was it right for her to take responsibility? Why or why not?`,
+    a2:`Sample: Yes. The client doesn't care which team made the mistake. They want one person to solve it.` },
+  { icon:`🚚`, name:`Sione Taufa`, role:`Delivery Coordinator, furniture company, Auckland`,
+    text:`A customer ordered a desk for her home office. It arrived on time, but one leg was missing. Sione said, “I'm sorry for the inconvenience. You can choose a replacement desk or a refund.” The customer only wanted the missing leg, so Sione sent it the next morning.`,
+    q1:`What did the customer want in the end?`, a1:`Only the missing leg.`,
+    q2:`Why is it a good idea to give the customer a choice?`,
+    a2:`Sample: Because the customer can choose the best solution for them. Sometimes they want something simpler than you think.` }
+];
+
+const LANG = [
+  [`What went wrong`, `It arrived late. · It didn't work. · One item was missing. · Nobody called me back.`],
+  [`Empathy`, `I understand. · I'm sorry to hear that. · I can see why you're upset. · That must be frustrating.`],
+  [`Apologizing`, `I'm sorry for the delay. · I apologize for the inconvenience.`],
+  [`Solving`, `Let me check... · Let me look into it. · I can send a replacement. · I can arrange a refund.`],
+  [`Today's language`, `bend over backwards · take ownership of...`]
+];
+
+const SPEAK = [
+  [`Think of a time you complained as a customer: a delivery, a restaurant, a bank, an airline. What happened, and how did the company respond?`,
+   `Were you happy with the solution? What did they say first?`],
+  [`Do customers or colleagues complain to you at work? What do they usually complain about, and what do you say first?`,
+   `What's the most difficult complaint you remember? How did you solve it?`],
+  [`What's the worst thing a company can say or do when a customer is angry? Why?`,
+   `Think of a company that bends over backwards for its customers. What do they do?`],
+  [`Some people say, “The customer is always right.” Do you agree? Why or why not?`,
+   `Imagine a customer is angry, but the mistake was theirs. What can you say to them?`]
+];
+
+const CONF = [
+  [1, `Todavía no`], [2, `Con mucha ayuda`], [3, `Con un poco de ayuda`], [4, `Casi solo`], [5, `¡Sí, con confianza!`]
+];
+const CONF_MSG = {
+  1: `Gracias por tu honestidad. Repasa la Pre-Learning y practica las frases de empatía en voz alta.`,
+  2: `Vas bien. Repasa los cinco pasos y las frases de disculpa antes de la tarea.`,
+  3: `¡Buen trabajo! Un poco más de práctica y lo vas a hacer solo.`,
+  4: `¡Muy bien! Ya casi lo tienes.`,
+  5: `¡Excelente! Ya puedes responder a una queja con confianza.`
+};
+function setConfidence(n) {
+  confidence = n;
+  document.querySelectorAll('.conf-btn').forEach(b => b.classList.toggle('active', parseInt(b.dataset.n) === n));
+  const m = document.getElementById('confMsg');
+  if (m) m.textContent = CONF_MSG[n];
+}
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderReview() {
+  return `<div class="sc">
+    ${badge(1, 'Homework Review: Lesson 33 Writing', '15 to 20 min')}
+    ${es(`Saca el correo que escribiste para la tarea de la Lección 33: la comparación de tres opciones con una recomendación. Vamos a leer algunos en voz alta y a corregirlos juntos.`)}
+    <div class="sub-heading">✔️ Did your email include...?</div>
+    <ol class="check-list">${HW_CHECK.map(c => `<li>${c}</li>`).join('')}</ol>
+
+    <div class="sub-heading">⚠️ Common mistakes <span style="font-weight:400;font-size:13px;color:var(--grey-blue)">(tap each error to see the fix)</span></div>
+    ${HW_MISTAKES.map(([w,r,why],i) => tapRow('hw'+i, '❌ ' + w, '✅ <strong>' + r + '</strong><div class="tap-es">' + why + '</div>', true)).join('')}
+
+    <div class="sub-heading">📝 Model answer</div>
+    ${tapRow('hwmodel', 'Tap to see a model email (about 95 words)', '<div class="model-text">' + HW_MODEL + '</div>')}
+
+    ${teacher(`Ask 3 or 4 students to read their email aloud, starting with students who didn't read in L33. Let each one finish before you correct anything, then go through the checklist together. Put two or three of their superlative sentences on screen and fix them as a class. To lead into today, ask one student: <em>“Your manager chose your option. But the order arrived late and one item was damaged. What do you say to the supplier?”</em> Listen for the Past Simple (<em>it arrived, it didn't work</em>). That's where today's lesson starts. If a student didn't do the homework, ask them to compare two phones or apps they know in two sentences.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function wuCard(prefix, i, item, numLabel) {
+  const [def, hint, ans] = item;
+  return `<div class="wu-card">
+    <div class="wu-top"><span class="wu-num">${numLabel}</span><div class="wu-def">${def}</div></div>
+    <div class="wu-btns">${wuBtn(prefix+'h'+i, '💡 Pista en español')}${wuBtn(prefix+'a'+i, '✅ Answer')}</div>
+    <div class="wu-reveal hint ${openSet.has(prefix+'h'+i)?'open':''}" id="t-${prefix}h${i}">💡 ${hint}</div>
+    <div class="wu-reveal ans ${openSet.has(prefix+'a'+i)?'open':''}" id="t-${prefix}a${i}">✅ ${ans}</div>
+  </div>`;
+}
+
+function renderWarmup() {
+  return `<div class="sc">
+    ${badge(2, 'Warm-up: Guess the Word', '5 min')}
+    ${es(`Lee la definición en inglés y adivina la palabra de la Pre-Learning. Si lo necesitas, toca “Pista en español”. La respuesta está escondida.`)}
+    ${WARMUP.map((w,i) => wuCard('w', i, w, i+1)).join('')}
+    <div class="sub-heading">⭐ Bonus cards</div>
+    <p style="font-size:13px;color:var(--grey-blue);font-style:italic;margin-bottom:12px;">For early finishers or a second round.</p>
+    ${WARMUP_BONUS.map((w,i) => wuCard('b', i, w, i+9)).join('')}
+    ${teacher(`Read each definition aloud and give it to one student. Wait 5 seconds before you offer the Spanish hint. On card 3, ask the class how <em>refund</em> is different from <em>return</em> (the Pre-Learning trap with “devolución”). On card 7, check the pronunciation: the <em>p</em> in <em>receipt</em> is silent. On card 1, listen for <em>inconvenients</em> and fix it. Extension: after each answer, ask the student to use the word in a sentence about something that went wrong, in the Past Simple (<em>My laptop arrived damaged last week.</em>).`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function passageCard(p, i) {
+  return `<div class="passage">
+    <div class="passage-head">
+      <div class="passage-icon">${p.icon}</div>
+      <div><div class="passage-name">${p.name}</div><div class="passage-role">${p.role}</div></div>
+      <div class="passage-num">Passage ${i+1}</div>
+    </div>
+    <div class="passage-body">
+      <div class="passage-text">${p.text}</div>
+      ${tapRow('p'+i+'q1', '<span class="q-tag">Q1</span>' + p.q1, p.a1)}
+      ${tapRow('p'+i+'q2', '<span class="q-tag">Q2</span>' + p.q2, p.a2)}
+    </div>
+  </div>`;
+}
+
+function idiomSpot() {
+  return `<div class="spotlight">
+    <div class="spotlight-label">💬 Idiom Spotlight</div>
+    <div class="spotlight-title">bend over backwards</div>
+    <p><strong>Meaning:</strong> to try very, very hard to help someone or make them happy, often more than people expect.</p>
+    ${es(`Hacer un esfuerzo enorme para ayudar o complacer a alguien. Es como decir “hacer hasta lo imposible” o “desvivirse por alguien”. La imagen es de una persona que se dobla hacia atrás: algo muy difícil de hacer.`)}
+    <div class="sub-heading">At work</div>
+    <ul class="ex-list">
+      <li><em>Our support team bent over backwards to fix the problem before the weekend.</em></li>
+      <li><em>We always bend over backwards for our biggest clients.</em></li>
+      <li><em>She bent over backwards to find a replacement in one day.</em></li>
+    </ul>
+    <div class="tip-box"><div class="tip-label">💡 Tip</div>El verbo es irregular: <em>bend → bent</em>. En pasado: ✅ <em>He bent over backwards.</em> ❌ <em>He bended over backwards.</em></div>
+    <p><strong>Why it matters today:</strong> when a customer has a bad experience, a normal answer is sometimes not enough. Companies that bend over backwards after a complaint often keep that customer for years.</p>
+    <div class="sub-heading">Quick check</div>
+    ${tapRow('id1', '1. Your colleague worked until midnight to send a client the missing documents. Describe it with today’s idiom.', 'Sample: She bent over backwards for the client.')}
+    ${tapRow('id2', '2. Correct the sentence: <em>“The manager bended over backwards to help us.”</em>', 'The manager bent over backwards to help us.')}
+  </div>`;
+}
+
+function exprSpot() {
+  return `<div class="spotlight expr">
+    <div class="spotlight-label">💼 Corporate Expression</div>
+    <div class="spotlight-title">take ownership</div>
+    <p><strong>Meaning:</strong> to accept that a problem or a task is your responsibility, and to act to solve it. You don't wait for someone else, and you don't blame other people.</p>
+    ${es(`Hacerse cargo, asumir la responsabilidad de un problema o una tarea, aunque no sea tu culpa. Es muy común en evaluaciones de desempeño y en reuniones: a los jefes les gusta escuchar que alguien <em>takes ownership</em>.`)}
+    <div class="sub-heading">How people use it</div>
+    <ul class="ex-list">
+      <li><em>I take ownership of this mistake. Let me fix it.</em></li>
+      <li><em>We need someone to take ownership of the customer complaints.</em></li>
+      <li><em>She always takes ownership of her projects.</em></li>
+    </ul>
+    <div class="tip-box"><div class="tip-label">💡 Tip</div>Fíjate en la preposición: <em>take ownership</em> <strong>of</strong> + algo. ✅ <em>take ownership of the problem.</em> ❌ <em>take ownership for the problem.</em> Y no lo confundas con <em>owner</em> (dueño). No tienes que ser el dueño de la empresa para <em>take ownership</em>.</div>
+    <div class="sub-heading">Quick check</div>
+    ${tapRow('ex1', '1. A customer complains, and you say, <em>“That’s not my department.”</em> Is that taking ownership?', 'No. Taking ownership is: “Let me look into it for you.”')}
+    ${tapRow('ex2', '2. Complete: <em>“I ___ ownership of this problem. I can call the client today.”</em>', 'take')}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    ${badge(3, 'Reading', '20 min')}
+    <div class="pattern-box">
+      <div class="pattern-box-head">🔑 Today's pattern · Grammar reminder</div>
+      ${REMINDER.map(([en,sp]) => `<div class="pattern-row"><div class="pattern-en">${en}</div><div class="pattern-es">${sp}</div></div>`).join('')}
+    </div>
+    ${es(`Cada estudiante lee un texto en voz alta y responde dos preguntas. La primera es sobre el texto. La segunda te pide pensar y dar tu opinión. Las respuestas modelo están escondidas.`)}
+    ${PASSAGES.map((p,i) => passageCard(p,i) + (i === 5 ? idiomSpot() : '') + (i === 6 ? exprSpot() : '')).join('')}
+    ${teacher(`Give each student one passage. Allow 2 minutes of silent reading, then have them read it aloud and answer both questions. For Q1, accept a short answer. For Q2, push for a full sentence with a reason (<em>because...</em>). Do the idiom right after Passage 6 and the expression right after Passage 7, while the context is fresh. Listen especially for the Pre-Learning errors: <em>Excuse me for the delay</em>, <em>the inconvenients</em>, <em>I apologize you</em>, <em>I didn't received</em>, <em>When you ordered?</em>, <em>reclamation</em>, <em>devolution</em>. Passages 2, 3, 5 and 8 have the problem in the Past Simple, so they're a good moment to check <em>didn't</em> + base verb. Extension: after a good answer, ask another student what <em>they</em> can say to the customer in the passage, using one empathy phrase and <em>I can</em> or <em>Let me</em>.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderSpeaking() {
+  return `<div class="sc">
+    ${badge(4, 'Speaking: Open Questions', '15 to 20 min')}
+    ${es(`Ahora tú hablas. No hay una frase modelo para copiar. Cuenta qué pasó, di cómo te sentiste y da tu opinión con una razón. Usa el idioma y la expresión de hoy si puedes. Piensa unos segundos antes de hablar.`)}
+    <div class="sub-heading">🧰 Useful language</div>
+    <div class="lang-box">${LANG.map(([h,t]) => `<div class="lang-item"><strong>${h}</strong>${t}</div>`).join('')}</div>
+    <div class="sub-heading">🗣 4 open questions</div>
+    ${SPEAK.map(([q,f],i) => `<div class="sp-card">
+      <div class="sp-q"><span class="sp-num">${i+1}.</span>${q}</div>
+      ${tapRow('sp'+i, 'Follow-up question', f)}
+    </div>`).join('')}
+    ${teacher(`Ask each question to 2 students, so all 8 speak at least once. Give 15 to 20 seconds of thinking time before each answer. Note errors quietly and correct them in a short block after each question, not in the middle of an answer. For Q1 and Q2, check the Past Simple, especially <em>didn't</em> + base verb and irregular forms (<em>sent, broke, paid, bought</em>). Q4 has no right answer. If a student just says “Yes” or “No”, ask “Why? Can you give an example?” until they give a reason. On the Q4 follow-up, guide them to the empathy phrases: they can be polite and show they understand without saying “You're right.” Stronger students can answer the follow-up as well.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWrapup() {
+  return `<div class="sc">
+    ${badge(5, 'Wrap-up', '5 min')}
+    <div class="sub-heading">🔁 Exit round</div>
+    ${es(`Cada estudiante responde a esta queja en voz alta con dos o tres frases: una de empatía o disculpa, y una solución con <em>I can</em> o <em>Let me</em>.`)}
+    <div class="complaint"><strong>Customer:</strong> “I ordered a new laptop last week. It arrived yesterday, but the screen was damaged.”</div>
+    ${tapRow('exitmodel', 'Need a model? Tap to reveal', 'I’m sorry to hear that. I apologize for the inconvenience. Let me check your order. I can send a replacement today.<div class="tap-es">Or: I understand. I’m sorry for the problem. You can choose a replacement or a refund.</div>')}
+    <div class="outcome-box"><span>Lesson outcome</span>I can respond to a customer complaint with empathy, an apology and a clear solution.</div>
+    <div class="sub-heading">📊 Confidence check</div>
+    <p style="font-size:13px;color:var(--grey-blue);font-style:italic;margin-bottom:10px;">¿Qué tan seguro te sientes con el objetivo de hoy?</p>
+    <div class="conf-row">${CONF.map(([n,l]) => `<button class="conf-btn ${confidence===n?'active':''}" data-n="${n}" onclick="setConfidence(${n})"><b>${n}</b>${l}</button>`).join('')}</div>
+    <div class="conf-msg" id="confMsg">${confidence ? CONF_MSG[confidence] : ''}</div>
+    ${teacher(`Keep the exit round quick, two or three sentences each. Listen for the order: empathy and apology first, solution last. If a student goes straight to the solution, ask “What do you say first?” Only correct an error if it blocks the meaning. The most common slips today will be <em>Excuse me for...</em> and <em>the inconvenients</em>. Make a note of any student who rates 1 or 2.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS: defined last, after all renderers above ───────
+STEPS = [
+  { label: "1. Homework Review", fn: renderReview },
+  { label: "2. Warm-up",         fn: renderWarmup },
+  { label: "3. Reading",         fn: renderReading },
+  { label: "4. Speaking",        fn: renderSpeaking },
+  { label: "5. Wrap-up",         fn: renderWrapup },
+];
+
+// ↑↑↑ LESSON CONTENT END ↑↑↑
+
+render(); // always last
+
+</script>
+
+
+<!-- PERMANENT SITE FOOTER - do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

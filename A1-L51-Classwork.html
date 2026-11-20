@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 51: International Teams | A1 · Unit 6 · Classwork</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ESL LESSON SHELL TEMPLATE v3.0
+   Brand: Navy/Gold — Georgia headings, Lato body
+   All colours as CSS variables — never hardcode inline
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand colours */
+  --navy:        #1B2D4F;
+  --gold:        #C9972C;
+  --gold-light:  #D4AC45;
+  --gold-bg:     #FDF6E3;
+  --slate:       #4A5568;
+  --grey-blue:   #6B7A8D;
+  --off-white:   #F7F9FC;
+  --light-grey:  #F0F4F8;
+  --border-grey: #D9E2EC;
+  --steel:       #B8C6D6;
+  --white:       #FFFFFF;
+  /* Semantic */
+  --green:       #1A6B4A;
+  --green-bg:    #E8F5EE;
+  --red:         #B91C1C;
+  --red-bg:      #FEE2E2;
+  --sky:         #2E86AB;
+  /* Typography */
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    'Lato', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off-white);
+  color: var(--slate);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* SITE HEADER */
+.site-header { background: var(--navy); border-bottom: 2px solid var(--gold); }
+.site-header-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 12px 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.site-header-brand {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:320px; height:320px; border-radius:50%; background:rgba(44,130,173,0.14); }
+.hero::after  { content:''; position:absolute; bottom:-40px; left:40px; width:200px; height:200px; border-radius:50%; background:rgba(201,151,44,0.10); }
+.hero-inner { max-width:900px; margin:0 auto; padding:48px 32px 40px; position:relative; z-index:1; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,151,44,0.15); border:1px solid rgba(201,151,44,0.4); border-radius:20px; padding:5px 14px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px; }
+.hero-title { font-family:var(--font-heading); font-size:clamp(26px,5vw,40px); color:var(--white); line-height:1.15; margin-bottom:6px; }
+.hero-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:28px; font-weight:300; }
+
+/* OPTION A — Outcomes grid: use for Pre-Learning files */
+.hero-outcomes { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.10); border-radius:10px; padding:18px 22px; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+@media(max-width:600px){ .hero-outcomes{ grid-template-columns:1fr; } }
+.outcome-item { font-size:13px; color:var(--white); font-weight:400; }
+.outcome-item::before { content:'✓ '; color:var(--gold); font-weight:700; }
+.outcome-note { font-size:11px; color:rgba(255,255,255,0.4); font-style:italic; padding-left:14px; margin-top:2px; }
+
+/* OPTION B — Pills: use for Classwork / Homework files */
+.hero-pills { display:flex; gap:10px; flex-wrap:wrap; }
+.pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:5px 14px; font-size:12px; color:rgba(255,255,255,0.7); }
+.pill.accent { background:rgba(201,151,44,0.2); border-color:rgba(201,151,44,0.4); color:var(--gold); }
+
+.progress-wrap { background:rgba(255,255,255,0.08); height:3px; }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--sky),var(--gold)); transition:width 0.4s ease; }
+
+/* STEP NAVIGATION */
+.step-nav { background:var(--white); border-bottom:1px solid var(--border-grey); position:sticky; top:0; z-index:100; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.step-nav-inner { max-width:900px; margin:0 auto; padding:0 32px; display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.step-btn { padding:13px 16px; border:none; background:none; border-bottom:3px solid transparent; font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--grey-blue); cursor:pointer; white-space:nowrap; transition:all 0.15s; }
+.step-btn:hover { color:var(--sky); }
+.step-btn.active { border-bottom-color:var(--gold); color:var(--navy); font-weight:700; }
+
+/* MAIN */
+.main { max-width:900px; margin:0 auto; padding:36px 32px 80px; }
+@media(max-width:600px){ .main{ padding:20px 16px 60px; } }
+@keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.sc { animation:fadeUp 0.28s ease; }
+
+/* SECTION BADGE — full-width navy bar */
+.sec-badge { display:grid; grid-template-columns:52px 1fr auto; background:var(--navy); border-radius:8px; overflow:hidden; margin-bottom:24px; }
+.sec-badge-num { display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.07); font-family:var(--font-heading); font-size:22px; color:var(--gold); padding:16px; }
+.sec-badge-title { display:flex; align-items:center; padding:16px 20px; font-family:var(--font-heading); font-size:17px; color:var(--white); }
+.sec-badge-time { display:flex; align-items:center; padding:16px 20px; font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; white-space:nowrap; }
+
+/* GOLD RULE — use once per section, below sec-badge */
+.gold-rule { height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light),transparent); border:none; margin:0 0 24px; }
+
+/* INFO BOX — off-white, gold top+bottom border, navy left bar */
+.info-box { background:var(--off-white); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold); border-left:4px solid var(--navy); border-right:1px solid var(--light-grey); padding:14px 18px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+
+/* TIP BOX — off-white, gold left border */
+.tip-box { background:var(--off-white); border-left:4px solid var(--gold); padding:12px 16px; margin-bottom:20px; font-size:14px; line-height:1.7; color:var(--slate); }
+.tip-label { font-weight:700; color:var(--navy); margin-bottom:4px; font-size:13px; }
+
+/* BILINGUAL NOTE */
+.es-note { background:var(--gold-bg); border-left:3px solid var(--gold); border-radius:0 6px 6px 0; padding:10px 16px; font-size:13px; color:#7A5500; font-style:italic; margin-bottom:18px; line-height:1.6; }
+
+/* VOCAB TABLE */
+.vocab-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.vocab-table-head { display:grid; grid-template-columns:1fr 1fr; background:var(--navy); padding:12px 20px; }
+.vocab-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.vocab-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); transition:background 0.12s; }
+.vocab-row:last-child { border-bottom:none; }
+.vocab-row:hover { background:var(--light-grey); }
+.vocab-en { font-size:14px; font-weight:700; color:var(--navy); }
+.vocab-es { font-size:14px; color:var(--grey-blue); }
+
+/* DATA TABLE (grammar, schedules etc) */
+.data-table-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.data-table-head { display:grid; background:var(--navy); padding:12px 20px; gap:8px; }
+.data-table-head span { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.data-table-row { display:grid; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:8px; align-items:center; transition:background 0.12s; }
+.data-table-row:last-child { border-bottom:none; }
+.data-table-row:hover { background:var(--light-grey); }
+
+/* PATTERN BOX */
+.pattern-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; overflow:hidden; margin-bottom:20px; }
+.pattern-box-head { background:var(--sky); padding:11px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--white); font-weight:700; }
+.pattern-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid var(--light-grey); gap:10px; }
+.pattern-row:last-child { border-bottom:none; }
+.pattern-en { font-size:14px; font-weight:500; color:var(--navy); }
+.pattern-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+
+/* EXAMPLES */
+.examples-wrap { margin-bottom:24px; }
+.examples-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.example-item { display:flex; align-items:baseline; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border-grey); font-size:14px; flex-wrap:wrap; }
+.example-item:last-child { border-bottom:none; }
+.example-en { font-weight:500; color:var(--navy); font-style:italic; }
+.example-arrow { color:var(--steel); }
+.example-es { color:var(--grey-blue); font-size:13px; }
+
+/* DIAGRAM / CHART CONTAINER */
+.diagram-wrap { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:20px; margin-bottom:20px; }
+.diagram-wrap svg { width:100%; display:block; }
+
+/* SENTENCE BUILDER — column-and-pipe layout */
+.builder-wrap { background:var(--navy); border-radius:10px; padding:22px; margin-bottom:22px; }
+.builder-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:18px; }
+.builder-ex { background:rgba(255,255,255,0.05); border-radius:7px; padding:9px 14px; font-size:13px; color:rgba(255,255,255,0.7); font-style:italic; margin-bottom:5px; }
+.builder-ex strong { color:var(--gold); font-style:normal; }
+
+/* MODEL CARD */
+.model-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.model-card-head { background:linear-gradient(135deg,var(--sky) 0%,var(--navy) 100%); padding:18px 22px; display:flex; align-items:center; gap:14px; }
+.model-avatar { width:50px; height:50px; background:rgba(255,255,255,0.14); border-radius:50%; border:2px solid rgba(255,255,255,0.3); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+.model-name { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.model-role { font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+.model-body { padding:22px; }
+.model-quote { font-family:var(--font-heading); font-size:16px; color:var(--navy); line-height:1.7; font-style:italic; margin-bottom:18px; padding:14px 18px; background:var(--off-white); border-left:4px solid var(--gold); }
+.model-line { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; padding:7px 10px; border-radius:6px; font-size:13px; }
+.model-line:nth-child(odd) { background:var(--light-grey); }
+.model-en { font-weight:500; color:var(--navy); }
+.model-div { color:var(--steel); }
+.model-es { color:var(--grey-blue); font-style:italic; }
+
+/* MISTAKE BOX */
+.mistake-wrap { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:22px; }
+.mistake-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#92400E; font-weight:700; margin-bottom:12px; }
+.mistake-wrong { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--red-bg); border-radius:7px; font-size:14px; color:var(--red); margin-bottom:7px; font-style:italic; }
+.mistake-right { display:flex; align-items:center; gap:10px; padding:9px 13px; background:var(--green-bg); border-radius:7px; font-size:14px; color:var(--green); font-style:italic; }
+
+/* EXERCISE BOX */
+.ex-box { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:10px; padding:18px; margin-bottom:14px; }
+.ex-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-variant:small-caps; color:var(--gold); font-weight:700; margin-bottom:8px; }
+
+/* QUIZ: QUESTION CARDS */
+.q-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; padding:22px; margin-bottom:14px; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+.q-top { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+.q-num { background:var(--navy); color:var(--gold); border-radius:5px; padding:3px 10px; font-size:11px; font-weight:700; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+.q-text { font-size:15px; font-weight:500; color:var(--navy); line-height:1.5; }
+.q-hint { font-size:12px; color:var(--sky); margin-top:4px; font-style:italic; }
+.q-options { display:flex; flex-direction:column; gap:8px; }
+.q-opt { padding:10px 15px; border:1.5px solid var(--border-grey); border-radius:7px; background:var(--off-white); font-size:14px; color:var(--navy); cursor:pointer; transition:all 0.12s; text-align:left; font-family:var(--font-body); display:flex; align-items:center; gap:10px; }
+.q-opt:hover:not(:disabled) { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.selected { border-color:var(--sky); background:#EEF6FB; }
+.q-opt.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); font-weight:500; }
+.q-opt.wrong   { border-color:var(--red);   background:var(--red-bg);   color:var(--red); }
+.q-opt:disabled { cursor:default; }
+.opt-letter { width:22px; height:22px; border-radius:50%; background:var(--border-grey); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.12s; }
+.q-opt.correct .opt-letter { background:var(--green); color:white; }
+.q-opt.wrong   .opt-letter { background:var(--red);   color:white; }
+.q-opt.selected .opt-letter { background:var(--sky);  color:white; }
+.q-feedback { margin-top:10px; padding:9px 13px; border-radius:7px; font-size:13px; line-height:1.5; }
+.q-feedback.correct { background:var(--green-bg); color:var(--green); }
+.q-feedback.wrong   { background:var(--red-bg);   color:var(--red); }
+
+/* QUIZ: INPUT QUESTIONS */
+.q-input-row { display:flex; gap:10px; }
+.q-input { flex:1; padding:10px 14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:14px; background:var(--off-white); outline:none; color:var(--navy); transition:border-color 0.12s; }
+.q-input:focus { border-color:var(--sky); }
+.q-input.correct { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.q-input.wrong   { border-color:var(--red);   background:var(--red-bg); }
+
+/* FILL IN THE BLANKS */
+.blank-list { display:flex; flex-direction:column; gap:10px; }
+.blank-item { display:flex; gap:10px; align-items:center; padding:11px 15px; background:var(--white); border:1px solid var(--border-grey); border-radius:7px; }
+.blank-num { font-size:12px; font-weight:700; color:var(--gold); min-width:22px; }
+.blank-sentence { font-size:14px; flex:1; line-height:1.6; }
+.blank-input { border:none; border-bottom:2px solid var(--border-grey); background:transparent; font-family:var(--font-body); font-size:14px; color:var(--navy); width:80px; text-align:center; outline:none; padding:2px 4px; transition:border-color 0.12s; }
+.blank-input:focus { border-bottom-color:var(--sky); }
+.blank-input.correct { border-bottom-color:var(--green); color:var(--green); }
+.blank-input.wrong   { border-bottom-color:var(--red);   color:var(--red); }
+
+/* WORD BANK */
+.word-bank { background:var(--gold-bg); border:1px solid rgba(201,151,44,0.3); border-radius:7px; padding:13px 18px; margin-bottom:20px; }
+.word-bank-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7A5500; font-weight:700; margin-bottom:7px; }
+.word-bank-words { font-size:14px; color:var(--slate); font-style:italic; line-height:1.8; }
+
+/* MATCH EXERCISE */
+.match-grid { display:grid; grid-template-columns:1fr 50px 1fr; gap:0; margin-bottom:20px; }
+.match-header { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; padding:10px 0; }
+.match-col { display:flex; flex-direction:column; gap:7px; }
+.match-item { background:var(--white); border:1.5px solid var(--border-grey); border-radius:7px; padding:11px 14px; font-size:14px; min-height:46px; display:flex; align-items:center; }
+.match-item.left  { cursor:pointer; transition:all 0.12s; }
+.match-item.left:hover    { border-color:var(--sky); }
+.match-item.left.selected { border-color:var(--sky); background:var(--light-grey); }
+.match-item.left.matched  { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-item.right { cursor:pointer; transition:all 0.12s; }
+.match-item.right:hover   { border-color:var(--sky); }
+.match-item.right.matched { border-color:var(--green); background:var(--green-bg); color:var(--green); }
+.match-arrow-col { display:flex; flex-direction:column; gap:7px; align-items:center; justify-content:flex-start; padding-top:42px; }
+.match-arrow { height:46px; display:flex; align-items:center; font-size:18px; color:var(--border-grey); }
+.match-arrow.matched { color:var(--green); }
+
+/* QUIZ SCORE */
+.score-bar { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:14px 18px; margin-bottom:20px; display:flex; align-items:center; gap:14px; }
+.score-label { font-size:12px; color:var(--grey-blue); font-weight:700; white-space:nowrap; }
+.score-track { flex:1; height:7px; background:var(--light-grey); border-radius:4px; overflow:hidden; }
+.score-fill  { height:100%; background:linear-gradient(90deg,var(--sky),var(--green)); border-radius:4px; transition:width 0.5s ease; }
+.score-count { font-size:14px; font-weight:700; color:var(--navy); white-space:nowrap; min-width:48px; text-align:right; }
+.quiz-result { background:var(--navy); border-radius:12px; padding:30px; text-align:center; margin-top:22px; }
+.result-score { font-family:var(--font-heading); font-size:52px; color:var(--gold); margin-bottom:8px; }
+.result-label { font-size:18px; color:var(--white); margin-bottom:6px; }
+.result-msg   { font-size:14px; color:rgba(255,255,255,0.5); font-style:italic; }
+.quiz-intro { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:22px; display:flex; align-items:center; gap:18px; }
+.quiz-intro-icon { font-size:34px; flex-shrink:0; }
+.quiz-intro h3 { font-family:var(--font-heading); font-size:21px; color:var(--white); margin-bottom:4px; }
+.quiz-intro p  { font-size:13px; color:rgba(255,255,255,0.5); font-style:italic; }
+
+/* PROFILE CARDS */
+.profile-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.profile-card-head { background:var(--navy); padding:16px 20px; display:flex; gap:14px; align-items:center; }
+.profile-emoji { font-size:30px; }
+.profile-name  { font-size:16px; font-weight:700; color:var(--white); font-family:var(--font-heading); }
+.profile-role  { font-size:12px; color:rgba(255,255,255,0.5); margin-top:2px; }
+.profile-body  { padding:18px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+@media(max-width:560px){ .profile-body{ grid-template-columns:1fr; } }
+
+/* WRITING */
+.writing-area { width:100%; min-height:150px; padding:14px; border:1.5px solid var(--border-grey); border-radius:7px; font-family:var(--font-body); font-size:15px; line-height:1.8; background:var(--white); resize:vertical; outline:none; color:var(--navy); transition:border-color 0.12s; }
+.writing-area:focus { border-color:var(--gold); }
+.word-count { font-size:12px; color:var(--grey-blue); text-align:right; margin-top:5px; }
+
+/* BUTTONS */
+.btn { padding:9px 20px; border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.15s; }
+.btn-primary { background:var(--navy); color:var(--white); }
+.btn-primary:hover { background:var(--sky); }
+.btn-gold { background:var(--gold); color:var(--navy); }
+.btn-gold:hover { background:var(--gold-light); }
+.btn-ghost { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.btn-ghost:hover { border-color:var(--sky); color:var(--sky); }
+.check-btn { padding:10px 18px; background:var(--navy); color:var(--white); border:none; border-radius:6px; font-family:var(--font-body); font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:background 0.15s; white-space:nowrap; }
+.check-btn:hover { background:var(--sky); }
+.check-btn:disabled { opacity:0.4; cursor:default; }
+
+/* NAV FOOTER */
+.nav-footer { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid var(--border-grey); gap:12px; }
+.nav-btn { padding:11px 24px; border-radius:7px; font-family:var(--font-body); font-size:13px; font-weight:600; cursor:pointer; border:none; transition:all 0.18s; }
+.nav-prev { background:var(--white); color:var(--navy); border:1.5px solid var(--border-grey); }
+.nav-prev:hover:not(:disabled) { border-color:var(--gold); color:var(--navy); }
+.nav-prev:disabled { opacity:0.35; cursor:default; }
+.nav-next { background:var(--navy); color:var(--white); }
+.nav-next:hover:not(:disabled) { background:var(--gold); color:var(--navy); }
+.nav-next:disabled { background:var(--border-grey); cursor:default; }
+.nav-center { font-size:12px; color:var(--grey-blue); }
+
+/* UTILITIES */
+.divider { height:1px; background:var(--border-grey); margin:26px 0; }
+.sec-intro { font-size:15px; color:var(--slate); margin-bottom:18px; line-height:1.7; }
+.feedback { padding:9px 13px; border-radius:7px; font-size:13px; display:none; }
+.feedback.show { display:block; }
+.feedback.ok  { background:var(--green-bg); color:var(--green); }
+.feedback.err { background:var(--red-bg);   color:var(--red); }
+.h-serif { font-family:var(--font-heading); font-size:20px; color:var(--navy); margin-bottom:10px; }
+
+/* SITE FOOTER */
+.site-footer { background: var(--navy); border-top: 1px solid rgba(201,151,44,0.3); margin-top: 60px; }
+.site-footer-inner { max-width: 900px; margin: 0 auto; padding: 20px 32px; display: flex; flex-direction: column; gap: 6px; }
+.site-footer-credit { font-family: var(--font-body); font-size: 12px; color: rgba(255,255,255,0.75); }
+.site-footer-credit strong { color: var(--gold); font-weight: 700; }
+.site-footer-credit a { color: var(--gold-light); text-decoration: none; }
+.site-footer-credit a:hover { text-decoration: underline; }
+.site-footer-legal { font-family: var(--font-body); font-size: 10px; color: rgba(255,255,255,0.35); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 4px; }
+
+/* ── LESSON ADDITIONS (Master Prompt v4.6 patterns) ── */
+.sub-heading { font-size:16px; font-weight:700; color:var(--navy); margin:6px 0 12px; }
+.tap-row { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:13px 16px; margin-bottom:10px; cursor:pointer; transition:border-color 0.12s; }
+.tap-row:hover { border-color:var(--sky); }
+.tap-row-top { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.tap-q { font-size:14px; color:var(--navy); line-height:1.6; }
+.tap-q .wrong-txt { color:var(--red); font-style:italic; }
+.tap-hint-label { font-size:11px; color:var(--grey-blue); white-space:nowrap; letter-spacing:0.5px; }
+.tap-answer { display:none; padding-top:8px; margin-top:8px; border-top:1px dashed var(--border-grey); font-size:14px; color:var(--green); font-weight:700; line-height:1.6; }
+.tap-answer .es { color:var(--grey-blue); font-weight:400; font-style:italic; font-size:13px; }
+.tap-answer.show { display:block; }
+.notice-text { background:var(--white); border:1px solid var(--border-grey); border-left:4px solid var(--gold); border-radius:8px; padding:18px 20px; font-size:15px; line-height:1.9; color:var(--navy); margin-bottom:18px; }
+.notice-text strong { color:var(--gold); }
+.rule-label { display:inline-block; background:var(--navy); color:var(--gold); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; border-radius:5px; padding:4px 10px; margin:10px 0 10px; }
+.cell-en { font-size:14px; color:var(--navy); }
+.cell-en strong { color:var(--gold); }
+.cell-es { font-size:13px; color:var(--grey-blue); font-style:italic; }
+.cell-tag { font-size:13px; font-weight:700; color:var(--navy); }
+.vocab-row.three { grid-template-columns:1.1fr 1fr 1.6fr; gap:10px; }
+.vocab-table-head.three { grid-template-columns:1.1fr 1fr 1.6fr; gap:10px; }
+.vocab-ex { font-size:13px; color:var(--slate); font-style:italic; }
+.rep-tag { font-size:10px; color:var(--sky); font-weight:700; margin-left:4px; }
+@media(max-width:600px){ .vocab-row.three, .vocab-table-head.three { grid-template-columns:1fr; gap:2px; } .vocab-table-head.three span:not(:first-child){ display:none; } }
+.bridge-table-wrap { background:var(--navy); border-radius:10px; overflow:hidden; margin-bottom:18px; }
+.bridge-table-head { display:grid; grid-template-columns:1fr 1fr; padding:12px 20px; background:rgba(255,255,255,0.08); }
+.bridge-table-head span { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; }
+.bridge-row { display:grid; grid-template-columns:1fr 1fr; padding:11px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+.bridge-row:last-child { border-bottom:none; }
+.bridge-en { font-size:14px; font-weight:700; color:var(--white); }
+.bridge-en strong { color:var(--gold); }
+.bridge-es { font-size:14px; color:var(--gold-light); font-style:italic; }
+.bridge-callout { background:var(--navy); border-radius:10px; padding:18px 22px; margin-bottom:20px; color:var(--white); }
+.bridge-callout-title { font-family:var(--font-heading); font-size:18px; color:var(--gold); margin-bottom:6px; }
+.bridge-callout p { font-size:14px; line-height:1.7; color:rgba(255,255,255,0.8); }
+.city-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-bottom:20px; }
+@media(max-width:600px){ .city-grid{ grid-template-columns:repeat(2,1fr); } }
+.city-card { background:var(--white); border:1px solid var(--border-grey); border-radius:8px; padding:12px 10px; text-align:center; }
+.city-card.hq { border:2px solid var(--gold); }
+.city-name { font-size:13px; font-weight:700; color:var(--navy); }
+.city-role { font-size:11px; color:var(--grey-blue); margin:2px 0 6px; }
+.city-time { font-family:var(--font-heading); font-size:20px; color:var(--gold); }
+.list-plain { padding-left:20px; margin-bottom:18px; font-size:14px; line-height:1.9; color:var(--slate); }
+
+/* AUDIO BOX */
+.audio-box { background:var(--navy); border-radius:12px; padding:22px; margin-bottom:20px; }
+.audio-box-head { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+.audio-box-icon { font-size:28px; flex-shrink:0; }
+.audio-box-title { font-family:var(--font-heading); font-size:17px; color:var(--white); margin-bottom:2px; }
+.audio-box-sub { font-size:12px; color:rgba(255,255,255,0.45); font-style:italic; }
+.audio-player { width:100%; height:40px; border-radius:6px; outline:none; accent-color:var(--gold); }
+.speed-row { display:flex; align-items:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.speed-label { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+.speed-btn { padding:4px 10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:4px; color:rgba(255,255,255,0.6); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.12s; }
+.speed-btn:hover { background:rgba(255,255,255,0.15); }
+.speed-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); font-weight:700; }
+.transcript-toggle { margin-top:14px; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.2); border-radius:5px; padding:6px 12px; color:rgba(255,255,255,0.55); font-family:var(--font-body); font-size:12px; cursor:pointer; transition:all 0.15s; }
+.transcript-toggle:hover { border-color:var(--gold); color:var(--gold); }
+.transcript-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:18px; margin-top:12px; font-size:13px; color:rgba(255,255,255,0.7); line-height:1.9; font-style:italic; }
+.transcript-box p { margin-bottom:10px; }
+.transcript-box p:last-child { margin-bottom:0; }
+
+/* CLASSWORK ADDITIONS */
+.teacher-box { background:var(--white); border:1.5px dashed var(--steel); border-radius:8px; padding:14px 18px; margin-top:22px; margin-bottom:6px; font-size:13px; line-height:1.7; color:var(--grey-blue); }
+.teacher-box-label { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--navy); font-weight:700; margin-bottom:6px; }
+.card-num { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:12px; font-weight:700; margin-right:10px; }
+.passage-card { background:var(--white); border:1px solid var(--border-grey); border-radius:12px; overflow:hidden; margin-bottom:18px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.passage-head { background:var(--navy); padding:12px 18px; display:flex; align-items:center; gap:14px; }
+.passage-num { width:32px; height:32px; border-radius:50%; background:rgba(201,151,44,0.2); border:1px solid var(--gold); color:var(--gold); font-family:var(--font-heading); font-size:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.passage-name { font-family:var(--font-heading); font-size:16px; color:var(--white); }
+.passage-place { font-size:12px; color:rgba(255,255,255,0.5); font-style:italic; }
+.passage-body { padding:18px; }
+.passage-text { font-size:15px; line-height:1.85; color:var(--navy); margin-bottom:14px; padding:12px 16px; background:var(--off-white); border-left:4px solid var(--gold); border-radius:0 6px 6px 0; }
+.template-box { background:var(--white); border:1px solid var(--border-grey); border-radius:10px; padding:18px 20px; font-size:15px; line-height:2.3; color:var(--navy); margin-bottom:14px; }
+.blank-line { display:inline-block; min-width:80px; border-bottom:2px solid var(--gold); margin:0 3px; vertical-align:baseline; height:1em; }
+.cue { font-size:12px; color:var(--grey-blue); font-style:italic; }
+.chat-card { background:var(--light-grey); border:1px solid var(--border-grey); border-radius:12px; padding:14px 16px; margin-bottom:16px; }
+.chat-head { font-size:13px; color:var(--navy); margin-bottom:8px; }
+.chat-bubble { background:var(--white); border:1px solid var(--border-grey); border-radius:4px 14px 14px 14px; padding:12px 16px; font-size:14px; line-height:1.7; color:var(--navy); max-width:560px; }
+</style>
+</head>
+<body>
+
+<!-- PERMANENT SITE HEADER — do not edit per lesson -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-header-brand">Corporate English: From Foundations to Fluency</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">A1 · Unit 6 · Classwork</div>
+    <h1 class="hero-title">Lesson 51: International Teams</h1>
+    <p class="hero-sub">Reading Day · Present Simple review · 60 min live class</p>
+    <div class="hero-pills">
+      <span class="pill accent">📖 Reading Day</span>
+      <span class="pill accent">✍️ Guided writing</span>
+      <span class="pill">4 activities</span>
+      <span class="pill">60 min</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- STEP NAV -->
+<div class="step-nav">
+  <div class="step-nav-inner" id="stepNav"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main" id="mainContent"></div>
+
+<!-- ↓↓↓  LESSON CONTENT START -->
+<script>
+
+// ── STATE ─────────────────────────────────────────────────
+let currentStep = 0;
+let STEPS = []; // populated at the bottom, after all renderers are defined
+
+// ── NAVIGATION ENGINE ─────────────────────────────────────
+function getProgress(i) {
+  return STEPS.length === 1 ? 100 : Math.round(((i + 1) / STEPS.length) * 100);
+}
+function goTo(i) { currentStep = i; render(); window.scrollTo(0,0); }
+function navFooter() {
+  const isFirst = currentStep === 0;
+  const isLast  = currentStep === STEPS.length - 1;
+  const prevLabel = isFirst ? '← Previous' : '← ' + STEPS[currentStep-1].label.replace(/^\d+\.\s*/,'');
+  const nextLabel = isLast  ? 'Complete ✓'  : STEPS[currentStep+1].label.replace(/^\d+\.\s*/,'') + ' →';
+  return `<div class="nav-footer">
+    <button class="nav-btn nav-prev" ${isFirst?'disabled':`onclick="goTo(${currentStep-1})"`}>${prevLabel}</button>
+    <span class="nav-center">${currentStep+1} of ${STEPS.length}</span>
+    <button class="nav-btn nav-next" ${isLast?'disabled':`onclick="goTo(${currentStep+1})"`}>${nextLabel}</button>
+  </div>`;
+}
+function render() {
+  document.getElementById('stepNav').innerHTML = STEPS
+    .map((s,i) => `<button class="step-btn ${i===currentStep?'active':''}" onclick="goTo(${i})">${s.label}</button>`)
+    .join('');
+  document.getElementById('mainContent').innerHTML = STEPS[currentStep].fn();
+  document.getElementById('progressBar').style.width = getProgress(currentStep) + '%';
+}
+
+// ── HELPERS ───────────────────────────────────────────────
+function badge(num, title, time) {
+  return `<div class="sec-badge">
+    <div class="sec-badge-num">${num}</div>
+    <div class="sec-badge-title">${title}</div>
+    <div class="sec-badge-time">${time}</div>
+  </div>
+  <hr class="gold-rule">`;
+}
+function tapRow(q, a, label) {
+  return `<div class="tap-row" onclick="this.querySelector('.tap-answer').classList.toggle('show')">
+    <div class="tap-row-top">
+      <div class="tap-q">${q}</div>
+      <div class="tap-hint-label">${label || 'Tap to reveal'}</div>
+    </div>
+    <div class="tap-answer">${a}</div>
+  </div>`;
+}
+function teacherBox(html) {
+  return `<div class="teacher-box">
+    <div class="teacher-box-label">👩‍🏫 Teacher Note</div>
+    ${html}
+  </div>`;
+}
+
+// ── LESSON DATA ───────────────────────────────────────────
+const WARMUP = [
+  ["¿Cómo se dice <strong>“zona horaria”</strong> en inglés?", "time zone"],
+  ["¿Cómo se dice <strong>“sede principal”</strong>?", "headquarters"],
+  ["¿Cómo se dice <strong>“sucursal”</strong>?", "branch"],
+  ["Singapore is later than Bogotá. Singapore is 13 hours ___ of Bogotá.", "ahead"],
+  ["¿Cómo se dice <strong>“horario laboral”</strong>?", "working hours"],
+  ["The hours when two teams both work = ___", "overlap"],
+  ["Completa: <em>I'm ___ in Bogotá.</em> (trabajo en Bogotá)", "based"],
+  ["¿Cómo se dice <strong>“responder”</strong> a un email? Cuidado con el falso amigo.", "reply (not <em>replicate</em>)"]
+];
+
+const PASSAGES = [
+  { name:"Priya Nair", place:"Pune, India", icon:"📊",
+    text:"Priya Nair is a data analyst at Solvent Tech. She is based in the regional office in Pune, but her manager works at headquarters in Singapore. Singapore is two and a half hours ahead of Pune. Priya starts work at 9:30 in the morning, and she checks the shared calendar first. Her manager doesn't like long emails, so Priya sends short updates every afternoon.",
+    qs:[
+      ["Where does Priya's manager work?", "Her manager works at headquarters in Singapore."],
+      ["Does Priya send long emails to her manager?", "No, she doesn't. She sends short updates every afternoon."]
+    ] },
+  { name:"Mateo Silva", place:"Buenos Aires, Argentina", icon:"🚚",
+    text:"Mateo Silva works in Sales for Andes Freight. The company's headquarters is in Bogotá, and Mateo works at the branch in Buenos Aires. Buenos Aires is two hours ahead of Bogotá. Mateo's working hours are from 9 to 6, so he has a lot of overlap with his colleagues in Bogotá. Every Monday, the team has a video call at 10 a.m. Bogotá time.",
+    qs:[
+      ["What time is the Monday video call in Buenos Aires?", "It's at 12 p.m. (noon) in Buenos Aires."],
+      ["Does Mateo work at headquarters?", "No, he doesn't. He works at the branch in Buenos Aires."]
+    ] },
+  { name:"Adaeze Okafor", place:"Lagos, Nigeria", icon:"🏦",
+    text:"Adaeze Okafor is a project coordinator. She works for a bank with headquarters in Accra, Ghana, but she is based in Lagos. Lagos is one hour ahead of Accra. Adaeze's team has eight members in three countries. She doesn't work on Saturdays, but she replies to urgent messages from her phone.",
+    qs:[
+      ["How many members does Adaeze's team have?", "It has eight members."],
+      ["Does Adaeze reply to urgent messages on Saturdays?", "Yes, she does. She replies from her phone."]
+    ] },
+  { name:"Jin-ho Park", place:"Seoul, South Korea", icon:"💻",
+    text:"Jin-ho Park is an IT support specialist in Seoul. His colleagues in Jakarta are two hours behind him. When Jin-ho starts work at 8 a.m., it's 6 a.m. in Jakarta, so he uses the first two hours for his own tasks. The two teams talk on a video call every day at 11 a.m. Seoul time. Jin-ho doesn't like late calls, and his team in Jakarta doesn't like early calls.",
+    qs:[
+      ["What time is it in Jakarta when Jin-ho starts work?", "It's 6 a.m. in Jakarta."],
+      ["What does Jin-ho do in his first two hours?", "He works on his own tasks."]
+    ] },
+  { name:"Elena Petrova", place:"Istanbul, Türkiye", icon:"✈️",
+    text:"Elena Petrova is a marketing assistant. She is from Bulgaria, but she is based in the Istanbul office of a travel company. Her team leader works in Dubai, one hour ahead of Istanbul. Elena and her team leader have a meeting on Tuesdays at 2 p.m. Istanbul time. Before every meeting, Elena prepares a short report and sends it to the team.",
+    qs:[
+      ["What time is the Tuesday meeting in Dubai?", "It's at 3 p.m. in Dubai."],
+      ["What does Elena do before every meeting?", "She prepares a short report and sends it to the team."]
+    ] },
+  { name:"Liam O'Connor", place:"Brisbane, Australia", icon:"🧾",
+    text:"Liam O'Connor works in Finance at a software company in Brisbane. The company has a regional office in Manila, two hours behind Brisbane. Liam's colleague in Manila, Rosa, checks the invoices, and Liam approves them. They don't have a video call every day. They use a shared calendar and chat messages, and they meet online on Thursdays.",
+    qs:[
+      ["Who checks the invoices?", "Rosa checks the invoices."],
+      ["Do Liam and Rosa have a video call every day?", "No, they don't. They meet online on Thursdays."]
+    ] },
+  { name:"Nomvula Dlamini", place:"Johannesburg, South Africa", icon:"🤝",
+    text:"Nomvula Dlamini is an HR coordinator in Johannesburg. She works with new team members in Lima, Peru. Lima is seven hours behind Johannesburg, so the overlap is short. Nomvula finishes work at 5 p.m., and her colleagues in Lima start at 8 a.m., Lima time. That's 3 p.m. in Johannesburg, so they have two hours together every day.",
+    qs:[
+      ["How many hours of overlap do the two teams have?", "They have two hours of overlap."],
+      ["What time do the Lima colleagues start work, in Johannesburg time?", "They start at 3 p.m. Johannesburg time."]
+    ] },
+  { name:"Sigrid Jónsdóttir", place:"Reykjavík, Iceland", icon:"🎧",
+    text:"Sigrid Jónsdóttir is a customer service manager in Reykjavík, Iceland. Her company has a branch in Accra, Ghana. Reykjavík and Accra are in the same time zone, so the two teams have the same working hours. The team in Accra replies to customers from Africa, and the team in Reykjavík replies to customers from Europe. Every Friday, Sigrid writes a short update for headquarters in Toronto.",
+    qs:[
+      ["Why do the two teams have the same working hours?", "They are in the same time zone."],
+      ["Does the team in Accra reply to customers from Europe?", "No, it doesn't. / No, they don't. It replies to customers from Africa."]
+    ] }
+];
+
+// ── SECTION RENDERERS ─────────────────────────────────────
+
+function renderWarmup() {
+  return `<div class="sc">
+    ${badge(1, "Warm-up: Vocabulary Recall", "5 min")}
+    <div class="es-note">Tu profesor te va a hacer una pregunta. Responde en inglés. Toca la tarjeta para ver la respuesta.</div>
+    ${WARMUP.map(([q, a], i) => tapRow(`<span class="card-num">${i + 1}</span>${q}`, `✓ ${a}`)).join('')}
+    ${teacherBox(`About 5 min. Ask one card per student, round-robin. If a student says <em>replicate</em> for card 8, use it as a quick reminder of the false friend before moving on. For stronger students, ask for a full sentence, e.g. <em>Our headquarters is in…</em>`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderReading() {
+  return `<div class="sc">
+    ${badge(2, "Reading: Teams Around the World", "15 min")}
+    <div class="es-note">Cada estudiante lee un texto en voz alta. Después responde las dos preguntas con una frase completa. Toca para ver la respuesta.</div>
+    ${PASSAGES.map((p, i) => `<div class="passage-card">
+      <div class="passage-head">
+        <div class="passage-num">${i + 1}</div>
+        <div>
+          <div class="passage-name">${p.icon} ${p.name}</div>
+          <div class="passage-place">${p.place}</div>
+        </div>
+      </div>
+      <div class="passage-body">
+        <p class="passage-text">${p.text}</p>
+        ${p.qs.map(([q, a], j) => tapRow(`<strong>Q${j + 1}.</strong> ${q}`, `✓ ${a}`, 'Tap for answer')).join('')}
+      </div>
+    </div>`).join('')}
+    ${teacherBox(`About 15 min. One passage per student. The student reads it aloud, then answers both questions. Insist on full sentences. For the Yes/No questions, push for the short answer <strong>plus</strong> a second sentence (<em>No, she doesn't. She sends…</em>). That's where the grammar lives.<br><br>
+      Passages 2, 4, 5 and 7 involve simple time arithmetic. If a student gets stuck, ask “Is Buenos Aires ahead or behind?” before giving the answer.<br><br>
+      Listen for the missing third-person <strong>-s</strong> while students read. Don't stop them mid-passage; note errors and correct after the answers. Passage 8 Q2 accepts both <em>it</em> and <em>they</em> for “the team”. Don't spend time on it.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderGrammar() {
+  const rows = [
+    ["I / You / We / They <strong>work</strong> · He / She / It <strong>works</strong>", "trabajo / trabaja: en inglés, solo una <strong>-s</strong> con <em>he/she/it</em>"],
+    ["I <strong>don't</strong> work · She <strong>doesn't</strong> work", "no trabajo: necesitas <em>don't / doesn't</em>, y el verbo va sin <strong>-s</strong>"],
+    ["<strong>Do</strong> you work…? · <strong>Does</strong> he work…?", "¿Trabajas…?: la pregunta siempre empieza con <em>Do / Does</em>"],
+    ["Where <strong>do</strong> you work? · What time <strong>does</strong> she start?", "¿Dónde…? / ¿A qué hora…?: <em>Wh-</em> + <em>do/does</em> + sujeto + verbo"],
+    ["Yes, I <strong>do</strong>. · No, she <strong>doesn't</strong>.", "Respuesta corta: repite el auxiliar, no el verbo"]
+  ];
+  const mistakes = [
+    ["She work in Lagos.", "She <strong>works</strong> in Lagos."],
+    ["He doesn't works on Fridays.", "He doesn't <strong>work</strong> on Fridays."],
+    ["Are you work in Sales?", "<strong>Do</strong> you work in Sales?"],
+    ["Where you work?", "Where <strong>do</strong> you work?"]
+  ];
+  return `<div class="sc">
+    ${badge(3, "Main Grammar: Present Simple Review", "15 min")}
+    <div class="es-note">Repasemos el Present Simple. Luego escribe tus propias frases.</div>
+    <div class="pattern-box">
+      <div class="pattern-box-head">Present Simple · English | Español</div>
+      ${rows.map(([en, es]) => `<div class="pattern-row"><div class="pattern-en">${en}</div><div class="pattern-es">${es}</div></div>`).join('')}
+    </div>
+    <div class="mistake-wrap">
+      <div class="mistake-label">⚠️ Remember · toca para ver la corrección</div>
+      ${mistakes.map(([w, r]) => tapRow(`<span class="wrong-txt">✗ ${w}</span>`, `✓ ${r}`)).join('')}
+    </div>
+    <div class="ex-box">
+      <div class="ex-label">Your turn</div>
+      <p style="font-size:14px;line-height:1.8;margin-bottom:12px;">Escribe <strong>2 frases</strong> sobre tu trabajo o tu equipo:<br>
+        1. Una frase <strong>afirmativa</strong> (por ejemplo, dónde trabaja tu jefe o un colega)<br>
+        2. Una frase <strong>negativa</strong> (algo que tú o un colega no hace)<br>
+        3. ⭐ <strong>Bonus:</strong> una <strong>pregunta</strong> para un colega en otro país</p>
+      <textarea class="writing-area" style="min-height:110px;" placeholder="1. My manager works…&#10;2. I don't…&#10;3. ⭐ What time…?"></textarea>
+      <div style="margin-top:12px;">
+        ${tapRow("Need a model? Model answers", "My manager works at headquarters in Medellín.<br>I don't work on Saturdays.<br>⭐ What time do you start work?", "Tap to reveal ▾")}
+      </div>
+    </div>
+    ${teacherBox(`About 15 min. Re-explain the box in 3–4 minutes, not more, since students saw the full treatment in Pre-Learning. Then give them 4–5 minutes to write. Ask each student to read one sentence aloud. Correct only form errors (missing -s, <em>doesn't</em> + -s, missing <em>do</em>). Stronger students do the bonus question, then ask it to another student, who answers with a short answer.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+function renderWriting() {
+  const bank = ["based", "headquarters", "branch", "regional office", "working hours", "ahead", "behind", "don't", "doesn't", "video call", "time zone", "colleagues abroad"];
+  const b = '<span class="blank-line"></span>';
+  return `<div class="sc">
+    ${badge(4, "Writing: My International Team", "20 min")}
+
+    <div class="sub-heading">Part A · Guided profile</div>
+    <div class="es-note">Completa el perfil con tu información real (o inventa una si no trabajas en un equipo internacional). Usa el banco de palabras.</div>
+    <div class="word-bank">
+      <div class="word-bank-label">Word bank</div>
+      <div class="word-bank-words">${bank.join(' · ')}</div>
+    </div>
+    <div class="template-box">
+      Hi! My name is ${b}. I work for ${b} <span class="cue">(company)</span>. I'm ${b} in ${b} <span class="cue">(city)</span>. Our ${b} is in ${b} <span class="cue">(city)</span>. My ${b} are from ${b} to ${b}. I ${b} work on ${b} <span class="cue">(day)</span>. My manager ${b} <span class="cue">(work / works)</span> in ${b}. Some of my ${b} work in ${b} <span class="cue">(city / country)</span>. ${b} <span class="cue">(city)</span> is ${b} hours ${b} <span class="cue">(ahead of / behind)</span> ${b} <span class="cue">(city)</span>. We have a ${b} every ${b} <span class="cue">(day)</span>.
+    </div>
+    <textarea class="writing-area" placeholder="Write your profile here…"></textarea>
+    <div style="margin-top:12px;">
+      ${tapRow("Need a model? Model answer", "Hi! My name is Carolina. I work for Nexa Logistics. I'm <u>based</u> in Bogotá. Our <u>headquarters</u> is in Madrid. My <u>working hours</u> are from 8 to 5. I <u>don't</u> work on Saturdays. My manager <u>works</u> in Bogotá. Some of my <u>colleagues abroad</u> work in Mexico City. Madrid is 6 hours <u>ahead</u> of Bogotá. We have a <u>video call</u> every Monday.", "Tap to reveal ▾")}
+    </div>
+
+    <div class="divider"></div>
+    <div class="sub-heading">Part B · Reply to a new colleague</div>
+    <div class="es-note">Hana, una nueva colega en Japón, te escribe por chat. Responde sus <strong>3 preguntas</strong> con frases completas. Después, escríbele <strong>1 pregunta</strong> a ella.</div>
+    <div class="chat-card">
+      <div class="chat-head">💬 <strong>Hana Kobayashi</strong> · Designer, Osaka office</div>
+      <div class="chat-bubble">Hi! I'm Hana, the new designer in the Osaka office. Nice to meet you! 😊<br>Where are you based? What time do you start work? Do you work on Fridays?</div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-label">✏️ Sentence starters</div>
+      <em>I'm based in…</em> · <em>I start work at…</em> · <em>Yes, I do. / No, I don't. I…</em> · <em>What time…? / Do you…? / Where…?</em>
+    </div>
+    <textarea class="writing-area" placeholder="Hi Hana! …"></textarea>
+    <div style="margin-top:12px;">
+      ${tapRow("Need a model? Model answer", "Hi Hana! Nice to meet you too. I'm based in Bogotá, in our regional office. I start work at 8 a.m. Bogotá time. Yes, I do. I work from Monday to Friday. What time do you start work in Osaka?", "Tap to reveal ▾")}
+    </div>
+
+    ${teacherBox(`About 10 min writing + 10 min live correction (do not cut the correction). Part A is the main task. Part B is for students who finish early, or you can run it as the correction model if time is short.<br><br>
+      During correction, ask 3–4 students to read Part A aloud. Focus on <strong>-s</strong> with <em>my manager / he / she</em>, <em>don't</em> vs <em>doesn't</em>, and <em>ahead</em> vs <em>behind</em>. In Part B, check that the short answer is <em>Yes, I do</em> and not <em>Yes, I work</em>, and that the question back to Hana uses <em>do</em>.<br><br>
+      For stronger students: add one more sentence about the overlap with their colleagues abroad.`)}
+    ${navFooter()}
+  </div>`;
+}
+
+// ── STEPS: defined last, after all renderers ──────────────
+STEPS = [
+  { label: "1. Warm-up",       fn: renderWarmup },
+  { label: "2. Reading",       fn: renderReading },
+  { label: "3. Main Grammar",  fn: renderGrammar },
+  { label: "4. Writing",       fn: renderWriting }
+];
+
+// ↑↑↑  LESSON CONTENT END  ↑↑↑
+
+render(); // always last
+</script>
+
+<!-- PERMANENT SITE FOOTER — do not edit per lesson -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-credit">
+      Curriculum Developed by &nbsp;<strong>Girish Vijayan</strong>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="mailto:girish@zenningmyway.com">girish@zenningmyway.com</a>
+    </div>
+    <div class="site-footer-legal">
+      © 2026 Girish Vijayan. All Rights Reserved.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      All materials in this curriculum are protected by copyright.
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      Unauthorized reproduction, distribution, or adaptation is prohibited.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
